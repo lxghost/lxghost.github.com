@@ -4,7 +4,7 @@
   <title><![CDATA[lxghost's hell]]></title>
   <link href="http://lxghost.github.com/atom.xml" rel="self"/>
   <link href="http://lxghost.github.com/"/>
-  <updated>2012-05-25T04:55:47+08:00</updated>
+  <updated>2012-05-30T02:58:04+08:00</updated>
   <id>http://lxghost.github.com/</id>
   <author>
     <name><![CDATA[lxghost]]></name>
@@ -12,5 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[hello]]></title>
+    <link href="http://lxghost.github.com/blog/2012/05/30/hello/"/>
+    <updated>2012-05-30T02:52:00+08:00</updated>
+    <id>http://lxghost.github.com/blog/2012/05/30/hello</id>
+    <content type="html"><![CDATA[<h1>≤‚ ‘</h1>
+
+<blockquote><p>∫«∫«Œ˚Œ˚∞…</p></blockquote>
+]]></content>
+  </entry>
   
 </feed>
