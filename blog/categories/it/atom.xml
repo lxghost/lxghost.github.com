@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[lxghost's hell]]></title>
-  <link href="http://lxghost.github.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: it | lxghost's hell]]></title>
+  <link href="http://lxghost.github.com/blog/categories/it/atom.xml" rel="self"/>
   <link href="http://lxghost.github.com/"/>
   <updated>2012-07-04T00:40:41+08:00</updated>
   <id>http://lxghost.github.com/</id>
