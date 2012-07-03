@@ -4,7 +4,7 @@
   <title><![CDATA[lxghost's hell]]></title>
   <link href="http://lxghost.github.com/atom.xml" rel="self"/>
   <link href="http://lxghost.github.com/"/>
-  <updated>2012-07-04T00:54:10+08:00</updated>
+  <updated>2012-07-04T01:18:39+08:00</updated>
   <id>http://lxghost.github.com/</id>
   <author>
     <name><![CDATA[lxghost]]></name>
@@ -18,7 +18,13 @@
     <link href="http://lxghost.github.com/blog/2012/07/03/test/"/>
     <updated>2012-07-03T22:04:00+08:00</updated>
     <id>http://lxghost.github.com/blog/2012/07/03/test</id>
-    <content type="html"><![CDATA[<p><img class="right" src="http://placekitten.com/300/500" width="150" height="250" title="Place Kitten #4" alt="An image of a very cute kitten"></p>
+    <content type="html"><![CDATA[<p><img src="../images/blog/head.jpg"></p>
+
+<hr />
+
+<p>aaa</p>
+
+<hr />
 ]]></content>
   </entry>
   
