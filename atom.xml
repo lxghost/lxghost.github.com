@@ -4,7 +4,7 @@
   <title><![CDATA[lxghost's hell]]></title>
   <link href="http://lxghost.github.com/atom.xml" rel="self"/>
   <link href="http://lxghost.github.com/"/>
-  <updated>2012-07-04T01:18:39+08:00</updated>
+  <updated>2012-07-04T01:28:22+08:00</updated>
   <id>http://lxghost.github.com/</id>
   <author>
     <name><![CDATA[lxghost]]></name>
@@ -15,10 +15,10 @@
   
   <entry>
     <title type="html"><![CDATA[ceshi]]></title>
-    <link href="http://lxghost.github.com/blog/2012/07/03/test/"/>
+    <link href="http://lxghost.github.com/blog/2012-07-03/test/"/>
     <updated>2012-07-03T22:04:00+08:00</updated>
-    <id>http://lxghost.github.com/blog/2012/07/03/test</id>
-    <content type="html"><![CDATA[<p><img src="../images/blog/head.jpg"></p>
+    <id>http://lxghost.github.com/blog/2012-07-03/test</id>
+    <content type="html"><![CDATA[<p><img src="../images/uploads/head.jpg"></p>
 
 <hr />
 
