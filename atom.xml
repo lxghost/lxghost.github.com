@@ -4,7 +4,7 @@
   <title><![CDATA[lxghost's hell]]></title>
   <link href="http://lxghost.github.com/atom.xml" rel="self"/>
   <link href="http://lxghost.github.com/"/>
-  <updated>2012-07-05T13:49:30+08:00</updated>
+  <updated>2012-07-05T19:39:23+08:00</updated>
   <id>http://lxghost.github.com/</id>
   <author>
     <name><![CDATA[lxghost]]></name>
@@ -23,6 +23,8 @@
 
 <!-- more -->
 
+
+<p><del>我会告诉你我是在测试HTML5 Video Tag和Include Code吗</del></p>
 
 <figure class='code'><figcaption><span> (zxmzf.py)</span> <a href='http://lxghost.github.com/code/zxmzf.py'>download</a></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -557,17 +559,13 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[测试]]></title>
+    <title type="html"><![CDATA[Hello Octopress]]></title>
     <link href="http://lxghost.github.com/blog/2012-07-03/test/"/>
     <updated>2012-07-03T22:04:00+08:00</updated>
     <id>http://lxghost.github.com/blog/2012-07-03/test</id>
-    <content type="html"><![CDATA[<p><img src="http://lxghost.github.com/images/uploads/head.jpg"></p>
+    <content type="html"><![CDATA[<p><img src="../../../images/uploads/2012070301.jpg"></p>
 
-<hr />
-
-<p>卧槽 给我中文</p>
-
-<hr />
+<p><em>A coward or a hero, make your choice~</em></p>
 ]]></content>
   </entry>
   
