@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[lxghost's hell]]></title>
-  <link href="http://lxghost.github.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Program | lxghost's hell]]></title>
+  <link href="http://lxghost.github.com/blog/categories/program/atom.xml" rel="self"/>
   <link href="http://lxghost.github.com/"/>
   <updated>2012-07-05T13:49:30+08:00</updated>
   <id>http://lxghost.github.com/</id>
@@ -24,7 +24,7 @@
 <!-- more -->
 
 
-<figure class='code'><figcaption><span> (zxmzf.py)</span> <a href='http://lxghost.github.com/code/zxmzf.py'>download</a></figcaption>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (zxmzf.py)</span> <a href='/code/zxmzf.py'>download</a></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -551,23 +551,7 @@
 </span><span class='line'><span class="n">winsound</span><span class="o">.</span><span class="n">Beep</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">t</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 </span><span class='line'><span class="n">winsound</span><span class="o">.</span><span class="n">Beep</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">t</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
 </span><span class='line'><span class="c">#final end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[测试]]></title>
-    <link href="http://lxghost.github.com/blog/2012-07-03/test/"/>
-    <updated>2012-07-03T22:04:00+08:00</updated>
-    <id>http://lxghost.github.com/blog/2012-07-03/test</id>
-    <content type="html"><![CDATA[<p><img src="http://lxghost.github.com/images/uploads/head.jpg"></p>
-
-<hr />
-
-<p>卧槽 给我中文</p>
-
-<hr />
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   
