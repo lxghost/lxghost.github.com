@@ -108,7 +108,7 @@ WooYun
 <li><a href="http://team.f4ck.net/">F4ck</a></li>
 <li><a href="http://www.wooyun.org/whitehats/%E5%B0%8F%E7%A6%BE%E5%90%89">WooYun</a></li>
 <li><a href="http://www.guokr.com/i/1579257266/">果壳</a></li>
-<li><a href="http://tieba.baidu.com/i/22732129">百度贴吧</a></li>
+<li><a href="http://www.baidu.com/p/lxghost">百度贴吧</a></li>
 <li><a href="http://types.yuzeli.com/user/274018/">心理档案</a></li>
 </ul>
 
@@ -158,6 +158,8 @@ WooYun
 <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1623316" charset="utf-8"></script>
 <!-- JiaThis Button END -->
   
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://lxghost.github.com/whoami/index.html" data-via="lxghost1989" data-counturl="http://lxghost.github.com/whoami/index.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -269,6 +271,22 @@ WooYun
 </section>
 
 
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("lxghost1989", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/lxghost1989" class="twitter-follow-button" data-show-count="false">Follow @lxghost1989</a>
+  
+</section>
+
 
 
 <section class="googleplus">
@@ -325,6 +343,16 @@ WooYun
   </script>
 
 
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
 
 
 
