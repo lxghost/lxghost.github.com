@@ -2,22 +2,26 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://lxghost.github.com/blog/2012-07-03/first-blood/</loc>
-        <lastmod>2013-02-27T20:50:49+08:00</lastmod>
+        <lastmod>2013-02-27T21:21:52+08:00</lastmod>
     </url>
     <url>
         <loc>http://lxghost.github.com/blog/2012-07-05/the-most-flattering-national-wind/</loc>
-        <lastmod>2013-02-27T20:50:49+08:00</lastmod>
+        <lastmod>2013-02-27T21:21:52+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lxghost.github.com/blog/2013-02-27/test/</loc>
+        <lastmod>2013-02-27T21:32:15+08:00</lastmod>
     </url>
     <url>
         <loc>http://lxghost.github.com/blog/archives/</loc>
-        <lastmod>2013-02-27T20:50:49+08:00</lastmod>
+        <lastmod>2013-02-27T21:32:15+08:00</lastmod>
     </url>
     <url>
         <loc>http://lxghost.github.com/</loc>
-        <lastmod>2013-02-27T20:50:49+08:00</lastmod>
+        <lastmod>2013-02-27T21:32:15+08:00</lastmod>
     </url>
     <url>
         <loc>http://lxghost.github.com/whoami/</loc>
-        <lastmod>2013-02-27T20:50:49+08:00</lastmod>
+        <lastmod>2013-02-27T21:21:52+08:00</lastmod>
     </url>
 </urlset>
