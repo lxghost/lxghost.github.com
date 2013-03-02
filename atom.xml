@@ -4,7 +4,7 @@
   <title><![CDATA[lxghost'hell]]></title>
   <link href="http://lxghost.github.com/atom.xml" rel="self"/>
   <link href="http://lxghost.github.com/"/>
-  <updated>2013-02-27T23:59:16+08:00</updated>
+  <updated>2013-03-03T01:27:50+08:00</updated>
   <id>http://lxghost.github.com/</id>
   <author>
     <name><![CDATA[lxghost]]></name>
@@ -22,12 +22,12 @@
 
 <p>→_→ 这样下去找得到女朋友吗？？？</p>
 
-<p>时间不多了，快去干活~</p>
+<p>时间不多了，快去搬砖~</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[python版最炫名族风]]></title>
+    <title type="html"><![CDATA[Python版最炫名族风]]></title>
     <link href="http://lxghost.github.com/blog/2012-07-05/the-most-flattering-national-wind/"/>
     <updated>2012-07-05T01:43:00+08:00</updated>
     <id>http://lxghost.github.com/blog/2012-07-05/the-most-flattering-national-wind</id>
@@ -35,12 +35,10 @@
 
 <p>=。= 文件已经不存在了</p>
 
-<p><video width='516' height='343' preload='none' controls poster=' http://www.xiaoshuwu.in/lab/cover.png'><source src='http://www.xiaoshuwu.in/lab/zxmzf.mp4' type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'/></video></p>
+<p><del>我会告诉你我是在测试HTML5 Video Tag和Include Code吗</del></p>
 
 <!-- more -->
 
-
-<p><del>我会告诉你我是在测试HTML5 Video Tag和Include Code吗</del></p>
 
 <figure class='code'><figcaption><span> (zxmzf.py)</span> <a href='http://lxghost.github.com/code/zxmzf.py'>download</a></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -582,6 +580,74 @@
     <content type="html"><![CDATA[<p><img src="../../../images/uploads/2012070301.jpg"></p>
 
 <p><em>A coward or a hero ? make your choice !</em></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How Hackers Target and Hack Your Site]]></title>
+    <link href="http://lxghost.github.com/blog/2012-07-03/how-hackers-target-and-hack-your-site/"/>
+    <updated>2012-07-03T01:08:00+08:00</updated>
+    <id>http://lxghost.github.com/blog/2012-07-03/how-hackers-target-and-hack-your-site</id>
+    <content type="html"><![CDATA[<p><a href="http://resources.infosecinstitute.com/hacking-a-wordpress-site/">How Hackers Target and Hack Your Site</a> 是一篇非常棒入侵的标准教程</p>
+
+<p>撸一下思路</p>
+
+<!-- more -->
+
+
+<p>1.确定目标</p>
+
+<p>hack-test.com 这网站还能玩小游戏&#8230;</p>
+
+<p>2.信息收集</p>
+
+<p>IP查询 同IP网站 WHOIS查询 <a href="http://ip.chinaz.com/">站长之家</a></p>
+
+<p>web应用指纹识别 使用<a href="http://nmap.org/dist/nmap-5.51-setup.exe">Nmap</a></p>
+
+<p>-sV 应用程序版本 -O 系统指纹 -A 上述两项</p>
+
+<p>3.漏洞扫描</p>
+
+<p>企业级扫描器 Acunetix webvulnerabilityscanner8</p>
+
+<p>注入检测 <a href="http://downloads.sourceforge.net/sqlmap/sqlmap-0.9.zip">sqlmap</a></p>
+
+<p>4.渗透提权</p>
+
+<p>步骤如下</p>
+
+<p>进谷歌 找注入 没注入 就旁注</p>
+
+<p>没旁注 用Oday 没Oday 猜目录</p>
+
+<p>没目录 就嗅探 爆账户 找后台</p>
+
+<p>传小马 放大马 拿权限 挂页面</p>
+
+<p>放暗链 清数据 清日志 留后门</p>
+
+<p>文章里是这样的</p>
+
+<p>(1)注入获得用户名和密码</p>
+
+<p>(2)<a href="http://www.onlinehashcrack.com/free-hash-reverse.php">解开md5</a></p>
+
+<p>(3)通过wp插件写入一句话 上传大马</p>
+
+<p>(4)反向连接 获得执行命令行权限 执行linux命令</p>
+
+<p>ld - 获得用户名和用户组</p>
+
+<p>pwd - 获得当前路径</p>
+
+<p>uname -a 获得系统版本信息</p>
+
+<p>(5)<a href="http://www.exploit-db.com/">exploit-db</a>寻找提权脚本</p>
+
+<p>(6)执行提权脚本 获得root</p>
+
+<p>(7)留下后门 远程控制</p>
 ]]></content>
   </entry>
   

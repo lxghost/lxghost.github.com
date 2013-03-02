@@ -3,11 +3,11 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>时间不多了 - lxghost'hell</title>
+    <title>How Hackers Target and Hack Your Site - lxghost'hell</title>
     <meta name="author" content="lxghost">
 
     
-    <meta name="description" content="时间不多了 239天过去了，我都不记得自己做过什么。。。 →_→ 这样下去找得到女朋友吗？？？ 时间不多了，快去搬砖~ Feb 27th, 2013 呵呵 Comments Comments Please enable JavaScript to view the comments &hellip;">
+    <meta name="description" content="How Hackers Target and Hack Your Site How Hackers Target and Hack Your Site 是一篇非常棒入侵的标准教程 撸一下思路 1.确定目标 hack-test.com 这网站还能玩小游戏&#8230; 2.信息收集 IP查询 &hellip;">
     
     <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
 
@@ -54,12 +54,67 @@
 
 </header>
 	<div id="content" class="inner"><article class="post">
-    <h1 class="title">时间不多了</h1>
-    <div class="entry"><p>239天过去了，我都不记得自己做过什么。。。</p>
+    <h1 class="title">How Hackers Target and Hack Your Site</h1>
+    <div class="entry"><p><a href="http://resources.infosecinstitute.com/hacking-a-wordpress-site/">How Hackers Target and Hack Your Site</a> 是一篇非常棒入侵的标准教程</p>
 
-<p>→_→ 这样下去找得到女朋友吗？？？</p>
+<p>撸一下思路</p>
 
-<p>时间不多了，快去搬砖~</p>
+<!-- more -->
+
+
+<p>1.确定目标</p>
+
+<p>hack-test.com 这网站还能玩小游戏&#8230;</p>
+
+<p>2.信息收集</p>
+
+<p>IP查询 同IP网站 WHOIS查询 <a href="http://ip.chinaz.com/">站长之家</a></p>
+
+<p>web应用指纹识别 使用<a href="http://nmap.org/dist/nmap-5.51-setup.exe">Nmap</a></p>
+
+<p>-sV 应用程序版本 -O 系统指纹 -A 上述两项</p>
+
+<p>3.漏洞扫描</p>
+
+<p>企业级扫描器 Acunetix webvulnerabilityscanner8</p>
+
+<p>注入检测 <a href="http://downloads.sourceforge.net/sqlmap/sqlmap-0.9.zip">sqlmap</a></p>
+
+<p>4.渗透提权</p>
+
+<p>步骤如下</p>
+
+<p>进谷歌 找注入 没注入 就旁注</p>
+
+<p>没旁注 用Oday 没Oday 猜目录</p>
+
+<p>没目录 就嗅探 爆账户 找后台</p>
+
+<p>传小马 放大马 拿权限 挂页面</p>
+
+<p>放暗链 清数据 清日志 留后门</p>
+
+<p>文章里是这样的</p>
+
+<p>(1)注入获得用户名和密码</p>
+
+<p>(2)<a href="http://www.onlinehashcrack.com/free-hash-reverse.php">解开md5</a></p>
+
+<p>(3)通过wp插件写入一句话 上传大马</p>
+
+<p>(4)反向连接 获得执行命令行权限 执行linux命令</p>
+
+<p>ld - 获得用户名和用户组</p>
+
+<p>pwd - 获得当前路径</p>
+
+<p>uname -a 获得系统版本信息</p>
+
+<p>(5)<a href="http://www.exploit-db.com/">exploit-db</a>寻找提权脚本</p>
+
+<p>(6)执行提权脚本 获得root</p>
+
+<p>(7)留下后门 远程控制</p>
 </div>
     <div class="meta">
         <div class="date">
@@ -74,12 +129,12 @@
   
 
 
-<time datetime="2013-02-27T21:32:00+08:00" pubdate data-updated="true">Feb 27<span>th</span>, 2013</time></div>
+<time datetime="2012-07-03T01:08:00+08:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2012</time></div>
         <div class="tags">
 
 <div class="cat">
   
-    <a class='category' href='/blog/categories/呵呵/'>呵呵</a>
+    <a class='category' href='/blog/categories/渗透-web安全/'>渗透，web安全</a>
   
 </div>
 
@@ -140,8 +195,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://lxghost.github.com/blog/2013-02-27/time-flies/';
-        var disqus_url = 'http://lxghost.github.com/blog/2013-02-27/time-flies/';
+        var disqus_identifier = 'http://lxghost.github.com/blog/2012-07-03/how-hackers-target-and-hack-your-site/';
+        var disqus_url = 'http://lxghost.github.com/blog/2012-07-03/how-hackers-target-and-hack-your-site/';
         var disqus_script = 'embed.js';
       
     (function () {

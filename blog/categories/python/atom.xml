@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: python | lxghost'hell]]></title>
+  <title><![CDATA[Category: Python | lxghost'hell]]></title>
   <link href="http://lxghost.github.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://lxghost.github.com/"/>
-  <updated>2013-02-27T23:59:16+08:00</updated>
+  <updated>2013-03-03T01:27:50+08:00</updated>
   <id>http://lxghost.github.com/</id>
   <author>
     <name><![CDATA[lxghost]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[python版最炫名族风]]></title>
+    <title type="html"><![CDATA[Python版最炫名族风]]></title>
     <link href="http://lxghost.github.com/blog/2012-07-05/the-most-flattering-national-wind/"/>
     <updated>2012-07-05T01:43:00+08:00</updated>
     <id>http://lxghost.github.com/blog/2012-07-05/the-most-flattering-national-wind</id>
@@ -22,12 +22,10 @@
 
 <p>=。= 文件已经不存在了</p>
 
-<p><video width='516' height='343' preload='none' controls poster=' http://www.xiaoshuwu.in/lab/cover.png'><source src='http://www.xiaoshuwu.in/lab/zxmzf.mp4' type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'/></video></p>
+<p><del>我会告诉你我是在测试HTML5 Video Tag和Include Code吗</del></p>
 
 <!-- more -->
 
-
-<p><del>我会告诉你我是在测试HTML5 Video Tag和Include Code吗</del></p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (zxmzf.py)</span> <a href='/code/zxmzf.py'>download</a></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
