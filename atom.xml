@@ -4,7 +4,7 @@
   <title><![CDATA[lxghost'hell]]></title>
   <link href="http://lxghost.github.com/atom.xml" rel="self"/>
   <link href="http://lxghost.github.com/"/>
-  <updated>2013-03-03T01:27:50+08:00</updated>
+  <updated>2013-03-03T22:14:16+08:00</updated>
   <id>http://lxghost.github.com/</id>
   <author>
     <name><![CDATA[lxghost]]></name>
@@ -12,6 +12,181 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[HTML5 localStorage]]></title>
+    <link href="http://lxghost.github.com/blog/2013-03-03/html5-localstorage/"/>
+    <updated>2013-03-03T21:48:00+08:00</updated>
+    <id>http://lxghost.github.com/blog/2013-03-03/html5-localstorage</id>
+    <content type="html"><![CDATA[<p>在HTML5之前，本地存储的唯一方案就是<a href="http://book.51cto.com/art/201301/378118.htm">cookie</a>，相信大家都懂的。<br/>
+不过它的局限性也很明显，大小限制和会过期。<br/>
+所以在HTML5中新增了更好的本地存储功能，本地存储localStorage，在内存中就是sessionStorage，两者的唯一区别就是<strong>寿命</strong>，前者存在于本地文件，一直存在除非自己删除；后者存在于内存，随着浏览器的关闭而消失。<br/>
+保存的值都是<strong>文本类型</strong>，在使用时注意转换成对应的类型</p>
+
+<!--more-->
+
+
+<p><strong>支持的浏览器</strong>有
+<img src="http://ww1.sinaimg.cn/large/a74ecc4cjw1e2cpztm82kj.jpg" alt="支持的浏览器" /><br/>
+<strong>用法</strong>很简单<br/>
+localStorage[&#8220;key&#8221;]=&#8221;value&#8221;/ localStorage.setItem(&#8220;key&#8221;, &#8220;value&#8221;) /  localStorage.key=value 设置<br/>
+localStorage[&#8220;key&#8221;] / localStorage.getItem(&#8220;key&#8221;) /  localStorage.key 调用<br/>
+localStorage.clear() 清除所有  localStorage.removeItem(&#8220;key&#8221;) 删除<br/>
+localStorage.length 已经存在的变量数目<br/>
+localStorage.key(n) 返回第n个变量<br/>
+它是<strong>以域区分</strong>的，每个域名作为一个源，比如<a href="http://www.sample.com/a.html">www.sample.com/a.html</a>的数据可以被<a href="http://www.sample.com/">www.sample.com</a>的其他页面访问<br/>
+不同的电脑/用户/浏览器都是不同的源<br/>
+每个源的存储<strong>大小限制</strong>为chrome 2.5MB / firefox&amp;opera 5MB / IE 10MB<br/>
+还有没制定方案的数据库标准IndexdDB，起始大小为50MB</p>
+
+<p>但是问题也随之产生了，利用localStorage可以<strong>无限占用硬盘空间</strong>(<a href="https://github.com/feross/filldisk.js">https://github.com/feross/filldisk.js</a>)<br/>
+因为除了firefox，其他浏览器<strong>对于子域的存储没有按标准进行限制</strong>，利用1.sample.com， 2.sample.com，3.sample.com就可以无限产生数据<br/>
+可以点<a href="http://www.filldisk.com/">这里</a>感受一下
+代码也很简单</p>
+
+<figure class='code'><figcaption><span>filldisk.js </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="c1">//产生循环字符串</span>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">repeat</span><span class="p">(</span><span class="nx">string</span><span class="p">,</span> <span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">array</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class='line'>    <span class="k">while</span> <span class="p">(</span><span class="nx">count</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">array</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">string</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">array</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="cm">/**</span>
+</span><span class='line'><span class="cm">     * 获得子域名的数字</span>
+</span><span class='line'><span class="cm">     * http://5.filldisk.com  --&gt;  5</span>
+</span><span class='line'><span class="cm">     * @type {Number}</span>
+</span><span class='line'><span class="cm">     */</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">frameNum</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hostname</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/^([^.]+)\./i</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>    <span class="cm">/**</span>
+</span><span class='line'><span class="cm">     * reclaim变量表示是否删除</span>
+</span><span class='line'><span class="cm">     * 如果为真，删除本地存储</span>
+</span><span class='line'><span class="cm">     * @type {Boolean}</span>
+</span><span class='line'><span class="cm">     */</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">shouldReclaim</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/reclaim=(\w+)/i</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">shouldReclaim</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">shouldReclaim</span> <span class="o">=</span> <span class="p">(</span><span class="nx">shouldReclaim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="cm">/**</span>
+</span><span class='line'><span class="cm">     * 生成2.5mb的字符串.</span>
+</span><span class='line'><span class="cm">     * 一个字符串为1字节(b),循环产生100b, 1kb, 10kb, 1000kb, 1mb, 2.5mb</span>
+</span><span class='line'><span class="cm">     */</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">n10b</span> <span class="o">=</span> <span class="s1">&#39;0123456789&#39;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">n100b</span> <span class="o">=</span> <span class="nx">repeat</span><span class="p">(</span><span class="nx">n10b</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">n1kb</span> <span class="o">=</span> <span class="nx">repeat</span><span class="p">(</span><span class="nx">n100b</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">n10kb</span> <span class="o">=</span> <span class="nx">repeat</span><span class="p">(</span><span class="nx">n1kb</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">n100kb</span> <span class="o">=</span> <span class="nx">repeat</span><span class="p">(</span><span class="nx">n10kb</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">n999kb</span> <span class="o">=</span> <span class="nx">repeat</span><span class="p">(</span><span class="nx">n1kb</span><span class="p">,</span> <span class="mi">999</span><span class="p">)</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">n2500kb</span> <span class="o">=</span> <span class="nx">repeat</span><span class="p">(</span><span class="nx">n100kb</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+</span><span class='line'>    <span class="cm">/**</span>
+</span><span class='line'><span class="cm">     * js是utf-16字符串，所以产生5mb的localStorage</span>
+</span><span class='line'><span class="cm">     */</span>
+</span><span class='line'>    <span class="k">try</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">shouldReclaim</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">localStorage</span><span class="p">[</span><span class="s1">&#39;filldisk&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</span><span class='line'>        <span class="nx">localStorage</span><span class="p">.</span><span class="nx">removeItem</span><span class="p">(</span><span class="s1">&#39;filldisk&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>        <span class="cm">/**</span>
+</span><span class='line'><span class="cm">         * 判断浏览器，Opera的限制为2.5mb</span>
+</span><span class='line'><span class="cm">         */</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;Opera&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">localStorage</span><span class="p">[</span><span class="s1">&#39;filldisk&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">n2500kb</span>
+</span><span class='line'>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">localStorage</span><span class="p">[</span><span class="s1">&#39;filldisk&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">n999kb</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;local storage exception&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">return</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="c1">//发送所在的子域名数字</span>
+</span><span class='line'>    <span class="nb">window</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="nx">frameNum</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span>
+</span><span class='line'>    <span class="c1">//跳转到下一个子域</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">shouldReclaim</span> <span class="o">&amp;&amp;</span> <span class="nx">frameNum</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nb">window</span><span class="p">.</span><span class="nx">location</span> <span class="o">=</span> <span class="s1">&#39;http://&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">frameNum</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.filldisk.com/frame.html?reclaim=&#39;</span> <span class="o">+</span> <span class="nx">shouldReclaim</span>
+</span><span class='line'>    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">shouldReclaim</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nb">window</span><span class="p">.</span><span class="nx">location</span> <span class="o">=</span> <span class="s1">&#39;http://&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">frameNum</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.filldisk.com/frame.html&#39;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">})()</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可以预见HTML5的强大, 比如File API能读取客户端文件用js进行处理，但是必然会带来全新的安全问题，前端是个新的战场:)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[时间不多了]]></title>

@@ -4,7 +4,7 @@
         <loc>
             http://lxghost.github.com/blog/2012-07-03/how-hackers-target-and-hack-your-site/
         </loc>
-        <lastmod>2013-03-03T01:27:49+08:00</lastmod>
+        <lastmod>2013-03-03T17:23:43+08:00</lastmod>
     </url>
     <url>
         <loc>http://lxghost.github.com/blog/2012-07-03/first-blood/</loc>
@@ -19,15 +19,23 @@
         <lastmod>2013-03-03T01:04:18+08:00</lastmod>
     </url>
     <url>
+        <loc>http://lxghost.github.com/blog/2013-03-03/html5-localstorage/</loc>
+        <lastmod>2013-03-03T22:13:26+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://lxghost.github.com/blog/archives/</loc>
-        <lastmod>2013-03-03T01:27:49+08:00</lastmod>
+        <lastmod>2013-03-03T22:13:26+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lxghost.github.com/categories/</loc>
+        <lastmod>2013-03-03T18:00:01+08:00</lastmod>
     </url>
     <url>
         <loc>http://lxghost.github.com/</loc>
-        <lastmod>2013-03-03T01:27:49+08:00</lastmod>
+        <lastmod>2013-03-03T22:13:26+08:00</lastmod>
     </url>
     <url>
         <loc>http://lxghost.github.com/whoami/</loc>
-        <lastmod>2013-02-27T21:21:52+08:00</lastmod>
+        <lastmod>2013-03-03T17:59:27+08:00</lastmod>
     </url>
 </urlset>
