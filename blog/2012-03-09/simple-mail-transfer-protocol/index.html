@@ -1,0 +1,248 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>简单邮件传输协议 - lxghost'hell</title>
+    <meta name="author" content="lxghost">
+
+    
+    <meta name="description" content="简单邮件传输协议 SMTP用于传播电子邮件消息，是最被滥用的协议之一了..因为年代久远 设计时并没考虑安全问题。 很多人用来 fake email SMTP服务器(MTAs)负责处理发送的邮件 默认监听端口25/TCP POP3服务器或IMAP服务器负责处理收到的邮件 使用telnet &hellip;">
+    
+    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
+
+    <link href="/atom.xml" rel="alternate" title="lxghost'hell" type="application/atom+xml">
+    <link rel="canonical" href="">
+    <link href="/favicon.png" rel="shortcut icon">
+    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    
+    
+
+</head>
+
+<body>
+	<header class="inner"><h1 class="left"><a href="/">lxghost'hell</a></h1>
+<nav class="menu left"><ul class="main">
+	<li><a href="/">博客</a></li>
+	<li><a href="/blog/archives">归档</a></li>
+	<li><a href="/categories">分类</a></li>
+	<li><a href="/whoami">关于</a></li>
+</ul>
+</nav>
+<div class="right">
+	<form class="search right" action="http://google.com/search" method="get">
+		<input class="left" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:lxghost.github.com">
+	</form>
+	<div class="social right">
+		
+		
+		<a class="google" href="https://plus.google.com/100032430188950324052" title="Google+">Google+</a>
+		
+		
+		<a class="twitter" href="http://twitter.com/lxghost1989" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/lxghost" title="GitHub">GitHub</a>
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</div>
+
+</header>
+	<div id="content" class="inner"><article class="post">
+    <h1 class="title">简单邮件传输协议</h1>
+    <div class="entry"><p>SMTP用于传播电子邮件消息，是最被滥用的协议之一了..因为年代久远 设计时并没考虑安全问题。</p>
+
+<p>很多人用来 <a href="http://deadfake.com/Default.aspx">fake email</a></p>
+
+<p>SMTP服务器(MTAs)负责处理发送的邮件 默认监听端口25/TCP</p>
+
+<p>POP3服务器或IMAP服务器负责处理收到的邮件</p>
+
+<p>使用telnet 连接SMTP服务器就可以发送电子邮件</p>
+
+<p>使用ASCII文本进行通信 由客户端发送命令 服务端返回响应消息</p>
+
+<!-- more -->
+
+
+<p>常用命令有</p>
+
+<p>HELO - 介绍自己
+EHLO - 介绍自己并要求扩展模式
+MAIL FROM - 指明发件人
+RCPT TO - 指明收件人
+DATA - 确认邮件内容（前三行应为To、From和邮件主题）
+RSET - 重置
+QUIT - 退出进程
+HELP - 命令帮助
+VRFY - 验证地址
+EXPN - 扩展地址
+比如 telnet smtp.qq.com 25</p>
+
+<p><img src="../../../images/uploads/smtp1.jpg"></p>
+
+<p>1.ehlo lxghost - 申明 需要身份验证</p>
+
+<p>如果是不需要身份验证的SMTP服务器 可以用helo申明 不过网上提供的都需要验证 除非自己搭建</p>
+
+<p>2.auth login - 开始验证</p>
+
+<p>3.输入邮箱名和密码 需要base64编码</p>
+
+<p>4.mai from - 这里可以输入任意的地址</p>
+
+<p>从上图可以看出服务端进行了验证 确保定义的发件地址和认证登录的地址一样</p>
+
+<p>但是 小型的SMTP都没有采取安全措施 像学校公司之类的都可以伪造发件人</p>
+
+<p><img src="../../../images/uploads/smtp2.jpg"></p>
+
+<p>5.rcpt to - 输入接收地址</p>
+
+<p>6.data - 开始编辑</p>
+
+<p>可以定义标题 发送地址 接受地址 内容 都是显示在邮件主体里</p>
+
+<p>换行后一个点表示编辑结束</p>
+
+<p>等待发送完成 quit</p>
+
+<p>用python的smtplib实现</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#coding:utf-8  
+</span><span class='line'>import smtplib  
+</span><span class='line'>from email.mime.text import MIMEText  
+</span><span class='line'>mail_host = "smtp地址"  
+</span><span class='line'>mail_user = "登陆邮箱名"  
+</span><span class='line'>mail_pwd = "登陆密码"  
+</span><span class='line'>send_from = "想伪造的发件人  
+</span><span class='line'>send_to = "收件人"  
+</span><span class='line'>msg = MIMEText("内容")  
+</span><span class='line'>msg['From'] = send_from  
+</span><span class='line'>msg['To'] = send_to  
+</span><span class='line'>msg['Subject'] = "title"  
+</span><span class='line'>s = smtplib.SMTP()  
+</span><span class='line'>s.connect(mail_host)  
+</span><span class='line'>s.login(mail_user ,mail_pwd)  
+</span><span class='line'>s.sendmail(send_from, send_to, msg.as_string())  
+</span><span class='line'>s.close()</span></code></pre></td></tr></table></div></figure>
+
+</div>
+    <div class="meta">
+        <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-09T20:16:00+08:00" pubdate data-updated="true">Mar 9<span>th</span>, 2012</time></div>
+        <div class="tags">
+
+<div class="cat">
+  
+    <a class='category' href='/blog/categories/head-first-tcp-ip/'>Head First TCP/IP</a>, <a class='category' href='/blog/categories/web-security/'>Web Security</a>
+  
+</div>
+
+</div>
+        
+        <span class="comments"><a href="#disqus_thread">Comments</a></span>
+        
+    </div>
+</article>
+<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+	
+	
+    	<!-- JiaThis Button BEGIN -->
+<!-- JiaThis Button BEGIN -->
+<div id="jiathis_style_32x32">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_kaixin001"></a>
+	<a href="http://www.jiathis.com/share?uid=1623316" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">var jiathis_config = {data_track_clickback:true};</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1623316" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+  	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer class="inner">Copyright &copy; 2013
+
+    lxghost
+
+</footer>
+	<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script src="/javascripts/slash.js"></script>
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'lxghosthell';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://lxghost.github.com/blog/2012-03-09/simple-mail-transfer-protocol/';
+        var disqus_url = 'http://lxghost.github.com/blog/2012-03-09/simple-mail-transfer-protocol/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+</body>
+</html>

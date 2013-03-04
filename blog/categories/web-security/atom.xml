@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Web安全 | lxghost'hell]]></title>
-  <link href="http://lxghost.github.com/blog/categories/web%E5%AE%89%E5%85%A8/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Web Security | lxghost'hell]]></title>
+  <link href="http://lxghost.github.com/blog/categories/web-security/atom.xml" rel="self"/>
   <link href="http://lxghost.github.com/"/>
-  <updated>2013-03-03T22:42:26+08:00</updated>
+  <updated>2013-03-04T21:16:59+08:00</updated>
   <id>http://lxghost.github.com/</id>
   <author>
     <name><![CDATA[lxghost]]></name>
@@ -260,6 +260,112 @@ localStorage.key(n) 返回第n个变量<br/>
 <p>(6)执行提权脚本 获得root</p>
 
 <p>(7)留下后门 远程控制</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[简单邮件传输协议]]></title>
+    <link href="http://lxghost.github.com/blog/2012-03-09/simple-mail-transfer-protocol/"/>
+    <updated>2012-03-09T20:16:00+08:00</updated>
+    <id>http://lxghost.github.com/blog/2012-03-09/simple-mail-transfer-protocol</id>
+    <content type="html"><![CDATA[<p>SMTP用于传播电子邮件消息，是最被滥用的协议之一了..因为年代久远 设计时并没考虑安全问题。</p>
+
+<p>很多人用来 <a href="http://deadfake.com/Default.aspx">fake email</a></p>
+
+<p>SMTP服务器(MTAs)负责处理发送的邮件 默认监听端口25/TCP</p>
+
+<p>POP3服务器或IMAP服务器负责处理收到的邮件</p>
+
+<p>使用telnet 连接SMTP服务器就可以发送电子邮件</p>
+
+<p>使用ASCII文本进行通信 由客户端发送命令 服务端返回响应消息</p>
+
+<!-- more -->
+
+
+<p>常用命令有</p>
+
+<p>HELO - 介绍自己
+EHLO - 介绍自己并要求扩展模式
+MAIL FROM - 指明发件人
+RCPT TO - 指明收件人
+DATA - 确认邮件内容（前三行应为To、From和邮件主题）
+RSET - 重置
+QUIT - 退出进程
+HELP - 命令帮助
+VRFY - 验证地址
+EXPN - 扩展地址
+比如 telnet smtp.qq.com 25</p>
+
+<p><img src="../../../images/uploads/smtp1.jpg"></p>
+
+<p>1.ehlo lxghost - 申明 需要身份验证</p>
+
+<p>如果是不需要身份验证的SMTP服务器 可以用helo申明 不过网上提供的都需要验证 除非自己搭建</p>
+
+<p>2.auth login - 开始验证</p>
+
+<p>3.输入邮箱名和密码 需要base64编码</p>
+
+<p>4.mai from - 这里可以输入任意的地址</p>
+
+<p>从上图可以看出服务端进行了验证 确保定义的发件地址和认证登录的地址一样</p>
+
+<p>但是 小型的SMTP都没有采取安全措施 像学校公司之类的都可以伪造发件人</p>
+
+<p><img src="../../../images/uploads/smtp2.jpg"></p>
+
+<p>5.rcpt to - 输入接收地址</p>
+
+<p>6.data - 开始编辑</p>
+
+<p>可以定义标题 发送地址 接受地址 内容 都是显示在邮件主体里</p>
+
+<p>换行后一个点表示编辑结束</p>
+
+<p>等待发送完成 quit</p>
+
+<p>用python的smtplib实现
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>coding:utf-8&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>import smtplib&lt;br/>
+</span><span class='line'>from email.mime.text import MIMEText&lt;br/>
+</span><span class='line'>mail_host = "smtp地址"&lt;br/>
+</span><span class='line'>mail_user = "登陆邮箱名"&lt;br/>
+</span><span class='line'>mail_pwd = "登陆密码"&lt;br/>
+</span><span class='line'>send_from = "想伪造的发件人&lt;br/>
+</span><span class='line'>send_to = "收件人"&lt;br/>
+</span><span class='line'>msg = MIMEText("内容")&lt;br/>
+</span><span class='line'>msg['From'] = send_from&lt;br/>
+</span><span class='line'>msg['To'] = send_to&lt;br/>
+</span><span class='line'>msg['Subject'] = "title"&lt;br/>
+</span><span class='line'>s = smtplib.SMTP()&lt;br/>
+</span><span class='line'>s.connect(mail_host)&lt;br/>
+</span><span class='line'>s.login(mail_user ,mail_pwd)&lt;br/>
+</span><span class='line'>s.sendmail(send_from, send_to, msg.as_string())&lt;br/>
+</span><span class='line'>s.close()</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   
