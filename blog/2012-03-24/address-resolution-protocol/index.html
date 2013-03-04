@@ -1,0 +1,179 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>地址解析协议 - lxghost'hell</title>
+    <meta name="author" content="lxghost">
+
+    
+    <meta name="description" content="地址解析协议 假设你叫小明(本地主机)，住在一个大院子(本地局域网)，有很多邻居(网络邻居)，门口有个看门的李大爷(网关)。当你想要找院子里的某个小朋友玩，只要大喊一声他的名字(ping),他听到了就会回你。你要找院子里的人，只要知道他家门牌号码(MAC地址)，就可以找到他。你想找外面的人， &hellip;">
+    
+    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
+
+    <link href="/atom.xml" rel="alternate" title="lxghost'hell" type="application/atom+xml">
+    <link rel="canonical" href="">
+    <link href="/favicon.png" rel="shortcut icon">
+    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    
+    
+
+</head>
+
+<body>
+	<header class="inner"><h1 class="left"><a href="/">lxghost'hell</a></h1>
+<nav class="menu left"><ul class="main">
+	<li><a href="/">博客</a></li>
+	<li><a href="/blog/archives">归档</a></li>
+	<li><a href="/categories">分类</a></li>
+	<li><a href="/whoami">关于</a></li>
+</ul>
+</nav>
+<div class="right">
+	<form class="search right" action="http://google.com/search" method="get">
+		<input class="left" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:lxghost.github.com">
+	</form>
+	<div class="social right">
+		
+		
+		<a class="google" href="https://plus.google.com/100032430188950324052" title="Google+">Google+</a>
+		
+		
+		<a class="twitter" href="http://twitter.com/lxghost1989" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/lxghost" title="GitHub">GitHub</a>
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</div>
+
+</header>
+	<div id="content" class="inner"><article class="post">
+    <h1 class="title">地址解析协议</h1>
+    <div class="entry"><p>假设你叫小明(本地主机)，住在一个大院子(本地局域网)，有很多邻居(网络邻居)，门口有个看门的李大爷(网关)。当你想要找院子里的某个小朋友玩，只要大喊一声他的名字(ping),他听到了就会回你。你要找院子里的人，只要知道他家门牌号码(MAC地址)，就可以找到他。你想找外面的人，但妈妈不让你出去，必须通过李大爷帮你联系。如果你要找另一个院子里(跨域网络)的同学小强(远程主机)，他的妈妈也不让他出去。那里也有一个看门的王大爷(另一个网关)，小明要找小强，必须通过李大爷联系王大爷(路由)。这两个院子里的故事太多，以后慢慢讲。。。</p>
+
+<!-- more -->
+
+
+<p>    要理解网络协议，最好使用协议分析器对数据包进行分析，<a href="http://www.wireshark.org/download.html">wireshark</a>是不错的选择。</p>
+
+<p><img src="../../../images/uploads/arp1.jpg">
+简单的说，ARP协议回答了一个问题 IP是XX.XX.XX.XX(图中的192.168.1.1)的网卡，他的MAC/物理地址(图中的00:21:27:6a:25:0c)是什么。MAC地址是网卡绑定的唯一标识符，局域网内的主机之间互相通信，必须通过MAC地址。系统会对ARP数据进行缓存，不过10分钟后会重建。在cmd下输入arp -a可以查看。</p>
+
+<p><img src="../../../images/uploads/arp2.jpg"><br/>
+下面是ARP报文的结构</p>
+
+<p><img src="../../../images/uploads/arp3.jpg"><br/>
+ARP的过程如下，假设A,B,C为局域网的3台主机</p>
+
+<ol>
+<li>当A要访问B时，此时ARP缓存表为空，所以要进行一次广播，图中目标为全f，确定B的地址。</li>
+<li>B 和C都会收到这个广播。因为是广播，所以网络上的任何一个节点都要对该帧进行进一步处理。于是C检查该帧的协议类型，发现是0x0806H(ARP协议)，便把该帧的帧头去掉，检查其IP头，发现是发向192.168.1.1 的ARP 报文而不是自己的，于是将该报文丢弃。</li>
+<li>B收到这个帧后发现是个广播，所以也会检查该帧的协议类型，发现是ARP协议，便把该帧的帧头去掉，露出IP头，发现该报文是发给自己的，就再检查操作类型，发现是请求，于是便读取该帧的发送者MAC 和发送者IP，把它们作为ARP 响应的目的MAC和目的IP 发送回去，这就是为什么ARP 请求是广播，而响应是单播的原因。图中目标MAC为全0，就是留空让接受者填写。</li>
+<li>当A收到来自B的ARP单播响应时，首先检查该帧的目的MAC 是不是自己，发现匹配，于是再检查协议类型，发现是ARP 协议，于是去掉二层帧头，送到IP 层，IP 协议发现目的IP地址是自己，于是进一步检查操作类型，发现是响应，于是读取发送者MAC 和IP，把它们记录进ARP缓存表。</li>
+</ol>
+
+
+<p>    知道了原理，我们可以通过伪造ARP响应，进行ARP欺骗，使得请求的主机相信属于别人的IP是你的。如果伪造成网关，那么别人自然不能上网了，有兴趣的同学可以慢慢研究&#8230;至于防御也很简单，本地arp -s绑定，安装arp防火墙，在路由器绑定ip-mac-端口。</p>
+</div>
+    <div class="meta">
+        <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-24T23:43:00+08:00" pubdate data-updated="true">Mar 24<span>th</span>, 2012</time></div>
+        <div class="tags">
+
+<div class="cat">
+  
+    <a class='category' href='/blog/categories/head-first-tcp-ip/'>Head First TCP/IP</a>, <a class='category' href='/blog/categories/web-security/'>Web Security</a>
+  
+</div>
+
+</div>
+        
+        <span class="comments"><a href="#disqus_thread">Comments</a></span>
+        
+    </div>
+</article>
+<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+	
+	
+    	<!-- JiaThis Button BEGIN -->
+<!-- JiaThis Button BEGIN -->
+<div id="jiathis_style_32x32">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_kaixin001"></a>
+	<a href="http://www.jiathis.com/share?uid=1623316" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">var jiathis_config = {data_track_clickback:true};</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1623316" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+  	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer class="inner">Copyright &copy; 2013
+
+    lxghost
+
+</footer>
+	<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script src="/javascripts/slash.js"></script>
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'lxghosthell';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://lxghost.github.com/blog/2012-03-24/address-resolution-protocol/';
+        var disqus_url = 'http://lxghost.github.com/blog/2012-03-24/address-resolution-protocol/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+</body>
+</html>
