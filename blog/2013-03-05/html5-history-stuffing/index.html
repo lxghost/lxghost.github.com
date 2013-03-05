@@ -1,0 +1,248 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML5之地址栏历史填充  - lxghost'hell</title>
+    <meta name="author" content="lxghost">
+
+    
+    <meta name="description" content="HTML5之地址栏历史填充 刚刚看到的 http://upnorthtrip.com/historystuffing/
+HTML5提供了操作浏览器历史记录的API
+通过 history.pushState([data],[title],[url]) 方法能够将指定的URL添加到浏览器历史记录 &hellip;">
+    
+    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
+
+    <link href="/atom.xml" rel="alternate" title="lxghost'hell" type="application/atom+xml">
+    <link rel="canonical" href="">
+    <link href="/favicon.png" rel="shortcut icon">
+    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    
+    
+
+</head>
+
+<body>
+	<header class="inner"><h1 class="left"><a href="/">lxghost'hell</a></h1>
+<nav class="menu left"><ul class="main">
+	<li><a href="/">博客</a></li>
+	<li><a href="/blog/archives">归档</a></li>
+	<li><a href="/categories">分类</a></li>
+	<li><a href="/whoami">关于</a></li>
+</ul>
+</nav>
+<div class="right">
+	<form class="search right" action="http://google.com/search" method="get">
+		<input class="left" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:lxghost.github.com">
+	</form>
+	<div class="social right">
+		
+		
+		<a class="google" href="https://plus.google.com/100032430188950324052" title="Google+">Google+</a>
+		
+		
+		<a class="twitter" href="http://twitter.com/lxghost1989" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/lxghost" title="GitHub">GitHub</a>
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</div>
+
+</header>
+	<div id="content" class="inner"><article class="post">
+    <h1 class="title">HTML5之地址栏历史填充</h1>
+    <div class="entry"><p>刚刚看到的 <a href="http://upnorthtrip.com/historystuffing/">http://upnorthtrip.com/historystuffing/</a>
+HTML5提供了操作浏览器历史记录的API<br/>
+通过</p>
+
+<pre><code>history.pushState([data],[title],[url])
+</code></pre>
+
+<p>方法能够将指定的URL添加到浏览器历史记录<br/>
+比如你push了sampleurl.com，当你下次在地址栏输入sample时，浏览器就会给出提示</p>
+
+<!-- more -->
+
+
+<p>
+demo很简单</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var historyStuffing = {
+</span><span class='line'>    //初始化，浏览器支持就填充历史记录，否则提示不支持
+</span><span class='line'>    init: function () {
+</span><span class='line'>        if (this.checkSupport) {
+</span><span class='line'>            this.stuffHistory(this.keywords());
+</span><span class='line'>        } else {
+</span><span class='line'>            alert("Sorry, your browser doesn't support History API, therefore the demo will not work.");
+</span><span class='line'>        }
+</span><span class='line'>    },
+</span><span class='line'> 
+</span><span class='line'>    //检查浏览器支持，需要存在window.history和history.pushState才行
+</span><span class='line'>    checkSupport: function () {
+</span><span class='line'>        return !!(window.history && history.pushState);
+</span><span class='line'>    },
+</span><span class='line'>
+</span><span class='line'>    //填充列表中的url到历史记录
+</span><span class='line'>    stuffHistory: function (data) {
+</span><span class='line'>        for (var i = 0; i &lt; data.length; i++) {
+</span><span class='line'>            window.history.pushState(null, null, "/?domain=" + data[i]);
+</span><span class='line'>            if (window.chrome) {
+</span><span class='line'>                document.title = "&lt;- CLICK HERE";
+</span><span class='line'>            } else {
+</span><span class='line'>                document.title = "CLICK HERE";
+</span><span class='line'>            }
+</span><span class='line'>            if(i == data.length-1){
+</span><span class='line'>                document.title = "History stuffing with HTML5 - upnorthtrip";
+</span><span class='line'>                window.history.pushState(null, null, "/historystuffing");
+</span><span class='line'>                document.getElementById("status").innerHTML = "&lt;br />Completed!&lt;br />Now type a domain such as &lt;b>chase.com&lt;/b> in your location bar.";
+</span><span class='line'>            }
+</span><span class='line'>        }
+</span><span class='line'>    },
+</span><span class='line'>
+</span><span class='line'>    keywords: function () {
+</span><span class='line'>        return Array(要填充的url列表)
+</span><span class='line'>    }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这也带来了风险，比如钓鱼页面利用关键字填充，或者url跳转到子域名进行<a href="http://ph4ntasy.com/Secret-cookie-Stuffing.html">cookie stuffing</a><br/>
+也可以填充通用的搜索关键字how,why之类的，总之就是增加用户访问的可能性</p>
+</div>
+    <div class="meta">
+        <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-05T17:00:00+08:00" pubdate data-updated="true">Mar 5<span>th</span>, 2013</time></div>
+        <div class="tags">
+
+<div class="cat">
+  
+    <a class='category' href='/blog/categories/html5/'>HTML5</a>, <a class='category' href='/blog/categories/web-security/'>Web Security</a>
+  
+</div>
+
+</div>
+        
+        <span class="comments"><a href="#disqus_thread">Comments</a></span>
+        
+    </div>
+</article>
+<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+	
+	
+    	<!-- JiaThis Button BEGIN -->
+<!-- JiaThis Button BEGIN -->
+<div id="jiathis_style_32x32">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_kaixin001"></a>
+	<a href="http://www.jiathis.com/share?uid=1623316" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">var jiathis_config = {data_track_clickback:true};</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1623316" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+  	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer class="inner">Copyright &copy; 2013
+
+    lxghost
+
+</footer>
+	<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script src="/javascripts/slash.js"></script>
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'lxghosthell';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://lxghost.github.com/blog/2013-03-05/html5-history-stuffing/';
+        var disqus_url = 'http://lxghost.github.com/blog/2013-03-05/html5-history-stuffing/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+</body>
+</html>

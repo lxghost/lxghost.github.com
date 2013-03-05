@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web Security | lxghost'hell]]></title>
   <link href="http://lxghost.github.com/blog/categories/web-security/atom.xml" rel="self"/>
   <link href="http://lxghost.github.com/"/>
-  <updated>2013-03-05T00:00:28+08:00</updated>
+  <updated>2013-03-05T17:07:49+08:00</updated>
   <id>http://lxghost.github.com/</id>
   <author>
     <name><![CDATA[lxghost]]></name>
@@ -14,7 +14,110 @@
 
   
   <entry>
-    <title type="html"><![CDATA[HTML5 localStorage]]></title>
+    <title type="html"><![CDATA[HTML5之地址栏历史填充 ]]></title>
+    <link href="http://lxghost.github.com/blog/2013-03-05/html5-history-stuffing/"/>
+    <updated>2013-03-05T17:00:00+08:00</updated>
+    <id>http://lxghost.github.com/blog/2013-03-05/html5-history-stuffing</id>
+    <content type="html"><![CDATA[<p>刚刚看到的 <a href="http://upnorthtrip.com/historystuffing/">http://upnorthtrip.com/historystuffing/</a>
+HTML5提供了操作浏览器历史记录的API<br/>
+通过</p>
+
+<pre><code>history.pushState([data],[title],[url])
+</code></pre>
+
+<p>方法能够将指定的URL添加到浏览器历史记录<br/>
+比如你push了sampleurl.com，当你下次在地址栏输入sample时，浏览器就会给出提示</p>
+
+<!-- more -->
+
+
+<p>
+demo很简单
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var historyStuffing = {&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>//初始化，浏览器支持就填充历史记录，否则提示不支持
+</span><span class='line'>init: function () {
+</span><span class='line'>    if (this.checkSupport) {
+</span><span class='line'>        this.stuffHistory(this.keywords());
+</span><span class='line'>    } else {
+</span><span class='line'>        alert("Sorry, your browser doesn't support History API, therefore the demo will not work.");
+</span><span class='line'>    }
+</span><span class='line'>},
+</span><span class='line'>
+</span><span class='line'>//检查浏览器支持，需要存在window.history和history.pushState才行
+</span><span class='line'>checkSupport: function () {
+</span><span class='line'>    return !!(window.history &amp;&amp; history.pushState);
+</span><span class='line'>},
+</span><span class='line'>
+</span><span class='line'>//填充列表中的url到历史记录
+</span><span class='line'>stuffHistory: function (data) {
+</span><span class='line'>    for (var i = 0; i &lt; data.length; i++) {
+</span><span class='line'>        window.history.pushState(null, null, "/?domain=" + data[i]);
+</span><span class='line'>        if (window.chrome) {
+</span><span class='line'>            document.title = "&lt;- CLICK HERE";
+</span><span class='line'>        } else {
+</span><span class='line'>            document.title = "CLICK HERE";
+</span><span class='line'>        }
+</span><span class='line'>        if(i == data.length-1){
+</span><span class='line'>            document.title = "History stuffing with HTML5 - upnorthtrip";
+</span><span class='line'>            window.history.pushState(null, null, "/historystuffing");
+</span><span class='line'>            document.getElementById("status").innerHTML = "&lt;br /&gt;Completed!&lt;br /&gt;Now type a domain such as &lt;b&gt;chase.com&lt;/b&gt; in your location bar.";
+</span><span class='line'>        }
+</span><span class='line'>    }
+</span><span class='line'>},
+</span><span class='line'>
+</span><span class='line'>keywords: function () {
+</span><span class='line'>    return Array(要填充的url列表)
+</span><span class='line'>}
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p>}</span></code></pre></td></tr></table></div></figure></notextile></div>
+这也带来了风险，比如钓鱼页面利用关键字填充，或者url跳转到子域名进行<a href="http://ph4ntasy.com/Secret-cookie-Stuffing.html">cookie stuffing</a><br/>
+也可以填充通用的搜索关键字how,why之类的，总之就是增加用户访问的可能性</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HTML5之localStorage]]></title>
     <link href="http://lxghost.github.com/blog/2013-03-03/html5-localstorage/"/>
     <updated>2013-03-03T21:48:00+08:00</updated>
     <id>http://lxghost.github.com/blog/2013-03-03/html5-localstorage</id>
