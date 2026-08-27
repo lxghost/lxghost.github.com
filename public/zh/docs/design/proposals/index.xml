@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>设计提案与 PRD on OINK</title>
+    <link>http://localhost:1313/zh/docs/design/proposals/</link>
+    <description>Recent content in 设计提案与 PRD on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Thu, 27 Aug 2026 16:59:53 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/docs/design/proposals/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>反向链接与知识图谱</title>
+        <link>http://localhost:1313/zh/docs/design/proposals/knowledge-graph/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/proposals/knowledge-graph/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;G1 已实现，G2/G3 仍是草案&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;2026-08-27 决议 G1 的全部待决问题并接受 G1（静态反向链接）。它已在主题 main&#xA;分支实现，随 OINK 0.8.0 发布。局部与全站图谱（G2/G3）保持草案状态，等待 G1 的&#xA;真实使用证据；它们的名称和配置在被接受之前不是公开 API。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>媒体收敛</title>
+        <link>http://localhost:1313/zh/docs/design/proposals/media-convergence/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/proposals/media-convergence/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;部分已实现&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;M1（共享 media-result 契约）与 M2（Landing 资源元数据）已在主题 main 分支实现；&#xA;M3 已决议为方案 2：图片处理只属于原生 Markdown 图片形态，完整 &lt;code&gt;fig&lt;/code&gt; 源形态保持&#xA;容器语义，其参数表刻意不含 &lt;code&gt;command&lt;/code&gt;/&lt;code&gt;options&lt;/code&gt;。M4（兼容退役）在完成消费方盘点&#xA;之前保持开放。以下各节为原始设计记录。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Agent 批量索引</title>
+        <link>http://localhost:1313/zh/docs/design/proposals/agent-indexes/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/proposals/agent-indexes/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;已实现，随 OINK 0.8.0 发布&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;2026-08-27 决议全部待决问题后接受本提案。两类输出——按顶层 section 分包的&#xA;&lt;code&gt;LLMSFULL&lt;/code&gt; 与语言根下的 &lt;code&gt;NAVJSON&lt;/code&gt; 导航树——都已在主题 &lt;code&gt;main&lt;/code&gt; 分支实现，随 OINK&#xA;0.8.0 发布，之后本提案退役；发布后的行为由&lt;a href=&#34;http://localhost:1313/zh/docs/design/architecture/#outputs-and-runtime&#34;&gt;架构契约&lt;/a&gt;&#xA;承担。OINK 已经支持每页 Markdown、语言内 &lt;code&gt;llms.txt&lt;/code&gt;、HTML discovery link 与&#xA;Copy Markdown；本页只覆盖新增的两类。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Book 出版链路</title>
+        <link>http://localhost:1313/zh/docs/design/proposals/book-publication/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/proposals/book-publication/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--warning&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-triangle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;已实现出版工具的提案草案&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;选择启用的 &lt;code&gt;BookManifest&lt;/code&gt;、通用 EPUB/PDF runner 与产物校验都已随版本发布，&#xA;其规范性描述在&lt;a href=&#34;http://localhost:1313/zh/docs/design/architecture/&#34;&gt;架构&lt;/a&gt;。没有任何一次构建会自己产出这两种文件。&#xA;本提案仍然未决、且只在本提案未决的，是消费站迁移。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authors on OINK</title>
+    <link>http://localhost:1313/zh/authors/</link>
+    <description>Recent content in Authors on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Thu, 20 Aug 2026 19:29:45 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/authors/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>OINK</title>
+        <link>http://localhost:1313/zh/authors/oink/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/authors/oink/</guid>
+        <description>&lt;p&gt;OINK 为正式发布注记与项目公告署名。这个作者档案将项目身份与编写设计笔记、&#xA;教程和工程报告的具体维护者区分开来。&lt;/p&gt;&#xA;&lt;h2 id=&#34;about&#34;&gt;关于 OINK&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;OINK 是一款本地优先的 Hugo 技术文档主题，为 Pigsty 文档家族提供共享的页面外壳、&#xA;导航、发布界面与 Markdown 原生内容组件。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>冯若航</title>
+        <link>http://localhost:1313/zh/authors/vonng/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/authors/vonng/</guid>
+        <description>&lt;h2 id=&#34;about&#34;&gt;关于&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;冯若航（&lt;a href=&#34;https://github.com/Vonng&#34;&gt;@Vonng&lt;/a&gt;）做 &lt;a href=&#34;https://pigsty.cc/&#34;&gt;Pigsty&lt;/a&gt; ——&#xA;一个 PostgreSQL 发行版，以及 OINK ——负责出版它文档的 Hugo 主题。两者出自同一个问题：&#xA;把数据库跑好，和把「怎么跑好」讲清楚，是同一套知识；而且这套知识写砸了就等于没有。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authors on OINK</title>
+    <link>http://localhost:1313/authors/</link>
+    <description>Recent content in Authors on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Thu, 20 Aug 2026 19:29:45 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/authors/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>OINK</title>
+        <link>http://localhost:1313/authors/oink/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/authors/oink/</guid>
+        <description>&lt;p&gt;OINK signs formal release notes and project announcements. This profile keeps&#xA;project authorship distinct from the individual maintainers who write design&#xA;notes, tutorials, and engineering reports.&lt;/p&gt;&#xA;&lt;h2 id=&#34;about&#34;&gt;About OINK&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;OINK is a local-first Hugo theme for technical documentation. It provides the&#xA;shared shell, navigation, publishing surfaces, and Markdown-native components&#xA;used across the Pigsty documentation family.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Ruohang Feng</title>
+        <link>http://localhost:1313/authors/vonng/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/authors/vonng/</guid>
+        <description>&lt;h2 id=&#34;about&#34;&gt;About&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Ruohang Feng (&lt;a href=&#34;https://github.com/Vonng&#34;&gt;@Vonng&lt;/a&gt;) builds&#xA;&lt;a href=&#34;https://pigsty.io/&#34;&gt;Pigsty&lt;/a&gt;, a PostgreSQL distribution, and OINK, the Hugo&#xA;theme that publishes its documentation. Both grew out of the same problem:&#xA;running a database well and explaining how to run it well are the same body of&#xA;knowledge, and neither survives being written down badly.&lt;/p&gt;&#xA;&lt;p&gt;OINK exists because thirteen sites in that family had drifted into thirteen&#xA;copies of one theme. It is a hard fork of &lt;a href=&#34;https://www.docsy.dev/&#34;&gt;Docsy&lt;/a&gt; that&#xA;keeps Docsy&amp;rsquo;s content model and replaces the shell, the navigation, the search,&#xA;the content primitives, and the typography system — with one rule throughout:&#xA;a feature that needs a CDN, an npm install, or a public service the reader&#xA;never chose does not ship.&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

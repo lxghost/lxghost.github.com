@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Series on OINK</title>
+    <link>http://localhost:1313/series/</link>
+    <description>Recent content in Series on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Thu, 20 Aug 2026 19:29:45 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/series/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>Building OINK</title>
+        <link>http://localhost:1313/series/building-oink/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/series/building-oink/</guid>
+        <description>&lt;p&gt;Two pieces published the same day, meant to be read in order. The first says&#xA;what OINK is and what it deliberately refuses to do; the second is the&#xA;engineering record underneath that claim — the migrations, the safety&#xA;boundaries, the tests, and the arguments that did not survive contact with&#xA;eleven production sites.&lt;/p&gt;&#xA;&lt;p&gt;Read the announcement for the shape of the thing, the diary for why it has that&#xA;shape.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>OINK releases</title>
+        <link>http://localhost:1313/series/oink-releases/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/series/oink-releases/</guid>
+        <description>&lt;p&gt;This series is the ordered release history of OINK. Each note records what&#xA;changed, how to migrate, and which verification evidence belongs to that&#xA;version.&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

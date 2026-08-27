@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>测试 on OINK</title>
+    <link>http://localhost:1313/zh/tags/%E6%B5%8B%E8%AF%95/</link>
+    <description>Recent content in 测试 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Sat, 22 Aug 2026 16:32:18 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/tags/%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>oink.pgsty.com</title>
+        <link>http://localhost:1313/zh/case/oink/</link>
+        <pubDate>Tue, 11 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/oink/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://oink.pgsty.com/&#34;&gt;oink.pgsty.com&lt;/a&gt; 就是你正在阅读的站点。它既是主题的&#xA;公开手册，也是真实的回归消费站：组件页面会渲染可运行示例；同一个仓库还&#xA;承载设计契约、Book 夹具、下载数据，以及首页和落地页数据。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

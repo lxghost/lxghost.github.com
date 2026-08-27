@@ -1,0 +1,960 @@
+{
+  "baseURL": "http://localhost:1313/",
+  "language": "en",
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "description": "Install the one required tool, run a local preview, and establish a visible baseline before changing the design.",
+            "id": "/book/01-start/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/book/01-start/index.md",
+            "title": "Start with a working site",
+            "url": "http://localhost:1313/book/01-start/"
+          },
+          {
+            "description": "Turn directories, section indexes, page bundles, and weights into one predictable reading and navigation order.",
+            "id": "/book/02-structure/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/book/02-structure/index.md",
+            "title": "Structure the content",
+            "url": "http://localhost:1313/book/02-structure/"
+          },
+          {
+            "description": "Combine prose, callouts, code, media, tables, and mathematics without turning the page into a component catalogue.",
+            "id": "/book/03-compose/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/book/03-compose/index.md",
+            "title": "Compose the page",
+            "url": "http://localhost:1313/book/03-compose/"
+          },
+          {
+            "description": "Turn a sound content structure into a recognizable, responsive, and bilingual publication.",
+            "id": "/book/04-design/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/book/04-design/index.md",
+            "title": "Shape the experience",
+            "url": "http://localhost:1313/book/04-design/"
+          },
+          {
+            "description": "Use Docs, Blog, Case, Book, and release pages as distinct answers to distinct reader needs.",
+            "id": "/book/05-publishing/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/book/05-publishing/index.md",
+            "title": "Choose a publishing surface",
+            "url": "http://localhost:1313/book/05-publishing/"
+          },
+          {
+            "description": "Separate local preview, repository integration, theme release, and hosted deployment, then verify each state with the right evidence.",
+            "id": "/book/06-ship/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/book/06-ship/index.md",
+            "title": "Validate and ship",
+            "url": "http://localhost:1313/book/06-ship/"
+          },
+          {
+            "description": "Copy-and-adapt contracts for Book roots, chapters, immersive Blog posts, and generated Book outputs.",
+            "id": "/book/appendix-patterns/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/book/appendix-patterns/index.md",
+            "title": "Appendix: Patterns",
+            "url": "http://localhost:1313/book/appendix-patterns/"
+          }
+        ],
+        "description": "A practical tutorial for creating clear, beautiful, and maintainable technical content with OINK.",
+        "id": "/book/",
+        "kind": "section",
+        "markdown": "http://localhost:1313/book/index.md",
+        "title": "Book",
+        "url": "http://localhost:1313/book/"
+      },
+      {
+        "children": [
+          {
+            "kind": "external",
+            "title": "pgsty.com",
+            "url": "https://pgsty.com/"
+          },
+          {
+            "kind": "external",
+            "title": "pigsty.cc",
+            "url": "https://pigsty.cc/"
+          },
+          {
+            "kind": "external",
+            "title": "pigsty.io",
+            "url": "https://pigsty.io/"
+          },
+          {
+            "kind": "external",
+            "title": "silo.pgsty.com",
+            "url": "https://silo.pgsty.com/"
+          },
+          {
+            "kind": "external",
+            "title": "OINK Docs",
+            "url": "https://oink.pgsty.com/"
+          },
+          {
+            "kind": "external",
+            "title": "caps.vonng.com",
+            "url": "https://caps.vonng.com/"
+          },
+          {
+            "kind": "external",
+            "title": "pig.pgsty.com",
+            "url": "https://pig.pgsty.com/"
+          },
+          {
+            "kind": "external",
+            "title": "sow.pgsty.com",
+            "url": "https://sow.pgsty.com/"
+          },
+          {
+            "kind": "external",
+            "title": "exp.pgsty.com",
+            "url": "https://exp.pgsty.com/"
+          },
+          {
+            "kind": "external",
+            "title": "DDIA",
+            "url": "https://ddia.vonng.com/"
+          },
+          {
+            "kind": "external",
+            "title": "TPME",
+            "url": "https://tpme.vonng.com/"
+          },
+          {
+            "kind": "external",
+            "title": "pgint.vonng.com",
+            "url": "https://pgint.vonng.com/"
+          },
+          {
+            "kind": "external",
+            "title": "pgsql.cc",
+            "url": "https://pgsql.cc/"
+          },
+          {
+            "kind": "external",
+            "title": "pgsty.pro",
+            "url": "https://pgsty.pro/"
+          },
+          {
+            "kind": "external",
+            "title": "ext.pgsty.com",
+            "url": "https://ext.pgsty.com/"
+          }
+        ],
+        "description": "Fifteen real sites show how OINK scales from a two-page utility to a multilingual documentation estate and three books.",
+        "id": "/case/",
+        "kind": "section",
+        "markdown": "http://localhost:1313/case/index.md",
+        "title": "Case",
+        "url": "http://localhost:1313/case/"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "description": "Oink 0.8.0 adds two opt-in output formats for readers that arrive as programs — a full-text bundle holding an entire section in one file, and a navigation tree published as JSON — plus static backlinks, which list the pages that link to a page in its right rail. All three stay off until you ask.",
+                "id": "/blog/release/0.8.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/blog/release/0.8.0/index.md",
+                "title": "Oink v0.8.0",
+                "url": "http://localhost:1313/blog/release/0.8.0/"
+              },
+              {
+                "description": "Oink 0.7.1 is a security and validation patch. Swagger UI stops sending your spec URL to a third party, misconfigured values warn instead of killing an ordinary build, and the OpenAPI and terminal components finally behave in print, Markdown and RSS the way every other component already did.",
+                "id": "/blog/release/0.7.1/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/blog/release/0.7.1/index.md",
+                "title": "Oink v0.7.1",
+                "url": "http://localhost:1313/blog/release/0.7.1/"
+              },
+              {
+                "description": "Oink 0.7.0 gives a section its own accent through the shell's grounds, hands the site control of all seven typography roles, and turns a Mermaid fence into a figure that is centred, redrawn in place on a colour-scheme change, and openable at its own size.",
+                "id": "/blog/release/0.7.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/blog/release/0.7.0/index.md",
+                "title": "Oink v0.7.0",
+                "url": "http://localhost:1313/blog/release/0.7.0/"
+              },
+              {
+                "description": "Oink 0.6.0 adds an immersive presentation to the existing Blog shell, completes Blog publishing with images, authors, series, three index forms and sharing, and replaces build-stopping template errors with safe warnings.",
+                "id": "/blog/release/0.6.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/blog/release/0.6.0/index.md",
+                "title": "Oink v0.6.0",
+                "url": "http://localhost:1313/blog/release/0.6.0/"
+              },
+              {
+                "description": "Oink 0.5.0 replaces most shortcodes with native Markdown forms, converges every configuration and front matter key on three rules, removes the 0.x compatibility layer, and ships the migration toolkit that rewrites a 0.4 site. Every old key, shape, and shortcode fails the build with its replacement instead of being silently ignored.",
+                "id": "/blog/release/0.5.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/blog/release/0.5.0/index.md",
+                "title": "Oink v0.5.0",
+                "url": "http://localhost:1313/blog/release/0.5.0/"
+              },
+              {
+                "description": "Oink 0.4.0 adds sequential reading and release surfaces, reusable landing pages, Book publishing with stable references, and a keyboard-first site shell in one consolidated Scenario Components release.",
+                "id": "/blog/release/0.4.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/blog/release/0.4.0/index.md",
+                "title": "Oink v0.4.0",
+                "url": "http://localhost:1313/blog/release/0.4.0/"
+              },
+              {
+                "description": "Oink 0.3.0 adds enhanced code blocks and code groups, everyday content primitives, nested navigation with a Command Palette, semantic typography presets, and removes jQuery from every page.",
+                "id": "/blog/release/0.3.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/blog/release/0.3.0/index.md",
+                "title": "Oink v0.3.0",
+                "url": "http://localhost:1313/blog/release/0.3.0/"
+              },
+              {
+                "description": "Oink 0.2.0 adds composable homepage sections, theme-aware media, wordmarks, navigable component boards, a steps shortcode, polished terminal recordings, and a clearer release-publishing experience.",
+                "id": "/blog/release/0.2.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/blog/release/0.2.0/index.md",
+                "title": "Oink v0.2.0",
+                "url": "http://localhost:1313/blog/release/0.2.0/"
+              },
+              {
+                "description": "The first stable Oink release turns the implementation preview into a polished Hugo module with a responsive shell, multilingual infrastructure, local-first components, and a stronger accessibility baseline.",
+                "id": "/blog/release/0.1.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/blog/release/0.1.0/index.md",
+                "title": "Oink v0.1.0",
+                "url": "http://localhost:1313/blog/release/0.1.0/"
+              }
+            ],
+            "description": "Versioned OINK release notes, upgrade guidance, and compatibility notices",
+            "id": "/blog/release/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/blog/release/index.md",
+            "title": "Releases",
+            "url": "http://localhost:1313/blog/release/"
+          },
+          {
+            "children": [
+              {
+                "description": "Four front matter keys turn an ordinary Blog page into a reading-first layout with a full-bleed hero and an in-flow outline rail.",
+                "id": "/blog/oink/immersive-reading/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/blog/oink/immersive-reading/index.md",
+                "title": "Immersive reading",
+                "url": "http://localhost:1313/blog/oink/immersive-reading/"
+              },
+              {
+                "description": "OINK turns a directly customized Docsy codebase into a local-first, Hugo-only documentation theme with multilingual infrastructure and reusable content components.",
+                "id": "/blog/oink/oink-announcement/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/blog/oink/oink-announcement/index.md",
+                "title": "Introducing OINK",
+                "url": "http://localhost:1313/blog/oink/oink-announcement/"
+              },
+              {
+                "description": "A technical diary of the decisions, migrations, safety boundaries, tests, and documentation work behind the OINK implementation preview.",
+                "id": "/blog/oink/oink-implementation-diary/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/blog/oink/oink-implementation-diary/index.md",
+                "title": "OINK implementation diary",
+                "url": "http://localhost:1313/blog/oink/oink-implementation-diary/"
+              }
+            ],
+            "description": "OINK announcements, engineering stories, and implementation notes",
+            "id": "/blog/oink/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/blog/oink/index.md",
+            "title": "Oink",
+            "url": "http://localhost:1313/blog/oink/"
+          }
+        ],
+        "description": "OINK engineering stories, immersive guides, and release notes",
+        "id": "/blog/",
+        "kind": "section",
+        "markdown": "http://localhost:1313/blog/index.md",
+        "title": "Blog",
+        "url": "http://localhost:1313/blog/"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "description": "What separates OINK from an ordinary Hugo theme, one item at a time, each linking to the guide that covers it.",
+                "id": "/docs/about/features/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/about/features/index.md",
+                "title": "Highlights",
+                "url": "http://localhost:1313/docs/about/features/"
+              },
+              {
+                "description": "Find the OINK production case closest to your documentation, book, landing page, or interactive tool.",
+                "id": "/docs/about/showcase/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/about/showcase/index.md",
+                "title": "Cases",
+                "url": "http://localhost:1313/docs/about/showcase/"
+              },
+              {
+                "description": "Which licence applies to which layer — Apache-2.0 for the theme, CC BY 4.0 for the documentation, and their own terms for every third-party runtime shipped with the theme.",
+                "id": "/docs/about/license/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/about/license/index.md",
+                "title": "License",
+                "url": "http://localhost:1313/docs/about/license/"
+              }
+            ],
+            "description": "A documentation theme that needs nothing but Hugo Extended. Evolved from Docsy, its components are written in Markdown, its assets ship with the theme, and fourteen production sites run on it.",
+            "id": "/docs/about/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/docs/about/index.md",
+            "title": "Introduction",
+            "url": "http://localhost:1313/docs/about/"
+          },
+          {
+            "children": [
+              {
+                "description": "What every cloned directory is — what must stay, what to replace with your own details, and what belongs to the documentation site and can go entirely.",
+                "id": "/docs/start/anatomy/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/start/anatomy/index.md",
+                "title": "Repository tour",
+                "url": "http://localhost:1313/docs/start/anatomy/"
+              },
+              {
+                "description": "Build a minimal OINK site in an empty directory, and weigh the four install methods — Module, submodule, offline archive, pinned clone.",
+                "id": "/docs/start/from-scratch/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/start/from-scratch/index.md",
+                "title": "From scratch",
+                "url": "http://localhost:1313/docs/start/from-scratch/"
+              }
+            ],
+            "description": "Clone the OINK documentation site, preview it locally, replace the site details, and deploy to GitHub Pages.",
+            "id": "/docs/start/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/docs/start/index.md",
+            "title": "Get started",
+            "url": "http://localhost:1313/docs/start/"
+          },
+          {
+            "children": [
+              {
+                "description": "Creating a documentation page — where the file goes, what the front matter says, why heading anchors are written by hand, how links and images work, and what appears at the end of a page on its own.",
+                "id": "/docs/write/pages/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/write/pages/index.md",
+                "title": "Writing pages",
+                "url": "http://localhost:1313/docs/write/pages/"
+              },
+              {
+                "description": "The directory structure is the sidebar tree — `_index.md` and weight, section index styles, icons and folding, hiding pages, and putting documentation at any path.",
+                "id": "/docs/write/organize/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/write/organize/index.md",
+                "title": "Organizing content",
+                "url": "http://localhost:1313/docs/write/organize/"
+              },
+              {
+                "description": "The full front matter table — every page key the theme actually reads, grouped by sidebar, shell, search, output, page end, Book, landing and release pages.",
+                "id": "/docs/write/frontmatter/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/write/frontmatter/index.md",
+                "title": "Page parameters",
+                "url": "http://localhost:1313/docs/write/frontmatter/"
+              },
+              {
+                "description": "Setting up a blog section — directory conventions, a post's front matter, featured images, the year-grouped list page, and RSS.",
+                "id": "/docs/write/blog/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/write/blog/index.md",
+                "title": "Blog posts",
+                "url": "http://localhost:1313/docs/write/blog/"
+              },
+              {
+                "description": "Turn a directory tree into a book with `type: book`: chapter numbering, numbered figures and tables, cross-references, generated indexes and whole-book print.",
+                "id": "/docs/write/book/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/write/book/index.md",
+                "title": "Books",
+                "url": "http://localhost:1313/docs/write/book/"
+              },
+              {
+                "description": "Record versions, tags, archive links, checksums and install commands as local facts, then let release cards, asset tables, download blocks and index pages derive from that one record.",
+                "id": "/docs/write/releases/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/write/releases/index.md",
+                "title": "Releases and downloads",
+                "url": "http://localhost:1313/docs/write/releases/"
+              },
+              {
+                "description": "Put an OpenAPI specification on the site and render it as a browsable API reference with the bundled Swagger UI or Redoc, without touching a CDN.",
+                "id": "/docs/write/openapi/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/write/openapi/index.md",
+                "title": "API reference",
+                "url": "http://localhost:1313/docs/write/openapi/"
+              }
+            ],
+            "description": "Writing documentation pages, blog posts, books, release pages and API references — what a page looks like, and how content is organized.",
+            "id": "/docs/write/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/docs/write/index.md",
+            "title": "Authoring",
+            "url": "http://localhost:1313/docs/write/"
+          },
+          {
+            "children": [
+              {
+                "description": "Write notes, warnings and collapsible asides — with colour, icon and title — as `\u003e [!NOTE]` blockquotes, no shortcode involved.",
+                "id": "/docs/components/callout/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/components/callout/index.md",
+                "title": "Callouts",
+                "url": "http://localhost:1313/docs/components/callout/"
+              },
+              {
+                "description": "Plain Markdown image syntax plus one attribute line gives you captions, sizing, zoom, links, numbering and Hugo image processing.",
+                "id": "/docs/components/image/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/components/image/index.md",
+                "title": "Images",
+                "url": "http://localhost:1313/docs/components/image/"
+              },
+              {
+                "description": "A plain Markdown fence plus one attribute line gives you a filename title, exact copy, line numbers, highlighting, wrapping, folding and linkable lines.",
+                "id": "/docs/components/code/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/components/code/index.md",
+                "title": "Code Blocks",
+                "url": "http://localhost:1313/docs/components/code/"
+              },
+              {
+                "description": "A `{tab=}` attribute on adjacent fences or tables makes a tab set; add a group and it becomes linkable, synchronized and remembered.",
+                "id": "/docs/components/tabs/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/components/tabs/index.md",
+                "title": "Tabs",
+                "url": "http://localhost:1313/docs/components/tabs/"
+              },
+              {
+                "description": "A plain GFM table plus one attribute line becomes a captioned table, a compatibility matrix, a field list, a numbered table or a tab set; wide tables scroll on their own.",
+                "id": "/docs/components/table/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/components/table/index.md",
+                "title": "Tables",
+                "url": "http://localhost:1313/docs/components/table/"
+              },
+              {
+                "description": "A plain table plus `{.fields}` documents configuration keys, command flags and API fields — name, type, default and description each in place, readable on a narrow screen, every entry individually linkable.",
+                "id": "/docs/components/fields/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/components/fields/index.md",
+                "title": "Fields",
+                "url": "http://localhost:1313/docs/components/fields/"
+              },
+              {
+                "description": "An ordered list plus `{.steps}` becomes a numbered procedure with dots and a connecting rule; switch to the steps shortcode when each step needs a heading in the table of contents.",
+                "id": "/docs/components/steps/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/components/steps/index.md",
+                "title": "Steps",
+                "url": "http://localhost:1313/docs/components/steps/"
+              },
+              {
+                "description": "A link list plus `{.cards}` lays out a grid of navigation cards; switch to the shortcode when you need icons, badges or images.",
+                "id": "/docs/components/cards/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/components/cards/index.md",
+                "title": "Cards",
+                "url": "http://localhost:1313/docs/components/cards/"
+              },
+              {
+                "description": "A `filetree` fence draws an annotated directory structure — aligned comment column, per-entry icons, collapsible directories, a draggable split.",
+                "id": "/docs/components/filetree/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/components/filetree/index.md",
+                "title": "FileTree",
+                "url": "http://localhost:1313/docs/components/filetree/"
+              },
+              {
+                "description": "Inline and display mathematics with KaTeX, rendered at build time — the reader downloads no script.",
+                "id": "/docs/components/math/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/components/math/index.md",
+                "title": "Math",
+                "url": "http://localhost:1313/docs/components/math/"
+              },
+              {
+                "description": "A `mermaid` fence turns text into flowcharts, sequence diagrams, Gantt charts, class diagrams and state diagrams — rendered locally, theme-aware, diff-friendly.",
+                "id": "/docs/components/mermaid/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/components/mermaid/index.md",
+                "title": "Mermaid",
+                "url": "http://localhost:1313/docs/components/mermaid/"
+              },
+              {
+                "description": "A `plantuml` fence writes sequence, class, component, activity and use-case diagrams; rendering requires a PlantUML server you configure yourself.",
+                "id": "/docs/components/plantuml/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/components/plantuml/index.md",
+                "title": "PlantUML",
+                "url": "http://localhost:1313/docs/components/plantuml/"
+              },
+              {
+                "description": "A `markmap` fence turns a Markdown outline into an expandable, zoomable mind map — and the source stays a readable outline.",
+                "id": "/docs/components/markmap/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/components/markmap/index.md",
+                "title": "Markmap",
+                "url": "http://localhost:1313/docs/components/markmap/"
+              },
+              {
+                "description": "Put a `.drawio.svg` that carries an editable copy on the page as an ordinary image; hovering gives the reader a button that opens the Draw.io editor.",
+                "id": "/docs/components/drawio/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/components/drawio/index.md",
+                "title": "Draw.io",
+                "url": "http://localhost:1313/docs/components/drawio/"
+              },
+              {
+                "description": "Write ECharts options as YAML or JSON in an `echarts` fence; Hugo validates them at build time and the browser draws a theme-aware chart with the local ECharts.",
+                "id": "/docs/components/echarts/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/components/echarts/index.md",
+                "title": "ECharts",
+                "url": "http://localhost:1313/docs/components/echarts/"
+              },
+              {
+                "description": "An `infographic` fence picks an AntV template and renders a title plus a list of items as a flow, timeline, funnel, grid or hierarchy.",
+                "id": "/docs/components/infographic/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/components/infographic/index.md",
+                "title": "Infographic",
+                "url": "http://localhost:1313/docs/components/infographic/"
+              },
+              {
+                "description": "A `gallery` fence arranges related screenshots in a responsive grid, each with an optional description or link, reusing the page's image zoom dialog.",
+                "id": "/docs/components/gallery/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/components/gallery/index.md",
+                "title": "Gallery",
+                "url": "http://localhost:1313/docs/components/gallery/"
+              },
+              {
+                "description": "Put a semantic status label next to a feature name, a version or a table cell — five tones, no custom colours.",
+                "id": "/docs/components/badge/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/components/badge/index.md",
+                "title": "Badge",
+                "url": "http://localhost:1313/docs/components/badge/"
+              },
+              {
+                "description": "Write shortcuts with `kbd` — one shortcode, a list of key names, a semantic key sequence that stays readable in print and in Markdown output.",
+                "id": "/docs/components/kbd/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/components/kbd/index.md",
+                "title": "Kbd",
+                "url": "http://localhost:1313/docs/components/kbd/"
+              },
+              {
+                "description": "Pull an external file in with include, print a site parameter with param, and write a note that reaches no output at all with comment.",
+                "id": "/docs/components/include/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/components/include/index.md",
+                "title": "Includes",
+                "url": "http://localhost:1313/docs/components/include/"
+              },
+              {
+                "description": "Put a .cast terminal recording on the page — the text stays selectable text, and the player ships with the theme rather than coming from a CDN.",
+                "id": "/docs/components/asciinema/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/components/asciinema/index.md",
+                "title": "Asciinema",
+                "url": "http://localhost:1313/docs/components/asciinema/"
+              }
+            ],
+            "description": "Every component available for writing, one page each, examples from the simplest upwards, with the parameter table at the end.",
+            "id": "/docs/components/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/docs/components/index.md",
+            "title": "Components",
+            "url": "http://localhost:1313/docs/components/"
+          },
+          {
+            "children": [
+              {
+                "description": "The one place site parameters are defined — every key the theme reads, with its type, default and the guide that covers it.",
+                "id": "/docs/customize/config/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/customize/config/index.md",
+                "title": "Configuration",
+                "url": "http://localhost:1313/docs/customize/config/"
+              },
+              {
+                "description": "Replace the site name, logo, favicon, accent colour, light and dark palettes and fonts, using configuration and two SCSS entry points.",
+                "id": "/docs/customize/brand/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/customize/brand/index.md",
+                "title": "Brand and appearance",
+                "url": "http://localhost:1313/docs/customize/brand/"
+              },
+              {
+                "description": "Assemble a home page from one local YAML file — hero, cards, capability panels, timeline, pricing, case studies, downloads. Any page can become a landing page with the same sections.",
+                "id": "/docs/customize/home/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/customize/home/index.md",
+                "title": "Home and landing pages",
+                "url": "http://localhost:1313/docs/customize/home/"
+              },
+              {
+                "description": "Configure the navbar menu and its dropdowns, the section switcher, breadcrumbs, page actions, the pager and the footer links.",
+                "id": "/docs/customize/navigation/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/customize/navigation/index.md",
+                "title": "Navigation and menus",
+                "url": "http://localhost:1313/docs/customize/navigation/"
+              },
+              {
+                "description": "Let `type` decide which shell a page uses, then adjust sidebar width and icons, outline depth, section index style and page width.",
+                "id": "/docs/customize/layout/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/customize/layout/index.md",
+                "title": "Layouts and page types",
+                "url": "http://localhost:1313/docs/customize/layout/"
+              },
+              {
+                "description": "Turn on local search, control index size and result ranking, and make CJK queries land.",
+                "id": "/docs/customize/search/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/customize/search/index.md",
+                "title": "Search",
+                "url": "http://localhost:1313/docs/customize/search/"
+              },
+              {
+                "description": "One dialog carrying page search, page actions and site commands — how to open it, what it groups, and how to add commands of your own.",
+                "id": "/docs/customize/panel/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/customize/panel/index.md",
+                "title": "Command palette",
+                "url": "http://localhost:1313/docs/customize/panel/"
+              },
+              {
+                "description": "Every single-key shortcut, when each stands down for typing, and how to turn them off per site or per page.",
+                "id": "/docs/customize/keyboard/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/customize/keyboard/index.md",
+                "title": "Keyboard navigation",
+                "url": "http://localhost:1313/docs/customize/keyboard/"
+              },
+              {
+                "description": "Add a language, keep translations side by side, configure menus and interface strings per language, and align heading anchors across languages.",
+                "id": "/docs/customize/i18n/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/customize/i18n/index.md",
+                "title": "Languages",
+                "url": "http://localhost:1313/docs/customize/i18n/"
+              },
+              {
+                "description": "Configure the version switcher and the archive banner, and choose how several versions are laid out across domains.",
+                "id": "/docs/customize/versions/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/customize/versions/index.md",
+                "title": "Versions",
+                "url": "http://localhost:1313/docs/customize/versions/"
+              },
+              {
+                "description": "Give pages a second index that cuts across the directory tree with tags and categories — term pages, filter chips, the rail cloud and the navbar panel are all automatic.",
+                "id": "/docs/customize/taxonomy/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/customize/taxonomy/index.md",
+                "title": "Taxonomies",
+                "url": "http://localhost:1313/docs/customize/taxonomy/"
+              },
+              {
+                "description": "Wire \"edit this page\", \"open an issue\" and \"view history\" to your repository, and show the last-modified line, contributors and the feedback widget at the page end.",
+                "id": "/docs/customize/repository/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/customize/repository/index.md",
+                "title": "Repository links",
+                "url": "http://localhost:1313/docs/customize/repository/"
+              },
+              {
+                "description": "A single page goes to the browser's Cmd/Ctrl+P; a whole section becomes one continuous document through the print output format.",
+                "id": "/docs/customize/print/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/customize/print/index.md",
+                "title": "Print",
+                "url": "http://localhost:1313/docs/customize/print/"
+              },
+              {
+                "description": "Give every page a `.md` twin, the site root an `llms.txt`, and the reader a way to hand the current page to ChatGPT or Claude.",
+                "id": "/docs/customize/agents/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/customize/agents/index.md",
+                "title": "AI-agent support",
+                "url": "http://localhost:1313/docs/customize/agents/"
+              }
+            ],
+            "description": "Site-level configuration — brand, navigation, layout, search, languages, versions, print and agent output.",
+            "id": "/docs/customize/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/docs/customize/index.md",
+            "title": "Customization",
+            "url": "http://localhost:1313/docs/customize/"
+          },
+          {
+            "children": [
+              {
+                "description": "Preview changes with hugo server, build a deployable public/ with hugo --panicOnWarning, and need neither Node nor a CDN.",
+                "id": "/docs/admin/preview/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/admin/preview/index.md",
+                "title": "Local preview",
+                "url": "http://localhost:1313/docs/admin/preview/"
+              },
+              {
+                "description": "Publish public/ to GitHub Pages, Cloudflare Pages or any static host — matching baseURL, Content Security Policy, the acceptance checklist and rollback.",
+                "id": "/docs/admin/deploy/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/admin/deploy/index.md",
+                "title": "Deploy",
+                "url": "http://localhost:1313/docs/admin/deploy/"
+              },
+              {
+                "description": "Wire GitHub Discussions into a comment section at the bottom of a page with giscus — on site-wide, off per page, following light and dark.",
+                "id": "/docs/admin/comments/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/admin/comments/index.md",
+                "title": "Comments",
+                "url": "http://localhost:1313/docs/admin/comments/"
+              },
+              {
+                "description": "Connect an analytics service (or none), and pair up the canonical, hreflang, social cards, sitemap and robots the theme already generates.",
+                "id": "/docs/admin/analytics/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/admin/analytics/index.md",
+                "title": "Analytics and SEO",
+                "url": "http://localhost:1313/docs/admin/analytics/"
+              },
+              {
+                "description": "Move to a new theme version, convert 0.4 shortcodes to v5 syntax with the migration toolkit, migrate from Docsy, and roll back when something goes wrong.",
+                "id": "/docs/admin/upgrade/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/admin/upgrade/index.md",
+                "title": "Upgrade",
+                "url": "http://localhost:1313/docs/admin/upgrade/"
+              },
+              {
+                "description": "Symptom → cause → fix for the four fault classes — build, language, search, platform — plus the checks a site can run for itself.",
+                "id": "/docs/admin/troubleshooting/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/admin/troubleshooting/index.md",
+                "title": "Troubleshooting",
+                "url": "http://localhost:1313/docs/admin/troubleshooting/"
+              }
+            ],
+            "description": "Running the site from a laptop to production — local preview, deployment, comments, analytics and SEO, upgrades and troubleshooting.",
+            "id": "/docs/admin/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/docs/admin/index.md",
+            "title": "Operations",
+            "url": "http://localhost:1313/docs/admin/"
+          },
+          {
+            "children": [
+              {
+                "description": "Repository assembly, configuration, diagnostics, output, performance, security, CSS, accessibility, and release-state boundaries.",
+                "id": "/docs/design/architecture/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/design/architecture/index.md",
+                "title": "Architecture",
+                "url": "http://localhost:1313/docs/design/architecture/"
+              },
+              {
+                "description": "The maintainer contract for OINK authoring primitives, validation, Book and release behavior, and output degradation.",
+                "id": "/docs/design/components/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/design/components/index.md",
+                "title": "Components",
+                "url": "http://localhost:1313/docs/design/components/"
+              },
+              {
+                "description": "Navigation authorities, immersive blog presentation, search, actions, taxonomies, indexes, and page-end composition.",
+                "id": "/docs/design/shell/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/design/shell/index.md",
+                "title": "Shell and navigation",
+                "url": "http://localhost:1313/docs/design/shell/"
+              },
+              {
+                "description": "The maintainer contract for landing data, the built-in section registry, language resolution, runtime, accessibility, and outputs.",
+                "id": "/docs/design/landing/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/design/landing/index.md",
+                "title": "Landing pages",
+                "url": "http://localhost:1313/docs/design/landing/"
+              },
+              {
+                "description": "The supported source, configuration, and validation boundaries for migration from OINK 0.4 through OINK 0.8.0.",
+                "id": "/docs/design/migration/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/design/migration/index.md",
+                "title": "Migration boundary",
+                "url": "http://localhost:1313/docs/design/migration/"
+              },
+              {
+                "children": [
+                  {
+                    "description": "Invalid author input warns and degrades safely during preview; --panicOnWarning restores a hard publication gate.",
+                    "id": "/docs/design/decisions/diagnostics/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/decisions/diagnostics/index.md",
+                    "title": "Diagnostics",
+                    "url": "http://localhost:1313/docs/design/decisions/diagnostics/"
+                  },
+                  {
+                    "description": "OINK extends Hugo and Docsy-compatible configuration without creating a second namespace or a parallel global resolver.",
+                    "id": "/docs/design/decisions/configuration/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/decisions/configuration/index.md",
+                    "title": "Configuration",
+                    "url": "http://localhost:1313/docs/design/decisions/configuration/"
+                  },
+                  {
+                    "description": "Native Markdown carries common semantics; shortcodes fill real capability gaps, and content models extend shared shells instead of forking them.",
+                    "id": "/docs/design/decisions/authoring/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/decisions/authoring/index.md",
+                    "title": "Markdown-first authoring",
+                    "url": "http://localhost:1313/docs/design/decisions/authoring/"
+                  },
+                  {
+                    "description": "The editor schemas are projected from the existing configuration authorities; a CI drift gate keeps them from ever becoming a third one.",
+                    "id": "/docs/design/decisions/config-schema/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/decisions/config-schema/index.md",
+                    "title": "Config schema",
+                    "url": "http://localhost:1313/docs/design/decisions/config-schema/"
+                  }
+                ],
+                "description": "Accepted choices that explain why OINK's public contracts and implementation have their present shape.",
+                "id": "/docs/design/decisions/",
+                "kind": "section",
+                "markdown": "http://localhost:1313/docs/design/decisions/index.md",
+                "title": "Decisions",
+                "url": "http://localhost:1313/docs/design/decisions/"
+              },
+              {
+                "children": [
+                  {
+                    "description": "Reproducible findings for lists, images, tables, passthrough blocks, fences, callouts, and nested containers on Hugo 0.160.1 and 0.164.0.",
+                    "id": "/docs/design/research/goldmark-attributes/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/research/goldmark-attributes/index.md",
+                    "title": "Goldmark attributes",
+                    "url": "http://localhost:1313/docs/design/research/goldmark-attributes/"
+                  },
+                  {
+                    "description": "A dated corpus snapshot that shaped OINK's shells, authoring primitives, and deterministic Book migration policy.",
+                    "id": "/docs/design/research/consumer-evidence/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/research/consumer-evidence/index.md",
+                    "title": "Consumer evidence",
+                    "url": "http://localhost:1313/docs/design/research/consumer-evidence/"
+                  },
+                  {
+                    "description": "An evidence-based review of OINK's post-v0.7.0 implementation, configuration, outputs, security, tests, performance, bilingual contracts, and real integration site.",
+                    "id": "/docs/design/research/2026-08-26-comprehensive-review/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/research/2026-08-26-comprehensive-review/index.md",
+                    "title": "2026-08-26 review",
+                    "url": "http://localhost:1313/docs/design/research/2026-08-26-comprehensive-review/"
+                  }
+                ],
+                "description": "Dated experiments and consumer evidence used to make OINK design decisions, without normative force.",
+                "id": "/docs/design/research/",
+                "kind": "section",
+                "markdown": "http://localhost:1313/docs/design/research/index.md",
+                "title": "Research",
+                "url": "http://localhost:1313/docs/design/research/"
+              },
+              {
+                "children": [
+                  {
+                    "description": "A draft three-stage design for deriving backlinks and local or global graph views from ordinary Hugo links.",
+                    "id": "/docs/design/proposals/knowledge-graph/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/proposals/knowledge-graph/index.md",
+                    "title": "Knowledge graph",
+                    "url": "http://localhost:1313/docs/design/proposals/knowledge-graph/"
+                  },
+                  {
+                    "description": "A draft for the remaining convergence between content images, numbered figures, Landing media, and featured-image selection.",
+                    "id": "/docs/design/proposals/media-convergence/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/proposals/media-convergence/index.md",
+                    "title": "Media convergence",
+                    "url": "http://localhost:1313/docs/design/proposals/media-convergence/"
+                  },
+                  {
+                    "description": "Optional per-section full-text bundles and a stable navigation JSON, built on OINK's existing Markdown outputs and navigation authority.",
+                    "id": "/docs/design/proposals/agent-indexes/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/proposals/agent-indexes/index.md",
+                    "title": "Agent indexes",
+                    "url": "http://localhost:1313/docs/design/proposals/agent-indexes/"
+                  },
+                  {
+                    "description": "Move Book semantic lowering and generic EPUB/PDF packaging into OINK without taking publication facts away from consumers.",
+                    "id": "/docs/design/proposals/book-publication/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/proposals/book-publication/index.md",
+                    "title": "Book publication",
+                    "url": "http://localhost:1313/docs/design/proposals/book-publication/"
+                  }
+                ],
+                "description": "The canonical bilingual home for OINK PRDs and designs that are still being evaluated.",
+                "id": "/docs/design/proposals/",
+                "kind": "section",
+                "markdown": "http://localhost:1313/docs/design/proposals/index.md",
+                "title": "Proposals",
+                "url": "http://localhost:1313/docs/design/proposals/"
+              }
+            ],
+            "description": "OINK maintainer contracts, accepted decisions, dated research, and proposals in one canonical bilingual section.",
+            "id": "/docs/design/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/docs/design/index.md",
+            "title": "Design",
+            "url": "http://localhost:1313/docs/design/"
+          }
+        ],
+        "description": "OINK is a documentation theme that needs nothing but Hugo Extended — components are written in Markdown, assets ship with the theme, both languages work out of the box, and one source produces four outputs.",
+        "id": "/docs/",
+        "kind": "section",
+        "markdown": "http://localhost:1313/docs/index.md",
+        "title": "Docs",
+        "url": "http://localhost:1313/docs/"
+      },
+      {
+        "id": "/search/",
+        "kind": "page",
+        "title": "Search Results",
+        "url": "http://localhost:1313/search/"
+      }
+    ],
+    "description": "A local-first, Hugo-only theme for technical documentation",
+    "id": "/",
+    "kind": "home",
+    "markdown": "http://localhost:1313/index.md",
+    "title": "OINK",
+    "url": "http://localhost:1313/"
+  },
+  "schemaVersion": 1
+}

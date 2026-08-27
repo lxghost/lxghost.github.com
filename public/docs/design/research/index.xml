@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Design research on OINK</title>
+    <link>http://localhost:1313/docs/design/research/</link>
+    <description>Recent content in Design research on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Wed, 26 Aug 2026 14:54:14 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/docs/design/research/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>Goldmark block-attribute evidence</title>
+        <link>http://localhost:1313/docs/design/research/goldmark-attributes/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/research/goldmark-attributes/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;Verified snapshot&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;These probes produced byte-identical relevant output on Hugo Extended&#xA;0.160.1 and 0.164.0. They explain OINK&amp;rsquo;s native component forms; the current&#xA;&lt;a href=&#34;http://localhost:1313/docs/design/components/&#34;&gt;component contract&lt;/a&gt; remains authoritative.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;method&#34;&gt;Method&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;The probe used a minimal Hugo site without OINK templates. Render hooks printed&#xA;their context fields and &lt;code&gt;.Attributes&lt;/code&gt; as visible markers. The site enabled&#xA;Goldmark block attributes, passthrough delimiters for inline and block math,&#xA;unsafe rendering for the deliberately inspected raw HTML, and&#xA;&lt;code&gt;wrapStandAloneImageWithinParagraph: false&lt;/code&gt;.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Consumer and migration evidence</title>
+        <link>http://localhost:1313/docs/design/research/consumer-evidence/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/research/consumer-evidence/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;Dated corpus snapshot&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;These counts describe the repositories inspected in August 2026. They are&#xA;evidence for design choices, not live product metrics or compatibility&#xA;promises.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;corpus&#34;&gt;Corpus&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;The authoring survey scanned the &lt;code&gt;content/&lt;/code&gt; trees of eleven OINK consumer sites:&#xA;5,325 Markdown files, of which 5,293 had YAML front matter. The set included&#xA;single-language English and Chinese references, bilingual product sites,&#xA;release archives, custom landing pages, and separate Book consumers.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>OINK comprehensive review, 2026-08-26</title>
+        <link>http://localhost:1313/docs/design/research/2026-08-26-comprehensive-review/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/research/2026-08-26-comprehensive-review/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--warning&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-triangle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;Review snapshot, not a new contract&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;This page records evidence collected against &lt;code&gt;github.com/pgsty/oink&lt;/code&gt; and its integration site on 2026-08-26.&#xA;It changes no API and does not mean that any recommendation below is implemented. Current Design contracts,&#xA;implementation, and owning checkers remain authoritative.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Superseded in part by OINK 0.7.1.&lt;/strong&gt; The code findings F01–F06 were fixed in that release — see the&#xA;&lt;a href=&#34;http://localhost:1313/blog/release/0.7.1/&#34;&gt;0.7.1 release notes&lt;/a&gt;. Read the findings below as the evidence that motivated the fix,&#xA;not as the current state of the theme.&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

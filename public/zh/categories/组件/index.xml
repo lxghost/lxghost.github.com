@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>组件 on OINK</title>
+    <link>http://localhost:1313/zh/categories/%E7%BB%84%E4%BB%B6/</link>
+    <description>Recent content in 组件 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Thu, 27 Aug 2026 18:47:44 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/categories/%E7%BB%84%E4%BB%B6/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>提示块</title>
+        <link>http://localhost:1313/zh/docs/components/callout/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/callout/</guid>
+        <description>&lt;p&gt;提示块（Callout）是 GitHub / Obsidian 风格的块引用：&lt;code&gt;&amp;gt; [!TYPE]&lt;/code&gt; 起头，正文跟在后面。用于把提示、警告、前提条件从正文中分离出来；正文一句话能说清的内容不必使用提示块。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>图片</title>
+        <link>http://localhost:1313/zh/docs/components/image/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/image/</guid>
+        <description>&lt;p&gt;图片只有一种写法：Markdown 的 &lt;code&gt;![替代文字](来源 &amp;quot;标题&amp;quot;)&lt;/code&gt;。独立成段的图片可以在下一行跟一行 &lt;code&gt;{…}&lt;/code&gt; 属性，成为带图注的 figure、缩放候选、编号图或经 Hugo 处理的派生图。主题没有图片 shortcode。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>代码块</title>
+        <link>http://localhost:1313/zh/docs/components/code/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/code/</guid>
+        <description>&lt;p&gt;代码块是普通的 Markdown 围栏，高亮由 Hugo 内置的 Chroma 在构建期完成，浏览器里没有高亮器。用于命令、配置片段与源码：围栏信息行上的 &lt;code&gt;{…}&lt;/code&gt; 属性决定标题栏、复制行为、行号与行锚点。图示类围栏（&lt;code&gt;mermaid&lt;/code&gt;、&lt;code&gt;echarts&lt;/code&gt;、&lt;code&gt;filetree&lt;/code&gt; 等）不走这条路径，它们各有渲染钩子。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>标签页</title>
+        <link>http://localhost:1313/zh/docs/components/tabs/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/tabs/</guid>
+        <description>&lt;p&gt;标签页并列等价的几种写法：包管理器、发行版、YAML / TOML / JSON、环境变量与配置项。有先后的步骤、互不相关的内容不适合标签页，读者一次只看见其中一个。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>组件总览</title>
+        <link>http://localhost:1313/zh/docs/components/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/</guid>
+        <description>&lt;p&gt;这一栏回答一个问题：某个组件在 Markdown 里怎么写。每页的顺序相同：最简例子、逐步深入的例子、输出形态、参数表、限制。查语法见下面的速查表。&lt;/p&gt;&#xA;&lt;h2 id=&#34;two-forms&#34;&gt;两种形态&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;组件的第一形态是 Markdown 语法本身：块引用、列表、表格、图片、围栏，加上紧跟其后的一行 &lt;code&gt;{…}&lt;/code&gt; 属性。原生形态在 GitHub 与任意 Markdown 编辑器中仍然可读，Markdown 输出保留的也是源码。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>表格</title>
+        <link>http://localhost:1313/zh/docs/components/table/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/table/</guid>
+        <description>&lt;p&gt;表格是普通的 GFM 管道表格。主题的表格渲染钩子把每张表包进一块可横向滚动的区域，表格下面那一行 &lt;code&gt;{…}&lt;/code&gt; 属性决定它是哪一种表：带标题的表、兼容矩阵、参数表、编号表或标签页。合并单元格、排序与筛选不在能力范围内，需要它们的场景请改换呈现方式。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>参数表</title>
+        <link>http://localhost:1313/zh/docs/components/fields/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/fields/</guid>
+        <description>&lt;p&gt;参数表（Fields）把「一串具名值 + 元数据 + 说明」渲染成响应式定义列表：名称独占一行，类型、是否必填、默认值是名称旁边的小字，说明另起一行，每一条自带锚点。用于配置项、命令参数与 API 字段。要按同一批列横向比较很多行时用普通表格，内容是操作顺序时用步骤。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>步骤</title>
+        <link>http://localhost:1313/zh/docs/components/steps/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/steps/</guid>
+        <description>&lt;p&gt;步骤（Steps）是带编号圆点与竖线的有序列表：一个普通有序列表，加一行 &lt;code&gt;{.steps}&lt;/code&gt; 标记，编号圆点与串起它们的竖线由 CSS 绘制，不加载脚本。用于有先后的操作流程。并列而无先后的内容用普通列表或卡片。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>卡片</title>
+        <link>http://localhost:1313/zh/docs/components/cards/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/cards/</guid>
+        <description>&lt;p&gt;卡片（Cards）是一组并列的链接：每张卡片一个链接标题加一句描述，网格随容器宽度自适应。适合栏目首页、「接下来读什么」与几条并列路径的入口。不适合排版正文段落（用普通段落）或做图片墙（用&lt;a href=&#34;http://localhost:1313/zh/docs/components/gallery/&#34;&gt;画廊&lt;/a&gt;）。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>文件树</title>
+        <link>http://localhost:1313/zh/docs/components/filetree/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/filetree/</guid>
+        <description>&lt;p&gt;文件树（FileTree）是一个 &lt;code&gt;filetree&lt;/code&gt; 围栏，围栏正文就是目录清单：缩进表示层级，结尾的 &lt;code&gt;/&lt;/code&gt; 表示目录，&lt;code&gt;#&lt;/code&gt; 之后是注释。适合解释一份目录结构里与读者有关的那部分，并逐条加上说明。需要读者逐字复制的清单用普通代码块。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>公式</title>
+        <link>http://localhost:1313/zh/docs/components/math/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/math/</guid>
+        <description>&lt;p&gt;公式由 KaTeX 在构建期渲染成 HTML + MathML，页面只额外加载一份本地 KaTeX 样式表，没有 JavaScript，也不请求远程数学服务。行内公式写 &lt;code&gt;\(…\)&lt;/code&gt;，块级公式写 &lt;code&gt;$$…$$&lt;/code&gt;、&lt;code&gt;\[…\]&lt;/code&gt;，另有 &lt;code&gt;math&lt;/code&gt; 与 &lt;code&gt;chem&lt;/code&gt; 两种围栏。需要 TikZ 绘图或 KaTeX 不支持的宏包时，改用预渲染的&lt;a href=&#34;http://localhost:1313/zh/docs/components/image/&#34;&gt;图片&lt;/a&gt;。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Mermaid</title>
+        <link>http://localhost:1313/zh/docs/components/mermaid/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/mermaid/</guid>
+        <description>&lt;p&gt;&lt;code&gt;mermaid&lt;/code&gt; 围栏把一段文本渲染成流程图、时序图、甘特图、类图、ER 图与状态图。图以源码形式存在，可以进 Git、可以 review diff、可以被搜索命中；渲染由主题自带的 Mermaid 在读者浏览器里完成，不请求外部服务。需要像素级控制的示意图画成 SVG，按&lt;a href=&#34;http://localhost:1313/zh/docs/components/image/&#34;&gt;图片&lt;/a&gt;使用。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>PlantUML</title>
+        <link>http://localhost:1313/zh/docs/components/plantuml/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/plantuml/</guid>
+        <description>&lt;p&gt;&lt;code&gt;plantuml&lt;/code&gt; 围栏里写 PlantUML 源码，浏览器把源码压缩编码后拼在一个 PlantUML 服务的 URL 后面，换回一张 SVG。适合需要完整 UML 表达力的时序图、类图、组件图、活动图与用例图。渲染依赖一个渲染服务：主题不提供默认端点，&lt;code&gt;enable: true&lt;/code&gt; 却没给 &lt;code&gt;svg_image_url&lt;/code&gt; 会让构建失败；没有可用服务时改用 &lt;a href=&#34;http://localhost:1313/zh/docs/components/mermaid/&#34;&gt;Mermaid&lt;/a&gt;。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>思维导图</title>
+        <link>http://localhost:1313/zh/docs/components/markmap/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/markmap/</guid>
+        <description>&lt;p&gt;&lt;code&gt;markmap&lt;/code&gt; 围栏的正文是一段普通的 Markdown 大纲：标题与列表决定层级，浏览器把它画成一棵可展开、可折叠的树。适合把「这一节讲了什么」的层级一次呈现。节点之间有方向、有条件的流程用 &lt;a href=&#34;http://localhost:1313/zh/docs/components/mermaid/&#34;&gt;Mermaid&lt;/a&gt;。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Draw.io</title>
+        <link>http://localhost:1313/zh/docs/components/drawio/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/drawio/</guid>
+        <description>&lt;p&gt;Draw.io 集成没有围栏也没有 shortcode，用的是普通 Markdown 图片。Draw.io 导出时勾上「Include a copy of my diagram」，SVG 或 PNG 里会带一份 &lt;code&gt;mxfile&lt;/code&gt; 源码；主题的运行时识别这份副本后，给图片加一个编辑按钮。适合需要读者取走修改的图；只用于展示的图按普通&lt;a href=&#34;http://localhost:1313/zh/docs/components/image/&#34;&gt;图片&lt;/a&gt;处理。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>ECharts</title>
+        <link>http://localhost:1313/zh/docs/components/echarts/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/echarts/</guid>
+        <description>&lt;p&gt;&lt;code&gt;echarts&lt;/code&gt; 围栏的正文是一段 YAML 或 JSON 的 ECharts 选项对象，不是代码。适用于需要坐标轴、序列与图例的定量图表；只表达关系与流程时用 &lt;a href=&#34;http://localhost:1313/zh/docs/components/mermaid/&#34;&gt;Mermaid&lt;/a&gt;，只表达顺序与层级时用 &lt;a href=&#34;http://localhost:1313/zh/docs/components/infographic/&#34;&gt;Infographic&lt;/a&gt;。Hugo 在构建期解析选项，解析失败则构建失败；浏览器用随主题分发的 ECharts 绘图，只有用到它的页面加载运行时。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Infographic</title>
+        <link>http://localhost:1313/zh/docs/components/infographic/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/infographic/</guid>
+        <description>&lt;p&gt;&lt;code&gt;infographic&lt;/code&gt; 围栏挑一个 AntV 模板，把「标题 + 一串条目」渲染成信息图。适用于表达顺序、层级与对比这类结构。需要坐标轴与数值精度时用 &lt;a href=&#34;http://localhost:1313/zh/docs/components/echarts/&#34;&gt;ECharts&lt;/a&gt;，需要条件分支的流程时用 &lt;a href=&#34;http://localhost:1313/zh/docs/components/mermaid/&#34;&gt;Mermaid&lt;/a&gt;。围栏正文是数据，在 GitHub 上仍是一段可读的文本。&lt;/p&gt;&#xA;&lt;h2 id=&#34;minimal&#34;&gt;最简例子&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;第一行是 &lt;code&gt;infographic 模板名&lt;/code&gt;，其后是一个 &lt;code&gt;data&lt;/code&gt; 块：&lt;code&gt;title&lt;/code&gt; 是标题，&lt;code&gt;items&lt;/code&gt; 下面每个条目至少要有 &lt;code&gt;label&lt;/code&gt;。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>画廊</title>
+        <link>http://localhost:1313/zh/docs/components/gallery/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/gallery/</guid>
+        <description>&lt;p&gt;画廊（Gallery）把一组相关图片排成响应式网格，围栏里每行一张图。适用于同一件事的几个视图：几张截图、几种状态、几套配色。单张图用&lt;a href=&#34;http://localhost:1313/zh/docs/components/image/&#34;&gt;图片&lt;/a&gt;；相互之间没有顺序与对比关系的图片不适合放进同一个画廊。&lt;/p&gt;&#xA;&lt;h2 id=&#34;minimal&#34;&gt;最简例子&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;围栏里一行一张图，语法是 Markdown 的 &lt;code&gt;![替代文字](来源)&lt;/code&gt;。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>徽章</title>
+        <link>http://localhost:1313/zh/docs/components/badge/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/badge/</guid>
+        <description>&lt;p&gt;徽章（Badge）是紧跟在名字旁边的行内状态标签：Beta、已弃用、v0.5、需自建服务。适用于一两个词能说完的状态；作者只选语义 tone，颜色由主题决定，浅色与深色模式下的对比度都有保证。状态需要解释、操作步骤或截止日期时，改用正文或&lt;a href=&#34;http://localhost:1313/zh/docs/components/callout/&#34;&gt;提示块&lt;/a&gt;。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>按键</title>
+        <link>http://localhost:1313/zh/docs/components/kbd/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/kbd/</guid>
+        <description>&lt;p&gt;按键（Kbd）把读者要按下的键与正文区分开。适用于快捷键与组合键：一个按键一个位置参数，主题负责画框、补分隔符，并给读屏器一个可读的序列。命令名、选项名与要输入的文本用行内代码，它们不是物理按键。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>引用</title>
+        <link>http://localhost:1313/zh/docs/components/include/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/include/</guid>
+        <description>&lt;p&gt;三个 shortcode 各做一件事：&lt;code&gt;include&lt;/code&gt; 把另一个文件的内容放进当前页面，&lt;code&gt;param&lt;/code&gt; 打印一个页面或站点参数，&lt;code&gt;comment&lt;/code&gt; 丢弃一段内容。适用于跨页复用的片段与散落在多页的常量：同一段安装步骤出现在三页时用 &lt;code&gt;include&lt;/code&gt;，版本号出现在几十页时用 &lt;code&gt;param&lt;/code&gt;，改一处即可。只在一页出现的内容写在那一页。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Asciinema</title>
+        <link>http://localhost:1313/zh/docs/components/asciinema/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/components/asciinema/</guid>
+        <description>&lt;p&gt;&lt;code&gt;asciinema&lt;/code&gt; 把一段 &lt;code&gt;.cast&lt;/code&gt; 录像渲染成页面里的终端播放器。适用于命令行流程的演示：终端里的文字仍然是文字，可以选中复制，一段六分多钟的安装过程约 190 KB。图形界面的操作用截图或视频，本组件只播放终端录像。播放器与样式随主题分发，构建期不下载、运行期不连 CDN，只有用到它的页面、且只在 HTML 输出里加载这套运行时。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Book on OINK</title>
+    <link>http://localhost:1313/tags/book/</link>
+    <description>Recent content in Book on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Sat, 22 Aug 2026 16:32:18 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/tags/book/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>ddia.vonng.com</title>
+        <link>http://localhost:1313/case/ddia/</link>
+        <pubDate>Thu, 06 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/ddia/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://ddia.vonng.com/&#34;&gt;ddia.vonng.com&lt;/a&gt; publishes &lt;em&gt;Designing Data-Intensive&#xA;Applications&lt;/em&gt; as a multilingual book. The case snapshot includes 24 chapters&#xA;each in Simplified and Traditional Chinese, 23 chapters of the English second&#xA;edition, and two 21-chapter first-edition sets.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A complete &lt;code&gt;type: book&lt;/code&gt; reading shell with chapter-level navigation.&lt;/li&gt;&#xA;&lt;li&gt;More than 130 numbered figure, table, equation, and example targets.&lt;/li&gt;&#xA;&lt;li&gt;Stable cross-references and generated book indexes across several editions.&lt;/li&gt;&#xA;&lt;li&gt;Multiple written-language variants inside one publication.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Use this pattern for long-form works where numbering, citations, and movement&#xA;between chapters matter more than documentation-style sidebars.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>tpme.vonng.com</title>
+        <link>http://localhost:1313/case/tpme/</link>
+        <pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/tpme/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://tpme.vonng.com/&#34;&gt;tpme.vonng.com&lt;/a&gt; publishes &lt;em&gt;The Product-Minded&#xA;Engineer&lt;/em&gt; in English and Chinese, with 18 chapters per language in the case&#xA;snapshot. Its configuration narrows the supported shell types to &lt;code&gt;[book]&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A publication with exactly one content model and no documentation shell.&lt;/li&gt;&#xA;&lt;li&gt;Bilingual chapter peers with a shared visual and navigational system.&lt;/li&gt;&#xA;&lt;li&gt;A smaller Book implementation than the multi-edition DDIA site.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This is the clearer starting point for a single-title tutorial or translated&#xA;book: keep the site architecture narrow, then add numbering and indexes only as&#xA;the manuscript needs them.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>pgint.vonng.com</title>
+        <link>http://localhost:1313/case/pg-internal/</link>
+        <pubDate>Tue, 04 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/pg-internal/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pgint.vonng.com/&#34;&gt;pgint.vonng.com&lt;/a&gt; publishes &lt;em&gt;PG 技术内幕&lt;/em&gt;, the 2018&#xA;Chinese translation of Hironobu Suzuki&amp;rsquo;s &lt;em&gt;The Internals of PostgreSQL&lt;/em&gt;. The site&#xA;carries two prefaces, eleven chapters, a generated table of contents, and a&#xA;licensing page — all in Simplified Chinese, with no English peer.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A deliberately monolingual OINK site: one language tree, and a language&#xA;switcher that stays out of the way because there is nothing to switch to.&lt;/li&gt;&#xA;&lt;li&gt;The Book shell carrying a finished translation rather than a living manual —&#xA;chapter navigation, whole-book print output, and a landing page in one site.&lt;/li&gt;&#xA;&lt;li&gt;A landing page that credits an upstream author alongside the translators, and&#xA;links outward to the continuously updated English original.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Use this pattern for a completed translation or a stable published text: the&#xA;content will not grow, so the site&amp;rsquo;s job is orientation, reading comfort, and&#xA;honest attribution rather than change management.&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

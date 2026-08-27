@@ -1,0 +1,318 @@
+sections:
+  - hero
+  - capabilities
+  - type: cards
+    key: content_types
+  - type: logo-wall
+    key: components
+  - type: cards
+    key: cases
+    partial: landing/sections/case-cards.html
+  - type: faq
+    key: faq
+  - cta
+
+hero:
+  eyebrow: OINK 0.8 · 本地优先 · 仅依赖 Hugo
+  title_lines:
+    - words:
+        - { text: PGSTY OINK }
+  # prettier-ignore
+  lead: 继承 Docsy 的功能与 Fumadocs 的设计，<br>提供开箱即用，本地优先的工程文档体验
+  image:
+    light: images/hero-light.webp
+    dark: images/hero-dark.webp
+    alt: OINK 工程文档插图
+  actions:
+    - label: 查看 0.8 新特性
+      url: blog/release/0.8.0/
+      icon: fa-solid fa-book-open
+      style: primary
+    - label: 开始使用
+      url: docs/start/
+      icon: fa-solid fa-arrow-right
+      style: ghost
+
+capabilities:
+  eyebrow: 价值主张
+  title: 工程文档所需的能力，开箱即用
+  # prettier-ignore
+  text: 部署、检索，多语言，多版本管理，简洁素雅、本地优先，按需加载所需能力。
+  items:
+    - ref: 01 / 工程文档
+      title: 为工程师与文档站设计
+      url: docs/start/
+      motto: 从第一次构建到长期维护都没有额外阻力
+      bullets:
+        - '开箱即用，提供零阻力的[部署上线](docs/admin/deploy/)体验'
+        - '自带[全文检索](docs/customize/search/)、[i18n](docs/customize/i18n/)
+          与[多版本支持](docs/customize/versions/)'
+        - '自带
+          [RSS](docs/write/blog/)、[SEO](docs/admin/analytics/)
+          与 [Google Analytics](docs/admin/analytics/) 集成'
+      value: 内容团队可以把时间用在文档上，而不是重复搭建站点基础设施。
+      visual:
+        type: shell
+        brand: OINK
+        search: 搜索内容或执行命令
+        shortcut: ⌘ K
+        section: 文档
+        section_icon: fa-solid fa-book
+        items:
+          - { label: 快速上手, active: true }
+          - { label: 站点配置 }
+          - { label: 组件参考 }
+          - { label: 部署 }
+        eyebrow: 工程文档 / 快速上线
+        title_lines: [开箱即用。, 持续维护。]
+        rules: ['88%', '72%', '55%']
+    - ref: 02 / 设计与能力
+      title: 简洁、素雅、功能齐全
+      url: docs/customize/brand/
+      motto: 现代文档视觉与成熟内容能力兼得
+      bullets:
+        - '继承 [Hugo](https://gohugo.io/) [Docsy](https://www.docsy.dev/)
+          的强大文档能力'
+        - '借鉴参考 [Fumadocs](https://fumadocs.dev/) 的界面审美风格'
+        - '针对 [开源项目与工程审美](docs/customize/brand/) 进行优化'
+      value: 界面保持克制，成熟文档站所需的功能一项不少。
+      visual:
+        type: components
+        items:
+          - {
+              icon: fa-solid fa-window-maximize,
+              title: FUMADOCS,
+              detail: 克制的文档外壳,
+            }
+          - {
+              icon: fa-solid fa-layer-group,
+              title: NEXTRA,
+              detail: 清晰的内容层级,
+            }
+          - {
+              icon: fa-solid fa-book-open,
+              title: DOCSY,
+              detail: 成熟的功能底座,
+            }
+          - {
+              icon: fa-solid fa-code-branch,
+              title: OPEN SOURCE,
+              detail: 面向工程社区,
+            }
+    - ref: 03 / 本地优先
+      title: 本地优先，无外部依赖
+      url: docs/about/features/
+      motto: CSS、JavaScript、字体与运行时全部本地化
+      bullets:
+        - '一条 [**hugo**](https://gohugo.io/) 命令完成全部构建'
+        - '[无需 **npm install** 或 PostCSS
+          构建](docs/about/features/)'
+        - '[所有资源本地提供](docs/about/features/)，[断网也能服务](docs/start/from-scratch/)'
+      value: 开发、CI 与生产环境使用同一条可确定的构建路径。
+      visual:
+        type: code
+        aria_label: Hugo 构建示例
+        title: build.sh
+        lines:
+          - { class: c, prefix: '# ', text: 一条命令，一份确定性输出 }
+          - { class: p, prefix: '$ ', text: hugo --gc --minify }
+          - { class: ok, prefix: '✓ ', text: 本地资源已打包 }
+          - { class: ok, prefix: '✓ ', text: 多语言路由已生成 }
+          - { class: ok, prefix: '✓ ', text: public/ 可以部署 }
+    - ref: 04 / 功能扩展
+      title: 功能扩展
+      url: docs/components/
+      motto: 把工程内容需要的表达能力直接带进主题
+      bullets:
+        - '[Code
+          Group](docs/components/tabs/)、[FileTree](docs/components/filetree/)
+          与 [Fields](docs/components/fields/) 覆盖日常技术写作'
+        - '[Gallery](docs/components/gallery/)、[Image
+          Zoom](docs/components/image/) 与图表组件用于视觉化说明'
+        - '每个[组件](docs/components/)都有语义化 Markdown
+          与打印输出，只在交互确实需要时加载 JavaScript'
+      value: 富内容能力属于主题，普通页面不会因此背上额外负担。
+      visual:
+        type: components
+        aria_label: 浏览短代码与内容组件
+        columns: 3
+        compact: true
+        items:
+          - {
+              icon: fa-solid fa-code,
+              title: Code Groups,
+              url: docs/components/tabs/,
+            }
+          - {
+              icon: fa-solid fa-tags,
+              title: Badge,
+              url: docs/components/badge/,
+            }
+          - {
+              icon: fa-solid fa-keyboard,
+              title: Kbd,
+              url: docs/components/kbd/,
+            }
+          - {
+              icon: fa-solid fa-list-check,
+              title: Fields,
+              url: docs/components/fields/,
+            }
+          - {
+              icon: fa-solid fa-folder-tree,
+              title: FileTree,
+              url: docs/components/filetree/,
+            }
+          - {
+              icon: fa-solid fa-magnifying-glass-plus,
+              title: Image Zoom,
+              url: docs/components/image/,
+            }
+          - {
+              icon: fa-solid fa-images,
+              title: Gallery,
+              url: docs/components/gallery/,
+            }
+          - {
+              icon: fa-solid fa-chart-line,
+              title: ECharts,
+              url: docs/components/echarts/,
+            }
+          - {
+              icon: fa-solid fa-diagram-project,
+              title: Diagrams,
+              url: docs/components/mermaid/,
+            }
+          - {
+              icon: fa-solid fa-terminal,
+              title: Asciinema,
+              url: docs/components/asciinema/,
+            }
+          - {
+              icon: fa-solid fa-chart-simple,
+              title: Infographic,
+              url: docs/components/infographic/,
+            }
+          - {
+              icon: fa-solid fa-file-code,
+              title: API Docs,
+              url: docs/write/openapi/,
+            }
+
+content_types:
+  eyebrow: 不止文档
+  title: 六种内容形态，同一套外壳
+  text: 文档站很少只有文档。那些通常需要第二个工具的内容形态，在这里共用同一套外壳、检索与输出。
+  columns: 3
+  link_label: 阅读指南
+  items:
+    - title: 文档
+      meta: 阅读外壳
+      icon: fa-solid fa-book
+      desc: 侧栏树、页内目录、面包屑、翻页、编辑与历史链接——其它内容类型复用的就是这套外壳。
+      url: docs/write/pages/
+    - title: 博客与 RSS
+      meta: 更新
+      icon: fa-solid fa-rss
+      desc: 按时间排列的文章、按数量排序的标签面板，以及按语言分别生成的订阅源。
+      url: docs/write/blog/
+    - title: 书籍
+      meta: 长篇
+      icon: fa-solid fa-book-open
+      desc: 章节编号，图表公式用 `{#id num=}` 编号、`xref` 交叉引用，整本可打印。
+      url: docs/write/book/
+    - title: 发布与下载
+      meta: 发布
+      icon: fa-solid fa-download
+      desc: 一份 `data/download/*.yaml` 生成发布卡片、资产表与校验和，发布状态是数据。
+      url: docs/write/releases/
+    - title: Landing 页
+      meta: 展示
+      icon: fa-solid fa-layer-group
+      desc: 用二十二种服务端渲染分区拼装页面，你正在读的这一页就是其中之一。
+      url: docs/customize/home/
+    - title: API 参考
+      meta: OpenAPI
+      icon: fa-solid fa-plug
+      desc: Swagger UI 与 Redoc 都是本地运行时，规范文件放在仓库里，离线可用。
+      url: docs/write/openapi/
+
+components:
+  eyebrow: 组件参考
+  title: 二十一个组件，按需加载
+  text: 每个组件都有独立的一页，并在 HTML、打印、Markdown 与 RSS 下有确定形态；交互运行时只随用到它的页面下发。
+  layout: grid
+  columns: 3
+  # 按特色程度排列：先是别处少见的，再是日常写作最常用的。
+  items:
+    - { title: ECharts,   icon: fa-solid fa-chart-line,           desc: '`echarts` 数据围栏',          url: docs/components/echarts/ }
+    - { title: 信息图,    icon: fa-solid fa-chart-pie,            desc: '声明式数据围栏',              url: docs/components/infographic/ }
+    - { title: 思维导图,  icon: fa-solid fa-sitemap,              desc: '大纲变成导图',                url: docs/components/markmap/ }
+    - { title: Asciinema, icon: fa-solid fa-terminal,             desc: '终端录像，本地播放',          url: docs/components/asciinema/ }
+    - { title: PlantUML,  icon: fa-solid fa-project-diagram,      desc: 'UML，需自建渲染服务',          url: docs/components/plantuml/ }
+    - { title: Draw.io,   icon: fa-solid fa-pen-ruler,            desc: '可回编辑的图',                  url: docs/components/drawio/ }
+    - { title: Mermaid,   icon: fa-solid fa-diagram-project,      desc: '本地图示运行时',              url: docs/components/mermaid/ }
+    - { title: 数学公式,  icon: fa-solid fa-square-root-variable, desc: 'KaTeX 构建期渲染',            url: docs/components/math/ }
+    - { title: 文件树,    icon: fa-solid fa-folder-tree,          desc: '`filetree` 数据围栏',         url: docs/components/filetree/ }
+    - { title: 画廊,      icon: fa-solid fa-images,               desc: '`gallery` 数据围栏',          url: docs/components/gallery/ }
+    - { title: 代码块,    icon: fa-solid fa-code,                 desc: 'Chroma · 行号 · 复制 · 折叠', url: docs/components/code/ }
+    - { title: 图片,      icon: fa-solid fa-image,                desc: '图注 · 尺寸 · 缩放',          url: docs/components/image/ }
+    - { title: 表格,      icon: fa-solid fa-table,                desc: '标题 · 编号 · 矩阵',          url: docs/components/table/ }
+    - { title: 参数表,    icon: fa-solid fa-table-list,           desc: '表格加 `{.fields}`',          url: docs/components/fields/ }
+    - { title: 提示块,    icon: fa-solid fa-circle-info,          desc: '`> [!NOTE]` · 十种类型',      url: docs/components/callout/ }
+    - { title: 标签页,    icon: fa-solid fa-folder,               desc: '围栏加 `{tab=}`',             url: docs/components/tabs/ }
+    - { title: 步骤,      icon: fa-solid fa-list-ol,              desc: '列表加 `{.steps}`',           url: docs/components/steps/ }
+    - { title: 卡片,      icon: fa-solid fa-table-cells-large,    desc: '列表加 `{.cards}`',           url: docs/components/cards/ }
+    - { title: 徽章,      icon: fa-solid fa-tag,                  desc: '行内状态，五种 tone',          url: docs/components/badge/ }
+    - { title: 按键,      icon: fa-solid fa-keyboard,             desc: '键位与组合键',                  url: docs/components/kbd/ }
+    - { title: 引用,      icon: fa-solid fa-file-import,          desc: '引入文件、参数与构建注释',      url: docs/components/include/ }
+
+cases:
+  eyebrow: 案例
+  title: 十五个站点，同一个家族
+  # Items come from content/case/ — see layouts/_partials/landing/sections/case-cards.html
+  text: >-
+    中文、英文与双语；发行版手册、产品文档、三本书、公司主页、扩展目录，以及一个两页的小工具。每张卡片都会打开线上站点，[案例库](case/) 说明每个站点背后的内容模型。
+  columns: 3
+
+faq:
+  eyebrow: 选型之前
+  title: 值得先问的几个问题
+  items:
+    - question: 哪里需要 Node.js、npm 或打包器吗？
+      answer: >-
+        不需要。构建依赖只有 Hugo Extended（0.160.1 或更新）。Go 只用一次，用来把主题解析为
+        Hugo Module；离线归档或 Git submodule 方式连 Go 也不需要。界面交互仍在浏览器里执行
+        JavaScript，但这些脚本随主题分发，只挂在用到它们的页面上。
+      open: true
+    - question: 我有一个 Docsy 站，迁移有多难？
+      answer: >-
+        内容与 front matter 大多可以直接沿用，替换的是外壳、导航、检索与组件。改名的配置键会让
+        构建失败并给出新名字，`bin/migrations/oink06.py` 在改写之前先报告它会改什么。
+        见[升级与迁移](docs/admin/upgrade/)。
+    - question: OINK 只适合大型文档树吗？
+      answer: >-
+        不是。[样例站点](docs/about/showcase/)里既有两页的项目站，也有一千五百个文件的发行版手册，
+        还有一个只用 OINK 做落地页的公司站。外壳向下缩放和向上扩展一样自然。
+    - question: 中文与其它非拉丁文字的内容怎么处理？
+      answer: >-
+        本地检索对拉丁文字用 Lunr、对中日韩文本用子串回退，无需托管服务也能搜索。英语、简体中文
+        （`zh-cn`、`zh`）与繁体中文（`zh-tw`）的界面文案经过人工审校，另外 28 种语言共用同一套
+        key。支持 RTL 布局。
+    - question: AI 助手与爬虫拿到的是什么？
+      answer: >-
+        `outputs` 里加上 `markdown`，每个页面就有一份 `index.md`，由 `rel="alternate"` 指过去；
+        `LLMS` 输出格式在站点根目录写出 `llms.txt`。「在 ChatGPT / Claude 中打开」这类页面动作
+        存在，但默认关闭，因为它会把读者的 URL 交给第三方。
+    - question: 许可证是什么？和 Docsy 是什么关系？
+      answer: >-
+        Apache License 2.0。OINK 是 Docsy 的分叉并独立演化；Docsy 的源码历史、署名与 Apache-2.0
+        义务完整保留，每个随主题分发的运行时都在 `VENDOR.json` 里连同许可证列出。
+        见[开源许可与致谢](docs/about/license/)。
+
+cta:
+  title: 从可运行的双语 Starter 开始。
+  text: 复制配置，替换内容，然后只用 Hugo 构建。
+  label: 开始使用
+  url: docs/start/
+  style: primary

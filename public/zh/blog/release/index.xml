@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Oink 发布注记 on OINK</title>
+    <link>http://localhost:1313/zh/blog/release/</link>
+    <description>Recent content in Oink 发布注记 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Thu, 27 Aug 2026 17:15:16 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/blog/release/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>Oink 0.8.0：整个栏目一次取走，侧栏直接当数据读，以及谁链到了这一页</title>
+        <link>http://localhost:1313/zh/blog/release/0.8.0/</link>
+        <pubDate>Thu, 27 Aug 2026 00:00:00 +0800</pubDate>
+        <dc:creator>OINK</dc:creator>
+        <guid>http://localhost:1313/zh/blog/release/0.8.0/</guid>
+        <description>&lt;p&gt;Oink 0.8.0 不改动任何组件 API，也不需要修改内容。三项新增里有两项服务于以程序身份来读的访客。&#xA;每一页本来就会多产出一份 &lt;code&gt;.md&lt;/code&gt;，它服务的是已经知道自己要哪一页的 agent；&#xA;而想读完整份手册的 agent，仍然只能一页一页地爬，边爬边发现链接。&#xA;这两种新输出格式回答的是另一半问题：把整个栏目给我，以及在我开始抓之前，先告诉我这个站点里有什么。&#xA;第三项是给作为人的读者的：页面右栏现在可以列出有哪些页面链接到它。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Oink 0.7.1：页面不再外泄，坏输入不再中断构建</title>
+        <link>http://localhost:1313/zh/blog/release/0.7.1/</link>
+        <pubDate>Wed, 26 Aug 2026 00:00:00 +0800</pubDate>
+        <dc:creator>OINK</dc:creator>
+        <guid>http://localhost:1313/zh/blog/release/0.7.1/</guid>
+        <description>&lt;p&gt;Oink 0.7.1 不改动任何组件 API，也不需要修改内容。它修复了对 0.7.0 主线外部审查发现的&#xA;代码问题：一个真实的隐私外泄、一类会直接中断构建的配置值，以及三个从未被告知&#xA;&amp;ldquo;非 HTML 输出&amp;quot;存在的组件。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Oink 0.7.0：主题色、统一的字体口径，以及终于能读的图</title>
+        <link>http://localhost:1313/zh/blog/release/0.7.0/</link>
+        <pubDate>Tue, 25 Aug 2026 00:00:00 +0800</pubDate>
+        <dc:creator>OINK</dc:creator>
+        <guid>http://localhost:1313/zh/blog/release/0.7.0/</guid>
+        <description>&lt;p&gt;Oink 0.7.0 没有改动任何组件 API。它只做两件读者真正长时间面对的事——页面周围的外壳&#xA;与页面上的字——并补完了一个从来没有被设计过、只是继承下来的围栏。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Oink 0.6.0：沉浸式博客、更稳健的构建、更精简的内部实现</title>
+        <link>http://localhost:1313/zh/blog/release/0.6.0/</link>
+        <pubDate>Thu, 20 Aug 2026 00:00:00 +0800</pubDate>
+        <dc:creator>OINK</dc:creator>
+        <guid>http://localhost:1313/zh/blog/release/0.6.0/</guid>
+        <description>&lt;p&gt;Oink 0.6.0 保留 0.5 确立的组件 API，集中改进它周围的系统：长文阅读、博客发现、&#xA;来源标注、版本发布、构建韧性，以及主题自身的可维护性。&lt;/p&gt;&#xA;&lt;p&gt;本版本没有新增 &lt;code&gt;article&lt;/code&gt; 类型，也没有第二套页面外壳。沉浸式阅读只是现有博客外壳的&#xA;一种配置，因此文章仍处于原有列表、订阅源、分类、系列与翻页序列中。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Oink 0.5.0 — 组件 API v5 与收敛后的配置</title>
+        <link>http://localhost:1313/zh/blog/release/0.5.0/</link>
+        <pubDate>Tue, 18 Aug 2026 00:00:00 +0800</pubDate>
+        <dc:creator>OINK</dc:creator>
+        <guid>http://localhost:1313/zh/blog/release/0.5.0/</guid>
+        <description>&lt;p&gt;Oink 0.5.0 是 API 冻结版本。它包含 1.0 线将要冻结的全部变更：组件 API v5&#xA;（原生 Markdown 形态优先，29 个 shortcode 作为完整形态）、按三条规则收敛的配置键与&#xA;front matter 键、主题产出物统一的命名空间、0.x 兼容层与无人使用的 Docsy 遗留物的&#xA;删除，以及能把 0.4 站点改写到位的迁移工具。任何被退役的键、形态或 shortcode&#xA;都会让构建失败，并在错误信息里给出替代写法。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Oink 0.4.0 — 面向完整发布流程的场景组件体系</title>
+        <link>http://localhost:1313/zh/blog/release/0.4.0/</link>
+        <pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+        <dc:creator>OINK</dc:creator>
+        <guid>http://localhost:1313/zh/blog/release/0.4.0/</guid>
+        <description>&lt;p&gt;Oink 0.4.0 完整交付场景组件体系。原始设计将 Reading &amp;amp;&#xA;Release、Landing 与 Book 分别放在 0.4、0.5、0.6 三个里程碑中；公开版本将三条轨道合并到一个已签名的&#xA;&lt;code&gt;v0.4.0&lt;/code&gt; 标签，让消费站接入一套连贯契约，而不是一串彼此依赖的预览版本。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Oink 0.3.0 — 写作、导航与更轻的页面</title>
+        <link>http://localhost:1313/zh/blog/release/0.3.0/</link>
+        <pubDate>Wed, 12 Aug 2026 00:00:00 +0000</pubDate>
+        <dc:creator>OINK</dc:creator>
+        <guid>http://localhost:1313/zh/blog/release/0.3.0/</guid>
+        <description>&lt;div class=&#34;td-release-card-static&#34;&gt;&#xA;  &lt;p&gt;&lt;strong&gt;v0.3.0&lt;/strong&gt; · &lt;time datetime=&#34;2026-08-12&#34;&gt;2026-08-12&lt;/time&gt;&lt;/p&gt;&#xA;  &lt;ul&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/releases/tag/v0.3.0&#34;&gt;查看发布&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.3.0.tar.gz&#34;&gt;源码 · tar.gz&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.3.0.zip&#34;&gt;源码 · zip&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink&#34;&gt;pgsty/oink&lt;/a&gt;&lt;/li&gt;&#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&lt;strong&gt;发布门禁&lt;/strong&gt;：上面的标签必须能够公开解析，项目站必须固定到该精确标签，并且线上检查必须通过。在此之前，请把当前源码页面视为发布候选材料。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Oink 0.2.0：更丰富的内容与更精致的呈现</title>
+        <link>http://localhost:1313/zh/blog/release/0.2.0/</link>
+        <pubDate>Mon, 10 Aug 2026 00:00:00 +0000</pubDate>
+        <dc:creator>OINK</dc:creator>
+        <guid>http://localhost:1313/zh/blog/release/0.2.0/</guid>
+        <description>&lt;div class=&#34;td-release-card-static&#34;&gt;&#xA;  &lt;p&gt;&lt;strong&gt;v0.2.0&lt;/strong&gt; · &lt;time datetime=&#34;2026-08-10&#34;&gt;2026-08-10&lt;/time&gt;&lt;/p&gt;&#xA;  &lt;ul&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/releases/tag/v0.2.0&#34;&gt;查看发布&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.2.0.tar.gz&#34;&gt;源码 · tar.gz&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.2.0.zip&#34;&gt;源码 · zip&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink&#34;&gt;pgsty/oink&lt;/a&gt;&lt;/li&gt;&#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;Oink&#xA;0.2.0 聚焦读者与作者最常接触的表面：首页、品牌呈现、博客发现、分区索引与操作指南。Oink 项目站点也同步成为更清晰的双语参考，用于说明主题的当前契约。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Oink 0.1.0：稳定的本地优先基础</title>
+        <link>http://localhost:1313/zh/blog/release/0.1.0/</link>
+        <pubDate>Sat, 08 Aug 2026 00:00:00 +0000</pubDate>
+        <dc:creator>OINK</dc:creator>
+        <guid>http://localhost:1313/zh/blog/release/0.1.0/</guid>
+        <description>&lt;div class=&#34;td-release-card-static&#34;&gt;&#xA;  &lt;p&gt;&lt;strong&gt;v0.1.0&lt;/strong&gt; · &lt;time datetime=&#34;2026-08-08&#34;&gt;2026-08-08&lt;/time&gt;&lt;/p&gt;&#xA;  &lt;ul&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/releases/tag/v0.1.0&#34;&gt;查看发布&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.1.0.tar.gz&#34;&gt;源码 · tar.gz&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.1.0.zip&#34;&gt;源码 · zip&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink&#34;&gt;pgsty/oink&lt;/a&gt;&lt;/li&gt;&#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;Oink&#xA;0.1.0 是 Oink 主题的首个稳定版本。它包含 0.0.1 实现预览以及之后的稳定化工作：统一的文档页面外壳、消费端仅依赖 Hugo 的构建、本地优先的浏览器资源、基于 Hugo 原生对象的多语言行为，以及可复用的内容组件。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

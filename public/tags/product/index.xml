@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Product on OINK</title>
+    <link>http://localhost:1313/tags/product/</link>
+    <description>Recent content in Product on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Sat, 22 Aug 2026 16:32:18 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/tags/product/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>pig.pgsty.com</title>
+        <link>http://localhost:1313/case/pig/</link>
+        <pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/pig/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pig.pgsty.com/&#34;&gt;pig.pgsty.com&lt;/a&gt; documents PIG, the PostgreSQL extension&#xA;package manager. Its core manual is deliberately compact—18 pages per language&#xA;in the case snapshot—while a 50-post bilingual blog carries updates and deeper&#xA;explanations. The home page is assembled from &lt;code&gt;data/home&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A shallow, mostly single-file documentation tree for a focused CLI product.&lt;/li&gt;&#xA;&lt;li&gt;English and Chinese peers without duplicating navigation design.&lt;/li&gt;&#xA;&lt;li&gt;A data-driven home page paired with a larger stream of blog content.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Choose this pattern when the reference manual is small and stable but product&#xA;news, tutorials, and release context need room to grow.&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

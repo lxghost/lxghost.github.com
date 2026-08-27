@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OINK 是什么 on OINK</title>
+    <link>http://localhost:1313/zh/docs/about/</link>
+    <description>Recent content in OINK 是什么 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Thu, 27 Aug 2026 17:15:16 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/docs/about/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>亮点特性</title>
+        <link>http://localhost:1313/zh/docs/about/features/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/about/features/</guid>
+        <description>&lt;p&gt;本页逐条列出 OINK 与普通 Hugo 主题的差别，每条末尾给出讲它的指南页。要立即安装，见&lt;a href=&#34;http://localhost:1313/zh/docs/start/&#34;&gt;十分钟上手&lt;/a&gt;。&lt;/p&gt;&#xA;&lt;h2 id=&#34;native-components&#34;&gt;组件写在 Markdown 里&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;提示块是 &lt;code&gt;&amp;gt; [!NOTE]&lt;/code&gt; 块引用（十种语义类型加一个中性折叠块），参数表是表格加一行 &lt;code&gt;{.fields}&lt;/code&gt;，步骤与卡片是列表加 &lt;code&gt;{.steps}&lt;/code&gt; / &lt;code&gt;{.cards}&lt;/code&gt;，图注是图片下面一行 &lt;code&gt;{caption=&amp;quot;…&amp;quot;}&lt;/code&gt;。标签页是几个相邻围栏各带一个 &lt;code&gt;{tab=&amp;quot;…&amp;quot;}&lt;/code&gt;；文件树、画廊、Mermaid、ECharts 是以语言命名的数据围栏。这些写法在 GitHub 或普通 Markdown 阅读器中退化为块引用、表格、列表与代码块，内容不丢失。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Case 导览</title>
+        <link>http://localhost:1313/zh/docs/about/showcase/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/about/showcase/</guid>
+        <description>&lt;p&gt;正式的 &lt;a href=&#34;http://localhost:1313/zh/case/&#34;&gt;Case 案例库&lt;/a&gt; 把十五个生产站点整理成可复用的实现模式，&#xA;首页展示的也是同样这十五个。它们全都使用 OINK，本站本身也作为自举案例列入。&lt;/p&gt;&#xA;&lt;p&gt;当你已经知道自己要搭建哪类站点时，可以从这里开始：先通过案例了解架构与&#xA;取舍，再沿页面链接进入具体配置文档。案例中的数量描述对应盘点时的快照，&#xA;不是对持续变化的线上站点作永久承诺。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>开源许可与致谢</title>
+        <link>http://localhost:1313/zh/docs/about/license/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/about/license/</guid>
+        <description>&lt;p&gt;OINK 由三层材料组成：主题源码、文档内容、随主题分发的第三方资源。三者各自的许可证不会被重新授权成一份统一作品。下面每张表都指向仓库里的权威文件，&lt;strong&gt;摘要与许可证原文不一致时以文件为准&lt;/strong&gt;。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

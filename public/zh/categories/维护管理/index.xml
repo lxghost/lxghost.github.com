@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>维护管理 on OINK</title>
+    <link>http://localhost:1313/zh/categories/%E7%BB%B4%E6%8A%A4%E7%AE%A1%E7%90%86/</link>
+    <description>Recent content in 维护管理 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Thu, 27 Aug 2026 18:47:44 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/categories/%E7%BB%B4%E6%8A%A4%E7%AE%A1%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>本地预览</title>
+        <link>http://localhost:1313/zh/docs/admin/preview/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/admin/preview/</guid>
+        <description>&lt;p&gt;两条命令覆盖日常工作：&lt;code&gt;hugo server&lt;/code&gt; 在本机预览改动，&lt;code&gt;hugo&lt;/code&gt; 产出可以部署到任何静态托管的 &lt;code&gt;public/&lt;/code&gt;。前提是本机安装了 Hugo Extended（不低于 0.160.1）；用 Hugo Module 引入主题时还需要 Go。构建不依赖 Node.js、npm 与 PostCSS，它们只服务于本仓库自身的回归检查。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>发布上线</title>
+        <link>http://localhost:1313/zh/docs/admin/deploy/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/admin/deploy/</guid>
+        <description>&lt;p&gt;OINK 站点的产物是一个纯静态目录，任何能托管静态文件的地方都能部署，不需要 Node 运行时、服务端渲染或构建插件。托管商一侧只有三件事：用正确的 Hugo 版本执行一条命令、发布 &lt;code&gt;public/&lt;/code&gt;、让 &lt;code&gt;baseURL&lt;/code&gt; 与最终访问地址一致。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>启用评论</title>
+        <link>http://localhost:1313/zh/docs/admin/comments/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/admin/comments/</guid>
+        <description>&lt;p&gt;OINK 的评论走 &lt;a href=&#34;https://giscus.app/zh-CN&#34;&gt;giscus&lt;/a&gt;：每个页面对应一条 GitHub Discussion，读者用 GitHub 账号登录后发言，维护者在 GitHub Discussions 里审核与管理。主题不提供自建评论后端，也不内置 giscus 以外的服务商。&lt;/p&gt;&#xA;&lt;p&gt;前提是一个公开的 GitHub 仓库，访客读不到私有仓库的 Discussions。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>分析与 SEO</title>
+        <link>http://localhost:1313/zh/docs/admin/analytics/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/admin/analytics/</guid>
+        <description>&lt;p&gt;主题默认不加载任何分析、表单或广告脚本，不配置就没有对外请求。接入需要显式配置，并把这条外部数据边界写进站点的隐私说明。SEO 一侧相反：canonical、hreflang、&lt;code&gt;robots&lt;/code&gt; meta、Open Graph 与 Twitter 卡片由主题逐页生成，需要你做的是把 &lt;code&gt;baseURL&lt;/code&gt; 与每页的 &lt;code&gt;description&lt;/code&gt; 写对。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>版本升级</title>
+        <link>http://localhost:1313/zh/docs/admin/upgrade/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/admin/upgrade/</guid>
+        <description>&lt;p&gt;升级 OINK 是换一个固定的模块版本，再确认站点仍能零告警构建。内容多数不用改；需要改的场景（0.4 的 shortcode 换成 v5 的 Markdown 原生形态）有一个可以干跑的迁移工具，不必手改几百个文件。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>排错与检查</title>
+        <link>http://localhost:1313/zh/docs/admin/troubleshooting/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/admin/troubleshooting/</guid>
+        <description>&lt;p&gt;出问题时先做一次干净的生产构建，从第一条错误开始看，后面的多半是级联结果：&lt;/p&gt;&#xA;&lt;div class=&#34;td-code td-code--titled&#34; id=&#34;td-code-1f758e18-fence-0&#34; data-td-code data-td-code-auto-id&#xA;     data-td-language=&#34;bash&#34; data-td-line-count=&#34;2&#34; role=&#34;group&#34; aria-labelledby=&#34;td-code-1f758e18-fence-0-title&#34;&gt;&#xA;  &lt;div class=&#34;td-code__header&#34;&gt;&#xA;    &lt;span class=&#34;td-code__filename&#34; id=&#34;td-code-1f758e18-fence-0-title&#34; title=&#34;终端&#34;&gt;终端&lt;/span&gt;&#xA;  &lt;/div&gt;&#xA;  &lt;div class=&#34;td-code__viewport&#34; id=&#34;td-code-1f758e18-fence-0-viewport&#34; data-td-code-viewport&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rm -rf public resources/_gen&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo --gc --minify --printPathWarnings --panicOnWarning --logLevel info&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;日志里出现 npm、PostCSS、Autoprefixer 或下载浏览器资源的步骤，说明配置里混进了上游 Docsy 的流程。OINK 消费端的构建只有一条 Hugo 命令。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>维护管理</title>
+        <link>http://localhost:1313/zh/docs/admin/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/admin/</guid>
+        <description>&lt;p&gt;本栏目覆盖内容写完之后的运维事项：在本机预览、构建并部署产物、接入评论与分析、跟随主题版本升级、故障定位。前面五个栏目决定站点的外观与内容，这一栏决定站点能否构建、部署在哪、出问题如何排查。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

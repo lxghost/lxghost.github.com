@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Landing on OINK</title>
+    <link>http://localhost:1313/tags/landing/</link>
+    <description>Recent content in Landing on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Sat, 22 Aug 2026 16:32:18 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/tags/landing/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>pgsty.com</title>
+        <link>http://localhost:1313/case/pgsty-com/</link>
+        <pubDate>Sat, 15 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/pgsty-com/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pgsty.com/&#34;&gt;pgsty.com&lt;/a&gt; is the bilingual corporate site behind Pigsty.&#xA;It has only about ten pages: a &lt;code&gt;type: home&lt;/code&gt; front page assembled from&#xA;&lt;code&gt;data/home/{en,zh}.yaml&lt;/code&gt;, followed by focused pages for solutions, company&#xA;information, and pricing.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Using OINK as a landing-page theme with almost no documentation tree.&lt;/li&gt;&#xA;&lt;li&gt;Maintaining compact English and Chinese marketing pages as peers.&lt;/li&gt;&#xA;&lt;li&gt;Building the home-page narrative from reusable data sections.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This pattern is appropriate when a project wants OINK&amp;rsquo;s brand, navigation,&#xA;search, and multilingual conventions but primarily needs a small public-facing&#xA;site rather than a manual.&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

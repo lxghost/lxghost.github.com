@@ -1,0 +1,850 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" dir="ltr" lang="en-US" data-td-typography="technical" data-td-theme-init>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#000000">
+
+<style>
+  html { background: Canvas; color: CanvasText; }
+  @media (prefers-color-scheme: dark) {
+    html { background: #0b0d12; color: #e6e6e6; }
+  }
+  html[data-td-theme-init] * { transition: none !important; }
+  [data-td-theme-toggle] > .td-shell-icon--sun { display: none !important; }
+  [data-td-theme-toggle] > [hidden] { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--moon { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--sun { display: inline-block !important; }
+</style>
+
+<script>
+  (function() {
+    const themeKey = 'td-color-theme';
+    let storedTheme = null;
+    try {
+      storedTheme = localStorage.getItem(themeKey);
+    } catch (_) {
+      
+      
+    }
+    let theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+    if (theme === 'auto') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    document.documentElement.classList.toggle('dark-mode', theme === 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<link rel="alternate" type="text/markdown" href="http://localhost:1313/case/pgsty-com/index.md">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<title>pgsty.com | OINK</title>
+<meta name="description" content="PGSTY: the company behind Pigsty. A small bilingual corporate site that uses OINK primarily as a data-driven landing-page system.">
+<link rel="canonical" href="http://localhost:1313/case/pgsty-com/">
+<link rel="alternate" hreflang="en-US" href="http://localhost:1313/case/pgsty-com/">
+<link rel="alternate" hreflang="zh-CN" href="http://localhost:1313/zh/case/pgsty-com/">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:url" content="http://localhost:1313/case/pgsty-com/">
+  <meta property="og:site_name" content="OINK">
+  <meta property="og:title" content="pgsty.com">
+  <meta property="og:description" content="PGSTY: the company behind Pigsty. A small bilingual corporate site that uses OINK primarily as a data-driven landing-page system.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="case">
+    <meta property="article:published_time" content="2026-08-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-08-22T16:32:18+08:00">
+    <meta property="article:tag" content="Landing">
+    <meta property="article:tag" content="Bilingual">
+    <meta property="article:tag" content="Corporate">
+    <meta property="og:image" content="http://localhost:1313/case/pgsty-com/featured.webp">
+
+  <meta itemprop="name" content="pgsty.com">
+  <meta itemprop="description" content="PGSTY: the company behind Pigsty. A small bilingual corporate site that uses OINK primarily as a data-driven landing-page system.">
+  <meta itemprop="datePublished" content="2026-08-15T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-08-22T16:32:18+08:00">
+  <meta itemprop="wordCount" content="98">
+  <meta itemprop="image" content="http://localhost:1313/case/pgsty-com/featured.webp">
+  <meta itemprop="keywords" content="Landing,Bilingual,Corporate">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/case/pgsty-com/featured.webp">
+  <meta name="twitter:title" content="pgsty.com">
+  <meta name="twitter:description" content="PGSTY: the company behind Pigsty. A small bilingual corporate site that uses OINK primarily as a data-driven landing-page system.">
+<link href="/scss/fontawesome.css" rel="stylesheet">
+<link href="/scss/main.css" rel="stylesheet">
+<style>:root,[data-bs-theme=light]{--td-accent:#3f3f46;--td-accent-rgb:63,63,70;--td-accent-hover:#56565c}[data-bs-theme=dark]{--td-accent:#a1a1aa;--td-accent-rgb:161,161,170;--td-accent-hover:#b6b6bd}</style>
+<script>
+  (function () {
+    var html = document.documentElement;
+    html.setAttribute('data-td-shell-no-anim', '');
+    try {
+      if (localStorage.getItem('td-shell-sidebar-collapsed') === '1'
+          && window.matchMedia('(min-width: 768px)').matches) {
+        html.setAttribute('data-td-shell-sidebar', 'collapsed');
+      }
+      var width = parseInt(localStorage.getItem('td-shell-sidebar-w'), 10);
+      if (width > 0) html.style.setProperty('--td-shell-sidebar-w', width + 'px');
+      if (localStorage.getItem('td-shell-toc-collapsed') === '1'
+          && window.matchMedia('(min-width: 1200px)').matches) {
+        html.setAttribute('data-td-shell-toc', 'collapsed');
+      }
+      var blogIndex = localStorage.getItem('td-blog-index');
+      if (blogIndex === 'cards' || blogIndex === 'list' || blogIndex === 'table') {
+        html.setAttribute('data-td-blog-index', blogIndex);
+      }
+      if (sessionStorage.getItem('td-kbd-zen') === '1') {
+        html.setAttribute('data-td-kbd-zen', '');
+      }
+    } catch (_) {}
+  })();
+</script><script defer src="/js/third_party/lunr.min.js"></script>
+
+  </head>
+  <body class="td-page td-blog td-shell-chrome td-shell-chrome--hero">
+    <a class="td-skip-link d-print-none" href="#td-main-content">Skip to content</a>
+
+    
+<div class="td-navbar-autohide" data-td-navbar-autohide>
+<header class="td-site-header d-print-none" data-td-header>
+  <div class="td-site-container">
+    <nav class="td-site-nav" aria-label="Main navigation">
+      <a href="/" class="td-nav-brand" data-td-navbar-route
+         aria-label="OINK — Home">
+        <img src="/icons/logo.svg" alt="" class="td-nav-logo" width="22" height="22">
+        <span class="td-nav-title">OINK</span>
+      </a><div class="td-nav-links td-nav-menu-zone"><div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link" href="/docs/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Docs"
+  data-td-navbar-region="desktop" data-td-navbar-label="Docs"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-docs-0" aria-expanded="false">
+  <i class="fa-solid fa-book" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Docs</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-docs-0" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/docs/about/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Introduction"
+  data-td-navbar-region="desktop" data-td-navbar-label="Introduction"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Introduction</span></a>
+<a class="td-nav-menu__item-link" href="/docs/start/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Get started"
+  data-td-navbar-region="desktop" data-td-navbar-label="Get started"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Get started</span></a>
+<a class="td-nav-menu__item-link" href="/docs/write/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Authoring"
+  data-td-navbar-region="desktop" data-td-navbar-label="Authoring"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Authoring</span></a>
+<a class="td-nav-menu__item-link" href="/docs/components/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Components"
+  data-td-navbar-region="desktop" data-td-navbar-label="Components"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-cubes" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Components</span></a>
+<a class="td-nav-menu__item-link" href="/docs/customize/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Customization"
+  data-td-navbar-region="desktop" data-td-navbar-label="Customization"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Customization</span></a>
+<a class="td-nav-menu__item-link" href="/docs/admin/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Operations"
+  data-td-navbar-region="desktop" data-td-navbar-label="Operations"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Operations</span></a>
+<a class="td-nav-menu__item-link" href="/docs/design/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Design"
+  data-td-navbar-region="desktop" data-td-navbar-label="Design"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-compass-drafting" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Design</span></a>
+
+  </div>
+</div><a class="nav-link" href="/book/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Book"
+  data-td-navbar-region="desktop" data-td-navbar-label="Book"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Book</span></a>
+<a class="nav-link active" href="/case/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Case"
+  data-td-navbar-region="desktop" data-td-navbar-label="Case"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Case</span></a>
+<div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link active" href="/blog/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Blog"
+  data-td-navbar-region="desktop" data-td-navbar-label="Blog"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-blog-3" aria-expanded="false">
+  <i class="fa-solid fa-blog" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Blog</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-blog-3" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/blog/oink/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="OINK engineering"
+  data-td-navbar-region="desktop" data-td-navbar-label="OINK engineering"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">OINK engineering</span></a>
+<a class="td-nav-menu__item-link" href="/blog/release/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Releases"
+  data-td-navbar-region="desktop" data-td-navbar-label="Releases"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Releases</span></a>
+
+  </div>
+</div>
+      </div><div class="td-nav-links td-nav-util-zone">
+        <button type="button" class="td-nav-search-box" data-td-shell-search-open
+          title="Search…" aria-label="Search…"
+          aria-controls="td-shell-search" aria-expanded="false"><i class="td-shell-icon td-shell-icon--search fa-solid fa-magnifying-glass" aria-hidden="true"></i><span class="td-nav-search-box__hint">Search…</span>
+          <kbd class="td-nav-search-box__kbd" aria-hidden="true">/</kbd>
+        </button>
+        <div class="td-nav-hover-menu td-nav-version-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-nav-hover-open
+            title="v0.8.0" aria-label="v0.8.0" aria-expanded="false"><i class="td-shell-icon td-shell-icon--code-branch fa-solid fa-code-branch" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="v0.8.0">
+            <span class="td-nav-hover-menu__option td-is-disabled"><strong>Versions</strong></span>
+            <a class="td-nav-hover-menu__option td-is-active" aria-current="page" href="https://oink.pgsty.com">v0.8.0</a>
+          </div>
+        </div>
+          <div class="td-language-selector td-language-selector--menu td-nav-util td-site-nav__language">
+  <a class="td-language-selector__trigger" href="/zh/case/pgsty-com/"
+    lang="zh-CN" hreflang="zh-CN" dir="ltr"
+    title="Switch language: 简体中文"
+    aria-label="Switch language: 简体中文" aria-haspopup="true" aria-expanded="false">
+    <i class="fa-solid fa-language" aria-hidden="true"></i>
+    <span>简体中文</span>
+  </a>
+  <ul aria-label="Choose language">
+    <li>
+      <span class="td-language-selector__item active" lang="en-US" dir="ltr" aria-current="page">English</span>
+    </li>
+    <li>
+      <a class="td-language-selector__item" href="/zh/case/pgsty-com/" lang="zh-CN" hreflang="zh-CN" dir="ltr">简体中文</a>
+    </li>
+  </ul>
+</div><div class="td-nav-hover-menu td-nav-theme-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-theme-toggle
+            title="Toggle color theme" aria-label="Toggle color theme" aria-expanded="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="Toggle color theme">
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="light" aria-pressed="false"><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i><span>Light</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="dark" aria-pressed="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><span>Dark</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="auto" aria-pressed="false"><i class="td-shell-icon td-shell-icon--contrast fa-solid fa-circle-half-stroke" aria-hidden="true"></i><span>System</span>
+            </button>
+          </div>
+        </div>
+        <a href="https://github.com/pgsty/oink" class="td-nav-github" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="td-shell-icon td-shell-icon--github fa-brands fa-github" aria-hidden="true"></i></a><button class="td-nav-util td-site-nav__menu-toggle" type="button" data-td-shell-drawer-open
+          title="Open navigation" aria-label="Open navigation"
+          aria-controls="td-shell-sidebar" aria-expanded="false"><i class="td-shell-icon td-shell-icon--menu fa-solid fa-bars" aria-hidden="true"></i></button>
+      </div>
+    </nav>
+  </div>
+</header>
+</div>
+
+    <div class="container-fluid td-outer">
+      <div class="td-featured-hero" aria-hidden="true"><img src="/case/pgsty-com/featured_hu_e71bdc5d468a9bf9.webp" alt="" decoding="async"></div>
+      <div class="td-main td-shell-layout td-shell-layout--w-normal td-shell-layout--hero td-shell-layout--toc-flow"
+           style="--td-shell-sidebar-min: 200px; --td-shell-sidebar-max: 500px;">
+        <aside id="td-shell-sidebar" class="td-shell-sidebar d-print-none">
+          <div class="td-shell-sidebar__panel">
+  <div class="td-shell-sidebar__header">
+    <div class="td-shell-sidebar__brand-row">
+      <a class="td-shell-sidebar__brand" href="/" aria-label="OINK home">
+        <img src="/icons/logo.svg" alt="" width="20" height="20">
+        <span class="td-shell-wordmark">OINK</span>
+      </a>
+      <button type="button" class="td-shell-iconbtn td-shell-sidebar__search" data-td-shell-search-open
+        title="Search…" aria-label="Search…"
+        aria-controls="td-shell-search" aria-expanded="false"><i class="td-shell-icon td-shell-icon--search fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
+      <button type="button" class="td-shell-iconbtn td-shell-sidebar__collapse" data-td-shell-sidebar-toggle
+        title="Collapse sidebar" aria-label="Collapse sidebar"><i class="td-shell-icon td-shell-icon--panel-left fa-solid fa-table-columns" aria-hidden="true"></i></button>
+    </div>
+    <div class="td-shell-sidebar__header-row td-shell-sidebar__header-row--drawer-only">
+      <button type="button" class="td-shell-search-btn td-shell-search-btn--drawer" data-td-shell-search-open
+        aria-controls="td-shell-search" aria-expanded="false">
+        <i class="td-shell-icon td-shell-icon--search fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <span class="td-shell-search-btn__label">Search…</span>
+        <span class="td-shell-search-btn__keys" aria-hidden="true"><kbd>/</kbd></span>
+      </button>
+      <button type="button" class="td-shell-iconbtn td-shell-sidebar__close" data-td-shell-drawer-close
+        aria-label="Close navigation" aria-controls="td-shell-sidebar"><i class="td-shell-icon td-shell-icon--x fa-solid fa-xmark" aria-hidden="true"></i></button>
+    </div>
+    <div class="td-shell-root">
+  <button type="button" class="td-shell-root__trigger" data-td-shell-root-toggle
+    aria-haspopup="true" aria-expanded="false" aria-label="Choose section">
+    <span class="td-shell-root__icon"><i class="fa-solid fa-blog" aria-hidden="true"></i></span>
+    <span class="td-shell-root__title">Blog</span>
+    <i class="td-shell-icon td-shell-icon--chevrons-up-down fa-solid fa-sort" aria-hidden="true"></i>
+  </button>
+  <div class="td-shell-root__pop" hidden><a class="td-shell-root__item td-section-tint" href="/book/" style="--td-section-light:#9a3412;--td-section-dark:#fb923c">
+      <span class="td-shell-root__icon"><i class="fa-solid fa-book-open" aria-hidden="true"></i></span>
+      <span class="td-shell-root__meta">
+        <span class="td-shell-root__item-title">Book</span>
+        <span class="td-shell-root__item-desc">A practical tutorial for creating clear, beautiful, and maintainable technical content with OINK.</span>
+      </span>
+      <span class="td-shell-root__check td-is-hidden"><i class="td-shell-icon td-shell-icon--check fa-solid fa-check" aria-hidden="true"></i></span>
+    </a><a class="td-shell-root__item td-section-tint" href="/case/" style="--td-section-light:#3f3f46;--td-section-dark:#a1a1aa">
+      <span class="td-shell-root__icon"><i class="fa-solid fa-layer-group" aria-hidden="true"></i></span>
+      <span class="td-shell-root__meta">
+        <span class="td-shell-root__item-title">Case</span>
+        <span class="td-shell-root__item-desc">Fifteen real sites show how OINK scales from a two-page utility to a multilingual documentation estate and three books.</span>
+      </span>
+      <span class="td-shell-root__check td-is-hidden"><i class="td-shell-icon td-shell-icon--check fa-solid fa-check" aria-hidden="true"></i></span>
+    </a><a class="td-shell-root__item td-is-active td-section-tint" href="/blog/" style="--td-section-light:#6d28d9;--td-section-dark:#a78bfa" aria-current="page">
+      <span class="td-shell-root__icon"><i class="fa-solid fa-blog" aria-hidden="true"></i></span>
+      <span class="td-shell-root__meta">
+        <span class="td-shell-root__item-title">Blog</span>
+        <span class="td-shell-root__item-desc">OINK engineering stories, immersive guides, and release notes</span>
+      </span>
+      <span class="td-shell-root__check"><i class="td-shell-icon td-shell-icon--check fa-solid fa-check" aria-hidden="true"></i></span>
+    </a><a class="td-shell-root__item td-section-tint" href="/docs/" style="--td-section-light:#245f94;--td-section-dark:#5da2dd">
+      <span class="td-shell-root__icon"><i class="fa-solid fa-book" aria-hidden="true"></i></span>
+      <span class="td-shell-root__meta">
+        <span class="td-shell-root__item-title">Docs</span>
+        <span class="td-shell-root__item-desc">OINK is a documentation theme that needs nothing but Hugo Extended — components are written in Markdown, assets ship with the theme, both languages work out of the box, and one source produces four outputs.</span>
+      </span>
+      <span class="td-shell-root__check td-is-hidden"><i class="td-shell-icon td-shell-icon--check fa-solid fa-check" aria-hidden="true"></i></span>
+    </a>
+  </div>
+</div>
+  </div>
+  <div class="td-shell-sidebar__viewport" data-td-shell-sidebar-scroll>
+    <div id="td-sidebar-menu" class="td-shell-tree-wrap">
+  <nav class="td-shell-tree" id="td-section-nav" aria-label="Section navigation"
+      data-td-sidebar-icon-policy="groups" data-td-sidebar-root-id="/blog/">
+    <ul class="td-shell-tree__list td-shell-tree__list--0">
+      <li class="td-shell-tree__item td-has-child td-shell-tree__item--root"
+      id="m-blog-li">
+    <div class="td-shell-tree__row td-shell-tree__row--root">
+      <a href="/blog/" title="Blog"
+        class="td-shell-tree__link"
+        id="m-blog"><i class="fa-solid fa-blog" aria-hidden="true"></i><span>Blog</span></a>
+      
+    </div><div id="m-blog-children" class="td-shell-tree__children td-shell-tree__children--static">
+        <div class="td-shell-tree__children-inner">
+          <ul class="td-shell-tree__list td-shell-tree__list--1"><li class="td-shell-tree__item td-has-child"
+      id="m-blogrelease-li">
+    <div class="td-shell-tree__row">
+      <a href="/blog/release/" title="Oink Release Notes"
+        class="td-shell-tree__link"
+        id="m-blogrelease"><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i><span>Releases</span></a>
+      <button type="button" class="td-shell-tree__chevron" data-td-shell-tree-toggle
+        aria-expanded="true" aria-controls="m-blogrelease-children"
+        aria-label="Collapse section: Releases"
+        data-td-label-expand="Expand section: Releases"
+        data-td-label-collapse="Collapse section: Releases"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></button>
+    </div><div id="m-blogrelease-children" class="td-shell-tree__children td-is-open">
+        <div class="td-shell-tree__children-inner">
+          <ul class="td-shell-tree__list td-shell-tree__list--2"><li class="td-shell-tree__item td-leaf"
+      id="m-blogrelease080-li">
+    <div class="td-shell-tree__row">
+      <a href="/blog/release/0.8.0/" title="Oink 0.8.0 — A whole section in one fetch, the sidebar as data, and who links here"
+        class="td-shell-tree__link"
+        id="m-blogrelease080"><span>Oink v0.8.0</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-blogrelease071-li">
+    <div class="td-shell-tree__row">
+      <a href="/blog/release/0.7.1/" title="Oink 0.7.1 — Nothing leaves the page, and bad input stops breaking builds"
+        class="td-shell-tree__link"
+        id="m-blogrelease071"><span>Oink v0.7.1</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-blogrelease070-li">
+    <div class="td-shell-tree__row">
+      <a href="/blog/release/0.7.0/" title="Oink 0.7.0 — A theme color, one typographic voice, and diagrams you can read"
+        class="td-shell-tree__link"
+        id="m-blogrelease070"><span>Oink v0.7.0</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-blogrelease060-li">
+    <div class="td-shell-tree__row">
+      <a href="/blog/release/0.6.0/" title="Oink 0.6.0 — Immersive blogs, safer builds, smaller internals"
+        class="td-shell-tree__link"
+        id="m-blogrelease060"><span>Oink v0.6.0</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-blogrelease050-li">
+    <div class="td-shell-tree__row">
+      <a href="/blog/release/0.5.0/" title="Oink 0.5.0 — Component API v5 and the converged configuration"
+        class="td-shell-tree__link"
+        id="m-blogrelease050"><span>Oink v0.5.0</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-blogrelease040-li">
+    <div class="td-shell-tree__row">
+      <a href="/blog/release/0.4.0/" title="Oink 0.4.0 — Scenario components for complete publishing workflows"
+        class="td-shell-tree__link"
+        id="m-blogrelease040"><span>Oink v0.4.0</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-blogrelease030-li">
+    <div class="td-shell-tree__row">
+      <a href="/blog/release/0.3.0/" title="Oink 0.3.0 — Authoring, navigation, and a lighter page"
+        class="td-shell-tree__link"
+        id="m-blogrelease030"><span>Oink v0.3.0</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-blogrelease020-li">
+    <div class="td-shell-tree__row">
+      <a href="/blog/release/0.2.0/" title="Oink 0.2.0 — Richer content and sharper presentation"
+        class="td-shell-tree__link"
+        id="m-blogrelease020"><span>Oink v0.2.0</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-blogrelease010-li">
+    <div class="td-shell-tree__row">
+      <a href="/blog/release/0.1.0/" title="Oink 0.1.0 — A stable local-first foundation"
+        class="td-shell-tree__link"
+        id="m-blogrelease010"><span>Oink v0.1.0</span></a>
+      
+    </div>
+  </li></ul>
+        </div>
+      </div>
+  </li><li class="td-shell-tree__item td-has-child"
+      id="m-blogoink-li">
+    <div class="td-shell-tree__row">
+      <a href="/blog/oink/" title="Oink Blog"
+        class="td-shell-tree__link"
+        id="m-blogoink"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i><span>Oink</span></a>
+      <button type="button" class="td-shell-tree__chevron" data-td-shell-tree-toggle
+        aria-expanded="true" aria-controls="m-blogoink-children"
+        aria-label="Collapse section: Oink"
+        data-td-label-expand="Expand section: Oink"
+        data-td-label-collapse="Collapse section: Oink"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></button>
+    </div><div id="m-blogoink-children" class="td-shell-tree__children td-is-open">
+        <div class="td-shell-tree__children-inner">
+          <ul class="td-shell-tree__list td-shell-tree__list--2"><li class="td-shell-tree__item td-leaf"
+      id="m-blogoinkimmersive-reading-li">
+    <div class="td-shell-tree__row">
+      <a href="/blog/oink/immersive-reading/" title="Immersive reading on the Blog shell"
+        class="td-shell-tree__link"
+        id="m-blogoinkimmersive-reading"><span>Immersive reading</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-blogoinkoink-announcement-li">
+    <div class="td-shell-tree__row">
+      <a href="/blog/oink/oink-announcement/" title="Introducing the OINK implementation preview"
+        class="td-shell-tree__link"
+        id="m-blogoinkoink-announcement"><span>Introducing OINK</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-blogoinkoink-implementation-diary-li">
+    <div class="td-shell-tree__row">
+      <a href="/blog/oink/oink-implementation-diary/" title="OINK implementation diary: from copied shells to one theme"
+        class="td-shell-tree__link"
+        id="m-blogoinkoink-implementation-diary"><span>OINK implementation diary</span></a>
+      
+    </div>
+  </li></ul>
+        </div>
+      </div>
+  </li></ul>
+        </div>
+      </div>
+  </li>
+    </ul>
+  </nav>
+</div>
+    <div class="td-shell-sidebar__aside" data-td-shell-aside-slot hidden></div>
+  </div>
+  <div class="td-shell-sidebar__resizer" data-td-shell-resizer aria-hidden="true"></div>
+</div>
+
+        </aside>
+        <div class="td-shell-drawer-backdrop d-md-none d-print-none" data-td-shell-drawer-close></div>
+        <div class="td-shell-float d-print-none">
+  <button type="button" class="td-shell-iconbtn" data-td-shell-sidebar-toggle
+    title="Expand sidebar" aria-label="Expand sidebar"><i class="td-shell-icon td-shell-icon--panel-left fa-solid fa-table-columns" aria-hidden="true"></i></button>
+</div>
+
+        <main id="td-main-content" class="td-shell-main" tabindex="-1">
+          <article class="td-shell-article">
+            
+            <div class="td-shell-topline td-shell-topline--actions-only">
+              
+              <span class="td-shell-topline__spacer"></span>
+              <div class="td-page-actions d-print-none" data-td-page-actions data-td-page-context
+  data-td-t-copied="Markdown copied" data-td-t-copy-error="Could not copy Markdown">
+  <div class="td-page-actions__group">
+    <button type="button" class="td-page-actions__primary" data-td-action="copy_markdown" data-td-url="/case/pgsty-com/index.md"
+      title="Copy Markdown" aria-label="Copy Markdown">
+      <span class="td-page-actions__icon"><i class="td-shell-icon td-shell-icon--copy fa-regular fa-copy" aria-hidden="true"></i></span>
+      <span class="td-page-actions__icon td-page-actions__icon--done"><i class="td-shell-icon td-shell-icon--check fa-solid fa-check" aria-hidden="true"></i></span>
+    </button>
+    <button type="button" class="td-page-actions__toggle"
+      data-td-page-actions-toggle aria-expanded="false" aria-controls="td-page-actions-menu"
+      title="Actions" aria-label="Actions"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i>
+    </button>
+  </div>
+  <ul class="td-page-actions__menu" id="td-page-actions-menu" data-td-page-actions-menu
+    aria-label="Actions">
+    <li><button type="button" class="td-page-actions__item" data-td-action="copy_markdown" data-td-url="/case/pgsty-com/index.md">
+      <i class="fa-regular fa-copy" aria-hidden="true"></i><span>Copy Markdown</span>
+    </button></li>
+    <li><a class="td-page-actions__item" data-td-action="open_chatgpt" data-td-page-open-in="chatgpt"
+      href="https://chatgpt.com/?hints=search&amp;prompt=Read&#43;from&#43;http%3A%2F%2Flocalhost%3A1313%2Fcase%2Fpgsty-com%2F&#43;so&#43;I&#43;can&#43;ask&#43;questions&#43;about&#43;it." target="_blank" rel="noopener noreferrer">
+      <i class="fa-brands fa-openai" aria-hidden="true"></i><span>Open in ChatGPT</span>
+    </a></li>
+    <li><a class="td-page-actions__item" data-td-action="open_claude" data-td-page-open-in="claude"
+      href="https://claude.ai/new?q=Read&#43;from&#43;http%3A%2F%2Flocalhost%3A1313%2Fcase%2Fpgsty-com%2F&#43;so&#43;I&#43;can&#43;ask&#43;questions&#43;about&#43;it." target="_blank" rel="noopener noreferrer">
+      <i class="fa-brands fa-claude" aria-hidden="true"></i><span>Open in Claude</span>
+    </a></li>
+    <li><a class="td-page-actions__item" data-td-action="view_markdown" href="/case/pgsty-com/index.md" target="_blank" rel="noopener">
+      <i class="fa-brands fa-markdown" aria-hidden="true"></i><span>View markdown</span>
+    </a></li>
+    <li><a class="td-page-actions__item" data-td-action="view_history" href="https://github.com/pgsty/oink.pgsty.com/commits/main/content/case/pgsty-com/index.md" target="_blank" rel="noopener">
+      <i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i><span>View edit history</span>
+    </a></li>
+    <li class="td-page-actions__separator" role="separator"></li>
+    <li><a class="td-page-actions__item" data-td-action="edit_page" href="https://github.com/pgsty/oink.pgsty.com/edit/main/content/case/pgsty-com/index.md" target="_blank" rel="noopener">
+      <i class="fa-solid fa-pencil" aria-hidden="true"></i><span>Edit this page</span>
+    </a></li>
+    <li><a class="td-page-actions__item" data-td-action="create_child_page" href="https://github.com/pgsty/oink.pgsty.com/new/main/content/case/pgsty-com?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60get-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank" rel="noopener">
+      <i class="fa-solid fa-file-circle-plus" aria-hidden="true"></i><span>Create child page</span>
+    </a></li>
+    <li><a class="td-page-actions__item" data-td-action="create_issue" href="https://github.com/pgsty/oink.pgsty.com/issues/new?title=pgsty.com" target="_blank" rel="noopener">
+      <i class="fa-solid fa-circle-question" aria-hidden="true"></i><span>Create docs issue</span>
+    </a></li>
+    <li><a class="td-page-actions__item" data-td-action="create_project_issue" href="https://github.com/pgsty/oink/issues/new" target="_blank" rel="noopener">
+      <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i><span>Create project issue</span>
+    </a></li>
+    <li><a class="td-page-actions__item" data-td-action="print_section" href="/_print/case/">
+      <i class="fa-solid fa-print" aria-hidden="true"></i><span>Print entire section</span>
+    </a></li>
+  </ul>
+  <span class="visually-hidden" role="status" aria-live="polite" aria-atomic="true" data-td-page-context-status></span>
+</div>
+
+            </div>
+            
+<div class="td-content">
+		<div class="td-page-heading">
+  <h1>pgsty.com</h1>
+</div>
+
+	<div class="td-article-info"><time class="td-article-info__date" datetime="2026-08-15">2026-08-15</time> <span class="td-article-info__sep" aria-hidden="true">&middot;</span> In <a class="td-article-info__section" href="/case/">Case</a></div>
+	<header class="td-article-meta">
+		<div class="taxonomy td-taxonomy-terms-article taxo-tags" role="group" aria-label="Tags">
+  <ul class="td-taxonomy-terms">
+    <li><a class="td-badge td-badge--solid" href="http://localhost:1313/tags/landing/"><i class="fa-solid fa-tags" aria-hidden="true"></i>Landing</a></li>
+    <li><a class="td-badge td-badge--solid" href="http://localhost:1313/tags/bilingual/"><i class="fa-solid fa-tags" aria-hidden="true"></i>Bilingual</a></li>
+    <li><a class="td-badge td-badge--solid" href="http://localhost:1313/tags/corporate/"><i class="fa-solid fa-tags" aria-hidden="true"></i>Corporate</a></li>
+    </ul>
+</div>
+
+</header>
+	<div class="lead">PGSTY: the company behind Pigsty. A small bilingual corporate site that uses OINK primarily as a data-driven landing-page system.</div>
+	<p><a href="https://pgsty.com/">pgsty.com</a> is the bilingual corporate site behind Pigsty.
+It has only about ten pages: a <code>type: home</code> front page assembled from
+<code>data/home/{en,zh}.yaml</code>, followed by focused pages for solutions, company
+information, and pricing.</p>
+<h2 id="what-it-demonstrates">What it demonstrates<a class="td-heading-self-link" href="#what-it-demonstrates" aria-label="Link to this heading"></a>
+</h2>
+<ul>
+<li>Using OINK as a landing-page theme with almost no documentation tree.</li>
+<li>Maintaining compact English and Chinese marketing pages as peers.</li>
+<li>Building the home-page narrative from reusable data sections.</li>
+</ul>
+<p>This pattern is appropriate when a project wants OINK&rsquo;s brand, navigation,
+search, and multilingual conventions but primarily needs a small public-facing
+site rather than a manual.</p>
+<p>→ <a href="/docs/customize/home/">Home and landing pages</a> · <a href="/case/">All OINK cases</a></p>
+
+	<div class="td-page-end">
+  
+<section class="td-share d-print-none" data-td-share data-td-page-context
+  data-td-t-copied="Link copied" data-td-t-copy-error="Could not copy the link">
+  <div class="td-share__items" role="group" aria-label="Share">
+    <button type="button" class="td-share__item td-share__item--copy"
+      data-td-action="copy_link" data-td-url="http://localhost:1313/case/pgsty-com/"
+      title="Copy link" aria-label="Copy link">
+      <span class="td-share__icon"><i class="fa-solid fa-link" aria-hidden="true"></i></span>
+      <span class="td-share__icon td-share__icon--done"><i class="td-shell-icon td-shell-icon--check fa-solid fa-check" aria-hidden="true"></i></span>
+    </button>
+  </div>
+  <span class="visually-hidden" role="status" aria-live="polite" aria-atomic="true" data-td-page-context-status></span>
+</section>
+
+  
+  <section class="td-page-annotation" data-td-page-annotation aria-label="Page information">
+  
+<div class="td-page-meta__footer">
+  <div class="td-page-meta__item td-page-meta__lastmod">
+    <span class="td-page-meta__icon"><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i></span>
+    <span>Last modified 2026-08-22 &middot; <a data-proofer-ignore href="https://github.com/pgsty/oink.pgsty.com/commit/1728d99fadb359ef25bbedeca398432ce6023488">give every case a screenshot and rebuild the case surfaces (1728d99)</a></span>
+  </div>
+</div>
+
+</section>
+  
+  
+</div>
+</div>
+
+
+          </article>
+        </main>
+        <aside class="td-shell-toc d-print-none" aria-label="Content">
+  <div class="td-shell-toc__panel">
+    
+    <div class="td-shell-aside" data-td-shell-aside>
+      <div class="td-shell-aside-group td-shell-aside-group--toc">
+        <div class="td-shell-aside-group__row"><button type="button" class="td-shell-aside-group__rail-toggle" data-td-shell-right-toggle
+            title="Hide table of contents" aria-label="Hide table of contents"><i class="td-shell-icon td-shell-icon--menu fa-solid fa-bars" aria-hidden="true"></i></button>
+          <button type="button" class="td-shell-tree__row td-shell-aside-group__head"
+            data-td-shell-tree-toggle data-td-shell-aside-keep-open
+            aria-expanded="true" aria-controls="td-shell-aside-toc"
+            aria-label="Collapse section: Content"
+            data-td-label-expand="Expand section: Content"
+            data-td-label-collapse="Collapse section: Content"><span class="td-shell-aside-group__icon td-shell-aside-group__icon--toc" aria-hidden="true"><i class="td-shell-icon td-shell-icon--menu fa-solid fa-bars" aria-hidden="true"></i></span>
+            <span class="td-shell-aside-group__title">Content</span>
+            <span class="td-shell-tree__chevron" aria-hidden="true"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></span>
+          </button>
+        </div>
+        <div id="td-shell-aside-toc" class="td-shell-tree__children td-is-open">
+          <div class="td-shell-tree__children-inner">
+            <div class="td-shell-toc__inner" data-proofer-ignore>
+  <div class="td-shell-toc__body" id="td-shell-toc-body">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-it-demonstrates">What it demonstrates</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+          </div>
+        </div>
+      </div>
+      <div class="td-shell-aside-group td-shell-backlinks">
+  <button type="button" class="td-shell-tree__row td-shell-aside-group__head"
+    data-td-shell-tree-toggle data-td-shell-aside-keep-open
+    aria-expanded="true" aria-controls="td-shell-backlinks-children"
+    aria-label="Collapse section: Backlinks"
+    data-td-label-expand="Expand section: Backlinks"
+    data-td-label-collapse="Collapse section: Backlinks">
+    <span class="td-shell-aside-group__icon" aria-hidden="true"><i class="td-shell-icon td-shell-icon--link fa-solid fa-link" aria-hidden="true"></i></span>
+    <span class="td-shell-aside-group__title">Backlinks</span>
+    <span class="td-shell-tree__chevron" aria-hidden="true"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></span>
+  </button>
+  <div id="td-shell-backlinks-children" class="td-shell-tree__children td-is-open">
+    <div class="td-shell-tree__children-inner">
+      <ul class="td-shell-backlinks__list">
+        <li class="td-shell-backlinks__item"><a href="/docs/about/showcase/" title="Find the OINK production case closest to your documentation, book, landing page, or interactive tool.">Cases</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+</aside>
+<div class="td-shell-toc-float d-print-none">
+  <button type="button" class="td-shell-iconbtn" data-td-shell-right-toggle
+    title="Show table of contents" aria-label="Show table of contents"><i class="td-shell-icon td-shell-icon--menu fa-solid fa-bars" aria-hidden="true"></i></button>
+</div>
+      </div>
+      <footer class="td-shell-footline d-print-none" data-td-shell-footer>
+  <div class="td-shell-footline__copy"><span class="td-footer__copyright">&copy; 2026
+    <span class="td-footer__authors"><a href="https://vonng.com/en">Ruohang Feng</a> (<a href="https://github.com/Vonng">@Vonng</a>) @ <a href="https://pgsty.com/">PGSTY</a>, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a></span>
+  </span><span class="td-footer__all_rights_reserved">All Rights Reserved</span></div>
+  <div class="td-shell-footline__center">Powered by <a href="https://oink.pgsty.com">Oink</a></div>
+  <div class="td-shell-footline__right">
+    <div class="td-shell-footline__version">
+      <div class="td-version-menu dropdown dropup td-version-menu--icon-only" data-td-version-menu>
+  <button class="td-version-menu__title" type="button" data-bs-toggle="dropdown"
+    aria-haspopup="true" aria-expanded="false" aria-label="v0.8.0"><i class="td-shell-icon td-shell-icon--code-branch fa-solid fa-code-branch" aria-hidden="true"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-up"><li>
+          <span class="dropdown-item disabled dropdown-item-text"><strong>Versions</strong></span></li><li>
+          <a class="dropdown-item active dropdown-item-latest" aria-current="page"
+            href="https://oink.pgsty.com">v0.8.0</a></li>
+  </ul>
+</div>
+
+    </div>
+    <div class="td-language-selector td-language-selector--menu td-shell-footline__language">
+  <a class="td-language-selector__trigger" href="/zh/case/pgsty-com/"
+    lang="zh-CN" hreflang="zh-CN" dir="ltr"
+    title="Switch language: 简体中文"
+    aria-label="Switch language: 简体中文" aria-haspopup="true" aria-expanded="false"><i class="td-shell-icon td-shell-icon--languages fa-solid fa-language" aria-hidden="true"></i>
+    <span>简体中文</span>
+  </a>
+  <ul aria-label="Choose language">
+    <li>
+      <span class="td-language-selector__item active" lang="en-US" dir="ltr" aria-current="page">English</span>
+    </li>
+    <li>
+      <a class="td-language-selector__item" href="/zh/case/pgsty-com/" lang="zh-CN" hreflang="zh-CN" dir="ltr">简体中文</a>
+    </li>
+  </ul>
+</div>
+    <div class="td-shell-footline__theme td-nav-hover-menu" data-td-nav-hover>
+      <button type="button" class="td-shell-iconbtn" data-td-nav-hover-trigger data-td-theme-toggle
+        title="Toggle color theme" aria-label="Toggle color theme" aria-expanded="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i></button>
+      <div class="td-nav-hover-menu__pop" role="group" aria-label="Toggle color theme">
+        <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="light" aria-pressed="false"><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i><span>Light</span>
+        </button>
+        <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="dark" aria-pressed="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><span>Dark</span>
+        </button>
+        <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="auto" aria-pressed="false"><i class="td-shell-icon td-shell-icon--contrast fa-solid fa-circle-half-stroke" aria-hidden="true"></i><span>System</span>
+        </button>
+      </div>
+    </div>
+    <div class="td-shell-keyboard td-nav-hover-menu" data-td-nav-hover>
+  <button type="button" class="td-shell-iconbtn td-shell-keyboard__trigger"
+    data-td-nav-hover-trigger data-td-nav-hover-open
+    title="Keyboard shortcuts" aria-label="Keyboard shortcuts"
+    aria-expanded="false"><i class="td-shell-icon td-shell-icon--circle-question fa-solid fa-circle-question" aria-hidden="true"></i></button>
+  <div class="td-nav-hover-menu__pop td-shell-keyboard-help" role="group"
+    aria-label="Keyboard shortcuts">
+    <div class="td-shell-keyboard-help__header"><i class="td-shell-icon td-shell-icon--circle-question fa-solid fa-circle-question" aria-hidden="true"></i><strong>Keyboard shortcuts</strong>
+    </div>
+    <section class="td-shell-keyboard-help__section" aria-labelledby="td-shell-shortcuts-navigation">
+      <p class="td-shell-keyboard-help__section-title" id="td-shell-shortcuts-navigation">Section navigation</p>
+      <dl>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>W</kbd><kbd>S</kbd><kbd>↑</kbd><kbd>↓</kbd></span></dt>
+          <dd>Move through sidebar</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>A</kbd><kbd>D</kbd><kbd>←</kbd><kbd>→</kbd></span></dt>
+          <dd>Collapse or expand section</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>Enter</kbd><kbd>G</kbd></span></dt>
+          <dd>Open focused page</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>J</kbd><kbd>K</kbd></span></dt>
+          <dd>Previous or next heading</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>Q</kbd><kbd>E</kbd></span></dt>
+          <dd>Previous or next page</dd>
+        </div>
+      </dl>
+    </section>
+    <section class="td-shell-keyboard-help__section" aria-labelledby="td-shell-shortcuts-actions">
+      <p class="td-shell-keyboard-help__section-title" id="td-shell-shortcuts-actions">Actions</p>
+      <dl>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>/</kbd><kbd>F</kbd></span></dt>
+          <dd>Search</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>\</kbd><kbd>C</kbd></span></dt>
+          <dd>Command palette</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>H</kbd></span></dt>
+          <dd>Reading mode</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>L</kbd><kbd>Y</kbd></span></dt>
+          <dd>Switch language</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>T</kbd></span></dt>
+          <dd>Switch theme</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>R</kbd></span></dt>
+          <dd>Cycle top-level pages</dd>
+        </div>
+      </dl>
+    </section>
+  </div>
+</div>
+  </div>
+</footer>
+    </div>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"Copy Markdown","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["Copy Markdown","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Copy Markdown","url":"/case/pgsty-com/index.md"},{"available":true,"description":"Copy link","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["Copy link","Share","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"Copy link","url":"http://localhost:1313/case/pgsty-com/"},{"available":true,"description":"Open in ChatGPT","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["Open in ChatGPT","Ask about this page","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in ChatGPT","url":"https://chatgpt.com/?hints=search\u0026prompt=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fcase%2Fpgsty-com%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"Open in Claude","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["Open in Claude","Ask about this page","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in Claude","url":"https://claude.ai/new?q=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fcase%2Fpgsty-com%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"View markdown","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["View markdown","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View markdown","url":"/case/pgsty-com/index.md"},{"available":true,"description":"View edit history","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["View edit history","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View edit history","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/case/pgsty-com/index.md"},{"available":true,"description":"Edit this page","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["Edit this page","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Edit this page","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/case/pgsty-com/index.md"},{"available":true,"description":"Create child page","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["Create child page","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create child page","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/case/pgsty-com?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"Create docs issue","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["Create docs issue","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create docs issue","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=pgsty.com"},{"available":true,"description":"Create project issue","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["Create project issue","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create project issue","url":"https://github.com/pgsty/oink/issues/new"},{"available":true,"description":"Print entire section","disabledReason":"","icon":"fa-solid fa-print","id":"print_section","keywords":["Print entire section","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Print entire section","url":"/_print/case/"},{"available":true,"description":"Print this page","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["Print this page","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"Print this page","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL required","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"Switch language","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["Switch language","language"],"kind":"choice","options":[{"active":true,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/case/pgsty-com/"},{"active":false,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/case/pgsty-com/"}],"placements":{"page":false,"palette":true},"target":"self","title":"Switch language","url":""},{"available":true,"description":"Toggle color theme","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["Toggle color theme","Light","Dark"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"System","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"Light","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"Dark","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"Toggle color theme","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"Report or review theme and documentation issues","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["bug","support","roadmap"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK issues","url":"https://github.com/pgsty/oink/issues"}],"language":"en","quickLinks":[{"available":true,"description":"OINK is a documentation theme that needs nothing but Hugo Extended — components are written in Markdown, assets ship with the theme, both languages work out of the box, and one source produces four outputs.","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["Docs","docs"],"kind":"url","target":"self","title":"Docs","url":"/docs/"},{"available":true,"description":"OINK engineering stories, immersive guides, and release notes","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["Blog","blog"],"kind":"url","target":"self","title":"Blog","url":"/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+
+<script src="/js/actions.js"></script>
+<script src="/js/core.js"></script>
+  <div id="td-shell-search" class="td-shell-search" hidden
+     data-td-index-src="/offline-search-index.en.json"
+     data-td-max-results="10"
+     data-td-t-empty="No results found"
+     data-td-t-loading="Loading search index…"
+     data-td-t-results="{count} results found"
+     data-td-t-actions="Actions"
+     data-td-t-page-actions="Page actions"
+     data-td-t-preferences="Preferences"
+     data-td-t-commands="Commands"
+     data-td-t-quick-links="Quick links"
+     data-td-t-no-commands="No matching commands"
+     data-td-t-choice="Choose an option"
+     data-td-t-action-failed="Action could not be completed"
+     data-td-t-index-unavailable="Page index unavailable; actions still work"
+     data-td-t-pages="Pages">
+  <div class="td-shell-search__backdrop" data-td-shell-search-close></div>
+  <div class="td-shell-search__panel" role="dialog" aria-modal="true" aria-label="Search…">
+    <div class="td-shell-search__head">
+      <i class="td-shell-icon td-shell-icon--search fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input type="search" class="td-shell-search__input" placeholder="Search…"
+             autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+             role="combobox" aria-autocomplete="list" aria-haspopup="listbox"
+             aria-controls="td-shell-search-results" aria-expanded="false"
+             aria-label="Search…" enterkeyhint="go">
+      <button type="button" class="td-shell-search__esc" data-td-shell-search-close
+        aria-label="Close">
+        <kbd>esc</kbd>
+      </button>
+    </div>
+    <div id="td-shell-search-results" class="td-shell-search__list" role="listbox"
+      aria-label="Search…"></div>
+    <div class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"
+      data-td-shell-search-status></div>
+    <div class="td-shell-search__foot" aria-hidden="true">
+      <span><kbd>↑</kbd><kbd>↓</kbd> Navigate</span>
+      <span><kbd>↵</kbd> Open</span>
+      <span><kbd>esc</kbd> Close</span>
+    </div>
+  </div>
+</div><script src="/js/chunks/shell.js"></script><script src="/js/chunks/keyboard.js"></script><script src="/js/chunks/local-search.js"></script><script src="/js/chunks/dark-mode.js"></script>
+  </body>
+</html>

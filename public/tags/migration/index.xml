@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Migration on OINK</title>
+    <link>http://localhost:1313/tags/migration/</link>
+    <description>Recent content in Migration on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Sat, 22 Aug 2026 16:32:18 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/tags/migration/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>silo.pgsty.com</title>
+        <link>http://localhost:1313/case/silo/</link>
+        <pubDate>Wed, 12 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/silo/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://silo.pgsty.com/&#34;&gt;silo.pgsty.com&lt;/a&gt; documents SILO, an S3-compatible&#xA;object store. The case snapshot counted 411 pages per language. A migration&#xA;manifest covering 387 upstream pages generates &lt;code&gt;data/docs_nav.json&lt;/code&gt;, which then&#xA;drives the documentation sidebar. The site also has module taxonomy and a&#xA;download page.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Migrating a large upstream manual without flattening its information design.&lt;/li&gt;&#xA;&lt;li&gt;Generating navigation from a checked manifest instead of hand-maintaining it.&lt;/li&gt;&#xA;&lt;li&gt;Layering local bilingual content, taxonomy, and downloads around imported docs.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Use this pattern when the upstream corpus remains authoritative but the local&#xA;site needs its own navigation, language peers, and product surfaces.&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

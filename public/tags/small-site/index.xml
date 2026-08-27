@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Small Site on OINK</title>
+    <link>http://localhost:1313/tags/small-site/</link>
+    <description>Recent content in Small Site on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Sat, 22 Aug 2026 16:32:18 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/tags/small-site/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>caps.vonng.com</title>
+        <link>http://localhost:1313/case/capslock/</link>
+        <pubDate>Mon, 10 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/capslock/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://caps.vonng.com/&#34;&gt;caps.vonng.com&lt;/a&gt; is a two-page-per-language&#xA;site for the Capslock keyboard enhancement: a home page and an interactive&#xA;configuration generator. The generator reads &lt;code&gt;data/capslock-v3.json&lt;/code&gt; and uses&#xA;a custom &lt;code&gt;customizer&lt;/code&gt; shell type alongside the regular documentation shell.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The practical lower bound of an OINK site: a tiny project needs no front-end&#xA;application just to publish a tool and its introduction.&lt;/li&gt;&#xA;&lt;li&gt;Extending the shell registry for one purpose-built interactive page.&lt;/li&gt;&#xA;&lt;li&gt;Keeping generator data separate from its presentation and bilingual prose.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Use this pattern when documentation is small but one interactive tool deserves&#xA;the same navigation, theme, and language controls as the rest of the site.&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

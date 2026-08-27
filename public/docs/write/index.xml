@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authoring on OINK</title>
+    <link>http://localhost:1313/docs/write/</link>
+    <description>Recent content in Authoring on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Thu, 27 Aug 2026 16:59:53 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/docs/write/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>Writing pages</title>
+        <link>http://localhost:1313/docs/write/pages/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/write/pages/</guid>
+        <description>&lt;p&gt;This page covers writing a documentation page end to end: where the file goes,&#xA;the front matter, heading anchors, links, images, drafts, and the page end. It&#xA;assumes the site already builds locally; if it does not yet, start with&#xA;&lt;a href=&#34;http://localhost:1313/docs/start/&#34;&gt;Quick start&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;new-page&#34;&gt;Creating a page&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;A page is a Markdown file under &lt;code&gt;content/&lt;/code&gt;, and its URL follows its position&#xA;there: &lt;code&gt;content/docs/install.md&lt;/code&gt; is published as &lt;code&gt;/docs/install/&lt;/code&gt;. The Chinese&#xA;translation is a &lt;code&gt;.zh.md&lt;/code&gt; file of the same name in the same directory, sharing&#xA;one logical path with the English page.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Organizing content</title>
+        <link>http://localhost:1313/docs/write/organize/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/write/organize/</guid>
+        <description>&lt;p&gt;OINK needs no separate navigation configuration: the directory structure under&#xA;&lt;code&gt;content/&lt;/code&gt; is the sidebar tree. This page covers how directories and files are&#xA;arranged, section indexes, ordering, icons, folding, hiding, and multiple&#xA;sidebar roots.&lt;/p&gt;&#xA;&lt;h2 id=&#34;tree-is-sidebar&#34;&gt;Directories are the sidebar&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;A directory is a section (Hugo&amp;rsquo;s term), the Markdown files inside it are its&#xA;pages, and a nested directory is a subsection. The sidebar renders that tree&#xA;level by level, ordered by &lt;code&gt;weight&lt;/code&gt;, labelled with &lt;code&gt;linkTitle&lt;/code&gt; and falling back&#xA;to &lt;code&gt;title&lt;/code&gt;. The tree on the left comes from this source:&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Page parameters</title>
+        <link>http://localhost:1313/docs/write/frontmatter/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/write/frontmatter/</guid>
+        <description>&lt;p&gt;This page is the complete table of page-level parameters, listing only the keys&#xA;the OINK theme reads. Keys the theme reads solely to warn that they were&#xA;renamed or removed are not listed here — they are in&#xA;&lt;a href=&#34;http://localhost:1313/docs/design/migration/&#34;&gt;Migration&lt;/a&gt;, and they are also kept out of the&#xA;generated editor schema. Hugo&amp;rsquo;s own front matter fields (&lt;code&gt;slug&lt;/code&gt;, &lt;code&gt;url&lt;/code&gt;, &lt;code&gt;build&lt;/code&gt;,&#xA;&lt;code&gt;sitemap&lt;/code&gt;, &lt;code&gt;expiryDate&lt;/code&gt; and the rest) work as usual; their meaning is in the&#xA;&lt;a href=&#34;https://gohugo.io/content-management/front-matter/&#34;&gt;Hugo documentation&lt;/a&gt;. Site&#xA;parameters (&lt;code&gt;params.*&lt;/code&gt; in &lt;code&gt;hugo.yml&lt;/code&gt;) are in&#xA;&lt;a href=&#34;http://localhost:1313/docs/customize/config/&#34;&gt;Configuration&lt;/a&gt;.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Blog posts</title>
+        <link>http://localhost:1313/docs/write/blog/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/write/blog/</guid>
+        <description>&lt;p&gt;A blog post&amp;rsquo;s body is written exactly like a documentation page; the shell is&#xA;what differs. A post carries a date, an author, tags and a featured image, the&#xA;list is grouped by year newest first, and the section has an RSS feed. This page&#xA;covers creating the blog section, a post&amp;rsquo;s front matter, featured images, list&#xA;pagination and feeds.&lt;/p&gt;&#xA;&lt;h2 id=&#34;layout&#34;&gt;The blog directory&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;A blog is a section under &lt;code&gt;content/&lt;/code&gt;, and &lt;code&gt;type: blog&lt;/code&gt; gives it the blog shell.&#xA;Subdirectories divide it by publisher and audience, with posts sitting flat&#xA;inside. Do not create year directories: the year grouping is generated by the&#xA;list page.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Books</title>
+        <link>http://localhost:1313/docs/write/book/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/write/book/</guid>
+        <description>&lt;p&gt;A book is a content tree of &lt;code&gt;type: book&lt;/code&gt;: the directory decides chapter order,&#xA;front matter decides chapter numbers, and figures, tables, equations and&#xA;examples each carry a hand-written number and a stable anchor. Cross-references&#xA;resolve in all four outputs, and the book&amp;rsquo;s root page can generate a&#xA;whole-book print HTML.&lt;/p&gt;&#xA;&lt;p&gt;Two prerequisites: the site&amp;rsquo;s &lt;code&gt;markup.goldmark&lt;/code&gt; has attribute lines and&#xA;passthrough enabled (see &lt;a href=&#34;http://localhost:1313/docs/components/&#34;&gt;Components&lt;/a&gt;); and&#xA;&lt;code&gt;params.ui.shell_types&lt;/code&gt; still contains &lt;code&gt;book&lt;/code&gt; (the theme default includes it).&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Releases and downloads</title>
+        <link>http://localhost:1313/docs/write/releases/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/write/releases/</guid>
+        <description>&lt;p&gt;OINK keeps release facts in two local places: a &lt;code&gt;release_url&lt;/code&gt; in a page&amp;rsquo;s&#xA;front matter names the GitHub release this page is about, and&#xA;&lt;code&gt;data/download/&amp;lt;key&amp;gt;.yaml&lt;/code&gt; says how to install it. Release cards, asset tables, download blocks and index pages all&#xA;derive from those two. Nothing contacts GitHub at build time, and nothing claims&#xA;a tag or an asset already exists.&lt;/p&gt;&#xA;&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;This page carries demonstration release facts&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;Its front matter holds a &lt;code&gt;release_url&lt;/code&gt; (OINK v0.4.0), and the card, asset&#xA;table and download block below are really rendered. The checksums and asset&#xA;filenames are fabricated: the URLs are derived locally from the repository and&#xA;the tag, the files they point at do not exist in any real release, and the&#xA;hashes here must not be used to verify anything.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>API reference pages</title>
+        <link>http://localhost:1313/docs/write/openapi/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/write/openapi/</guid>
+        <description>&lt;p&gt;An API reference page is one OpenAPI specification plus one shortcode. The&#xA;Swagger UI and Redoc runtimes ship with the theme (versions 5.32.13 and 2.5.3&#xA;respectively, per the repository&amp;rsquo;s &lt;code&gt;VENDOR.json&lt;/code&gt;), load only on a page that uses&#xA;them in its HTML output, and reach no external service at build time or in the&#xA;browser. Swagger UI&amp;rsquo;s online validator is pinned off (&lt;code&gt;validatorUrl: null&lt;/code&gt;), so&#xA;a published API page never sends its specification address anywhere.&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

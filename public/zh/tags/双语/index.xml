@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>双语 on OINK</title>
+    <link>http://localhost:1313/zh/tags/%E5%8F%8C%E8%AF%AD/</link>
+    <description>Recent content in 双语 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Sat, 22 Aug 2026 16:32:18 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/tags/%E5%8F%8C%E8%AF%AD/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>pgsty.com</title>
+        <link>http://localhost:1313/zh/case/pgsty-com/</link>
+        <pubDate>Sat, 15 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/pgsty-com/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pgsty.com/&#34;&gt;pgsty.com&lt;/a&gt; 是 Pigsty 背后的双语公司站，总共只有十来个&#xA;页面：首页使用 &lt;code&gt;type: home&lt;/code&gt;，由 &lt;code&gt;data/home/{en,zh}.yaml&lt;/code&gt; 组装，其余则是&#xA;解决方案、公司信息与价格等聚焦单页。&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;它展示了什么&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;几乎不建文档树，也能把 OINK 用作落地页主题。&lt;/li&gt;&#xA;&lt;li&gt;把紧凑的中英文营销页面作为对等内容维护。&lt;/li&gt;&#xA;&lt;li&gt;从可复用数据分区搭建首页叙事。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;如果项目希望沿用 OINK 的品牌、导航、搜索与多语言约定，但主要需要的是小型&#xA;公开站而不是手册，可以采用这一模式。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>silo.pgsty.com</title>
+        <link>http://localhost:1313/zh/case/silo/</link>
+        <pubDate>Wed, 12 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/silo/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://silo.pgsty.com/&#34;&gt;silo.pgsty.com&lt;/a&gt; 是 S3 兼容对象存储 SILO 的文档站。&#xA;本案例快照中每种语言各有四百一十一页。覆盖 387 个上游页面的迁移清单生成&#xA;&lt;code&gt;data/docs_nav.json&lt;/code&gt;，再由它驱动文档侧栏；站点还提供模块分类法与下载页。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>caps.vonng.com</title>
+        <link>http://localhost:1313/zh/case/capslock/</link>
+        <pubDate>Mon, 10 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/capslock/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://caps.vonng.com/&#34;&gt;caps.vonng.com&lt;/a&gt; 是 Capslock 键盘增强方案的&#xA;小站，每种语言只有两个页面：首页与交互式配置生成器。生成器读取&#xA;&lt;code&gt;data/capslock-v3.json&lt;/code&gt;，并在常规文档外壳之外使用自定义 &lt;code&gt;customizer&lt;/code&gt; 外壳。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>pig.pgsty.com</title>
+        <link>http://localhost:1313/zh/case/pig/</link>
+        <pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/pig/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pig.pgsty.com/&#34;&gt;pig.pgsty.com&lt;/a&gt; 是 PostgreSQL 扩展包管理器 PIG 的&#xA;文档站。核心手册刻意保持紧凑——本案例快照中每种语言十八页——同时用五十篇&#xA;双语博客承载动态、教程与深入说明，首页则由 &lt;code&gt;data/home&lt;/code&gt; 组装。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>sow.pgsty.com</title>
+        <link>http://localhost:1313/zh/case/sow/</link>
+        <pubDate>Sat, 08 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/sow/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://sow.pgsty.com/&#34;&gt;sow.pgsty.com&lt;/a&gt; 记录 APT 与 YUM 仓库管理器 SOW。&#xA;本案例快照中每种语言各有五十五页，并提供独立下载页；版本、标签与发布产物&#xA;都由结构化发布数据生成。&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;它展示了什么&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;以中等体量维护双语运维文档。&lt;/li&gt;&#xA;&lt;li&gt;给下载内容独立类型，而不是把链接散落在正文里。&lt;/li&gt;&#xA;&lt;li&gt;复用发布数据，让软件包元数据只有一个事实来源。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;如果软件面向多个平台分发大量产物，并且安装说明、软件源与下载信息需要同步&#xA;演进，可以采用这一模式。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>exp.pgsty.com</title>
+        <link>http://localhost:1313/zh/case/pg-exporter/</link>
+        <pubDate>Fri, 07 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/pg-exporter/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://exp.pgsty.com/&#34;&gt;exp.pgsty.com&lt;/a&gt; 是 PostgreSQL Prometheus 指标采集器&#xA;PG Exporter 的文档站。本案例快照中每种语言各十五页，另有三十七篇双语博客；&#xA;生成导航、首页数据与结构化指标目录承担了主要的信息组织工作。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>tpme.vonng.com</title>
+        <link>http://localhost:1313/zh/case/tpme/</link>
+        <pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/tpme/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://tpme.vonng.com/&#34;&gt;tpme.vonng.com&lt;/a&gt; 以中英文发布 &lt;em&gt;The Product-Minded&#xA;Engineer&lt;/em&gt;，本案例快照中每种语言各十八章。它把支持的页面外壳收窄为 &lt;code&gt;[book]&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;它展示了什么&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;只有一种内容模型、完全不需要文档外壳的出版物。&lt;/li&gt;&#xA;&lt;li&gt;共享视觉与导航体系的双语章节对等页。&lt;/li&gt;&#xA;&lt;li&gt;比多版本 DDIA 站更精简的 Book 实现。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;对于单本教程或译著，这是更清晰的起点：先把站点架构保持精简，再按手稿需要&#xA;逐步加入编号与索引。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>pgsty.pro</title>
+        <link>http://localhost:1313/zh/case/pgsty-pro/</link>
+        <pubDate>Sun, 02 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/pgsty-pro/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pgsty.pro/&#34;&gt;pgsty.pro&lt;/a&gt; 用中英文记录 Pigsty v5。本案例快照中，每种&#xA;语言各有三百四十三页文档，另有六十七篇双语博客。它最突出的部分是版本档案：&#xA;128 个本地化页面通过可复用的 &lt;code&gt;release-card&lt;/code&gt; 组件渲染版本数据。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

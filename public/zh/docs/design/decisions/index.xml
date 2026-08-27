@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>设计决策 on OINK</title>
+    <link>http://localhost:1313/zh/docs/design/decisions/</link>
+    <description>Recent content in 设计决策 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Thu, 27 Aug 2026 12:58:07 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/docs/design/decisions/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>警告与安全回退</title>
+        <link>http://localhost:1313/zh/docs/design/decisions/diagnostics/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/decisions/diagnostics/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;决策&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;OINK 不调用 Hugo 的 &lt;code&gt;errorf&lt;/code&gt;。作者或站点输入无效时，主题发出警告，并使用文档中&#xA;明确的安全回退，或者省略无效片段。版本发布与部署构建使用 &lt;code&gt;--panicOnWarning&lt;/code&gt;，&#xA;因此同一条警告在发布门禁中仍会导致硬失败。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>配置模型</title>
+        <link>http://localhost:1313/zh/docs/design/decisions/configuration/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/decisions/configuration/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;决策&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;OINK 保留 Hugo 原生键与仍有价值的 Docsy 兼容键，把主题呈现和行为放在&#xA;&lt;code&gt;params.ui.*&lt;/code&gt; 下，并用同名的顶层 front matter 键提供页面覆盖。它不增加&#xA;&lt;code&gt;params.oink.*&lt;/code&gt; 配置树，也不建立一套遮蔽 Hugo 配置模型的注册表。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Markdown 优先创作</title>
+        <link>http://localhost:1313/zh/docs/design/decisions/authoring/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/decisions/authoring/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;决策&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;Goldmark 能保留目标语义时，优先提供原生 Markdown 形态。只有原生形态无法表达真实能力时，&#xA;才保留 shortcode。新增内容场景时延长既有外壳和数据模型，不另建一套并行渲染系统。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>生成式配置 Schema</title>
+        <link>http://localhost:1313/zh/docs/design/decisions/config-schema/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/decisions/config-schema/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;决策&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;&lt;code&gt;schema/&lt;/code&gt; 下的两份 JSON Schema 由 &lt;code&gt;bin/generate-config-schema.py&lt;/code&gt; 从主题的&#xA;&lt;code&gt;hugo.yaml&lt;/code&gt; 与模板读取点投影生成，手工编辑无法通过 CI。Schema 是既有权威的&#xA;只读投影，不是第三个配置权威。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;context&#34;&gt;背景&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;主题已有两个配置权威：&lt;code&gt;hugo.yaml&lt;/code&gt; 在注释旁声明每个默认值；&lt;code&gt;check-params.py&lt;/code&gt;&#xA;的读取点扫描知道模板实际消费的每一个键。编辑器对两者一无所知，作者只能凭记忆&#xA;敲 &lt;code&gt;params.ui.*&lt;/code&gt; 和 front matter。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,875 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" dir="ltr" lang="zh-CN" data-td-typography="technical" data-td-theme-init>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#000000">
+
+<style>
+  html { background: Canvas; color: CanvasText; }
+  @media (prefers-color-scheme: dark) {
+    html { background: #0b0d12; color: #e6e6e6; }
+  }
+  html[data-td-theme-init] * { transition: none !important; }
+  [data-td-theme-toggle] > .td-shell-icon--sun { display: none !important; }
+  [data-td-theme-toggle] > [hidden] { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--moon { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--sun { display: inline-block !important; }
+</style>
+
+<script>
+  (function() {
+    const themeKey = 'td-color-theme';
+    let storedTheme = null;
+    try {
+      storedTheme = localStorage.getItem(themeKey);
+    } catch (_) {
+      
+      
+    }
+    let theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+    if (theme === 'auto') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    document.documentElement.classList.toggle('dark-mode', theme === 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<link rel="canonical" type="text/html" href="http://localhost:1313/zh/case/">
+<link rel="alternate" type="application/rss&#43;xml" href="http://localhost:1313/zh/case/index.xml">
+<link rel="alternate" type="text/markdown" href="http://localhost:1313/zh/case/index.md">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<title>OINK 案例 | OINK</title>
+<meta name="description" content="十五个真实站点展示 OINK 如何覆盖两页小工具、多语言文档群与三本书籍。">
+<link rel="canonical" href="http://localhost:1313/zh/case/">
+<link rel="alternate" hreflang="en-US" href="http://localhost:1313/case/">
+<link rel="alternate" hreflang="zh-CN" href="http://localhost:1313/zh/case/">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="http://localhost:1313/zh/case/">
+  <meta property="og:site_name" content="OINK">
+  <meta property="og:title" content="OINK 案例">
+  <meta property="og:description" content="十五个真实站点展示 OINK 如何覆盖两页小工具、多语言文档群与三本书籍。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+    <meta property="og:image" content="http://localhost:1313/images/case.svg">
+
+  <meta itemprop="name" content="OINK 案例">
+  <meta itemprop="description" content="十五个真实站点展示 OINK 如何覆盖两页小工具、多语言文档群与三本书籍。">
+  <meta itemprop="dateModified" content="2026-08-23T23:39:43+08:00">
+  <meta itemprop="wordCount" content="46">
+  <meta itemprop="image" content="http://localhost:1313/images/case.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/images/case.svg">
+  <meta name="twitter:title" content="OINK 案例">
+  <meta name="twitter:description" content="十五个真实站点展示 OINK 如何覆盖两页小工具、多语言文档群与三本书籍。">
+<link href="/scss/fontawesome.css" rel="stylesheet">
+<link href="/scss/main.css" rel="stylesheet">
+
+  </head>
+  <body class="td-section td-blog td-print-view">
+    <a class="td-skip-link d-print-none" href="#td-main-content">跳转到主要内容</a>
+
+    
+<div class="td-navbar-autohide" data-td-navbar-autohide>
+<header class="td-site-header d-print-none" data-td-header>
+  <div class="td-site-container">
+    <nav class="td-site-nav" aria-label="主导航">
+      <a href="/zh/" class="td-nav-brand" data-td-navbar-route
+         aria-label="OINK — 首页">
+        <img src="/icons/logo.svg" alt="" class="td-nav-logo" width="22" height="22">
+        <span class="td-nav-title">OINK</span>
+      </a><div class="td-nav-links td-nav-menu-zone"><div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link" href="/zh/docs/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="文档"
+  data-td-navbar-region="desktop" data-td-navbar-label="文档"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-docs-0" aria-expanded="false">
+  <i class="fa-solid fa-book" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">文档</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-docs-0" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/zh/docs/about/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="简介"
+  data-td-navbar-region="desktop" data-td-navbar-label="简介"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">简介</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/start/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="快速上手"
+  data-td-navbar-region="desktop" data-td-navbar-label="快速上手"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">快速上手</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/write/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="创作内容"
+  data-td-navbar-region="desktop" data-td-navbar-label="创作内容"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">创作内容</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/components/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="组件"
+  data-td-navbar-region="desktop" data-td-navbar-label="组件"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-cubes" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">组件</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/customize/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="定制站点"
+  data-td-navbar-region="desktop" data-td-navbar-label="定制站点"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">定制站点</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/admin/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="维护管理"
+  data-td-navbar-region="desktop" data-td-navbar-label="维护管理"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">维护管理</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/design/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="设计契约"
+  data-td-navbar-region="desktop" data-td-navbar-label="设计契约"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-compass-drafting" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">设计契约</span></a>
+
+  </div>
+</div><a class="nav-link" href="/zh/book/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="教程"
+  data-td-navbar-region="desktop" data-td-navbar-label="教程"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">教程</span></a>
+<a class="nav-link active" href="/zh/case/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="案例"
+  data-td-navbar-region="desktop" data-td-navbar-label="案例"
+  data-td-navbar-external="false" aria-current="page">
+  <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">案例</span></a>
+<div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link active" href="/zh/blog/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="博客"
+  data-td-navbar-region="desktop" data-td-navbar-label="博客"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-blog-3" aria-expanded="false">
+  <i class="fa-solid fa-blog" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">博客</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-blog-3" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/zh/blog/oink/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="OINK 工程实践"
+  data-td-navbar-region="desktop" data-td-navbar-label="OINK 工程实践"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">OINK 工程实践</span></a>
+<a class="td-nav-menu__item-link" href="/zh/blog/release/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="版本发布"
+  data-td-navbar-region="desktop" data-td-navbar-label="版本发布"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">版本发布</span></a>
+
+  </div>
+</div>
+      </div><div class="td-nav-links td-nav-util-zone">
+        <div class="td-nav-hover-menu td-nav-version-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-nav-hover-open
+            title="v0.8.0" aria-label="v0.8.0" aria-expanded="false"><i class="td-shell-icon td-shell-icon--code-branch fa-solid fa-code-branch" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="v0.8.0">
+            <span class="td-nav-hover-menu__option td-is-disabled"><strong>Versions</strong></span>
+            <a class="td-nav-hover-menu__option td-is-active" aria-current="page" href="https://oink.pgsty.com">v0.8.0</a>
+          </div>
+        </div>
+          <div class="td-language-selector td-language-selector--menu td-nav-util td-site-nav__language">
+  <a class="td-language-selector__trigger" href="/case/"
+    lang="en-US" hreflang="en-US" dir="ltr"
+    title="切换语言: English"
+    aria-label="切换语言: English" aria-haspopup="true" aria-expanded="false">
+    <i class="fa-solid fa-language" aria-hidden="true"></i>
+    <span>English</span>
+  </a>
+  <ul aria-label="选择语言">
+    <li>
+      <a class="td-language-selector__item" href="/case/" lang="en-US" hreflang="en-US" dir="ltr">English</a>
+    </li>
+    <li>
+      <span class="td-language-selector__item active" lang="zh-CN" dir="ltr" aria-current="page">简体中文</span>
+    </li>
+  </ul>
+</div><div class="td-nav-hover-menu td-nav-theme-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-theme-toggle
+            title="切换配色" aria-label="切换配色" aria-expanded="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="切换配色">
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="light" aria-pressed="false"><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i><span>亮色</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="dark" aria-pressed="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><span>暗色</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="auto" aria-pressed="false"><i class="td-shell-icon td-shell-icon--contrast fa-solid fa-circle-half-stroke" aria-hidden="true"></i><span>跟随系统</span>
+            </button>
+          </div>
+        </div>
+        <a href="https://github.com/pgsty/oink" class="td-nav-github" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="td-shell-icon td-shell-icon--github fa-brands fa-github" aria-hidden="true"></i></a>
+      </div>
+    </nav>
+  </div>
+</header>
+</div>
+
+    <div class="container-fluid td-print-shell">
+      <main id="td-main-content" class="td-print-document" tabindex="-1">
+        
+
+
+
+
+<div class="td-content">
+<div class="td-page-notice td-page-notice--primary d-print-none">
+<p>
+这是本节的多页打印视图。
+<button type="button" class="btn btn-link p-0 align-baseline" data-td-action="print">点击此处打印</button>.
+</p><p>
+<a href="/zh/case/">返回本页常规视图</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">OINK 案例</h1>
+<div class="lead">十五个真实站点展示 OINK 如何覆盖两页小工具、多语言文档群与三本书籍。</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+  
+  
+
+  
+    
+    
+    <li>
+1: <a href="#pg-1787271df4d5518d7a8c76f92482dab8">pgsty.com</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+2: <a href="#pg-408b92135dbfbe2f214e9fa7f1dcc30d">pigsty.cc</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+3: <a href="#pg-a391f3e5a07bf584fa09f97e4cd6d4be">pigsty.io</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+4: <a href="#pg-f63bc914ddcc9c782a16b1172dcd2eba">silo.pgsty.com</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+5: <a href="#pg-f8398a3c5d0ae83ab235bcebd3de6059">oink.pgsty.com</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+6: <a href="#pg-35f26961d29a4db35d84bab4de5e7249">caps.vonng.com</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+7: <a href="#pg-a328d7228063c5b2829c0850adcb797e">pig.pgsty.com</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+8: <a href="#pg-1f13c524692b4fe3ab492c16cfa92979">sow.pgsty.com</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+9: <a href="#pg-66e7c0c7804b75e957e0b7b742b257e9">exp.pgsty.com</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+10: <a href="#pg-73c5bb19373a8cda93a3799e7932a4ce">ddia.vonng.com</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+11: <a href="#pg-81edb7158c6f19e4000965934f4c8b77">tpme.vonng.com</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+12: <a href="#pg-e7e1f3c416e6f455f75d05ecb68cd9ff">pgint.vonng.com</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+13: <a href="#pg-ad67b7687471ca62eb50f338968f01e1">pgsql.cc</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+14: <a href="#pg-5201adf47282c99a57fe6154fb1f5ceb">pgsty.pro</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+15: <a href="#pg-1b4d428b924eee03c32f5f65d85ee3e3">ext.pgsty.com</a>
+
+
+    </li>
+  
+
+    </ul>
+<div class="content">
+      <p>十五个生产环境站点，从两页的小工具到多语言文档体系与三本书。
+每张卡片都会打开对应的线上站点。</p>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-1787271df4d5518d7a8c76f92482dab8">1 - pgsty.com</h1>
+    <div class="lead">PGSTY: the company behind Pigsty. A small bilingual corporate site that uses OINK primarily as a data-driven landing-page system.</div>
+	<p><a href="https://pgsty.com/">pgsty.com</a> 是 Pigsty 背后的双语公司站，总共只有十来个
+页面：首页使用 <code>type: home</code>，由 <code>data/home/{en,zh}.yaml</code> 组装，其余则是
+解决方案、公司信息与价格等聚焦单页。</p>
+<h2 id="pg-1787271df4d5518d7a8c76f92482dab8--what-it-demonstrates">它展示了什么
+</h2>
+<ul>
+<li>几乎不建文档树，也能把 OINK 用作落地页主题。</li>
+<li>把紧凑的中英文营销页面作为对等内容维护。</li>
+<li>从可复用数据分区搭建首页叙事。</li>
+</ul>
+<p>如果项目希望沿用 OINK 的品牌、导航、搜索与多语言约定，但主要需要的是小型
+公开站而不是手册，可以采用这一模式。</p>
+<p>→ <a href="/zh/docs/customize/home/">首页与落地页</a> · <a href="/zh/case/">全部 OINK 案例</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-408b92135dbfbe2f214e9fa7f1dcc30d">2 - pigsty.cc</h1>
+    <div class="lead">PIGSTY: the Chinese home of the open-source PostgreSQL distribution. Deployed as an independent single-language site so a very large translation corpus evolves on its own.</div>
+	<p><a href="https://pigsty.cc/">pigsty.cc</a> 以简体中文发布 Pigsty。本案例记录的快照有
+一千四百九十多个内容文件、三百多篇博客，并拥有独立的数据驱动价格页，
+中文也是站点的默认语言。</p>
+<h2 id="pg-408b92135dbfbe2f214e9fa7f1dcc30d--what-it-demonstrates">它展示了什么
+</h2>
+<ul>
+<li>把体量很大的双语语料拆成两个独立部署的单语站。</li>
+<li>通过替代站点入口与版本菜单连接中英文站。</li>
+<li>让每种语言拥有独立的发布节奏与落地页数据。</li>
+</ul>
+<p>这一模式牺牲同域语言切换，换来更清晰的维护边界和更小的构建规模。两种语言
+都已经是完整产品，而不是零星翻译时，尤其适用。</p>
+<p>→ <a href="/zh/docs/customize/i18n/">多语言配置</a> · <a href="/zh/case/pigsty-io/">pigsty.io 案例</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-a391f3e5a07bf584fa09f97e4cd6d4be">3 - pigsty.io</h1>
+    <div class="lead">PIGSTY: the English home of the open-source PostgreSQL distribution. A large site combining a distribution manual, editorial blog, extension catalogue and pricing landing pages.</div>
+	<p><a href="https://pigsty.io/">pigsty.io</a> 是开源 PostgreSQL 发行版 Pigsty 的英文主站。
+本案例记录的快照包含一千四百多个 Markdown 文件、两百多篇博客、扩展目录，
+以及由数据驱动的价格页面。</p>
+<h2 id="pg-a391f3e5a07bf584fa09f97e4cd6d4be--what-it-demonstrates">它展示了什么
+</h2>
+<ul>
+<li>在同一个 Hugo 站点中组织大型文档树与编辑型博客。</li>
+<li>把目录内容与结构化数据分开维护。</li>
+<li>用 <code>layout: landing</code> 和 <code>data/landing</code> 组装价格页。</li>
+<li>用分类法与版本菜单连接同系列站点和历史版本。</li>
+</ul>
+<p>当一个英文优先的站点需要同时承载参考手册、动态内容、目录与商业落地页时，
+可以采用这一模式。</p>
+<p>→ <a href="/zh/docs/customize/home/">首页与落地页</a> · <a href="/zh/case/">全部 OINK 案例</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-f63bc914ddcc9c782a16b1172dcd2eba">4 - silo.pgsty.com</h1>
+    <div class="lead">SILO: the community-maintained MinIO fork for S3-compatible object storage. A large bilingual migration whose checked manifest generates the documentation navigation.</div>
+	<p><a href="https://silo.pgsty.com/">silo.pgsty.com</a> 是 S3 兼容对象存储 SILO 的文档站。
+本案例快照中每种语言各有四百一十一页。覆盖 387 个上游页面的迁移清单生成
+<code>data/docs_nav.json</code>，再由它驱动文档侧栏；站点还提供模块分类法与下载页。</p>
+<h2 id="pg-f63bc914ddcc9c782a16b1172dcd2eba--what-it-demonstrates">它展示了什么
+</h2>
+<ul>
+<li>迁移大型上游手册，同时保留原有信息结构。</li>
+<li>从受检查的清单生成导航，避免手工维护整棵目录树。</li>
+<li>在导入文档外叠加本地双语内容、分类与下载界面。</li>
+</ul>
+<p>当上游语料仍是权威来源，而本地站需要自己的导航、语言对等页和产品界面时，
+可以采用这一模式。</p>
+<p>→ <a href="/zh/docs/customize/navigation/">导航定制</a> · <a href="/zh/case/">全部 OINK 案例</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-f8398a3c5d0ae83ab235bcebd3de6059">5 - oink.pgsty.com</h1>
+    <div class="lead">OINK: the Hugo theme every site in this library is built with. Public manual, design reference, component gallery and regression fixture in one repository.</div>
+	<p><a href="https://oink.pgsty.com/">oink.pgsty.com</a> 就是你正在阅读的站点。它既是主题的
+公开手册，也是真实的回归消费站：组件页面会渲染可运行示例；同一个仓库还
+承载设计契约、Book 夹具、下载数据，以及首页和落地页数据。</p>
+<h2 id="pg-f8398a3c5d0ae83ab235bcebd3de6059--what-it-demonstrates">它展示了什么
+</h2>
+<ul>
+<li>文档示例本身就是可执行回归夹具，而不是截图。</li>
+<li>一个站点同时服务用户、内容作者、主题开发者与评审者。</li>
+<li>组件、Docs、Blog、Book、Case、下载与落地页等界面协同存在。</li>
+<li>针对固定的 Hugo Module 依赖检查双语内容。</li>
+</ul>
+<p>可以把这个仓库当作完整参考实现；如果新站只需要一两种 OINK 内容模型，
+则从更聚焦的案例开始。</p>
+<p>→ <a href="/zh/docs/components/">组件画廊</a> · <a href="/zh/docs/design/">设计契约</a> · <a href="/zh/case/">全部案例</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-35f26961d29a4db35d84bab4de5e7249">6 - caps.vonng.com</h1>
+    <div class="lead">CapsLock: turn the most useless key on the keyboard into a fifth modifier. A two-page project site whose second page is a data-driven interactive configurator.</div>
+	<p><a href="https://caps.vonng.com/">caps.vonng.com</a> 是 Capslock 键盘增强方案的
+小站，每种语言只有两个页面：首页与交互式配置生成器。生成器读取
+<code>data/capslock-v3.json</code>，并在常规文档外壳之外使用自定义 <code>customizer</code> 外壳。</p>
+<h2 id="pg-35f26961d29a4db35d84bab4de5e7249--what-it-demonstrates">它展示了什么
+</h2>
+<ul>
+<li>OINK 站点的实用规模下限：小项目无需为一个工具和简介搭建前端应用。</li>
+<li>为单个专用交互页面扩展外壳注册表。</li>
+<li>把生成器数据与界面、双语说明分开维护。</li>
+</ul>
+<p>当文档很少，但一个交互工具仍需要与全站共享导航、主题与语言控制时，可以
+采用这一模式。</p>
+<p>→ <a href="/zh/docs/customize/layout/">布局配置</a> · <a href="/zh/case/">全部 OINK 案例</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-a328d7228063c5b2829c0850adcb797e">7 - pig.pgsty.com</h1>
+    <div class="lead">PIG: the package manager that installs any PostgreSQL extension. A compact bilingual product manual with a data-driven home page and an active companion blog.</div>
+	<p><a href="https://pig.pgsty.com/">pig.pgsty.com</a> 是 PostgreSQL 扩展包管理器 PIG 的
+文档站。核心手册刻意保持紧凑——本案例快照中每种语言十八页——同时用五十篇
+双语博客承载动态、教程与深入说明，首页则由 <code>data/home</code> 组装。</p>
+<h2 id="pg-a328d7228063c5b2829c0850adcb797e--what-it-demonstrates">它展示了什么
+</h2>
+<ul>
+<li>为聚焦型命令行产品设计浅层、以单文件为主的文档树。</li>
+<li>在不重复设计导航的前提下维护中英文对等页面。</li>
+<li>让数据驱动首页与体量更大的博客内容流配合使用。</li>
+</ul>
+<p>当参考手册小而稳定，但产品动态、教程与版本背景需要持续增长时，可以采用
+这一模式。</p>
+<p>→ <a href="/zh/docs/start/anatomy/">文档仓库结构</a> · <a href="/zh/case/">全部 OINK 案例</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-1f13c524692b4fe3ab492c16cfa92979">8 - sow.pgsty.com</h1>
+    <div class="lead">SOW: the repository manager that builds and mirrors APT and YUM software repositories. A bilingual operations manual with a download surface fed by release metadata.</div>
+	<p><a href="https://sow.pgsty.com/">sow.pgsty.com</a> 记录 APT 与 YUM 仓库管理器 SOW。
+本案例快照中每种语言各有五十五页，并提供独立下载页；版本、标签与发布产物
+都由结构化发布数据生成。</p>
+<h2 id="pg-1f13c524692b4fe3ab492c16cfa92979--what-it-demonstrates">它展示了什么
+</h2>
+<ul>
+<li>以中等体量维护双语运维文档。</li>
+<li>给下载内容独立类型，而不是把链接散落在正文里。</li>
+<li>复用发布数据，让软件包元数据只有一个事实来源。</li>
+</ul>
+<p>如果软件面向多个平台分发大量产物，并且安装说明、软件源与下载信息需要同步
+演进，可以采用这一模式。</p>
+<p>→ <a href="/zh/docs/write/releases/">发布与下载页</a> · <a href="/zh/case/">全部 OINK 案例</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-66e7c0c7804b75e957e0b7b742b257e9">9 - exp.pgsty.com</h1>
+    <div class="lead">PG Exporter: the Prometheus metrics exporter for PostgreSQL and Pgbouncer. A bilingual manual combining generated navigation, a structured catalogue and system typography.</div>
+	<p><a href="https://exp.pgsty.com/">exp.pgsty.com</a> 是 PostgreSQL Prometheus 指标采集器
+PG Exporter 的文档站。本案例快照中每种语言各十五页，另有三十七篇双语博客；
+生成导航、首页数据与结构化指标目录承担了主要的信息组织工作。</p>
+<h2 id="pg-66e7c0c7804b75e957e0b7b742b257e9--what-it-demonstrates">它展示了什么
+</h2>
+<ul>
+<li>在规模不大但顺序明确的手册中使用 <code>data/docs_nav.json</code>。</li>
+<li>从结构化数据渲染领域目录，避免在正文中反复复制。</li>
+<li>需要避免请求品牌字体时，选择 <code>typography: system</code>。</li>
+</ul>
+<p>当技术产品的参考数据与叙述型文档同样重要，尤其希望字体栈更轻量时，可以
+采用这一模式。</p>
+<p>→ <a href="/zh/docs/customize/brand/">字体与品牌</a> · <a href="/zh/case/">全部 OINK 案例</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-73c5bb19373a8cda93a3799e7932a4ce">10 - ddia.vonng.com</h1>
+    <div class="lead">DDIA: the Chinese edition of Designing Data-Intensive Applications. A multilingual book site and the largest proving ground for OINK numbering, cross-references and indexes.</div>
+	<p><a href="https://ddia.vonng.com/">ddia.vonng.com</a> 以多语言书籍形式发布《设计数据密集型
+应用》。本案例快照包含简体与繁体中文各二十四章、第二版英文二十三章，以及
+第一版的两套二十一章内容。</p>
+<h2 id="pg-73c5bb19373a8cda93a3799e7932a4ce--what-it-demonstrates">它展示了什么
+</h2>
+<ul>
+<li>带章节级导航的完整 <code>type: book</code> 阅读外壳。</li>
+<li>一百三十多处图、表、公式与示例编号目标。</li>
+<li>跨多个版本保持稳定的交叉引用和生成式书籍索引。</li>
+<li>在同一出版物中承载多种书面语言变体。</li>
+</ul>
+<p>如果长篇内容更看重编号、引用与章节间移动，而不是文档式侧栏，可以采用
+这一模式。</p>
+<p>→ <a href="/zh/docs/write/book/">创作书籍</a> · <a href="/zh/case/">全部 OINK 案例</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-81edb7158c6f19e4000965934f4c8b77">11 - tpme.vonng.com</h1>
+    <div class="lead">TPME: the Chinese edition of The Product-Minded Engineer. A focused bilingual publication that needs only OINK&rsquo;s Book shell.</div>
+	<p><a href="https://tpme.vonng.com/">tpme.vonng.com</a> 以中英文发布 <em>The Product-Minded
+Engineer</em>，本案例快照中每种语言各十八章。它把支持的页面外壳收窄为 <code>[book]</code>。</p>
+<h2 id="pg-81edb7158c6f19e4000965934f4c8b77--what-it-demonstrates">它展示了什么
+</h2>
+<ul>
+<li>只有一种内容模型、完全不需要文档外壳的出版物。</li>
+<li>共享视觉与导航体系的双语章节对等页。</li>
+<li>比多版本 DDIA 站更精简的 Book 实现。</li>
+</ul>
+<p>对于单本教程或译著，这是更清晰的起点：先把站点架构保持精简，再按手稿需要
+逐步加入编号与索引。</p>
+<p>→ <a href="/zh/docs/write/book/">创作书籍</a> · <a href="/zh/case/ddia/">DDIA 案例</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-e7e1f3c416e6f455f75d05ecb68cd9ff">12 - pgint.vonng.com</h1>
+    <div class="lead">PG Internals: the Chinese edition of PostgreSQL Internals. A single-language book site that runs the Book shell on its own, with no documentation tree beside it.</div>
+	<p><a href="https://pgint.vonng.com/">pgint.vonng.com</a> 发布《PG 技术内幕》——Hironobu
+Suzuki《The Internals of PostgreSQL》的 2018 年中文译稿。站点包含两篇序言、
+十一个章节、自动生成的目录，以及一页许可与授权说明，全部为简体中文，没有
+英文对等版本。</p>
+<h2 id="pg-e7e1f3c416e6f455f75d05ecb68cd9ff--what-it-demonstrates">它展示了什么
+</h2>
+<ul>
+<li>一个刻意保持单语的 OINK 站点：只有一棵语言树，语言切换器因为无处可切而
+自然让位。</li>
+<li>Book 外壳承载的是已完成的译稿而非持续演进的手册——章节导航、整书打印输出
+与落地页共处一站。</li>
+<li>落地页同时署名上游作者与译者，并向持续更新的英文原著给出外链。</li>
+</ul>
+<p>当文本已经定稿——完成的译稿或已出版的著作——可以采用这一模式：内容不会再
+增长，站点要做的是导览、阅读体验与如实署名，而不是变更管理。</p>
+<p>→ <a href="/zh/docs/write/book/">编写书籍</a> · <a href="/zh/case/tpme/">TPME 案例</a> · <a href="/zh/case/ddia/">DDIA 案例</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-ad67b7687471ca62eb50f338968f01e1">13 - pgsql.cc</h1>
+    <div class="lead">PGSQL.CC: an operations library for PostgreSQL and the components around it. Several upstream manuals and partially translated language trees share one search and one visual system.</div>
+	<p><a href="https://pgsql.cc/">pgsql.cc</a> 把 Patroni、HAProxy、etcd、PgBouncer、pgBackRest
+与 pgBadger 的运维手册汇总为一套 PostgreSQL 专题文库。本案例快照中有
+二百一十七页英文内容与八十页中文内容。</p>
+<h2 id="pg-ad67b7687471ca62eb50f338968f01e1--what-it-demonstrates">它展示了什么
+</h2>
+<ul>
+<li>为多个上游产品建立一致的本地信息架构。</li>
+<li>英文先发布、中文覆盖逐步增长。</li>
+<li>不强求翻译完全对等，也能让现有译文及时可用。</li>
+<li>用子树在汇编站中保留清晰的产品边界。</li>
+</ul>
+<p>当技术文库的来源与翻译成熟度各不相同，但读者需要统一搜索与视觉体系时，
+可以采用这一模式。</p>
+<p>→ <a href="/zh/docs/customize/i18n/">多语言配置</a> · <a href="/zh/case/">全部 OINK 案例</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-5201adf47282c99a57fe6154fb1f5ceb">14 - pgsty.pro</h1>
+    <div class="lead">PIGSTY PRO: the enterprise edition of Pigsty. A bilingual documentation and release archive built around reusable, structured release records.</div>
+	<p><a href="https://pgsty.pro/">pgsty.pro</a> 用中英文记录 Pigsty v5。本案例快照中，每种
+语言各有三百四十三页文档，另有六十七篇双语博客。它最突出的部分是版本档案：
+128 个本地化页面通过可复用的 <code>release-card</code> 组件渲染版本数据。</p>
+<h2 id="pg-5201adf47282c99a57fe6154fb1f5ceb--what-it-demonstrates">它展示了什么
+</h2>
+<ul>
+<li>无需手工维护每张卡片，也能让长期产品历史清晰可查。</li>
+<li>在下载页、版本档案与详情页之间共享结构化发布数据。</li>
+<li>让文档与编辑型内容保持中英文对等。</li>
+</ul>
+<p>如果产品拥有许多在役或历史版本，并且多个页面都要展示一致的发布元数据，
+可以采用这一模式。</p>
+<p>→ <a href="/zh/docs/write/releases/">发布与下载页</a> · <a href="/zh/case/">全部 OINK 案例</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-1b4d428b924eee03c32f5f65d85ee3e3">15 - ext.pgsty.com</h1>
+    <div class="lead">PGEXT: the PostgreSQL extension catalog. 2,241 extensions indexed and 576 packaged, searchable across 16 Linux platforms and 5 major versions.</div>
+	<p><a href="https://ext.pgsty.com/">ext.pgsty.com</a> 是 PostgreSQL 扩展目录：可以按扩展、
+包family、依赖，以及每个扩展可用的 PostgreSQL 与操作系统组合进行检索。目录收录
+2,241 个扩展，其中 576 个已打包，覆盖 16 个 Linux 平台与 5 个 PG 大版本。</p>
+<h2 id="pg-1b4d428b924eee03c32f5f65d85ee3e3--what-it-demonstrates">它展示了什么
+</h2>
+<ul>
+<li>把可检索的数据集作为站点的主要对象呈现，同时让阅读壳退到一边。</li>
+<li>目录与正文共处一个 OINK 站点，这与 <a href="/zh/case/pg-exporter/">PG Exporter</a> 和
+<a href="/zh/case/pigsty-io/">pigsty.io</a> 安放结构化数据的方式一致。</li>
+</ul>
+<p>→ <a href="/zh/case/pg-exporter/">PG Exporter 案例</a> · <a href="/zh/case/pigsty-io/">pigsty.io 案例</a> · <a href="/zh/case/">全部 OINK 案例</a></p>
+
+</div>
+
+
+
+    
+	
+  
+
+
+
+      </main>
+    </div>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"复制 Markdown 文本","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["复制 Markdown 文本","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"复制 Markdown 文本","url":"/zh/case/index.md"},{"available":true,"description":"复制链接","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["复制链接","分享","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"复制链接","url":"http://localhost:1313/zh/case/"},{"available":true,"description":"在 ChatGPT 中打开","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["在 ChatGPT 中打开","就本页提问","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 ChatGPT 中打开","url":"https://chatgpt.com/?hints=search\u0026prompt=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fcase%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":true,"description":"在 Claude 中打开","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["在 Claude 中打开","就本页提问","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 Claude 中打开","url":"https://claude.ai/new?q=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fcase%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":true,"description":"查阅 Markdown 源码","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["查阅 Markdown 源码","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅 Markdown 源码","url":"/zh/case/index.md"},{"available":true,"description":"查阅编辑历史","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["查阅编辑历史","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅编辑历史","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/case/_index.zh.md"},{"available":true,"description":"编辑当前页面","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["编辑当前页面","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"编辑当前页面","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/case/_index.zh.md"},{"available":true,"description":"添加子页面","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["添加子页面","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"添加子页面","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/case?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"提交文档议题","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["提交文档议题","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交文档议题","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=OINK+%E6%A1%88%E4%BE%8B"},{"available":true,"description":"提交项目议题","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["提交项目议题","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交项目议题","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"打印完整章节","disabledReason":"打印完整章节: 暂不可用","icon":"fa-solid fa-print","id":"print_section","keywords":["打印完整章节","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"打印完整章节","url":""},{"available":true,"description":"打印此页面","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["打印此页面","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"打印此页面","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL 必填","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"切换语言","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["切换语言","language"],"kind":"choice","options":[{"active":false,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/case/"},{"active":true,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/case/"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换语言","url":""},{"available":true,"description":"切换配色","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["切换配色","亮色","暗色"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"跟随系统","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"亮色","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"暗色","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换配色","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"报告或查看主题与文档问题","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["缺陷","支持","路线图"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK 问题反馈","url":"https://github.com/pgsty/oink/issues"}],"language":"zh","quickLinks":[{"available":true,"description":"OINK 是一款只需 Hugo Extended 的技术文档主题：组件写在 Markdown 里，资源随主题分发，双语开箱可用，一份内容产出四种输出。","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["文档","docs"],"kind":"url","target":"self","title":"文档","url":"/zh/docs/"},{"available":true,"description":"OINK 工程实践、沉浸式阅读指南与发布注记","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["博客","blog"],"kind":"url","target":"self","title":"博客","url":"/zh/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+
+<script src="/js/actions.js"></script>
+
+  </body>
+</html>

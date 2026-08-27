@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Introduction on OINK</title>
+    <link>http://localhost:1313/categories/introduction/</link>
+    <description>Recent content in Introduction on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Thu, 27 Aug 2026 16:59:53 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/categories/introduction/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>Highlights</title>
+        <link>http://localhost:1313/docs/about/features/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/about/features/</guid>
+        <description>&lt;p&gt;This page lists what separates OINK from an ordinary Hugo theme, each item&#xA;ending with the guide that covers it. To install straight away, see&#xA;&lt;a href=&#34;http://localhost:1313/docs/start/&#34;&gt;Quick start&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;native-components&#34;&gt;Components are written in Markdown&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;A callout is a &lt;code&gt;&amp;gt; [!NOTE]&lt;/code&gt; blockquote (ten semantic types plus one neutral&#xA;disclosure). A field list is a table with a &lt;code&gt;{.fields}&lt;/code&gt; line. Steps and cards&#xA;are lists with &lt;code&gt;{.steps}&lt;/code&gt; / &lt;code&gt;{.cards}&lt;/code&gt;. A caption is a &lt;code&gt;{caption=&amp;quot;…&amp;quot;}&lt;/code&gt; line&#xA;under an image. Tabs are adjacent fences each carrying a &lt;code&gt;{tab=&amp;quot;…&amp;quot;}&lt;/code&gt;; file&#xA;trees, galleries, Mermaid and ECharts are data fences named after their&#xA;language. On GitHub or in any plain Markdown reader these degrade to&#xA;blockquotes, tables, lists and code blocks, and nothing is lost.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>What is OINK</title>
+        <link>http://localhost:1313/docs/about/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/about/</guid>
+        <description>&lt;p&gt;OINK is a standalone &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; theme for medium and large&#xA;technical documentation sites. It evolved from&#xA;&lt;a href=&#34;https://github.com/google/docsy&#34;&gt;Docsy&lt;/a&gt;: the content model and the&#xA;multilingual behaviour are kept, while the shell, navigation, search and&#xA;content components are replaced.&lt;/p&gt;&#xA;&lt;p&gt;A consuming site&amp;rsquo;s only build dependency is one Hugo Extended binary. There is&#xA;no Node.js, no npm, no PostCSS and no CDN request. Bootstrap, Font Awesome, the&#xA;fonts, local search, the diagram runtimes and the API reference runtimes are all&#xA;committed to the theme repository and shipped only to the pages that use them.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Case Guide</title>
+        <link>http://localhost:1313/docs/about/showcase/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/about/showcase/</guid>
+        <description>&lt;p&gt;The canonical &lt;a href=&#34;http://localhost:1313/case/&#34;&gt;Case library&lt;/a&gt; turns fifteen production sites into short,&#xA;reusable implementation patterns, and the home page mirrors the same fifteen.&#xA;All of them run OINK, including this documentation site itself as a&#xA;self-referential case.&lt;/p&gt;&#xA;&lt;p&gt;Use this guide when you know the shape of the site you want to build. Follow a&#xA;case for its architecture and trade-offs, then use the linked documentation for&#xA;the exact configuration. Counts in individual cases describe the audited&#xA;snapshot rather than a permanent property of a live site.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>License and acknowledgements</title>
+        <link>http://localhost:1313/docs/about/license/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/about/license/</guid>
+        <description>&lt;p&gt;OINK is three layers of material: the theme source, the documentation content,&#xA;and the third-party assets shipped with the theme. None of them is relicensed&#xA;into a single combined work. Every table below points at the authoritative file&#xA;in the repository; &lt;strong&gt;where a summary and the licence text disagree, the file&#xA;wins&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;license-map&#34;&gt;Which licence covers what&#xA;&lt;/h2&gt;&#xA;&lt;div class=&#34;td-table-scroll td-table-scroll--static&#34;&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;th scope=&#34;col&#34;&gt;Scope&lt;/th&gt;&#xA;      &lt;th scope=&#34;col&#34;&gt;Licence&lt;/th&gt;&#xA;      &lt;th scope=&#34;col&#34;&gt;Authoritative file&lt;/th&gt;&#xA;    &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;OINK theme source (layouts, partials, shortcodes, SCSS, JS, i18n)&lt;/td&gt;&#xA;      &lt;td&gt;Apache License 2.0&lt;/td&gt;&#xA;      &lt;td&gt;Theme &lt;a href=&#34;https://github.com/pgsty/oink/blob/main/LICENSE&#34;&gt;&lt;code&gt;LICENSE&lt;/code&gt;&lt;/a&gt;, &lt;a href=&#34;https://github.com/pgsty/oink/blob/main/NOTICE&#34;&gt;&lt;code&gt;NOTICE&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;This site&amp;rsquo;s own code, build scripts and material derived from Docsy&lt;/td&gt;&#xA;      &lt;td&gt;Apache License 2.0&lt;/td&gt;&#xA;      &lt;td&gt;Site &lt;a href=&#34;https://github.com/pgsty/oink.pgsty.com/blob/main/LICENSE&#34;&gt;&lt;code&gt;LICENSE&lt;/code&gt;&lt;/a&gt;, &lt;a href=&#34;https://github.com/pgsty/oink.pgsty.com/blob/main/NOTICE&#34;&gt;&lt;code&gt;NOTICE&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;This site&amp;rsquo;s original documentation content, except where stated otherwise&lt;/td&gt;&#xA;      &lt;td&gt;Creative Commons Attribution 4.0 International&lt;/td&gt;&#xA;      &lt;td&gt;Site &lt;a href=&#34;https://github.com/pgsty/oink.pgsty.com/blob/main/LICENSE-CC-BY-4.0&#34;&gt;&lt;code&gt;LICENSE-CC-BY-4.0&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;Browser libraries, fonts and icons shipped with the theme&lt;/td&gt;&#xA;      &lt;td&gt;Each component&amp;rsquo;s own licence&lt;/td&gt;&#xA;      &lt;td&gt;Theme &lt;a href=&#34;https://github.com/pgsty/oink/blob/main/VENDOR.json&#34;&gt;&lt;code&gt;VENDOR.json&lt;/code&gt;&lt;/a&gt; and the licence files beside each asset&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;Two boundaries are worth keeping straight. CC BY 4.0 covers the original&#xA;documentation content only, not the theme code, the trademarks, the screenshots&#xA;or the third-party assets. And the theme being Apache-2.0 does not turn its&#xA;bundled dependencies into Apache-licensed works.&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

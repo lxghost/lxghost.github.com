@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>发布 on OINK</title>
+    <link>http://localhost:1313/zh/tags/%E5%8F%91%E5%B8%83/</link>
+    <description>Recent content in 发布 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Sat, 22 Aug 2026 16:32:18 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/tags/%E5%8F%91%E5%B8%83/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>pgsty.pro</title>
+        <link>http://localhost:1313/zh/case/pgsty-pro/</link>
+        <pubDate>Sun, 02 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/pgsty-pro/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pgsty.pro/&#34;&gt;pgsty.pro&lt;/a&gt; 用中英文记录 Pigsty v5。本案例快照中，每种&#xA;语言各有三百四十三页文档，另有六十七篇双语博客。它最突出的部分是版本档案：&#xA;128 个本地化页面通过可复用的 &lt;code&gt;release-card&lt;/code&gt; 组件渲染版本数据。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

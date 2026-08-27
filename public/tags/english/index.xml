@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>English on OINK</title>
+    <link>http://localhost:1313/tags/english/</link>
+    <description>Recent content in English on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Sat, 22 Aug 2026 16:32:18 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/tags/english/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>pigsty.io</title>
+        <link>http://localhost:1313/case/pigsty-io/</link>
+        <pubDate>Thu, 13 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/pigsty-io/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pigsty.io/&#34;&gt;pigsty.io&lt;/a&gt; is the English home of Pigsty, the open-source&#xA;PostgreSQL distribution. At the snapshot used for this case, it contained more&#xA;than 1,400 Markdown files, over 200 blog posts, an extension catalogue, and a&#xA;data-driven pricing page.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A large documentation tree and editorial blog living in one Hugo site.&lt;/li&gt;&#xA;&lt;li&gt;Structured catalogues whose content and data are maintained separately.&lt;/li&gt;&#xA;&lt;li&gt;A &lt;code&gt;layout: landing&lt;/code&gt; pricing page assembled from &lt;code&gt;data/landing&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;Taxonomies and a version menu that also link to sibling and historical sites.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Choose this pattern when one English-first site must serve reference material,&#xA;news, catalogues, and commercial landing pages without splitting the toolchain.&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

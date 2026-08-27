@@ -1,0 +1,1128 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" dir="ltr" lang="zh-CN" data-td-typography="technical" data-td-theme-init>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#000000">
+
+<style>
+  html { background: Canvas; color: CanvasText; }
+  @media (prefers-color-scheme: dark) {
+    html { background: #0b0d12; color: #e6e6e6; }
+  }
+  html[data-td-theme-init] * { transition: none !important; }
+  [data-td-theme-toggle] > .td-shell-icon--sun { display: none !important; }
+  [data-td-theme-toggle] > [hidden] { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--moon { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--sun { display: inline-block !important; }
+</style>
+
+<script>
+  (function() {
+    const themeKey = 'td-color-theme';
+    let storedTheme = null;
+    try {
+      storedTheme = localStorage.getItem(themeKey);
+    } catch (_) {
+      
+      
+    }
+    let theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+    if (theme === 'auto') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    document.documentElement.classList.toggle('dark-mode', theme === 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<link rel="alternate" type="text/markdown" href="http://localhost:1313/zh/blog/oink/oink-announcement/index.md">
+
+<link rel="prev" href="/zh/blog/oink/immersive-reading/">
+<link rel="next" href="/zh/blog/oink/oink-implementation-diary/"><meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<title>OINK 实现预览正式亮相 | OINK</title>
+<meta name="description" content="OINK 将直接定制的 Docsy 代码库演化为本地优先、仅依赖 Hugo 的文档主题，并提供多语言基础设施与可复用内容组件。">
+<link rel="canonical" href="http://localhost:1313/zh/blog/oink/oink-announcement/">
+<link rel="alternate" hreflang="en-US" href="http://localhost:1313/blog/oink/oink-announcement/">
+<link rel="alternate" hreflang="zh-CN" href="http://localhost:1313/zh/blog/oink/oink-announcement/">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="http://localhost:1313/zh/blog/oink/oink-announcement/">
+  <meta property="og:site_name" content="OINK">
+  <meta property="og:title" content="OINK 实现预览正式亮相">
+  <meta property="og:description" content="OINK 将直接定制的 Docsy 代码库演化为本地优先、仅依赖 Hugo 的文档主题，并提供多语言基础设施与可复用内容组件。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-08-08T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-08-20T19:29:45+08:00">
+    <meta property="article:tag" content="Oink">
+    <meta property="og:image" content="http://localhost:1313/images/oink.webp">
+      <meta property="og:see_also" content="http://localhost:1313/zh/blog/oink/oink-implementation-diary/">
+      <meta property="og:see_also" content="http://localhost:1313/zh/blog/oink/immersive-reading/">
+
+  <meta itemprop="name" content="OINK 实现预览正式亮相">
+  <meta itemprop="description" content="OINK 将直接定制的 Docsy 代码库演化为本地优先、仅依赖 Hugo 的文档主题，并提供多语言基础设施与可复用内容组件。">
+  <meta itemprop="datePublished" content="2026-08-08T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-08-20T19:29:45+08:00">
+  <meta itemprop="wordCount" content="1821">
+  <meta itemprop="image" content="http://localhost:1313/images/oink.webp">
+  <meta itemprop="keywords" content="Oink">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/images/oink.webp">
+  <meta name="twitter:title" content="OINK 实现预览正式亮相">
+  <meta name="twitter:description" content="OINK 将直接定制的 Docsy 代码库演化为本地优先、仅依赖 Hugo 的文档主题，并提供多语言基础设施与可复用内容组件。">
+<link href="/scss/fontawesome.css" rel="stylesheet">
+<link href="/scss/main.css" rel="stylesheet">
+<style>:root,[data-bs-theme=light]{--td-accent:#6d28d9;--td-accent-rgb:109,40,217;--td-accent-hover:#7f42de}[data-bs-theme=dark]{--td-accent:#a78bfa;--td-accent-rgb:167,139,250;--td-accent-hover:#baa5fb}</style>
+<script>
+  (function () {
+    var html = document.documentElement;
+    html.setAttribute('data-td-shell-no-anim', '');
+    try {
+      if (localStorage.getItem('td-shell-sidebar-collapsed') === '1'
+          && window.matchMedia('(min-width: 768px)').matches) {
+        html.setAttribute('data-td-shell-sidebar', 'collapsed');
+      }
+      var width = parseInt(localStorage.getItem('td-shell-sidebar-w'), 10);
+      if (width > 0) html.style.setProperty('--td-shell-sidebar-w', width + 'px');
+      if (localStorage.getItem('td-shell-toc-collapsed') === '1'
+          && window.matchMedia('(min-width: 1200px)').matches) {
+        html.setAttribute('data-td-shell-toc', 'collapsed');
+      }
+      var blogIndex = localStorage.getItem('td-blog-index');
+      if (blogIndex === 'cards' || blogIndex === 'list' || blogIndex === 'table') {
+        html.setAttribute('data-td-blog-index', blogIndex);
+      }
+      if (sessionStorage.getItem('td-kbd-zen') === '1') {
+        html.setAttribute('data-td-kbd-zen', '');
+      }
+    } catch (_) {}
+  })();
+</script><script defer src="/js/third_party/lunr.min.js"></script>
+
+  </head>
+  <body class="td-page td-blog td-shell-chrome td-shell-chrome--navbar">
+    <a class="td-skip-link d-print-none" href="#td-main-content">跳转到主要内容</a>
+
+    
+<header class="td-site-header d-print-none" data-td-header>
+  <div class="td-site-container">
+    <nav class="td-site-nav" aria-label="主导航">
+      <a href="/zh/" class="td-nav-brand" data-td-navbar-route
+         aria-label="OINK — 首页">
+        <img src="/icons/logo.svg" alt="" class="td-nav-logo" width="22" height="22">
+        <span class="td-nav-title">OINK</span>
+      </a><div class="td-nav-links td-nav-menu-zone"><div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link" href="/zh/docs/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="文档"
+  data-td-navbar-region="desktop" data-td-navbar-label="文档"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-docs-0" aria-expanded="false">
+  <i class="fa-solid fa-book" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">文档</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-docs-0" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/zh/docs/about/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="简介"
+  data-td-navbar-region="desktop" data-td-navbar-label="简介"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">简介</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/start/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="快速上手"
+  data-td-navbar-region="desktop" data-td-navbar-label="快速上手"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">快速上手</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/write/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="创作内容"
+  data-td-navbar-region="desktop" data-td-navbar-label="创作内容"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">创作内容</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/components/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="组件"
+  data-td-navbar-region="desktop" data-td-navbar-label="组件"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-cubes" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">组件</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/customize/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="定制站点"
+  data-td-navbar-region="desktop" data-td-navbar-label="定制站点"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">定制站点</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/admin/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="维护管理"
+  data-td-navbar-region="desktop" data-td-navbar-label="维护管理"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">维护管理</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/design/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="设计契约"
+  data-td-navbar-region="desktop" data-td-navbar-label="设计契约"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-compass-drafting" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">设计契约</span></a>
+
+  </div>
+</div><a class="nav-link" href="/zh/book/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="教程"
+  data-td-navbar-region="desktop" data-td-navbar-label="教程"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">教程</span></a>
+<a class="nav-link" href="/zh/case/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="案例"
+  data-td-navbar-region="desktop" data-td-navbar-label="案例"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">案例</span></a>
+<div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link active" href="/zh/blog/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="博客"
+  data-td-navbar-region="desktop" data-td-navbar-label="博客"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-blog-3" aria-expanded="false">
+  <i class="fa-solid fa-blog" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">博客</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-blog-3" data-td-navbar-panel hidden><a class="td-nav-menu__item-link active" href="/zh/blog/oink/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="OINK 工程实践"
+  data-td-navbar-region="desktop" data-td-navbar-label="OINK 工程实践"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">OINK 工程实践</span></a>
+<a class="td-nav-menu__item-link" href="/zh/blog/release/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="版本发布"
+  data-td-navbar-region="desktop" data-td-navbar-label="版本发布"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">版本发布</span></a>
+
+  </div>
+</div>
+      </div><div class="td-nav-links td-nav-util-zone">
+        <button type="button" class="td-nav-search-box" data-td-shell-search-open
+          title="搜索…" aria-label="搜索…"
+          aria-controls="td-shell-search" aria-expanded="false"><i class="td-shell-icon td-shell-icon--search fa-solid fa-magnifying-glass" aria-hidden="true"></i><span class="td-nav-search-box__hint">搜索…</span>
+          <kbd class="td-nav-search-box__kbd" aria-hidden="true">/</kbd>
+        </button>
+        <div class="td-nav-hover-menu td-nav-version-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-nav-hover-open
+            title="v0.8.0" aria-label="v0.8.0" aria-expanded="false"><i class="td-shell-icon td-shell-icon--code-branch fa-solid fa-code-branch" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="v0.8.0">
+            <span class="td-nav-hover-menu__option td-is-disabled"><strong>Versions</strong></span>
+            <a class="td-nav-hover-menu__option td-is-active" aria-current="page" href="https://oink.pgsty.com">v0.8.0</a>
+          </div>
+        </div>
+          <div class="td-language-selector td-language-selector--menu td-nav-util td-site-nav__language">
+  <a class="td-language-selector__trigger" href="/blog/oink/oink-announcement/"
+    lang="en-US" hreflang="en-US" dir="ltr"
+    title="切换语言: English"
+    aria-label="切换语言: English" aria-haspopup="true" aria-expanded="false">
+    <i class="fa-solid fa-language" aria-hidden="true"></i>
+    <span>English</span>
+  </a>
+  <ul aria-label="选择语言">
+    <li>
+      <a class="td-language-selector__item" href="/blog/oink/oink-announcement/" lang="en-US" hreflang="en-US" dir="ltr">English</a>
+    </li>
+    <li>
+      <span class="td-language-selector__item active" lang="zh-CN" dir="ltr" aria-current="page">简体中文</span>
+    </li>
+  </ul>
+</div><div class="td-nav-hover-menu td-nav-theme-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-theme-toggle
+            title="切换配色" aria-label="切换配色" aria-expanded="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="切换配色">
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="light" aria-pressed="false"><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i><span>亮色</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="dark" aria-pressed="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><span>暗色</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="auto" aria-pressed="false"><i class="td-shell-icon td-shell-icon--contrast fa-solid fa-circle-half-stroke" aria-hidden="true"></i><span>跟随系统</span>
+            </button>
+          </div>
+        </div>
+        <a href="https://github.com/pgsty/oink" class="td-nav-github" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="td-shell-icon td-shell-icon--github fa-brands fa-github" aria-hidden="true"></i></a><button class="td-nav-util td-site-nav__menu-toggle" type="button" data-td-shell-drawer-open
+          title="打开导航" aria-label="打开导航"
+          aria-controls="td-shell-sidebar" aria-expanded="false"><i class="td-shell-icon td-shell-icon--menu fa-solid fa-bars" aria-hidden="true"></i></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+    <div class="container-fluid td-outer">
+      
+      <div class="td-main td-shell-layout td-shell-layout--w-normal"
+           style="--td-shell-sidebar-min: 200px; --td-shell-sidebar-max: 500px;">
+        <aside id="td-shell-sidebar" class="td-shell-sidebar d-print-none">
+          <div class="td-shell-sidebar__panel">
+  <div class="td-shell-sidebar__header">
+    <div class="td-shell-sidebar__brand-row">
+      <a class="td-shell-sidebar__brand" href="/zh/" aria-label="OINK home">
+        <img src="/icons/logo.svg" alt="" width="20" height="20">
+        <span class="td-shell-wordmark">OINK</span>
+      </a>
+      <button type="button" class="td-shell-iconbtn td-shell-sidebar__search" data-td-shell-search-open
+        title="搜索…" aria-label="搜索…"
+        aria-controls="td-shell-search" aria-expanded="false"><i class="td-shell-icon td-shell-icon--search fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
+      <button type="button" class="td-shell-iconbtn td-shell-sidebar__collapse" data-td-shell-sidebar-toggle
+        title="收起侧栏" aria-label="收起侧栏"><i class="td-shell-icon td-shell-icon--panel-left fa-solid fa-table-columns" aria-hidden="true"></i></button>
+    </div>
+    <div class="td-shell-sidebar__header-row td-shell-sidebar__header-row--drawer-only">
+      <button type="button" class="td-shell-search-btn td-shell-search-btn--drawer" data-td-shell-search-open
+        aria-controls="td-shell-search" aria-expanded="false">
+        <i class="td-shell-icon td-shell-icon--search fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <span class="td-shell-search-btn__label">搜索…</span>
+        <span class="td-shell-search-btn__keys" aria-hidden="true"><kbd>/</kbd></span>
+      </button>
+      <button type="button" class="td-shell-iconbtn td-shell-sidebar__close" data-td-shell-drawer-close
+        aria-label="关闭导航" aria-controls="td-shell-sidebar"><i class="td-shell-icon td-shell-icon--x fa-solid fa-xmark" aria-hidden="true"></i></button>
+    </div>
+    <div class="td-shell-root">
+  <button type="button" class="td-shell-root__trigger" data-td-shell-root-toggle
+    aria-haspopup="true" aria-expanded="false" aria-label="选择栏目">
+    <span class="td-shell-root__icon"><i class="fa-solid fa-blog" aria-hidden="true"></i></span>
+    <span class="td-shell-root__title">博客</span>
+    <i class="td-shell-icon td-shell-icon--chevrons-up-down fa-solid fa-sort" aria-hidden="true"></i>
+  </button>
+  <div class="td-shell-root__pop" hidden><a class="td-shell-root__item td-section-tint" href="/zh/book/" style="--td-section-light:#9a3412;--td-section-dark:#fb923c">
+      <span class="td-shell-root__icon"><i class="fa-solid fa-book-open" aria-hidden="true"></i></span>
+      <span class="td-shell-root__meta">
+        <span class="td-shell-root__item-title">教程</span>
+        <span class="td-shell-root__item-desc">一本实战教程：用 OINK 创作清晰、优美且易于维护的技术内容。</span>
+      </span>
+      <span class="td-shell-root__check td-is-hidden"><i class="td-shell-icon td-shell-icon--check fa-solid fa-check" aria-hidden="true"></i></span>
+    </a><a class="td-shell-root__item td-section-tint" href="/zh/case/" style="--td-section-light:#3f3f46;--td-section-dark:#a1a1aa">
+      <span class="td-shell-root__icon"><i class="fa-solid fa-layer-group" aria-hidden="true"></i></span>
+      <span class="td-shell-root__meta">
+        <span class="td-shell-root__item-title">案例</span>
+        <span class="td-shell-root__item-desc">十五个真实站点展示 OINK 如何覆盖两页小工具、多语言文档群与三本书籍。</span>
+      </span>
+      <span class="td-shell-root__check td-is-hidden"><i class="td-shell-icon td-shell-icon--check fa-solid fa-check" aria-hidden="true"></i></span>
+    </a><a class="td-shell-root__item td-is-active td-section-tint" href="/zh/blog/" style="--td-section-light:#6d28d9;--td-section-dark:#a78bfa" aria-current="page">
+      <span class="td-shell-root__icon"><i class="fa-solid fa-blog" aria-hidden="true"></i></span>
+      <span class="td-shell-root__meta">
+        <span class="td-shell-root__item-title">博客</span>
+        <span class="td-shell-root__item-desc">OINK 工程实践、沉浸式阅读指南与发布注记</span>
+      </span>
+      <span class="td-shell-root__check"><i class="td-shell-icon td-shell-icon--check fa-solid fa-check" aria-hidden="true"></i></span>
+    </a><a class="td-shell-root__item td-section-tint" href="/zh/docs/" style="--td-section-light:#245f94;--td-section-dark:#5da2dd">
+      <span class="td-shell-root__icon"><i class="fa-solid fa-book" aria-hidden="true"></i></span>
+      <span class="td-shell-root__meta">
+        <span class="td-shell-root__item-title">文档</span>
+        <span class="td-shell-root__item-desc">OINK 是一款只需 Hugo Extended 的技术文档主题：组件写在 Markdown 里，资源随主题分发，双语开箱可用，一份内容产出四种输出。</span>
+      </span>
+      <span class="td-shell-root__check td-is-hidden"><i class="td-shell-icon td-shell-icon--check fa-solid fa-check" aria-hidden="true"></i></span>
+    </a>
+  </div>
+</div>
+  </div>
+  <div class="td-shell-sidebar__viewport" data-td-shell-sidebar-scroll>
+    <div id="td-sidebar-menu" class="td-shell-tree-wrap">
+  <nav class="td-shell-tree" id="td-section-nav" aria-label="章节导航"
+      data-td-sidebar-icon-policy="groups" data-td-sidebar-root-id="/zh/blog/">
+    <ul class="td-shell-tree__list td-shell-tree__list--0">
+      <li class="td-shell-tree__item td-has-child td-active-path td-shell-tree__item--root"
+      id="m-zhblog-li">
+    <div class="td-shell-tree__row td-shell-tree__row--root">
+      <a href="/zh/blog/" title="博客"
+        class="td-shell-tree__link"
+        id="m-zhblog"><i class="fa-solid fa-blog" aria-hidden="true"></i><span>博客</span></a>
+      
+    </div><div id="m-zhblog-children" class="td-shell-tree__children td-shell-tree__children--static">
+        <div class="td-shell-tree__children-inner">
+          <ul class="td-shell-tree__list td-shell-tree__list--1"><li class="td-shell-tree__item td-has-child"
+      id="m-zhblogrelease-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/blog/release/" title="Oink 发布注记"
+        class="td-shell-tree__link"
+        id="m-zhblogrelease"><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i><span>发布</span></a>
+      <button type="button" class="td-shell-tree__chevron" data-td-shell-tree-toggle
+        aria-expanded="true" aria-controls="m-zhblogrelease-children"
+        aria-label="收起章节: 发布"
+        data-td-label-expand="展开章节: 发布"
+        data-td-label-collapse="收起章节: 发布"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></button>
+    </div><div id="m-zhblogrelease-children" class="td-shell-tree__children td-is-open">
+        <div class="td-shell-tree__children-inner">
+          <ul class="td-shell-tree__list td-shell-tree__list--2"><li class="td-shell-tree__item td-leaf"
+      id="m-zhblogrelease080-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/blog/release/0.8.0/" title="Oink 0.8.0：整个栏目一次取走，侧栏直接当数据读，以及谁链到了这一页"
+        class="td-shell-tree__link"
+        id="m-zhblogrelease080"><span>Oink v0.8.0</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhblogrelease071-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/blog/release/0.7.1/" title="Oink 0.7.1：页面不再外泄，坏输入不再中断构建"
+        class="td-shell-tree__link"
+        id="m-zhblogrelease071"><span>Oink v0.7.1</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhblogrelease070-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/blog/release/0.7.0/" title="Oink 0.7.0：主题色、统一的字体口径，以及终于能读的图"
+        class="td-shell-tree__link"
+        id="m-zhblogrelease070"><span>Oink v0.7.0</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhblogrelease060-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/blog/release/0.6.0/" title="Oink 0.6.0：沉浸式博客、更稳健的构建、更精简的内部实现"
+        class="td-shell-tree__link"
+        id="m-zhblogrelease060"><span>Oink v0.6.0</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhblogrelease050-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/blog/release/0.5.0/" title="Oink 0.5.0 — 组件 API v5 与收敛后的配置"
+        class="td-shell-tree__link"
+        id="m-zhblogrelease050"><span>Oink v0.5.0</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhblogrelease040-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/blog/release/0.4.0/" title="Oink 0.4.0 — 面向完整发布流程的场景组件体系"
+        class="td-shell-tree__link"
+        id="m-zhblogrelease040"><span>Oink v0.4.0</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhblogrelease030-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/blog/release/0.3.0/" title="Oink 0.3.0 — 写作、导航与更轻的页面"
+        class="td-shell-tree__link"
+        id="m-zhblogrelease030"><span>Oink v0.3.0</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhblogrelease020-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/blog/release/0.2.0/" title="Oink 0.2.0：更丰富的内容与更精致的呈现"
+        class="td-shell-tree__link"
+        id="m-zhblogrelease020"><span>Oink v0.2.0</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhblogrelease010-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/blog/release/0.1.0/" title="Oink 0.1.0：稳定的本地优先基础"
+        class="td-shell-tree__link"
+        id="m-zhblogrelease010"><span>Oink v0.1.0</span></a>
+      
+    </div>
+  </li></ul>
+        </div>
+      </div>
+  </li><li class="td-shell-tree__item td-has-child td-active-path"
+      id="m-zhblogoink-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/blog/oink/" title="Oink 博客"
+        class="td-shell-tree__link"
+        id="m-zhblogoink"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i><span>Oink</span></a>
+      <button type="button" class="td-shell-tree__chevron" data-td-shell-tree-toggle
+        aria-expanded="true" aria-controls="m-zhblogoink-children"
+        aria-label="收起章节: Oink"
+        data-td-label-expand="展开章节: Oink"
+        data-td-label-collapse="收起章节: Oink"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></button>
+    </div><div id="m-zhblogoink-children" class="td-shell-tree__children td-is-open">
+        <div class="td-shell-tree__children-inner">
+          <ul class="td-shell-tree__list td-shell-tree__list--2"><li class="td-shell-tree__item td-leaf"
+      id="m-zhblogoinkimmersive-reading-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/blog/oink/immersive-reading/" title="在 Blog 外壳上沉浸式阅读"
+        class="td-shell-tree__link"
+        id="m-zhblogoinkimmersive-reading"><span>沉浸式阅读</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-active-path"
+      id="m-zhblogoinkoink-announcement-li">
+    <div class="td-shell-tree__row td-shell-active">
+      <a href="/zh/blog/oink/oink-announcement/" aria-current="page" title="OINK 实现预览正式亮相"
+        class="td-shell-tree__link active"
+        id="m-zhblogoinkoink-announcement"><span>OINK 实现预览</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhblogoinkoink-implementation-diary-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/blog/oink/oink-implementation-diary/" title="OINK 实施日记：从复制外壳到统一主题"
+        class="td-shell-tree__link"
+        id="m-zhblogoinkoink-implementation-diary"><span>OINK 实施日记</span></a>
+      
+    </div>
+  </li></ul>
+        </div>
+      </div>
+  </li></ul>
+        </div>
+      </div>
+  </li>
+    </ul>
+  </nav>
+</div>
+    <div class="td-shell-sidebar__aside" data-td-shell-aside-slot hidden></div>
+  </div>
+  <div class="td-shell-sidebar__resizer" data-td-shell-resizer aria-hidden="true"></div>
+</div>
+
+        </aside>
+        <div class="td-shell-drawer-backdrop d-md-none d-print-none" data-td-shell-drawer-close></div>
+        <div class="td-shell-float d-print-none">
+  <button type="button" class="td-shell-iconbtn" data-td-shell-sidebar-toggle
+    title="展开侧栏" aria-label="展开侧栏"><i class="td-shell-icon td-shell-icon--panel-left fa-solid fa-table-columns" aria-hidden="true"></i></button>
+</div>
+
+        <main id="td-main-content" class="td-shell-main" tabindex="-1">
+          <article class="td-shell-article">
+            
+            <div class="td-shell-topline td-shell-topline--actions-only">
+              
+              <span class="td-shell-topline__spacer"></span>
+              <div class="td-page-actions d-print-none" data-td-page-actions data-td-page-context
+  data-td-t-copied="已复制 Markdown" data-td-t-copy-error="无法复制 Markdown">
+  <div class="td-page-actions__group">
+    <button type="button" class="td-page-actions__primary" data-td-action="copy_markdown" data-td-url="/zh/blog/oink/oink-announcement/index.md"
+      title="复制 Markdown 文本" aria-label="复制 Markdown 文本">
+      <span class="td-page-actions__icon"><i class="td-shell-icon td-shell-icon--copy fa-regular fa-copy" aria-hidden="true"></i></span>
+      <span class="td-page-actions__icon td-page-actions__icon--done"><i class="td-shell-icon td-shell-icon--check fa-solid fa-check" aria-hidden="true"></i></span>
+    </button>
+    <button type="button" class="td-page-actions__toggle"
+      data-td-page-actions-toggle aria-expanded="false" aria-controls="td-page-actions-menu"
+      title="操作" aria-label="操作"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i>
+    </button>
+  </div>
+  <ul class="td-page-actions__menu" id="td-page-actions-menu" data-td-page-actions-menu
+    aria-label="操作">
+    <li><button type="button" class="td-page-actions__item" data-td-action="copy_markdown" data-td-url="/zh/blog/oink/oink-announcement/index.md">
+      <i class="fa-regular fa-copy" aria-hidden="true"></i><span>复制 Markdown 文本</span>
+    </button></li>
+    <li><a class="td-page-actions__item" data-td-action="open_chatgpt" data-td-page-open-in="chatgpt"
+      href="https://chatgpt.com/?hints=search&amp;prompt=%E8%AF%B7%E9%98%85%E8%AF%BB&#43;http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fblog%2Foink%2Foink-announcement%2F&#43;%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82" target="_blank" rel="noopener noreferrer">
+      <i class="fa-brands fa-openai" aria-hidden="true"></i><span>在 ChatGPT 中打开</span>
+    </a></li>
+    <li><a class="td-page-actions__item" data-td-action="open_claude" data-td-page-open-in="claude"
+      href="https://claude.ai/new?q=%E8%AF%B7%E9%98%85%E8%AF%BB&#43;http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fblog%2Foink%2Foink-announcement%2F&#43;%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82" target="_blank" rel="noopener noreferrer">
+      <i class="fa-brands fa-claude" aria-hidden="true"></i><span>在 Claude 中打开</span>
+    </a></li>
+    <li><a class="td-page-actions__item" data-td-action="view_markdown" href="/zh/blog/oink/oink-announcement/index.md" target="_blank" rel="noopener">
+      <i class="fa-brands fa-markdown" aria-hidden="true"></i><span>查阅 Markdown 源码</span>
+    </a></li>
+    <li><a class="td-page-actions__item" data-td-action="view_history" href="https://github.com/pgsty/oink.pgsty.com/commits/main/content/blog/oink/oink-announcement.zh.md" target="_blank" rel="noopener">
+      <i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i><span>查阅编辑历史</span>
+    </a></li>
+    <li class="td-page-actions__separator" role="separator"></li>
+    <li><a class="td-page-actions__item" data-td-action="edit_page" href="https://github.com/pgsty/oink.pgsty.com/edit/main/content/blog/oink/oink-announcement.zh.md" target="_blank" rel="noopener">
+      <i class="fa-solid fa-pencil" aria-hidden="true"></i><span>编辑当前页面</span>
+    </a></li>
+    <li><a class="td-page-actions__item" data-td-action="create_child_page" href="https://github.com/pgsty/oink.pgsty.com/new/main/content/blog/oink?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60get-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank" rel="noopener">
+      <i class="fa-solid fa-file-circle-plus" aria-hidden="true"></i><span>添加子页面</span>
+    </a></li>
+    <li><a class="td-page-actions__item" data-td-action="create_issue" href="https://github.com/pgsty/oink.pgsty.com/issues/new?title=OINK&#43;%E5%AE%9E%E7%8E%B0%E9%A2%84%E8%A7%88%E6%AD%A3%E5%BC%8F%E4%BA%AE%E7%9B%B8" target="_blank" rel="noopener">
+      <i class="fa-solid fa-circle-question" aria-hidden="true"></i><span>提交文档议题</span>
+    </a></li>
+    <li><a class="td-page-actions__item" data-td-action="create_project_issue" href="https://github.com/pgsty/oink/issues/new" target="_blank" rel="noopener">
+      <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i><span>提交项目议题</span>
+    </a></li>
+    <li><a class="td-page-actions__item" data-td-action="print_section" href="/zh/_print/blog/oink/">
+      <i class="fa-solid fa-print" aria-hidden="true"></i><span>打印完整章节</span>
+    </a></li>
+  </ul>
+  <span class="visually-hidden" role="status" aria-live="polite" aria-atomic="true" data-td-page-context-status></span>
+</div>
+
+            </div>
+            
+<div class="td-content">
+		<figure class="td-featured-banner">
+  <img src="/images/oink.webp" alt="" width="1600" height="900" decoding="async">
+</figure>
+		<div class="td-page-heading">
+  <h1>OINK 实现预览正式亮相</h1>
+</div>
+
+	<div class="td-article-info"><time class="td-article-info__date" datetime="2026-08-08">2026-08-08</time> <span class="td-article-info__sep" aria-hidden="true">&middot;</span> <a class="td-article-info__author" href="/zh/authors/oink/">OINK</a>、<a class="td-article-info__author" href="/zh/authors/vonng/">Vonng</a> 发布于 <a class="td-article-info__section" href="/zh/blog/oink/">Oink</a> <span class="td-article-info__sep" aria-hidden="true">&middot;</span> <span class="td-article-info__words">1821 字</span> <span class="td-article-info__sep" aria-hidden="true">&middot;</span> <span class="td-article-info__time">4 分钟</span></div>
+	<header class="td-article-meta">
+		<div class="taxonomy td-taxonomy-terms-article taxo-tags" role="group" aria-label="标签">
+  <ul class="td-taxonomy-terms">
+    <li><a class="td-badge td-badge--solid" href="http://localhost:1313/zh/tags/oink/"><i class="fa-solid fa-tags" aria-hidden="true"></i>Oink</a></li>
+    </ul>
+</div>
+
+</header>
+	<div class="td-byline td-byline--authors mb-4">
+		<a class="td-byline__author" href="/zh/authors/oink/"><img class="td-byline__avatar" src="/authors/oink/featured.svg" alt="" width="44" height="44" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="td-byline__identity"><span class="td-byline__name">OINK</span><span class="td-byline__bio">OINK 项目本身作为正式发布注记与项目公告的作者。</span></span></a>
+		<a class="td-byline__author" href="/zh/authors/vonng/"><img class="td-byline__avatar" src="/authors/vonng/featured_hu_7dceb19425683d40.jpg" alt="" width="44" height="44" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="td-byline__identity"><span class="td-byline__name">Vonng</span><span class="td-byline__bio">OINK 与 Pigsty 的作者；PostgreSQL 基础设施、文档系统，以及夹在两者中间的那些工具。</span></span></a>
+	</div>
+	<nav class="td-series-strip" aria-label="系列 造 OINK">
+  <a class="td-series-strip__name" href="/zh/series/building-oink/">
+    <i class="td-series-strip__icon fa-solid fa-layer-group" aria-hidden="true"></i>
+    <span class="td-series-strip__term">造 OINK</span>
+  </a>
+  <details class="td-series-strip__all">
+    <summary class="td-series-strip__summary">
+      <span class="td-series-strip__ghost" aria-hidden="true">
+        <i class="td-series-strip__icon fa-solid fa-layer-group"></i>
+        <span class="td-series-strip__term">造 OINK</span>
+      </span>
+      <span class="td-series-strip__part">第 1 / 共 3 篇</span>
+      <span class="td-series-strip__caret" aria-hidden="true"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></span>
+    </summary>
+    <ol class="td-series-strip__list">
+      <li class="td-series-strip__item"><a class="td-series-strip__link" href="/zh/blog/oink/oink-announcement/" aria-current="page"><span class="td-series-strip__title">OINK 实现预览</span></a></li>
+      <li class="td-series-strip__item"><a class="td-series-strip__link" href="/zh/blog/oink/oink-implementation-diary/"><span class="td-series-strip__title">OINK 实施日记</span></a></li>
+      <li class="td-series-strip__item"><a class="td-series-strip__link" href="/zh/blog/oink/immersive-reading/"><span class="td-series-strip__title">沉浸式阅读</span></a></li>
+    </ol>
+  </details>
+</nav><div class="lead">OINK 将直接定制的 Docsy 代码库演化为本地优先、仅依赖 Hugo 的文档主题，并提供多语言基础设施与可复用内容组件。</div>
+	<p>今天，我们发布 OINK 实现预览：它从 Docsy 直接演化而来，提供唯一标准产品外壳、仅依赖 Hugo 的消费端构建、本地优先浏览器依赖、通用多语言框架，以及一组从 PGSTY 文档站提炼出的可复用内容组件。</p>
+<p>这是实现与文档里程碑，不是已经公开的版本化发行。最终公开品牌、模块与软件包身份、首个版本，以及生产 Cloudflare
+Pages 部署，仍是必须显式关闭的发布关卡。</p>
+<h2 id="why-oink-exists">为什么需要 OINK？<a class="td-heading-self-link" href="#why-oink-exists" aria-label="标题锚点"></a>
+</h2>
+<p>多个成熟文档站分别复制了相同的 Docsy 布局、导航、搜索代码、SCSS、JavaScript 与短代码。一个公共修复必须在多个仓库重复实施；与此同时，每个站点都携带前端工具链与隐含网络依赖，让网络隔离构建变得异常复杂。</p>
+<p>OINK 将真正可复用的部分合并到主题中。产品矩阵、门户、价格页和其他业务专用行为仍留在各自站点；共享主题负责文档外壳、浏览器运行时、多语言路由、无障碍行为与内容组件契约。</p>
+<h2 id="what-changes">有哪些变化？<a class="td-heading-self-link" href="#what-changes" aria-label="标题锚点"></a>
+</h2>
+<h3 id="one-product-instead-of-a-mode">产品本身，而不是一种模式<a class="td-heading-self-link" href="#one-product-instead-of-a-mode" aria-label="标题锚点"></a>
+</h3>
+<p>OINK 不是可选皮肤。项目没有 <code>oink.enabled</code> 开关、<code>params.oink.*</code>
+命名空间，也没有“上游版与品牌版”并行的模板树。<code>theme/</code> 中的实现就是产品。</p>
+<p>这项决策避免维护两套视觉系统与两套测试矩阵。Hugo 原生设置与兼容的 Docsy 参数继续保持原有含义。</p>
+<h3 id="hugo-only-consumer-builds">消费端仅依赖 Hugo 构建<a class="td-heading-self-link" href="#hugo-only-consumer-builds" aria-label="标题锚点"></a>
+</h3>
+<p>完整消费站点只需运行：</p>
+<div class="td-code td-code--untitled" id="td-code-db0f6f44-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="sh" data-td-line-count="1"><div class="td-code__utilities td-code__utilities--compact">
+  <button class="td-code__copy" type="button" hidden data-td-code-copy
+          data-td-code-target="td-code-db0f6f44-fence-0" data-td-copy-mode="all"
+          data-td-label-copy="复制代码"
+          data-td-label-copied="已复制"
+          data-td-label-error="复制失败"
+          aria-label="复制代码" title="复制代码">
+    <i class="fa-regular fa-copy" aria-hidden="true"></i>
+  </button>
+</div>
+  <div class="td-code__viewport" id="td-code-db0f6f44-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">hugo --gc --minify</span></span></code></pre></div></div>
+  <span class="visually-hidden" role="status" aria-live="polite" data-td-code-status></span>
+</div>
+<p>Bootstrap、Font
+Awesome、字体、搜索、图表、API 文档运行时与 OINK 组件都已随主题提交。Node.js、npm、PostCSS、Autoprefixer 与 CDN 下载不属于消费端要求。</p>
+<p>仓库维护者仍会使用 Node 工具运行测试和更新 vendor 资源；这套维护工具链有意置于公开站点构建契约之外。</p>
+<h3 id="local-first-browser-behavior">本地优先的浏览器行为<a class="td-heading-self-link" href="#local-first-browser-behavior" aria-label="标题锚点"></a>
+</h3>
+<p>默认 starter 会从生成后的站点提供页面外壳、字体、图标、搜索、Mermaid、KaTeX、Markmap、Swagger
+UI、Redoc、Asciinema、ECharts 与 Infographic 依赖。可选运行时按页面选取，并且每页最多加载一次。</p>
+<p>PlantUML 与 Diagrams.net 不再拥有公共服务默认值。站点必须配置受控端点、使用预渲染结果，或明确选择远程服务。</p>
+<h3 id="multilingual-infrastructure">多语言基础设施<a class="td-heading-self-link" href="#multilingual-infrastructure" aria-label="标题锚点"></a>
+</h3>
+<p>语言路由来自 Hugo 的语言与翻译对象。配置一种语言时隐藏选择器；配置两种或更多语言时，直接点击按配置顺序切换，短暂悬停或键盘聚焦则打开完整菜单。当前页面缺少译文时，选择器会进入目标语言首页，而不是失效路径。</p>
+<p>starter 与本站均以英文为首要语言、简体中文为第二语言。核心文档与博客范围内的每个页面都有并置的
+<code>.zh.md</code> 译文，且标题采用稳定的显式 ID。</p>
+<h3 id="reusable-components">可复用组件<a class="td-heading-self-link" href="#reusable-components" aria-label="标题锚点"></a>
+</h3>
+<p>OINK 新增主题级 Asciinema、ECharts、Infographic、文档轮播、折叠块、标签页、卡片、导航卡片、文档卡片与参数组件。它们会生成唯一实例 ID，并且只在实际使用时加载本地资源。</p>
+<p>ECharts 接受结构化 JSON 或 YAML，也支持通过 <code>$fn:name</code>
+引用可选的 JavaScript 回调。回调代码只在声明它的页面运行。</p>
+<h2 id="what-stays-familiar">哪些能力保持不变？<a class="td-heading-self-link" href="#what-stays-familiar" aria-label="标题锚点"></a>
+</h2>
+<p>OINK 沿用 Docsy 的内容组织、front
+matter、文档与博客 section、菜单、taxonomy、打印输出、仓库链接、常用短代码、图表、API 参考能力与扩展 hook。现有站点可以删除重复公共实现，而不必重写普通 Markdown。</p>
+<p>项目也保留 Docsy 的 Apache-2.0 历史与归属信息。vendor 清单记录固定的第三方来源、许可证、产物与校验值。</p>
+<h2 id="try-the-starter">体验 starter<a class="td-heading-self-link" href="#try-the-starter" aria-label="标题锚点"></a>
+</h2>
+<p>安装 Hugo Extended <code>0.160.1</code> 或更高版本，然后在当前检出目录运行：</p>
+<div class="td-code td-code--untitled" id="td-code-db0f6f44-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="sh" data-td-line-count="1"><div class="td-code__utilities td-code__utilities--compact">
+  <button class="td-code__copy" type="button" hidden data-td-code-copy
+          data-td-code-target="td-code-db0f6f44-fence-1" data-td-copy-mode="all"
+          data-td-label-copy="复制代码"
+          data-td-label-copied="已复制"
+          data-td-label-error="复制失败"
+          aria-label="复制代码" title="复制代码">
+    <i class="fa-regular fa-copy" aria-hidden="true"></i>
+  </button>
+</div>
+  <div class="td-code__viewport" id="td-code-db0f6f44-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">hugo --source starter --gc --minify</span></span></code></pre></div></div>
+  <span class="visually-hidden" role="status" aria-live="polite" data-td-code-status></span>
+</div>
+<p>当前验证基线为 Hugo Extended
+<code>0.164.0</code>。打开生成的英文与中文页面，切换语言、使用本地搜索、改变颜色模式，并访问组件示例。</p>
+<p>需要传入网络隔离环境时，维护者可以创建完整归档：</p>
+<div class="td-code td-code--untitled" id="td-code-db0f6f44-fence-2" data-td-code data-td-code-auto-id
+     data-td-language="sh" data-td-line-count="1"><div class="td-code__utilities td-code__utilities--compact">
+  <button class="td-code__copy" type="button" hidden data-td-code-copy
+          data-td-code-target="td-code-db0f6f44-fence-2" data-td-copy-mode="all"
+          data-td-label-copy="复制代码"
+          data-td-label-copied="已复制"
+          data-td-label-error="复制失败"
+          aria-label="复制代码" title="复制代码">
+    <i class="fa-regular fa-copy" aria-hidden="true"></i>
+  </button>
+</div>
+  <div class="td-code__viewport" id="td-code-db0f6f44-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">scripts/package-offline.sh /absolute/path/oink-preview.tar.gz preview</span></span></code></pre></div></div>
+  <span class="visually-hidden" role="status" aria-live="polite" data-td-code-status></span>
+</div>
+<p>归档包含主题、starter、许可证、上游记录、迁移指南、vendor 清单和配套校验值。</p>
+<h2 id="current-validation">当前验证范围<a class="td-heading-self-link" href="#current-validation" aria-label="标题锚点"></a>
+</h2>
+<p>当前实现的自动化覆盖包括：</p>
+<ul>
+<li>最低版本与当前版本 Hugo Extended 构建；</li>
+<li>禁止消费端 Node/npm/PostCSS/Autoprefixer 路径；</li>
+<li>LTR、RTL、子路径、打印、颜色模式与生产资源；</li>
+<li>完整的一种/两种/三种/四种及以上语言选择器矩阵；</li>
+<li>本地按页运行时与重复组件实例；</li>
+<li>ECharts 结构化选项与回调集成；</li>
+<li>离线双语 starter 与离线发行归档；</li>
+<li>vendor 许可证与校验值；</li>
+<li>SILO、PGSTY、SOW 与 Pigsty 的非破坏性迁移演练。</li>
+</ul>
+<p>最近一次四站演练成功构建了临时副本，但没有修改或部署这些生产仓库。</p>
+<h2 id="what-remains-before-release">正式发布前还需要什么？<a class="td-heading-self-link" href="#what-remains-before-release" aria-label="标题锚点"></a>
+</h2>
+<p>公开身份与首个版本必须获批，并一致应用到模块、软件包、源码标签、嵌套主题标签、归档与文档。随后还要把目标 Cloudflare
+Pages 项目连接到源分支，使用固定 Hugo 版本构建、公开发布，并在托管 URL 上完成验证。</p>
+<p>这些关卡关闭之前，请把该预览用于评估与迁移演练，不要把未固定版本的代码当作生产依赖。</p>
+<h2 id="read-next">继续阅读<a class="td-heading-self-link" href="#read-next" aria-label="标题锚点"></a>
+</h2>
+<ul>
+<li><a href="/zh/docs/about/">OINK 概览</a></li>
+<li><a href="/zh/docs/about/architecture/">架构</a></li>
+<li><a href="/zh/docs/about/local-first/">本地优先运行</a></li>
+<li><a href="/zh/docs/components/">内容组件</a></li>
+<li><a href="/zh/docs/customize/config/">配置总览</a></li>
+<li><a href="/zh/docs/upgrade/from-docsy/">迁移指南</a></li>
+<li><a href="/zh/docs/about/">发布流程</a></li>
+<li><a href="/zh/blog/oink/oink-implementation-diary/">实施日记</a></li>
+</ul>
+
+	<div class="td-page-end">
+  
+<section class="td-share d-print-none" data-td-share data-td-page-context
+  data-td-t-copied="已复制链接" data-td-t-copy-error="无法复制链接">
+  <div class="td-share__items" role="group" aria-label="分享">
+    <a class="td-share__item td-share__item--x" href="https://x.com/intent/post?url=http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fblog%2Foink%2Foink-announcement%2F&amp;text=OINK%20%E5%AE%9E%E7%8E%B0%E9%A2%84%E8%A7%88%E6%AD%A3%E5%BC%8F%E4%BA%AE%E7%9B%B8"
+      target="_blank" rel="noopener noreferrer" title="X" aria-label="X">
+      <span class="td-share__icon"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></span>
+    </a>
+    <a class="td-share__item td-share__item--bluesky" href="https://bsky.app/intent/compose?text=OINK%20%E5%AE%9E%E7%8E%B0%E9%A2%84%E8%A7%88%E6%AD%A3%E5%BC%8F%E4%BA%AE%E7%9B%B8%20http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fblog%2Foink%2Foink-announcement%2F"
+      target="_blank" rel="noopener noreferrer" title="Bluesky" aria-label="Bluesky">
+      <span class="td-share__icon"><i class="fa-brands fa-bluesky" aria-hidden="true"></i></span>
+    </a>
+    <a class="td-share__item td-share__item--mastodon" href="https://share.joinmastodon.org/#text=OINK%20%E5%AE%9E%E7%8E%B0%E9%A2%84%E8%A7%88%E6%AD%A3%E5%BC%8F%E4%BA%AE%E7%9B%B8%20http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fblog%2Foink%2Foink-announcement%2F"
+      target="_blank" rel="noopener noreferrer" title="Mastodon" aria-label="Mastodon">
+      <span class="td-share__icon"><i class="fa-brands fa-mastodon" aria-hidden="true"></i></span>
+    </a>
+    <a class="td-share__item td-share__item--reddit" href="https://www.reddit.com/submit?url=http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fblog%2Foink%2Foink-announcement%2F&amp;title=OINK%20%E5%AE%9E%E7%8E%B0%E9%A2%84%E8%A7%88%E6%AD%A3%E5%BC%8F%E4%BA%AE%E7%9B%B8"
+      target="_blank" rel="noopener noreferrer" title="Reddit" aria-label="Reddit">
+      <span class="td-share__icon"><i class="fa-brands fa-reddit-alien" aria-hidden="true"></i></span>
+    </a>
+    <a class="td-share__item td-share__item--hackernews" href="https://news.ycombinator.com/submitlink?u=http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fblog%2Foink%2Foink-announcement%2F&amp;t=OINK%20%E5%AE%9E%E7%8E%B0%E9%A2%84%E8%A7%88%E6%AD%A3%E5%BC%8F%E4%BA%AE%E7%9B%B8"
+      target="_blank" rel="noopener noreferrer" title="Hacker News" aria-label="Hacker News">
+      <span class="td-share__icon"><i class="fa-brands fa-hacker-news" aria-hidden="true"></i></span>
+    </a>
+    <a class="td-share__item td-share__item--email" href="mailto:?subject=OINK%20%E5%AE%9E%E7%8E%B0%E9%A2%84%E8%A7%88%E6%AD%A3%E5%BC%8F%E4%BA%AE%E7%9B%B8&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fblog%2Foink%2Foink-announcement%2F"
+      title="邮件" aria-label="邮件">
+      <span class="td-share__icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
+    </a>
+    <button type="button" class="td-share__item td-share__item--copy"
+      data-td-action="copy_link" data-td-url="http://localhost:1313/zh/blog/oink/oink-announcement/"
+      title="复制链接" aria-label="复制链接">
+      <span class="td-share__icon"><i class="fa-solid fa-link" aria-hidden="true"></i></span>
+      <span class="td-share__icon td-share__icon--done"><i class="td-shell-icon td-shell-icon--check fa-solid fa-check" aria-hidden="true"></i></span>
+    </button>
+  </div>
+  <span class="visually-hidden" role="status" aria-live="polite" aria-atomic="true" data-td-page-context-status></span>
+</section>
+
+  
+  <section class="td-page-annotation" data-td-page-annotation aria-label="页面信息">
+  
+<div class="td-page-meta__footer">
+  <div class="td-page-meta__item td-page-meta__lastmod">
+    <span class="td-page-meta__icon"><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i></span>
+    <span>最后修改 2026-08-20 &middot; <a data-proofer-ignore href="https://github.com/pgsty/oink.pgsty.com/commit/93bd3ab84a5b0617fc7a7fe8449c1fe1d8c062ba">blog!: consolidate publishing under the oink and release sections (93bd3ab)</a></span>
+  </div>
+</div>
+
+</section>
+  <nav class="td-pager d-print-none" data-td-pager
+  aria-label="上一页 / 下一页">
+  <a class="td-pager__link td-pager__link--prev" href="/zh/blog/oink/immersive-reading/"
+    aria-label="上一页 - 在 Blog 外壳上沉浸式阅读" title="沉浸式阅读" data-td-pager-prev>
+    <span class="td-pager__arrow" aria-hidden="true">←</span><span class="td-pager__title" dir="auto">沉浸式阅读</span>
+  </a>
+  <a class="td-pager__link td-pager__link--next" href="/zh/blog/oink/oink-implementation-diary/"
+    aria-label="下一页 - OINK 实施日记：从复制外壳到统一主题" title="OINK 实施日记" data-td-pager-next>
+    <span class="td-pager__title" dir="auto">OINK 实施日记</span><span class="td-pager__arrow" aria-hidden="true">→</span>
+  </a>
+</nav>
+  <section id="td-comments" class="td-comments d-print-none"
+  data-td-giscus
+  data-repo="pgsty/oink.pgsty.com"
+  data-repo-id="R_kgDOTzFZAg"
+  data-category="Announcements"
+  data-category-id="DIC_kwDOTzFZAs4DDCm-"
+  data-mapping="pathname"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="auto"
+  data-td-theme-light="http://localhost:1313/css/giscus-light.css"
+  data-td-theme-dark="http://localhost:1313/css/giscus-dark.css"
+  data-lang="zh-CN"
+  data-loading="lazy"
+  data-td-error-message="评论加载失败，请稍后重试。"
+  aria-label="评论"
+  aria-busy="true">
+  <div data-td-giscus-container></div>
+  <p class="small text-body-secondary mt-2 mb-0 d-none"
+    data-td-giscus-status role="status" aria-live="polite"></p>
+  <noscript>
+    <p class="small text-body-secondary mt-2 mb-0">
+      加载评论需要启用 JavaScript。
+      <a href="https://github.com/pgsty/oink.pgsty.com/discussions">在 GitHub 上查看讨论。</a>
+    </p>
+  </noscript>
+</section>
+
+</div>
+</div>
+
+
+          </article>
+        </main>
+        <aside class="td-shell-toc d-print-none" aria-label="目录">
+  <div class="td-shell-toc__panel">
+    
+    <div class="td-shell-aside" data-td-shell-aside>
+      <div class="td-shell-aside-group td-shell-aside-group--toc">
+        <div class="td-shell-aside-group__row"><button type="button" class="td-shell-aside-group__rail-toggle" data-td-shell-right-toggle
+            title="隐藏目录" aria-label="隐藏目录"><i class="td-shell-icon td-shell-icon--menu fa-solid fa-bars" aria-hidden="true"></i></button>
+          <button type="button" class="td-shell-tree__row td-shell-aside-group__head"
+            data-td-shell-tree-toggle data-td-shell-aside-keep-open
+            aria-expanded="true" aria-controls="td-shell-aside-toc"
+            aria-label="收起章节: 目录"
+            data-td-label-expand="展开章节: 目录"
+            data-td-label-collapse="收起章节: 目录"><span class="td-shell-aside-group__icon td-shell-aside-group__icon--toc" aria-hidden="true"><i class="td-shell-icon td-shell-icon--menu fa-solid fa-bars" aria-hidden="true"></i></span>
+            <span class="td-shell-aside-group__title">目录</span>
+            <span class="td-shell-tree__chevron" aria-hidden="true"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></span>
+          </button>
+        </div>
+        <div id="td-shell-aside-toc" class="td-shell-tree__children td-is-open">
+          <div class="td-shell-tree__children-inner">
+            <div class="td-shell-toc__inner" data-proofer-ignore>
+  <div class="td-shell-toc__body" id="td-shell-toc-body">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-oink-exists">为什么需要 OINK？</a></li>
+    <li><a href="#what-changes">有哪些变化？</a>
+      <ul>
+        <li><a href="#one-product-instead-of-a-mode">产品本身，而不是一种模式</a></li>
+        <li><a href="#hugo-only-consumer-builds">消费端仅依赖 Hugo 构建</a></li>
+        <li><a href="#local-first-browser-behavior">本地优先的浏览器行为</a></li>
+        <li><a href="#multilingual-infrastructure">多语言基础设施</a></li>
+        <li><a href="#reusable-components">可复用组件</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-stays-familiar">哪些能力保持不变？</a></li>
+    <li><a href="#try-the-starter">体验 starter</a></li>
+    <li><a href="#current-validation">当前验证范围</a></li>
+    <li><a href="#what-remains-before-release">正式发布前还需要什么？</a></li>
+    <li><a href="#read-next">继续阅读</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+          </div>
+        </div>
+      </div>
+      
+      <div class="td-shell-aside-group td-shell-tags-cloud" data-td-taxonomy="authors" data-td-taxonomy-root="/zh/blog/">
+  <button type="button" class="td-shell-tree__row td-shell-aside-group__head td-shell-tags-cloud__head" data-td-shell-tree-toggle
+    aria-expanded="true" aria-controls="td-shell-taxonomy-authors-zhblog-children"
+    aria-label="收起章节: 作者"
+    data-td-label-expand="展开章节: 作者"
+    data-td-label-collapse="收起章节: 作者">
+    <span class="td-shell-aside-group__icon"><i class="fa-solid fa-user-pen" aria-hidden="true"></i></span>
+    <span class="td-shell-aside-group__title td-shell-tags-cloud__title">作者</span>
+    <span class="td-shell-tree__chevron" aria-hidden="true"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></span>
+  </button>
+  <div id="td-shell-taxonomy-authors-zhblog-children" class="td-shell-tree__children td-is-open">
+    <div class="td-shell-tree__children-inner">
+      <div class="td-shell-tags-cloud__chips">
+        <a class="td-shell-tag" href="/zh/authors/oink/">
+          <span>OINK</span><span class="td-shell-tag__count">10</span>
+        </a>
+        <a class="td-shell-tag" href="/zh/authors/vonng/">
+          <span>Vonng</span><span class="td-shell-tag__count">3</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div><div class="td-shell-aside-group td-shell-tags-cloud" data-td-taxonomy="categories" data-td-taxonomy-root="/zh/blog/">
+  <button type="button" class="td-shell-tree__row td-shell-aside-group__head td-shell-tags-cloud__head" data-td-shell-tree-toggle
+    aria-expanded="true" aria-controls="td-shell-taxonomy-categories-zhblog-children"
+    aria-label="收起章节: 分类"
+    data-td-label-expand="展开章节: 分类"
+    data-td-label-collapse="收起章节: 分类">
+    <span class="td-shell-aside-group__icon"><i class="fa-solid fa-folder" aria-hidden="true"></i></span>
+    <span class="td-shell-aside-group__title td-shell-tags-cloud__title">分类</span>
+    <span class="td-shell-tree__chevron" aria-hidden="true"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></span>
+  </button>
+  <div id="td-shell-taxonomy-categories-zhblog-children" class="td-shell-tree__children td-is-open">
+    <div class="td-shell-tree__children-inner">
+      <div class="td-shell-tags-cloud__chips">
+        <a class="td-shell-tag" href="/zh/categories/release/">
+          <span>Release</span><span class="td-shell-tag__count">7</span>
+        </a>
+        <a class="td-shell-tag" href="/zh/categories/%E5%8F%91%E5%B8%83/">
+          <span>发布</span><span class="td-shell-tag__count">2</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div><div class="td-shell-aside-group td-shell-tags-cloud" data-td-taxonomy="series" data-td-taxonomy-root="/zh/blog/">
+  <button type="button" class="td-shell-tree__row td-shell-aside-group__head td-shell-tags-cloud__head" data-td-shell-tree-toggle
+    aria-expanded="true" aria-controls="td-shell-taxonomy-series-zhblog-children"
+    aria-label="收起章节: 系列"
+    data-td-label-expand="展开章节: 系列"
+    data-td-label-collapse="收起章节: 系列">
+    <span class="td-shell-aside-group__icon"><i class="fa-solid fa-layer-group" aria-hidden="true"></i></span>
+    <span class="td-shell-aside-group__title td-shell-tags-cloud__title">系列</span>
+    <span class="td-shell-tree__chevron" aria-hidden="true"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></span>
+  </button>
+  <div id="td-shell-taxonomy-series-zhblog-children" class="td-shell-tree__children td-is-open">
+    <div class="td-shell-tree__children-inner">
+      <div class="td-shell-tags-cloud__chips">
+        <a class="td-shell-tag" href="/zh/series/oink-releases/">
+          <span>OINK 版本发布</span><span class="td-shell-tag__count">9</span>
+        </a>
+        <a class="td-shell-tag" href="/zh/series/building-oink/">
+          <span>造 OINK</span><span class="td-shell-tag__count">3</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div><div class="td-shell-aside-group td-shell-tags-cloud" data-td-taxonomy="tags" data-td-taxonomy-root="/zh/blog/">
+  <button type="button" class="td-shell-tree__row td-shell-aside-group__head td-shell-tags-cloud__head" data-td-shell-tree-toggle
+    aria-expanded="true" aria-controls="td-shell-taxonomy-tags-zhblog-children"
+    aria-label="收起章节: 标签"
+    data-td-label-expand="展开章节: 标签"
+    data-td-label-collapse="收起章节: 标签">
+    <span class="td-shell-aside-group__icon"><i class="fa-solid fa-tags" aria-hidden="true"></i></span>
+    <span class="td-shell-aside-group__title td-shell-tags-cloud__title">标签</span>
+    <span class="td-shell-tree__chevron" aria-hidden="true"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></span>
+  </button>
+  <div id="td-shell-taxonomy-tags-zhblog-children" class="td-shell-tree__children td-is-open">
+    <div class="td-shell-tree__children-inner">
+      <div class="td-shell-tags-cloud__chips">
+        <a class="td-shell-tag" href="/zh/tags/oink/">
+          <span>Oink</span><span class="td-shell-tag__count">12</span>
+        </a>
+        <a class="td-shell-tag" href="/zh/tags/release/">
+          <span>Release</span><span class="td-shell-tag__count">9</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</aside>
+<div class="td-shell-toc-float d-print-none">
+  <button type="button" class="td-shell-iconbtn" data-td-shell-right-toggle
+    title="显示目录" aria-label="显示目录"><i class="td-shell-icon td-shell-icon--menu fa-solid fa-bars" aria-hidden="true"></i></button>
+</div>
+      </div>
+      <footer class="td-shell-footline d-print-none" data-td-shell-footer>
+  <div class="td-shell-footline__copy"><span class="td-footer__copyright">&copy; 2026
+    <span class="td-footer__authors"><a href="https://vonng.com/en">Ruohang Feng</a> (<a href="https://github.com/Vonng">@Vonng</a>) @ <a href="https://pgsty.com/">PGSTY</a>, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a></span>
+  </span><span class="td-footer__all_rights_reserved">保留所有权利</span></div>
+  <div class="td-shell-footline__center">Powered by <a href="https://oink.pgsty.com">Oink</a></div>
+  <div class="td-shell-footline__right">
+    <div class="td-shell-footline__version">
+      <div class="td-version-menu dropdown dropup td-version-menu--icon-only" data-td-version-menu>
+  <button class="td-version-menu__title" type="button" data-bs-toggle="dropdown"
+    aria-haspopup="true" aria-expanded="false" aria-label="v0.8.0"><i class="td-shell-icon td-shell-icon--code-branch fa-solid fa-code-branch" aria-hidden="true"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-up"><li>
+          <span class="dropdown-item disabled dropdown-item-text"><strong>Versions</strong></span></li><li>
+          <a class="dropdown-item active dropdown-item-latest" aria-current="page"
+            href="https://oink.pgsty.com">v0.8.0</a></li>
+  </ul>
+</div>
+
+    </div>
+    <div class="td-language-selector td-language-selector--menu td-shell-footline__language">
+  <a class="td-language-selector__trigger" href="/blog/oink/oink-announcement/"
+    lang="en-US" hreflang="en-US" dir="ltr"
+    title="切换语言: English"
+    aria-label="切换语言: English" aria-haspopup="true" aria-expanded="false"><i class="td-shell-icon td-shell-icon--languages fa-solid fa-language" aria-hidden="true"></i>
+    <span>English</span>
+  </a>
+  <ul aria-label="选择语言">
+    <li>
+      <a class="td-language-selector__item" href="/blog/oink/oink-announcement/" lang="en-US" hreflang="en-US" dir="ltr">English</a>
+    </li>
+    <li>
+      <span class="td-language-selector__item active" lang="zh-CN" dir="ltr" aria-current="page">简体中文</span>
+    </li>
+  </ul>
+</div>
+    <div class="td-shell-footline__theme td-nav-hover-menu" data-td-nav-hover>
+      <button type="button" class="td-shell-iconbtn" data-td-nav-hover-trigger data-td-theme-toggle
+        title="切换配色" aria-label="切换配色" aria-expanded="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i></button>
+      <div class="td-nav-hover-menu__pop" role="group" aria-label="切换配色">
+        <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="light" aria-pressed="false"><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i><span>亮色</span>
+        </button>
+        <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="dark" aria-pressed="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><span>暗色</span>
+        </button>
+        <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="auto" aria-pressed="false"><i class="td-shell-icon td-shell-icon--contrast fa-solid fa-circle-half-stroke" aria-hidden="true"></i><span>跟随系统</span>
+        </button>
+      </div>
+    </div>
+    <div class="td-shell-keyboard td-nav-hover-menu" data-td-nav-hover>
+  <button type="button" class="td-shell-iconbtn td-shell-keyboard__trigger"
+    data-td-nav-hover-trigger data-td-nav-hover-open
+    title="键盘快捷键" aria-label="键盘快捷键"
+    aria-expanded="false"><i class="td-shell-icon td-shell-icon--circle-question fa-solid fa-circle-question" aria-hidden="true"></i></button>
+  <div class="td-nav-hover-menu__pop td-shell-keyboard-help" role="group"
+    aria-label="键盘快捷键">
+    <div class="td-shell-keyboard-help__header"><i class="td-shell-icon td-shell-icon--circle-question fa-solid fa-circle-question" aria-hidden="true"></i><strong>键盘快捷键</strong>
+    </div>
+    <section class="td-shell-keyboard-help__section" aria-labelledby="td-shell-shortcuts-navigation">
+      <p class="td-shell-keyboard-help__section-title" id="td-shell-shortcuts-navigation">章节导航</p>
+      <dl>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>W</kbd><kbd>S</kbd><kbd>↑</kbd><kbd>↓</kbd></span></dt>
+          <dd>在侧栏中移动</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>A</kbd><kbd>D</kbd><kbd>←</kbd><kbd>→</kbd></span></dt>
+          <dd>收起或展开章节</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>Enter</kbd><kbd>G</kbd></span></dt>
+          <dd>打开当前页面</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>J</kbd><kbd>K</kbd></span></dt>
+          <dd>上一个或下一个标题</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>Q</kbd><kbd>E</kbd></span></dt>
+          <dd>上一页或下一页</dd>
+        </div>
+      </dl>
+    </section>
+    <section class="td-shell-keyboard-help__section" aria-labelledby="td-shell-shortcuts-actions">
+      <p class="td-shell-keyboard-help__section-title" id="td-shell-shortcuts-actions">操作</p>
+      <dl>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>/</kbd><kbd>F</kbd></span></dt>
+          <dd>搜索</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>\</kbd><kbd>C</kbd></span></dt>
+          <dd>命令面板</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>H</kbd></span></dt>
+          <dd>专注阅读模式</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>L</kbd><kbd>Y</kbd></span></dt>
+          <dd>切换语言</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>T</kbd></span></dt>
+          <dd>切换主题</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>R</kbd></span></dt>
+          <dd>切换顶层页面</dd>
+        </div>
+      </dl>
+    </section>
+  </div>
+</div>
+  </div>
+</footer>
+    </div>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"复制 Markdown 文本","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["复制 Markdown 文本","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"复制 Markdown 文本","url":"/zh/blog/oink/oink-announcement/index.md"},{"available":true,"description":"复制链接","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["复制链接","分享","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"复制链接","url":"http://localhost:1313/zh/blog/oink/oink-announcement/"},{"available":true,"description":"在 ChatGPT 中打开","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["在 ChatGPT 中打开","就本页提问","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 ChatGPT 中打开","url":"https://chatgpt.com/?hints=search\u0026prompt=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fblog%2Foink%2Foink-announcement%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":true,"description":"在 Claude 中打开","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["在 Claude 中打开","就本页提问","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 Claude 中打开","url":"https://claude.ai/new?q=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fblog%2Foink%2Foink-announcement%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":true,"description":"查阅 Markdown 源码","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["查阅 Markdown 源码","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅 Markdown 源码","url":"/zh/blog/oink/oink-announcement/index.md"},{"available":true,"description":"查阅编辑历史","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["查阅编辑历史","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅编辑历史","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/blog/oink/oink-announcement.zh.md"},{"available":true,"description":"编辑当前页面","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["编辑当前页面","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"编辑当前页面","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/blog/oink/oink-announcement.zh.md"},{"available":true,"description":"添加子页面","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["添加子页面","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"添加子页面","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/blog/oink?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"提交文档议题","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["提交文档议题","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交文档议题","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=OINK+%E5%AE%9E%E7%8E%B0%E9%A2%84%E8%A7%88%E6%AD%A3%E5%BC%8F%E4%BA%AE%E7%9B%B8"},{"available":true,"description":"提交项目议题","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["提交项目议题","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交项目议题","url":"https://github.com/pgsty/oink/issues/new"},{"available":true,"description":"打印完整章节","disabledReason":"","icon":"fa-solid fa-print","id":"print_section","keywords":["打印完整章节","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"打印完整章节","url":"/zh/_print/blog/oink/"},{"available":true,"description":"打印此页面","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["打印此页面","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"打印此页面","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL 必填","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"切换语言","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["切换语言","language"],"kind":"choice","options":[{"active":false,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/blog/oink/oink-announcement/"},{"active":true,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/blog/oink/oink-announcement/"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换语言","url":""},{"available":true,"description":"切换配色","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["切换配色","亮色","暗色"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"跟随系统","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"亮色","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"暗色","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换配色","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"报告或查看主题与文档问题","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["缺陷","支持","路线图"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK 问题反馈","url":"https://github.com/pgsty/oink/issues"}],"language":"zh","quickLinks":[{"available":true,"description":"OINK 是一款只需 Hugo Extended 的技术文档主题：组件写在 Markdown 里，资源随主题分发，双语开箱可用，一份内容产出四种输出。","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["文档","docs"],"kind":"url","target":"self","title":"文档","url":"/zh/docs/"},{"available":true,"description":"OINK 工程实践、沉浸式阅读指南与发布注记","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["博客","blog"],"kind":"url","target":"self","title":"博客","url":"/zh/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+
+<script src="/js/actions.js"></script>
+<script src="/js/core.js"></script>
+  <div id="td-shell-search" class="td-shell-search" hidden
+     data-td-index-src="/offline-search-index.zh.json"
+     data-td-max-results="10"
+     data-td-t-empty="未找到结果"
+     data-td-t-loading="正在加载搜索索引……"
+     data-td-t-results="找到 {count} 条结果"
+     data-td-t-actions="操作"
+     data-td-t-page-actions="页面操作"
+     data-td-t-preferences="偏好设置"
+     data-td-t-commands="命令"
+     data-td-t-quick-links="快速链接"
+     data-td-t-no-commands="未找到匹配命令"
+     data-td-t-choice="请选择一项"
+     data-td-t-action-failed="无法完成此操作"
+     data-td-t-index-unavailable="页面索引暂不可用，操作仍可使用"
+     data-td-t-pages="页面">
+  <div class="td-shell-search__backdrop" data-td-shell-search-close></div>
+  <div class="td-shell-search__panel" role="dialog" aria-modal="true" aria-label="搜索…">
+    <div class="td-shell-search__head">
+      <i class="td-shell-icon td-shell-icon--search fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input type="search" class="td-shell-search__input" placeholder="搜索…"
+             autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+             role="combobox" aria-autocomplete="list" aria-haspopup="listbox"
+             aria-controls="td-shell-search-results" aria-expanded="false"
+             aria-label="搜索…" enterkeyhint="go">
+      <button type="button" class="td-shell-search__esc" data-td-shell-search-close
+        aria-label="关闭">
+        <kbd>esc</kbd>
+      </button>
+    </div>
+    <div id="td-shell-search-results" class="td-shell-search__list" role="listbox"
+      aria-label="搜索…"></div>
+    <div class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"
+      data-td-shell-search-status></div>
+    <div class="td-shell-search__foot" aria-hidden="true">
+      <span><kbd>↑</kbd><kbd>↓</kbd> 选择</span>
+      <span><kbd>↵</kbd> 打开</span>
+      <span><kbd>esc</kbd> 关闭</span>
+    </div>
+  </div>
+</div><script src="/js/chunks/shell.js"></script><script src="/js/chunks/keyboard.js"></script><script src="/js/chunks/local-search.js"></script><script src="/js/chunks/dark-mode.js"></script><script src="/js/chunks/giscus.js"></script><script src="/js/chunks/code-block.js"></script>
+  </body>
+</html>

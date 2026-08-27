@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Design on OINK</title>
+    <link>http://localhost:1313/categories/design/</link>
+    <description>Recent content in Design on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Thu, 27 Aug 2026 18:47:44 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/categories/design/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>Architecture contract</title>
+        <link>http://localhost:1313/docs/design/architecture/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/architecture/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 contract&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;This is the architecture contract released with OINK 0.8.0. This page is the&#xA;canonical English source; its Chinese peer is maintained beside it in&#xA;&lt;code&gt;content/docs/design/&lt;/code&gt;.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;repository-and-assembly&#34;&gt;Repository and assembly&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;The repository root is a Hugo Module and complete theme, not a site or npm&#xA;workspace. Hugo Extended compiles SCSS and templates. Browser runtimes and&#xA;third-party assets are committed, so a normal build performs no network fetch.&#xA;Public bilingual documentation, examples, and browser tests live in the&#xA;sibling &lt;code&gt;oink.pgsty.com&lt;/code&gt; repository; the theme repository keeps only narrow&#xA;internal regression fixtures under &lt;code&gt;tests/site/&lt;/code&gt; and has no separate public&#xA;example surface.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Warnings and safe fallbacks</title>
+        <link>http://localhost:1313/docs/design/decisions/diagnostics/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/decisions/diagnostics/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;Decision&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;OINK does not call Hugo&amp;rsquo;s &lt;code&gt;errorf&lt;/code&gt;. Invalid author or site input emits a&#xA;warning and either uses a documented safe fallback or omits the invalid&#xA;fragment. Release and deployment builds use &lt;code&gt;--panicOnWarning&lt;/code&gt;, so the same&#xA;warning remains a hard publishing failure.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;context&#34;&gt;Context&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Hugo builds the whole site as one transaction. An &lt;code&gt;errorf&lt;/code&gt; raised while one&#xA;page is being edited makes every URL served by that rebuild return an error,&#xA;including unrelated pages and the home page. The server process survives and&#xA;recovers after the input is fixed, but collaborative preview is unavailable in&#xA;the meantime.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Goldmark block-attribute evidence</title>
+        <link>http://localhost:1313/docs/design/research/goldmark-attributes/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/research/goldmark-attributes/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;Verified snapshot&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;These probes produced byte-identical relevant output on Hugo Extended&#xA;0.160.1 and 0.164.0. They explain OINK&amp;rsquo;s native component forms; the current&#xA;&lt;a href=&#34;http://localhost:1313/docs/design/components/&#34;&gt;component contract&lt;/a&gt; remains authoritative.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;method&#34;&gt;Method&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;The probe used a minimal Hugo site without OINK templates. Render hooks printed&#xA;their context fields and &lt;code&gt;.Attributes&lt;/code&gt; as visible markers. The site enabled&#xA;Goldmark block attributes, passthrough delimiters for inline and block math,&#xA;unsafe rendering for the deliberately inspected raw HTML, and&#xA;&lt;code&gt;wrapStandAloneImageWithinParagraph: false&lt;/code&gt;.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Backlinks and knowledge graph</title>
+        <link>http://localhost:1313/docs/design/proposals/knowledge-graph/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/proposals/knowledge-graph/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;G1 implemented; G2/G3 remain draft&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;On 2026-08-27 every G1 open decision was resolved and G1 (static backlinks)&#xA;was accepted. It is implemented on the theme&amp;rsquo;s main branch and ships with&#xA;OINK 0.8.0. The local and global graphs (G2/G3) stay draft pending real-world&#xA;evidence from G1; their names and configuration are not public API until&#xA;accepted.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;premise&#34;&gt;Premise&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Reverse navigation and a view of connected pages are properties of the link&#xA;graph, not of &lt;code&gt;[[wikilink]]&lt;/code&gt; spelling. Hugo already accepts ordinary Markdown&#xA;links and &lt;code&gt;ref&lt;/code&gt; / &lt;code&gt;relref&lt;/code&gt;. OINK can derive a graph from content authors already&#xA;write, without adding a parser, Goldmark extension, or parallel authoring&#xA;syntax.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Component contract</title>
+        <link>http://localhost:1313/docs/design/components/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/components/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 contract&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;This is the component contract released with OINK 0.8.0. This page is the&#xA;canonical English source; its Chinese peer is maintained beside it in&#xA;&lt;code&gt;content/docs/design/&lt;/code&gt;.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;Tutorials and exhaustive examples belong in the reader-facing&#xA;&lt;a href=&#34;http://localhost:1313/docs/components/&#34;&gt;Components&lt;/a&gt; section. This page defines the API and behavior&#xA;that those guides rely on.&lt;/p&gt;&#xA;&lt;h2 id=&#34;authoring-model&#34;&gt;Authoring model&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Use ordinary Markdown when one block plus attributes can express a component.&#xA;Use shortcodes for compound bodies or facts Markdown cannot carry. There is no&#xA;parallel component registry. Native forms require:&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Configuration model</title>
+        <link>http://localhost:1313/docs/design/decisions/configuration/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/decisions/configuration/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;Decision&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;OINK keeps Hugo&amp;rsquo;s native keys and useful Docsy-compatible keys in place,&#xA;places theme presentation and behaviour under &lt;code&gt;params.ui.*&lt;/code&gt;, and exposes a&#xA;matching top-level front-matter key for a page override. It does not add a&#xA;&lt;code&gt;params.oink.*&lt;/code&gt; tree or a registry that shadows Hugo&amp;rsquo;s configuration model.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;context&#34;&gt;Context&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;OINK inherits a mature configuration surface and adds shells, content output,&#xA;and local interaction. Earlier designs attempted to move every theme-owned key&#xA;under a new namespace and resolve a complete configuration dictionary once per&#xA;page. That produced a second language beside Hugo&amp;rsquo;s own keys, complicated&#xA;section cascades, and made migration larger than the behaviour it was meant to&#xA;control.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Consumer and migration evidence</title>
+        <link>http://localhost:1313/docs/design/research/consumer-evidence/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/research/consumer-evidence/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;Dated corpus snapshot&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;These counts describe the repositories inspected in August 2026. They are&#xA;evidence for design choices, not live product metrics or compatibility&#xA;promises.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;corpus&#34;&gt;Corpus&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;The authoring survey scanned the &lt;code&gt;content/&lt;/code&gt; trees of eleven OINK consumer sites:&#xA;5,325 Markdown files, of which 5,293 had YAML front matter. The set included&#xA;single-language English and Chinese references, bilingual product sites,&#xA;release archives, custom landing pages, and separate Book consumers.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Media convergence</title>
+        <link>http://localhost:1313/docs/design/proposals/media-convergence/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/proposals/media-convergence/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;Partially implemented&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;M1 (the shared media-result contract) and M2 (Landing resource metadata)&#xA;are implemented on the theme&amp;rsquo;s main branch, and M3 is resolved as option 2:&#xA;processing stays exclusively on native Markdown images, and the full &lt;code&gt;fig&lt;/code&gt;&#xA;source form remains a container whose parameter list deliberately excludes&#xA;&lt;code&gt;command&lt;/code&gt;/&lt;code&gt;options&lt;/code&gt;. M4 (compatibility retirement) stays open pending a&#xA;consumer inventory. The sections below are the original design record.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;current-baseline&#34;&gt;Current baseline&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;The content image hook, numbered &lt;code&gt;fig&lt;/code&gt;, cards, and galleries resolve local page&#xA;resources, section resources, global assets, static files, and explicit remote&#xA;URLs through &lt;code&gt;content/image-resolve.html&lt;/code&gt;. Raster resources can contribute&#xA;intrinsic dimensions and processing derivatives. HTML Zoom eligibility is&#xA;marked with &lt;code&gt;data-td-image-zoom&lt;/code&gt;; the build-time detector only checks that&#xA;theme-emitted marker.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>OINK comprehensive review, 2026-08-26</title>
+        <link>http://localhost:1313/docs/design/research/2026-08-26-comprehensive-review/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/research/2026-08-26-comprehensive-review/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--warning&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-triangle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;Review snapshot, not a new contract&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;This page records evidence collected against &lt;code&gt;github.com/pgsty/oink&lt;/code&gt; and its integration site on 2026-08-26.&#xA;It changes no API and does not mean that any recommendation below is implemented. Current Design contracts,&#xA;implementation, and owning checkers remain authoritative.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Superseded in part by OINK 0.7.1.&lt;/strong&gt; The code findings F01–F06 were fixed in that release — see the&#xA;&lt;a href=&#34;http://localhost:1313/blog/release/0.7.1/&#34;&gt;0.7.1 release notes&lt;/a&gt;. Read the findings below as the evidence that motivated the fix,&#xA;not as the current state of the theme.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Bulk agent indexes</title>
+        <link>http://localhost:1313/docs/design/proposals/agent-indexes/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/proposals/agent-indexes/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;Implemented; ships with OINK 0.8.0&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;Accepted on 2026-08-27 after resolving every open decision. Both outputs &amp;ndash;&#xA;the per-top-level-section &lt;code&gt;LLMSFULL&lt;/code&gt; bundles and the &lt;code&gt;NAVJSON&lt;/code&gt; navigation&#xA;tree at the language root &amp;ndash; are implemented on the theme&amp;rsquo;s &lt;code&gt;main&lt;/code&gt; branch and&#xA;ship with OINK 0.8.0, after which this proposal retires; released behaviour is&#xA;owned by the&#xA;&lt;a href=&#34;http://localhost:1313/docs/design/architecture/#outputs-and-runtime&#34;&gt;Architecture contract&lt;/a&gt;.&#xA;OINK already shipped per-page Markdown, the in-language &lt;code&gt;llms.txt&lt;/code&gt;, the HTML&#xA;discovery link, and Copy Markdown; this page covers only the two new outputs.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Markdown-first authoring</title>
+        <link>http://localhost:1313/docs/design/decisions/authoring/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/decisions/authoring/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;Decision&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;Prefer a native Markdown form when Goldmark can preserve the intended&#xA;semantics. Keep a shortcode only when it provides a capability the native&#xA;form cannot express. Add a content scenario by extending an existing shell&#xA;and data model, not by creating a parallel rendering system.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;context&#34;&gt;Context&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;OINK serves short manuals, large references, release archives, landing pages,&#xA;and books. A survey of eleven consumer sites covered more than five thousand&#xA;Markdown files and exposed both extremes: pages with almost no theme syntax and&#xA;pages assembled from many nested shortcodes and local layout overrides.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Shell and navigation contract</title>
+        <link>http://localhost:1313/docs/design/shell/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/shell/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 contract&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;This is the shell and navigation contract released with OINK 0.8.0. This&#xA;page is the canonical English source; its Chinese peer is maintained beside&#xA;it in &lt;code&gt;content/docs/design/&lt;/code&gt;.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;authorities-and-navigation&#34;&gt;Authorities and navigation&#xA;&lt;/h2&gt;&#xA;&lt;div class=&#34;td-table-scroll td-table-scroll--static&#34;&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;th scope=&#34;col&#34;&gt;Concern&lt;/th&gt;&#xA;      &lt;th scope=&#34;col&#34;&gt;Authority&lt;/th&gt;&#xA;    &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;Global navigation&lt;/td&gt;&#xA;      &lt;td&gt;Hugo &lt;code&gt;menus.main&lt;/code&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;Docs / Book sidebar and pager&lt;/td&gt;&#xA;      &lt;td&gt;content tree or &lt;code&gt;data/docs_nav.json&lt;/code&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;Root switcher&lt;/td&gt;&#xA;      &lt;td&gt;resolved top-level content roots&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;Discovery&lt;/td&gt;&#xA;      &lt;td&gt;per-language local search index&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;Page and Palette actions&lt;/td&gt;&#xA;      &lt;td&gt;shared action registry&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;No feature introduces another menu or page tree. One menu child level is&#xA;interactive; deeper levels warn and flatten beneath linked group headings.&#xA;External links use &lt;code&gt;target=&amp;quot;_blank&amp;quot; rel=&amp;quot;noopener noreferrer&amp;quot;&lt;/code&gt;; internal links&#xA;remain language- and subpath-aware.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Book publication pipeline</title>
+        <link>http://localhost:1313/docs/design/proposals/book-publication/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/proposals/book-publication/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--warning&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-triangle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;Draft proposal with implemented publication tooling&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;The opt-in &lt;code&gt;BookManifest&lt;/code&gt;, the generic EPUB and PDF runners and their artifact&#xA;validation are released, and the normative account of them is in&#xA;&lt;a href=&#34;http://localhost:1313/docs/design/architecture/&#34;&gt;Architecture&lt;/a&gt;. No build publishes either file on&#xA;its own. What remains open here, and only here, is consumer migration.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;context-and-evidence&#34;&gt;Context and evidence&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;OINK already owns Book navigation order, numbered figures, tables, equations,&#xA;examples, cross-references, whole-Book Print HTML, heading and footnote&#xA;namespacing, and per-page Markdown degradation. The missing boundary is a&#xA;machine-readable whole-Book handoff that a generic packager can consume.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Generated configuration schema</title>
+        <link>http://localhost:1313/docs/design/decisions/config-schema/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/decisions/config-schema/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;Decision&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;The two JSON Schemas under &lt;code&gt;schema/&lt;/code&gt; are projected by&#xA;&lt;code&gt;bin/generate-config-schema.py&lt;/code&gt; from the theme&amp;rsquo;s &lt;code&gt;hugo.yaml&lt;/code&gt; and the&#xA;template read-point scan; hand edits cannot survive CI. The schema is a&#xA;read-only projection of the existing authorities, never a third one.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;context&#34;&gt;Context&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;The theme already has two configuration authorities: &lt;code&gt;hugo.yaml&lt;/code&gt;, which&#xA;declares every default beside a comment explaining it, and&#xA;&lt;code&gt;check-params.py&lt;/code&gt;, whose read-point scan knows every key the templates&#xA;actually consume. Editors know neither, so authors type &lt;code&gt;params.ui.*&lt;/code&gt; keys&#xA;and front matter from memory.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Landing contract</title>
+        <link>http://localhost:1313/docs/design/landing/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/landing/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 contract&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;This is the landing-page contract released with OINK 0.8.0. This page is the&#xA;canonical English source; its Chinese peer is maintained beside it in&#xA;&lt;code&gt;content/docs/design/&lt;/code&gt;.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;Shared rules live in the &lt;a href=&#34;http://localhost:1313/docs/design/architecture/&#34;&gt;architecture&lt;/a&gt; and&#xA;&lt;a href=&#34;http://localhost:1313/docs/design/components/&#34;&gt;component&lt;/a&gt; contracts; migration belongs in the&#xA;&lt;a href=&#34;http://localhost:1313/docs/design/migration/&#34;&gt;migration contract&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;shell-and-data&#34;&gt;Shell and data&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Any regular page may declare &lt;code&gt;layout: landing&lt;/code&gt;. It renders navbar, full-width&#xA;canvas, and footer without docs sidebars or TOC rails. The homepage keeps&#xA;&lt;code&gt;data/home/&amp;lt;lang&amp;gt;.yaml&lt;/code&gt; as a compatible authoring path through the same renderer.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>OINK migration boundary</title>
+        <link>http://localhost:1313/docs/design/migration/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/migration/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 contract&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;This is the migration contract released with OINK 0.8.0. This page is the&#xA;canonical English source; its Chinese peer is maintained beside it in&#xA;&lt;code&gt;content/docs/design/&lt;/code&gt;.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;This is source and configuration guidance, not a release ledger. Local source,&#xA;commit, tag, push, consumer pin, deployment, and production parity remain&#xA;separate states. For the reader-facing upgrade procedure, see&#xA;&lt;a href=&#34;http://localhost:1313/docs/admin/upgrade/&#34;&gt;Upgrade&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;toolkit-scope&#34;&gt;Toolkit scope&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;bin/migrations/oink06.py&lt;/code&gt; only scans and automatically rewrites Markdown files&#xA;under a site&amp;rsquo;s content directory, including supported YAML front matter. It&#xA;does not rewrite Hugo configuration, data files, layouts, assets, modules, or&#xA;generated output. TOML/JSON front matter and ambiguous Markdown are reported&#xA;with positions for manual review.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Design decisions</title>
+        <link>http://localhost:1313/docs/design/decisions/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/decisions/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;Accepted rationale&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;A decision explains why OINK chose one compatible design over another. The&#xA;five contracts above it remain the normative description of current&#xA;behaviour; implementation and owning checkers remain the executable facts.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;OINK used to keep reviews, PRDs, and execution notes in a local &lt;code&gt;plan/&lt;/code&gt;&#xA;directory. That made useful reasoning hard to discover and allowed abandoned&#xA;designs to look authoritative. Accepted reasoning now lives here, in the same&#xA;bilingual, versioned site as the contracts it supports.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Design and development</title>
+        <link>http://localhost:1313/docs/design/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 contract&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;This section publishes the maintainer contracts released with OINK 0.8.0,&#xA;with Hugo Extended 0.160.1 as the compatibility floor. The canonical&#xA;bilingual sources live in this repository under &lt;code&gt;content/docs/design/&lt;/code&gt;.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;This section is the durable design record for OINK. It complements the&#xA;task-oriented guides elsewhere on the site: use those guides to build a site,&#xA;and use this section to understand current invariants, the reasons behind them,&#xA;the evidence used to evaluate alternatives, and work that is still only a&#xA;proposal.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Design research</title>
+        <link>http://localhost:1313/docs/design/research/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/research/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;Evidence, not a contract&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;Research records what was measured, with which inputs and tool versions.&#xA;Results may explain a decision, but they do not override the current&#xA;contracts or implementation.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;Research belongs in the public Design tree when another maintainer can inspect&#xA;its method, understand its limits, and repeat the relevant check. Raw agent&#xA;transcripts, temporary build logs, and local absolute paths do not meet that&#xA;standard.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Design proposals and PRDs</title>
+        <link>http://localhost:1313/docs/design/proposals/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/proposals/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--warning&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-triangle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;Non-normative material&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;A proposal describes behaviour that may not exist. Current behaviour is&#xA;defined by the contracts, accepted decisions, implementation, and owning&#xA;checkers. Never use a proposal as a configuration reference.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;This section is the canonical home for OINK product requirement documents,&#xA;RFC-style designs, and unresolved maintainer proposals. Do not create a local&#xA;&lt;code&gt;plan/&lt;/code&gt;, &lt;code&gt;plans/&lt;/code&gt;, &lt;code&gt;proposal/&lt;/code&gt;, or parallel design tree in the theme repository&#xA;or the documentation repository.&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

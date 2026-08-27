@@ -1,0 +1,901 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" dir="ltr" lang="en-US" data-td-typography="technical" data-td-theme-init>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#000000">
+
+<style>
+  html { background: Canvas; color: CanvasText; }
+  @media (prefers-color-scheme: dark) {
+    html { background: #0b0d12; color: #e6e6e6; }
+  }
+  html[data-td-theme-init] * { transition: none !important; }
+  [data-td-theme-toggle] > .td-shell-icon--sun { display: none !important; }
+  [data-td-theme-toggle] > [hidden] { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--moon { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--sun { display: inline-block !important; }
+</style>
+
+<script>
+  (function() {
+    const themeKey = 'td-color-theme';
+    let storedTheme = null;
+    try {
+      storedTheme = localStorage.getItem(themeKey);
+    } catch (_) {
+      
+      
+    }
+    let theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+    if (theme === 'auto') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    document.documentElement.classList.toggle('dark-mode', theme === 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<link rel="canonical" type="text/html" href="http://localhost:1313/case/">
+<link rel="alternate" type="application/rss&#43;xml" href="http://localhost:1313/case/index.xml">
+<link rel="alternate" type="text/markdown" href="http://localhost:1313/case/index.md">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<title>OINK Case | OINK</title>
+<meta name="description" content="Fifteen real sites show how OINK scales from a two-page utility to a multilingual documentation estate and three books.">
+<link rel="canonical" href="http://localhost:1313/case/">
+<link rel="alternate" hreflang="en-US" href="http://localhost:1313/case/">
+<link rel="alternate" hreflang="zh-CN" href="http://localhost:1313/zh/case/">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:url" content="http://localhost:1313/case/">
+  <meta property="og:site_name" content="OINK">
+  <meta property="og:title" content="OINK Case">
+  <meta property="og:description" content="Fifteen real sites show how OINK scales from a two-page utility to a multilingual documentation estate and three books.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+    <meta property="og:image" content="http://localhost:1313/images/oink.webp">
+
+  <meta itemprop="name" content="OINK Case">
+  <meta itemprop="description" content="Fifteen real sites show how OINK scales from a two-page utility to a multilingual documentation estate and three books.">
+  <meta itemprop="dateModified" content="2026-08-25T16:49:10+08:00">
+  <meta itemprop="wordCount" content="21">
+  <meta itemprop="image" content="http://localhost:1313/images/oink.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/images/oink.webp">
+  <meta name="twitter:title" content="OINK Case">
+  <meta name="twitter:description" content="Fifteen real sites show how OINK scales from a two-page utility to a multilingual documentation estate and three books.">
+<link href="/scss/fontawesome.css" rel="stylesheet">
+<link href="/scss/main.css" rel="stylesheet">
+
+  </head>
+  <body class="td-section td-blog td-print-view">
+    <a class="td-skip-link d-print-none" href="#td-main-content">Skip to content</a>
+
+    
+<div class="td-navbar-autohide" data-td-navbar-autohide>
+<header class="td-site-header d-print-none" data-td-header>
+  <div class="td-site-container">
+    <nav class="td-site-nav" aria-label="Main navigation">
+      <a href="/" class="td-nav-brand" data-td-navbar-route
+         aria-label="OINK — Home">
+        <img src="/icons/logo.svg" alt="" class="td-nav-logo" width="22" height="22">
+        <span class="td-nav-title">OINK</span>
+      </a><div class="td-nav-links td-nav-menu-zone"><div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link" href="/docs/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Docs"
+  data-td-navbar-region="desktop" data-td-navbar-label="Docs"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-docs-0" aria-expanded="false">
+  <i class="fa-solid fa-book" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Docs</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-docs-0" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/docs/about/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Introduction"
+  data-td-navbar-region="desktop" data-td-navbar-label="Introduction"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Introduction</span></a>
+<a class="td-nav-menu__item-link" href="/docs/start/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Get started"
+  data-td-navbar-region="desktop" data-td-navbar-label="Get started"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Get started</span></a>
+<a class="td-nav-menu__item-link" href="/docs/write/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Authoring"
+  data-td-navbar-region="desktop" data-td-navbar-label="Authoring"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Authoring</span></a>
+<a class="td-nav-menu__item-link" href="/docs/components/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Components"
+  data-td-navbar-region="desktop" data-td-navbar-label="Components"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-cubes" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Components</span></a>
+<a class="td-nav-menu__item-link" href="/docs/customize/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Customization"
+  data-td-navbar-region="desktop" data-td-navbar-label="Customization"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Customization</span></a>
+<a class="td-nav-menu__item-link" href="/docs/admin/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Operations"
+  data-td-navbar-region="desktop" data-td-navbar-label="Operations"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Operations</span></a>
+<a class="td-nav-menu__item-link" href="/docs/design/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Design"
+  data-td-navbar-region="desktop" data-td-navbar-label="Design"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-compass-drafting" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Design</span></a>
+
+  </div>
+</div><a class="nav-link" href="/book/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Book"
+  data-td-navbar-region="desktop" data-td-navbar-label="Book"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Book</span></a>
+<a class="nav-link active" href="/case/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Case"
+  data-td-navbar-region="desktop" data-td-navbar-label="Case"
+  data-td-navbar-external="false" aria-current="page">
+  <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Case</span></a>
+<div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link active" href="/blog/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Blog"
+  data-td-navbar-region="desktop" data-td-navbar-label="Blog"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-blog-3" aria-expanded="false">
+  <i class="fa-solid fa-blog" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Blog</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-blog-3" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/blog/oink/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="OINK engineering"
+  data-td-navbar-region="desktop" data-td-navbar-label="OINK engineering"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">OINK engineering</span></a>
+<a class="td-nav-menu__item-link" href="/blog/release/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Releases"
+  data-td-navbar-region="desktop" data-td-navbar-label="Releases"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Releases</span></a>
+
+  </div>
+</div>
+      </div><div class="td-nav-links td-nav-util-zone">
+        <div class="td-nav-hover-menu td-nav-version-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-nav-hover-open
+            title="v0.8.0" aria-label="v0.8.0" aria-expanded="false"><i class="td-shell-icon td-shell-icon--code-branch fa-solid fa-code-branch" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="v0.8.0">
+            <span class="td-nav-hover-menu__option td-is-disabled"><strong>Versions</strong></span>
+            <a class="td-nav-hover-menu__option td-is-active" aria-current="page" href="https://oink.pgsty.com">v0.8.0</a>
+          </div>
+        </div>
+          <div class="td-language-selector td-language-selector--menu td-nav-util td-site-nav__language">
+  <a class="td-language-selector__trigger" href="/zh/case/"
+    lang="zh-CN" hreflang="zh-CN" dir="ltr"
+    title="Switch language: 简体中文"
+    aria-label="Switch language: 简体中文" aria-haspopup="true" aria-expanded="false">
+    <i class="fa-solid fa-language" aria-hidden="true"></i>
+    <span>简体中文</span>
+  </a>
+  <ul aria-label="Choose language">
+    <li>
+      <span class="td-language-selector__item active" lang="en-US" dir="ltr" aria-current="page">English</span>
+    </li>
+    <li>
+      <a class="td-language-selector__item" href="/zh/case/" lang="zh-CN" hreflang="zh-CN" dir="ltr">简体中文</a>
+    </li>
+  </ul>
+</div><div class="td-nav-hover-menu td-nav-theme-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-theme-toggle
+            title="Toggle color theme" aria-label="Toggle color theme" aria-expanded="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="Toggle color theme">
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="light" aria-pressed="false"><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i><span>Light</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="dark" aria-pressed="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><span>Dark</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="auto" aria-pressed="false"><i class="td-shell-icon td-shell-icon--contrast fa-solid fa-circle-half-stroke" aria-hidden="true"></i><span>System</span>
+            </button>
+          </div>
+        </div>
+        <a href="https://github.com/pgsty/oink" class="td-nav-github" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="td-shell-icon td-shell-icon--github fa-brands fa-github" aria-hidden="true"></i></a>
+      </div>
+    </nav>
+  </div>
+</header>
+</div>
+
+    <div class="container-fluid td-print-shell">
+      <main id="td-main-content" class="td-print-document" tabindex="-1">
+        
+
+
+
+
+<div class="td-content">
+<div class="td-page-notice td-page-notice--primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<button type="button" class="btn btn-link p-0 align-baseline" data-td-action="print">Click here to print</button>.
+</p><p>
+<a href="/case/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">OINK Case</h1>
+<div class="lead">Fifteen real sites show how OINK scales from a two-page utility to a multilingual documentation estate and three books.</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+  
+  
+
+  
+    
+    
+    <li>
+1: <a href="#pg-0d0456c3c54454d9ded7d567e85bcd12">pgsty.com</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+2: <a href="#pg-b5ae2c15b890f992ec25c43f59426451">pigsty.cc</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+3: <a href="#pg-adeda806214c3da633166f0497e6f3f7">pigsty.io</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+4: <a href="#pg-65898d5d5c6c4778cf7043f3a6a85a94">silo.pgsty.com</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+5: <a href="#pg-cc09943faa971109d5c574711eefe491">oink.pgsty.com</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+6: <a href="#pg-b5cf3671b49d295d0b0be009ee66e5e9">caps.vonng.com</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+7: <a href="#pg-1af49d73fd90837d7b0a482d04d27e99">pig.pgsty.com</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+8: <a href="#pg-64f7f70c263992bb007f8011091b288c">sow.pgsty.com</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+9: <a href="#pg-26c5ee1980f544d77aefebc73de19092">exp.pgsty.com</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+10: <a href="#pg-18bf360a288f033991acf88025787320">ddia.vonng.com</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+11: <a href="#pg-cecf3358e44ee8deb6e3364484dadc5d">tpme.vonng.com</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+12: <a href="#pg-0b9e7b9786b20bc47344d7d0d3f20a92">pgint.vonng.com</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+13: <a href="#pg-735abae705c3de61d9ae367130b34431">pgsql.cc</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+14: <a href="#pg-4289efc1aee517a70b3e6ff7ec8a6fe2">pgsty.pro</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+15: <a href="#pg-45105764fe400e88324eeddaf140d95f">ext.pgsty.com</a>
+
+
+    </li>
+  
+
+    </ul>
+<div class="content">
+      <p>Fifteen production sites, from a two-page utility to a multilingual
+documentation estate and three books. Every card opens the live site.</p>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-0d0456c3c54454d9ded7d567e85bcd12">1 - pgsty.com</h1>
+    <div class="lead">PGSTY: the company behind Pigsty. A small bilingual corporate site that uses OINK primarily as a data-driven landing-page system.</div>
+	<p><a href="https://pgsty.com/">pgsty.com</a> is the bilingual corporate site behind Pigsty.
+It has only about ten pages: a <code>type: home</code> front page assembled from
+<code>data/home/{en,zh}.yaml</code>, followed by focused pages for solutions, company
+information, and pricing.</p>
+<h2 id="pg-0d0456c3c54454d9ded7d567e85bcd12--what-it-demonstrates">What it demonstrates
+</h2>
+<ul>
+<li>Using OINK as a landing-page theme with almost no documentation tree.</li>
+<li>Maintaining compact English and Chinese marketing pages as peers.</li>
+<li>Building the home-page narrative from reusable data sections.</li>
+</ul>
+<p>This pattern is appropriate when a project wants OINK&rsquo;s brand, navigation,
+search, and multilingual conventions but primarily needs a small public-facing
+site rather than a manual.</p>
+<p>→ <a href="/docs/customize/home/">Home and landing pages</a> · <a href="/case/">All OINK cases</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-b5ae2c15b890f992ec25c43f59426451">2 - pigsty.cc</h1>
+    <div class="lead">PIGSTY: the Chinese home of the open-source PostgreSQL distribution. Deployed as an independent single-language site so a very large translation corpus evolves on its own.</div>
+	<p><a href="https://pigsty.cc/">pigsty.cc</a> publishes Pigsty in Simplified Chinese. The case
+snapshot counted more than 1,490 content files and over 300 blog posts, with its
+own data-driven pricing page and Chinese as the default content language.</p>
+<h2 id="pg-b5ae2c15b890f992ec25c43f59426451--what-it-demonstrates">What it demonstrates
+</h2>
+<ul>
+<li>Splitting a very large bilingual corpus into two independently deployed,
+single-language sites.</li>
+<li>Connecting the pair through the alternate-site control and version menu.</li>
+<li>Letting each language keep its own publishing cadence and landing-page data.</li>
+</ul>
+<p>This pattern trades same-domain language switching for clearer ownership and
+smaller builds. It is useful when both languages are already substantial
+products rather than occasional translations.</p>
+<p>→ <a href="/docs/customize/i18n/">Multilingual configuration</a> · <a href="/case/pigsty-io/">pigsty.io case</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-adeda806214c3da633166f0497e6f3f7">3 - pigsty.io</h1>
+    <div class="lead">PIGSTY: the English home of the open-source PostgreSQL distribution. A large site combining a distribution manual, editorial blog, extension catalogue and pricing landing pages.</div>
+	<p><a href="https://pigsty.io/">pigsty.io</a> is the English home of Pigsty, the open-source
+PostgreSQL distribution. At the snapshot used for this case, it contained more
+than 1,400 Markdown files, over 200 blog posts, an extension catalogue, and a
+data-driven pricing page.</p>
+<h2 id="pg-adeda806214c3da633166f0497e6f3f7--what-it-demonstrates">What it demonstrates
+</h2>
+<ul>
+<li>A large documentation tree and editorial blog living in one Hugo site.</li>
+<li>Structured catalogues whose content and data are maintained separately.</li>
+<li>A <code>layout: landing</code> pricing page assembled from <code>data/landing</code>.</li>
+<li>Taxonomies and a version menu that also link to sibling and historical sites.</li>
+</ul>
+<p>Choose this pattern when one English-first site must serve reference material,
+news, catalogues, and commercial landing pages without splitting the toolchain.</p>
+<p>→ <a href="/docs/customize/home/">Home and landing pages</a> · <a href="/case/">All OINK cases</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-65898d5d5c6c4778cf7043f3a6a85a94">4 - silo.pgsty.com</h1>
+    <div class="lead">SILO: the community-maintained MinIO fork for S3-compatible object storage. A large bilingual migration whose checked manifest generates the documentation navigation.</div>
+	<p><a href="https://silo.pgsty.com/">silo.pgsty.com</a> documents SILO, an S3-compatible
+object store. The case snapshot counted 411 pages per language. A migration
+manifest covering 387 upstream pages generates <code>data/docs_nav.json</code>, which then
+drives the documentation sidebar. The site also has module taxonomy and a
+download page.</p>
+<h2 id="pg-65898d5d5c6c4778cf7043f3a6a85a94--what-it-demonstrates">What it demonstrates
+</h2>
+<ul>
+<li>Migrating a large upstream manual without flattening its information design.</li>
+<li>Generating navigation from a checked manifest instead of hand-maintaining it.</li>
+<li>Layering local bilingual content, taxonomy, and downloads around imported docs.</li>
+</ul>
+<p>Use this pattern when the upstream corpus remains authoritative but the local
+site needs its own navigation, language peers, and product surfaces.</p>
+<p>→ <a href="/docs/customize/navigation/">Navigation</a> · <a href="/case/">All OINK cases</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-cc09943faa971109d5c574711eefe491">5 - oink.pgsty.com</h1>
+    <div class="lead">OINK: the Hugo theme every site in this library is built with. Public manual, design reference, component gallery and regression fixture in one repository.</div>
+	<p><a href="https://oink.pgsty.com/">oink.pgsty.com</a> is the site you are reading. It is the
+theme&rsquo;s public manual and a real consumer used for regression coverage. Its
+component pages render live examples; the same repository also carries design
+contracts, Book fixtures, download data, and home and landing-page data.</p>
+<h2 id="pg-cc09943faa971109d5c574711eefe491--what-it-demonstrates">What it demonstrates
+</h2>
+<ul>
+<li>Documentation examples that are executable regression fixtures, not screenshots.</li>
+<li>One site serving users, content authors, theme developers, and reviewers.</li>
+<li>Component, Docs, Blog, Book, Case, download, and landing surfaces together.</li>
+<li>Bilingual content checked against a pinned Hugo Module dependency.</li>
+</ul>
+<p>Use this repository as the broad reference implementation; use the narrower
+cases when starting a site that needs only one or two OINK content models.</p>
+<p>→ <a href="/docs/components/">Component gallery</a> · <a href="/docs/design/">Design contracts</a> · <a href="/case/">All cases</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-b5cf3671b49d295d0b0be009ee66e5e9">6 - caps.vonng.com</h1>
+    <div class="lead">CapsLock: turn the most useless key on the keyboard into a fifth modifier. A two-page project site whose second page is a data-driven interactive configurator.</div>
+	<p><a href="https://caps.vonng.com/">caps.vonng.com</a> is a two-page-per-language
+site for the Capslock keyboard enhancement: a home page and an interactive
+configuration generator. The generator reads <code>data/capslock-v3.json</code> and uses
+a custom <code>customizer</code> shell type alongside the regular documentation shell.</p>
+<h2 id="pg-b5cf3671b49d295d0b0be009ee66e5e9--what-it-demonstrates">What it demonstrates
+</h2>
+<ul>
+<li>The practical lower bound of an OINK site: a tiny project needs no front-end
+application just to publish a tool and its introduction.</li>
+<li>Extending the shell registry for one purpose-built interactive page.</li>
+<li>Keeping generator data separate from its presentation and bilingual prose.</li>
+</ul>
+<p>Use this pattern when documentation is small but one interactive tool deserves
+the same navigation, theme, and language controls as the rest of the site.</p>
+<p>→ <a href="/docs/customize/layout/">Layout configuration</a> · <a href="/case/">All OINK cases</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-1af49d73fd90837d7b0a482d04d27e99">7 - pig.pgsty.com</h1>
+    <div class="lead">PIG: the package manager that installs any PostgreSQL extension. A compact bilingual product manual with a data-driven home page and an active companion blog.</div>
+	<p><a href="https://pig.pgsty.com/">pig.pgsty.com</a> documents PIG, the PostgreSQL extension
+package manager. Its core manual is deliberately compact—18 pages per language
+in the case snapshot—while a 50-post bilingual blog carries updates and deeper
+explanations. The home page is assembled from <code>data/home</code>.</p>
+<h2 id="pg-1af49d73fd90837d7b0a482d04d27e99--what-it-demonstrates">What it demonstrates
+</h2>
+<ul>
+<li>A shallow, mostly single-file documentation tree for a focused CLI product.</li>
+<li>English and Chinese peers without duplicating navigation design.</li>
+<li>A data-driven home page paired with a larger stream of blog content.</li>
+</ul>
+<p>Choose this pattern when the reference manual is small and stable but product
+news, tutorials, and release context need room to grow.</p>
+<p>→ <a href="/docs/start/anatomy/">Docs structure</a> · <a href="/case/">All OINK cases</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-64f7f70c263992bb007f8011091b288c">8 - sow.pgsty.com</h1>
+    <div class="lead">SOW: the repository manager that builds and mirrors APT and YUM software repositories. A bilingual operations manual with a download surface fed by release metadata.</div>
+	<p><a href="https://sow.pgsty.com/">sow.pgsty.com</a> documents SOW, an APT and YUM repository
+manager. The case snapshot contained 55 pages per language and a dedicated
+download page whose versions, tags, and release artifacts are generated from
+structured release data.</p>
+<h2 id="pg-64f7f70c263992bb007f8011091b288c--what-it-demonstrates">What it demonstrates
+</h2>
+<ul>
+<li>Keeping operational documentation bilingual at a moderate scale.</li>
+<li>Giving downloads their own content type instead of embedding links in prose.</li>
+<li>Reusing release data so package metadata has one source of truth.</li>
+</ul>
+<p>This pattern fits software that distributes many platform-specific artifacts
+and needs installation instructions, repositories, and downloads to evolve
+together.</p>
+<p>→ <a href="/docs/write/releases/">Releases and downloads</a> · <a href="/case/">All OINK cases</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-26c5ee1980f544d77aefebc73de19092">9 - exp.pgsty.com</h1>
+    <div class="lead">PG Exporter: the Prometheus metrics exporter for PostgreSQL and Pgbouncer. A bilingual manual combining generated navigation, a structured catalogue and system typography.</div>
+	<p><a href="https://exp.pgsty.com/">exp.pgsty.com</a> documents PG Exporter, a Prometheus
+metrics collector for PostgreSQL. The case snapshot counted 15 pages per
+language and 37 bilingual blog posts. Generated navigation, home-page data, and
+a structured metric catalogue do most of the organizational work.</p>
+<h2 id="pg-26c5ee1980f544d77aefebc73de19092--what-it-demonstrates">What it demonstrates
+</h2>
+<ul>
+<li>Using <code>data/docs_nav.json</code> for a small but deliberately ordered manual.</li>
+<li>Rendering a domain catalogue from structured data rather than repeated prose.</li>
+<li>Selecting <code>typography: system</code> when a site should make no brand-font request.</li>
+</ul>
+<p>This pattern suits technical products whose reference data is as important as
+their narrative documentation, especially where a lightweight font stack is
+preferred.</p>
+<p>→ <a href="/docs/customize/brand/">Typography and brand</a> · <a href="/case/">All OINK cases</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-18bf360a288f033991acf88025787320">10 - ddia.vonng.com</h1>
+    <div class="lead">DDIA: the Chinese edition of Designing Data-Intensive Applications. A multilingual book site and the largest proving ground for OINK numbering, cross-references and indexes.</div>
+	<p><a href="https://ddia.vonng.com/">ddia.vonng.com</a> publishes <em>Designing Data-Intensive
+Applications</em> as a multilingual book. The case snapshot includes 24 chapters
+each in Simplified and Traditional Chinese, 23 chapters of the English second
+edition, and two 21-chapter first-edition sets.</p>
+<h2 id="pg-18bf360a288f033991acf88025787320--what-it-demonstrates">What it demonstrates
+</h2>
+<ul>
+<li>A complete <code>type: book</code> reading shell with chapter-level navigation.</li>
+<li>More than 130 numbered figure, table, equation, and example targets.</li>
+<li>Stable cross-references and generated book indexes across several editions.</li>
+<li>Multiple written-language variants inside one publication.</li>
+</ul>
+<p>Use this pattern for long-form works where numbering, citations, and movement
+between chapters matter more than documentation-style sidebars.</p>
+<p>→ <a href="/docs/write/book/">Writing a book</a> · <a href="/case/">All OINK cases</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-cecf3358e44ee8deb6e3364484dadc5d">11 - tpme.vonng.com</h1>
+    <div class="lead">TPME: the Chinese edition of The Product-Minded Engineer. A focused bilingual publication that needs only OINK&rsquo;s Book shell.</div>
+	<p><a href="https://tpme.vonng.com/">tpme.vonng.com</a> publishes <em>The Product-Minded
+Engineer</em> in English and Chinese, with 18 chapters per language in the case
+snapshot. Its configuration narrows the supported shell types to <code>[book]</code>.</p>
+<h2 id="pg-cecf3358e44ee8deb6e3364484dadc5d--what-it-demonstrates">What it demonstrates
+</h2>
+<ul>
+<li>A publication with exactly one content model and no documentation shell.</li>
+<li>Bilingual chapter peers with a shared visual and navigational system.</li>
+<li>A smaller Book implementation than the multi-edition DDIA site.</li>
+</ul>
+<p>This is the clearer starting point for a single-title tutorial or translated
+book: keep the site architecture narrow, then add numbering and indexes only as
+the manuscript needs them.</p>
+<p>→ <a href="/docs/write/book/">Writing a book</a> · <a href="/case/ddia/">DDIA case</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-0b9e7b9786b20bc47344d7d0d3f20a92">12 - pgint.vonng.com</h1>
+    <div class="lead">PG Internals: the Chinese edition of PostgreSQL Internals. A single-language book site that runs the Book shell on its own, with no documentation tree beside it.</div>
+	<p><a href="https://pgint.vonng.com/">pgint.vonng.com</a> publishes <em>PG 技术内幕</em>, the 2018
+Chinese translation of Hironobu Suzuki&rsquo;s <em>The Internals of PostgreSQL</em>. The site
+carries two prefaces, eleven chapters, a generated table of contents, and a
+licensing page — all in Simplified Chinese, with no English peer.</p>
+<h2 id="pg-0b9e7b9786b20bc47344d7d0d3f20a92--what-it-demonstrates">What it demonstrates
+</h2>
+<ul>
+<li>A deliberately monolingual OINK site: one language tree, and a language
+switcher that stays out of the way because there is nothing to switch to.</li>
+<li>The Book shell carrying a finished translation rather than a living manual —
+chapter navigation, whole-book print output, and a landing page in one site.</li>
+<li>A landing page that credits an upstream author alongside the translators, and
+links outward to the continuously updated English original.</li>
+</ul>
+<p>Use this pattern for a completed translation or a stable published text: the
+content will not grow, so the site&rsquo;s job is orientation, reading comfort, and
+honest attribution rather than change management.</p>
+<p>→ <a href="/docs/write/book/">Writing a book</a> · <a href="/case/tpme/">TPME case</a> · <a href="/case/ddia/">DDIA case</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-735abae705c3de61d9ae367130b34431">13 - pgsql.cc</h1>
+    <div class="lead">PGSQL.CC: an operations library for PostgreSQL and the components around it. Several upstream manuals and partially translated language trees share one search and one visual system.</div>
+	<p><a href="https://pgsql.cc/">pgsql.cc</a> brings the operating manuals for Patroni, HAProxy,
+etcd, PgBouncer, pgBackRest, and pgBadger into one PostgreSQL-focused library.
+The case snapshot counted 217 English pages and 80 Chinese pages.</p>
+<h2 id="pg-735abae705c3de61d9ae367130b34431--what-it-demonstrates">What it demonstrates
+</h2>
+<ul>
+<li>Giving several upstream products a consistent local information architecture.</li>
+<li>Publishing English first while Chinese coverage grows over time.</li>
+<li>Keeping partial translation useful instead of blocking publication on parity.</li>
+<li>Using subtrees to preserve clear product boundaries inside an aggregate site.</li>
+</ul>
+<p>Choose this pattern for a curated technical library where sources and
+translation maturity vary, but readers benefit from one search and one visual
+system.</p>
+<p>→ <a href="/docs/customize/i18n/">Multilingual configuration</a> · <a href="/case/">All OINK cases</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-4289efc1aee517a70b3e6ff7ec8a6fe2">14 - pgsty.pro</h1>
+    <div class="lead">PIGSTY PRO: the enterprise edition of Pigsty. A bilingual documentation and release archive built around reusable, structured release records.</div>
+	<p><a href="https://pgsty.pro/">pgsty.pro</a> documents Pigsty v5 in English and Chinese. The
+case snapshot counted 343 documentation pages per language and 67 bilingual
+blog posts. Its release archive is the distinctive part: 128 localized pages
+render version data through the reusable <code>release-card</code> component.</p>
+<h2 id="pg-4289efc1aee517a70b3e6ff7ec8a6fe2--what-it-demonstrates">What it demonstrates
+</h2>
+<ul>
+<li>Keeping a long product history navigable without hand-building every card.</li>
+<li>Sharing structured release data between download, archive, and detail pages.</li>
+<li>Maintaining documentation and editorial posts as bilingual peers.</li>
+</ul>
+<p>Use this pattern for products with many supported or historical versions where
+release metadata must stay consistent across several surfaces.</p>
+<p>→ <a href="/docs/write/releases/">Releases and downloads</a> · <a href="/case/">All OINK cases</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-45105764fe400e88324eeddaf140d95f">15 - ext.pgsty.com</h1>
+    <div class="lead">PGEXT: the PostgreSQL extension catalog. 2,241 extensions indexed and 576 packaged, searchable across 16 Linux platforms and 5 major versions.</div>
+	<p><a href="https://ext.pgsty.com/">ext.pgsty.com</a> is the PostgreSQL Extension Catalog:
+search across extensions, package families, dependencies, and the exact
+PostgreSQL and operating-system combinations each one is available for. The
+catalogue indexes 2,241 extensions, 576 of them packaged, across 16 Linux
+platforms and 5 major PostgreSQL versions.</p>
+<h2 id="pg-45105764fe400e88324eeddaf140d95f--what-it-demonstrates">What it demonstrates
+</h2>
+<ul>
+<li>A queryable dataset presented as the primary object of a site, with the
+reading shell kept out of its way.</li>
+<li>A catalogue and its prose living in one OINK site, the same arrangement
+<a href="/case/pg-exporter/">PG Exporter</a> and <a href="/case/pigsty-io/">pigsty.io</a> use for
+their own structured data.</li>
+</ul>
+<p>→ <a href="/case/pg-exporter/">PG Exporter case</a> · <a href="/case/pigsty-io/">pigsty.io case</a> · <a href="/case/">All OINK cases</a></p>
+
+</div>
+
+
+
+    
+	
+  
+
+
+
+      </main>
+    </div>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"Copy Markdown","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["Copy Markdown","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Copy Markdown","url":"/case/index.md"},{"available":true,"description":"Copy link","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["Copy link","Share","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"Copy link","url":"http://localhost:1313/case/"},{"available":true,"description":"Open in ChatGPT","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["Open in ChatGPT","Ask about this page","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in ChatGPT","url":"https://chatgpt.com/?hints=search\u0026prompt=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fcase%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"Open in Claude","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["Open in Claude","Ask about this page","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in Claude","url":"https://claude.ai/new?q=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fcase%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"View markdown","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["View markdown","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View markdown","url":"/case/index.md"},{"available":true,"description":"View edit history","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["View edit history","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View edit history","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/case/_index.md"},{"available":true,"description":"Edit this page","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["Edit this page","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Edit this page","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/case/_index.md"},{"available":true,"description":"Create child page","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["Create child page","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create child page","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/case?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"Create docs issue","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["Create docs issue","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create docs issue","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=OINK+Case"},{"available":true,"description":"Create project issue","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["Create project issue","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create project issue","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"Print entire section","disabledReason":"Print entire section: unavailable","icon":"fa-solid fa-print","id":"print_section","keywords":["Print entire section","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Print entire section","url":""},{"available":true,"description":"Print this page","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["Print this page","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"Print this page","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL required","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"Switch language","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["Switch language","language"],"kind":"choice","options":[{"active":true,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/case/"},{"active":false,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/case/"}],"placements":{"page":false,"palette":true},"target":"self","title":"Switch language","url":""},{"available":true,"description":"Toggle color theme","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["Toggle color theme","Light","Dark"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"System","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"Light","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"Dark","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"Toggle color theme","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"Report or review theme and documentation issues","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["bug","support","roadmap"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK issues","url":"https://github.com/pgsty/oink/issues"}],"language":"en","quickLinks":[{"available":true,"description":"OINK is a documentation theme that needs nothing but Hugo Extended — components are written in Markdown, assets ship with the theme, both languages work out of the box, and one source produces four outputs.","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["Docs","docs"],"kind":"url","target":"self","title":"Docs","url":"/docs/"},{"available":true,"description":"OINK engineering stories, immersive guides, and release notes","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["Blog","blog"],"kind":"url","target":"self","title":"Blog","url":"/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+
+<script src="/js/actions.js"></script>
+
+  </body>
+</html>

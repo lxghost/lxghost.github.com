@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>发布 on OINK</title>
+    <link>http://localhost:1313/zh/categories/%E5%8F%91%E5%B8%83/</link>
+    <description>Recent content in 发布 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Thu, 20 Aug 2026 19:29:45 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/categories/%E5%8F%91%E5%B8%83/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>Oink 0.2.0：更丰富的内容与更精致的呈现</title>
+        <link>http://localhost:1313/zh/blog/release/0.2.0/</link>
+        <pubDate>Mon, 10 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/blog/release/0.2.0/</guid>
+        <description>&lt;div class=&#34;td-release-card-static&#34;&gt;&#xA;  &lt;p&gt;&lt;strong&gt;v0.2.0&lt;/strong&gt; · &lt;time datetime=&#34;2026-08-10&#34;&gt;2026-08-10&lt;/time&gt;&lt;/p&gt;&#xA;  &lt;ul&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/releases/tag/v0.2.0&#34;&gt;查看发布&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.2.0.tar.gz&#34;&gt;源码 · tar.gz&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.2.0.zip&#34;&gt;源码 · zip&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink&#34;&gt;pgsty/oink&lt;/a&gt;&lt;/li&gt;&#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;Oink&#xA;0.2.0 聚焦读者与作者最常接触的表面：首页、品牌呈现、博客发现、分区索引与操作指南。Oink 项目站点也同步成为更清晰的双语参考，用于说明主题的当前契约。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Oink 0.1.0：稳定的本地优先基础</title>
+        <link>http://localhost:1313/zh/blog/release/0.1.0/</link>
+        <pubDate>Sat, 08 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/blog/release/0.1.0/</guid>
+        <description>&lt;div class=&#34;td-release-card-static&#34;&gt;&#xA;  &lt;p&gt;&lt;strong&gt;v0.1.0&lt;/strong&gt; · &lt;time datetime=&#34;2026-08-08&#34;&gt;2026-08-08&lt;/time&gt;&lt;/p&gt;&#xA;  &lt;ul&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/releases/tag/v0.1.0&#34;&gt;查看发布&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.1.0.tar.gz&#34;&gt;源码 · tar.gz&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.1.0.zip&#34;&gt;源码 · zip&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink&#34;&gt;pgsty/oink&lt;/a&gt;&lt;/li&gt;&#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;Oink&#xA;0.1.0 是 Oink 主题的首个稳定版本。它包含 0.0.1 实现预览以及之后的稳定化工作：统一的文档页面外壳、消费端仅依赖 Hugo 的构建、本地优先的浏览器资源、基于 Hugo 原生对象的多语言行为，以及可复用的内容组件。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

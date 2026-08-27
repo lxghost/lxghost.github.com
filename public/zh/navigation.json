@@ -1,0 +1,960 @@
+{
+  "baseURL": "http://localhost:1313/",
+  "language": "zh",
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "description": "安装唯一必需的工具，启动本地预览，在调整设计前先建立可见的基线。",
+            "id": "/book/01-start/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/zh/book/01-start/index.md",
+            "title": "跑起第一个站点",
+            "url": "http://localhost:1313/zh/book/01-start/"
+          },
+          {
+            "description": "让目录、分区索引、页面包与权重共同构成可预期的阅读与导航顺序。",
+            "id": "/book/02-structure/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/zh/book/02-structure/index.md",
+            "title": "组织内容",
+            "url": "http://localhost:1313/zh/book/02-structure/"
+          },
+          {
+            "description": "把散文、提示块、代码、媒体、表格与数学公式组合在一起，而不把页面变成组件目录。",
+            "id": "/book/03-compose/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/zh/book/03-compose/index.md",
+            "title": "组合页面",
+            "url": "http://localhost:1313/zh/book/03-compose/"
+          },
+          {
+            "description": "把稳固的内容结构变成一份可辨识、响应式且双语对齐的出版物。",
+            "id": "/book/04-design/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/zh/book/04-design/index.md",
+            "title": "塑造体验",
+            "url": "http://localhost:1313/zh/book/04-design/"
+          },
+          {
+            "description": "用 Docs、Blog、Case、Book 与发布页面分别回答读者的不同需求。",
+            "id": "/book/05-publishing/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/zh/book/05-publishing/index.md",
+            "title": "选择发布界面",
+            "url": "http://localhost:1313/zh/book/05-publishing/"
+          },
+          {
+            "description": "区分本地预览、仓库集成、主题发布与站点部署，并用对应证据验证每一种状态。",
+            "id": "/book/06-ship/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/zh/book/06-ship/index.md",
+            "title": "校验与交付",
+            "url": "http://localhost:1313/zh/book/06-ship/"
+          },
+          {
+            "description": "可复制调整的 Book 根页、章节、沉浸式 Blog 文章与整书输出契约。",
+            "id": "/book/appendix-patterns/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/zh/book/appendix-patterns/index.md",
+            "title": "附录：模式",
+            "url": "http://localhost:1313/zh/book/appendix-patterns/"
+          }
+        ],
+        "description": "一本实战教程：用 OINK 创作清晰、优美且易于维护的技术内容。",
+        "id": "/book/",
+        "kind": "section",
+        "markdown": "http://localhost:1313/zh/book/index.md",
+        "title": "教程",
+        "url": "http://localhost:1313/zh/book/"
+      },
+      {
+        "children": [
+          {
+            "kind": "external",
+            "title": "pgsty.com",
+            "url": "https://pgsty.com/"
+          },
+          {
+            "kind": "external",
+            "title": "pigsty.cc",
+            "url": "https://pigsty.cc/"
+          },
+          {
+            "kind": "external",
+            "title": "pigsty.io",
+            "url": "https://pigsty.io/"
+          },
+          {
+            "kind": "external",
+            "title": "silo.pgsty.com",
+            "url": "https://silo.pgsty.com/"
+          },
+          {
+            "kind": "external",
+            "title": "OINK 文档",
+            "url": "https://oink.pgsty.com/"
+          },
+          {
+            "kind": "external",
+            "title": "caps.vonng.com",
+            "url": "https://caps.vonng.com/"
+          },
+          {
+            "kind": "external",
+            "title": "pig.pgsty.com",
+            "url": "https://pig.pgsty.com/"
+          },
+          {
+            "kind": "external",
+            "title": "sow.pgsty.com",
+            "url": "https://sow.pgsty.com/"
+          },
+          {
+            "kind": "external",
+            "title": "exp.pgsty.com",
+            "url": "https://exp.pgsty.com/"
+          },
+          {
+            "kind": "external",
+            "title": "DDIA",
+            "url": "https://ddia.vonng.com/"
+          },
+          {
+            "kind": "external",
+            "title": "TPME",
+            "url": "https://tpme.vonng.com/"
+          },
+          {
+            "kind": "external",
+            "title": "pgint.vonng.com",
+            "url": "https://pgint.vonng.com/"
+          },
+          {
+            "kind": "external",
+            "title": "pgsql.cc",
+            "url": "https://pgsql.cc/"
+          },
+          {
+            "kind": "external",
+            "title": "pgsty.pro",
+            "url": "https://pgsty.pro/"
+          },
+          {
+            "kind": "external",
+            "title": "ext.pgsty.com",
+            "url": "https://ext.pgsty.com/"
+          }
+        ],
+        "description": "十五个真实站点展示 OINK 如何覆盖两页小工具、多语言文档群与三本书籍。",
+        "id": "/case/",
+        "kind": "section",
+        "markdown": "http://localhost:1313/zh/case/index.md",
+        "title": "案例",
+        "url": "http://localhost:1313/zh/case/"
+      },
+      {
+        "id": "/search/",
+        "kind": "page",
+        "title": "Search Results",
+        "url": "http://localhost:1313/zh/search/"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "description": "Oink 0.8.0 为「以程序身份来读」的访客加了两种可选输出格式：把整个栏目装进一个文件的 全文包，以及以 JSON 发布的导航树；再加上静态反向链接，在右栏列出链接到本页的页面。 三者都默认关闭，不点名就不会出现。",
+                "id": "/blog/release/0.8.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/blog/release/0.8.0/index.md",
+                "title": "Oink v0.8.0",
+                "url": "http://localhost:1313/zh/blog/release/0.8.0/"
+              },
+              {
+                "description": "Oink 0.7.1 是一次安全与校验修补。Swagger UI 不再把你的 spec 地址发给第三方， 配错的参数会告警并回退而不是中断普通构建，OpenAPI 与终端录像组件也终于像其他组件一样， 在打印、Markdown 和 RSS 中表现正常。",
+                "id": "/blog/release/0.7.1/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/blog/release/0.7.1/index.md",
+                "title": "Oink v0.7.1",
+                "url": "http://localhost:1313/zh/blog/release/0.7.1/"
+              },
+              {
+                "description": "Oink 0.7.0 让每个板块通过外壳的底色拥有自己的强调色，把七个字体角色交给站点配置， 并把 mermaid 围栏变成一张真正的图：居中、切换深浅色就地重绘、可以按原始尺寸打开。",
+                "id": "/blog/release/0.7.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/blog/release/0.7.0/index.md",
+                "title": "Oink v0.7.0",
+                "url": "http://localhost:1313/zh/blog/release/0.7.0/"
+              },
+              {
+                "description": "Oink 0.6.0 为现有博客外壳增加沉浸式呈现，用题图、作者、系列、三种索引形态和分享条 补全博客发布能力，并以安全告警取代会中止整个构建的模板错误。",
+                "id": "/blog/release/0.6.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/blog/release/0.6.0/index.md",
+                "title": "Oink v0.6.0",
+                "url": "http://localhost:1313/zh/blog/release/0.6.0/"
+              },
+              {
+                "description": "Oink 0.5.0 用原生 Markdown 形态取代大多数 shortcode，把全部配置键与 front matter 键收敛到三条规则上，删除 0.x 兼容层，并附带把 0.4 站点改写到位的迁移工具。 每一个旧键、旧形态、旧 shortcode 都会让构建失败并指出替代写法，而不是被静默忽略。",
+                "id": "/blog/release/0.5.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/blog/release/0.5.0/index.md",
+                "title": "Oink v0.5.0",
+                "url": "http://localhost:1313/zh/blog/release/0.5.0/"
+              },
+              {
+                "description": "Oink 0.4.0 在一个合并发布中交付连续阅读与发布界面、可复用 Landing 页面、 带稳定引用的 Book 出版能力，以及键盘优先的站点外壳。",
+                "id": "/blog/release/0.4.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/blog/release/0.4.0/index.md",
+                "title": "Oink v0.4.0",
+                "url": "http://localhost:1313/zh/blog/release/0.4.0/"
+              },
+              {
+                "description": "Oink 0.3.0 带来增强代码块与代码分组、日常内容组件、嵌套导航与命令面板、 语义化字体预设，并从每个页面移除了 jQuery。",
+                "id": "/blog/release/0.3.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/blog/release/0.3.0/index.md",
+                "title": "Oink v0.3.0",
+                "url": "http://localhost:1313/zh/blog/release/0.3.0/"
+              },
+              {
+                "description": "Oink 0.2.0 新增可组合首页分区、跟随颜色模式的图片、字标、可导航组件面板与 steps 短代码，并改进终端录像与版本发布内容的呈现体验。",
+                "id": "/blog/release/0.2.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/blog/release/0.2.0/index.md",
+                "title": "Oink v0.2.0",
+                "url": "http://localhost:1313/zh/blog/release/0.2.0/"
+              },
+              {
+                "description": "Oink 的首个稳定版本将实现预览完善为可直接使用的 Hugo 模块，提供响应式页面外壳、多语言基础设施、本地优先组件与更扎实的无障碍基线。",
+                "id": "/blog/release/0.1.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/blog/release/0.1.0/index.md",
+                "title": "Oink v0.1.0",
+                "url": "http://localhost:1313/zh/blog/release/0.1.0/"
+              }
+            ],
+            "description": "OINK 的版本发布注记、升级指南与兼容性说明",
+            "id": "/blog/release/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/zh/blog/release/index.md",
+            "title": "发布",
+            "url": "http://localhost:1313/zh/blog/release/"
+          },
+          {
+            "children": [
+              {
+                "description": "四个 front matter 键就能把普通 Blog 页面变成阅读优先的版式， 以全幅 Hero 开场，再用随文的大纲栏承接正文。",
+                "id": "/blog/oink/immersive-reading/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/blog/oink/immersive-reading/index.md",
+                "title": "沉浸式阅读",
+                "url": "http://localhost:1313/zh/blog/oink/immersive-reading/"
+              },
+              {
+                "description": "OINK 将直接定制的 Docsy 代码库演化为本地优先、仅依赖 Hugo 的文档主题，并提供多语言基础设施与可复用内容组件。",
+                "id": "/blog/oink/oink-announcement/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/blog/oink/oink-announcement/index.md",
+                "title": "OINK 实现预览",
+                "url": "http://localhost:1313/zh/blog/oink/oink-announcement/"
+              },
+              {
+                "description": "记录 OINK 实现预览背后的技术决策、迁移方法、安全边界、测试与文档工作。",
+                "id": "/blog/oink/oink-implementation-diary/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/blog/oink/oink-implementation-diary/index.md",
+                "title": "OINK 实施日记",
+                "url": "http://localhost:1313/zh/blog/oink/oink-implementation-diary/"
+              }
+            ],
+            "description": "OINK 公告、工程实践与实现笔记",
+            "id": "/blog/oink/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/zh/blog/oink/index.md",
+            "title": "Oink",
+            "url": "http://localhost:1313/zh/blog/oink/"
+          }
+        ],
+        "description": "OINK 工程实践、沉浸式阅读指南与发布注记",
+        "id": "/blog/",
+        "kind": "section",
+        "markdown": "http://localhost:1313/zh/blog/index.md",
+        "title": "博客",
+        "url": "http://localhost:1313/zh/blog/"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "description": "逐条列出 OINK 与普通 Hugo 主题的差别，每条链接到讲它的指南页。",
+                "id": "/docs/about/features/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/about/features/index.md",
+                "title": "亮点特性",
+                "url": "http://localhost:1313/zh/docs/about/features/"
+              },
+              {
+                "description": "按文档、书籍、落地页与交互工具的形态，找到最接近自己需求的 OINK 生产案例。",
+                "id": "/docs/about/showcase/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/about/showcase/index.md",
+                "title": "案例",
+                "url": "http://localhost:1313/zh/docs/about/showcase/"
+              },
+              {
+                "description": "查清哪一层适用哪份许可证：主题 Apache-2.0、文档 CC BY 4.0、随主题分发的第三方运行时各自保留原许可。",
+                "id": "/docs/about/license/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/about/license/index.md",
+                "title": "开源许可与致谢",
+                "url": "http://localhost:1313/zh/docs/about/license/"
+              }
+            ],
+            "description": "一款只需 Hugo Extended 的技术文档主题，从 Docsy 演化而来，组件写在 Markdown 里，资源随主题分发，十四个生产站点在用。",
+            "id": "/docs/about/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/zh/docs/about/index.md",
+            "title": "简介",
+            "url": "http://localhost:1313/zh/docs/about/"
+          },
+          {
+            "children": [
+              {
+                "description": "克隆下来的每个目录是什么：哪些必须保留、哪些替换为你的信息、哪些是文档站自用可以整个删除。",
+                "id": "/docs/start/anatomy/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/start/anatomy/index.md",
+                "title": "仓库导览",
+                "url": "http://localhost:1313/zh/docs/start/anatomy/"
+              },
+              {
+                "description": "从空目录搭一个最小 OINK 站点，以及 Module / submodule / 离线归档 / 克隆四种安装方式的取舍。",
+                "id": "/docs/start/from-scratch/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/start/from-scratch/index.md",
+                "title": "从零建站",
+                "url": "http://localhost:1313/zh/docs/start/from-scratch/"
+              }
+            ],
+            "description": "克隆 OINK 文档站，本地预览，替换站点信息，部署到 GitHub Pages。",
+            "id": "/docs/start/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/zh/docs/start/index.md",
+            "title": "快速上手",
+            "url": "http://localhost:1313/zh/docs/start/"
+          },
+          {
+            "children": [
+              {
+                "description": "新建一页文档：文件放在哪、front matter 写什么、标题锚点为什么要手写、链接与图片怎么写、页尾会自动出现什么。",
+                "id": "/docs/write/pages/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/write/pages/index.md",
+                "title": "编写页面",
+                "url": "http://localhost:1313/zh/docs/write/pages/"
+              },
+              {
+                "description": "目录结构就是侧栏树：`_index.md` 与 weight、栏目首页样式、图标与折叠、隐藏页面、把文档放在任意路径。",
+                "id": "/docs/write/organize/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/write/organize/index.md",
+                "title": "组织内容",
+                "url": "http://localhost:1313/zh/docs/write/organize/"
+              },
+              {
+                "description": "front matter 全表：主题真正读取的每一个页面键，按侧栏、外壳、搜索、输出、页尾、Book、Landing、发布页分组。",
+                "id": "/docs/write/frontmatter/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/write/frontmatter/index.md",
+                "title": "页面参数",
+                "url": "http://localhost:1313/zh/docs/write/frontmatter/"
+              },
+              {
+                "description": "开一个博客栏目：目录约定、文章的 front matter、封面图、按年份分组的列表页与 RSS。",
+                "id": "/docs/write/blog/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/write/blog/index.md",
+                "title": "博客与文章",
+                "url": "http://localhost:1313/zh/docs/write/blog/"
+              },
+              {
+                "description": "用 `type: book` 把一棵目录树变成一本书：章节编号、图表式例编号、交叉引用、生成式索引与整本打印。",
+                "id": "/docs/write/book/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/write/book/index.md",
+                "title": "书籍出版",
+                "url": "http://localhost:1313/zh/docs/write/book/"
+              },
+              {
+                "description": "把版本号、标签、归档链接、校验和与安装命令写成本地事实，再让发布卡片、资产表、下载区块和索引页从同一份记录推导出来。",
+                "id": "/docs/write/releases/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/write/releases/index.md",
+                "title": "发布与下载页",
+                "url": "http://localhost:1313/zh/docs/write/releases/"
+              },
+              {
+                "description": "把 OpenAPI 规范放进站点，用随主题分发的 Swagger UI 或 Redoc 渲染成可浏览的接口文档，不连 CDN。",
+                "id": "/docs/write/openapi/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/write/openapi/index.md",
+                "title": "API 文档",
+                "url": "http://localhost:1313/zh/docs/write/openapi/"
+              }
+            ],
+            "description": "写文档页、博客、书籍、发布页与 API 文档：一页文档长什么样，内容怎么组织。",
+            "id": "/docs/write/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/zh/docs/write/index.md",
+            "title": "创作内容",
+            "url": "http://localhost:1313/zh/docs/write/"
+          },
+          {
+            "children": [
+              {
+                "description": "用 `\u003e [!NOTE]` 这样的块引用写出带颜色、图标与标题的提示、警告与折叠块，不需要短代码。",
+                "id": "/docs/components/callout/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/components/callout/index.md",
+                "title": "提示块",
+                "url": "http://localhost:1313/zh/docs/components/callout/"
+              },
+              {
+                "description": "用普通 Markdown 图片语法写图，加一行属性就得到图注、尺寸、缩放、链接、编号与 Hugo 图片处理。",
+                "id": "/docs/components/image/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/components/image/index.md",
+                "title": "图片",
+                "url": "http://localhost:1313/zh/docs/components/image/"
+              },
+              {
+                "description": "普通 Markdown 围栏加一行属性，就得到文件名标题、精确复制、行号、高亮、换行、折叠与可链接的行。",
+                "id": "/docs/components/code/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/components/code/index.md",
+                "title": "代码块",
+                "url": "http://localhost:1313/zh/docs/components/code/"
+              },
+              {
+                "description": "给相邻的围栏或表格加一个 `{tab=}` 属性就得到标签页；加上 group 之后可分享链接、跨组同步、记住读者的选择。",
+                "id": "/docs/components/tabs/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/components/tabs/index.md",
+                "title": "标签页",
+                "url": "http://localhost:1313/zh/docs/components/tabs/"
+              },
+              {
+                "description": "普通 GFM 表格加一行属性，就得到标题、兼容矩阵、参数表、编号表或标签页；宽表格自己横向滚动，不撑宽页面。",
+                "id": "/docs/components/table/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/components/table/index.md",
+                "title": "表格",
+                "url": "http://localhost:1313/zh/docs/components/table/"
+              },
+              {
+                "description": "用一张普通表格加 `{.fields}` 记录配置项、命令参数与 API 字段：名称、类型、默认值、说明各就各位，窄屏不挤，每条都能单独链接。",
+                "id": "/docs/components/fields/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/components/fields/index.md",
+                "title": "参数表",
+                "url": "http://localhost:1313/zh/docs/components/fields/"
+              },
+              {
+                "description": "有序列表加 `{.steps}` 就是带编号圆点与竖线的操作步骤；步骤要带标题、要进目录时改用 steps shortcode。",
+                "id": "/docs/components/steps/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/components/steps/index.md",
+                "title": "步骤",
+                "url": "http://localhost:1313/zh/docs/components/steps/"
+              },
+              {
+                "description": "用带 `{.cards}` 的链接列表排出导航卡片网格；需要图标、徽章、图片时改用 shortcode。",
+                "id": "/docs/components/cards/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/components/cards/index.md",
+                "title": "卡片",
+                "url": "http://localhost:1313/zh/docs/components/cards/"
+              },
+              {
+                "description": "用 `filetree` 围栏画带注释的目录结构：对齐的注释列、逐条目图标、可折叠目录、可拖动的分栏。",
+                "id": "/docs/components/filetree/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/components/filetree/index.md",
+                "title": "文件树",
+                "url": "http://localhost:1313/zh/docs/components/filetree/"
+              },
+              {
+                "description": "用 KaTeX 写行内与块级数学公式，构建期渲染完毕，读者不下载任何脚本。",
+                "id": "/docs/components/math/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/components/math/index.md",
+                "title": "公式",
+                "url": "http://localhost:1313/zh/docs/components/math/"
+              },
+              {
+                "description": "用 `mermaid` 围栏把文本写成流程图、时序图、甘特图、类图与状态图，本地渲染、跟随深浅色、diff 友好。",
+                "id": "/docs/components/mermaid/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/components/mermaid/index.md",
+                "title": "Mermaid",
+                "url": "http://localhost:1313/zh/docs/components/mermaid/"
+              },
+              {
+                "description": "用 `plantuml` 围栏写时序图、类图、组件图、活动图与用例图；渲染必须由你自己配置一个 PlantUML 服务。",
+                "id": "/docs/components/plantuml/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/components/plantuml/index.md",
+                "title": "PlantUML",
+                "url": "http://localhost:1313/zh/docs/components/plantuml/"
+              },
+              {
+                "description": "用 `markmap` 围栏把一段 Markdown 大纲变成可展开、可缩放的思维导图，源码本身就是能读的提纲。",
+                "id": "/docs/components/markmap/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/components/markmap/index.md",
+                "title": "思维导图",
+                "url": "http://localhost:1313/zh/docs/components/markmap/"
+              },
+              {
+                "description": "把带着可编辑副本的 `.drawio.svg` 当普通图片放进页面，读者鼠标移上去就能点开 Draw.io 编辑器改图。",
+                "id": "/docs/components/drawio/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/components/drawio/index.md",
+                "title": "Draw.io",
+                "url": "http://localhost:1313/zh/docs/components/drawio/"
+              },
+              {
+                "description": "在 `echarts` 围栏里用 YAML 或 JSON 写图表选项，Hugo 构建期校验，浏览器用本地 ECharts 画出跟随深浅色的统计图。",
+                "id": "/docs/components/echarts/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/components/echarts/index.md",
+                "title": "ECharts",
+                "url": "http://localhost:1313/zh/docs/components/echarts/"
+              },
+              {
+                "description": "用 `infographic` 围栏挑一个 AntV 模板，把标题与条目渲染成流程、时间线、漏斗、网格或层级信息图。",
+                "id": "/docs/components/infographic/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/components/infographic/index.md",
+                "title": "Infographic",
+                "url": "http://localhost:1313/zh/docs/components/infographic/"
+              },
+              {
+                "description": "用 `gallery` 围栏把一组相关截图排成响应式网格，每张可带说明或链接，并复用页面的图片缩放对话框。",
+                "id": "/docs/components/gallery/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/components/gallery/index.md",
+                "title": "画廊",
+                "url": "http://localhost:1313/zh/docs/components/gallery/"
+              },
+              {
+                "description": "在功能名、版本号或表格单元格旁边放一枚语义状态标签，五种 tone，不需要自定义颜色。",
+                "id": "/docs/components/badge/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/components/badge/index.md",
+                "title": "徽章",
+                "url": "http://localhost:1313/zh/docs/components/badge/"
+              },
+              {
+                "description": "用 `kbd` 写快捷键：一个 shortcode 接一串按键名，输出语义化的按键序列，打印与 Markdown 输出里同样可读。",
+                "id": "/docs/components/kbd/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/components/kbd/index.md",
+                "title": "按键",
+                "url": "http://localhost:1313/zh/docs/components/kbd/"
+              },
+              {
+                "description": "用 include 插入外部文件，用 param 插入站点参数，用 comment 写不会出现在任何输出里的注释。",
+                "id": "/docs/components/include/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/components/include/index.md",
+                "title": "引用",
+                "url": "http://localhost:1313/zh/docs/components/include/"
+              },
+              {
+                "description": "把 .cast 终端录像放进页面：文字仍然是可选中的文字，播放器随主题分发，不连 CDN。",
+                "id": "/docs/components/asciinema/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/components/asciinema/index.md",
+                "title": "Asciinema",
+                "url": "http://localhost:1313/zh/docs/components/asciinema/"
+              }
+            ],
+            "description": "写文档时可用的全部组件，一个组件一页，例子由浅入深，参数表在页尾。",
+            "id": "/docs/components/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/zh/docs/components/index.md",
+            "title": "组件",
+            "url": "http://localhost:1313/zh/docs/components/"
+          },
+          {
+            "children": [
+              {
+                "description": "主题真正会读的每一个站点参数：类型、默认值、去哪一页改。查参数从这里开始。",
+                "id": "/docs/customize/config/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/customize/config/index.md",
+                "title": "配置总览",
+                "url": "http://localhost:1313/zh/docs/customize/config/"
+              },
+              {
+                "description": "替换站名、Logo、favicon、主色、深浅色与字体，只需改配置与两个 SCSS 入口文件。",
+                "id": "/docs/customize/brand/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/customize/brand/index.md",
+                "title": "品牌外观",
+                "url": "http://localhost:1313/zh/docs/customize/brand/"
+              },
+              {
+                "description": "用一份本地 YAML 组合首页：Hero、卡片、能力面板、时间线、定价、案例、下载。任意页面也能用同一套分区做成落地页。",
+                "id": "/docs/customize/home/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/customize/home/index.md",
+                "title": "首页与落地页",
+                "url": "http://localhost:1313/zh/docs/customize/home/"
+              },
+              {
+                "description": "配置顶栏菜单与下拉、栏目切换器、面包屑、页面操作、翻页器和页脚链接。",
+                "id": "/docs/customize/navigation/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/customize/navigation/index.md",
+                "title": "导航与菜单",
+                "url": "http://localhost:1313/zh/docs/customize/navigation/"
+              },
+              {
+                "description": "用 type 决定一页用哪种外壳，再调侧栏宽度与图标、目录深度、栏目首页样式和页宽。",
+                "id": "/docs/customize/layout/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/customize/layout/index.md",
+                "title": "布局与页面类型",
+                "url": "http://localhost:1313/zh/docs/customize/layout/"
+              },
+              {
+                "description": "打开本地搜索，控制索引体积与结果排序，让中文查询也能命中。",
+                "id": "/docs/customize/search/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/customize/search/index.md",
+                "title": "全文检索",
+                "url": "http://localhost:1313/zh/docs/customize/search/"
+              },
+              {
+                "description": "一个对话框同时承担页面搜索、页面动作与站点命令：如何打开、包含哪些分组、如何添加自定义命令。",
+                "id": "/docs/customize/panel/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/customize/panel/index.md",
+                "title": "命令面板",
+                "url": "http://localhost:1313/zh/docs/customize/panel/"
+              },
+              {
+                "description": "全部单键快捷键、它们何时让行给输入，以及按站点或按页面关闭的方法。",
+                "id": "/docs/customize/keyboard/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/customize/keyboard/index.md",
+                "title": "键盘导航",
+                "url": "http://localhost:1313/zh/docs/customize/keyboard/"
+              },
+              {
+                "description": "增加一种语言、并排放置译文、按语言配置菜单与界面文案，并对齐中英标题锚点。",
+                "id": "/docs/customize/i18n/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/customize/i18n/index.md",
+                "title": "多语言",
+                "url": "http://localhost:1313/zh/docs/customize/i18n/"
+              },
+              {
+                "description": "配置版本切换菜单与归档横幅，并选择多个版本在域名上的部署布局。",
+                "id": "/docs/customize/versions/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/customize/versions/index.md",
+                "title": "多版本",
+                "url": "http://localhost:1313/zh/docs/customize/versions/"
+              },
+              {
+                "description": "用 tags / categories 给页面加一条横跨目录的索引：术语页、筛选芯片、右栏分类云与顶栏分类面板都是自动的。",
+                "id": "/docs/customize/taxonomy/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/customize/taxonomy/index.md",
+                "title": "分类体系",
+                "url": "http://localhost:1313/zh/docs/customize/taxonomy/"
+              },
+              {
+                "description": "把「编辑当前页面」「提交文档议题」「查阅编辑历史」接到你的仓库，并在页尾显示最后修改时间、贡献者与反馈组件。",
+                "id": "/docs/customize/repository/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/customize/repository/index.md",
+                "title": "仓库与页面信息",
+                "url": "http://localhost:1313/zh/docs/customize/repository/"
+              },
+              {
+                "description": "单页交给浏览器的 Cmd/Ctrl+P，整个栏目用 print 输出格式合成一份连续文档。",
+                "id": "/docs/customize/print/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/customize/print/index.md",
+                "title": "打印支持",
+                "url": "http://localhost:1313/zh/docs/customize/print/"
+              },
+              {
+                "description": "每一页多产出一份 .md，站点根目录多一份 llms.txt，读者可以把当前页交给 ChatGPT 或 Claude。",
+                "id": "/docs/customize/agents/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/customize/agents/index.md",
+                "title": "Agent 支持",
+                "url": "http://localhost:1313/zh/docs/customize/agents/"
+              }
+            ],
+            "description": "站点级配置：品牌、导航、布局、搜索、多语言、多版本、打印与 Agent 输出。",
+            "id": "/docs/customize/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/zh/docs/customize/index.md",
+            "title": "定制站点",
+            "url": "http://localhost:1313/zh/docs/customize/"
+          },
+          {
+            "children": [
+              {
+                "description": "用 hugo server 在本机预览改动，用 hugo --panicOnWarning 构建可部署的 public/，不需要 Node 与 CDN。",
+                "id": "/docs/admin/preview/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/admin/preview/index.md",
+                "title": "本地预览",
+                "url": "http://localhost:1313/zh/docs/admin/preview/"
+              },
+              {
+                "description": "把 public/ 部署到 GitHub Pages、Cloudflare Pages 或任何静态托管：baseURL 配对、内容安全策略、验收清单与回滚。",
+                "id": "/docs/admin/deploy/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/admin/deploy/index.md",
+                "title": "发布上线",
+                "url": "http://localhost:1313/zh/docs/admin/deploy/"
+              },
+              {
+                "description": "用 giscus 把 GitHub Discussions 接成页面底部的评论区，全站开、按页关、跟随深浅色。",
+                "id": "/docs/admin/comments/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/admin/comments/index.md",
+                "title": "启用评论",
+                "url": "http://localhost:1313/zh/docs/admin/comments/"
+              },
+              {
+                "description": "接入一个分析服务（或者不接），并把主题已经生成的 canonical、hreflang、社交卡片、站点地图与 robots 配对。",
+                "id": "/docs/admin/analytics/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/admin/analytics/index.md",
+                "title": "分析与 SEO",
+                "url": "http://localhost:1313/zh/docs/admin/analytics/"
+              },
+              {
+                "description": "升到新版主题、用迁移工具把 0.4 的 shortcode 改成 v5 语法、从 Docsy 迁过来，以及出问题怎么退回去。",
+                "id": "/docs/admin/upgrade/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/admin/upgrade/index.md",
+                "title": "版本升级",
+                "url": "http://localhost:1313/zh/docs/admin/upgrade/"
+              },
+              {
+                "description": "构建、语言、搜索、平台四类故障的症状 → 原因 → 修法，以及站点可以自己跑的那几项检查。",
+                "id": "/docs/admin/troubleshooting/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/admin/troubleshooting/index.md",
+                "title": "排错与检查",
+                "url": "http://localhost:1313/zh/docs/admin/troubleshooting/"
+              }
+            ],
+            "description": "站点从本机到线上的运维事项：本地预览、发布上线、评论、分析与 SEO、版本升级与排错。",
+            "id": "/docs/admin/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/zh/docs/admin/index.md",
+            "title": "维护管理",
+            "url": "http://localhost:1313/zh/docs/admin/"
+          },
+          {
+            "children": [
+              {
+                "description": "仓库装配、配置、诊断、输出、性能、安全、CSS、无障碍与发布状态的边界。",
+                "id": "/docs/design/architecture/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/design/architecture/index.md",
+                "title": "架构",
+                "url": "http://localhost:1313/zh/docs/design/architecture/"
+              },
+              {
+                "description": "OINK 创作原语、校验、Book、发布行为与输出降级的维护者契约。",
+                "id": "/docs/design/components/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/design/components/index.md",
+                "title": "组件",
+                "url": "http://localhost:1313/zh/docs/design/components/"
+              },
+              {
+                "description": "导航权威、沉浸式博客、搜索、操作、分类法、索引与页尾组合契约。",
+                "id": "/docs/design/shell/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/design/shell/index.md",
+                "title": "外壳与导航",
+                "url": "http://localhost:1313/zh/docs/design/shell/"
+              },
+              {
+                "description": "落地页数据、内置区块注册表、语言解析、运行时、无障碍与输出的维护者契约。",
+                "id": "/docs/design/landing/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/design/landing/index.md",
+                "title": "落地页",
+                "url": "http://localhost:1313/zh/docs/design/landing/"
+              },
+              {
+                "description": "从 OINK 0.4 到 OINK 0.8.0 所支持的源码、配置与验证迁移边界。",
+                "id": "/docs/design/migration/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/design/migration/index.md",
+                "title": "迁移边界",
+                "url": "http://localhost:1313/zh/docs/design/migration/"
+              },
+              {
+                "children": [
+                  {
+                    "description": "作者输入无效时，预览阶段发出警告并安全降级；--panicOnWarning 在发布阶段恢复硬门禁。",
+                    "id": "/docs/design/decisions/diagnostics/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/decisions/diagnostics/index.md",
+                    "title": "诊断策略",
+                    "url": "http://localhost:1313/zh/docs/design/decisions/diagnostics/"
+                  },
+                  {
+                    "description": "OINK 延长 Hugo 与 Docsy 兼容配置，不另造第二套命名空间或全局 resolver。",
+                    "id": "/docs/design/decisions/configuration/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/decisions/configuration/index.md",
+                    "title": "配置模型",
+                    "url": "http://localhost:1313/zh/docs/design/decisions/configuration/"
+                  },
+                  {
+                    "description": "原生 Markdown 承载常见语义；shortcode 只填补真实能力缺口，各内容模型延长共享外壳而不是分叉。",
+                    "id": "/docs/design/decisions/authoring/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/decisions/authoring/index.md",
+                    "title": "Markdown 优先创作",
+                    "url": "http://localhost:1313/zh/docs/design/decisions/authoring/"
+                  },
+                  {
+                    "description": "编辑器 Schema 是从既有配置权威投影生成的，CI 漂移门禁保证它永远不会成为第三个权威。",
+                    "id": "/docs/design/decisions/config-schema/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/decisions/config-schema/index.md",
+                    "title": "配置 Schema",
+                    "url": "http://localhost:1313/zh/docs/design/decisions/config-schema/"
+                  }
+                ],
+                "description": "解释 OINK 现行公开契约与实现为何采用当前形态的已接受选择。",
+                "id": "/docs/design/decisions/",
+                "kind": "section",
+                "markdown": "http://localhost:1313/zh/docs/design/decisions/index.md",
+                "title": "决策",
+                "url": "http://localhost:1313/zh/docs/design/decisions/"
+              },
+              {
+                "children": [
+                  {
+                    "description": "Hugo 0.160.1 与 0.164.0 上列表、图片、表格、passthrough、围栏、callout 与嵌套容器的可复现实测。",
+                    "id": "/docs/design/research/goldmark-attributes/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/research/goldmark-attributes/index.md",
+                    "title": "Goldmark 属性",
+                    "url": "http://localhost:1313/zh/docs/design/research/goldmark-attributes/"
+                  },
+                  {
+                    "description": "塑造 OINK 外壳、创作原语与确定性 Book 迁移策略的定期语料快照。",
+                    "id": "/docs/design/research/consumer-evidence/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/research/consumer-evidence/index.md",
+                    "title": "消费站证据",
+                    "url": "http://localhost:1313/zh/docs/design/research/consumer-evidence/"
+                  },
+                  {
+                    "description": "对 OINK v0.7.0 后主线的实现、配置、输出、安全、测试、性能、双语契约与真实站点所做的证据化全面审查。",
+                    "id": "/docs/design/research/2026-08-26-comprehensive-review/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/research/2026-08-26-comprehensive-review/index.md",
+                    "title": "2026-08-26 全面审查",
+                    "url": "http://localhost:1313/zh/docs/design/research/2026-08-26-comprehensive-review/"
+                  }
+                ],
+                "description": "用于形成 OINK 设计决策的定期实验与消费站证据，不具备规范效力。",
+                "id": "/docs/design/research/",
+                "kind": "section",
+                "markdown": "http://localhost:1313/zh/docs/design/research/index.md",
+                "title": "研究",
+                "url": "http://localhost:1313/zh/docs/design/research/"
+              },
+              {
+                "children": [
+                  {
+                    "description": "从普通 Hugo 链接推导反向链接、局部与全站图谱的三阶段设计草案。",
+                    "id": "/docs/design/proposals/knowledge-graph/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/proposals/knowledge-graph/index.md",
+                    "title": "知识图谱",
+                    "url": "http://localhost:1313/zh/docs/design/proposals/knowledge-graph/"
+                  },
+                  {
+                    "description": "正文图片、编号图、Landing 媒体与代表图片选择之间剩余收敛工作的设计草案。",
+                    "id": "/docs/design/proposals/media-convergence/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/proposals/media-convergence/index.md",
+                    "title": "媒体收敛",
+                    "url": "http://localhost:1313/zh/docs/design/proposals/media-convergence/"
+                  },
+                  {
+                    "description": "基于 OINK 既有 Markdown 输出与导航权威，可选生成按 section 分包的全文包和稳定导航 JSON。",
+                    "id": "/docs/design/proposals/agent-indexes/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/proposals/agent-indexes/index.md",
+                    "title": "Agent 索引",
+                    "url": "http://localhost:1313/zh/docs/design/proposals/agent-indexes/"
+                  },
+                  {
+                    "description": "把 Book 语义降级与通用 EPUB/PDF 打包收回 OINK，同时让出版事实继续属于消费站。",
+                    "id": "/docs/design/proposals/book-publication/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/proposals/book-publication/index.md",
+                    "title": "Book 出版",
+                    "url": "http://localhost:1313/zh/docs/design/proposals/book-publication/"
+                  }
+                ],
+                "description": "仍在评估中的 OINK PRD 与设计草案的唯一双语归档位置。",
+                "id": "/docs/design/proposals/",
+                "kind": "section",
+                "markdown": "http://localhost:1313/zh/docs/design/proposals/index.md",
+                "title": "提案",
+                "url": "http://localhost:1313/zh/docs/design/proposals/"
+              }
+            ],
+            "description": "在唯一的双语专栏中管理 OINK 维护者契约、已接受决策、定期研究与候选提案。",
+            "id": "/docs/design/",
+            "kind": "section",
+            "markdown": "http://localhost:1313/zh/docs/design/index.md",
+            "title": "设计",
+            "url": "http://localhost:1313/zh/docs/design/"
+          }
+        ],
+        "description": "OINK 是一款只需 Hugo Extended 的技术文档主题：组件写在 Markdown 里，资源随主题分发，双语开箱可用，一份内容产出四种输出。",
+        "id": "/docs/",
+        "kind": "section",
+        "markdown": "http://localhost:1313/zh/docs/index.md",
+        "title": "文档",
+        "url": "http://localhost:1313/zh/docs/"
+      }
+    ],
+    "description": "本地优先、仅依赖 Hugo 的技术文档主题",
+    "id": "/",
+    "kind": "home",
+    "markdown": "http://localhost:1313/zh/index.md",
+    "title": "OINK",
+    "url": "http://localhost:1313/zh/"
+  },
+  "schemaVersion": 1
+}

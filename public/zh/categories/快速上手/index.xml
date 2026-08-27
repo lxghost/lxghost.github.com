@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>快速上手 on OINK</title>
+    <link>http://localhost:1313/zh/categories/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/</link>
+    <description>Recent content in 快速上手 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Thu, 20 Aug 2026 19:29:35 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/categories/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>仓库导览</title>
+        <link>http://localhost:1313/zh/docs/start/anatomy/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/start/anatomy/</guid>
+        <description>&lt;p&gt;本页逐项说明 &lt;code&gt;pgsty/oink.pgsty.com&lt;/code&gt; 克隆下来的每个文件与目录：哪些必须保留、哪些替换为你自己的信息、哪些是文档站自用可以整棵删除，并给出一个安全的删除顺序。&lt;/p&gt;&#xA;&lt;p&gt;主题代码不在这个仓库里：它是 &lt;code&gt;go.mod&lt;/code&gt; 固定的一个 Hugo Module，存放在 Go 的模块缓存中。这个仓库只有内容、配置与站点自己的少量覆盖。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>从零建站与其它安装方式</title>
+        <link>http://localhost:1313/zh/docs/start/from-scratch/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/start/from-scratch/</guid>
+        <description>&lt;p&gt;本页从空目录搭建一个最小 OINK 站点：十几行 &lt;code&gt;hugo.yml&lt;/code&gt; 加一条 &lt;code&gt;hugo mod get&lt;/code&gt;，得到一个可预览的单语站点。代价是首页、示例内容与可参照的组件用法都要自己写。&lt;/p&gt;&#xA;&lt;p&gt;已有 Hugo 站点时不需要脚手架：装上主题模块，再补三项 goldmark 前置配置（见&lt;a href=&#34;http://localhost:1313/zh/docs/start/from-scratch/#config&#34;&gt;写 &lt;code&gt;hugo.yml&lt;/code&gt;&lt;/a&gt;），正文不用重写。已有 Docsy 站点见&lt;a href=&#34;http://localhost:1313/zh/docs/admin/upgrade/&#34;&gt;版本升级&lt;/a&gt;。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>十分钟上手</title>
+        <link>http://localhost:1313/zh/docs/start/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/start/</guid>
+        <description>&lt;p&gt;这条路径不从空目录开始，而是克隆你正在读的这个站点，删掉不需要的部分，再替换成你自己的信息。本站是 OINK 的回归站，包含每个组件与每种页面类型，并与主题保持同版本；从它开始删减，比从空目录逐项补配置与示例少写很多。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

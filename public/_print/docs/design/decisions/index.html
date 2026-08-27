@@ -1,0 +1,801 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" dir="ltr" lang="en-US" data-td-typography="technical" data-td-theme-init>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#000000">
+
+<style>
+  html { background: Canvas; color: CanvasText; }
+  @media (prefers-color-scheme: dark) {
+    html { background: #0b0d12; color: #e6e6e6; }
+  }
+  html[data-td-theme-init] * { transition: none !important; }
+  [data-td-theme-toggle] > .td-shell-icon--sun { display: none !important; }
+  [data-td-theme-toggle] > [hidden] { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--moon { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--sun { display: inline-block !important; }
+</style>
+
+<script>
+  (function() {
+    const themeKey = 'td-color-theme';
+    let storedTheme = null;
+    try {
+      storedTheme = localStorage.getItem(themeKey);
+    } catch (_) {
+      
+      
+    }
+    let theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+    if (theme === 'auto') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    document.documentElement.classList.toggle('dark-mode', theme === 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<link rel="canonical" type="text/html" href="http://localhost:1313/docs/design/decisions/">
+<link rel="alternate" type="application/rss&#43;xml" href="http://localhost:1313/docs/design/decisions/index.xml">
+<link rel="alternate" type="text/markdown" href="http://localhost:1313/docs/design/decisions/index.md">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<title>Design decisions | OINK</title>
+<meta name="description" content="Accepted choices that explain why OINK&#39;s public contracts and implementation have their present shape.">
+<link rel="canonical" href="http://localhost:1313/docs/design/decisions/">
+<link rel="alternate" hreflang="en-US" href="http://localhost:1313/docs/design/decisions/">
+<link rel="alternate" hreflang="zh-CN" href="http://localhost:1313/zh/docs/design/decisions/">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:url" content="http://localhost:1313/docs/design/decisions/">
+  <meta property="og:site_name" content="OINK">
+  <meta property="og:title" content="Design decisions">
+  <meta property="og:description" content="Accepted choices that explain why OINK&#39;s public contracts and implementation have their present shape.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="Design decisions">
+  <meta itemprop="description" content="Accepted choices that explain why OINK&#39;s public contracts and implementation have their present shape.">
+  <meta itemprop="dateModified" content="2026-08-27T12:58:07+08:00">
+  <meta itemprop="wordCount" content="259">
+  <meta itemprop="keywords" content="Design">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Design decisions">
+  <meta name="twitter:description" content="Accepted choices that explain why OINK&#39;s public contracts and implementation have their present shape.">
+<link href="/scss/fontawesome.css" rel="stylesheet">
+<link href="/scss/main.css" rel="stylesheet">
+
+  </head>
+  <body class="td-section td-print-view">
+    <a class="td-skip-link d-print-none" href="#td-main-content">Skip to content</a>
+
+    
+<header class="td-site-header d-print-none" data-td-header>
+  <div class="td-site-container">
+    <nav class="td-site-nav" aria-label="Main navigation">
+      <a href="/" class="td-nav-brand" data-td-navbar-route
+         aria-label="OINK — Home">
+        <img src="/icons/logo.svg" alt="" class="td-nav-logo" width="22" height="22">
+        <span class="td-nav-title">OINK</span>
+      </a><div class="td-nav-links td-nav-menu-zone"><div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link active" href="/docs/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Docs"
+  data-td-navbar-region="desktop" data-td-navbar-label="Docs"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-docs-0" aria-expanded="false">
+  <i class="fa-solid fa-book" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Docs</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-docs-0" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/docs/about/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Introduction"
+  data-td-navbar-region="desktop" data-td-navbar-label="Introduction"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Introduction</span></a>
+<a class="td-nav-menu__item-link" href="/docs/start/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Get started"
+  data-td-navbar-region="desktop" data-td-navbar-label="Get started"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Get started</span></a>
+<a class="td-nav-menu__item-link" href="/docs/write/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Authoring"
+  data-td-navbar-region="desktop" data-td-navbar-label="Authoring"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Authoring</span></a>
+<a class="td-nav-menu__item-link" href="/docs/components/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Components"
+  data-td-navbar-region="desktop" data-td-navbar-label="Components"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-cubes" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Components</span></a>
+<a class="td-nav-menu__item-link" href="/docs/customize/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Customization"
+  data-td-navbar-region="desktop" data-td-navbar-label="Customization"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Customization</span></a>
+<a class="td-nav-menu__item-link" href="/docs/admin/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Operations"
+  data-td-navbar-region="desktop" data-td-navbar-label="Operations"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Operations</span></a>
+<a class="td-nav-menu__item-link active" href="/docs/design/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Design"
+  data-td-navbar-region="desktop" data-td-navbar-label="Design"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-compass-drafting" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Design</span></a>
+
+  </div>
+</div><a class="nav-link" href="/book/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Book"
+  data-td-navbar-region="desktop" data-td-navbar-label="Book"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Book</span></a>
+<a class="nav-link" href="/case/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Case"
+  data-td-navbar-region="desktop" data-td-navbar-label="Case"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Case</span></a>
+<div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link" href="/blog/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Blog"
+  data-td-navbar-region="desktop" data-td-navbar-label="Blog"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-blog-3" aria-expanded="false">
+  <i class="fa-solid fa-blog" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Blog</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-blog-3" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/blog/oink/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="OINK engineering"
+  data-td-navbar-region="desktop" data-td-navbar-label="OINK engineering"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">OINK engineering</span></a>
+<a class="td-nav-menu__item-link" href="/blog/release/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Releases"
+  data-td-navbar-region="desktop" data-td-navbar-label="Releases"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Releases</span></a>
+
+  </div>
+</div>
+      </div><div class="td-nav-links td-nav-util-zone">
+        <div class="td-nav-hover-menu td-nav-version-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-nav-hover-open
+            title="v0.8.0" aria-label="v0.8.0" aria-expanded="false"><i class="td-shell-icon td-shell-icon--code-branch fa-solid fa-code-branch" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="v0.8.0">
+            <span class="td-nav-hover-menu__option td-is-disabled"><strong>Versions</strong></span>
+            <a class="td-nav-hover-menu__option td-is-active" aria-current="page" href="https://oink.pgsty.com">v0.8.0</a>
+          </div>
+        </div>
+          <div class="td-language-selector td-language-selector--menu td-nav-util td-site-nav__language">
+  <a class="td-language-selector__trigger" href="/zh/docs/design/decisions/"
+    lang="zh-CN" hreflang="zh-CN" dir="ltr"
+    title="Switch language: 简体中文"
+    aria-label="Switch language: 简体中文" aria-haspopup="true" aria-expanded="false">
+    <i class="fa-solid fa-language" aria-hidden="true"></i>
+    <span>简体中文</span>
+  </a>
+  <ul aria-label="Choose language">
+    <li>
+      <span class="td-language-selector__item active" lang="en-US" dir="ltr" aria-current="page">English</span>
+    </li>
+    <li>
+      <a class="td-language-selector__item" href="/zh/docs/design/decisions/" lang="zh-CN" hreflang="zh-CN" dir="ltr">简体中文</a>
+    </li>
+  </ul>
+</div><div class="td-nav-hover-menu td-nav-theme-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-theme-toggle
+            title="Toggle color theme" aria-label="Toggle color theme" aria-expanded="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="Toggle color theme">
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="light" aria-pressed="false"><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i><span>Light</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="dark" aria-pressed="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><span>Dark</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="auto" aria-pressed="false"><i class="td-shell-icon td-shell-icon--contrast fa-solid fa-circle-half-stroke" aria-hidden="true"></i><span>System</span>
+            </button>
+          </div>
+        </div>
+        <a href="https://github.com/pgsty/oink" class="td-nav-github" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="td-shell-icon td-shell-icon--github fa-brands fa-github" aria-hidden="true"></i></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+    <div class="container-fluid td-print-shell">
+      <main id="td-main-content" class="td-print-document" tabindex="-1">
+        
+
+
+
+
+<div class="td-content">
+<div class="td-page-notice td-page-notice--primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<button type="button" class="btn btn-link p-0 align-baseline" data-td-action="print">Click here to print</button>.
+</p><p>
+<a href="/docs/design/decisions/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Design decisions</h1>
+<div class="lead">Accepted choices that explain why OINK&rsquo;s public contracts and implementation have their present shape.</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+  
+  
+
+  
+    
+    
+    <li>
+1: <a href="#pg-a13c3e3d9256407d09ebb0d058472fea">Warnings and safe fallbacks</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+2: <a href="#pg-f4558d6346e53cac976403241a4dcb76">Configuration model</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+3: <a href="#pg-51b2b0f19beebb11ce5fa33e7cff6506">Markdown-first authoring</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+4: <a href="#pg-e52e735aefb5cf1241b4835de5c42a0e">Generated configuration schema</a>
+
+
+    </li>
+  
+
+    </ul>
+<div class="content">
+      <div class="td-callout td-callout--note" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-info" aria-hidden="true"></i><span class="td-callout__label">Accepted rationale</span></div>
+  <div class="td-callout__body">
+<p>A decision explains why OINK chose one compatible design over another. The
+five contracts above it remain the normative description of current
+behaviour; implementation and owning checkers remain the executable facts.</p>
+  </div>
+</div><p>OINK used to keep reviews, PRDs, and execution notes in a local <code>plan/</code>
+directory. That made useful reasoning hard to discover and allowed abandoned
+designs to look authoritative. Accepted reasoning now lives here, in the same
+bilingual, versioned site as the contracts it supports.</p>
+<h2 id="pg-92bdcbe0c61830cbeeea4f8f21da6ac3--decision-map">Decision map
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Decision</th>
+      <th scope="col">What it settles</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="/docs/design/decisions/diagnostics/">Warnings and safe fallbacks</a></td>
+      <td>Why ordinary preview survives invalid input while publication remains strict</td>
+    </tr>
+    <tr>
+      <td><a href="/docs/design/decisions/configuration/">Configuration model</a></td>
+      <td>Where configuration belongs, how pages override it, and why OINK has no parallel configuration namespace</td>
+    </tr>
+    <tr>
+      <td><a href="/docs/design/decisions/authoring/">Markdown-first authoring</a></td>
+      <td>Why native Markdown is preferred and Docs, Blog, Book, and Landing extend shared systems</td>
+    </tr>
+    <tr>
+      <td><a href="/docs/design/decisions/config-schema/">Generated configuration schema</a></td>
+      <td>Why the editor schemas are a generated projection, and how the drift gate keeps a third configuration authority from appearing</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-92bdcbe0c61830cbeeea4f8f21da6ac3--record-format">Record format
+</h2>
+<p>An accepted decision records context, the choice, consequences, and the proof
+that makes the choice current. It does not reproduce a parameter reference or
+a tutorial. Every decision links to its owning contract and verification
+surface, and its English and Simplified Chinese pages change together.</p>
+<p>When a decision changes, update the implementation, checker, affected
+contract, and decision record in one delivery. Preserve the old answer in Git
+history and the release changelog instead of leaving two active answers in the
+navigation tree.</p>
+<h2 id="pg-92bdcbe0c61830cbeeea4f8f21da6ac3--related">Related
+</h2>
+<ul>
+<li><a href="/docs/design/">Design contracts</a> — current normative behaviour</li>
+<li><a href="/docs/design/research/">Research</a> — dated evidence that informs decisions</li>
+<li><a href="/docs/design/proposals/">Proposals</a> — ideas that have not been accepted</li>
+</ul>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-a13c3e3d9256407d09ebb0d058472fea">1 - Warnings and safe fallbacks</h1>
+    <div class="lead">Invalid author input warns and degrades safely during preview; &ndash;panicOnWarning restores a hard publication gate.</div>
+	<div class="td-callout td-callout--important" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-exclamation" aria-hidden="true"></i><span class="td-callout__label">Decision</span></div>
+  <div class="td-callout__body">
+<p>OINK does not call Hugo&rsquo;s <code>errorf</code>. Invalid author or site input emits a
+warning and either uses a documented safe fallback or omits the invalid
+fragment. Release and deployment builds use <code>--panicOnWarning</code>, so the same
+warning remains a hard publishing failure.</p>
+  </div>
+</div><h2 id="pg-a13c3e3d9256407d09ebb0d058472fea--context">Context
+</h2>
+<p>Hugo builds the whole site as one transaction. An <code>errorf</code> raised while one
+page is being edited makes every URL served by that rebuild return an error,
+including unrelated pages and the home page. The server process survives and
+recovers after the input is fixed, but collaborative preview is unavailable in
+the meantime.</p>
+<p>A warning has a different development cost. The affected value can fall back,
+the rest of the site remains inspectable, and the author receives a precise
+message. A publication build still fails because OINK&rsquo;s CI and integration
+gates add <code>--panicOnWarning</code>.</p>
+<h2 id="pg-a13c3e3d9256407d09ebb0d058472fea--decision">Decision
+</h2>
+<p>Validation follows four rules:</p>
+<ol>
+<li>Name the invalid key and value, the allowed shape, and the fallback.</li>
+<li>Include a page position when the value came from page front matter; avoid
+repeating one site-wide warning for every page.</li>
+<li>Never pass an invalid value into a later operation. Validate first, then
+render from the normalized value.</li>
+<li>Where no honest fallback exists, warn and render nothing. Do not invent
+content, make a network request, or emit an unsafe URL merely to keep going.</li>
+</ol>
+<p>The shared enum, boolean, CSS-length, and number shapes live in
+<code>layouts/_partials/validate.html</code>. Domain resolvers may add narrower checks,
+but they preserve the same warning/fallback contract.</p>
+<h2 id="pg-a13c3e3d9256407d09ebb0d058472fea--safety-boundary">Safety boundary
+</h2>
+<p>Continuing a build never means continuing with unsafe output. A rejected CSS
+length falls back before it reaches a style attribute. An incomplete remote
+service configuration omits the component before the browser can make a
+request. An unsafe action URL is dropped. The protection is the absence of the
+bad output, not the act of terminating Hugo.</p>
+<p>This also separates editing from publication cleanly:</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Stage</th>
+      <th scope="col">Invalid input</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>hugo server</code> or an ordinary local build</td>
+      <td>Warn, fall back or omit, keep other pages available</td>
+    </tr>
+    <tr>
+      <td>CI, release validation, deployment</td>
+      <td>The same warning becomes a non-zero build under <code>--panicOnWarning</code></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-a13c3e3d9256407d09ebb0d058472fea--consequences">Consequences
+</h2>
+<ul>
+<li>Every fallback is part of the public contract and must match the default
+declared by the theme.</li>
+<li>A change from failure to fallback also changes its tests. A negative test
+proves ordinary build survival, the warning text, the rendered fallback, and
+strict-build failure.</li>
+<li>Checkers must test the rejected output directly. A URL security test, for
+example, asserts that the unsafe URL is absent instead of treating any build
+failure as sufficient proof.</li>
+<li>Rendered markup owns DOM, attribute, ordering, and emitted-token assertions;
+the browser suite owns computed color, size, spacing, breakpoint, and
+interaction results. A checker does not freeze a Sass spelling when the
+public result can be observed directly.</li>
+<li>Source-level checks remain for forbidden constructs such as <code>errorf</code> and for
+narrow topology invariants that output cannot prove, such as one authority,
+one resolver, or an intentionally restricted caller set.</li>
+</ul>
+<h2 id="pg-a13c3e3d9256407d09ebb0d058472fea--verification">Verification
+</h2>
+<p>The owning references are the
+<a href="/docs/design/architecture/#configuration-and-diagnostics">architecture contract</a>,
+<code>bin/check-params.py</code>, and strict builds of both the theme fixture and this
+integration site.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-f4558d6346e53cac976403241a4dcb76">2 - Configuration model</h1>
+    <div class="lead">OINK extends Hugo and Docsy-compatible configuration without creating a second namespace or a parallel global resolver.</div>
+	<div class="td-callout td-callout--important" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-exclamation" aria-hidden="true"></i><span class="td-callout__label">Decision</span></div>
+  <div class="td-callout__body">
+<p>OINK keeps Hugo&rsquo;s native keys and useful Docsy-compatible keys in place,
+places theme presentation and behaviour under <code>params.ui.*</code>, and exposes a
+matching top-level front-matter key for a page override. It does not add a
+<code>params.oink.*</code> tree or a registry that shadows Hugo&rsquo;s configuration model.</p>
+  </div>
+</div><h2 id="pg-f4558d6346e53cac976403241a4dcb76--context">Context
+</h2>
+<p>OINK inherits a mature configuration surface and adds shells, content output,
+and local interaction. Earlier designs attempted to move every theme-owned key
+under a new namespace and resolve a complete configuration dictionary once per
+page. That produced a second language beside Hugo&rsquo;s own keys, complicated
+section cascades, and made migration larger than the behaviour it was meant to
+control.</p>
+<p>The current model keeps ownership visible instead:</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Layer</th>
+      <th scope="col">Responsibility</th>
+      <th scope="col">Examples</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Hugo</td>
+      <td>Site identity, languages, menus, outputs, taxonomies, markup, modules</td>
+      <td><code>baseURL</code>, <code>languages</code>, <code>outputs</code></td>
+    </tr>
+    <tr>
+      <td>Site facts and integrations</td>
+      <td>Repository, version, author, local search, comments, external services</td>
+      <td><code>params.github_repo</code>, <code>params.version</code>, <code>params.comments</code></td>
+    </tr>
+    <tr>
+      <td>OINK interface</td>
+      <td>Shell, navigation, presentation, and local interaction</td>
+      <td><code>params.ui.sidebar_*</code>, <code>params.ui.typography</code>, <code>params.ui.share</code></td>
+    </tr>
+    <tr>
+      <td>Page or section</td>
+      <td>A narrow override of an eligible site default</td>
+      <td><code>sidebar_enabled</code>, <code>featured_image</code>, <code>share</code></td>
+    </tr>
+    <tr>
+      <td>Data files</td>
+      <td>Structured facts and ordered content that are not switches</td>
+      <td><code>data/landing</code>, <code>data/download</code>, <code>data/docs_nav.json</code></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-f4558d6346e53cac976403241a4dcb76--decision">Decision
+</h2>
+<p>The configuration API follows these rules:</p>
+<ol>
+<li>Site facts remain at the established top level. Interface choices belong
+under <code>params.ui.*</code>.</li>
+<li>A page override drops the <code>ui.</code> prefix and otherwise keeps the same name.
+A section <code>cascade</code> can apply that top-level key to its descendants.</li>
+<li>Boolean features use a scalar where that is the complete policy. A map is
+reserved for features with real subordinate settings; an established map
+may accept a boolean shorthand.</li>
+<li>Names are positive, snake_case, and grouped by function. Closely related
+settings share a prefix instead of growing another nested resolver.</li>
+<li>Theme defaults are declared in the theme&rsquo;s <code>hugo.yaml</code>. Templates may add a
+derived default only when one static value would erase a deliberate
+shell-specific distinction.</li>
+<li>Each feature family owns its normalization and validation. A shared helper
+supplies common shapes, but there is no global compatibility registry that
+silently rewrites arbitrary old keys.</li>
+</ol>
+<p>The complete current key list, types, and defaults live in the
+<a href="/docs/customize/config/">configuration reference</a>. This decision records the
+placement rules; it is not a second parameter catalogue.</p>
+<h2 id="pg-f4558d6346e53cac976403241a4dcb76--compatibility">Compatibility
+</h2>
+<p>Public renames receive a targeted warning from the owning resolver, a migration
+note, and a negative test. Removed or misspelled keys do not justify a permanent
+alias layer. Hugo and third-party camelCase keys remain camelCase where changing
+them would break their native API; OINK-owned additions use snake_case.</p>
+<p>Page values resolve through Hugo&rsquo;s ordinary front-matter and cascade model.
+OINK does not ask authors to put a nested <code>ui:</code> tree in front matter and does
+not promise to merge arbitrary nested page maps.</p>
+<h2 id="pg-f4558d6346e53cac976403241a4dcb76--consequences">Consequences
+</h2>
+<ul>
+<li>Adding a public setting requires a declared default or an explicitly derived
+default, an owning resolver, documentation, and a positive and negative test.</li>
+<li>Configuration guides link to the one reference table instead of repeating
+types and defaults.</li>
+<li>A new data structure is justified by ordered or repeated facts, not merely
+by a desire to avoid adding a parameter.</li>
+<li>Invalid scalar values follow the
+<a href="/docs/design/decisions/diagnostics/">warning and fallback decision</a>.</li>
+</ul>
+<h2 id="pg-f4558d6346e53cac976403241a4dcb76--verification">Verification
+</h2>
+<p><code>bin/check-params.py</code> audits declared defaults, page aliases, warning
+behaviour, and the no-<code>errorf</code> invariant. The public reference and its Chinese
+peer are checked in the integration site&rsquo;s bilingual and rendered-link suites.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-51b2b0f19beebb11ce5fa33e7cff6506">3 - Markdown-first authoring</h1>
+    <div class="lead">Native Markdown carries common semantics; shortcodes fill real capability gaps, and content models extend shared shells instead of forking them.</div>
+	<div class="td-callout td-callout--important" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-exclamation" aria-hidden="true"></i><span class="td-callout__label">Decision</span></div>
+  <div class="td-callout__body">
+<p>Prefer a native Markdown form when Goldmark can preserve the intended
+semantics. Keep a shortcode only when it provides a capability the native
+form cannot express. Add a content scenario by extending an existing shell
+and data model, not by creating a parallel rendering system.</p>
+  </div>
+</div><h2 id="pg-51b2b0f19beebb11ce5fa33e7cff6506--context">Context
+</h2>
+<p>OINK serves short manuals, large references, release archives, landing pages,
+and books. A survey of eleven consumer sites covered more than five thousand
+Markdown files and exposed both extremes: pages with almost no theme syntax and
+pages assembled from many nested shortcodes and local layout overrides.</p>
+<p>A component API optimized only for the second group becomes a private DSL. An
+API optimized only for plain Markdown leaves books, rich figures, tab groups,
+and structured releases to site-local HTML. The useful boundary is capability,
+not novelty.</p>
+<h2 id="pg-51b2b0f19beebb11ce5fa33e7cff6506--decision">Decision
+</h2>
+<p>OINK applies the following order:</p>
+<ol>
+<li><strong>Native Markdown first.</strong> Lists become Steps, Cards, or FileTree markers;
+tables become Fields or matrices; blockquotes become callouts; fenced code,
+images, and passthrough blocks carry attributes through render hooks.</li>
+<li><strong>Shortcodes for missing capability.</strong> A full-form shortcode remains where
+CommonMark indentation, nested containers, processing options, or
+cross-page registration cannot express the same result safely.</li>
+<li><strong>One semantic implementation.</strong> Native and full forms normalize into the
+same partials and output contract. They are not two components that merely
+look alike.</li>
+<li><strong>One extension line.</strong> A new Landing section joins the section registry; a
+new Blog presentation remains a Blog variant; Book numbering joins the
+content primitive and navigation systems. OINK does not add a second card,
+landing, navigation, or article shell for one feature.</li>
+<li><strong>Facts stay outside presentation strings.</strong> Versions, repositories,
+dates, and ordered records come from front matter, site parameters, or data
+files. A shortcode argument is not a second source of truth.</li>
+</ol>
+<h2 id="pg-51b2b0f19beebb11ce5fa33e7cff6506--output-contract">Output contract
+</h2>
+<p>An authoring form is complete only when its semantic content has a deliberate
+result in every enabled output:</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Output</th>
+      <th scope="col">Requirement</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HTML</td>
+      <td>Semantic server-rendered content; JavaScript only enhances it</td>
+    </tr>
+    <tr>
+      <td>Print</td>
+      <td>Static, expanded, and free of controls that require interaction</td>
+    </tr>
+    <tr>
+      <td>Markdown / LLMS</td>
+      <td>Source-shaped prose, links, lists, tables, and fences; no component HTML</td>
+    </tr>
+    <tr>
+      <td>RSS</td>
+      <td>Safe static content or an explicit omission</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>This requirement prevents an attractive HTML-only component from silently
+damaging agent output, feeds, or a printable book.</p>
+<h2 id="pg-51b2b0f19beebb11ce5fa33e7cff6506--trust-and-presentation">Trust and presentation
+</h2>
+<p>Render hooks and shortcodes consume explicit allowlists. Unsafe URL schemes,
+inline event handlers, and arbitrary style input are dropped. Author-provided
+classes are accepted only on the documented surfaces where downstream site CSS
+is part of the established authoring contract. Icons use one Font Awesome class
+pair; OINK does not invent a second icon-ID language.</p>
+<h2 id="pg-51b2b0f19beebb11ce5fa33e7cff6506--consequences">Consequences
+</h2>
+<ul>
+<li>A proposed component must first show why Markdown plus an existing hook is
+insufficient.</li>
+<li>Keeping a full-form shortcode requires a named capability and tests for both
+forms reaching the same normalized output.</li>
+<li>Shell variants use independent presentation keys so opting into a hero or a
+flow outline does not change taxonomies, feeds, pager order, or content type.</li>
+<li>Consumer evidence is dated research, not a permanent excuse to freeze an
+accidental syntax. The current public surface remains defined by the
+<a href="/docs/design/components/">component contract</a> and
+<a href="/docs/design/shell/">shell contract</a>.</li>
+</ul>
+<h2 id="pg-51b2b0f19beebb11ce5fa33e7cff6506--verification">Verification
+</h2>
+<p>The authoring contract is exercised by theme component, Book, output, and
+golden checkers, then by this site&rsquo;s bilingual examples and browser suites. The
+Goldmark facts behind the native forms are recorded in
+<a href="/docs/design/research/goldmark-attributes/">block-attribute research</a>.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-e52e735aefb5cf1241b4835de5c42a0e">4 - Generated configuration schema</h1>
+    <div class="lead">The editor schemas are projected from the existing configuration authorities; a CI drift gate keeps them from ever becoming a third one.</div>
+	<div class="td-callout td-callout--important" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-exclamation" aria-hidden="true"></i><span class="td-callout__label">Decision</span></div>
+  <div class="td-callout__body">
+<p>The two JSON Schemas under <code>schema/</code> are projected by
+<code>bin/generate-config-schema.py</code> from the theme&rsquo;s <code>hugo.yaml</code> and the
+template read-point scan; hand edits cannot survive CI. The schema is a
+read-only projection of the existing authorities, never a third one.</p>
+  </div>
+</div><h2 id="pg-e52e735aefb5cf1241b4835de5c42a0e--context">Context
+</h2>
+<p>The theme already has two configuration authorities: <code>hugo.yaml</code>, which
+declares every default beside a comment explaining it, and
+<code>check-params.py</code>, whose read-point scan knows every key the templates
+actually consume. Editors know neither, so authors type <code>params.ui.*</code> keys
+and front matter from memory.</p>
+<p>A JSON Schema gives editors completion and hover documentation. The danger is
+the schema quietly becoming a third authority that drifts from the other two.
+A hand-maintained schema always ends up out of step with the implementation,
+and stale completion is worse than none.</p>
+<h2 id="pg-e52e735aefb5cf1241b4835de5c42a0e--decision">Decision
+</h2>
+<p><code>bin/generate-config-schema.py</code> generates two files under <code>schema/</code>:
+<code>site-params.schema.json</code> validates a site&rsquo;s <code>hugo.yaml</code> (types and defaults
+from the theme&rsquo;s own <code>hugo.yaml</code>, descriptions from its comment blocks), and
+<code>front-matter.schema.json</code> validates page front matter (every key the
+templates read as authoring surface, descriptions inherited from the matching
+site key). Keys read only to warn that they were renamed or removed are
+excluded by name.</p>
+<p>Two deliberate restraints are part of the decision:</p>
+<ul>
+<li>The front-matter schema carries <strong>no type constraints</strong>. Several keys
+accept a bare-boolean opt-out beside their site type (<code>share: false</code>,
+<code>theme_color: false</code>); a wrong red squiggle under valid input would be
+worse than no squiggle at all.</li>
+<li>The <code>hugo.yaml</code> reader is a small parser for exactly the shapes that file
+uses &ndash; nested maps, scalars, inline lists. Anything it cannot read is a
+hard error, so outgrowing it breaks the drift gate loudly instead of
+mis-generating.</li>
+</ul>
+<h2 id="pg-e52e735aefb5cf1241b4835de5c42a0e--consequences">Consequences
+</h2>
+<p>The only way to change a schema is to change <code>hugo.yaml</code> or the templates the
+scan reads: when the public configuration surface moves, the schemas
+regenerate in the same commit, and there is no second inventory anyone must
+remember to maintain. The cost is that the generator and the read-point scan
+become an implicit gate on the public surface &ndash; a new parameter key must be
+something they can understand, or CI fails outright.</p>
+<h2 id="pg-e52e735aefb5cf1241b4835de5c42a0e--verification">Verification
+</h2>
+<p><code>python3 bin/generate-config-schema.py --check</code> regenerates in memory and
+fails when <code>schema/</code> is stale or missing; the theme&rsquo;s CI runs it beside the
+parameter contract checker. Editor wiring and the behaviour itself are
+documented normatively in <a href="/docs/customize/config/#editor-schema">Configuration</a>.</p>
+
+</div>
+
+
+
+    
+	
+  
+
+
+
+      </main>
+    </div>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"Copy Markdown","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["Copy Markdown","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Copy Markdown","url":"/docs/design/decisions/index.md"},{"available":true,"description":"Copy link","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["Copy link","Share","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"Copy link","url":"http://localhost:1313/docs/design/decisions/"},{"available":true,"description":"Open in ChatGPT","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["Open in ChatGPT","Ask about this page","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in ChatGPT","url":"https://chatgpt.com/?hints=search\u0026prompt=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fdesign%2Fdecisions%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"Open in Claude","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["Open in Claude","Ask about this page","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in Claude","url":"https://claude.ai/new?q=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fdesign%2Fdecisions%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"View markdown","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["View markdown","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View markdown","url":"/docs/design/decisions/index.md"},{"available":true,"description":"View edit history","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["View edit history","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View edit history","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/design/decisions/_index.md"},{"available":true,"description":"Edit this page","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["Edit this page","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Edit this page","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/design/decisions/_index.md"},{"available":true,"description":"Create child page","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["Create child page","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create child page","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/design/decisions?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"Create docs issue","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["Create docs issue","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create docs issue","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=Design+decisions"},{"available":true,"description":"Create project issue","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["Create project issue","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create project issue","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"Print entire section","disabledReason":"Print entire section: unavailable","icon":"fa-solid fa-print","id":"print_section","keywords":["Print entire section","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Print entire section","url":""},{"available":true,"description":"Print this page","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["Print this page","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"Print this page","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL required","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"Switch language","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["Switch language","language"],"kind":"choice","options":[{"active":true,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/design/decisions/"},{"active":false,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/design/decisions/"}],"placements":{"page":false,"palette":true},"target":"self","title":"Switch language","url":""},{"available":true,"description":"Toggle color theme","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["Toggle color theme","Light","Dark"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"System","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"Light","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"Dark","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"Toggle color theme","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"Report or review theme and documentation issues","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["bug","support","roadmap"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK issues","url":"https://github.com/pgsty/oink/issues"}],"language":"en","quickLinks":[{"available":true,"description":"OINK is a documentation theme that needs nothing but Hugo Extended — components are written in Markdown, assets ship with the theme, both languages work out of the box, and one source produces four outputs.","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["Docs","docs"],"kind":"url","target":"self","title":"Docs","url":"/docs/"},{"available":true,"description":"OINK engineering stories, immersive guides, and release notes","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["Blog","blog"],"kind":"url","target":"self","title":"Blog","url":"/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+
+<script src="/js/actions.js"></script>
+
+  </body>
+</html>

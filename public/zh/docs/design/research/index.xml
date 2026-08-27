@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>设计研究 on OINK</title>
+    <link>http://localhost:1313/zh/docs/design/research/</link>
+    <description>Recent content in 设计研究 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Wed, 26 Aug 2026 14:54:14 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/docs/design/research/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>Goldmark 块属性实测</title>
+        <link>http://localhost:1313/zh/docs/design/research/goldmark-attributes/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/research/goldmark-attributes/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;已验证快照&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;这些探针在 Hugo Extended 0.160.1 与 0.164.0 上得到字节一致的相关输出。它们解释&#xA;OINK 的原生组件形态；当前&lt;a href=&#34;http://localhost:1313/zh/docs/design/components/&#34;&gt;组件契约&lt;/a&gt;仍是权威。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;method&#34;&gt;方法&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;探针使用一个不带 OINK 模板的最小 Hugo 站点。渲染钩子把上下文字段与 &lt;code&gt;.Attributes&lt;/code&gt; 输出为&#xA;可见标记。站点开启 Goldmark 块属性、行内与块级数学 passthrough 分隔符，以及为检查原始 HTML&#xA;而刻意启用的 unsafe 渲染，并设置 &lt;code&gt;wrapStandAloneImageWithinParagraph: false&lt;/code&gt;。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>消费站与迁移证据</title>
+        <link>http://localhost:1313/zh/docs/design/research/consumer-evidence/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/research/consumer-evidence/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;带日期的语料快照&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;这些计数描述 2026 年 8 月被检查的仓库。它们是设计选择的证据，不是实时产品指标或兼容承诺。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;corpus&#34;&gt;语料&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;创作语料盘点扫描了十一个 OINK 消费站点的 &lt;code&gt;content/&lt;/code&gt; 树：共 5,325 个 Markdown 文件，其中&#xA;5,293 个带 YAML front matter。样本同时包含单语言英文与中文参考站、双语产品站、发布归档、&#xA;自定义落地页，以及独立的 Book 消费站。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>OINK 全面审查（2026-08-26）</title>
+        <link>http://localhost:1313/zh/docs/design/research/2026-08-26-comprehensive-review/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/research/2026-08-26-comprehensive-review/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--warning&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-triangle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;审查快照，不是新契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本文记录 2026-08-26 对 &lt;code&gt;github.com/pgsty/oink&lt;/code&gt; 主线与本站集成面的审查证据。&#xA;它不会改变既有 API，也不表示文中建议已经实现。当前行为仍以 Design 契约、实现与 owning checker 为准。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;其中一部分已被 OINK 0.7.1 取代。&lt;/strong&gt; F01–F06 这些代码问题已在该版本修复，见&#xA;&lt;a href=&#34;http://localhost:1313/zh/blog/release/0.7.1/&#34;&gt;0.7.1 发布说明&lt;/a&gt;。下面的发现应当读作促成修复的证据，而不是主题当前的状态。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

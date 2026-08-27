@@ -1,0 +1,1511 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" dir="ltr" lang="zh-CN" data-td-typography="technical" data-td-theme-init>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#000000">
+
+<style>
+  html { background: Canvas; color: CanvasText; }
+  @media (prefers-color-scheme: dark) {
+    html { background: #0b0d12; color: #e6e6e6; }
+  }
+  html[data-td-theme-init] * { transition: none !important; }
+  [data-td-theme-toggle] > .td-shell-icon--sun { display: none !important; }
+  [data-td-theme-toggle] > [hidden] { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--moon { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--sun { display: inline-block !important; }
+</style>
+
+<script>
+  (function() {
+    const themeKey = 'td-color-theme';
+    let storedTheme = null;
+    try {
+      storedTheme = localStorage.getItem(themeKey);
+    } catch (_) {
+      
+      
+    }
+    let theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+    if (theme === 'auto') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    document.documentElement.classList.toggle('dark-mode', theme === 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<link rel="alternate" type="application/rss&#43;xml" href="http://localhost:1313/zh/categories/%E5%88%9B%E4%BD%9C%E5%86%85%E5%AE%B9/index.xml">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<title>创作内容 | OINK</title>
+<meta name="description" content="为工程而设计的 Hugo 文档主题">
+<link rel="canonical" href="http://localhost:1313/zh/categories/%E5%88%9B%E4%BD%9C%E5%86%85%E5%AE%B9/">
+<link rel="alternate" hreflang="en-US" href="http://localhost:1313/">
+<link rel="alternate" hreflang="zh-CN" href="http://localhost:1313/zh/categories/%E5%88%9B%E4%BD%9C%E5%86%85%E5%AE%B9/">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="http://localhost:1313/zh/categories/%E5%88%9B%E4%BD%9C%E5%86%85%E5%AE%B9/">
+  <meta property="og:site_name" content="OINK">
+  <meta property="og:title" content="创作内容">
+  <meta property="og:description" content="为工程而设计的 Hugo 文档主题">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="创作内容">
+  <meta itemprop="description" content="为工程而设计的 Hugo 文档主题">
+  <meta itemprop="dateModified" content="2026-08-27T17:15:16+08:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="创作内容">
+  <meta name="twitter:description" content="为工程而设计的 Hugo 文档主题">
+<link href="/scss/fontawesome.css" rel="stylesheet">
+<link href="/scss/main.css" rel="stylesheet">
+<script>
+  (function () {
+    var html = document.documentElement;
+    html.setAttribute('data-td-shell-no-anim', '');
+    try {
+      if (localStorage.getItem('td-shell-sidebar-collapsed') === '1'
+          && window.matchMedia('(min-width: 768px)').matches) {
+        html.setAttribute('data-td-shell-sidebar', 'collapsed');
+      }
+      var width = parseInt(localStorage.getItem('td-shell-sidebar-w'), 10);
+      if (width > 0) html.style.setProperty('--td-shell-sidebar-w', width + 'px');
+      if (localStorage.getItem('td-shell-toc-collapsed') === '1'
+          && window.matchMedia('(min-width: 1200px)').matches) {
+        html.setAttribute('data-td-shell-toc', 'collapsed');
+      }
+      var blogIndex = localStorage.getItem('td-blog-index');
+      if (blogIndex === 'cards' || blogIndex === 'list' || blogIndex === 'table') {
+        html.setAttribute('data-td-blog-index', blogIndex);
+      }
+      if (sessionStorage.getItem('td-kbd-zen') === '1') {
+        html.setAttribute('data-td-kbd-zen', '');
+      }
+    } catch (_) {}
+  })();
+</script><script defer src="/js/third_party/lunr.min.js"></script>
+
+  </head>
+  <body class="td-term td-blog td-shell-chrome td-shell-chrome--navbar">
+    <a class="td-skip-link d-print-none" href="#td-main-content">跳转到主要内容</a>
+
+    
+<div class="td-navbar-autohide" data-td-navbar-autohide>
+<header class="td-site-header d-print-none" data-td-header>
+  <div class="td-site-container">
+    <nav class="td-site-nav" aria-label="主导航">
+      <a href="/zh/" class="td-nav-brand" data-td-navbar-route
+         aria-label="OINK — 首页">
+        <img src="/icons/logo.svg" alt="" class="td-nav-logo" width="22" height="22">
+        <span class="td-nav-title">OINK</span>
+      </a><div class="td-nav-links td-nav-menu-zone"><div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link" href="/zh/docs/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="文档"
+  data-td-navbar-region="desktop" data-td-navbar-label="文档"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-docs-0" aria-expanded="false">
+  <i class="fa-solid fa-book" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">文档</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-docs-0" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/zh/docs/about/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="简介"
+  data-td-navbar-region="desktop" data-td-navbar-label="简介"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">简介</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/start/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="快速上手"
+  data-td-navbar-region="desktop" data-td-navbar-label="快速上手"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">快速上手</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/write/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="创作内容"
+  data-td-navbar-region="desktop" data-td-navbar-label="创作内容"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">创作内容</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/components/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="组件"
+  data-td-navbar-region="desktop" data-td-navbar-label="组件"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-cubes" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">组件</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/customize/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="定制站点"
+  data-td-navbar-region="desktop" data-td-navbar-label="定制站点"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">定制站点</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/admin/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="维护管理"
+  data-td-navbar-region="desktop" data-td-navbar-label="维护管理"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">维护管理</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/design/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="设计契约"
+  data-td-navbar-region="desktop" data-td-navbar-label="设计契约"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-compass-drafting" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">设计契约</span></a>
+
+  </div>
+</div><a class="nav-link" href="/zh/book/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="教程"
+  data-td-navbar-region="desktop" data-td-navbar-label="教程"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">教程</span></a>
+<a class="nav-link" href="/zh/case/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="案例"
+  data-td-navbar-region="desktop" data-td-navbar-label="案例"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">案例</span></a>
+<div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link" href="/zh/blog/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="博客"
+  data-td-navbar-region="desktop" data-td-navbar-label="博客"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-blog-3" aria-expanded="false">
+  <i class="fa-solid fa-blog" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">博客</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-blog-3" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/zh/blog/oink/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="OINK 工程实践"
+  data-td-navbar-region="desktop" data-td-navbar-label="OINK 工程实践"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">OINK 工程实践</span></a>
+<a class="td-nav-menu__item-link" href="/zh/blog/release/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="版本发布"
+  data-td-navbar-region="desktop" data-td-navbar-label="版本发布"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">版本发布</span></a>
+
+  </div>
+</div>
+      </div><div class="td-nav-links td-nav-util-zone">
+        <button type="button" class="td-nav-search-box" data-td-shell-search-open
+          title="搜索…" aria-label="搜索…"
+          aria-controls="td-shell-search" aria-expanded="false"><i class="td-shell-icon td-shell-icon--search fa-solid fa-magnifying-glass" aria-hidden="true"></i><span class="td-nav-search-box__hint">搜索…</span>
+          <kbd class="td-nav-search-box__kbd" aria-hidden="true">/</kbd>
+        </button>
+        <div class="td-nav-hover-menu td-nav-version-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-nav-hover-open
+            title="v0.8.0" aria-label="v0.8.0" aria-expanded="false"><i class="td-shell-icon td-shell-icon--code-branch fa-solid fa-code-branch" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="v0.8.0">
+            <span class="td-nav-hover-menu__option td-is-disabled"><strong>Versions</strong></span>
+            <a class="td-nav-hover-menu__option td-is-active" aria-current="page" href="https://oink.pgsty.com">v0.8.0</a>
+          </div>
+        </div>
+          <div class="td-language-selector td-language-selector--menu td-nav-util td-site-nav__language">
+  <a class="td-language-selector__trigger" href="/"
+    lang="en-US" hreflang="en-US" dir="ltr"
+    title="切换语言: English"
+    aria-label="切换语言: English" aria-haspopup="true" aria-expanded="false">
+    <i class="fa-solid fa-language" aria-hidden="true"></i>
+    <span>English</span>
+  </a>
+  <ul aria-label="选择语言">
+    <li>
+      <a class="td-language-selector__item" href="/" lang="en-US" hreflang="en-US" dir="ltr">English</a>
+    </li>
+    <li>
+      <span class="td-language-selector__item active" lang="zh-CN" dir="ltr" aria-current="page">简体中文</span>
+    </li>
+  </ul>
+</div><div class="td-nav-hover-menu td-nav-theme-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-theme-toggle
+            title="切换配色" aria-label="切换配色" aria-expanded="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="切换配色">
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="light" aria-pressed="false"><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i><span>亮色</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="dark" aria-pressed="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><span>暗色</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="auto" aria-pressed="false"><i class="td-shell-icon td-shell-icon--contrast fa-solid fa-circle-half-stroke" aria-hidden="true"></i><span>跟随系统</span>
+            </button>
+          </div>
+        </div>
+        <a href="https://github.com/pgsty/oink" class="td-nav-github" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="td-shell-icon td-shell-icon--github fa-brands fa-github" aria-hidden="true"></i></a><button class="td-nav-util td-site-nav__menu-toggle" type="button" data-td-shell-drawer-open
+          title="打开导航" aria-label="打开导航"
+          aria-controls="td-shell-sidebar" aria-expanded="false"><i class="td-shell-icon td-shell-icon--menu fa-solid fa-bars" aria-hidden="true"></i></button>
+      </div>
+    </nav>
+  </div>
+</header>
+</div>
+
+    <div class="container-fluid td-outer">
+      <div class="td-main td-shell-layout td-shell-layout--w-normal td-shell-layout--no-toc"
+           style="--td-shell-sidebar-min: 200px; --td-shell-sidebar-max: 500px;">
+        <aside id="td-shell-sidebar" class="td-shell-sidebar d-print-none">
+          <div class="td-shell-sidebar__panel">
+  <div class="td-shell-sidebar__header">
+    <div class="td-shell-sidebar__brand-row">
+      <a class="td-shell-sidebar__brand" href="/zh/" aria-label="OINK home">
+        <img src="/icons/logo.svg" alt="" width="20" height="20">
+        <span class="td-shell-wordmark">OINK</span>
+      </a>
+      <button type="button" class="td-shell-iconbtn td-shell-sidebar__search" data-td-shell-search-open
+        title="搜索…" aria-label="搜索…"
+        aria-controls="td-shell-search" aria-expanded="false"><i class="td-shell-icon td-shell-icon--search fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
+      <button type="button" class="td-shell-iconbtn td-shell-sidebar__collapse" data-td-shell-sidebar-toggle
+        title="收起侧栏" aria-label="收起侧栏"><i class="td-shell-icon td-shell-icon--panel-left fa-solid fa-table-columns" aria-hidden="true"></i></button>
+    </div>
+    <div class="td-shell-sidebar__header-row td-shell-sidebar__header-row--drawer-only">
+      <button type="button" class="td-shell-search-btn td-shell-search-btn--drawer" data-td-shell-search-open
+        aria-controls="td-shell-search" aria-expanded="false">
+        <i class="td-shell-icon td-shell-icon--search fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <span class="td-shell-search-btn__label">搜索…</span>
+        <span class="td-shell-search-btn__keys" aria-hidden="true"><kbd>/</kbd></span>
+      </button>
+      <button type="button" class="td-shell-iconbtn td-shell-sidebar__close" data-td-shell-drawer-close
+        aria-label="关闭导航" aria-controls="td-shell-sidebar"><i class="td-shell-icon td-shell-icon--x fa-solid fa-xmark" aria-hidden="true"></i></button>
+    </div>
+    <div class="td-shell-root">
+  <button type="button" class="td-shell-root__trigger" data-td-shell-root-toggle
+    aria-haspopup="true" aria-expanded="false" aria-label="选择栏目">
+    <span class="td-shell-root__icon"><i class="fa-solid fa-book" aria-hidden="true"></i></span>
+    <span class="td-shell-root__title">文档</span>
+    <i class="td-shell-icon td-shell-icon--chevrons-up-down fa-solid fa-sort" aria-hidden="true"></i>
+  </button>
+  <div class="td-shell-root__pop" hidden><a class="td-shell-root__item td-section-tint" href="/zh/book/" style="--td-section-light:#9a3412;--td-section-dark:#fb923c">
+      <span class="td-shell-root__icon"><i class="fa-solid fa-book-open" aria-hidden="true"></i></span>
+      <span class="td-shell-root__meta">
+        <span class="td-shell-root__item-title">教程</span>
+        <span class="td-shell-root__item-desc">一本实战教程：用 OINK 创作清晰、优美且易于维护的技术内容。</span>
+      </span>
+      <span class="td-shell-root__check td-is-hidden"><i class="td-shell-icon td-shell-icon--check fa-solid fa-check" aria-hidden="true"></i></span>
+    </a><a class="td-shell-root__item td-section-tint" href="/zh/case/" style="--td-section-light:#3f3f46;--td-section-dark:#a1a1aa">
+      <span class="td-shell-root__icon"><i class="fa-solid fa-layer-group" aria-hidden="true"></i></span>
+      <span class="td-shell-root__meta">
+        <span class="td-shell-root__item-title">案例</span>
+        <span class="td-shell-root__item-desc">十五个真实站点展示 OINK 如何覆盖两页小工具、多语言文档群与三本书籍。</span>
+      </span>
+      <span class="td-shell-root__check td-is-hidden"><i class="td-shell-icon td-shell-icon--check fa-solid fa-check" aria-hidden="true"></i></span>
+    </a><a class="td-shell-root__item td-section-tint" href="/zh/blog/" style="--td-section-light:#6d28d9;--td-section-dark:#a78bfa">
+      <span class="td-shell-root__icon"><i class="fa-solid fa-blog" aria-hidden="true"></i></span>
+      <span class="td-shell-root__meta">
+        <span class="td-shell-root__item-title">博客</span>
+        <span class="td-shell-root__item-desc">OINK 工程实践、沉浸式阅读指南与发布注记</span>
+      </span>
+      <span class="td-shell-root__check td-is-hidden"><i class="td-shell-icon td-shell-icon--check fa-solid fa-check" aria-hidden="true"></i></span>
+    </a><a class="td-shell-root__item td-is-active td-section-tint" href="/zh/docs/" style="--td-section-light:#245f94;--td-section-dark:#5da2dd" aria-current="page">
+      <span class="td-shell-root__icon"><i class="fa-solid fa-book" aria-hidden="true"></i></span>
+      <span class="td-shell-root__meta">
+        <span class="td-shell-root__item-title">文档</span>
+        <span class="td-shell-root__item-desc">OINK 是一款只需 Hugo Extended 的技术文档主题：组件写在 Markdown 里，资源随主题分发，双语开箱可用，一份内容产出四种输出。</span>
+      </span>
+      <span class="td-shell-root__check"><i class="td-shell-icon td-shell-icon--check fa-solid fa-check" aria-hidden="true"></i></span>
+    </a>
+  </div>
+</div>
+  </div>
+  <div class="td-shell-sidebar__viewport" data-td-shell-sidebar-scroll>
+    <div id="td-sidebar-menu" class="td-shell-tree-wrap">
+  <nav class="td-shell-tree" id="td-section-nav" aria-label="章节导航"
+      data-td-sidebar-icon-policy="groups" data-td-sidebar-root-id="/zh/docs/">
+    <ul class="td-shell-tree__list td-shell-tree__list--0">
+      <li class="td-shell-tree__item td-has-child td-shell-tree__item--root"
+      id="m-zhdocs-li">
+    <div class="td-shell-tree__row td-shell-tree__row--root">
+      <a href="/zh/docs/" title="OINK 文档"
+        class="td-shell-tree__link"
+        id="m-zhdocs"><i class="fa-solid fa-book" aria-hidden="true"></i><span>文档</span></a>
+      
+    </div><div id="m-zhdocs-children" class="td-shell-tree__children td-shell-tree__children--static">
+        <div class="td-shell-tree__children-inner">
+          <ul class="td-shell-tree__list td-shell-tree__list--1"><li class="td-shell-tree__item td-has-child"
+      id="m-zhdocsabout-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/about/" title="OINK 是什么"
+        class="td-shell-tree__link"
+        id="m-zhdocsabout"><i class="fa-solid fa-circle-info" aria-hidden="true"></i><span>简介</span></a>
+      <button type="button" class="td-shell-tree__chevron" data-td-shell-tree-toggle
+        aria-expanded="false" aria-controls="m-zhdocsabout-children"
+        aria-label="展开章节: 简介"
+        data-td-label-expand="展开章节: 简介"
+        data-td-label-collapse="收起章节: 简介"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></button>
+    </div><div id="m-zhdocsabout-children" class="td-shell-tree__children">
+        <div class="td-shell-tree__children-inner">
+          <ul class="td-shell-tree__list td-shell-tree__list--2"><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocsaboutfeatures-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/about/features/" title="亮点特性"
+        class="td-shell-tree__link"
+        id="m-zhdocsaboutfeatures"><span>亮点特性</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocsaboutshowcase-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/about/showcase/" title="Case 导览"
+        class="td-shell-tree__link"
+        id="m-zhdocsaboutshowcase"><span>案例</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocsaboutlicense-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/about/license/" title="开源许可与致谢"
+        class="td-shell-tree__link"
+        id="m-zhdocsaboutlicense"><span>开源许可与致谢</span></a>
+      
+    </div>
+  </li></ul>
+        </div>
+      </div>
+  </li><li class="td-shell-tree__item td-has-child"
+      id="m-zhdocsstart-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/start/" title="十分钟上手"
+        class="td-shell-tree__link"
+        id="m-zhdocsstart"><i class="fa-solid fa-rocket" aria-hidden="true"></i><span>快速上手</span></a>
+      <button type="button" class="td-shell-tree__chevron" data-td-shell-tree-toggle
+        aria-expanded="false" aria-controls="m-zhdocsstart-children"
+        aria-label="展开章节: 快速上手"
+        data-td-label-expand="展开章节: 快速上手"
+        data-td-label-collapse="收起章节: 快速上手"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></button>
+    </div><div id="m-zhdocsstart-children" class="td-shell-tree__children">
+        <div class="td-shell-tree__children-inner">
+          <ul class="td-shell-tree__list td-shell-tree__list--2"><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocsstartanatomy-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/start/anatomy/" title="仓库导览"
+        class="td-shell-tree__link"
+        id="m-zhdocsstartanatomy"><span>仓库导览</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocsstartfrom-scratch-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/start/from-scratch/" title="从零建站与其它安装方式"
+        class="td-shell-tree__link"
+        id="m-zhdocsstartfrom-scratch"><span>从零建站</span></a>
+      
+    </div>
+  </li></ul>
+        </div>
+      </div>
+  </li><li class="td-shell-tree__item td-has-child"
+      id="m-zhdocswrite-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/write/" title="创作内容"
+        class="td-shell-tree__link"
+        id="m-zhdocswrite"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i><span>创作内容</span></a>
+      <button type="button" class="td-shell-tree__chevron" data-td-shell-tree-toggle
+        aria-expanded="false" aria-controls="m-zhdocswrite-children"
+        aria-label="展开章节: 创作内容"
+        data-td-label-expand="展开章节: 创作内容"
+        data-td-label-collapse="收起章节: 创作内容"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></button>
+    </div><div id="m-zhdocswrite-children" class="td-shell-tree__children">
+        <div class="td-shell-tree__children-inner">
+          <ul class="td-shell-tree__list td-shell-tree__list--2"><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocswritepages-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/write/pages/" title="编写页面"
+        class="td-shell-tree__link"
+        id="m-zhdocswritepages"><span>编写页面</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocswriteorganize-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/write/organize/" title="组织内容"
+        class="td-shell-tree__link"
+        id="m-zhdocswriteorganize"><span>组织内容</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocswritefrontmatter-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/write/frontmatter/" title="页面参数"
+        class="td-shell-tree__link"
+        id="m-zhdocswritefrontmatter"><span>页面参数</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocswriteblog-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/write/blog/" title="博客与文章"
+        class="td-shell-tree__link"
+        id="m-zhdocswriteblog"><span>博客与文章</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocswritebook-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/write/book/" title="书籍出版"
+        class="td-shell-tree__link"
+        id="m-zhdocswritebook"><span>书籍出版</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocswritereleases-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/write/releases/" title="发布与下载页"
+        class="td-shell-tree__link"
+        id="m-zhdocswritereleases"><span>发布与下载页</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocswriteopenapi-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/write/openapi/" title="API 文档"
+        class="td-shell-tree__link"
+        id="m-zhdocswriteopenapi"><span>API 文档</span></a>
+      
+    </div>
+  </li></ul>
+        </div>
+      </div>
+  </li><li class="td-shell-tree__item td-has-child"
+      id="m-zhdocscomponents-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/" title="组件总览"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponents"><i class="fa-solid fa-cubes" aria-hidden="true"></i><span>组件</span></a>
+      <button type="button" class="td-shell-tree__chevron" data-td-shell-tree-toggle
+        aria-expanded="false" aria-controls="m-zhdocscomponents-children"
+        aria-label="展开章节: 组件"
+        data-td-label-expand="展开章节: 组件"
+        data-td-label-collapse="收起章节: 组件"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></button>
+    </div><div id="m-zhdocscomponents-children" class="td-shell-tree__children">
+        <div class="td-shell-tree__children-inner">
+          <ul class="td-shell-tree__list td-shell-tree__list--2"><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscomponentscallout-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/callout/" title="提示块"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponentscallout"><span>提示块</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscomponentsimage-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/image/" title="图片"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponentsimage"><span>图片</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscomponentscode-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/code/" title="代码块"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponentscode"><span>代码块</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscomponentstabs-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/tabs/" title="标签页"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponentstabs"><span>标签页</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscomponentstable-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/table/" title="表格"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponentstable"><span>表格</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscomponentsfields-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/fields/" title="参数表"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponentsfields"><span>参数表</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscomponentssteps-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/steps/" title="步骤"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponentssteps"><span>步骤</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscomponentscards-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/cards/" title="卡片"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponentscards"><span>卡片</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscomponentsfiletree-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/filetree/" title="文件树"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponentsfiletree"><span>文件树</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscomponentsmath-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/math/" title="公式"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponentsmath"><span>公式</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscomponentsmermaid-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/mermaid/" title="Mermaid"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponentsmermaid"><span>Mermaid</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscomponentsplantuml-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/plantuml/" title="PlantUML"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponentsplantuml"><span>PlantUML</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscomponentsmarkmap-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/markmap/" title="思维导图"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponentsmarkmap"><span>思维导图</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscomponentsdrawio-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/drawio/" title="Draw.io"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponentsdrawio"><span>Draw.io</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscomponentsecharts-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/echarts/" title="ECharts"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponentsecharts"><span>ECharts</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscomponentsinfographic-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/infographic/" title="Infographic"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponentsinfographic"><span>Infographic</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscomponentsgallery-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/gallery/" title="画廊"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponentsgallery"><span>画廊</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscomponentsbadge-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/badge/" title="徽章"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponentsbadge"><span>徽章</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscomponentskbd-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/kbd/" title="按键"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponentskbd"><span>按键</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscomponentsinclude-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/include/" title="引用"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponentsinclude"><span>引用</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscomponentsasciinema-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/components/asciinema/" title="Asciinema"
+        class="td-shell-tree__link"
+        id="m-zhdocscomponentsasciinema"><span>Asciinema</span></a>
+      
+    </div>
+  </li></ul>
+        </div>
+      </div>
+  </li><li class="td-shell-tree__item td-has-child"
+      id="m-zhdocscustomize-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/customize/" title="定制站点"
+        class="td-shell-tree__link"
+        id="m-zhdocscustomize"><i class="fa-solid fa-sliders" aria-hidden="true"></i><span>定制站点</span></a>
+      <button type="button" class="td-shell-tree__chevron" data-td-shell-tree-toggle
+        aria-expanded="false" aria-controls="m-zhdocscustomize-children"
+        aria-label="展开章节: 定制站点"
+        data-td-label-expand="展开章节: 定制站点"
+        data-td-label-collapse="收起章节: 定制站点"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></button>
+    </div><div id="m-zhdocscustomize-children" class="td-shell-tree__children">
+        <div class="td-shell-tree__children-inner">
+          <ul class="td-shell-tree__list td-shell-tree__list--2"><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscustomizeconfig-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/customize/config/" title="配置总览"
+        class="td-shell-tree__link"
+        id="m-zhdocscustomizeconfig"><span>配置总览</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscustomizebrand-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/customize/brand/" title="品牌外观"
+        class="td-shell-tree__link"
+        id="m-zhdocscustomizebrand"><span>品牌外观</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscustomizehome-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/customize/home/" title="首页与落地页"
+        class="td-shell-tree__link"
+        id="m-zhdocscustomizehome"><span>首页与落地页</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscustomizenavigation-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/customize/navigation/" title="导航与菜单"
+        class="td-shell-tree__link"
+        id="m-zhdocscustomizenavigation"><span>导航与菜单</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscustomizelayout-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/customize/layout/" title="布局与页面类型"
+        class="td-shell-tree__link"
+        id="m-zhdocscustomizelayout"><span>布局与页面类型</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscustomizesearch-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/customize/search/" title="全文检索"
+        class="td-shell-tree__link"
+        id="m-zhdocscustomizesearch"><span>全文检索</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscustomizepanel-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/customize/panel/" title="命令面板"
+        class="td-shell-tree__link"
+        id="m-zhdocscustomizepanel"><span>命令面板</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscustomizekeyboard-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/customize/keyboard/" title="键盘导航"
+        class="td-shell-tree__link"
+        id="m-zhdocscustomizekeyboard"><span>键盘导航</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscustomizei18n-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/customize/i18n/" title="多语言"
+        class="td-shell-tree__link"
+        id="m-zhdocscustomizei18n"><span>多语言</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscustomizeversions-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/customize/versions/" title="多版本"
+        class="td-shell-tree__link"
+        id="m-zhdocscustomizeversions"><span>多版本</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscustomizetaxonomy-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/customize/taxonomy/" title="分类体系"
+        class="td-shell-tree__link"
+        id="m-zhdocscustomizetaxonomy"><span>分类体系</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscustomizerepository-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/customize/repository/" title="仓库与页面信息"
+        class="td-shell-tree__link"
+        id="m-zhdocscustomizerepository"><span>仓库与页面信息</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscustomizeprint-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/customize/print/" title="打印支持"
+        class="td-shell-tree__link"
+        id="m-zhdocscustomizeprint"><span>打印支持</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscustomizeagents-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/customize/agents/" title="Agent 支持"
+        class="td-shell-tree__link"
+        id="m-zhdocscustomizeagents"><span>Agent 支持</span></a>
+      
+    </div>
+  </li></ul>
+        </div>
+      </div>
+  </li><li class="td-shell-tree__item td-has-child"
+      id="m-zhdocsadmin-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/admin/" title="维护管理"
+        class="td-shell-tree__link"
+        id="m-zhdocsadmin"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>维护管理</span></a>
+      <button type="button" class="td-shell-tree__chevron" data-td-shell-tree-toggle
+        aria-expanded="false" aria-controls="m-zhdocsadmin-children"
+        aria-label="展开章节: 维护管理"
+        data-td-label-expand="展开章节: 维护管理"
+        data-td-label-collapse="收起章节: 维护管理"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></button>
+    </div><div id="m-zhdocsadmin-children" class="td-shell-tree__children">
+        <div class="td-shell-tree__children-inner">
+          <ul class="td-shell-tree__list td-shell-tree__list--2"><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocsadminpreview-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/admin/preview/" title="本地预览"
+        class="td-shell-tree__link"
+        id="m-zhdocsadminpreview"><span>本地预览</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocsadmindeploy-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/admin/deploy/" title="发布上线"
+        class="td-shell-tree__link"
+        id="m-zhdocsadmindeploy"><span>发布上线</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocsadmincomments-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/admin/comments/" title="启用评论"
+        class="td-shell-tree__link"
+        id="m-zhdocsadmincomments"><span>启用评论</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocsadminanalytics-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/admin/analytics/" title="分析与 SEO"
+        class="td-shell-tree__link"
+        id="m-zhdocsadminanalytics"><span>分析与 SEO</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocsadminupgrade-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/admin/upgrade/" title="版本升级"
+        class="td-shell-tree__link"
+        id="m-zhdocsadminupgrade"><span>版本升级</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocsadmintroubleshooting-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/admin/troubleshooting/" title="排错与检查"
+        class="td-shell-tree__link"
+        id="m-zhdocsadmintroubleshooting"><span>排错与检查</span></a>
+      
+    </div>
+  </li></ul>
+        </div>
+      </div>
+  </li><li class="td-shell-tree__item td-has-child"
+      id="m-zhdocsdesign-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/" title="设计与开发"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesign"><i class="fa-solid fa-compass-drafting" aria-hidden="true"></i><span>设计</span></a>
+      <button type="button" class="td-shell-tree__chevron" data-td-shell-tree-toggle
+        aria-expanded="false" aria-controls="m-zhdocsdesign-children"
+        aria-label="展开章节: 设计"
+        data-td-label-expand="展开章节: 设计"
+        data-td-label-collapse="收起章节: 设计"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></button>
+    </div><div id="m-zhdocsdesign-children" class="td-shell-tree__children">
+        <div class="td-shell-tree__children-inner">
+          <ul class="td-shell-tree__list td-shell-tree__list--2"><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocsdesignarchitecture-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/architecture/" title="架构契约"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignarchitecture"><span>架构</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocsdesigncomponents-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/components/" title="组件契约"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesigncomponents"><span>组件</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocsdesignshell-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/shell/" title="外壳与导航契约"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignshell"><span>外壳与导航</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocsdesignlanding-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/landing/" title="落地页契约"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignlanding"><span>落地页</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocsdesignmigration-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/migration/" title="OINK 迁移边界"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignmigration"><span>迁移边界</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-has-child"
+      id="m-zhdocsdesigndecisions-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/decisions/" title="设计决策"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesigndecisions"><i class="fa-solid fa-gavel" aria-hidden="true"></i><span>决策</span></a>
+      <button type="button" class="td-shell-tree__chevron" data-td-shell-tree-toggle
+        aria-expanded="false" aria-controls="m-zhdocsdesigndecisions-children"
+        aria-label="展开章节: 决策"
+        data-td-label-expand="展开章节: 决策"
+        data-td-label-collapse="收起章节: 决策"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></button>
+    </div><div id="m-zhdocsdesigndecisions-children" class="td-shell-tree__children">
+        <div class="td-shell-tree__children-inner">
+          <ul class="td-shell-tree__list td-shell-tree__list--3"><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesigndecisionsdiagnostics-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/decisions/diagnostics/" title="警告与安全回退"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesigndecisionsdiagnostics"><span>诊断策略</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesigndecisionsconfiguration-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/decisions/configuration/" title="配置模型"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesigndecisionsconfiguration"><span>配置模型</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesigndecisionsauthoring-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/decisions/authoring/" title="Markdown 优先创作"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesigndecisionsauthoring"><span>Markdown 优先创作</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesigndecisionsconfig-schema-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/decisions/config-schema/" title="生成式配置 Schema"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesigndecisionsconfig-schema"><span>配置 Schema</span></a>
+      
+    </div>
+  </li></ul>
+        </div>
+      </div>
+  </li><li class="td-shell-tree__item td-has-child"
+      id="m-zhdocsdesignresearch-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/research/" title="设计研究"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignresearch"><i class="fa-solid fa-flask" aria-hidden="true"></i><span>研究</span></a>
+      <button type="button" class="td-shell-tree__chevron" data-td-shell-tree-toggle
+        aria-expanded="false" aria-controls="m-zhdocsdesignresearch-children"
+        aria-label="展开章节: 研究"
+        data-td-label-expand="展开章节: 研究"
+        data-td-label-collapse="收起章节: 研究"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></button>
+    </div><div id="m-zhdocsdesignresearch-children" class="td-shell-tree__children">
+        <div class="td-shell-tree__children-inner">
+          <ul class="td-shell-tree__list td-shell-tree__list--3"><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesignresearchgoldmark-attributes-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/research/goldmark-attributes/" title="Goldmark 块属性实测"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignresearchgoldmark-attributes"><span>Goldmark 属性</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesignresearchconsumer-evidence-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/research/consumer-evidence/" title="消费站与迁移证据"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignresearchconsumer-evidence"><span>消费站证据</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesignresearch2026-08-26-comprehensive-review-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/research/2026-08-26-comprehensive-review/" title="OINK 全面审查（2026-08-26）"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignresearch2026-08-26-comprehensive-review"><span>2026-08-26 全面审查</span></a>
+      
+    </div>
+  </li></ul>
+        </div>
+      </div>
+  </li><li class="td-shell-tree__item td-has-child"
+      id="m-zhdocsdesignproposals-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/proposals/" title="设计提案与 PRD"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignproposals"><i class="fa-solid fa-compass-drafting" aria-hidden="true"></i><span>提案</span></a>
+      <button type="button" class="td-shell-tree__chevron" data-td-shell-tree-toggle
+        aria-expanded="false" aria-controls="m-zhdocsdesignproposals-children"
+        aria-label="展开章节: 提案"
+        data-td-label-expand="展开章节: 提案"
+        data-td-label-collapse="收起章节: 提案"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></button>
+    </div><div id="m-zhdocsdesignproposals-children" class="td-shell-tree__children">
+        <div class="td-shell-tree__children-inner">
+          <ul class="td-shell-tree__list td-shell-tree__list--3"><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesignproposalsknowledge-graph-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/proposals/knowledge-graph/" title="反向链接与知识图谱"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignproposalsknowledge-graph"><span>知识图谱</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesignproposalsmedia-convergence-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/proposals/media-convergence/" title="媒体收敛"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignproposalsmedia-convergence"><span>媒体收敛</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesignproposalsagent-indexes-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/proposals/agent-indexes/" title="Agent 批量索引"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignproposalsagent-indexes"><span>Agent 索引</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesignproposalsbook-publication-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/proposals/book-publication/" title="Book 出版链路"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignproposalsbook-publication"><span>Book 出版</span></a>
+      
+    </div>
+  </li></ul>
+        </div>
+      </div>
+  </li></ul>
+        </div>
+      </div>
+  </li></ul>
+        </div>
+      </div>
+  </li>
+    </ul>
+  </nav>
+</div>
+    <div class="td-shell-sidebar__aside" data-td-shell-aside-slot hidden></div>
+  </div>
+  <div class="td-shell-sidebar__resizer" data-td-shell-resizer aria-hidden="true"></div>
+</div>
+
+        </aside>
+        <div class="td-shell-drawer-backdrop d-md-none d-print-none" data-td-shell-drawer-close></div>
+        <div class="td-shell-float d-print-none">
+  <button type="button" class="td-shell-iconbtn" data-td-shell-sidebar-toggle
+    title="展开侧栏" aria-label="展开侧栏"><i class="td-shell-icon td-shell-icon--panel-left fa-solid fa-table-columns" aria-hidden="true"></i></button>
+</div>
+
+        <main id="td-main-content" class="td-shell-main" tabindex="-1">
+          <article class="td-shell-article">
+            
+            <nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/zh/categories/">Categories</a></li>
+  <li class="breadcrumb-item active" aria-current="page">
+    创作内容</li>
+  </ol>
+</nav>
+            <div class="td-content td-shell-blog-index">
+  <h1>分类: 创作内容</h1>
+  
+</div>
+<div class="td-blog-posts">
+  <ul class="td-blog-posts-list"><li class="td-blog-posts-list__item">
+  <div class="td-blog-posts-list__body">
+    <h2 class="h5 mt-0 mb-1">
+      <a href="/zh/docs/write/openapi/">API 文档</a>
+      
+    </h2>
+    
+<p class="td-blog-meta"><small class="text-body-secondary">发布于 <a class="td-blog-meta__section" href="/zh/docs/write/">创作内容</a></small></p>
+<p class="td-blog-meta__terms"><a class="td-badge td-badge--solid" href="/zh/categories/%E5%88%9B%E4%BD%9C%E5%86%85%E5%AE%B9/"><i class="fa-solid fa-folder" aria-hidden="true"></i>创作内容</a></p><div class="td-blog-posts-list__summary-row d-none d-md-flex align-items-start gap-3 mt-1">
+      <div class="td-blog-posts-list__summary flex-grow-1"><p class="pt-0 mt-0 mb-0">一页接口文档由一份 OpenAPI 规范加一个 shortcode 构成。Swagger UI 与 Redoc 两个运行时随主题分发（版本分别是 5.32.13 与 2.5.3，见仓库 VENDOR.json），只有用到它们的页面、且只在 HTML 输出里加载，构建与浏览都不访问外部服务。Swagger UI 的在线 validator 已写死关闭（validatorUrl: null），已发布的接口页面不会把规范地址发往任何地方。
+三个步骤：把规范文件放进 static/，新建一页写上 …</p></div>
+    </div>
+    <div class="td-blog-posts-list__summary-mobile d-md-none"><p class="pt-0 mt-0 mb-0">一页接口文档由一份 OpenAPI 规范加一个 shortcode 构成。Swagger UI 与 Redoc 两个运行时随主题分发（版本分别是 5.32.13 与 2.5.3，见仓库 VENDOR.json），只有用到它们的页面、且只在 HTML 输出里加载，构建与浏览都不访问外部服务。Swagger UI 的在线 validator 已写死关闭（validatorUrl: null），已发布的接口页面不会把规范地址发往任何地方。
+三个步骤：把规范文件放进 static/，新建一页写上 …</p></div>
+  </div>
+</li>
+<li class="td-blog-posts-list__item">
+  <div class="td-blog-posts-list__body">
+    <h2 class="h5 mt-0 mb-1">
+      <a href="/zh/docs/write/releases/">发布与下载页</a>
+      
+    </h2>
+    
+<p class="td-blog-meta"><small class="text-body-secondary">发布于 <a class="td-blog-meta__section" href="/zh/docs/write/">创作内容</a></small></p>
+<p class="td-blog-meta__terms"><a class="td-badge td-badge--solid" href="/zh/categories/%E5%88%9B%E4%BD%9C%E5%86%85%E5%AE%B9/"><i class="fa-solid fa-folder" aria-hidden="true"></i>创作内容</a></p><div class="td-blog-posts-list__summary-row d-none d-md-flex align-items-start gap-3 mt-1">
+      <div class="td-blog-posts-list__summary flex-grow-1"><p class="pt-0 mt-0 mb-0">OINK 把发布事实集中在两处本地数据：页面 front matter 的 release_url 指明这一页对应哪个 GitHub 发布，data/download/&lt;key&gt;.yaml 记录安装方式。发布卡片、资产表、下载区块与索引页都从这两处推导。构建期不访问 GitHub，也不声称某个标签或资产已经存在。
+本页自带演示用的发布事实 front matter 里放了一个 release_url（OINK v0.4.0），下面的卡片、资产表与下载区块都是真实渲染。校验和与资产文件名是构造的 …</p></div>
+    </div>
+    <div class="td-blog-posts-list__summary-mobile d-md-none"><p class="pt-0 mt-0 mb-0">OINK 把发布事实集中在两处本地数据：页面 front matter 的 release_url 指明这一页对应哪个 GitHub 发布，data/download/&lt;key&gt;.yaml 记录安装方式。发布卡片、资产表、下载区块与索引页都从这两处推导。构建期不访问 GitHub，也不声称某个标签或资产已经存在。
+本页自带演示用的发布事实 front matter 里放了一个 release_url（OINK v0.4.0），下面的卡片、资产表与下载区块都是真实渲染。校验和与资产文件名是构造的 …</p></div>
+  </div>
+</li>
+<li class="td-blog-posts-list__item">
+  <div class="td-blog-posts-list__body">
+    <h2 class="h5 mt-0 mb-1">
+      <a href="/zh/docs/write/book/">书籍出版</a>
+      
+    </h2>
+    
+<p class="td-blog-meta"><small class="text-body-secondary">发布于 <a class="td-blog-meta__section" href="/zh/docs/write/">创作内容</a></small></p>
+<p class="td-blog-meta__terms"><a class="td-badge td-badge--solid" href="/zh/categories/%E5%88%9B%E4%BD%9C%E5%86%85%E5%AE%B9/"><i class="fa-solid fa-folder" aria-hidden="true"></i>创作内容</a></p><div class="td-blog-posts-list__summary-row d-none d-md-flex align-items-start gap-3 mt-1">
+      <div class="td-blog-posts-list__summary flex-grow-1"><p class="pt-0 mt-0 mb-0">一本书是一棵 type: book 的内容树：目录决定章节顺序，front matter 决定章节编号，图 / 表 / 式 / 例各带一个手写编号与稳定锚点。交叉引用在四种输出里都能解析，书根页面可以生成整本打印 HTML。
+前提两条：站点的 markup.goldmark 已开启属性行与 passthrough（见组件总览）；params.ui.shell_types 保留 book（主题默认包含）。
+一本书的目录 书根是一个普通的 Hugo section，章是它的子目录，节是章里的页面。没 …</p></div>
+    </div>
+    <div class="td-blog-posts-list__summary-mobile d-md-none"><p class="pt-0 mt-0 mb-0">一本书是一棵 type: book 的内容树：目录决定章节顺序，front matter 决定章节编号，图 / 表 / 式 / 例各带一个手写编号与稳定锚点。交叉引用在四种输出里都能解析，书根页面可以生成整本打印 HTML。
+前提两条：站点的 markup.goldmark 已开启属性行与 passthrough（见组件总览）；params.ui.shell_types 保留 book（主题默认包含）。
+一本书的目录 书根是一个普通的 Hugo section，章是它的子目录，节是章里的页面。没 …</p></div>
+  </div>
+</li>
+<li class="td-blog-posts-list__item">
+  <div class="td-blog-posts-list__body">
+    <h2 class="h5 mt-0 mb-1">
+      <a href="/zh/docs/write/blog/">博客与文章</a>
+      
+    </h2>
+    
+<p class="td-blog-meta"><small class="text-body-secondary">发布于 <a class="td-blog-meta__section" href="/zh/docs/write/">创作内容</a></small></p>
+<p class="td-blog-meta__terms"><a class="td-badge td-badge--solid" href="/zh/categories/%E5%88%9B%E4%BD%9C%E5%86%85%E5%AE%B9/"><i class="fa-solid fa-folder" aria-hidden="true"></i>创作内容</a></p><div class="td-blog-posts-list__summary-row d-none d-md-flex align-items-start gap-3 mt-1">
+      <div class="td-blog-posts-list__summary flex-grow-1"><p class="pt-0 mt-0 mb-0">博客文章与文档页的正文写法相同，区别在外壳：文章带日期、作者、标签与封面图，列表按年份倒序排列，栏目带 RSS。本页覆盖博客栏目的建立、文章 front matter、封面图、列表分页与 Feed。
+博客目录结构 博客是 content/ 下的一个栏目，type: blog 使它使用博客外壳。子目录按发布方与受众划分，文章平铺其中。不要建年份目录，年份分组由列表页自动生成：
+本站的 content/blog/
+content/blog/_index.md#type: blog + …</p></div>
+    </div>
+    <div class="td-blog-posts-list__summary-mobile d-md-none"><p class="pt-0 mt-0 mb-0">博客文章与文档页的正文写法相同，区别在外壳：文章带日期、作者、标签与封面图，列表按年份倒序排列，栏目带 RSS。本页覆盖博客栏目的建立、文章 front matter、封面图、列表分页与 Feed。
+博客目录结构 博客是 content/ 下的一个栏目，type: blog 使它使用博客外壳。子目录按发布方与受众划分，文章平铺其中。不要建年份目录，年份分组由列表页自动生成：
+本站的 content/blog/
+content/blog/_index.md#type: blog + …</p></div>
+  </div>
+</li>
+<li class="td-blog-posts-list__item">
+  <div class="td-blog-posts-list__body">
+    <h2 class="h5 mt-0 mb-1">
+      <a href="/zh/docs/write/frontmatter/">页面参数</a>
+      
+    </h2>
+    
+<p class="td-blog-meta"><small class="text-body-secondary">发布于 <a class="td-blog-meta__section" href="/zh/docs/write/">创作内容</a></small></p>
+<p class="td-blog-meta__terms"><a class="td-badge td-badge--solid" href="/zh/categories/%E5%88%9B%E4%BD%9C%E5%86%85%E5%AE%B9/"><i class="fa-solid fa-folder" aria-hidden="true"></i>创作内容</a></p><div class="td-blog-posts-list__summary-row d-none d-md-flex align-items-start gap-3 mt-1">
+      <div class="td-blog-posts-list__summary flex-grow-1"><p class="pt-0 mt-0 mb-0">本页是页面级参数的全表，只列 OINK 主题会读取的键。主题仅为提示「已重命名或已移除」而读取的旧键不在此列——它们在迁移里，也不会出现在生成的编辑器 Schema 中。Hugo 自身的 front matter 字段（slug、url、build、sitemap、expiryDate 等）照常可用，语义见 Hugo 文档。站点级参数（hugo.yml 里的 params.*）见配置总览。
+表格说明 优先级从高到低：
+页面自己的 front matter； 最近一层 cascade（多层 …</p></div>
+    </div>
+    <div class="td-blog-posts-list__summary-mobile d-md-none"><p class="pt-0 mt-0 mb-0">本页是页面级参数的全表，只列 OINK 主题会读取的键。主题仅为提示「已重命名或已移除」而读取的旧键不在此列——它们在迁移里，也不会出现在生成的编辑器 Schema 中。Hugo 自身的 front matter 字段（slug、url、build、sitemap、expiryDate 等）照常可用，语义见 Hugo 文档。站点级参数（hugo.yml 里的 params.*）见配置总览。
+表格说明 优先级从高到低：
+页面自己的 front matter； 最近一层 cascade（多层 …</p></div>
+  </div>
+</li>
+<li class="td-blog-posts-list__item">
+  <div class="td-blog-posts-list__body">
+    <h2 class="h5 mt-0 mb-1">
+      <a href="/zh/docs/write/">创作内容</a>
+      
+    </h2>
+    
+<p class="td-blog-meta"><small class="text-body-secondary">发布于 <a class="td-blog-meta__section" href="/zh/docs/write/">创作内容</a></small></p>
+<p class="td-blog-meta__terms"><a class="td-badge td-badge--solid" href="/zh/categories/%E5%88%9B%E4%BD%9C%E5%86%85%E5%AE%B9/"><i class="fa-solid fa-folder" aria-hidden="true"></i>创作内容</a></p><div class="td-blog-posts-list__summary-row d-none d-md-flex align-items-start gap-3 mt-1">
+      <div class="td-blog-posts-list__summary flex-grow-1"><p class="pt-0 mt-0 mb-0">本栏覆盖 OINK 支持的几种内容类型：文档页、博客文章、书籍、发布下载页、OpenAPI 参考。它们共用同一套 Markdown 与 front matter，各自另有约定。
+一页文档的构成 一页文档是一个 Markdown 文件。文件开头两行 --- 之间是 front matter，即页面元数据：标题、侧栏短名、描述、排序。其余部分是正文，内容为普通 Markdown 加 OINK 的原生组件。下面是一个完整页面：
+content/docs/install.zh.md --- title: …</p></div>
+    </div>
+    <div class="td-blog-posts-list__summary-mobile d-md-none"><p class="pt-0 mt-0 mb-0">本栏覆盖 OINK 支持的几种内容类型：文档页、博客文章、书籍、发布下载页、OpenAPI 参考。它们共用同一套 Markdown 与 front matter，各自另有约定。
+一页文档的构成 一页文档是一个 Markdown 文件。文件开头两行 --- 之间是 front matter，即页面元数据：标题、侧栏短名、描述、排序。其余部分是正文，内容为普通 Markdown 加 OINK 的原生组件。下面是一个完整页面：
+content/docs/install.zh.md --- title: …</p></div>
+  </div>
+</li>
+<li class="td-blog-posts-list__item">
+  <div class="td-blog-posts-list__body">
+    <h2 class="h5 mt-0 mb-1">
+      <a href="/zh/docs/write/organize/">组织内容</a>
+      
+    </h2>
+    
+<p class="td-blog-meta"><small class="text-body-secondary">发布于 <a class="td-blog-meta__section" href="/zh/docs/write/">创作内容</a></small></p>
+<p class="td-blog-meta__terms"><a class="td-badge td-badge--solid" href="/zh/categories/%E5%88%9B%E4%BD%9C%E5%86%85%E5%AE%B9/"><i class="fa-solid fa-folder" aria-hidden="true"></i>创作内容</a></p><div class="td-blog-posts-list__summary-row d-none d-md-flex align-items-start gap-3 mt-1">
+      <div class="td-blog-posts-list__summary flex-grow-1"><p class="pt-0 mt-0 mb-0">OINK 不需要单独配置导航：content/ 下的目录结构就是侧栏树。本页覆盖目录与文件的摆放、栏目首页、排序、图标、折叠、隐藏，以及多根侧栏。
+目录就是侧栏 一个目录是一个栏目（Hugo 称 section），目录里的 Markdown 文件是它的页面，嵌套目录是它的子栏目。侧栏按这棵树逐层渲染，顺序由 weight 决定，标签取 linkTitle，缺省时取 title。左侧这棵树的源码如下：
+content/docs/ 的前两层
+content/docs/_index.zh.md#栏目根 …</p></div>
+    </div>
+    <div class="td-blog-posts-list__summary-mobile d-md-none"><p class="pt-0 mt-0 mb-0">OINK 不需要单独配置导航：content/ 下的目录结构就是侧栏树。本页覆盖目录与文件的摆放、栏目首页、排序、图标、折叠、隐藏，以及多根侧栏。
+目录就是侧栏 一个目录是一个栏目（Hugo 称 section），目录里的 Markdown 文件是它的页面，嵌套目录是它的子栏目。侧栏按这棵树逐层渲染，顺序由 weight 决定，标签取 linkTitle，缺省时取 title。左侧这棵树的源码如下：
+content/docs/ 的前两层
+content/docs/_index.zh.md#栏目根 …</p></div>
+  </div>
+</li>
+<li class="td-blog-posts-list__item">
+  <div class="td-blog-posts-list__body">
+    <h2 class="h5 mt-0 mb-1">
+      <a href="/zh/docs/write/pages/">编写页面</a>
+      
+    </h2>
+    
+<p class="td-blog-meta"><small class="text-body-secondary">发布于 <a class="td-blog-meta__section" href="/zh/docs/write/">创作内容</a></small></p>
+<p class="td-blog-meta__terms"><a class="td-badge td-badge--solid" href="/zh/categories/%E5%88%9B%E4%BD%9C%E5%86%85%E5%AE%B9/"><i class="fa-solid fa-folder" aria-hidden="true"></i>创作内容</a></p><div class="td-blog-posts-list__summary-row d-none d-md-flex align-items-start gap-3 mt-1">
+      <div class="td-blog-posts-list__summary flex-grow-1"><p class="pt-0 mt-0 mb-0">本页覆盖一页文档的完整写法：文件位置、front matter、标题锚点、链接、图片、草稿与页尾。前提是站点已能本地构建，尚未搭起时先看十分钟上手。
+新建一页 页面是 content/ 下的 Markdown 文件，URL 由它在 content/ 里的位置决定：content/docs/install.md 发布为 /docs/install/。中文译文是同目录下的 .zh.md 同名文件，与英文页共享同一条逻辑路径。
+没有附带资源的页面写成单个文件。页面带图片、cast、示例配置这类资源时改 …</p></div>
+    </div>
+    <div class="td-blog-posts-list__summary-mobile d-md-none"><p class="pt-0 mt-0 mb-0">本页覆盖一页文档的完整写法：文件位置、front matter、标题锚点、链接、图片、草稿与页尾。前提是站点已能本地构建，尚未搭起时先看十分钟上手。
+新建一页 页面是 content/ 下的 Markdown 文件，URL 由它在 content/ 里的位置决定：content/docs/install.md 发布为 /docs/install/。中文译文是同目录下的 .zh.md 同名文件，与英文页共享同一条逻辑路径。
+没有附带资源的页面写成单个文件。页面带图片、cast、示例配置这类资源时改 …</p></div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+          </article>
+        </main>
+        <aside class="td-shell-toc d-print-none" aria-label="目录">
+  <div class="td-shell-toc__panel">
+    <div class="td-shell-toc__actions">
+      <button type="button" class="td-shell-toc__title-btn" data-td-shell-right-toggle
+        title="隐藏目录" aria-label="隐藏目录"><i class="td-shell-icon td-shell-icon--menu fa-solid fa-bars" aria-hidden="true"></i></button>
+    </div>
+    
+    <div class="td-shell-aside" data-td-shell-aside>
+      
+      
+      <div class="td-shell-aside-group td-shell-tags-cloud" data-td-taxonomy="categories" data-td-taxonomy-root="/zh/docs/">
+  <button type="button" class="td-shell-tree__row td-shell-aside-group__head td-shell-tags-cloud__head" data-td-shell-tree-toggle
+    aria-expanded="true" aria-controls="td-shell-taxonomy-categories-zhdocs-children"
+    aria-label="收起章节: 分类"
+    data-td-label-expand="展开章节: 分类"
+    data-td-label-collapse="收起章节: 分类">
+    <span class="td-shell-aside-group__icon"><i class="fa-solid fa-folder" aria-hidden="true"></i></span>
+    <span class="td-shell-aside-group__title td-shell-tags-cloud__title">分类</span>
+    <span class="td-shell-tree__chevron" aria-hidden="true"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></span>
+  </button>
+  <div id="td-shell-taxonomy-categories-zhdocs-children" class="td-shell-tree__children td-is-open">
+    <div class="td-shell-tree__children-inner">
+      <div class="td-shell-tags-cloud__chips">
+        <a class="td-shell-tag" href="/zh/categories/%E7%BB%84%E4%BB%B6/">
+          <span>组件</span><span class="td-shell-tag__count">22</span>
+        </a>
+        <a class="td-shell-tag" href="/zh/categories/%E8%AE%BE%E8%AE%A1%E5%A5%91%E7%BA%A6/">
+          <span>设计契约</span><span class="td-shell-tag__count">20</span>
+        </a>
+        <a class="td-shell-tag" href="/zh/categories/%E5%AE%9A%E5%88%B6%E7%AB%99%E7%82%B9/">
+          <span>定制站点</span><span class="td-shell-tag__count">15</span>
+        </a>
+        <a class="td-shell-tag" href="/zh/categories/%E5%88%9B%E4%BD%9C%E5%86%85%E5%AE%B9/">
+          <span>创作内容</span><span class="td-shell-tag__count">8</span>
+        </a>
+        <a class="td-shell-tag" href="/zh/categories/%E7%BB%B4%E6%8A%A4%E7%AE%A1%E7%90%86/">
+          <span>维护管理</span><span class="td-shell-tag__count">7</span>
+        </a>
+        <a class="td-shell-tag" href="/zh/categories/%E7%AE%80%E4%BB%8B/">
+          <span>简介</span><span class="td-shell-tag__count">4</span>
+        </a>
+        <a class="td-shell-tag" href="/zh/categories/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">
+          <span>快速上手</span><span class="td-shell-tag__count">3</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</aside>
+<div class="td-shell-toc-float d-print-none">
+  <button type="button" class="td-shell-iconbtn" data-td-shell-right-toggle
+    title="显示目录" aria-label="显示目录"><i class="td-shell-icon td-shell-icon--menu fa-solid fa-bars" aria-hidden="true"></i></button>
+</div>
+      </div>
+      <footer class="d-print-none" data-td-shell-footer>
+  <div class="td-site-footer" id="td-site-footer">
+    <div class="td-site-footer__container">
+      <div class="td-site-footer__inner">
+        <div class="td-site-footer__brand"><a class="td-site-footer__logo" href="/zh/" aria-label="PGSTY OINK">
+            <img src="/icons/logo.svg" alt="" width="28" height="28">
+            <span>PGSTY OINK</span>
+          </a><div class="td-site-footer__tagline"><strong>O</strong>pen <strong>I</strong>ndexed，<strong>N</strong>avigable <strong>K</strong>nowledge</div><div class="td-site-footer__slogan">A local-first, Hugo theme for engineering documentation</div>
+        </div>
+        <div class="td-site-footer__grid" style="--td-footer-cols: 4">
+          <nav class="td-site-footer__column" aria-label="产品">
+            <h2>产品</h2>
+            <ul>
+              <li><a href="/zh/docs/about/">OINK 是什么</a></li>
+              <li><a href="/zh/docs/about/features/">亮点特性</a></li>
+              <li><a href="/zh/docs/about/showcase/">示例站点</a></li>
+              <li><a href="/zh/docs/about/license/">开源许可与致谢</a></li>
+            </ul>
+          </nav>
+          <nav class="td-site-footer__column" aria-label="文档">
+            <h2>文档</h2>
+            <ul>
+              <li><a href="/zh/docs/start/">快速上手</a></li>
+              <li><a href="/zh/docs/write/">创作内容</a></li>
+              <li><a href="/zh/docs/components/">组件</a></li>
+              <li><a href="/zh/docs/customize/">定制站点</a></li>
+            </ul>
+          </nav>
+          <nav class="td-site-footer__column" aria-label="维护管理">
+            <h2>维护管理</h2>
+            <ul>
+              <li><a href="/zh/docs/admin/preview/">本地预览</a></li>
+              <li><a href="/zh/docs/admin/deploy/">发布上线</a></li>
+              <li><a href="/zh/docs/admin/upgrade/">版本升级</a></li>
+              <li><a href="/zh/docs/customize/config/">配置总览</a></li>
+            </ul>
+          </nav>
+          <nav class="td-site-footer__column" aria-label="社区">
+            <h2>社区</h2>
+            <ul>
+              <li><a href="/zh/blog/">博客</a></li>
+              <li><a href="/zh/blog/release/">版本发布</a></li>
+              <li><a href="https://github.com/pgsty/oink" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+              <li><a href="https://github.com/google/docsy/discussions" target="_blank" rel="noopener noreferrer">Docsy 讨论区</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="td-shell-footline d-print-none">
+  <div class="td-shell-footline__copy"><span class="td-footer__copyright">&copy; 2026
+    <span class="td-footer__authors"><a href="https://vonng.com/en">Ruohang Feng</a> (<a href="https://github.com/Vonng">@Vonng</a>) @ <a href="https://pgsty.com/">PGSTY</a>, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a></span>
+  </span><span class="td-footer__all_rights_reserved">保留所有权利</span></div>
+  <div class="td-shell-footline__center">Powered by <a href="https://oink.pgsty.com">Oink</a></div>
+  <div class="td-shell-footline__right">
+    <div class="td-shell-footline__version">
+      <div class="td-version-menu dropdown dropup td-version-menu--icon-only" data-td-version-menu>
+  <button class="td-version-menu__title" type="button" data-bs-toggle="dropdown"
+    aria-haspopup="true" aria-expanded="false" aria-label="v0.8.0"><i class="td-shell-icon td-shell-icon--code-branch fa-solid fa-code-branch" aria-hidden="true"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-up"><li>
+          <span class="dropdown-item disabled dropdown-item-text"><strong>Versions</strong></span></li><li>
+          <a class="dropdown-item active dropdown-item-latest" aria-current="page"
+            href="https://oink.pgsty.com">v0.8.0</a></li>
+  </ul>
+</div>
+
+    </div>
+    <div class="td-language-selector td-language-selector--menu td-shell-footline__language">
+  <a class="td-language-selector__trigger" href="/"
+    lang="en-US" hreflang="en-US" dir="ltr"
+    title="切换语言: English"
+    aria-label="切换语言: English" aria-haspopup="true" aria-expanded="false"><i class="td-shell-icon td-shell-icon--languages fa-solid fa-language" aria-hidden="true"></i>
+    <span>English</span>
+  </a>
+  <ul aria-label="选择语言">
+    <li>
+      <a class="td-language-selector__item" href="/" lang="en-US" hreflang="en-US" dir="ltr">English</a>
+    </li>
+    <li>
+      <span class="td-language-selector__item active" lang="zh-CN" dir="ltr" aria-current="page">简体中文</span>
+    </li>
+  </ul>
+</div>
+    <div class="td-shell-footline__theme td-nav-hover-menu" data-td-nav-hover>
+      <button type="button" class="td-shell-iconbtn" data-td-nav-hover-trigger data-td-theme-toggle
+        title="切换配色" aria-label="切换配色" aria-expanded="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i></button>
+      <div class="td-nav-hover-menu__pop" role="group" aria-label="切换配色">
+        <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="light" aria-pressed="false"><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i><span>亮色</span>
+        </button>
+        <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="dark" aria-pressed="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><span>暗色</span>
+        </button>
+        <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="auto" aria-pressed="false"><i class="td-shell-icon td-shell-icon--contrast fa-solid fa-circle-half-stroke" aria-hidden="true"></i><span>跟随系统</span>
+        </button>
+      </div>
+    </div>
+    <div class="td-shell-keyboard td-nav-hover-menu" data-td-nav-hover>
+  <button type="button" class="td-shell-iconbtn td-shell-keyboard__trigger"
+    data-td-nav-hover-trigger data-td-nav-hover-open
+    title="键盘快捷键" aria-label="键盘快捷键"
+    aria-expanded="false"><i class="td-shell-icon td-shell-icon--circle-question fa-solid fa-circle-question" aria-hidden="true"></i></button>
+  <div class="td-nav-hover-menu__pop td-shell-keyboard-help" role="group"
+    aria-label="键盘快捷键">
+    <div class="td-shell-keyboard-help__header"><i class="td-shell-icon td-shell-icon--circle-question fa-solid fa-circle-question" aria-hidden="true"></i><strong>键盘快捷键</strong>
+    </div>
+    <section class="td-shell-keyboard-help__section" aria-labelledby="td-shell-shortcuts-navigation">
+      <p class="td-shell-keyboard-help__section-title" id="td-shell-shortcuts-navigation">章节导航</p>
+      <dl>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>W</kbd><kbd>S</kbd><kbd>↑</kbd><kbd>↓</kbd></span></dt>
+          <dd>在侧栏中移动</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>A</kbd><kbd>D</kbd><kbd>←</kbd><kbd>→</kbd></span></dt>
+          <dd>收起或展开章节</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>Enter</kbd><kbd>G</kbd></span></dt>
+          <dd>打开当前页面</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>J</kbd><kbd>K</kbd></span></dt>
+          <dd>上一个或下一个标题</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>Q</kbd><kbd>E</kbd></span></dt>
+          <dd>上一页或下一页</dd>
+        </div>
+      </dl>
+    </section>
+    <section class="td-shell-keyboard-help__section" aria-labelledby="td-shell-shortcuts-actions">
+      <p class="td-shell-keyboard-help__section-title" id="td-shell-shortcuts-actions">操作</p>
+      <dl>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>/</kbd><kbd>F</kbd></span></dt>
+          <dd>搜索</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>\</kbd><kbd>C</kbd></span></dt>
+          <dd>命令面板</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>H</kbd></span></dt>
+          <dd>专注阅读模式</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>L</kbd><kbd>Y</kbd></span></dt>
+          <dd>切换语言</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>T</kbd></span></dt>
+          <dd>切换主题</dd>
+        </div>
+        <div class="td-shell-keyboard-help__row">
+          <dt><span class="td-kbd-sequence"><kbd>R</kbd></span></dt>
+          <dd>切换顶层页面</dd>
+        </div>
+      </dl>
+    </section>
+  </div>
+</div>
+    <button type="button" class="td-shell-footline__toggle" data-td-footer-toggle
+      aria-expanded="true" aria-controls="td-site-footer"
+      title="收起页脚链接" aria-label="收起页脚链接"
+      data-td-label-collapse="收起页脚链接"
+      data-td-label-expand="展开页脚链接"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></button>
+  </div>
+</div>
+</footer>
+    </div>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":false,"description":"复制 Markdown 文本","disabledReason":"复制 Markdown 文本: 暂不可用","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["复制 Markdown 文本","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"复制 Markdown 文本","url":""},{"available":true,"description":"复制链接","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["复制链接","分享","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"复制链接","url":"http://localhost:1313/zh/categories/%E5%88%9B%E4%BD%9C%E5%86%85%E5%AE%B9/"},{"available":true,"description":"在 ChatGPT 中打开","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["在 ChatGPT 中打开","就本页提问","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 ChatGPT 中打开","url":"https://chatgpt.com/?hints=search\u0026prompt=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fcategories%2F%25E5%2588%259B%25E4%25BD%259C%25E5%2586%2585%25E5%25AE%25B9%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":true,"description":"在 Claude 中打开","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["在 Claude 中打开","就本页提问","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 Claude 中打开","url":"https://claude.ai/new?q=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fcategories%2F%25E5%2588%259B%25E4%25BD%259C%25E5%2586%2585%25E5%25AE%25B9%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":false,"description":"查阅 Markdown 源码","disabledReason":"查阅 Markdown 源码: 暂不可用","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["查阅 Markdown 源码","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅 Markdown 源码","url":""},{"available":false,"description":"查阅编辑历史","disabledReason":"查阅编辑历史: 暂不可用","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["查阅编辑历史","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅编辑历史","url":""},{"available":false,"description":"编辑当前页面","disabledReason":"编辑当前页面: 暂不可用","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["编辑当前页面","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"编辑当前页面","url":""},{"available":false,"description":"添加子页面","disabledReason":"添加子页面: 暂不可用","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["添加子页面","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"添加子页面","url":""},{"available":false,"description":"提交文档议题","disabledReason":"提交文档议题: 暂不可用","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["提交文档议题","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交文档议题","url":""},{"available":true,"description":"提交项目议题","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["提交项目议题","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交项目议题","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"打印完整章节","disabledReason":"打印完整章节: 暂不可用","icon":"fa-solid fa-print","id":"print_section","keywords":["打印完整章节","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"打印完整章节","url":""},{"available":true,"description":"打印此页面","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["打印此页面","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"打印此页面","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL 必填","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"切换语言","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["切换语言","language"],"kind":"choice","options":[{"active":false,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/"},{"active":true,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/categories/%E5%88%9B%E4%BD%9C%E5%86%85%E5%AE%B9/"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换语言","url":""},{"available":true,"description":"切换配色","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["切换配色","亮色","暗色"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"跟随系统","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"亮色","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"暗色","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换配色","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"报告或查看主题与文档问题","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["缺陷","支持","路线图"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK 问题反馈","url":"https://github.com/pgsty/oink/issues"}],"language":"zh","quickLinks":[{"available":true,"description":"OINK 是一款只需 Hugo Extended 的技术文档主题：组件写在 Markdown 里，资源随主题分发，双语开箱可用，一份内容产出四种输出。","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["文档","docs"],"kind":"url","target":"self","title":"文档","url":"/zh/docs/"},{"available":true,"description":"OINK 工程实践、沉浸式阅读指南与发布注记","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["博客","blog"],"kind":"url","target":"self","title":"博客","url":"/zh/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+
+<script src="/js/actions.js"></script>
+<script src="/js/core.js"></script>
+  <div id="td-shell-search" class="td-shell-search" hidden
+     data-td-index-src="/offline-search-index.zh.json"
+     data-td-max-results="10"
+     data-td-t-empty="未找到结果"
+     data-td-t-loading="正在加载搜索索引……"
+     data-td-t-results="找到 {count} 条结果"
+     data-td-t-actions="操作"
+     data-td-t-page-actions="页面操作"
+     data-td-t-preferences="偏好设置"
+     data-td-t-commands="命令"
+     data-td-t-quick-links="快速链接"
+     data-td-t-no-commands="未找到匹配命令"
+     data-td-t-choice="请选择一项"
+     data-td-t-action-failed="无法完成此操作"
+     data-td-t-index-unavailable="页面索引暂不可用，操作仍可使用"
+     data-td-t-pages="页面">
+  <div class="td-shell-search__backdrop" data-td-shell-search-close></div>
+  <div class="td-shell-search__panel" role="dialog" aria-modal="true" aria-label="搜索…">
+    <div class="td-shell-search__head">
+      <i class="td-shell-icon td-shell-icon--search fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input type="search" class="td-shell-search__input" placeholder="搜索…"
+             autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+             role="combobox" aria-autocomplete="list" aria-haspopup="listbox"
+             aria-controls="td-shell-search-results" aria-expanded="false"
+             aria-label="搜索…" enterkeyhint="go">
+      <button type="button" class="td-shell-search__esc" data-td-shell-search-close
+        aria-label="关闭">
+        <kbd>esc</kbd>
+      </button>
+    </div>
+    <div id="td-shell-search-results" class="td-shell-search__list" role="listbox"
+      aria-label="搜索…"></div>
+    <div class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"
+      data-td-shell-search-status></div>
+    <div class="td-shell-search__foot" aria-hidden="true">
+      <span><kbd>↑</kbd><kbd>↓</kbd> 选择</span>
+      <span><kbd>↵</kbd> 打开</span>
+      <span><kbd>esc</kbd> 关闭</span>
+    </div>
+  </div>
+</div><script src="/js/chunks/shell.js"></script><script src="/js/chunks/keyboard.js"></script><script src="/js/chunks/footer-collapse.js"></script><script src="/js/chunks/local-search.js"></script><script src="/js/chunks/dark-mode.js"></script>
+  </body>
+</html>

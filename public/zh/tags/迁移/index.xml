@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>迁移 on OINK</title>
+    <link>http://localhost:1313/zh/tags/%E8%BF%81%E7%A7%BB/</link>
+    <description>Recent content in 迁移 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Sat, 22 Aug 2026 16:32:18 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/tags/%E8%BF%81%E7%A7%BB/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>silo.pgsty.com</title>
+        <link>http://localhost:1313/zh/case/silo/</link>
+        <pubDate>Wed, 12 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/silo/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://silo.pgsty.com/&#34;&gt;silo.pgsty.com&lt;/a&gt; 是 S3 兼容对象存储 SILO 的文档站。&#xA;本案例快照中每种语言各有四百一十一页。覆盖 387 个上游页面的迁移清单生成&#xA;&lt;code&gt;data/docs_nav.json&lt;/code&gt;，再由它驱动文档侧栏；站点还提供模块分类法与下载页。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

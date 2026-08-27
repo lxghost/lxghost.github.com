@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Multilingual on OINK</title>
+    <link>http://localhost:1313/tags/multilingual/</link>
+    <description>Recent content in Multilingual on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Sat, 22 Aug 2026 16:32:18 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/tags/multilingual/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>ddia.vonng.com</title>
+        <link>http://localhost:1313/case/ddia/</link>
+        <pubDate>Thu, 06 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/ddia/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://ddia.vonng.com/&#34;&gt;ddia.vonng.com&lt;/a&gt; publishes &lt;em&gt;Designing Data-Intensive&#xA;Applications&lt;/em&gt; as a multilingual book. The case snapshot includes 24 chapters&#xA;each in Simplified and Traditional Chinese, 23 chapters of the English second&#xA;edition, and two 21-chapter first-edition sets.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A complete &lt;code&gt;type: book&lt;/code&gt; reading shell with chapter-level navigation.&lt;/li&gt;&#xA;&lt;li&gt;More than 130 numbered figure, table, equation, and example targets.&lt;/li&gt;&#xA;&lt;li&gt;Stable cross-references and generated book indexes across several editions.&lt;/li&gt;&#xA;&lt;li&gt;Multiple written-language variants inside one publication.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Use this pattern for long-form works where numbering, citations, and movement&#xA;between chapters matter more than documentation-style sidebars.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>pgsql.cc</title>
+        <link>http://localhost:1313/case/pgsql-cc/</link>
+        <pubDate>Mon, 03 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/pgsql-cc/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pgsql.cc/&#34;&gt;pgsql.cc&lt;/a&gt; brings the operating manuals for Patroni, HAProxy,&#xA;etcd, PgBouncer, pgBackRest, and pgBadger into one PostgreSQL-focused library.&#xA;The case snapshot counted 217 English pages and 80 Chinese pages.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Giving several upstream products a consistent local information architecture.&lt;/li&gt;&#xA;&lt;li&gt;Publishing English first while Chinese coverage grows over time.&lt;/li&gt;&#xA;&lt;li&gt;Keeping partial translation useful instead of blocking publication on parity.&lt;/li&gt;&#xA;&lt;li&gt;Using subtrees to preserve clear product boundaries inside an aggregate site.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Choose this pattern for a curated technical library where sources and&#xA;translation maturity vary, but readers benefit from one search and one visual&#xA;system.&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

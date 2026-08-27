@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>文档 on OINK</title>
+    <link>http://localhost:1313/zh/tags/%E6%96%87%E6%A1%A3/</link>
+    <description>Recent content in 文档 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Sat, 22 Aug 2026 16:32:18 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/tags/%E6%96%87%E6%A1%A3/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>pigsty.cc</title>
+        <link>http://localhost:1313/zh/case/pigsty-cc/</link>
+        <pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/pigsty-cc/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pigsty.cc/&#34;&gt;pigsty.cc&lt;/a&gt; 以简体中文发布 Pigsty。本案例记录的快照有&#xA;一千四百九十多个内容文件、三百多篇博客，并拥有独立的数据驱动价格页，&#xA;中文也是站点的默认语言。&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;它展示了什么&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;把体量很大的双语语料拆成两个独立部署的单语站。&lt;/li&gt;&#xA;&lt;li&gt;通过替代站点入口与版本菜单连接中英文站。&lt;/li&gt;&#xA;&lt;li&gt;让每种语言拥有独立的发布节奏与落地页数据。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;这一模式牺牲同域语言切换，换来更清晰的维护边界和更小的构建规模。两种语言&#xA;都已经是完整产品，而不是零星翻译时，尤其适用。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>pigsty.io</title>
+        <link>http://localhost:1313/zh/case/pigsty-io/</link>
+        <pubDate>Thu, 13 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/pigsty-io/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pigsty.io/&#34;&gt;pigsty.io&lt;/a&gt; 是开源 PostgreSQL 发行版 Pigsty 的英文主站。&#xA;本案例记录的快照包含一千四百多个 Markdown 文件、两百多篇博客、扩展目录，&#xA;以及由数据驱动的价格页面。&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;它展示了什么&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;在同一个 Hugo 站点中组织大型文档树与编辑型博客。&lt;/li&gt;&#xA;&lt;li&gt;把目录内容与结构化数据分开维护。&lt;/li&gt;&#xA;&lt;li&gt;用 &lt;code&gt;layout: landing&lt;/code&gt; 和 &lt;code&gt;data/landing&lt;/code&gt; 组装价格页。&lt;/li&gt;&#xA;&lt;li&gt;用分类法与版本菜单连接同系列站点和历史版本。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;当一个英文优先的站点需要同时承载参考手册、动态内容、目录与商业落地页时，&#xA;可以采用这一模式。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>silo.pgsty.com</title>
+        <link>http://localhost:1313/zh/case/silo/</link>
+        <pubDate>Wed, 12 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/silo/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://silo.pgsty.com/&#34;&gt;silo.pgsty.com&lt;/a&gt; 是 S3 兼容对象存储 SILO 的文档站。&#xA;本案例快照中每种语言各有四百一十一页。覆盖 387 个上游页面的迁移清单生成&#xA;&lt;code&gt;data/docs_nav.json&lt;/code&gt;，再由它驱动文档侧栏；站点还提供模块分类法与下载页。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>oink.pgsty.com</title>
+        <link>http://localhost:1313/zh/case/oink/</link>
+        <pubDate>Tue, 11 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/oink/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://oink.pgsty.com/&#34;&gt;oink.pgsty.com&lt;/a&gt; 就是你正在阅读的站点。它既是主题的&#xA;公开手册，也是真实的回归消费站：组件页面会渲染可运行示例；同一个仓库还&#xA;承载设计契约、Book 夹具、下载数据，以及首页和落地页数据。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>pig.pgsty.com</title>
+        <link>http://localhost:1313/zh/case/pig/</link>
+        <pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/pig/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pig.pgsty.com/&#34;&gt;pig.pgsty.com&lt;/a&gt; 是 PostgreSQL 扩展包管理器 PIG 的&#xA;文档站。核心手册刻意保持紧凑——本案例快照中每种语言十八页——同时用五十篇&#xA;双语博客承载动态、教程与深入说明，首页则由 &lt;code&gt;data/home&lt;/code&gt; 组装。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>sow.pgsty.com</title>
+        <link>http://localhost:1313/zh/case/sow/</link>
+        <pubDate>Sat, 08 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/sow/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://sow.pgsty.com/&#34;&gt;sow.pgsty.com&lt;/a&gt; 记录 APT 与 YUM 仓库管理器 SOW。&#xA;本案例快照中每种语言各有五十五页，并提供独立下载页；版本、标签与发布产物&#xA;都由结构化发布数据生成。&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;它展示了什么&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;以中等体量维护双语运维文档。&lt;/li&gt;&#xA;&lt;li&gt;给下载内容独立类型，而不是把链接散落在正文里。&lt;/li&gt;&#xA;&lt;li&gt;复用发布数据，让软件包元数据只有一个事实来源。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;如果软件面向多个平台分发大量产物，并且安装说明、软件源与下载信息需要同步&#xA;演进，可以采用这一模式。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>exp.pgsty.com</title>
+        <link>http://localhost:1313/zh/case/pg-exporter/</link>
+        <pubDate>Fri, 07 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/pg-exporter/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://exp.pgsty.com/&#34;&gt;exp.pgsty.com&lt;/a&gt; 是 PostgreSQL Prometheus 指标采集器&#xA;PG Exporter 的文档站。本案例快照中每种语言各十五页，另有三十七篇双语博客；&#xA;生成导航、首页数据与结构化指标目录承担了主要的信息组织工作。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>pgsql.cc</title>
+        <link>http://localhost:1313/zh/case/pgsql-cc/</link>
+        <pubDate>Mon, 03 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/pgsql-cc/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pgsql.cc/&#34;&gt;pgsql.cc&lt;/a&gt; 把 Patroni、HAProxy、etcd、PgBouncer、pgBackRest&#xA;与 pgBadger 的运维手册汇总为一套 PostgreSQL 专题文库。本案例快照中有&#xA;二百一十七页英文内容与八十页中文内容。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>pgsty.pro</title>
+        <link>http://localhost:1313/zh/case/pgsty-pro/</link>
+        <pubDate>Sun, 02 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/pgsty-pro/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pgsty.pro/&#34;&gt;pgsty.pro&lt;/a&gt; 用中英文记录 Pigsty v5。本案例快照中，每种&#xA;语言各有三百四十三页文档，另有六十七篇双语博客。它最突出的部分是版本档案：&#xA;128 个本地化页面通过可复用的 &lt;code&gt;release-card&lt;/code&gt; 组件渲染版本数据。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

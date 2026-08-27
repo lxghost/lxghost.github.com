@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>中文 on OINK</title>
+    <link>http://localhost:1313/zh/tags/%E4%B8%AD%E6%96%87/</link>
+    <description>Recent content in 中文 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Sat, 22 Aug 2026 16:32:18 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/tags/%E4%B8%AD%E6%96%87/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>pigsty.cc</title>
+        <link>http://localhost:1313/zh/case/pigsty-cc/</link>
+        <pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/pigsty-cc/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pigsty.cc/&#34;&gt;pigsty.cc&lt;/a&gt; 以简体中文发布 Pigsty。本案例记录的快照有&#xA;一千四百九十多个内容文件、三百多篇博客，并拥有独立的数据驱动价格页，&#xA;中文也是站点的默认语言。&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;它展示了什么&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;把体量很大的双语语料拆成两个独立部署的单语站。&lt;/li&gt;&#xA;&lt;li&gt;通过替代站点入口与版本菜单连接中英文站。&lt;/li&gt;&#xA;&lt;li&gt;让每种语言拥有独立的发布节奏与落地页数据。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;这一模式牺牲同域语言切换，换来更清晰的维护边界和更小的构建规模。两种语言&#xA;都已经是完整产品，而不是零星翻译时，尤其适用。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>pgint.vonng.com</title>
+        <link>http://localhost:1313/zh/case/pg-internal/</link>
+        <pubDate>Tue, 04 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/pg-internal/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pgint.vonng.com/&#34;&gt;pgint.vonng.com&lt;/a&gt; 发布《PG 技术内幕》——Hironobu&#xA;Suzuki《The Internals of PostgreSQL》的 2018 年中文译稿。站点包含两篇序言、&#xA;十一个章节、自动生成的目录，以及一页许可与授权说明，全部为简体中文，没有&#xA;英文对等版本。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

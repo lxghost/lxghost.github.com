@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Series on OINK</title>
+    <link>http://localhost:1313/zh/series/</link>
+    <description>Recent content in Series on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Thu, 20 Aug 2026 19:29:45 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/series/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>OINK 版本发布</title>
+        <link>http://localhost:1313/zh/series/oink-releases/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/series/oink-releases/</guid>
+        <description>&lt;p&gt;这个系列是 OINK 按顺序排列的发布历史。每篇注记说明该版本的变更、迁移方法，&#xA;以及与之对应的验证证据。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>造 OINK</title>
+        <link>http://localhost:1313/zh/series/building-oink/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/series/building-oink/</guid>
+        <description>&lt;p&gt;同一天发出的两篇，按顺序读。第一篇讲 OINK 是什么、以及它刻意不做什么；第二篇是&#xA;那个说法底下的工程记录——迁移、安全边界、测试，还有那些没能在十一个生产站点面前&#xA;活下来的论证。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

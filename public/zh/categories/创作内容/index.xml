@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>创作内容 on OINK</title>
+    <link>http://localhost:1313/zh/categories/%E5%88%9B%E4%BD%9C%E5%86%85%E5%AE%B9/</link>
+    <description>Recent content in 创作内容 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Thu, 27 Aug 2026 17:15:16 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/categories/%E5%88%9B%E4%BD%9C%E5%86%85%E5%AE%B9/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>编写页面</title>
+        <link>http://localhost:1313/zh/docs/write/pages/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/write/pages/</guid>
+        <description>&lt;p&gt;本页覆盖一页文档的完整写法：文件位置、front matter、标题锚点、链接、图片、草稿与页尾。前提是站点已能本地构建，尚未搭起时先看&lt;a href=&#34;http://localhost:1313/zh/docs/start/&#34;&gt;十分钟上手&lt;/a&gt;。&lt;/p&gt;&#xA;&lt;h2 id=&#34;new-page&#34;&gt;新建一页&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;页面是 &lt;code&gt;content/&lt;/code&gt; 下的 Markdown 文件，URL 由它在 &lt;code&gt;content/&lt;/code&gt; 里的位置决定：&lt;code&gt;content/docs/install.md&lt;/code&gt; 发布为 &lt;code&gt;/docs/install/&lt;/code&gt;。中文译文是同目录下的 &lt;code&gt;.zh.md&lt;/code&gt; 同名文件，与英文页共享同一条逻辑路径。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>组织内容</title>
+        <link>http://localhost:1313/zh/docs/write/organize/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/write/organize/</guid>
+        <description>&lt;p&gt;OINK 不需要单独配置导航：&lt;code&gt;content/&lt;/code&gt; 下的目录结构就是侧栏树。本页覆盖目录与文件的摆放、栏目首页、排序、图标、折叠、隐藏，以及多根侧栏。&lt;/p&gt;&#xA;&lt;h2 id=&#34;tree-is-sidebar&#34;&gt;目录就是侧栏&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;一个目录是一个栏目（Hugo 称 section），目录里的 Markdown 文件是它的页面，嵌套目录是它的子栏目。侧栏按这棵树逐层渲染，顺序由 &lt;code&gt;weight&lt;/code&gt; 决定，标签取 &lt;code&gt;linkTitle&lt;/code&gt;，缺省时取 &lt;code&gt;title&lt;/code&gt;。左侧这棵树的源码如下：&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>创作内容</title>
+        <link>http://localhost:1313/zh/docs/write/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/write/</guid>
+        <description>&lt;p&gt;本栏覆盖 OINK 支持的几种内容类型：文档页、博客文章、书籍、发布下载页、OpenAPI 参考。它们共用同一套 Markdown 与 front matter，各自另有约定。&lt;/p&gt;&#xA;&lt;h2 id=&#34;anatomy&#34;&gt;一页文档的构成&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;一页文档是一个 Markdown 文件。文件开头两行 &lt;code&gt;---&lt;/code&gt; 之间是 front matter，即页面元数据：标题、侧栏短名、描述、排序。其余部分是正文，内容为普通 Markdown 加 OINK 的原生组件。下面是一个完整页面：&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>页面参数</title>
+        <link>http://localhost:1313/zh/docs/write/frontmatter/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/write/frontmatter/</guid>
+        <description>&lt;p&gt;本页是页面级参数的全表，只列 OINK 主题会读取的键。主题仅为提示「已重命名或已移除」而读取的旧键不在此列——它们在&lt;a href=&#34;http://localhost:1313/zh/docs/design/migration/&#34;&gt;迁移&lt;/a&gt;里，也不会出现在生成的编辑器 Schema 中。Hugo 自身的 front matter 字段（&lt;code&gt;slug&lt;/code&gt;、&lt;code&gt;url&lt;/code&gt;、&lt;code&gt;build&lt;/code&gt;、&lt;code&gt;sitemap&lt;/code&gt;、&lt;code&gt;expiryDate&lt;/code&gt; 等）照常可用，语义见 &lt;a href=&#34;https://gohugo.io/content-management/front-matter/&#34;&gt;Hugo 文档&lt;/a&gt;。站点级参数（&lt;code&gt;hugo.yml&lt;/code&gt; 里的 &lt;code&gt;params.*&lt;/code&gt;）见&lt;a href=&#34;http://localhost:1313/zh/docs/customize/config/&#34;&gt;配置总览&lt;/a&gt;。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>博客与文章</title>
+        <link>http://localhost:1313/zh/docs/write/blog/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/write/blog/</guid>
+        <description>&lt;p&gt;博客文章与文档页的正文写法相同，区别在外壳：文章带日期、作者、标签与封面图，列表按年份倒序排列，栏目带 RSS。本页覆盖博客栏目的建立、文章 front matter、封面图、列表分页与 Feed。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>书籍出版</title>
+        <link>http://localhost:1313/zh/docs/write/book/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/write/book/</guid>
+        <description>&lt;p&gt;一本书是一棵 &lt;code&gt;type: book&lt;/code&gt; 的内容树：目录决定章节顺序，front matter 决定章节编号，图 / 表 / 式 / 例各带一个手写编号与稳定锚点。交叉引用在四种输出里都能解析，书根页面可以生成整本打印 HTML。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>发布与下载页</title>
+        <link>http://localhost:1313/zh/docs/write/releases/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/write/releases/</guid>
+        <description>&lt;p&gt;OINK 把发布事实集中在两处本地数据：页面 front matter 的 &lt;code&gt;release_url&lt;/code&gt; 指明这一页对应哪个 GitHub 发布，&lt;code&gt;data/download/&amp;lt;key&amp;gt;.yaml&lt;/code&gt; 记录安装方式。发布卡片、资产表、下载区块与索引页都从这两处推导。构建期不访问 GitHub，也不声称某个标签或资产已经存在。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>API 文档</title>
+        <link>http://localhost:1313/zh/docs/write/openapi/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/write/openapi/</guid>
+        <description>&lt;p&gt;一页接口文档由一份 OpenAPI 规范加一个 shortcode 构成。Swagger UI 与 Redoc 两个运行时随主题分发（版本分别是 5.32.13 与 2.5.3，见仓库 &lt;code&gt;VENDOR.json&lt;/code&gt;），只有用到它们的页面、且只在 HTML 输出里加载，构建与浏览都不访问外部服务。Swagger UI 的在线 validator 已写死关闭（&lt;code&gt;validatorUrl: null&lt;/code&gt;），已发布的接口页面不会把规范地址发往任何地方。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

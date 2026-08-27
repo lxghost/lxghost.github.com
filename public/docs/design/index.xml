@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Design and development on OINK</title>
+    <link>http://localhost:1313/docs/design/</link>
+    <description>Recent content in Design and development on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Thu, 27 Aug 2026 18:47:44 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/docs/design/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>Architecture contract</title>
+        <link>http://localhost:1313/docs/design/architecture/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/architecture/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 contract&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;This is the architecture contract released with OINK 0.8.0. This page is the&#xA;canonical English source; its Chinese peer is maintained beside it in&#xA;&lt;code&gt;content/docs/design/&lt;/code&gt;.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;repository-and-assembly&#34;&gt;Repository and assembly&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;The repository root is a Hugo Module and complete theme, not a site or npm&#xA;workspace. Hugo Extended compiles SCSS and templates. Browser runtimes and&#xA;third-party assets are committed, so a normal build performs no network fetch.&#xA;Public bilingual documentation, examples, and browser tests live in the&#xA;sibling &lt;code&gt;oink.pgsty.com&lt;/code&gt; repository; the theme repository keeps only narrow&#xA;internal regression fixtures under &lt;code&gt;tests/site/&lt;/code&gt; and has no separate public&#xA;example surface.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Component contract</title>
+        <link>http://localhost:1313/docs/design/components/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/components/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 contract&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;This is the component contract released with OINK 0.8.0. This page is the&#xA;canonical English source; its Chinese peer is maintained beside it in&#xA;&lt;code&gt;content/docs/design/&lt;/code&gt;.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;Tutorials and exhaustive examples belong in the reader-facing&#xA;&lt;a href=&#34;http://localhost:1313/docs/components/&#34;&gt;Components&lt;/a&gt; section. This page defines the API and behavior&#xA;that those guides rely on.&lt;/p&gt;&#xA;&lt;h2 id=&#34;authoring-model&#34;&gt;Authoring model&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Use ordinary Markdown when one block plus attributes can express a component.&#xA;Use shortcodes for compound bodies or facts Markdown cannot carry. There is no&#xA;parallel component registry. Native forms require:&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Shell and navigation contract</title>
+        <link>http://localhost:1313/docs/design/shell/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/shell/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 contract&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;This is the shell and navigation contract released with OINK 0.8.0. This&#xA;page is the canonical English source; its Chinese peer is maintained beside&#xA;it in &lt;code&gt;content/docs/design/&lt;/code&gt;.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;authorities-and-navigation&#34;&gt;Authorities and navigation&#xA;&lt;/h2&gt;&#xA;&lt;div class=&#34;td-table-scroll td-table-scroll--static&#34;&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;th scope=&#34;col&#34;&gt;Concern&lt;/th&gt;&#xA;      &lt;th scope=&#34;col&#34;&gt;Authority&lt;/th&gt;&#xA;    &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;Global navigation&lt;/td&gt;&#xA;      &lt;td&gt;Hugo &lt;code&gt;menus.main&lt;/code&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;Docs / Book sidebar and pager&lt;/td&gt;&#xA;      &lt;td&gt;content tree or &lt;code&gt;data/docs_nav.json&lt;/code&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;Root switcher&lt;/td&gt;&#xA;      &lt;td&gt;resolved top-level content roots&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;Discovery&lt;/td&gt;&#xA;      &lt;td&gt;per-language local search index&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;Page and Palette actions&lt;/td&gt;&#xA;      &lt;td&gt;shared action registry&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;No feature introduces another menu or page tree. One menu child level is&#xA;interactive; deeper levels warn and flatten beneath linked group headings.&#xA;External links use &lt;code&gt;target=&amp;quot;_blank&amp;quot; rel=&amp;quot;noopener noreferrer&amp;quot;&lt;/code&gt;; internal links&#xA;remain language- and subpath-aware.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Landing contract</title>
+        <link>http://localhost:1313/docs/design/landing/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/landing/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 contract&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;This is the landing-page contract released with OINK 0.8.0. This page is the&#xA;canonical English source; its Chinese peer is maintained beside it in&#xA;&lt;code&gt;content/docs/design/&lt;/code&gt;.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;Shared rules live in the &lt;a href=&#34;http://localhost:1313/docs/design/architecture/&#34;&gt;architecture&lt;/a&gt; and&#xA;&lt;a href=&#34;http://localhost:1313/docs/design/components/&#34;&gt;component&lt;/a&gt; contracts; migration belongs in the&#xA;&lt;a href=&#34;http://localhost:1313/docs/design/migration/&#34;&gt;migration contract&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;shell-and-data&#34;&gt;Shell and data&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Any regular page may declare &lt;code&gt;layout: landing&lt;/code&gt;. It renders navbar, full-width&#xA;canvas, and footer without docs sidebars or TOC rails. The homepage keeps&#xA;&lt;code&gt;data/home/&amp;lt;lang&amp;gt;.yaml&lt;/code&gt; as a compatible authoring path through the same renderer.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>OINK migration boundary</title>
+        <link>http://localhost:1313/docs/design/migration/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/migration/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 contract&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;This is the migration contract released with OINK 0.8.0. This page is the&#xA;canonical English source; its Chinese peer is maintained beside it in&#xA;&lt;code&gt;content/docs/design/&lt;/code&gt;.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;This is source and configuration guidance, not a release ledger. Local source,&#xA;commit, tag, push, consumer pin, deployment, and production parity remain&#xA;separate states. For the reader-facing upgrade procedure, see&#xA;&lt;a href=&#34;http://localhost:1313/docs/admin/upgrade/&#34;&gt;Upgrade&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;toolkit-scope&#34;&gt;Toolkit scope&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;bin/migrations/oink06.py&lt;/code&gt; only scans and automatically rewrites Markdown files&#xA;under a site&amp;rsquo;s content directory, including supported YAML front matter. It&#xA;does not rewrite Hugo configuration, data files, layouts, assets, modules, or&#xA;generated output. TOML/JSON front matter and ambiguous Markdown are reported&#xA;with positions for manual review.&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

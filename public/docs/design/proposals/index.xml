@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Design proposals and PRDs on OINK</title>
+    <link>http://localhost:1313/docs/design/proposals/</link>
+    <description>Recent content in Design proposals and PRDs on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Thu, 27 Aug 2026 16:59:53 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/docs/design/proposals/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>Backlinks and knowledge graph</title>
+        <link>http://localhost:1313/docs/design/proposals/knowledge-graph/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/proposals/knowledge-graph/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;G1 implemented; G2/G3 remain draft&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;On 2026-08-27 every G1 open decision was resolved and G1 (static backlinks)&#xA;was accepted. It is implemented on the theme&amp;rsquo;s main branch and ships with&#xA;OINK 0.8.0. The local and global graphs (G2/G3) stay draft pending real-world&#xA;evidence from G1; their names and configuration are not public API until&#xA;accepted.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;premise&#34;&gt;Premise&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Reverse navigation and a view of connected pages are properties of the link&#xA;graph, not of &lt;code&gt;[[wikilink]]&lt;/code&gt; spelling. Hugo already accepts ordinary Markdown&#xA;links and &lt;code&gt;ref&lt;/code&gt; / &lt;code&gt;relref&lt;/code&gt;. OINK can derive a graph from content authors already&#xA;write, without adding a parser, Goldmark extension, or parallel authoring&#xA;syntax.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Media convergence</title>
+        <link>http://localhost:1313/docs/design/proposals/media-convergence/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/proposals/media-convergence/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;Partially implemented&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;M1 (the shared media-result contract) and M2 (Landing resource metadata)&#xA;are implemented on the theme&amp;rsquo;s main branch, and M3 is resolved as option 2:&#xA;processing stays exclusively on native Markdown images, and the full &lt;code&gt;fig&lt;/code&gt;&#xA;source form remains a container whose parameter list deliberately excludes&#xA;&lt;code&gt;command&lt;/code&gt;/&lt;code&gt;options&lt;/code&gt;. M4 (compatibility retirement) stays open pending a&#xA;consumer inventory. The sections below are the original design record.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;current-baseline&#34;&gt;Current baseline&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;The content image hook, numbered &lt;code&gt;fig&lt;/code&gt;, cards, and galleries resolve local page&#xA;resources, section resources, global assets, static files, and explicit remote&#xA;URLs through &lt;code&gt;content/image-resolve.html&lt;/code&gt;. Raster resources can contribute&#xA;intrinsic dimensions and processing derivatives. HTML Zoom eligibility is&#xA;marked with &lt;code&gt;data-td-image-zoom&lt;/code&gt;; the build-time detector only checks that&#xA;theme-emitted marker.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Bulk agent indexes</title>
+        <link>http://localhost:1313/docs/design/proposals/agent-indexes/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/proposals/agent-indexes/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;Implemented; ships with OINK 0.8.0&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;Accepted on 2026-08-27 after resolving every open decision. Both outputs &amp;ndash;&#xA;the per-top-level-section &lt;code&gt;LLMSFULL&lt;/code&gt; bundles and the &lt;code&gt;NAVJSON&lt;/code&gt; navigation&#xA;tree at the language root &amp;ndash; are implemented on the theme&amp;rsquo;s &lt;code&gt;main&lt;/code&gt; branch and&#xA;ship with OINK 0.8.0, after which this proposal retires; released behaviour is&#xA;owned by the&#xA;&lt;a href=&#34;http://localhost:1313/docs/design/architecture/#outputs-and-runtime&#34;&gt;Architecture contract&lt;/a&gt;.&#xA;OINK already shipped per-page Markdown, the in-language &lt;code&gt;llms.txt&lt;/code&gt;, the HTML&#xA;discovery link, and Copy Markdown; this page covers only the two new outputs.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Book publication pipeline</title>
+        <link>http://localhost:1313/docs/design/proposals/book-publication/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/design/proposals/book-publication/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--warning&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-triangle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;Draft proposal with implemented publication tooling&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;The opt-in &lt;code&gt;BookManifest&lt;/code&gt;, the generic EPUB and PDF runners and their artifact&#xA;validation are released, and the normative account of them is in&#xA;&lt;a href=&#34;http://localhost:1313/docs/design/architecture/&#34;&gt;Architecture&lt;/a&gt;. No build publishes either file on&#xA;its own. What remains open here, and only here, is consumer migration.&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;context-and-evidence&#34;&gt;Context and evidence&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;OINK already owns Book navigation order, numbered figures, tables, equations,&#xA;examples, cross-references, whole-Book Print HTML, heading and footnote&#xA;namespacing, and per-page Markdown degradation. The missing boundary is a&#xA;machine-readable whole-Book handoff that a generic packager can consume.&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

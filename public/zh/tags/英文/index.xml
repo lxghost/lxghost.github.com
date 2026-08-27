@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>英文 on OINK</title>
+    <link>http://localhost:1313/zh/tags/%E8%8B%B1%E6%96%87/</link>
+    <description>Recent content in 英文 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Sat, 22 Aug 2026 16:32:18 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/tags/%E8%8B%B1%E6%96%87/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>pigsty.io</title>
+        <link>http://localhost:1313/zh/case/pigsty-io/</link>
+        <pubDate>Thu, 13 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/pigsty-io/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pigsty.io/&#34;&gt;pigsty.io&lt;/a&gt; 是开源 PostgreSQL 发行版 Pigsty 的英文主站。&#xA;本案例记录的快照包含一千四百多个 Markdown 文件、两百多篇博客、扩展目录，&#xA;以及由数据驱动的价格页面。&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;它展示了什么&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;在同一个 Hugo 站点中组织大型文档树与编辑型博客。&lt;/li&gt;&#xA;&lt;li&gt;把目录内容与结构化数据分开维护。&lt;/li&gt;&#xA;&lt;li&gt;用 &lt;code&gt;layout: landing&lt;/code&gt; 和 &lt;code&gt;data/landing&lt;/code&gt; 组装价格页。&lt;/li&gt;&#xA;&lt;li&gt;用分类法与版本菜单连接同系列站点和历史版本。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;当一个英文优先的站点需要同时承载参考手册、动态内容、目录与商业落地页时，&#xA;可以采用这一模式。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

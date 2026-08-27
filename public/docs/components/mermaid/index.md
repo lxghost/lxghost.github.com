@@ -1,0 +1,411 @@
+# Mermaid
+
+> A `mermaid` fence turns text into flowcharts, sequence diagrams, Gantt charts, class diagrams and state diagrams — rendered locally, theme-aware, diff-friendly.
+
+---
+
+LLMS index: [llms.txt](/llms.txt)
+
+---
+
+A `mermaid` fence renders text as a flowchart, sequence diagram, Gantt chart,
+class diagram, ER diagram or state diagram. The diagram exists as source: it goes
+into Git, it reviews as a diff, and search finds it. Rendering happens in the
+reader's browser with the Mermaid copy the theme ships — no external service is
+contacted. Diagrams that need pixel-level control belong in an SVG, used as an
+[image](/docs/components/image/).
+
+## Shortest form {#minimal}
+
+````markdown {title="Source"}
+```mermaid
+flowchart LR
+  content["content/"] --> Hugo
+  config["hugo.yml"] --> Hugo
+  theme["OINK theme"] --> Hugo
+  Hugo --> site["public/"]
+```
+````
+
+```mermaid
+flowchart LR
+  content["content/"] --> Hugo
+  config["hugo.yml"] --> Hugo
+  theme["OINK theme"] --> Hugo
+  Hugo --> site["public/"]
+```
+
+The fence language is `mermaid` and there is no other switch. Only when the
+theme sees such a fence does it add the Mermaid runtime to that page, and ten
+diagrams on one page still load it once.
+
+## Sequence diagrams {#sequence}
+
+`sequenceDiagram` describes messages between participants over time, which suits
+request paths and load order.
+
+````markdown {title="Source"}
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Reader as Reader's browser
+  participant CDN as Static hosting
+  participant JS as Page script bundle
+  Reader->>CDN: GET /docs/components/mermaid/
+  CDN-->>Reader: HTML (a figure plus the fence source)
+  Reader->>CDN: GET this page's bundle
+  CDN-->>Reader: mermaid.min.js
+  JS->>JS: render the fence source into SVG
+  Note over JS: runtimes the page never used are not downloaded
+```
+````
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Reader as Reader's browser
+  participant CDN as Static hosting
+  participant JS as Page script bundle
+  Reader->>CDN: GET /docs/components/mermaid/
+  CDN-->>Reader: HTML (a figure plus the fence source)
+  Reader->>CDN: GET this page's bundle
+  CDN-->>Reader: mermaid.min.js
+  JS->>JS: render the fence source into SVG
+  Note over JS: runtimes the page never used are not downloaded
+```
+
+## Gantt charts {#gantt}
+
+`gantt` draws intervals. Below is the five-year community support window of each
+PostgreSQL major version, counted from its release date; `1825d` is five years.
+
+````markdown {title="Source"}
+```mermaid
+gantt
+  title Five-year community support per PostgreSQL major version
+  dateFormat YYYY-MM-DD
+  axisFormat %Y
+  section PG 15
+  released 2022-10-13 :2022-10-13, 1825d
+  section PG 16
+  released 2023-09-14 :2023-09-14, 1825d
+  section PG 17
+  released 2024-09-26 :2024-09-26, 1825d
+  section PG 18
+  released 2025-09-25 :active, 2025-09-25, 1825d
+```
+````
+
+```mermaid
+gantt
+  title Five-year community support per PostgreSQL major version
+  dateFormat YYYY-MM-DD
+  axisFormat %Y
+  section PG 15
+  released 2022-10-13 :2022-10-13, 1825d
+  section PG 16
+  released 2023-09-14 :2023-09-14, 1825d
+  section PG 17
+  released 2024-09-26 :2024-09-26, 1825d
+  section PG 18
+  released 2025-09-25 :active, 2025-09-25, 1825d
+```
+
+## Class and ER diagrams {#class-and-er}
+
+`classDiagram` draws types and relationships, `erDiagram` entities and
+cardinality. Both are common ways to explain a data model.
+
+````markdown {title="Source"}
+```mermaid
+classDiagram
+  class Page {
+    +string Title
+    +string Description
+    +int Weight
+    +Content()
+    +OutputFormats()
+  }
+  class Resource {
+    +string Name
+    +string RelPermalink
+    +Resize(spec)
+  }
+  class OutputFormat {
+    +string Name
+    +string MediaType
+  }
+  Page "1" --> "0..*" Resource : page bundle resources
+  Page "1" --> "1..*" OutputFormat : html / print / markdown / rss
+```
+````
+
+```mermaid
+classDiagram
+  class Page {
+    +string Title
+    +string Description
+    +int Weight
+    +Content()
+    +OutputFormats()
+  }
+  class Resource {
+    +string Name
+    +string RelPermalink
+    +Resize(spec)
+  }
+  class OutputFormat {
+    +string Name
+    +string MediaType
+  }
+  Page "1" --> "0..*" Resource : page bundle resources
+  Page "1" --> "1..*" OutputFormat : html / print / markdown / rss
+```
+
+````markdown {title="Source"}
+```mermaid
+erDiagram
+  pg_database ||--o{ pg_namespace : "contains schemas"
+  pg_namespace ||--o{ pg_class : "contains relations"
+  pg_class ||--o{ pg_attribute : "has columns"
+  pg_class ||--o{ pg_index : "is indexed by"
+  pg_class {
+    oid oid PK
+    name relname
+    char relkind
+  }
+  pg_attribute {
+    oid attrelid FK
+    name attname
+    smallint attnum
+  }
+```
+````
+
+```mermaid
+erDiagram
+  pg_database ||--o{ pg_namespace : "contains schemas"
+  pg_namespace ||--o{ pg_class : "contains relations"
+  pg_class ||--o{ pg_attribute : "has columns"
+  pg_class ||--o{ pg_index : "is indexed by"
+  pg_class {
+    oid oid PK
+    name relname
+    char relkind
+  }
+  pg_attribute {
+    oid attrelid FK
+    name attname
+    smallint attnum
+  }
+```
+
+## State diagrams {#state}
+
+`stateDiagram-v2` draws states and the conditions between them. Below are the
+five states an OINK release passes through. They are not interchangeable, and a
+green local build is none of them.
+
+````markdown {title="Source"}
+```mermaid
+stateDiagram-v2
+  [*] --> SourceComplete
+  SourceComplete --> Validated : theme checks + site suite green
+  Validated --> Published : an immutable signed vX.Y.Z tag is pushed
+  Published --> Documented : the site's go.mod pins that tag
+  Documented --> Deployed : the production build goes live
+  Deployed --> [*]
+  Published --> SourceComplete : a problem means a new patch version; tags never move
+```
+````
+
+```mermaid
+stateDiagram-v2
+  [*] --> SourceComplete
+  SourceComplete --> Validated : theme checks + site suite green
+  Validated --> Published : an immutable signed vX.Y.Z tag is pushed
+  Published --> Documented : the site's go.mod pins that tag
+  Documented --> Deployed : the production build goes live
+  Deployed --> [*]
+  Published --> SourceComplete : a problem means a new patch version; tags never move
+```
+
+## Per-diagram title and configuration {#per-diagram-config}
+
+The top of a fence body may carry Mermaid's own YAML header — this is not Hugo
+front matter. `title` gives the diagram a title and `config` overrides Mermaid
+configuration for this diagram alone. A diagram that hard-codes `config.theme`
+no longer follows the site's colour scheme.
+
+````markdown {title="Source"}
+```mermaid
+---
+title: Only the runtimes a page used are bundled
+config:
+  flowchart:
+    curve: linear
+---
+flowchart TD
+  Page --> Which{which components?}
+  Which -->|Mermaid fence| M[mermaid.min.js]
+  Which -->|ECharts fence| E[echarts.min.js]
+  Which -->|none| B[base bundle only]
+```
+````
+
+```mermaid
+---
+title: Only the runtimes a page used are bundled
+config:
+  flowchart:
+    curve: linear
+---
+flowchart TD
+  Page --> Which{which components?}
+  Which -->|Mermaid fence| M[mermaid.min.js]
+  Which -->|ECharts fence| E[echarts.min.js]
+  Which -->|none| B[base bundle only]
+```
+
+## Light and dark {#dark-mode}
+
+The theme reads the current colour scheme when the page initializes: in dark
+mode it uses Mermaid's `dark` theme, in light mode the theme the site
+configured. Switching the colour scheme redraws the diagrams in place — the
+page is not reloaded, and each diagram holds its height while it is redrawn,
+so nothing on the page moves under you.
+
+Site-wide defaults go in `hugo.yml` with lowercase keys; the theme matches them
+back to Mermaid's own casing:
+
+```yaml {title="hugo.yml"}
+params:
+  mermaid:
+    theme: neutral
+    flowchart:
+      diagrampadding: 6
+```
+
+The full key table is in
+[Configuration](/docs/customize/config/); for accepted
+values see the
+[Mermaid configuration reference](https://mermaid.js.org/config/schema-docs/config.html).
+
+## Inside tabs and steps {#compose}
+
+A `mermaid` fence has no `tab` attribute — adjacent-fence tabs apply to ordinary
+code fences only. To compare two diagrams side by side, use the `tabs`
+shortcode.
+
+````markdown {title="Source"}
+{{< tabs >}}
+{{< tab label="By data flow" >}}
+```mermaid
+flowchart LR
+  Markdown --> Goldmark --> RenderHooks --> HTML
+```
+{{< /tab >}}
+{{< tab label="By output format" >}}
+```mermaid
+flowchart LR
+  Page --> HTML
+  Page --> Print
+  Page --> Markdown
+  Page --> RSS
+```
+{{< /tab >}}
+{{< /tabs >}}
+````
+
+**By data flow**
+
+```mermaid
+flowchart LR
+  Markdown --> Goldmark --> RenderHooks --> HTML
+```
+
+**By output format**
+
+```mermaid
+flowchart LR
+  Page --> HTML
+  Page --> Print
+  Page --> Markdown
+  Page --> RSS
+```
+
+Each step inside `{{% steps %}}` is page-level Markdown and can hold a
+`mermaid` fence; see [Steps](/docs/components/steps/).
+
+## Output {#outputs}
+
+| Output | Shape |
+| --- | --- |
+| HTML | A `figure` holding an empty stage and the fence source as JSON; the page's Mermaid runtime draws the SVG into it |
+| Print | The source inside `<pre class="td-mermaid-source">`, static — no runtime runs there |
+| Markdown | The `mermaid` fence and its source, kept as written |
+| RSS | The source inside `<pre class="td-mermaid-source">` — subscribers see text |
+
+## Parameter reference {#reference}
+
+Fence attributes: none. A `mermaid` fence reads no attribute line; writing
+`{height=…}` or `{class=…}` neither works nor errors. Size follows the diagram
+itself and the container width, and the diagram is centred in it.
+
+Site parameters (`hugo.yml`):
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `params.mermaid` | map | unset | The whole map is passed to Mermaid's `initialize()`; write keys in lowercase and the theme matches them back to Mermaid's casing |
+| `params.mermaid.theme` | string | Mermaid's default | The light-mode theme; dark mode forces `dark` |
+{.fields meta="type default"}
+
+Per-diagram configuration goes in the YAML header at the top of the fence body
+(`title`, `config`). That is Mermaid syntax, not a theme parameter.
+
+## Enlarging a diagram {#zoom}
+
+A diagram is centred in the column, and Mermaid scales anything wider than the
+column down to fit — a wide sequence diagram can land near a third of its own
+size on a phone. Hovering a diagram (or reaching it with the keyboard) reveals
+a control in its corner that opens the diagram on its own: rendered again at
+full size, panned by dragging, zoomed with the wheel, a pinch, or the `+` and
+`-` keys, and reset with `0`. `Esc` closes it. A diagram that would have to
+shrink past half size to fit opens at 1:1 at its starting corner instead of as
+a thumbnail, and zooming back out always reaches the whole diagram however
+large it is. Nothing is downloaded for this and there is no switch to set: the
+viewer ships with the fence.
+
+## Limits {#limits}
+
+- Diagrams cannot be numbered: Mermaid emits inline SVG, not an `<img>`, so
+  `{#id num=}` numbering does not apply. Export to an image when you need a
+  number and use the [image](/docs/components/image/) numbering.
+- Fence attributes do nothing: control width inside the diagram (flowchart
+  direction, class-diagram layout) or with CSS. There is no alignment
+  attribute — a diagram is always centred.
+- Syntax errors show up only in the browser: Hugo does not parse Mermaid, so a
+  broken diagram renders an alert carrying the parse error and its own source,
+  while the build still passes. Check in a browser before publishing.
+- RSS, Markdown and Print carry the source, not the picture: put the conclusion
+  in the prose, not only in the diagram.
+
+## Related {#related}
+
+- [PlantUML](/docs/components/plantuml/) — more complete UML, at the price of a rendering server
+- [Markmap](/docs/components/markmap/) — outline-shaped hierarchies
+- [ECharts](/docs/components/echarts/) — charts with numbers in them
+- [Images](/docs/components/image/) — hand-drawn SVG and numbering
+
+---
+
+Backlinks:
+
+- [Components](/docs/components/)
+- [Draw.io](/docs/components/drawio/)
+- [ECharts](/docs/components/echarts/)
+- [Infographic](/docs/components/infographic/)
+- [Markmap](/docs/components/markmap/)
+- [PlantUML](/docs/components/plantuml/)
+- [Print](/docs/customize/print/)
+- [Writing pages](/docs/write/pages/)

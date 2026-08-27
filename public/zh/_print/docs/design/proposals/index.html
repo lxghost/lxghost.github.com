@@ -1,0 +1,1112 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" dir="ltr" lang="zh-CN" data-td-typography="technical" data-td-theme-init>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#000000">
+
+<style>
+  html { background: Canvas; color: CanvasText; }
+  @media (prefers-color-scheme: dark) {
+    html { background: #0b0d12; color: #e6e6e6; }
+  }
+  html[data-td-theme-init] * { transition: none !important; }
+  [data-td-theme-toggle] > .td-shell-icon--sun { display: none !important; }
+  [data-td-theme-toggle] > [hidden] { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--moon { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--sun { display: inline-block !important; }
+</style>
+
+<script>
+  (function() {
+    const themeKey = 'td-color-theme';
+    let storedTheme = null;
+    try {
+      storedTheme = localStorage.getItem(themeKey);
+    } catch (_) {
+      
+      
+    }
+    let theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+    if (theme === 'auto') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    document.documentElement.classList.toggle('dark-mode', theme === 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<link rel="canonical" type="text/html" href="http://localhost:1313/zh/docs/design/proposals/">
+<link rel="alternate" type="application/rss&#43;xml" href="http://localhost:1313/zh/docs/design/proposals/index.xml">
+<link rel="alternate" type="text/markdown" href="http://localhost:1313/zh/docs/design/proposals/index.md">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<title>设计提案与 PRD | OINK</title>
+<meta name="description" content="仍在评估中的 OINK PRD 与设计草案的唯一双语归档位置。">
+<link rel="canonical" href="http://localhost:1313/zh/docs/design/proposals/">
+<link rel="alternate" hreflang="en-US" href="http://localhost:1313/docs/design/proposals/">
+<link rel="alternate" hreflang="zh-CN" href="http://localhost:1313/zh/docs/design/proposals/">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="http://localhost:1313/zh/docs/design/proposals/">
+  <meta property="og:site_name" content="OINK">
+  <meta property="og:title" content="设计提案与 PRD">
+  <meta property="og:description" content="仍在评估中的 OINK PRD 与设计草案的唯一双语归档位置。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="设计提案与 PRD">
+  <meta itemprop="description" content="仍在评估中的 OINK PRD 与设计草案的唯一双语归档位置。">
+  <meta itemprop="dateModified" content="2026-08-27T15:45:30+08:00">
+  <meta itemprop="wordCount" content="952">
+  <meta itemprop="keywords" content="设计契约">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="设计提案与 PRD">
+  <meta name="twitter:description" content="仍在评估中的 OINK PRD 与设计草案的唯一双语归档位置。">
+<link href="/scss/fontawesome.css" rel="stylesheet">
+<link href="/scss/main.css" rel="stylesheet">
+
+  </head>
+  <body class="td-section td-print-view">
+    <a class="td-skip-link d-print-none" href="#td-main-content">跳转到主要内容</a>
+
+    
+<header class="td-site-header d-print-none" data-td-header>
+  <div class="td-site-container">
+    <nav class="td-site-nav" aria-label="主导航">
+      <a href="/zh/" class="td-nav-brand" data-td-navbar-route
+         aria-label="OINK — 首页">
+        <img src="/icons/logo.svg" alt="" class="td-nav-logo" width="22" height="22">
+        <span class="td-nav-title">OINK</span>
+      </a><div class="td-nav-links td-nav-menu-zone"><div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link active" href="/zh/docs/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="文档"
+  data-td-navbar-region="desktop" data-td-navbar-label="文档"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-docs-0" aria-expanded="false">
+  <i class="fa-solid fa-book" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">文档</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-docs-0" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/zh/docs/about/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="简介"
+  data-td-navbar-region="desktop" data-td-navbar-label="简介"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">简介</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/start/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="快速上手"
+  data-td-navbar-region="desktop" data-td-navbar-label="快速上手"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">快速上手</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/write/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="创作内容"
+  data-td-navbar-region="desktop" data-td-navbar-label="创作内容"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">创作内容</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/components/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="组件"
+  data-td-navbar-region="desktop" data-td-navbar-label="组件"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-cubes" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">组件</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/customize/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="定制站点"
+  data-td-navbar-region="desktop" data-td-navbar-label="定制站点"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">定制站点</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/admin/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="维护管理"
+  data-td-navbar-region="desktop" data-td-navbar-label="维护管理"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">维护管理</span></a>
+<a class="td-nav-menu__item-link active" href="/zh/docs/design/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="设计契约"
+  data-td-navbar-region="desktop" data-td-navbar-label="设计契约"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-compass-drafting" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">设计契约</span></a>
+
+  </div>
+</div><a class="nav-link" href="/zh/book/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="教程"
+  data-td-navbar-region="desktop" data-td-navbar-label="教程"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">教程</span></a>
+<a class="nav-link" href="/zh/case/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="案例"
+  data-td-navbar-region="desktop" data-td-navbar-label="案例"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">案例</span></a>
+<div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link" href="/zh/blog/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="博客"
+  data-td-navbar-region="desktop" data-td-navbar-label="博客"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-blog-3" aria-expanded="false">
+  <i class="fa-solid fa-blog" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">博客</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-blog-3" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/zh/blog/oink/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="OINK 工程实践"
+  data-td-navbar-region="desktop" data-td-navbar-label="OINK 工程实践"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">OINK 工程实践</span></a>
+<a class="td-nav-menu__item-link" href="/zh/blog/release/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="版本发布"
+  data-td-navbar-region="desktop" data-td-navbar-label="版本发布"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">版本发布</span></a>
+
+  </div>
+</div>
+      </div><div class="td-nav-links td-nav-util-zone">
+        <div class="td-nav-hover-menu td-nav-version-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-nav-hover-open
+            title="v0.8.0" aria-label="v0.8.0" aria-expanded="false"><i class="td-shell-icon td-shell-icon--code-branch fa-solid fa-code-branch" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="v0.8.0">
+            <span class="td-nav-hover-menu__option td-is-disabled"><strong>Versions</strong></span>
+            <a class="td-nav-hover-menu__option td-is-active" aria-current="page" href="https://oink.pgsty.com">v0.8.0</a>
+          </div>
+        </div>
+          <div class="td-language-selector td-language-selector--menu td-nav-util td-site-nav__language">
+  <a class="td-language-selector__trigger" href="/docs/design/proposals/"
+    lang="en-US" hreflang="en-US" dir="ltr"
+    title="切换语言: English"
+    aria-label="切换语言: English" aria-haspopup="true" aria-expanded="false">
+    <i class="fa-solid fa-language" aria-hidden="true"></i>
+    <span>English</span>
+  </a>
+  <ul aria-label="选择语言">
+    <li>
+      <a class="td-language-selector__item" href="/docs/design/proposals/" lang="en-US" hreflang="en-US" dir="ltr">English</a>
+    </li>
+    <li>
+      <span class="td-language-selector__item active" lang="zh-CN" dir="ltr" aria-current="page">简体中文</span>
+    </li>
+  </ul>
+</div><div class="td-nav-hover-menu td-nav-theme-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-theme-toggle
+            title="切换配色" aria-label="切换配色" aria-expanded="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="切换配色">
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="light" aria-pressed="false"><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i><span>亮色</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="dark" aria-pressed="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><span>暗色</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="auto" aria-pressed="false"><i class="td-shell-icon td-shell-icon--contrast fa-solid fa-circle-half-stroke" aria-hidden="true"></i><span>跟随系统</span>
+            </button>
+          </div>
+        </div>
+        <a href="https://github.com/pgsty/oink" class="td-nav-github" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="td-shell-icon td-shell-icon--github fa-brands fa-github" aria-hidden="true"></i></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+    <div class="container-fluid td-print-shell">
+      <main id="td-main-content" class="td-print-document" tabindex="-1">
+        
+
+
+
+
+<div class="td-content">
+<div class="td-page-notice td-page-notice--primary d-print-none">
+<p>
+这是本节的多页打印视图。
+<button type="button" class="btn btn-link p-0 align-baseline" data-td-action="print">点击此处打印</button>.
+</p><p>
+<a href="/zh/docs/design/proposals/">返回本页常规视图</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">设计提案与 PRD</h1>
+<div class="lead">仍在评估中的 OINK PRD 与设计草案的唯一双语归档位置。</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+  
+  
+
+  
+    
+    
+    <li>
+1: <a href="#pg-cd49cc7f2ea0f5ee20f7f3e84be99622">反向链接与知识图谱</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+2: <a href="#pg-165c8d1f24993d418317a5fc808ecdc3">媒体收敛</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+3: <a href="#pg-36fd1ca8f3c683d7c044aa4cd8f32d4f">Agent 批量索引</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+4: <a href="#pg-2527a86e06b64c8398b3349ca4c023f3">Book 出版链路</a>
+
+
+    </li>
+  
+
+    </ul>
+<div class="content">
+      <div class="td-callout td-callout--warning" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="td-callout__label">非规范性材料</span></div>
+  <div class="td-callout__body">
+<p>提案描述的行为可能尚不存在。当前行为由契约、已接受决策、实现与归属检查器定义。不能把提案
+当作配置参考。</p>
+  </div>
+</div><p>本栏目是 OINK 产品需求文档、RFC 风格设计与未决维护者提案的唯一正本位置。不要在主题仓库或
+文档仓库中另建本地 <code>plan/</code>、<code>plans/</code>、<code>proposal/</code> 或其它并行设计树。</p>
+<h2 id="pg-c2e00f25191210af42cb0ab695b66d0f--active-proposals">当前提案
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">提案</th>
+      <th scope="col">当前边界</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="/zh/docs/design/proposals/knowledge-graph/">反向链接与知识图谱</a></td>
+      <td>G1（静态反向链接）已接受，已在主题 main 分支实现，随 OINK 0.8.0 发布；局部与全站图谱（G2/G3）保持草案</td>
+    </tr>
+    <tr>
+      <td><a href="/zh/docs/design/proposals/media-convergence/">媒体收敛</a></td>
+      <td>部分已实现；media-result 契约与 Landing 资源元数据已交付，M3 决议为原生图片处理，退役（M4）保持开放</td>
+    </tr>
+    <tr>
+      <td><a href="/zh/docs/design/proposals/agent-indexes/">Agent 批量索引</a></td>
+      <td>已接受（2026-08-27）；两类输出都已在主题 main 分支实现，随 OINK 0.8.0 发布，之后本提案退役</td>
+    </tr>
+    <tr>
+      <td><a href="/zh/docs/design/proposals/book-publication/">Book 出版链路</a></td>
+      <td>manifest 与 EPUB/PDF 工具已随版本发布，见<a href="/zh/docs/design/architecture/">架构</a>；本页只剩消费站迁移未决</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>生成式配置 Schema 提案已按生命周期退役：行为的规范位置是<a href="/zh/docs/customize/config/#editor-schema">配置总览</a>，
+长期理由进入<a href="/zh/docs/design/decisions/config-schema/">生成式配置 Schema 决策</a>，草案原文由 Git 历史保存。</p>
+<h2 id="pg-c2e00f25191210af42cb0ab695b66d0f--where-a-new-prd-goes">新 PRD 放在哪里
+</h2>
+<p>创建一份英文主页面及其简体中文对页：</p>
+<div class="td-code td-code--untitled" id="td-code-1a5ae1c7-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="2">
+  <div class="td-code__viewport" id="td-code-1a5ae1c7-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">content/docs/design/proposals/&lt;slug&gt;.md
+</span></span><span class="line"><span class="cl">content/docs/design/proposals/&lt;slug&gt;.zh.md</span></span></code></pre></div></div>
+</div>
+<p>两份文件都使用显式、稳定的英文标题 ID。中文页面中的代码、键、路径、版本与 API 名称保持原样。
+提案开头要有可见的草案状态，并包含：</p>
+<ol>
+<li>状态、负责人、日期和受影响契约面；</li>
+<li>背景与证据；</li>
+<li>目标与明确非目标；</li>
+<li>提议行为，以及输出、无障碍、安全边界；</li>
+<li>兼容与迁移影响；</li>
+<li>实现与归属检查器计划；</li>
+<li>验收标准与待决问题；</li>
+<li>记录提案自身变化的决策日志。</li>
+</ol>
+<p>大型实验可以在 <a href="/zh/docs/design/research/"><code>../research/</code></a> 下增加带日期的页面；临时日志与生成
+产物不进入 Hugo 内容，也不进入 Git。</p>
+<h2 id="pg-c2e00f25191210af42cb0ab695b66d0f--lifecycle">生命周期
+</h2>
+<div class="td-code td-code--untitled" id="td-code-1a5ae1c7-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="7">
+  <div class="td-code__viewport" id="td-code-1a5ae1c7-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">草案提案
+</span></span><span class="line"><span class="cl">    ├── 拒绝或被替代 → 从活动树移除，由 Git 历史保存
+</span></span><span class="line"><span class="cl">    └── 接受
+</span></span><span class="line"><span class="cl">          ├── 实现与归属检查器
+</span></span><span class="line"><span class="cl">          ├── 受影响的中英文契约
+</span></span><span class="line"><span class="cl">          ├── 理由具有长期价值时新增已接受 Design 决策
+</span></span><span class="line"><span class="cl">          └── 相关受众需要时更新变更记录、迁移与用户文档</span></span></code></pre></div></div>
+</div>
+<p>提案被接受后不会自动成为第二份契约。稳定行为进入归属契约，稳定理由进入 Decisions，用户步骤进入
+相关指南，然后把提案退出活动导航。本地构建、提交、tag、公开模块、消费站 pin 与部署仍是相互独立
+的完成状态。</p>
+<h2 id="pg-c2e00f25191210af42cb0ab695b66d0f--review-gate">评审门禁
+</h2>
+<p>实施前，评审者确认提案没有重复已有外壳、resolver、组件族或数据权威。实施期间，如果设计改变，
+先更新这份双语提案，不能让代码悄悄漂移。验收至少覆盖主题的最窄归属检查、真实文档站、渲染后的
+中英文、相关输出、无障碍与响应式检查。</p>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-cd49cc7f2ea0f5ee20f7f3e84be99622">1 - 反向链接与知识图谱</h1>
+    <div class="lead">从普通 Hugo 链接推导反向链接、局部与全站图谱的三阶段设计草案。</div>
+	<div class="td-callout td-callout--important" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-exclamation" aria-hidden="true"></i><span class="td-callout__label">G1 已实现，G2/G3 仍是草案</span></div>
+  <div class="td-callout__body">
+<p>2026-08-27 决议 G1 的全部待决问题并接受 G1（静态反向链接）。它已在主题 main
+分支实现，随 OINK 0.8.0 发布。局部与全站图谱（G2/G3）保持草案状态，等待 G1 的
+真实使用证据；它们的名称和配置在被接受之前不是公开 API。</p>
+  </div>
+</div><h2 id="pg-cd49cc7f2ea0f5ee20f7f3e84be99622--premise">前提
+</h2>
+<p>反向导航与页面连接视图是链接图的属性，不是 <code>[[wikilink]]</code> 拼写的属性。Hugo 已经接受普通
+Markdown 链接和 <code>ref</code> / <code>relref</code>。OINK 可以从作者已经在写的内容中派生图谱，无需增加解析器、
+Goldmark 扩展或并行创作语法。</p>
+<p>首要价值是反向链接，而不是可视化。静态入链列表不需要 JavaScript，在 Print 与 Markdown 中也能
+降级。交互图谱应当只是完整列表之上的可选增强。</p>
+<h2 id="pg-cd49cc7f2ea0f5ee20f7f3e84be99622--goals-and-non-goals">目标与非目标
+</h2>
+<p>目标：</p>
+<ul>
+<li>每次构建为每种语言派生一份链接索引；</li>
+<li>在页面上显示确定性的入链；</li>
+<li>可选显示有界的局部邻接图；</li>
+<li>可选发布全站视图与机器可读图数据；</li>
+<li>编辑链接暂时陈旧或不完整时，普通预览仍然可用。</li>
+</ul>
+<p>非目标：</p>
+<ul>
+<li>引入 <code>[[wikilink]]</code> 语法；</li>
+<li>索引外链、<code>mailto:</code>、同页锚点或自链接；</li>
+<li>用 JavaScript 发现正文中已经存在的链接；</li>
+<li>把可视化变成唯一导航方式；</li>
+<li>承诺从任意 shortcode 参数或原始 HTML 中完整提取语义图。</li>
+</ul>
+<h2 id="pg-cd49cc7f2ea0f5ee20f7f3e84be99622--delivery-stages">交付阶段
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">阶段</th>
+      <th scope="col">交付物</th>
+      <th scope="col">运行时</th>
+      <th scope="col">独立价值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>G1</td>
+      <td>语言内链接索引与反向链接列表</td>
+      <td>无</td>
+      <td>HTML、Print、Markdown 中的反向导航</td>
+    </tr>
+    <tr>
+      <td>G2</td>
+      <td>当前页面周围的局部图谱</td>
+      <td>既有 ECharts 加一个小型本地运行时</td>
+      <td>以 G1 为无障碍兜底的空间视图</td>
+    </tr>
+    <tr>
+      <td>G3</td>
+      <td>全站图谱页与图数据输出</td>
+      <td>同一运行时</td>
+      <td>全站探索与机器可读边</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>每个阶段单独验收。G1 不等待 G2，G2 也不会强迫每一页加载图谱代码。</p>
+<h2 id="pg-cd49cc7f2ea0f5ee20f7f3e84be99622--extraction-contract">提取契约
+</h2>
+<p>提议的索引按语言扫描源码一次，每对来源与目标只记录一条边。它先剥离代码围栏和行内代码，再提取
+普通 Markdown 链接与 <code>ref</code> / <code>relref</code>；随后只解析站内页面，去掉 fragment 以确定页面身份，
+排除自链接，并合并重复引用。</p>
+<p>实现至少要测试：</p>
+<ul>
+<li>同一目标的重复链接合并为一条边；</li>
+<li>围栏与行内代码不产生边；</li>
+<li>外链、protocol-relative URL、邮件、同页锚点与自链接被排除；</li>
+<li><code>ref</code> 与 <code>relref</code> 被纳入；</li>
+<li>每种语言生成相互独立的图；</li>
+<li>无法解析的派生边由警告或专项检查报告，但不会让普通 <code>hugo server</code> 不可用。</li>
+</ul>
+<p>扫描原始源码存在已知遗漏。自定义 shortcode 参数或原始 <code>&lt;a href&gt;</code> 中的 URL 可能不会进入图谱。
+必须明确记录这种遗漏，不能声称得到完整语义图。</p>
+<h2 id="pg-cd49cc7f2ea0f5ee20f7f3e84be99622--backlink-output">反向链接输出
+</h2>
+<p>G1 在右栏输出一个 aside 组，与目录、分类标签云并列：目录讲这一页写了什么，反向链接
+讲哪些页面指向这一页。该组默认展开，先显示前八条，其余折进原生 disclosure，避免被
+大量引用的页面把右栏撑满。开关是站点键 <code>params.ui.backlinks</code>（裸布尔，默认关闭），页面用同名去前缀的
+front matter 键 <code>backlinks</code> 覆盖，section 可以 cascade。排序必须确定：按稳定页面路径
+排序——它与语言无关、与导航自然同组，且不需要第二个排序权威。该组使用普通链接；没有
+入链时不渲染。</p>
+<p>无法解析的派生边被静默丢弃并作为已知遗漏记录在案：G1 是本地导航增强，不是链接检查器，
+让它替站点报告断链只会制造重复告警。</p>
+<p>Print 与 Markdown 保留可读列表。除非后续 feed 研究证明反向链接能改善文章订阅而不是制造站点导航
+噪音，否则 RSS 省略它。</p>
+<h2 id="pg-cd49cc7f2ea0f5ee20f7f3e84be99622--interactive-graph-boundary">交互图谱边界
+</h2>
+<p>G2 复用本地内置的 ECharts graph series。当前页面是中心，直接入链与出链邻居组成默认深度。硬性
+节点上限防止视图不可读或成本失控。键盘焦点、文字替代、reduced motion、forced colors、窄屏和
+Print 都是验收要求，不是后续润色。</p>
+<p>JavaScript 或 ECharts 不可用时，G1 仍然完整可见。运行时只在真正渲染图谱的页面加载，并进入既有
+feature bundle key，避免不同特性页面在资产缓存中撞车。</p>
+<h2 id="pg-cd49cc7f2ea0f5ee20f7f3e84be99622--global-output">全站输出
+</h2>
+<p>G3 可以新增专用图谱页与 opt-in JSON 输出。JSON schema 包含版本、语言、节点和带稳定 URL 的有向边，
+不暴露本机文件路径或未发布页面。它必须和 G1、G2 使用同一索引，避免三种表示各自漂移。</p>
+<h2 id="pg-cd49cc7f2ea0f5ee20f7f3e84be99622--compatibility-and-migration">兼容与迁移
+</h2>
+<p>普通 Markdown 写法不变，因此无需内容迁移。配置名称继续待定，直到原型证明最小公开面。所有交互
+与全站输出默认关闭；静态反向链接列表可以单独讨论，因为它只是本地导航，不涉及网络与浏览器状态。</p>
+<h2 id="pg-cd49cc7f2ea0f5ee20f7f3e84be99622--acceptance-criteria">验收标准
+</h2>
+<p>验收需要专项 graph 检查器、提取夹具、HTML/Print/Markdown golden、严格构建负向用例、浏览器无障碍
+与响应式测试，以及真实双语站构建。性能在有代表性的大站上测量，但带日期的原型耗时不能自动成为
+永久预算。</p>
+<h2 id="pg-cd49cc7f2ea0f5ee20f7f3e84be99622--open-decisions">待决问题
+</h2>
+<p>G1 的问题已全部决议（见决策日志）。仍然开放、属于 G2/G3 的问题：</p>
+<ol>
+<li>局部图只暴露一层，还是允许严格限额的第二层？</li>
+<li>哪些页面元数据值得进入 graph JSON？</li>
+<li>在 G1、G2 获得生产证据前，G3 是否值得新增输出格式？</li>
+</ol>
+<h2 id="pg-cd49cc7f2ea0f5ee20f7f3e84be99622--decision-log">决策日志
+</h2>
+<ul>
+<li>2026-08-19：起草三阶段设计。</li>
+<li>2026-08-27：决议 G1 并接受，排入 OINK 0.8.0。G1 是 opt-in：站点键
+<code>params.ui.backlinks</code> 裸布尔默认关闭，页面覆盖键 <code>backlinks</code>，不按 shell type
+区分——策略归站点与页面，不归外壳。排序简化为稳定页面路径单键排序，删去
+「section → weight → 标题」的三级链：单一确定性权威已经满足反向导航，多级排序
+等于第二个导航权威。无法解析的边静默丢弃并记录为已知遗漏，不产生告警。
+G2/G3 与图数据输出继续等待生产证据。</li>
+<li>2026-08-27：设计评审把这一块从页尾移到右栏。反向链接是页面元数据，与目录成对；
+页尾是读者的收尾区——分享、反馈、出处、翻页、评论。右栏这一组同时引入八条上限，
+其余收进原生 disclosure。</li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-165c8d1f24993d418317a5fc808ecdc3">2 - 媒体收敛</h1>
+    <div class="lead">正文图片、编号图、Landing 媒体与代表图片选择之间剩余收敛工作的设计草案。</div>
+	<div class="td-callout td-callout--important" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-exclamation" aria-hidden="true"></i><span class="td-callout__label">部分已实现</span></div>
+  <div class="td-callout__body">
+<p>M1（共享 media-result 契约）与 M2（Landing 资源元数据）已在主题 main 分支实现；
+M3 已决议为方案 2：图片处理只属于原生 Markdown 图片形态，完整 <code>fig</code> 源形态保持
+容器语义，其参数表刻意不含 <code>command</code>/<code>options</code>。M4（兼容退役）在完成消费方盘点
+之前保持开放。以下各节为原始设计记录。</p>
+  </div>
+</div><h2 id="pg-165c8d1f24993d418317a5fc808ecdc3--current-baseline">当前基线
+</h2>
+<p>正文图片钩子、编号 <code>fig</code>、卡片与 gallery 统一通过 <code>content/image-resolve.html</code> 解析页面资源、
+section 资源、全局资产、static 文件与显式远程 URL。栅格资源可以提供固有尺寸与处理后派生图。
+HTML Zoom 资格使用 <code>data-td-image-zoom</code> 标记；构建期检测只查找主题自己输出的标记。</p>
+<p>独占 Markdown 图片已经可以把题注或 Book 编号与图片处理、链接组合起来。编号图片 figure 共用
+<code>td-figure</code> 与 <code>td-book-figure</code> 语义。Landing 媒体经过共享 URL 信任策略；代表图片则刻意使用
+排序 resolver，因为它的职责是选择代表图片，而不是渲染一个显式来源。</p>
+<h2 id="pg-165c8d1f24993d418317a5fc808ecdc3--remaining-problem">剩余问题
+</h2>
+<p>共享安全边界已经比共享媒体模型更成熟。Landing 媒体仍然拿不到与正文图片相同的页面资源元数据和
+处理结果；代表图片选择与显式图片解析返回不同结果形状；部分兼容 class 仍保留在标记中；Book 的
+全量 <code>fig</code> 形态也不能表达原生图片钩子的所有处理选项。</p>
+<p>因此问题已经不再是“替换七种图片入口”，而是：能否在不抹掉各自语义差异的前提下，让剩余表面共享
+一份小型结果契约。</p>
+<h2 id="pg-165c8d1f24993d418317a5fc808ecdc3--goals-and-non-goals">目标与非目标
+</h2>
+<p>目标：</p>
+<ul>
+<li>为 URL、原始 URL、尺寸、替代文字、署名、可处理状态与外部状态定义一个规范化媒体结果形状；</li>
+<li>在来源语义重合处，让显式正文图片、Landing 媒体与代表图片复用这个形状；</li>
+<li>继续让 figure 标记与 Zoom 资格分别只有一个归属实现；</li>
+<li>决定全量 <code>fig</code> 是否需要处理能力，还是要求处理过的编号图使用原生图片形态；</li>
+<li>只有在完成消费站证据与 release note 后才退役兼容标记。</li>
+</ul>
+<p>非目标：</p>
+<ul>
+<li>增加第三方 lightbox 或远程图片服务；</li>
+<li>意外把 image Zoom 从 opt-in 改成站点政策；</li>
+<li>给 gallery 新增题注、序列或轮播模型；</li>
+<li>把表格、公式、示例等非图片 Book 目标合并进只适用于图片的基类；</li>
+<li>强迫代表图片排序与显式图片解析完全相同。</li>
+</ul>
+<h2 id="pg-165c8d1f24993d418317a5fc808ecdc3--proposed-phases">提议阶段
+</h2>
+<h3 id="pg-165c8d1f24993d418317a5fc808ecdc3--m1-result-contract">M1 — 结果契约
+</h3>
+<p>记录正文 resolver 与代表图片 resolver 的返回字段，再把交集提取成一份内部媒体结果契约。代表图片
+继续负责来源排序，正文 resolver 继续负责显式来源解析。这是要求字节输出不变的内部重构。</p>
+<h3 id="pg-165c8d1f24993d418317a5fc808ecdc3--m2-landing-resource-metadata">M2 — Landing 资源元数据
+</h3>
+<p>允许 Landing 条目中的合格本地资源通过媒体契约解析，获得固有尺寸与相同 URL/安全结论。Landing
+数据中显式给出的宽高继续优先。远程与 static 来源仍然合法，但不能伪装成拥有可处理资源元数据。</p>
+<h3 id="pg-165c8d1f24993d418317a5fc808ecdc3--m3-full-figure-capability">M3 — 全量 figure 能力决策
+</h3>
+<p>从两个答案中明确选择一个：</p>
+<ol>
+<li>为全量 <code>fig</code> 的来源形态增加处理参数，并通过同一处理 helper 规范化；或者</li>
+<li>处理能力只属于原生 Markdown 图片，把全量 <code>fig</code> 明确定义为任意编号块内容的容器。</li>
+</ol>
+<p>实现不能让两个答案各完成一半。两种形态的 Markdown/LLMS 输出必须一致地链接到文档规定的原图
+或派生图。</p>
+<h3 id="pg-165c8d1f24993d418317a5fc808ecdc3--m4-compatibility-retirement">M4 — 兼容标记退役
+</h3>
+<p>移除旧图片元素 class 或属性之前，先盘点下游 CSS 与 JavaScript。兼容名称仍被使用时，要么保留一个
+明确的版本窗口，要么在同一 release train 中迁移归属站点。</p>
+<h2 id="pg-165c8d1f24993d418317a5fc808ecdc3--safety-output-and-accessibility">安全、输出与无障碍
+</h2>
+<ul>
+<li>图片 URL 继续遵守共享 scheme 与远程主机策略。</li>
+<li>缺少必需替代文字时发出警告，且只在现行契约允许处渲染装饰性回退。</li>
+<li>宽高不能声称 SVG、static 文件或远程来源没有提供的元数据。</li>
+<li>带链接的图片不是 Zoom 目标；运行时保留 dialog 焦点、键盘关闭、reduced motion 与窄屏约束。</li>
+<li>Print、Markdown、RSS 与 LLMS 去掉交互标记，同时保留目标图片、题注、署名、编号与链接。</li>
+</ul>
+<h2 id="pg-165c8d1f24993d418317a5fc808ecdc3--acceptance-criteria">验收标准
+</h2>
+<p>每个阶段分别拥有 HTML 与 Markdown 字节级证据、正文与 Landing resolver 测试、URL/安全检查、图片处理
+测试、Book 目标、gallery/Zoom 浏览器测试，以及真实站中英文窄屏审查。只有 M3 的能力选择明确后，
+提案才能被接受。</p>
+<h2 id="pg-165c8d1f24993d418317a5fc808ecdc3--open-decisions">待决问题
+</h2>
+<ol>
+<li>一份共享结果结构是否足够，还是共享更底层的 URL/资源记录会让 resolver 归属更清晰？</li>
+<li>Landing 应消费资源署名，还是只消费尺寸与 URL？</li>
+<li>原生图片已经能组合编号、题注、链接和处理后，全量 <code>fig</code> 处理能力是否仍有真实消费需求？</li>
+<li>哪些输出兼容名称仍被真实消费站使用？</li>
+</ol>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-36fd1ca8f3c683d7c044aa4cd8f32d4f">3 - Agent 批量索引</h1>
+    <div class="lead">基于 OINK 既有 Markdown 输出与导航权威，可选生成按 section 分包的全文包和稳定导航 JSON。</div>
+	<div class="td-callout td-callout--important" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-exclamation" aria-hidden="true"></i><span class="td-callout__label">已实现，随 OINK 0.8.0 发布</span></div>
+  <div class="td-callout__body">
+<p>2026-08-27 决议全部待决问题后接受本提案。两类输出——按顶层 section 分包的
+<code>LLMSFULL</code> 与语言根下的 <code>NAVJSON</code> 导航树——都已在主题 <code>main</code> 分支实现，随 OINK
+0.8.0 发布，之后本提案退役；发布后的行为由<a href="/zh/docs/design/architecture/#outputs-and-runtime">架构契约</a>
+承担。OINK 已经支持每页 Markdown、语言内 <code>llms.txt</code>、HTML discovery link 与
+Copy Markdown；本页只覆盖新增的两类。</p>
+  </div>
+</div><h2 id="pg-36fd1ca8f3c683d7c044aa4cd8f32d4f--current-baseline">当前基线
+</h2>
+<p>站点可以为 page 与 section 启用 Hugo 的 Markdown 输出，并为 home 启用生成 <code>llms.txt</code> 的 <code>LLMS</code>
+输出。OINK 把 shortcode 渲染成语义化 Markdown，保留源码 URL 和语言内 LLMS 索引发现信息，Copy
+Markdown 也读取同一个 alternative output URL。主题声明输出格式，但不强迫站点选择哪些 <code>outputs</code>。</p>
+<p>导航已经存在权威链：有显式 <code>data/docs_nav.json</code> 树时使用它，否则使用内容树与 weight。侧栏、
+pager 与已声明 section index 共用这一权威。机器导航输出必须从同一棵树派生，不能再造排序。</p>
+<h2 id="pg-36fd1ca8f3c683d7c044aa4cd8f32d4f--goals-and-non-goals">目标与非目标
+</h2>
+<p>目标：</p>
+<ul>
+<li>为显式启用的顶层 section 可选装配语言内全文包；</li>
+<li>可选发布带版本的导航 JSON，供 Agent 与外部工具使用；</li>
+<li>复用人工站点的同一 Markdown 页面渲染器、页面纳入规则与导航权威；</li>
+<li>所有输出仍通过 Hugo output 配置 opt-in；</li>
+<li>验证链接、语言隔离、media type 与确定性顺序。</li>
+</ul>
+<p>非目标：</p>
+<ul>
+<li>替换每页 Markdown 或 <code>llms.txt</code>；</li>
+<li>新建 <code>params.oink.*</code> 配置树；</li>
+<li>在 Hugo 构建期间抓取生成好的 <code>public/</code> 文件；</li>
+<li>嵌入私有源码路径、草稿页面或跨语言回退；</li>
+<li>承诺一个巨型全文包适合所有模型上下文。</li>
+</ul>
+<h2 id="pg-36fd1ca8f3c683d7c044aa4cd8f32d4f--full-text-bundle">全文包
+</h2>
+<p><code>llms-full.txt</code> 输出拼接每页输出所用的同一份语义化 Markdown。页面之间使用稳定、可见的
+分隔符与来源 URL。第 1 版只实现按顶层 section 分包：每个在自身 <code>_index</code> front matter 的
+<code>outputs</code> 中显式启用该格式的顶层 section，在语言内得到一个文件。整站单文件形态被推迟，
+待真实站点证据表明按 section 分包不够用时再议——巨型单文件既容易超出模型上下文，又会
+把所有 section 的更新耦合到一个产物上。</p>
+<p>由 Hugo output 配置决定哪些 section 获得该格式，而不是由主题参数决定。主题提供检查器，
+报告意图与实际输出不一致，但不能修改站点输出集合。</p>
+<p>全文包在 Hugo 内部通过共享页面渲染 partial 组装，不读取 <code>public/</code> 中的兄弟产物，也不依赖输出
+构建顺序。文件大小作为证据报告；任意阈值不能通过警告让 <code>--panicOnWarning</code> 拒绝原本合法的发布。</p>
+<h2 id="pg-36fd1ca8f3c683d7c044aa4cd8f32d4f--navigation-json">导航 JSON
+</h2>
+<p>导航 JSON 是 home output，与 <code>llms.txt</code> 同级：每种语言在语言根下一个文件。内容包含
+schema 版本、语言、根节点与递归有序节点。页面节点包含稳定 ID（语言内 permalink 路径）、
+标题、HTML URL、启用时的 Markdown URL、kind 与 children；有 description 时一并携带。
+显式外部导航节点只包含标签、URL 与 external kind。</p>
+<p>节点不序列化 <code>weight</code>：数组顺序就是契约，weight 是派生顺序的私有机制，公开它会诱导
+消费者重新排序。输出遵循渲染侧栏相同的可见性与排序规则，排除 draft、headless resource、
+隐藏导航项与当前语言不可用页面，永不序列化本机文件名。</p>
+<p>该格式拥有自己的 JSON Schema（<code>schema/nav.v1.schema.json</code>，手工编写的版本化契约产物，
+不属于生成式配置 Schema 的漂移门禁）与 golden 夹具，并标记为 <code>notAlternative</code>，避免 Hugo
+把它广告为页面级 alternate。</p>
+<h2 id="pg-36fd1ca8f3c683d7c044aa4cd8f32d4f--discovery-and-output-boundaries">发现信息与输出边界
+</h2>
+<p><code>llms.txt</code> 默认列出已经启用的全文包与导航 JSON——发现信息属于索引文件，这正是它存在的
+理由。HTML head 继续发现每页 Markdown 和语言内 LLMS 索引，不把每个批量产物塞进每一页。</p>
+<p>shortcode、Landing section、Book 目标与交互组件继续使用当前 Markdown 降级。新输出无权增加组件
+HTML、脚本、评论、反馈控件或导航 chrome。</p>
+<h2 id="pg-36fd1ca8f3c683d7c044aa4cd8f32d4f--compatibility">兼容与迁移影响
+</h2>
+<p>两种输出都默认关闭，未启用的站点字节不变。启用是站点侧的 Hugo <code>outputs</code> 配置，没有新的
+<code>params</code> 键，没有重命名，没有迁移步骤。关闭输出即完全退出，不留残余。</p>
+<h2 id="pg-36fd1ca8f3c683d7c044aa4cd8f32d4f--implementation-plan">实现与归属检查器计划
+</h2>
+<ol>
+<li>输出格式：<code>LLMSFULL</code>（<code>text/plain</code>、<code>baseName: llms-full</code>、<code>notAlternative</code>、
+section 级）与 <code>NAVJSON</code>（<code>application/json</code>、<code>notAlternative</code>、home 级），
+与既有 <code>MARKDOWN</code>/<code>LLMS</code> 定义并列声明。</li>
+<li>模板：section 的 <code>llms-full</code> 布局复用每页 Markdown 输出的共享渲染 partial 按导航
+顺序拼接；home 的导航 JSON 布局走既有导航权威 partial，不引入第二套树遍历。</li>
+<li>归属检查器：新增 <code>bin/check-agent-indexes.py</code>，在 <code>tests/site</code> 夹具上验证语言隔离、
+链接可解析、顺序与侧栏一致、schema 合规、字节稳定重建，并报告每个包的字节数与页数
+（只报告，不设上限门禁）。</li>
+<li>Golden：<code>check-goldens.py</code> 矩阵增加 llms-full 与导航 JSON 夹具。</li>
+<li>文档：站点新增双语 Agent 索引指南；<code>llms.txt</code> 发现行为并入既有 LLMS 文档；
+本提案按生命周期退役。</li>
+</ol>
+<h2 id="pg-36fd1ca8f3c683d7c044aa4cd8f32d4f--acceptance-criteria">验收标准
+</h2>
+<ul>
+<li>EN 与 ZH 输出只包含各自语言的页面和 URL。</li>
+<li>每个列出的 Markdown URL 都存在；每个导航 URL 都可解析，或明确标记为外部节点。</li>
+<li>同一根下的顺序与渲染侧栏、pager 一致。</li>
+<li>导航 JSON 通过 <code>schema/nav.v1.schema.json</code> 校验。</li>
+<li>固定 Hugo 版本与输入时，相同源码重建得到字节稳定输出。</li>
+<li>新格式关闭时，HTML、Markdown、Print、RSS 与 LLMS golden 均无回归。</li>
+<li>大站夹具能证明按顶层 section 分包，而不是为每个嵌套 section 都生成文件。</li>
+</ul>
+<h2 id="pg-36fd1ca8f3c683d7c044aa4cd8f32d4f--decision-log">决策日志
+</h2>
+<ul>
+<li>2026-08-20：起草；全文包给出全站与按 section 两种形态，导航 JSON 位置未定。</li>
+<li>2026-08-27：决议五个待决问题并接受提案。全文包第 1 版只做按顶层 section 分包，
+整站单文件推迟到有真实证据；导航 JSON 定为 home output；schema v1 节点元数据取
+最小集（稳定 ID、标题、HTML URL、Markdown URL、kind、children、可选 description），
+不序列化 <code>weight</code>；<code>llms.txt</code> 默认列出已启用的两类产物；检查器只报告体积证据，
+不执行任何模型上下文上限。</li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-2527a86e06b64c8398b3349ca4c023f3">4 - Book 出版链路</h1>
+    <div class="lead">把 Book 语义降级与通用 EPUB/PDF 打包收回 OINK，同时让出版事实继续属于消费站。</div>
+	<div class="td-callout td-callout--warning" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="td-callout__label">已实现出版工具的提案草案</span></div>
+  <div class="td-callout__body">
+<p>选择启用的 <code>BookManifest</code>、通用 EPUB/PDF runner 与产物校验都已随版本发布，
+其规范性描述在<a href="/zh/docs/design/architecture/">架构</a>。没有任何一次构建会自己产出这两种文件。
+本提案仍然未决、且只在本提案未决的，是消费站迁移。</p>
+  </div>
+</div><h2 id="pg-2527a86e06b64c8398b3349ca4c023f3--context-and-evidence">背景与证据
+</h2>
+<p>OINK 已经负责 Book 导航顺序、编号图表公式示例、交叉引用、整书 Print HTML、标题与
+脚注命名空间，以及逐页 Markdown 降级。缺失的是一份机器可读的整书交接产物，供
+通用打包器消费。</p>
+<p>DDIA 当前保留了一份规模不小的 EPUB 预处理器，持续追踪 OINK 的编号原语、跨页链接、
+脚注、图片路径与 Book 顺序。TPME 则留有一份更早的导出脚本，它依赖的历史根目录文件
+已经不再匹配当前 Hugo 内容树。前者证明出版需求真实存在，后者证明消费站自有配方会
+悄悄过期。</p>
+<p>EPUB 不是一份模板渲染结果。它是一个 ZIP 容器，包含出版元数据、资源 manifest、
+spine、导航、内容文档、样式与媒体。Hugo 可以渲染中间输出，但最终文件必须由打包工具
+生成并校验。</p>
+<h2 id="pg-2527a86e06b64c8398b3349ca4c023f3--goals">目标
+</h2>
+<ol>
+<li>让每一种 Book 原语在出版场景中只有一份主题拥有的语义结果。</li>
+<li>发布选择启用的整书中间产物，确定性记录页面顺序、稳定目标与交叉引用；只在显式打包时
+从语义 Print 文档解析本地资源。</li>
+<li>提供通用、带版本的 EPUB 打包器，以及版本固定的 Print-to-PDF runner；消费站只传入
+自己的出版事实。</li>
+<li>用两个结构不同的公开 Book 消费站证明边界成立。</li>
+</ol>
+<h2 id="pg-2527a86e06b64c8398b3349ca4c023f3--non-goals">非目标
+</h2>
+<ul>
+<li>不为每个站点或分区默认启用昂贵的聚合输出。</li>
+<li>不把 Markdown、JSON 或 HTML 中间产物称为 EPUB。</li>
+<li>不猜测书名、作者、封面、ISBN、版本、权利或发布策略。</li>
+<li>普通 Hugo 构建不抓取远程图片或服务。</li>
+<li>不增加第二套 Book 外壳、第二个导航权威或通用出版配置命名空间。</li>
+<li>不承诺不同浏览器引擎产生逐像素相同的 PDF 分页。</li>
+</ul>
+<h2 id="pg-2527a86e06b64c8398b3349ca4c023f3--ownership-boundary">所有权边界
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">OINK 负责</th>
+      <th scope="col">消费站负责</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>从现有导航权威导出的 Book 顺序</td>
+      <td>要发布的语言、版本与 Book 根</td>
+    </tr>
+    <tr>
+      <td><code>fig</code>、<code>tbl</code>、<code>eq</code>、<code>eg</code>、xref、标题与脚注的语义降级</td>
+      <td>书名、作者、标识符、封面、权利与出版者信息</td>
+    </tr>
+    <tr>
+      <td>稳定中间 schema 与通用打包器行为</td>
+      <td>可选章节排除，以及出版专用的前后置内容</td>
+    </tr>
+    <tr>
+      <td>EPUB 结构/链接校验与 Print-to-PDF runner</td>
+      <td>发布自动化、签名、分发与法律批准</td>
+    </tr>
+    <tr>
+      <td>主题夹具与兼容检查</td>
+      <td>内容正确性与最终产物批准</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>消费站传递事实，不补丁 OINK 标记；OINK 提供语义，不决定一本书是否可以分发。</p>
+<h2 id="pg-2527a86e06b64c8398b3349ca4c023f3--proposed-behavior">提议行为
+</h2>
+<p>第一步实现是一份选择启用的 Book manifest，不是最终电子书。它引用已经发布的逐页
+Markdown，只记录主题能够诚实推导的事实：</p>
+<ul>
+<li>schema 版本与语言；</li>
+<li>Book 根与拍平后的页面顺序；</li>
+<li>页面标题、可选 Book 编号、HTML URL 与 Markdown URL；</li>
+<li>稳定标题目标与编号对象目标；</li>
+<li>跨页引用。</li>
+</ul>
+<p>只有明确启用该输出的 Book 根才生成 manifest。普通 HTML、Print、Markdown、RSS、
+搜索与导航构建不受这项 opt-in 影响，保持彼此独立。</p>
+<p>OINK EPUB 打包器消费 manifest 与既有整书 Print HTML；后者已经包含命名空间化标题与脚注、
+编号目标、作者原始锚点、MathML 与静态交互降级。打包器只改写出版 URL，调用固定版本的
+Pandoc 3.10 profile，再用 EPUBCheck 与 OINK 自有内部目标检查器验证。消费站提供一份小型
+metadata 文件与封面。逐页 Markdown 仍作为可审计的源码形态输出记录在 manifest 中，
+但不成为第二条语义转换路径。</p>
+<p>本地资源必须存在于生成的 <code>public/</code> 树下，默认打包完全不访问网络。如果消费站明确保留了
+远程图片，必须显式传入 <code>--allow-remote-resources</code>；它只允许被动 HTTP(S) 媒体，绝不放行
+远程脚本或本地文件协议。除非明确传入 <code>--force</code>，工具也不会覆盖已有 EPUB。</p>
+<p>PDF 来自同一份整书 Print HTML。Runner 在带 <code>script-src 'none'</code> 的临时回环服务中提供构建产物，
+默认阻止外部资源，调用显式指定的 Chrome/Chromium 二进制，并拒绝隐式覆盖。Print CSS 负责 A4 纸张、纸面代码
+换行、占满版心的编号公式与页码。Checker 通过 Poppler 校验 PDF 结构、A4 几何、可提取的
+Book 标题与抽样页码；最终批准仍包含渲染页面复核。</p>
+<p>参考工作流保持四个显式步骤，不增加 Hugo 模式：</p>
+<div class="td-code td-code--untitled" id="td-code-13aa8a9b-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="sh" data-td-line-count="8">
+  <div class="td-code__viewport" id="td-code-13aa8a9b-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">python3 /path/to/oink/bin/book-epub.py --manifest public/book/book.json <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --public public --metadata metadata.yaml --output output/book.epub
+</span></span><span class="line"><span class="cl">python3 /path/to/oink/bin/check-book-epub.py output/book.epub <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --manifest public/book/book.json
+</span></span><span class="line"><span class="cl">python3 /path/to/oink/bin/book-pdf.py --manifest public/book/book.json <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --public public --chrome /path/to/chrome-headless-shell --output output/book.pdf
+</span></span><span class="line"><span class="cl">python3 /path/to/oink/bin/check-book-pdf.py output/book.pdf <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --manifest public/book/book.json</span></span></code></pre></div></div>
+</div>
+<h2 id="pg-2527a86e06b64c8398b3349ca4c023f3--output-accessibility-security">输出、无障碍与安全
+</h2>
+<ul>
+<li>HTML 与现有输出不加载 exporter，也不增加浏览器运行时。</li>
+<li>中间产物保留文档语言、标题层级、替代文本、表头、链接文本与源码顺序。</li>
+<li>交互控件沿用既有静态 Markdown/Print 降级。</li>
+<li>资源路径必须解析到构建产物内部，或明确作为外部链接；打包过程绝不跟随作者内容中的
+任意本地路径。</li>
+<li>任何消费站值在未经现有输出同等级的校验与规范化之前，都不能成为原始 HTML、CSS、
+命令参数或文件系统路径。</li>
+</ul>
+<h2 id="pg-2527a86e06b64c8398b3349ca4c023f3--compatibility-and-migration">兼容与迁移
+</h2>
+<p>这是一项增量、选择启用的能力。现有 Book 站保留当前输出与脚本。只有当主题中间产物能
+解释 DDIA 当前校验的每一章、编号对象、脚注、图片与内部链接后，DDIA pilot 才删除消费站
+侧的转换。TPME 是第二消费站门禁；任何 DDIA 专用路由、标签或章节清单都不能进入通用 schema。</p>
+<h2 id="pg-2527a86e06b64c8398b3349ca4c023f3--prototype-evidence">原型证据
+</h2>
+<p>第一版 manifest 在两个消费站隔离快照中选择启用，未修改任一消费站工作树，结果如下：</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">消费站</th>
+      <th scope="col" style="text-align: right">有序页面</th>
+      <th scope="col" style="text-align: right">标题</th>
+      <th scope="col" style="text-align: right">Markdown 原始锚点</th>
+      <th scope="col" style="text-align: right">编号目标</th>
+      <th scope="col" style="text-align: right">Xref</th>
+      <th scope="col" style="text-align: right">未解析</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DDIA</td>
+      <td style="text-align: right">23</td>
+      <td style="text-align: right">597</td>
+      <td style="text-align: right">33</td>
+      <td style="text-align: right">131（106 图、3 表、22 示例）</td>
+      <td style="text-align: right">292</td>
+      <td style="text-align: right">0</td>
+    </tr>
+    <tr>
+      <td>TPME</td>
+      <td style="text-align: right">18</td>
+      <td style="text-align: right">295</td>
+      <td style="text-align: right">946</td>
+      <td style="text-align: right">41（31 图、10 表）</td>
+      <td style="text-align: right">1,062</td>
+      <td style="text-align: right">0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>两份 manifest 都没有重复编号目标 ID。本机样本中，严格构建额外耗时约为 DDIA 0.28 秒、
+TPME 0.22 秒。TPME 大量保留原始锚点这一事实很关键：打包器必须消费仍保留这些显式锚点的
+渲染输出。整书 Print HTML 已经同时携带命名空间化标题、脚注、编号目标与 MathML，因此
+manifest 不应再复制整棵文档树。</p>
+<p>随后，两份隔离快照通过同一个通用命令完成打包：</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">消费站</th>
+      <th scope="col" style="text-align: right">EPUB 章节</th>
+      <th scope="col" style="text-align: right">带类型目标</th>
+      <th scope="col" style="text-align: right">包大小</th>
+      <th scope="col">OINK 包/链接检查</th>
+      <th scope="col">EPUBCheck 5.3.0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DDIA</td>
+      <td style="text-align: right">23</td>
+      <td style="text-align: right">131</td>
+      <td style="text-align: right">22.9 MB</td>
+      <td>0 错误</td>
+      <td>0 错误、0 警告</td>
+    </tr>
+    <tr>
+      <td>TPME</td>
+      <td style="text-align: right">18</td>
+      <td style="text-align: right">41</td>
+      <td style="text-align: right">2.2 MB</td>
+      <td>0 错误</td>
+      <td>0 错误、0 警告</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>DDIA 唯一的远程海报图使用了显式网络资源开关；TPME 完全由本地产物打包。通用 checker
+按 <code>BookManifest</code> 校验每个页面锚点，以及每个目标的 <code>kind</code> 与 <code>num</code>，不再依赖 DDIA
+旧预处理器的包装类。主题夹具同样通过了 Hugo minify 后的打包检查。出版 CI 把 Pandoc
+3.10 与 EPUBCheck 5.3.0 的版本及归档摘要固定下来，并与 Hugo 兼容矩阵分为独立 job。</p>
+<p>Print-to-PDF 试点使用 Chrome for Testing headless shell 151.0.7922.34，并在同一出版 CI job
+按归档摘要固定：</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">消费站</th>
+      <th scope="col" style="text-align: right">Book 页面</th>
+      <th scope="col" style="text-align: right">PDF 页数</th>
+      <th scope="col" style="text-align: right">包大小</th>
+      <th scope="col">结构/文本/页码检查</th>
+      <th scope="col">渲染复核</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>主题夹具</td>
+      <td style="text-align: right">5</td>
+      <td style="text-align: right">23</td>
+      <td style="text-align: right">1.1 MB</td>
+      <td>0 错误</td>
+      <td>封面、表格、代码、公式、脚注</td>
+    </tr>
+    <tr>
+      <td>DDIA</td>
+      <td style="text-align: right">23</td>
+      <td style="text-align: right">527</td>
+      <td style="text-align: right">60.3 MB</td>
+      <td>0 错误</td>
+      <td>CJK、表格、图片、代码、参考文献、后置内容</td>
+    </tr>
+    <tr>
+      <td>TPME</td>
+      <td style="text-align: right">18</td>
+      <td style="text-align: right">197</td>
+      <td style="text-align: right">8.4 MB</td>
+      <td>0 错误</td>
+      <td>CJK、宽表、代码、callout、后置内容</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>三份 PDF 均为 Tagged、未加密的 A4 文档。真实消费站 checker 找到了全部 manifest 页面标题，
+以及首页、中页和末页的 CSS 页码。视觉复核还暴露并修复了三项既有 Print 缺陷：子页面数学
+能力未把 KaTeX 样式传播给整书聚合；过宽的 Bootstrap 列重置误命中 KaTeX <code>col-align-*</code>
+内部类；<code>pre &gt; code</code> 覆盖了纸面换行。它们都是范围明确的 Print 修复，不是 exporter 专用
+DOM 改写。</p>
+<h2 id="pg-2527a86e06b64c8398b3349ca4c023f3--implementation-plan">实施计划
+</h2>
+<ol>
+<li><strong>已完成</strong>：把 Print 页面序列提取成一份共享 Book partial，不改变 Print 产物。</li>
+<li><strong>已完成</strong>：增加默认关闭的 manifest 与夹具 checker。</li>
+<li><strong>已完成</strong>：用同一条通用 EPUB 链路打包 DDIA 与 TPME 隔离快照，再校验带类型目标、
+内部链接与 EPUB 3.3 合规性。</li>
+<li><strong>已完成</strong>：用同一份固定 Chrome runner 渲染主题夹具与 DDIA/TPME 隔离快照，校验并
+目视复核代表页面。</li>
+<li><strong>下一项消费站迁移</strong>：只有在 DDIA 仓库独立接受新出版门禁后，才用 metadata 加一次
+调用替代它的语义预处理器。</li>
+</ol>
+<h2 id="pg-2527a86e06b64c8398b3349ca4c023f3--acceptance-criteria">验收标准
+</h2>
+<ul>
+<li>默认站点不发布新聚合文件，也没有显著构建成本。</li>
+<li>Hugo 0.160.1 与当前受支持 Hugo 都能在 warning 即失败模式下构建 opt-in 夹具。</li>
+<li>现有 HTML、Print、Markdown、RSS、导航、搜索与浏览器测试全部通过。</li>
+<li>DDIA pilot 保留 23 章以及全部 106 图、3 表、22 示例与内部链接；这些都作为带类型的
+语义目标存在，未解析目标为零。</li>
+<li>TPME 通过同一份 schema 与打包器生成产物。</li>
+<li>消费站脚本不再包含 OINK 原语专用正则表达式。</li>
+<li>EPUBCheck 与 OINK 包/链接检查器通过；PDF 结构/文本/页码 checker 与代表页面渲染复核
+全部通过。</li>
+</ul>
+<h2 id="pg-2527a86e06b64c8398b3349ca4c023f3--open-decisions">待决问题
+</h2>
+<ol>
+<li>消费站迁移应发生在下一个 OINK release tag 之前还是之后？</li>
+</ol>
+<h2 id="pg-2527a86e06b64c8398b3349ca4c023f3--decision-log">决策记录
+</h2>
+<ul>
+<li>2026-08-24：起草主题/消费站所有权边界；先选择 opt-in 语义中间产物，不提前承诺最终
+EPUB API 或实现。</li>
+<li>2026-08-24：DDIA/TPME 隔离试点解决了第一项格式决策：保留一份引用既有逐页 Markdown
+的 JSON manifest，并消费既有整书 Print HTML；不增加生成式整书 Markdown 或另一条
+语义降级路径。</li>
+<li>2026-08-24：打包器消费整书 Print HTML，因此 manifest 同样使用既有 <code>no_print</code> 排除。
+这样出版顺序只有一份，也不需要第二个输出专用排除键。</li>
+<li>2026-08-24：实现通用 EPUB 链路，并在出版 CI 固定 Pandoc 3.10 与 EPUBCheck 5.3.0。
+DDIA 与 TPME 隔离包同时通过带类型目标/内部链接检查与官方 EPUB 3.3 校验。</li>
+<li>2026-08-24：远程出版资源继续默认拒绝。DDIA 的历史远程海报图通过显式 opt-in 验证，
+没有因此放松默认值，也没有加入 DDIA 专用改写。</li>
+<li>2026-08-24：增加回环 Print-to-PDF runner，并按归档摘要固定 Chrome for Testing
+headless shell 151.0.7922.34。主题、DDIA 与 TPME PDF 均通过结构、文本、A4、页码检查
+与渲染复核。</li>
+<li>2026-08-24：PDF 复核只修复 owning Print 契约：聚合数学能力传播、Bootstrap 列选择器
+范围、代码换行、编号公式单列布局与 CSS 页边距。</li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+
+
+
+      </main>
+    </div>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"复制 Markdown 文本","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["复制 Markdown 文本","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"复制 Markdown 文本","url":"/zh/docs/design/proposals/index.md"},{"available":true,"description":"复制链接","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["复制链接","分享","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"复制链接","url":"http://localhost:1313/zh/docs/design/proposals/"},{"available":true,"description":"在 ChatGPT 中打开","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["在 ChatGPT 中打开","就本页提问","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 ChatGPT 中打开","url":"https://chatgpt.com/?hints=search\u0026prompt=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fdocs%2Fdesign%2Fproposals%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":true,"description":"在 Claude 中打开","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["在 Claude 中打开","就本页提问","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 Claude 中打开","url":"https://claude.ai/new?q=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fdocs%2Fdesign%2Fproposals%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":true,"description":"查阅 Markdown 源码","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["查阅 Markdown 源码","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅 Markdown 源码","url":"/zh/docs/design/proposals/index.md"},{"available":true,"description":"查阅编辑历史","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["查阅编辑历史","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅编辑历史","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/design/proposals/_index.zh.md"},{"available":true,"description":"编辑当前页面","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["编辑当前页面","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"编辑当前页面","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/design/proposals/_index.zh.md"},{"available":true,"description":"添加子页面","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["添加子页面","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"添加子页面","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/design/proposals?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"提交文档议题","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["提交文档议题","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交文档议题","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=%E8%AE%BE%E8%AE%A1%E6%8F%90%E6%A1%88%E4%B8%8E+PRD"},{"available":true,"description":"提交项目议题","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["提交项目议题","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交项目议题","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"打印完整章节","disabledReason":"打印完整章节: 暂不可用","icon":"fa-solid fa-print","id":"print_section","keywords":["打印完整章节","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"打印完整章节","url":""},{"available":true,"description":"打印此页面","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["打印此页面","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"打印此页面","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL 必填","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"切换语言","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["切换语言","language"],"kind":"choice","options":[{"active":false,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/design/proposals/"},{"active":true,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/design/proposals/"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换语言","url":""},{"available":true,"description":"切换配色","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["切换配色","亮色","暗色"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"跟随系统","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"亮色","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"暗色","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换配色","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"报告或查看主题与文档问题","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["缺陷","支持","路线图"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK 问题反馈","url":"https://github.com/pgsty/oink/issues"}],"language":"zh","quickLinks":[{"available":true,"description":"OINK 是一款只需 Hugo Extended 的技术文档主题：组件写在 Markdown 里，资源随主题分发，双语开箱可用，一份内容产出四种输出。","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["文档","docs"],"kind":"url","target":"self","title":"文档","url":"/zh/docs/"},{"available":true,"description":"OINK 工程实践、沉浸式阅读指南与发布注记","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["博客","blog"],"kind":"url","target":"self","title":"博客","url":"/zh/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+
+<script src="/js/actions.js"></script>
+
+  </body>
+</html>

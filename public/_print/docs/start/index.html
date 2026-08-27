@@ -1,0 +1,1386 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" dir="ltr" lang="en-US" data-td-typography="technical" data-td-theme-init>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#000000">
+
+<style>
+  html { background: Canvas; color: CanvasText; }
+  @media (prefers-color-scheme: dark) {
+    html { background: #0b0d12; color: #e6e6e6; }
+  }
+  html[data-td-theme-init] * { transition: none !important; }
+  [data-td-theme-toggle] > .td-shell-icon--sun { display: none !important; }
+  [data-td-theme-toggle] > [hidden] { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--moon { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--sun { display: inline-block !important; }
+</style>
+
+<script>
+  (function() {
+    const themeKey = 'td-color-theme';
+    let storedTheme = null;
+    try {
+      storedTheme = localStorage.getItem(themeKey);
+    } catch (_) {
+      
+      
+    }
+    let theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+    if (theme === 'auto') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    document.documentElement.classList.toggle('dark-mode', theme === 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<link rel="canonical" type="text/html" href="http://localhost:1313/docs/start/">
+<link rel="alternate" type="application/rss&#43;xml" href="http://localhost:1313/docs/start/index.xml">
+<link rel="alternate" type="text/markdown" href="http://localhost:1313/docs/start/index.md">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<title>Quick start | OINK</title>
+<meta name="description" content="Clone the OINK documentation site, preview it locally, replace the site details, and deploy to GitHub Pages.">
+<link rel="canonical" href="http://localhost:1313/docs/start/">
+<link rel="alternate" hreflang="en-US" href="http://localhost:1313/docs/start/">
+<link rel="alternate" hreflang="zh-CN" href="http://localhost:1313/zh/docs/start/">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:url" content="http://localhost:1313/docs/start/">
+  <meta property="og:site_name" content="OINK">
+  <meta property="og:title" content="Quick start">
+  <meta property="og:description" content="Clone the OINK documentation site, preview it locally, replace the site details, and deploy to GitHub Pages.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="Quick start">
+  <meta itemprop="description" content="Clone the OINK documentation site, preview it locally, replace the site details, and deploy to GitHub Pages.">
+  <meta itemprop="dateModified" content="2026-08-20T19:29:35+08:00">
+  <meta itemprop="wordCount" content="1642">
+  <meta itemprop="keywords" content="Get Started">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Quick start">
+  <meta name="twitter:description" content="Clone the OINK documentation site, preview it locally, replace the site details, and deploy to GitHub Pages.">
+<link href="/scss/fontawesome.css" rel="stylesheet">
+<link href="/scss/main.css" rel="stylesheet">
+
+  </head>
+  <body class="td-section td-print-view">
+    <a class="td-skip-link d-print-none" href="#td-main-content">Skip to content</a>
+
+    
+<header class="td-site-header d-print-none" data-td-header>
+  <div class="td-site-container">
+    <nav class="td-site-nav" aria-label="Main navigation">
+      <a href="/" class="td-nav-brand" data-td-navbar-route
+         aria-label="OINK — Home">
+        <img src="/icons/logo.svg" alt="" class="td-nav-logo" width="22" height="22">
+        <span class="td-nav-title">OINK</span>
+      </a><div class="td-nav-links td-nav-menu-zone"><div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link active" href="/docs/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Docs"
+  data-td-navbar-region="desktop" data-td-navbar-label="Docs"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-docs-0" aria-expanded="false">
+  <i class="fa-solid fa-book" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Docs</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-docs-0" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/docs/about/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Introduction"
+  data-td-navbar-region="desktop" data-td-navbar-label="Introduction"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Introduction</span></a>
+<a class="td-nav-menu__item-link active" href="/docs/start/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Get started"
+  data-td-navbar-region="desktop" data-td-navbar-label="Get started"
+  data-td-navbar-external="false" aria-current="page">
+  <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Get started</span></a>
+<a class="td-nav-menu__item-link" href="/docs/write/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Authoring"
+  data-td-navbar-region="desktop" data-td-navbar-label="Authoring"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Authoring</span></a>
+<a class="td-nav-menu__item-link" href="/docs/components/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Components"
+  data-td-navbar-region="desktop" data-td-navbar-label="Components"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-cubes" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Components</span></a>
+<a class="td-nav-menu__item-link" href="/docs/customize/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Customization"
+  data-td-navbar-region="desktop" data-td-navbar-label="Customization"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Customization</span></a>
+<a class="td-nav-menu__item-link" href="/docs/admin/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Operations"
+  data-td-navbar-region="desktop" data-td-navbar-label="Operations"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Operations</span></a>
+<a class="td-nav-menu__item-link" href="/docs/design/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Design"
+  data-td-navbar-region="desktop" data-td-navbar-label="Design"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-compass-drafting" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Design</span></a>
+
+  </div>
+</div><a class="nav-link" href="/book/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Book"
+  data-td-navbar-region="desktop" data-td-navbar-label="Book"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Book</span></a>
+<a class="nav-link" href="/case/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Case"
+  data-td-navbar-region="desktop" data-td-navbar-label="Case"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Case</span></a>
+<div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link" href="/blog/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Blog"
+  data-td-navbar-region="desktop" data-td-navbar-label="Blog"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-blog-3" aria-expanded="false">
+  <i class="fa-solid fa-blog" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Blog</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-blog-3" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/blog/oink/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="OINK engineering"
+  data-td-navbar-region="desktop" data-td-navbar-label="OINK engineering"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">OINK engineering</span></a>
+<a class="td-nav-menu__item-link" href="/blog/release/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Releases"
+  data-td-navbar-region="desktop" data-td-navbar-label="Releases"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Releases</span></a>
+
+  </div>
+</div>
+      </div><div class="td-nav-links td-nav-util-zone">
+        <div class="td-nav-hover-menu td-nav-version-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-nav-hover-open
+            title="v0.8.0" aria-label="v0.8.0" aria-expanded="false"><i class="td-shell-icon td-shell-icon--code-branch fa-solid fa-code-branch" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="v0.8.0">
+            <span class="td-nav-hover-menu__option td-is-disabled"><strong>Versions</strong></span>
+            <a class="td-nav-hover-menu__option td-is-active" aria-current="page" href="https://oink.pgsty.com">v0.8.0</a>
+          </div>
+        </div>
+          <div class="td-language-selector td-language-selector--menu td-nav-util td-site-nav__language">
+  <a class="td-language-selector__trigger" href="/zh/docs/start/"
+    lang="zh-CN" hreflang="zh-CN" dir="ltr"
+    title="Switch language: 简体中文"
+    aria-label="Switch language: 简体中文" aria-haspopup="true" aria-expanded="false">
+    <i class="fa-solid fa-language" aria-hidden="true"></i>
+    <span>简体中文</span>
+  </a>
+  <ul aria-label="Choose language">
+    <li>
+      <span class="td-language-selector__item active" lang="en-US" dir="ltr" aria-current="page">English</span>
+    </li>
+    <li>
+      <a class="td-language-selector__item" href="/zh/docs/start/" lang="zh-CN" hreflang="zh-CN" dir="ltr">简体中文</a>
+    </li>
+  </ul>
+</div><div class="td-nav-hover-menu td-nav-theme-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-theme-toggle
+            title="Toggle color theme" aria-label="Toggle color theme" aria-expanded="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="Toggle color theme">
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="light" aria-pressed="false"><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i><span>Light</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="dark" aria-pressed="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><span>Dark</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="auto" aria-pressed="false"><i class="td-shell-icon td-shell-icon--contrast fa-solid fa-circle-half-stroke" aria-hidden="true"></i><span>System</span>
+            </button>
+          </div>
+        </div>
+        <a href="https://github.com/pgsty/oink" class="td-nav-github" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="td-shell-icon td-shell-icon--github fa-brands fa-github" aria-hidden="true"></i></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+    <div class="container-fluid td-print-shell">
+      <main id="td-main-content" class="td-print-document" tabindex="-1">
+        
+
+
+
+
+<div class="td-content">
+<div class="td-page-notice td-page-notice--primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<button type="button" class="btn btn-link p-0 align-baseline" data-td-action="print">Click here to print</button>.
+</p><p>
+<a href="/docs/start/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Quick start</h1>
+<div class="lead">Clone the OINK documentation site, preview it locally, replace the site details, and deploy to GitHub Pages.</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+  
+  
+
+  
+    
+    
+    <li>
+1: <a href="#pg-5cce6746c44efba5d6c5337f2d675a35">Repository tour</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+2: <a href="#pg-7deb4227edf0ecbc56398a8d686184c1">From scratch and other install methods</a>
+
+
+    </li>
+  
+
+    </ul>
+<div class="content">
+      <p>This path does not start from an empty directory. It starts by cloning the site
+you are reading, deleting what you do not need, and replacing the rest with your
+own details. This site is OINK&rsquo;s regression site: it contains every component
+and every page type, and it tracks the theme version. Trimming it down is less
+writing than adding configuration and examples one at a time to an empty
+directory.</p>
+<p>Prerequisites: a machine that can install Hugo Extended and Go, a GitHub
+account, and ten minutes. No Node.js and no other front-end toolchain.</p>
+<h2 id="pg-c653dadb60d32a561e55336141bc5b01--what-you-get">What you end up with
+</h2>
+<p>A bilingual documentation site: your directory tree in the left sidebar, this
+page&rsquo;s outline on the right, full-text search and a command palette in the
+navbar, and light or dark following the system. One Markdown source produces the
+web page, the print page, plain Markdown and RSS. Hosted on GitHub Pages.</p>
+<figure class="td-figure">
+  <img src="/images/hero-light.webp" alt="How content, configuration and the theme combine into a static site at build time" width="720" height="480" loading="lazy" decoding="async"><figcaption> <span class="td-fig-caption">One source, four outputs: HTML, print, Markdown, RSS</span></figcaption>
+</figure><h2 id="pg-c653dadb60d32a561e55336141bc5b01--walkthrough">Walkthrough
+</h2>
+<ol class="steps">
+<li>
+<h3 id="pg-c653dadb60d32a561e55336141bc5b01--install-tools">Install Hugo Extended and Go
+</h3>
+<p>Besides Git you need two things. Hugo Extended must be
+<code>0.160.1</code> or newer: the standard Hugo build has no
+embedded Sass compiler, cannot compile the theme&rsquo;s styles, and fails the
+build. Go resolves modules: OINK is published as a Hugo Module, and Hugo uses
+Go&rsquo;s module machinery to download and verify <code>github.com/pgsty/oink</code>.</p>
+<div class="td-tab-block td-tab-block--code" data-td-tab="macOS" data-td-tab-group="os" data-td-tab-value="macos" data-td-tab-kind="code">
+<div class="td-tab-block__title" data-td-tab-title>macOS</div>
+<div class="td-code td-code--untitled" id="td-code-6de6e55e-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-6de6e55e-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">brew install hugo go git</span></span></code></pre></div></div>
+</div>
+
+</div>
+<div class="td-tab-block td-tab-block--code" data-td-tab="Linux" data-td-tab-value="linux" data-td-tab-kind="code">
+<div class="td-tab-block__title" data-td-tab-title>Linux</div>
+<div class="td-code td-code--untitled" id="td-code-6de6e55e-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-6de6e55e-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Distribution repositories often carry a Hugo that is too old; use the official deb (this site&#39;s CI does the same)</span>
+</span></span><span class="line"><span class="cl">curl -LO https://github.com/gohugoio/hugo/releases/download/v0.164.0/hugo_extended_0.164.0_linux-amd64.deb
+</span></span><span class="line"><span class="cl">sudo dpkg -i hugo_extended_0.164.0_linux-amd64.deb
+</span></span><span class="line"><span class="cl">sudo apt install -y golang-go git</span></span></code></pre></div></div>
+</div>
+
+</div>
+<div class="td-tab-block td-tab-block--code" data-td-tab="Windows" data-td-tab-value="windows" data-td-tab-kind="code">
+<div class="td-tab-block__title" data-td-tab-title>Windows</div>
+<div class="td-code td-code--untitled" id="td-code-6de6e55e-fence-2" data-td-code data-td-code-auto-id
+     data-td-language="powershell" data-td-line-count="3">
+  <div class="td-code__viewport" id="td-code-6de6e55e-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">winget</span> <span class="n">install</span> <span class="n">Hugo</span><span class="p">.</span><span class="py">Hugo</span><span class="p">.</span><span class="py">Extended</span>
+</span></span><span class="line"><span class="cl"><span class="n">winget</span> <span class="n">install</span> <span class="n">GoLang</span><span class="p">.</span><span class="py">Go</span>
+</span></span><span class="line"><span class="cl"><span class="n">winget</span> <span class="n">install</span> <span class="n">Git</span><span class="p">.</span><span class="n">Git</span></span></span></code></pre></div></div>
+</div>
+
+</div>
+<p>Check once afterwards; the output must contain <code>extended</code>:</p>
+<div class="td-code td-code--untitled" id="td-code-6de6e55e-fence-3" data-td-code data-td-code-auto-id
+     data-td-language="console" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-6de6e55e-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> hugo version
+</span></span><span class="line"><span class="cl"><span class="go">hugo v0.164.0+extended+withdeploy darwin/arm64 BuildDate=2026-07-06T16:39:30Z
+</span></span></span><span class="line"><span class="cl"><span class="gp">$</span> go version
+</span></span><span class="line"><span class="cl"><span class="go">go version go1.26.6 darwin/arm64
+</span></span></span></code></pre></div></div>
+</div>
+<p>On other platforms follow the <a href="https://gohugo.io/installation/">Hugo installation guide</a>
+and <a href="https://go.dev/dl/">go.dev/dl</a>, taking care to pick the extended build.</p>
+</li>
+<li>
+<h3 id="pg-c653dadb60d32a561e55336141bc5b01--clone-and-preview">Clone the documentation site and preview it
+</h3>
+<div class="td-code td-code--untitled" id="td-code-6de6e55e-fence-4" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="3">
+  <div class="td-code__viewport" id="td-code-6de6e55e-fence-4-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/pgsty/oink.pgsty.com my-docs
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> my-docs
+</span></span><span class="line"><span class="cl">hugo server</span></span></code></pre></div></div>
+</div>
+<p>Open <a href="http://localhost:1313/">http://localhost:1313/</a>; the Chinese site is at
+<a href="http://localhost:1313/zh/">http://localhost:1313/zh/</a>. The first start downloads the theme module (a few
+seconds to a minute, depending on the network); after that, edits hot-reload
+in milliseconds.</p>
+<p>The committed <code>go.mod</code> pins the theme version, so the clone builds as it is,
+with no extra install script.</p>
+<div class="td-callout td-callout--note" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-info" aria-hidden="true"></i><span class="td-callout__label">Note</span></div>
+  <div class="td-callout__body">
+<p>The <code>Makefile</code> in the repository is only a set of command aliases. <code>make dev</code>
+and <code>make check</code> use a sibling <code>../oink</code> theme checkout through
+<code>HUGO_MODULE_REPLACEMENTS</code>; <code>make build</code> and <code>make serve</code> always use the
+published version pinned in <code>go.mod</code>. For a new site, <code>hugo server</code> is enough.</p>
+  </div>
+</div></li>
+<li>
+<h3 id="pg-c653dadb60d32a561e55336141bc5b01--make-it-yours">Replace the site details
+</h3>
+<p><strong>Site identity</strong> lives entirely in <code>hugo.yml</code>. <code>baseURL</code> is a YAML anchor —
+the real address is written on <code>params.productionURL</code>, and that is the only
+place to change it:</p>
+<div class="td-code td-code--titled" id="td-code-6de6e55e-fence-5" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="11" role="group" aria-labelledby="td-code-6de6e55e-fence-5-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-6de6e55e-fence-5-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-6de6e55e-fence-5-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">Product Docs</span><span class="w"> </span><span class="c"># navbar site name and &lt;title&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">productionURL</span><span class="p">:</span><span class="w"> </span><span class="cp">&amp;productionURL</span><span class="w"> </span><span class="l">https://docs.example.com/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">github_repo</span><span class="p">:</span><span class="w"> </span><span class="l">https://github.com/example/product-docs</span><span class="w"> </span><span class="c"># where &#34;Edit this page&#34; points</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">copyright</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">authors</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;[Example Inc.](https://example.com/)&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">from_year</span><span class="p">:</span><span class="w"> </span><span class="m">2026</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">footer_center_info</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">baseURL</span><span class="p">:</span><span class="w"> </span><span class="cp">*productionURL</span></span></span></code></pre></div></div>
+</div>
+<p><code>languages.en.title</code> and <code>languages.zh.title</code> override the top-level <code>title</code>,
+so change both. Every parameter&rsquo;s meaning and default is in
+<a href="/docs/customize/config/">Configuration</a>.</p>
+<p><strong>Delete the configuration specific to this site.</strong> Keeping it points your
+site at OINK&rsquo;s repositories and accounts.</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Key in <code>hugo.yml</code></th>
+      <th scope="col">What to do</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>services.googleAnalytics.id</code></td>
+      <td>OINK&rsquo;s analytics ID. Delete it, or replace it with your own when you want analytics</td>
+    </tr>
+    <tr>
+      <td><code>params.comments</code></td>
+      <td>giscus pointing at discussions in <code>pgsty/oink.pgsty.com</code>. Delete the block or point it at your repository</td>
+    </tr>
+    <tr>
+      <td><code>params.tdVersion</code> <code>params.version</code> <code>params.version_menu</code> <code>params.versions</code></td>
+      <td>OINK&rsquo;s version menu. Delete</td>
+    </tr>
+    <tr>
+      <td><code>params.github_project_repo</code></td>
+      <td>A link to the theme repository. Delete</td>
+    </tr>
+    <tr>
+      <td><code>languages.&lt;lang&gt;.menus.main</code></td>
+      <td>Navbar entries pointing at this site&rsquo;s sections such as <code>/docs/tutorial</code>. Rewrite for your tree</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p><strong>Replace the logo and icons.</strong> Replace these three files, keeping the
+filenames — the theme mounts them by name:</p>
+<div class="td-code td-code--titled" id="td-code-6de6e55e-fence-6" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="3" role="group" aria-labelledby="td-code-6de6e55e-fence-6-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-6de6e55e-fence-6-title" title="static/">static/</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-6de6e55e-fence-6-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">static/favicon.svg           # browser tab icon
+</span></span><span class="line"><span class="cl">static/favicon.ico
+</span></span><span class="line"><span class="cl">static/apple-touch-icon.png  # iOS add-to-home-screen</span></span></code></pre></div></div>
+</div>
+<p><code>static/logo.svg</code> is this site&rsquo;s own brand lockup and no parameter points at
+it. Delete it, or replace it with a horizontal wordmark and set
+<code>params.wordmark</code>.</p>
+<p><strong>Replace the content.</strong> <code>content/docs/</code> is OINK&rsquo;s own theme documentation;
+delete the whole tree and write your first page:</p>
+<div class="td-code td-code--untitled" id="td-code-6de6e55e-fence-7" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-6de6e55e-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm -rf content/docs <span class="o">&amp;&amp;</span> mkdir -p content/docs</span></span></code></pre></div></div>
+</div>
+<div class="td-code td-code--titled" id="td-code-6de6e55e-fence-8" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="8" role="group" aria-labelledby="td-code-6de6e55e-fence-8-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-6de6e55e-fence-8-title" title="content/docs/_index.md">content/docs/_index.md</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-6de6e55e-fence-8-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">title: Docs
+</span></span><span class="line"><span class="cl">linkTitle: Docs
+</span></span><span class="line"><span class="cl">description: Product documentation.
+</span></span><span class="line"><span class="cl">weight: 20
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Everything about running Product in production.</span></span></code></pre></div></div>
+</div>
+<p><code>content/blog/</code> can keep one post as a template or be deleted entirely (if you
+delete it, remove the <code>blog</code> entry from <code>menus.main</code> as well). Which
+directories must stay and which belong to the documentation site itself is in
+<a href="/docs/start/anatomy/">Repository tour</a>.</p>
+<p><strong>For an English-only site</strong>, delete the whole <code>languages.zh</code> block and every
+<code>.zh.md</code> file, leaving one language:</p>
+<div class="td-code td-code--titled" id="td-code-6de6e55e-fence-9" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="10" role="group" aria-labelledby="td-code-6de6e55e-fence-9-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-6de6e55e-fence-9-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-6de6e55e-fence-9-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">defaultContentLanguage</span><span class="p">:</span><span class="w"> </span><span class="l">en</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">languages</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">en</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l">English</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">locale</span><span class="p">:</span><span class="w"> </span><span class="l">en-US</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">Product Docs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">menus</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">main</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- {<span class="w"> </span><span class="nt">name: Docs, pageRef: /docs, weight</span><span class="p">:</span><span class="w"> </span><span class="m">20</span><span class="w"> </span>}</span></span></code></pre></div></div>
+</div>
+<div class="td-code td-code--untitled" id="td-code-6de6e55e-fence-10" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-6de6e55e-fence-10-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find content -name <span class="s1">&#39;*.zh.md&#39;</span> -delete</span></span></code></pre></div></div>
+</div>
+<p>To keep both languages or swap in a different pair, see
+<a href="/docs/customize/i18n/">Languages</a>.</p>
+</li>
+<li>
+<h3 id="pg-c653dadb60d32a561e55336141bc5b01--publish">Deploy
+</h3>
+<p>Create an empty repository on GitHub and replace the local history with your
+own:</p>
+<div class="td-code td-code--untitled" id="td-code-6de6e55e-fence-11" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-6de6e55e-fence-11-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm -rf .git <span class="o">&amp;&amp;</span> git init -b main
+</span></span><span class="line"><span class="cl">git add . <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&#34;Initial documentation site&#34;</span>
+</span></span><span class="line"><span class="cl">git remote add origin git@github.com:example/product-docs.git
+</span></span><span class="line"><span class="cl">git push -u origin main</span></span></code></pre></div></div>
+</div>
+<p>The repository ships with <code>.github/workflows/pages.yml</code>: a push to <code>main</code>
+builds and publishes, and it can also be triggered by hand from the Actions
+page (<code>workflow_dispatch</code>). It pins the Hugo Extended and Go versions, builds
+with <code>--printPathWarnings --panicOnWarning</code>, and takes <code>baseURL</code> from GitHub
+Pages, so publishing to a subpath such as
+<code>example.github.io/product-docs/</code> needs no configuration change.</p>
+<p>In the repository, go to Settings → Pages → Build and deployment → Source and
+choose <strong>GitHub Actions</strong>. The default is <code>Deploy from a branch</code>, and leaving
+it will make the workflow fail at the deploy step.</p>
+<div class="td-callout td-callout--important" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-exclamation" aria-hidden="true"></i><span class="td-callout__label">Deleting <code>scripts/</code> means editing the workflow</span></div>
+  <div class="td-callout__body">
+<p>The <code>Verify advertised and pinned release match</code> step in <code>pages.yml</code> runs
+<code>node scripts/check-release-pin.mjs</code> to check that the version the site
+advertises matches the one pinned in <code>go.mod</code>. Once <code>scripts/</code> is gone,
+remove that step and <code>Set up Node.js</code> from <code>pages.yml</code>.</p>
+  </div>
+</div><p>For Cloudflare Pages, Netlify, Nginx and offline packaging, see
+<a href="/docs/admin/deploy/">Deploy</a>: the build command is always
+<code>hugo --gc --minify</code>, and only <code>baseURL</code> and the environment variables differ.</p>
+</li>
+</ol>
+<h2 id="pg-c653dadb60d32a561e55336141bc5b01--verify">Verify
+</h2>
+<p>Run a production build locally. It is stricter than the development server, and
+path warnings fail the build:</p>
+<div class="td-code td-code--untitled" id="td-code-6de6e55e-fence-12" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-6de6e55e-fence-12-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo --gc --minify --printPathWarnings --panicOnWarning</span></span></code></pre></div></div>
+</div>
+<p>It passes when it prints <code>Total in …</code> with no <code>WARN</code> or <code>ERROR</code>. Then check
+against the preview:</p>
+<ul>
+<li>The navbar shows your site name and logo, and the browser tab shows your favicon</li>
+<li>The sidebar is your own tree, and every page opens</li>
+<li><span class="td-kbd-sequence"><kbd>Ctrl</kbd><span class="td-kbd-sequence__separator" aria-hidden="true">+</span><span class="visually-hidden"> with </span><kbd>K</kbd></span> (or <span class="td-kbd-sequence"><kbd>⌘</kbd><span class="td-kbd-sequence__separator" aria-hidden="true">+</span><span class="visually-hidden"> with </span><kbd>K</kbd></span> on macOS) opens the command palette and finds the page you just wrote</li>
+<li>In the menu beside the page title, &ldquo;Edit this page&rdquo; points at your repository, not <code>pgsty/oink.pgsty.com</code></li>
+<li>After deploying, <code>Deploy Oink site to GitHub Pages</code> is green on the repository&rsquo;s Actions page</li>
+</ul>
+<p>For build errors, see <a href="/docs/admin/troubleshooting/">Troubleshooting</a>.</p>
+<h2 id="pg-c653dadb60d32a561e55336141bc5b01--next-steps">Next steps
+</h2>
+<ul class="cards">
+<li><a href="/docs/start/anatomy/">Repository tour</a> — what each cloned directory is, and what can go.</li>
+<li><a href="/docs/write/pages/">Writing pages</a> — what a documentation page is made of: front matter, heading anchors, links and images.</li>
+<li><a href="/docs/components/">Components</a> — callouts, tabs, field lists, file trees and the rest, one page each.</li>
+<li><a href="/docs/customize/brand/">Brand and appearance</a> — accent colour, font preset, page width and custom styles.</li>
+<li><a href="/docs/admin/deploy/">Deploy</a> — hosting beyond GitHub Pages, and the acceptance checklist.</li>
+</ul>
+<h2 id="pg-c653dadb60d32a561e55336141bc5b01--for-agents">Instructions for a coding assistant
+</h2>
+<p>The four steps above can be handed to a coding assistant (Claude Code, Codex and
+the like). Copy the block below and replace the three bracketed items with your
+own details:</p>
+<div class="td-callout td-callout--details td-callout--collapsible" role="note" data-td-callout-collapsible>
+  <div class="td-callout__title"><span class="td-callout__label">Instructions to copy wholesale</span></div>
+  <div class="td-callout__body">
+<div class="td-code td-code--untitled" id="td-code-6de6e55e-fence-13" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="31">
+  <div class="td-code__viewport" id="td-code-6de6e55e-fence-13-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Please set up a documentation site for me with the OINK theme, following the process
+</span></span><span class="line"><span class="cl">below. Where something is unclear, apply &#34;only ask when information is missing&#34;.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">1. Check the environment: run `hugo version` and require the output to contain `extended`
+</span></span><span class="line"><span class="cl">   with a version &gt;= 0.160.1; run `go version` and require a version number. If either
+</span></span><span class="line"><span class="cl">   fails, install it per the official documentation first — `brew install hugo go` on
+</span></span><span class="line"><span class="cl">   macOS, the hugo_extended deb from GitHub Releases on Debian/Ubuntu.
+</span></span><span class="line"><span class="cl">2. Clone the site template: `git clone https://github.com/pgsty/oink.pgsty.com [target directory]`
+</span></span><span class="line"><span class="cl">   and change into it.
+</span></span><span class="line"><span class="cl">3. Change three things in hugo.yml: the top-level `title` and `languages.&lt;lang&gt;.title` to
+</span></span><span class="line"><span class="cl">   [site name]; `params.productionURL` to [site domain] (baseURL is a YAML anchor pointing
+</span></span><span class="line"><span class="cl">   at it, so do not change baseURL separately); `params.github_repo` to the repository this
+</span></span><span class="line"><span class="cl">   site will live in. Also delete this site-specific configuration:
+</span></span><span class="line"><span class="cl">   `services.googleAnalytics`, `params.comments`, `params.tdVersion`, `params.version`,
+</span></span><span class="line"><span class="cl">   `params.version_menu`, `params.versions`, `params.github_project_repo`, and reduce
+</span></span><span class="line"><span class="cl">   `menus.main` to /docs and /blog only.
+</span></span><span class="line"><span class="cl">4. Clear the example content: delete the whole `content/docs/` tree and create a new
+</span></span><span class="line"><span class="cl">   `content/docs/_index.md` (front matter with at least title / description / weight);
+</span></span><span class="line"><span class="cl">   keep one post under `content/blog/` as a template. Delete the scaffolding that belongs
+</span></span><span class="line"><span class="cl">   to the documentation site itself: `tests/`, `scripts/`, `playwright.config.mjs`,
+</span></span><span class="line"><span class="cl">   `package.json`, `package-lock.json`, `AGENTS.md`, `TRANSLATION.md`, `CONTRIBUTING.md`,
+</span></span><span class="line"><span class="cl">   `agent-docs.config.yml`; delete every workflow under `.github/workflows/` except
+</span></span><span class="line"><span class="cl">   `pages.yml`; and remove the `Set up Node.js` and
+</span></span><span class="line"><span class="cl">   `Verify advertised and pinned release match` steps from `pages.yml`.
+</span></span><span class="line"><span class="cl">5. Start `hugo server` in the background and confirm http://localhost:1313/ returns 200
+</span></span><span class="line"><span class="cl">   and the page title is the new site name.
+</span></span><span class="line"><span class="cl">6. Validate: run `hugo --gc --minify --printPathWarnings --panicOnWarning` and require it
+</span></span><span class="line"><span class="cl">   to end with `Total in ...` and no WARN/ERROR. Fix any error rather than working around
+</span></span><span class="line"><span class="cl">   it by suppressing warnings.
+</span></span><span class="line"><span class="cl">7. Only ask me when [site name], [site domain] or the repository address is missing;
+</span></span><span class="line"><span class="cl">   otherwise proceed with the defaults above.</span></span></code></pre></div></div>
+</div>
+  </div>
+</div><p>The resulting site is easy for an assistant to read: every page has a <code>.md</code>
+plain-text output, the site root has <code>llms.txt</code>, and the menu beside the page
+title offers &ldquo;Copy as Markdown&rdquo; and &ldquo;Open in Claude&rdquo;. See
+<a href="/docs/customize/agents/">AI-agent support</a>.</p>
+<p>To start from an empty directory instead of this repository, see
+<a href="/docs/start/from-scratch/">From scratch and other install methods</a>.</p>
+<h2 id="pg-c653dadb60d32a561e55336141bc5b01--related">Related
+</h2>
+<ul>
+<li><a href="/docs/start/anatomy/">Repository tour</a> — what each directory is, and the order to delete in</li>
+<li><a href="/docs/start/from-scratch/">From scratch and other install methods</a> — starting with <code>hugo mod init</code>, submodules and offline installation</li>
+<li><a href="/docs/admin/preview/">Local preview</a> — the <code>hugo server</code> switches worth knowing, and previewing drafts</li>
+<li><a href="/docs/admin/deploy/">Deploy</a> — configuration per host, and the acceptance checklist</li>
+<li><a href="/docs/admin/troubleshooting/">Troubleshooting</a> — the four common classes of error: build, language, search, platform</li>
+</ul>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-5cce6746c44efba5d6c5337f2d675a35">1 - Repository tour</h1>
+    <div class="lead">What every cloned directory is — what must stay, what to replace with your own details, and what belongs to the documentation site and can go entirely.</div>
+	<p>This page goes through every file and directory of a <code>pgsty/oink.pgsty.com</code>
+clone: what must stay, what to replace with your own details, what belongs to
+the documentation site and can be deleted whole — plus a safe order to delete
+in.</p>
+<p>The theme&rsquo;s code is not in this repository. It is a Hugo Module pinned by
+<code>go.mod</code> and stored in Go&rsquo;s module cache. This repository holds content,
+configuration, and a small number of site-level overrides.</p>
+<h2 id="pg-5cce6746c44efba5d6c5337f2d675a35--layout">Top-level structure
+</h2>
+<div class="td-filetree td-filetree--static" style="--td-filetree-name-col:37.0ch" role="group" aria-labelledby="td-filetree-de70b1d2a5de264260f98e871f8f098e-f0-title"><div class="td-filetree__chrome"><p class="td-filetree__title" id="td-filetree-de70b1d2a5de264260f98e871f8f098e-f0-title" dir="auto">the cloned my-docs/</p></div><div class="td-filetree__body"><ul class="td-filetree__list td-filetree__list--root"><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:0"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="my-docs/">my-docs/</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-solid fa-gear td-filetree__glyph"></i></span><span class="td-filetree__name" title="hugo.yml">hugo.yml</span></span><span class="td-filetree__comment" title="the site&#39;s only configuration: identity, languages, menus, params, module imports"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">the site&#39;s only configuration: identity, languages, menus, params, module imports</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-golang td-filetree__glyph"></i></span><span class="td-filetree__name" title="go.mod">go.mod</span></span><span class="td-filetree__comment" title="pins the theme version"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">pins the theme version</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-golang td-filetree__glyph"></i></span><span class="td-filetree__name" title="go.sum">go.sum</span></span><span class="td-filetree__comment" title="checksums for the theme module"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">checksums for the theme module</span></span></span></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="content/">content/</span></span><span class="td-filetree__comment" title="all content; the directory structure is the sidebar structure"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">all content; the directory structure is the sidebar structure</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="_index.md">_index.md</span></span><span class="td-filetree__comment" title="home page; _index.zh.md is its Chinese counterpart"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">home page; _index.zh.md is its Chinese counterpart</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="search.md">search.md</span></span><span class="td-filetree__comment" title="results page for Google Programmable Search; delete if unused"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">results page for Google Programmable Search; delete if unused</span></span></span></li><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="docs/">docs/</span></span><span class="td-filetree__comment" title="documentation tree: OINK&#39;s own theme documentation"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">documentation tree: OINK&#39;s own theme documentation</span></span></span></li><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="blog/">blog/</span></span><span class="td-filetree__comment" title="blog: engineering notes and release announcements"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">blog: engineering notes and release announcements</span></span></span></li></ul></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="assets/">assets/</span></span><span class="td-filetree__comment" title="resources that go through Hugo processing"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">resources that go through Hugo processing</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="scss/">scss/</span></span><span class="td-filetree__comment" title="site style overrides, three partials"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">site style overrides, three partials</span></span></span></li><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="images/">images/</span></span><span class="td-filetree__comment" title="images that need resizing or cropping"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">images that need resizing or cropping</span></span></span></li><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="parts/">parts/</span></span><span class="td-filetree__comment" title="Markdown and YAML fragments pulled in by the include shortcode"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">Markdown and YAML fragments pulled in by the include shortcode</span></span></span></li></ul></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="static/">static/</span></span><span class="td-filetree__comment" title="copied to the site root as is, unprocessed"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">copied to the site root as is, unprocessed</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-regular fa-image td-filetree__glyph"></i></span><span class="td-filetree__name" title="logo.svg">logo.svg</span></span><span class="td-filetree__comment" title="brand lockup; no parameter points at it"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">brand lockup; no parameter points at it</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-regular fa-image td-filetree__glyph"></i></span><span class="td-filetree__name" title="favicon.svg">favicon.svg</span></span><span class="td-filetree__comment" title="browser tab icon"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">browser tab icon</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-regular fa-image td-filetree__glyph"></i></span><span class="td-filetree__name" title="favicon.ico">favicon.ico</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-regular fa-image td-filetree__glyph"></i></span><span class="td-filetree__name" title="apple-touch-icon.png">apple-touch-icon.png</span></span><span class="td-filetree__comment" title="iOS add-to-home-screen"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">iOS add-to-home-screen</span></span></span></li><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="images/">images/</span></span><span class="td-filetree__comment" title="screenshots and diagrams"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">screenshots and diagrams</span></span></span></li></ul></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="layouts/">layouts/</span></span><span class="td-filetree__comment" title="site template overrides: override the narrowest one"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">site template overrides: override the narrowest one</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="_shortcodes/">_shortcodes/</span></span><span class="td-filetree__comment" title="the site&#39;s own shortcodes"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">the site&#39;s own shortcodes</span></span></span></li></ul></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="data/">data/</span></span><span class="td-filetree__comment" title="data-driven pages"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">data-driven pages</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="home/">home/</span></span><span class="td-filetree__comment" title="home page sections: en.yaml / zh.yaml"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">home page sections: en.yaml / zh.yaml</span></span></span></li><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="landing/">landing/</span></span><span class="td-filetree__comment" title="landing page data"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">landing page data</span></span></span></li><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="download/">download/</span></span><span class="td-filetree__comment" title="release and download page data"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">release and download page data</span></span></span></li></ul></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title=".github/">.github/</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="workflows/">workflows/</span></span><span class="td-filetree__comment" title="pages.yml deploys; the other two are this site&#39;s regression tests"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">pages.yml deploys; the other two are this site&#39;s regression tests</span></span></span></li></ul></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir td-filetree__icon--warning" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="tests/">tests/</span></span><span class="td-filetree__comment" title="documentation site only: Playwright, goldens, build assertions"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">documentation site only: Playwright, goldens, build assertions</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="browser/">browser/</span></span><span class="td-filetree__comment" title="Playwright specs"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">Playwright specs</span></span></span></li><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="hugo-build/">hugo-build/</span></span><span class="td-filetree__comment" title="build assertions"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">build assertions</span></span></span></li><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="md-output/">md-output/</span></span><span class="td-filetree__comment" title="Markdown output goldens"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">Markdown output goldens</span></span></span></li><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="alt-site/">alt-site/</span></span><span class="td-filetree__comment" title="alternate-configuration builds"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">alternate-configuration builds</span></span></span></li><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="favicons/">favicons/</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span></li><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="release-pin/">release-pin/</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span></li><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="fixtures/">fixtures/</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span></li></ul></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir td-filetree__icon--warning" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="scripts/">scripts/</span></span><span class="td-filetree__comment" title="documentation site only: translation parity and link checks"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">documentation site only: translation parity and link checks</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-js td-filetree__glyph"></i></span><span class="td-filetree__name" title="check-doc-translations.mjs">check-doc-translations.mjs</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-js td-filetree__glyph"></i></span><span class="td-filetree__name" title="check-markdown-style.mjs">check-markdown-style.mjs</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-js td-filetree__glyph"></i></span><span class="td-filetree__name" title="check-rendered-links.mjs">check-rendered-links.mjs</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-js td-filetree__glyph"></i></span><span class="td-filetree__name" title="check-rendered-markdown.mjs">check-rendered-markdown.mjs</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-js td-filetree__glyph"></i></span><span class="td-filetree__name" title="check-release-pin.mjs">check-release-pin.mjs</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span></li></ul></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-solid fa-hammer td-filetree__glyph"></i></span><span class="td-filetree__name" title="Makefile">Makefile</span></span><span class="td-filetree__comment" title="build / serve call Hugo directly; dev / check point at a sibling ../oink"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">build / serve call Hugo directly; dev / check point at a sibling ../oink</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-npm td-filetree__glyph"></i></span><span class="td-filetree__name" title="package.json">package.json</span></span><span class="td-filetree__comment" title="the test toolchain; not used to build the site"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">the test toolchain; not used to build the site</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-npm td-filetree__glyph"></i></span><span class="td-filetree__name" title="package-lock.json">package-lock.json</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-js td-filetree__glyph"></i></span><span class="td-filetree__name" title="playwright.config.mjs">playwright.config.mjs</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-solid fa-gear td-filetree__glyph"></i></span><span class="td-filetree__name" title="agent-docs.config.yml">agent-docs.config.yml</span></span><span class="td-filetree__comment" title="configuration for the agent-documentation scoring tool"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">configuration for the agent-documentation scoring tool</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="AGENTS.md">AGENTS.md</span></span><span class="td-filetree__comment" title="repository notes for coding agents"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">repository notes for coding agents</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="TRANSLATION.md">TRANSLATION.md</span></span><span class="td-filetree__comment" title="the bilingual translation process"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">the bilingual translation process</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="CONTRIBUTING.md">CONTRIBUTING.md</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="README.md">README.md</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-solid fa-scale-balanced td-filetree__glyph"></i></span><span class="td-filetree__name" title="LICENSE">LICENSE</span></span><span class="td-filetree__comment" title="Apache-2.0, for the site code"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">Apache-2.0, for the site code</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-regular fa-file td-filetree__glyph"></i></span><span class="td-filetree__name" title="LICENSE-CC-BY-4.0">LICENSE-CC-BY-4.0</span></span><span class="td-filetree__comment" title="content licence"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">content licence</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-solid fa-scale-balanced td-filetree__glyph"></i></span><span class="td-filetree__name" title="NOTICE">NOTICE</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span></li></ul></li></ul></div></div><p>Not listed above: <code>.gitignore</code>, <code>.gitattributes</code>, <code>.nvmrc</code>, <code>.npmrc</code>, and the
+generated output excluded by <code>.gitignore</code> — <code>public/</code> (build output),
+<code>resources/</code> (Hugo&rsquo;s resource cache) and <code>node_modules/</code>. That last group never
+enters version control.</p>
+<p>There is no <code>i18n/</code> in the repository: interface strings (&ldquo;Previous&rdquo;, &ldquo;On this
+page&rdquo; and the like) come from the theme&rsquo;s 32 language files. To change one of
+them, create <code>i18n/zh.yaml</code> at the site root and write only the keys you
+override.</p>
+<h2 id="pg-5cce6746c44efba5d6c5337f2d675a35--what-to-keep">What to do with each entry
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Path</th>
+      <th scope="col">What it is</th>
+      <th scope="col">What to do after forking</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>hugo.yml</code></td>
+      <td>The site&rsquo;s only configuration file — no <code>config/</code> directory and no per-environment overrides</td>
+      <td>Replace with your details: identity, languages, menus, brand</td>
+    </tr>
+    <tr>
+      <td><code>go.mod</code> <code>go.sum</code></td>
+      <td>Pin the theme version and record its checksums</td>
+      <td>Must stay, and both are committed</td>
+    </tr>
+    <tr>
+      <td><code>content/</code></td>
+      <td>All content; the directory structure decides the sidebar structure</td>
+      <td>Must stay; replace the <code>docs/</code> and <code>blog/</code> inside it with your own</td>
+    </tr>
+    <tr>
+      <td><code>content/search.md</code></td>
+      <td>A full-page search results page (<code>layout: search</code>); it only has content when Google Programmable Search is configured (<code>params.gcs_engine_id</code>)</td>
+      <td>Delete it when using the theme&rsquo;s local search</td>
+    </tr>
+    <tr>
+      <td><code>assets/scss/</code></td>
+      <td>Site style overrides (<code>_variables_project.scss</code> and friends)</td>
+      <td>Keep it to change colours and fonts; empty it if you change neither</td>
+    </tr>
+    <tr>
+      <td><code>assets/images/</code></td>
+      <td>Images that need Hugo processing (resize, crop)</td>
+      <td>Replace with your own</td>
+    </tr>
+    <tr>
+      <td><code>assets/parts/</code></td>
+      <td>Fragments the <code>include</code> shortcode pulls in</td>
+      <td>Replace or delete with the pages that use them</td>
+    </tr>
+    <tr>
+      <td><code>static/</code></td>
+      <td>Copied to the site root as is</td>
+      <td>Replace with yours: logo, favicon, screenshots</td>
+    </tr>
+    <tr>
+      <td><code>layouts/_shortcodes/</code></td>
+      <td>This site&rsquo;s four shortcodes, none referenced by current content</td>
+      <td>Can be deleted</td>
+    </tr>
+    <tr>
+      <td><code>data/home/</code></td>
+      <td>Home page section data (hero, capability panels)</td>
+      <td>Change to yours; delete it and the home page falls back to an ordinary page</td>
+    </tr>
+    <tr>
+      <td><code>data/landing/</code> <code>data/download/</code></td>
+      <td>Data for landing pages and the release/download page</td>
+      <td>Delete if unused</td>
+    </tr>
+    <tr>
+      <td><code>.github/workflows/pages.yml</code></td>
+      <td>Builds and publishes to GitHub Pages on a push to <code>main</code></td>
+      <td>Keep, adjusted for your repository</td>
+    </tr>
+    <tr>
+      <td><code>.github/workflows/site-checks.yml</code> <code>browser-quality.yml</code></td>
+      <td>This site&rsquo;s regression pipelines</td>
+      <td>Documentation site only; can be deleted</td>
+    </tr>
+    <tr>
+      <td><code>tests/</code> <code>scripts/</code> <code>playwright.config.mjs</code> <code>package.json</code> <code>package-lock.json</code></td>
+      <td>This site&rsquo;s regression tests and check tooling</td>
+      <td>Documentation site only; can be deleted</td>
+    </tr>
+    <tr>
+      <td><code>Makefile</code></td>
+      <td>Shortcuts for developing the theme and the site together (expects a sibling <code>../oink</code>)</td>
+      <td>Documentation site only; can be deleted</td>
+    </tr>
+    <tr>
+      <td><code>AGENTS.md</code> <code>TRANSLATION.md</code> <code>CONTRIBUTING.md</code> <code>agent-docs.config.yml</code></td>
+      <td>This site&rsquo;s collaboration conventions</td>
+      <td>Replace with your own, or delete</td>
+    </tr>
+    <tr>
+      <td><code>README.md</code> <code>LICENSE</code> <code>LICENSE-CC-BY-4.0</code> <code>NOTICE</code></td>
+      <td>Description and licences</td>
+      <td>Replace with your own</td>
+    </tr>
+    <tr>
+      <td><code>.nvmrc</code> <code>.npmrc</code></td>
+      <td>Node version and npm configuration</td>
+      <td>Delete along with <code>package.json</code></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="td-callout td-callout--note" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-info" aria-hidden="true"></i><span class="td-callout__label">Building a site with OINK needs no Node.js</span></div>
+  <div class="td-callout__body">
+<p>The <code>package.json</code>, <code>tests/</code> and <code>scripts/</code> in this repository maintain the
+documentation site itself. Building your site is one command:
+<code>hugo --gc --minify</code>.</p>
+  </div>
+</div><h2 id="pg-5cce6746c44efba5d6c5337f2d675a35--deletion-order">Deletion order
+</h2>
+<p>Delete the periphery first, then the content, then the data. Build after each
+step so a problem points back at one step.</p>
+<ol class="steps">
+<li>
+<h3 id="pg-5cce6746c44efba5d6c5337f2d675a35--drop-scaffolding">Drop the scaffolding
+</h3>
+<p>None of this takes part in rendering, and removing it affects no page.</p>
+<div class="td-code td-code--untitled" id="td-code-de70b1d2-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-de70b1d2-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm -rf tests scripts node_modules
+</span></span><span class="line"><span class="cl">rm -f package.json package-lock.json playwright.config.mjs .nvmrc .npmrc
+</span></span><span class="line"><span class="cl">rm -f AGENTS.md TRANSLATION.md CONTRIBUTING.md agent-docs.config.yml Makefile
+</span></span><span class="line"><span class="cl">rm -f .github/workflows/site-checks.yml .github/workflows/browser-quality.yml</span></span></code></pre></div></div>
+</div>
+<p>After deleting <code>scripts/</code> you must edit <code>.github/workflows/pages.yml</code>: remove
+the <code>Set up Node.js</code> and <code>Verify advertised and pinned release match</code> steps,
+or the deploy fails there.</p>
+</li>
+<li>
+<h3 id="pg-5cce6746c44efba5d6c5337f2d675a35--drop-example-content">Drop the example content
+</h3>
+<p><code>content/docs/</code> is OINK&rsquo;s own theme documentation and <code>content/blog/</code> its
+engineering blog; neither has anything to do with your product.</p>
+<div class="td-code td-code--untitled" id="td-code-de70b1d2-fence-2" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="3">
+  <div class="td-code__viewport" id="td-code-de70b1d2-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm -rf content/docs
+</span></span><span class="line"><span class="cl">mkdir -p content/docs
+</span></span><span class="line"><span class="cl">rm -rf content/blog        <span class="c1"># if you want no blog; otherwise keep one post as a template</span></span></span></code></pre></div></div>
+</div>
+<p>Edit <code>menus.main</code> under each language in <code>hugo.yml</code> at the same time: those
+entries point at paths such as <code>/docs/tutorial</code> and <code>/blog/release</code> that no
+longer exist. <code>content/_index.md</code> is the home page — keep it and replace the
+body with yours.</p>
+</li>
+<li>
+<h3 id="pg-5cce6746c44efba5d6c5337f2d675a35--trim-data">Trim the data
+</h3>
+<p>The three groups under <code>data/</code> feed the home page, landing pages and release
+pages. Keep the home page data and edit it; delete the other two if unused.</p>
+<div class="td-code td-code--untitled" id="td-code-de70b1d2-fence-3" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-de70b1d2-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm -rf data/landing data/download</span></span></code></pre></div></div>
+</div>
+<p><code>data/home/en.yaml</code> and <code>data/home/zh.yaml</code> decide which sections the home
+page has; each entry is explained in
+<a href="/docs/customize/home/">Home and landing pages</a>. Deleting <code>data/home/</code>
+entirely still builds, and the home page falls back to an ordinary content
+page.</p>
+</li>
+<li>
+<h3 id="pg-5cce6746c44efba5d6c5337f2d675a35--swap-identity">Swap the identity
+</h3>
+<p>Finally, change the site name, <code>params.productionURL</code>, <code>params.github_repo</code>
+and the brand parameters in <code>hugo.yml</code> to yours, replace the logo and favicon
+under <code>static/</code>, and delete the OINK-specific configuration:
+<code>services.googleAnalytics</code>, <code>params.comments</code> and the <code>params.version*</code> keys.
+The itemized list is in step 3 of <a href="/docs/start/">Quick start</a>.</p>
+</li>
+</ol>
+<h2 id="pg-5cce6746c44efba5d6c5337f2d675a35--where-the-theme-is">Where the theme lives
+</h2>
+<p>The theme is referenced as a Hugo Module, and two places point at it:</p>
+<div class="td-code td-code--titled" id="td-code-de70b1d2-fence-4" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="6" role="group" aria-labelledby="td-code-de70b1d2-fence-4-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-de70b1d2-fence-4-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-de70b1d2-fence-4-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">module</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">imports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">github.com/pgsty/oink</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">hugoVersion</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">extended</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">min</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;0.160.1&#39;</span></span></span></code></pre></div></div>
+</div>
+<div class="td-code td-code--titled" id="td-code-de70b1d2-fence-5" data-td-code data-td-code-auto-id
+     data-td-language="go-mod" data-td-line-count="1" role="group" aria-labelledby="td-code-de70b1d2-fence-5-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-de70b1d2-fence-5-title" title="go.mod">go.mod</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-de70b1d2-fence-5-viewport" data-td-code-viewport><pre tabindex="0"><code class="language-go-mod" data-lang="go-mod">require github.com/pgsty/oink v0.8.0</code></pre></div>
+</div>
+<p><code>hugo.yml</code> declares which theme to use, <code>go.mod</code> pins which version of it, and
+<code>go.sum</code> records that version&rsquo;s checksums. All three files are committed. The
+theme source never enters your repository: Hugo downloads it into Go&rsquo;s module
+cache, and <code>hugo mod graph</code> shows what actually resolved.</p>
+<p>Upgrade to the newest version:</p>
+<div class="td-code td-code--untitled" id="td-code-de70b1d2-fence-6" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-de70b1d2-fence-6-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo mod get -u github.com/pgsty/oink</span></span></code></pre></div></div>
+</div>
+<p>Pin to one version:</p>
+<div class="td-code td-code--untitled" id="td-code-de70b1d2-fence-7" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-de70b1d2-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo mod get github.com/pgsty/oink@v0.8.0</span></span></code></pre></div></div>
+</div>
+<p>Both commands rewrite <code>go.mod</code> and <code>go.sum</code>. A production site pins a release
+tag rather than following <code>main</code>. What to check before and after an upgrade, and
+how to roll back, is in <a href="/docs/admin/upgrade/">Upgrade</a>.</p>
+<h2 id="pg-5cce6746c44efba5d6c5337f2d675a35--site-overrides">Site overrides
+</h2>
+<p>Files under <code>layouts/</code> shadow the theme&rsquo;s files of the same name, following
+Hugo&rsquo;s template lookup order. This site has only one kind:</p>
+<ul>
+<li><code>layouts/_shortcodes/*.html</code> — the site&rsquo;s own shortcodes. Product documentation that needs a shortcode with business meaning puts it here too.</li>
+</ul>
+<p>Self-linking heading anchors come from the theme&rsquo;s own
+<code>_markup/render-heading.html</code>; a site does not need to build that hook.</p>
+<p>To change the shell (sidebar, footer, page end), override the narrowest partial
+rather than copying <code>baseof.html</code> wholesale — a copy has to be merged by hand at
+every theme upgrade.</p>
+<h2 id="pg-5cce6746c44efba5d6c5337f2d675a35--verify">Verify
+</h2>
+<p>Build after each deletion step so an error points at what you just removed:</p>
+<div class="td-code td-code--untitled" id="td-code-de70b1d2-fence-8" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-de70b1d2-fence-8-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo --gc --minify --printPathWarnings --panicOnWarning</span></span></code></pre></div></div>
+</div>
+<p>Once the deleting is done, all of this should hold:</p>
+<ul>
+<li>The build ends with <code>Total in …</code> and no <code>WARN</code> or <code>ERROR</code></li>
+<li>No navbar entry links to a deleted directory</li>
+<li>Headings still have their self-link anchors (the theme&rsquo;s own heading render hook; the site needs no override)</li>
+<li><code>git status</code> shows no <code>public/</code> or <code>resources/</code></li>
+</ul>
+<h2 id="pg-5cce6746c44efba5d6c5337f2d675a35--related">Related
+</h2>
+<ul>
+<li><a href="/docs/start/">Quick start</a> — the full clone, configure and deploy path</li>
+<li><a href="/docs/start/from-scratch/">From scratch and other install methods</a> — building from an empty directory instead of trimming</li>
+<li><a href="/docs/write/organize/">Organizing content</a> — how the <code>content/</code> tree becomes the sidebar</li>
+<li><a href="/docs/customize/config/">Configuration</a> — every <code>hugo.yml</code> key and its default</li>
+<li><a href="/docs/admin/upgrade/">Upgrade</a> — upgrading the theme module, and the migration toolkit</li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-7deb4227edf0ecbc56398a8d686184c1">2 - From scratch and other install methods</h1>
+    <div class="lead">Build a minimal OINK site in an empty directory, and weigh the four install methods — Module, submodule, offline archive, pinned clone.</div>
+	<p>This page builds a minimal OINK site in an empty directory: a dozen lines of
+<code>hugo.yml</code> plus one <code>hugo mod get</code> gives a single-language site you can preview.
+The cost is that the home page, the example content and any component usage to
+copy from are all yours to write.</p>
+<p>An existing Hugo site needs no scaffolding: install the theme module, add the
+three Goldmark prerequisites (see <a href="#pg-7deb4227edf0ecbc56398a8d686184c1--config">Writing <code>hugo.yml</code></a>), and leave the
+content alone. For an existing Docsy site, see <a href="/docs/admin/upgrade/">Upgrade</a>.</p>
+<p>The second half weighs four install methods: Hugo Module, Git submodule,
+offline archive, pinned clone.</p>
+<h2 id="pg-7deb4227edf0ecbc56398a8d686184c1--scaffold">From an empty directory to the first page
+</h2>
+<ol class="steps">
+<li>
+<h3 id="pg-7deb4227edf0ecbc56398a8d686184c1--skeleton">Create the skeleton and fetch the theme
+</h3>
+<div class="td-code td-code--untitled" id="td-code-0d1d3a2f-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-0d1d3a2f-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo new site --format yaml my-docs
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> my-docs
+</span></span><span class="line"><span class="cl">hugo mod init github.com/example/my-docs
+</span></span><span class="line"><span class="cl">hugo mod get github.com/pgsty/oink@v0.8.0</span></span></code></pre></div></div>
+</div>
+<p>What follows <code>hugo mod init</code> is your own site&rsquo;s module path, usually the
+repository address. <code>hugo mod get</code> writes <code>go.mod</code> and <code>go.sum</code>, and both are
+committed.</p>
+<p>The newest version number is on
+<a href="https://github.com/pgsty/oink/releases">GitHub Releases</a>; the
+<code>v0.8.0</code> on this page is what this site currently
+pins. A production site pins a release tag rather than following <code>main</code>:
+<code>@latest</code> is a one-off resolution, not a version policy.</p>
+</li>
+<li>
+<h3 id="pg-7deb4227edf0ecbc56398a8d686184c1--config">Writing <code>hugo.yml</code>
+</h3>
+<p>Rename the <code>hugo.yaml</code> that <code>hugo new site</code> generated to <code>hugo.yml</code> (Hugo
+accepts both; this documentation uses the latter throughout) and replace its
+contents with the following, which builds as it stands:</p>
+<div class="td-code td-code--titled" id="td-code-0d1d3a2f-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="52" role="group" aria-labelledby="td-code-0d1d3a2f-fence-1-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-0d1d3a2f-fence-1-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-0d1d3a2f-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">Product Docs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">baseURL</span><span class="p">:</span><span class="w"> </span><span class="l">https://docs.example.com/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">defaultContentLanguage</span><span class="p">:</span><span class="w"> </span><span class="l">en</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># enableGitInfo: true        # the &#34;last modified&#34; time comes from git; run git init before enabling</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">languages</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">en</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l">English</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">locale</span><span class="p">:</span><span class="w"> </span><span class="l">en-US</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">Product Docs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Everything about running Product in production</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">menus</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">main</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- {<span class="w"> </span><span class="nt">name: Docs, pageRef: /docs, weight</span><span class="p">:</span><span class="w"> </span><span class="m">20</span><span class="w"> </span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- {<span class="w"> </span><span class="nt">name: Blog, pageRef: /blog, weight</span><span class="p">:</span><span class="w"> </span><span class="m">50</span><span class="w"> </span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># The three Goldmark prerequisites: OINK&#39;s native Markdown components depend on them</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">markup</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">goldmark</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">renderer</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">unsafe</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># allow inline HTML in content</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">parser</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">attribute</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">block</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># attribute lines such as {.steps} {.cards} {caption=}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">wrapStandAloneImageWithinParagraph</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c"># only a block-level image can carry an attribute line</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">highlight</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">noClasses</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c"># code colours follow light and dark mode</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">offline_search</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">github_repo</span><span class="p">:</span><span class="w"> </span><span class="l">https://github.com/example/product-docs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">copyright</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">authors</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;[Example Inc.](https://example.com/)&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">from_year</span><span class="p">:</span><span class="w"> </span><span class="m">2026</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ui</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">dark_mode</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">sidebar_menu_foldable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">section_index</span><span class="p">:</span><span class="w"> </span><span class="l">cards</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">outputs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">home</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">HTML, markdown, LLMS]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">page</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">HTML, markdown]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">section</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">HTML, RSS, print, markdown]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">module</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">imports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">github.com/pgsty/oink</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">hugoVersion</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">extended</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">min</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;0.160.1&#39;</span></span></span></code></pre></div></div>
+</div>
+<p>What each of the five blocks governs:</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Block</th>
+      <th scope="col">Governs</th>
+      <th scope="col">Consequence of omitting it</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Top level + <code>languages</code></td>
+      <td>Site name, domain, languages and navbar menu</td>
+      <td>A wrong <code>baseURL</code> sends every absolute link astray in production</td>
+    </tr>
+    <tr>
+      <td><code>markup.goldmark</code></td>
+      <td>The three component prerequisites</td>
+      <td>An attribute line becomes a literal <code>{.steps}</code> in the prose</td>
+    </tr>
+    <tr>
+      <td><code>params</code></td>
+      <td>Search, repository links, shell switches</td>
+      <td>Interactive features stay off; the theme does not decide for the site</td>
+    </tr>
+    <tr>
+      <td><code>outputs</code></td>
+      <td>The per-page <code>.md</code>, <code>llms.txt</code> and print pages</td>
+      <td>No &ldquo;Copy as Markdown&rdquo; in the page menu, and no print view</td>
+    </tr>
+    <tr>
+      <td><code>module</code></td>
+      <td>References the theme and declares the Hugo floor</td>
+      <td>The build cannot find the theme</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Mathematics additionally needs Goldmark&rsquo;s passthrough extension; see
+<a href="/docs/components/math/">Math</a>. Every key&rsquo;s full meaning and default is in
+<a href="/docs/customize/config/">Configuration</a>.</p>
+</li>
+<li>
+<h3 id="pg-7deb4227edf0ecbc56398a8d686184c1--first-page">Write the first page
+</h3>
+<p>Every top-level directory under <code>content/</code> is a section, and the directory
+structure is the sidebar structure. A documentation section needs at least an
+<code>_index.md</code>:</p>
+<div class="td-code td-code--titled" id="td-code-0d1d3a2f-fence-2" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="8" role="group" aria-labelledby="td-code-0d1d3a2f-fence-2-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-0d1d3a2f-fence-2-title" title="content/docs/_index.md">content/docs/_index.md</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-0d1d3a2f-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">title: Docs
+</span></span><span class="line"><span class="cl">linkTitle: Docs
+</span></span><span class="line"><span class="cl">description: Everything about running Product in production.
+</span></span><span class="line"><span class="cl">weight: 20
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Start with [<span class="nt">Install</span>](<span class="na">/docs/install/</span>).</span></span></code></pre></div></div>
+</div>
+<div class="td-code td-code--titled" id="td-code-0d1d3a2f-fence-3" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="16" role="group" aria-labelledby="td-code-0d1d3a2f-fence-3-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-0d1d3a2f-fence-3-title" title="content/docs/install.md">content/docs/install.md</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-0d1d3a2f-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">title: Install
+</span></span><span class="line"><span class="cl">description: Install Product on a fresh machine.
+</span></span><span class="line"><span class="cl">weight: 10
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gu">## Prerequisites {#prerequisites}
+</span></span></span><span class="line"><span class="cl"><span class="k">
+</span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">[!IMPORTANT]
+</span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">Product needs PostgreSQL 18 or newer.
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gu">## Install {#install}
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="s">```bash
+</span></span></span><span class="line"><span class="cl">curl -fsSL https://get.example.com <span class="p">|</span> bash
+</span></span><span class="line"><span class="cl"><span class="s">```</span></span></span></code></pre></div></div>
+</div>
+<p>Write explicit <code>{#id}</code> anchors on headings: when a translation is added
+later, the two languages&rsquo; anchors have to correspond. How to write a page is
+in <a href="/docs/write/pages/">Writing pages</a>.</p>
+</li>
+<li>
+<h3 id="pg-7deb4227edf0ecbc56398a8d686184c1--preview">Preview
+</h3>
+<div class="td-code td-code--untitled" id="td-code-0d1d3a2f-fence-4" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-0d1d3a2f-fence-4-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo server</span></span></code></pre></div></div>
+</div>
+<p>Open <a href="http://localhost:1313/">http://localhost:1313/</a> and the sidebar shows Docs → Install. Edits
+hot-reload in milliseconds.</p>
+</li>
+</ol>
+<h2 id="pg-7deb4227edf0ecbc56398a8d686184c1--install-methods">Other install methods
+</h2>
+<p>The steps above use a Hugo Module. The other three address particular
+constraints: network isolation, a platform that requires the build input to
+contain the whole theme tree, or an organization that reviews its own copy of
+the theme. Apart from <code>hugo mod vendor</code>, none of them creates a Go module, and
+the site references the theme with <code>theme: oink</code> rather than <code>module.imports</code>.
+The shared cost is that version resolution and integrity checking become your
+responsibility.</p>
+<h3 id="pg-7deb4227edf0ecbc56398a8d686184c1--hugo-module">Hugo Module (recommended)
+</h3>
+<div class="td-code td-code--untitled" id="td-code-0d1d3a2f-fence-5" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="2">
+  <div class="td-code__viewport" id="td-code-0d1d3a2f-fence-5-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo mod init github.com/example/product-docs
+</span></span><span class="line"><span class="cl">hugo mod get github.com/pgsty/oink@v0.8.0</span></span></code></pre></div></div>
+</div>
+<div class="td-code td-code--titled" id="td-code-0d1d3a2f-fence-6" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="3" role="group" aria-labelledby="td-code-0d1d3a2f-fence-6-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-0d1d3a2f-fence-6-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-0d1d3a2f-fence-6-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">module</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">imports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">github.com/pgsty/oink</span></span></span></code></pre></div></div>
+</div>
+<p>The only method where Hugo resolves the version itself, verifies the checksum,
+and leaves an audit record in <code>go.sum</code>. <code>hugo mod graph</code> shows what actually
+resolved and <code>hugo mod get -u</code> upgrades. It needs Go on the machine.</p>
+<h3 id="pg-7deb4227edf0ecbc56398a8d686184c1--git-submodule">Git submodule
+</h3>
+<p>Record an exact theme commit in the site repository:</p>
+<div class="td-code td-code--untitled" id="td-code-0d1d3a2f-fence-7" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-0d1d3a2f-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git submodule add https://github.com/pgsty/oink.git themes/oink
+</span></span><span class="line"><span class="cl">git -C themes/oink fetch --tags
+</span></span><span class="line"><span class="cl">git -C themes/oink checkout v0.8.0
+</span></span><span class="line"><span class="cl">git add .gitmodules themes/oink</span></span></code></pre></div></div>
+</div>
+<div class="td-code td-code--titled" id="td-code-0d1d3a2f-fence-8" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="1" role="group" aria-labelledby="td-code-0d1d3a2f-fence-8-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-0d1d3a2f-fence-8-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-0d1d3a2f-fence-8-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">theme</span><span class="p">:</span><span class="w"> </span><span class="l">oink</span></span></span></code></pre></div></div>
+</div>
+<p>CI must initialize the submodule before running Hugo, or <code>themes/oink</code> is an
+empty directory:</p>
+<div class="td-code td-code--untitled" id="td-code-0d1d3a2f-fence-9" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-0d1d3a2f-fence-9-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git submodule update --init --recursive</span></span></code></pre></div></div>
+</div>
+<h3 id="pg-7deb4227edf0ecbc56398a8d686184c1--offline-archive">Offline archive
+</h3>
+<p>For network-isolated environments. Two paths, both prepared on a connected
+machine and carried in whole.</p>
+<p><strong>With <code>hugo mod vendor</code></strong>, the resolved theme source is frozen into the site
+directory, and later builds need neither the network nor Go.</p>
+<div class="td-code td-code--untitled" id="td-code-0d1d3a2f-fence-10" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="2">
+  <div class="td-code__viewport" id="td-code-0d1d3a2f-fence-10-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo mod vendor          <span class="c1"># writes _vendor/, holding the theme&#39;s full source tree</span>
+</span></span><span class="line"><span class="cl">tar czf my-docs.tgz .    <span class="c1"># carry _vendor/ into the isolated environment with everything else</span></span></span></code></pre></div></div>
+</div>
+<p>When <code>_vendor/</code> exists Hugo prefers it (<code>hugo mod graph</code> prints <code>+vendor</code>), and
+<code>module.imports</code> in <code>hugo.yml</code> stays as it is. This step needs Go; the builds
+after it do not. Upgrading the theme means returning to a connected environment
+and running <code>hugo mod get</code> and <code>hugo mod vendor</code> again.</p>
+<p><code>_vendor/</code> collects only the directories the theme mounts (<code>assets</code>, <code>data</code>,
+<code>i18n</code>, <code>layouts</code>, <code>static</code>) plus <code>hugo.yaml</code> and <code>theme.toml</code>. It does not
+include <code>LICENSE</code>, <code>NOTICE</code> or <code>VENDOR.json</code>. To redistribute that archive, take
+those three files from the theme repository as well.</p>
+<p><strong>With a tag source archive</strong>, no Go module is created; a version of the theme is
+simply unpacked into <code>themes/oink/</code>.</p>
+<div class="td-code td-code--untitled" id="td-code-0d1d3a2f-fence-11" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-0d1d3a2f-fence-11-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -L -o oink.tar.gz <span class="se">\
+</span></span></span><span class="line"><span class="cl">  https://github.com/pgsty/oink/archive/refs/tags/v0.8.0.tar.gz
+</span></span><span class="line"><span class="cl">mkdir -p themes/oink
+</span></span><span class="line"><span class="cl">tar xzf oink.tar.gz -C themes/oink --strip-components<span class="o">=</span><span class="m">1</span></span></span></code></pre></div></div>
+</div>
+<div class="td-code td-code--titled" id="td-code-0d1d3a2f-fence-12" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="1" role="group" aria-labelledby="td-code-0d1d3a2f-fence-12-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-0d1d3a2f-fence-12-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-0d1d3a2f-fence-12-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">theme</span><span class="p">:</span><span class="w"> </span><span class="l">oink</span></span></span></code></pre></div></div>
+</div>
+<p>The theme repository&rsquo;s root is the module root, so unpacking lands directly on
+<code>layouts/</code>, <code>assets/</code>, <code>i18n/</code> and <code>static/</code> with no further level to descend
+into. Redistribution must keep <code>LICENSE</code>, <code>NOTICE</code> and <code>VENDOR.json</code>; the last
+records each third-party runtime&rsquo;s version, source, licence path and SHA-256,
+and is what an offline audit rests on.</p>
+<p>When moving between machines, generate the archive and its checksum from an
+immutable tag on the connected side:</p>
+<div class="td-code td-code--untitled" id="td-code-0d1d3a2f-fence-13" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="6">
+  <div class="td-code__viewport" id="td-code-0d1d3a2f-fence-13-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone --branch v0.8.0 --depth <span class="m">1</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  https://github.com/pgsty/oink.git oink
+</span></span><span class="line"><span class="cl">git -C oink archive --format<span class="o">=</span>tar.gz --prefix<span class="o">=</span>oink/ <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --output<span class="o">=</span>../oink-v0.8.0.tar.gz v0.8.0
+</span></span><span class="line"><span class="cl">shasum -a <span class="m">256</span> oink-v0.8.0.tar.gz <span class="se">\
+</span></span></span><span class="line"><span class="cl">  &gt; oink-v0.8.0.tar.gz.sha256</span></span></code></pre></div></div>
+</div>
+<p>Carry the archive and its <code>.sha256</code> into the isolated environment, verify, then
+unpack:</p>
+<div class="td-code td-code--untitled" id="td-code-0d1d3a2f-fence-14" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="3">
+  <div class="td-code__viewport" id="td-code-0d1d3a2f-fence-14-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">shasum -a <span class="m">256</span> -c oink-v0.8.0.tar.gz.sha256
+</span></span><span class="line"><span class="cl">mkdir -p themes
+</span></span><span class="line"><span class="cl">tar -xzf oink-v0.8.0.tar.gz -C themes</span></span></code></pre></div></div>
+</div>
+<p>An archive produced this way is your own artifact, not a project release.
+Whether a given tag&rsquo;s release page carries an archive and a checksum file varies
+by release; verify the checksum independently when using a public attachment.</p>
+<p>Before building offline, confirm the archive is complete. All eleven of these
+must be present:</p>
+<div class="td-filetree td-filetree--static" style="--td-filetree-name-col:18.5ch" role="group" aria-labelledby="td-filetree-0d1d3a2ff49558bbbad56f40e0faa985-f15-title"><div class="td-filetree__chrome"><p class="td-filetree__title" id="td-filetree-0d1d3a2ff49558bbbad56f40e0faa985-f15-title" dir="auto">themes/oink/</p></div><div class="td-filetree__body"><ul class="td-filetree__list td-filetree__list--root"><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:0"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="oink/">oink/</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-golang td-filetree__glyph"></i></span><span class="td-filetree__name" title="go.mod">go.mod</span></span><span class="td-filetree__comment" title="module path declaration, used when resolving as a Hugo Module"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">module path declaration, used when resolving as a Hugo Module</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-solid fa-gear td-filetree__glyph"></i></span><span class="td-filetree__name" title="hugo.yaml">hugo.yaml</span></span><span class="td-filetree__comment" title="theme default parameters and the Hugo version floor"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">theme default parameters and the Hugo version floor</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-solid fa-gear td-filetree__glyph"></i></span><span class="td-filetree__name" title="theme.toml">theme.toml</span></span><span class="td-filetree__comment" title="theme metadata, required by the theme: oink method"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">theme metadata, required by the theme: oink method</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-solid fa-scale-balanced td-filetree__glyph"></i></span><span class="td-filetree__name" title="LICENSE">LICENSE</span></span><span class="td-filetree__comment" title="Apache-2.0"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">Apache-2.0</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-solid fa-scale-balanced td-filetree__glyph"></i></span><span class="td-filetree__name" title="NOTICE">NOTICE</span></span><span class="td-filetree__comment" title="upstream attribution; must be kept on redistribution"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">upstream attribution; must be kept on redistribution</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-solid fa-gear td-filetree__glyph"></i></span><span class="td-filetree__name" title="VENDOR.json">VENDOR.json</span></span><span class="td-filetree__comment" title="third-party runtime manifest: version, source, licence path, SHA-256"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">third-party runtime manifest: version, source, licence path, SHA-256</span></span></span></li><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="assets/">assets/</span></span><span class="td-filetree__comment" title="SCSS, JS and the third-party runtimes shipped with the theme"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">SCSS, JS and the third-party runtimes shipped with the theme</span></span></span></li><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="layouts/">layouts/</span></span><span class="td-filetree__comment" title="templates, partials, shortcodes, render hooks"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">templates, partials, shortcodes, render hooks</span></span></span></li><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="static/">static/</span></span><span class="td-filetree__comment" title="font files, published as is"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">font files, published as is</span></span></span></li><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="i18n/">i18n/</span></span><span class="td-filetree__comment" title="32 interface language files"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">32 interface language files</span></span></span></li><li class="td-filetree__item td-filetree__item--dir"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="data/">data/</span></span><span class="td-filetree__comment" title="the SPDX licence table behind the page-end attribution line"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">the SPDX licence table behind the page-end attribution line</span></span></span></li></ul></li></ul></div></div><h3 id="pg-7deb4227edf0ecbc56398a8d686184c1--pinned-clone">Pinned clone
+</h3>
+<p>For a hosting platform that requires the build input to contain the whole theme
+tree:</p>
+<div class="td-code td-code--untitled" id="td-code-0d1d3a2f-fence-16" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="2">
+  <div class="td-code__viewport" id="td-code-0d1d3a2f-fence-16-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/pgsty/oink.git themes/oink
+</span></span><span class="line"><span class="cl">git -C themes/oink checkout v0.8.0</span></span></code></pre></div></div>
+</div>
+<p>The difference from a submodule is that the theme files enter your repository
+history directly, without the <code>.gitmodules</code> indirection. Record the commit that
+was finally resolved and the procedure for restoring it.</p>
+<h3 id="pg-7deb4227edf0ecbc56398a8d686184c1--comparison">The four methods compared
+</h3>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Method</th>
+      <th scope="col">Needs Go</th>
+      <th scope="col">Version auditable</th>
+      <th scope="col">Theme source in your repository</th>
+      <th scope="col">Use when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Hugo Module</strong></td>
+      <td>Yes</td>
+      <td><code>go.sum</code> verifies automatically</td>
+      <td>No</td>
+      <td>The default</td>
+    </tr>
+    <tr>
+      <td>Git submodule</td>
+      <td>No</td>
+      <td>The repository records the commit</td>
+      <td>By reference</td>
+      <td>The theme source has to be in the repository</td>
+    </tr>
+    <tr>
+      <td>Offline archive</td>
+      <td>No</td>
+      <td>Checksums verified by hand</td>
+      <td>Yes</td>
+      <td>Network isolation</td>
+    </tr>
+    <tr>
+      <td>Pinned clone</td>
+      <td>No</td>
+      <td>You record it yourself</td>
+      <td>Yes</td>
+      <td>The platform requires a complete tree</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="td-callout td-callout--tip" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-lightbulb" aria-hidden="true"></i><span class="td-callout__label">A consuming site needs no front-end toolchain</span></div>
+  <div class="td-callout__body">
+<p>Bootstrap, Font Awesome, the fonts, and the search and diagram runtimes all
+ship with the theme. A site needs no <code>node_modules</code>, no PostCSS, no RTLCSS and
+no CDN. Tutorials that install npm dependencies for a Docsy site describe
+upstream Docsy&rsquo;s process and do not apply to OINK.</p>
+  </div>
+</div><h2 id="pg-7deb4227edf0ecbc56398a8d686184c1--local-theme-checkout">Developing against a local theme checkout
+</h2>
+<p>This section applies only when changing the theme and the site together. Clone
+the two repositories as siblings:</p>
+<div class="td-code td-code--titled" id="td-code-0d1d3a2f-fence-17" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="3" role="group" aria-labelledby="td-code-0d1d3a2f-fence-17-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-0d1d3a2f-fence-17-title" title="sibling directory layout">sibling directory layout</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-0d1d3a2f-fence-17-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">~/pgsty/
+</span></span><span class="line"><span class="cl">├── oink/            # the theme
+</span></span><span class="line"><span class="cl">└── product-docs/    # your site</span></span></code></pre></div></div>
+</div>
+<p>Use the <code>HUGO_MODULE_REPLACEMENTS</code> environment variable to substitute the local
+checkout temporarily, leaving <code>go.mod</code> untouched:</p>
+<div class="td-code td-code--untitled" id="td-code-0d1d3a2f-fence-18" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="2">
+  <div class="td-code__viewport" id="td-code-0d1d3a2f-fence-18-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> ~/pgsty/product-docs
+</span></span><span class="line"><span class="cl"><span class="nv">HUGO_MODULE_REPLACEMENTS</span><span class="o">=</span><span class="s1">&#39;github.com/pgsty/oink -&gt; ../oink&#39;</span> hugo server</span></span></code></pre></div></div>
+</div>
+<p>The documentation site&rsquo;s <code>Makefile</code> is an alias for exactly these commands, and
+<code>make dev</code> and <code>make check</code> expect the theme checkout at the sibling <code>../oink</code>:</p>
+<div class="td-code td-code--titled" id="td-code-0d1d3a2f-fence-19" data-td-code data-td-code-auto-id
+     data-td-language="makefile" data-td-line-count="8" role="group" aria-labelledby="td-code-0d1d3a2f-fence-19-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-0d1d3a2f-fence-19-title" title="Makefile: as the documentation site writes it">Makefile: as the documentation site writes it</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-0d1d3a2f-fence-19-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">build</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	hugo --cleanDestinationDir --minify
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">check</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">HUGO_MODULE_REPLACEMENTS</span><span class="o">=</span><span class="s1">&#39;github.com/pgsty/oink -&gt; $(abspath ../oink)&#39;</span> npm <span class="nb">test</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">dev</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">HUGO_MODULE_REPLACEMENTS</span><span class="o">=</span><span class="s1">&#39;github.com/pgsty/oink -&gt; $(abspath ../oink)&#39;</span> hugo server --renderToMemory
+</span></span></code></pre></div></div>
+</div>
+<p>A Go workspace (<code>go work init</code> plus <code>HUGO_MODULE_WORKSPACE=go.work</code>) is an
+equivalent alternative. Both apply to the local machine only: CI and production
+builds use the version in <code>go.mod</code>, and <code>go.work</code> is never committed.</p>
+<h2 id="pg-7deb4227edf0ecbc56398a8d686184c1--verify">Verify
+</h2>
+<div class="td-code td-code--untitled" id="td-code-0d1d3a2f-fence-20" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="2">
+  <div class="td-code__viewport" id="td-code-0d1d3a2f-fence-20-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo mod graph                                       <span class="c1"># which theme version actually resolved</span>
+</span></span><span class="line"><span class="cl">hugo --gc --minify --printPathWarnings --panicOnWarning</span></span></code></pre></div></div>
+</div>
+<p>It passes when the build ends with <code>Total in …</code> and no <code>WARN</code> or <code>ERROR</code>. Then
+confirm:</p>
+<ul>
+<li><code>/docs/</code> opens and the sidebar holds the page you wrote</li>
+<li>The navbar has a search box that finds the heading you just wrote</li>
+<li>The light/dark toggle is present, and code block colours follow it (which shows <code>markup.highlight.noClasses: false</code> took effect)</li>
+<li><code>git status</code> shows <code>go.mod</code> and <code>go.sum</code>, and no <code>public/</code> or <code>resources/</code></li>
+</ul>
+<h2 id="pg-7deb4227edf0ecbc56398a8d686184c1--related">Related
+</h2>
+<ul>
+<li><a href="/docs/start/">Quick start</a> — the other path: clone the documentation site and trim it</li>
+<li><a href="/docs/start/anatomy/">Repository tour</a> — what each directory of the documentation site is</li>
+<li><a href="/docs/customize/config/">Configuration</a> — every <code>hugo.yml</code> key and its default</li>
+<li><a href="/docs/write/pages/">Writing pages</a> — how to keep writing after the first page</li>
+<li><a href="/docs/admin/upgrade/">Upgrade</a> — upgrading the theme module, and migrating from Docsy</li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+
+
+
+      </main>
+    </div>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"Copy Markdown","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["Copy Markdown","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Copy Markdown","url":"/docs/start/index.md"},{"available":true,"description":"Copy link","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["Copy link","Share","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"Copy link","url":"http://localhost:1313/docs/start/"},{"available":true,"description":"Open in ChatGPT","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["Open in ChatGPT","Ask about this page","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in ChatGPT","url":"https://chatgpt.com/?hints=search\u0026prompt=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fstart%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"Open in Claude","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["Open in Claude","Ask about this page","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in Claude","url":"https://claude.ai/new?q=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fstart%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"View markdown","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["View markdown","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View markdown","url":"/docs/start/index.md"},{"available":true,"description":"View edit history","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["View edit history","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View edit history","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/start/_index.md"},{"available":true,"description":"Edit this page","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["Edit this page","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Edit this page","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/start/_index.md"},{"available":true,"description":"Create child page","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["Create child page","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create child page","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/start?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"Create docs issue","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["Create docs issue","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create docs issue","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=Quick+start"},{"available":true,"description":"Create project issue","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["Create project issue","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create project issue","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"Print entire section","disabledReason":"Print entire section: unavailable","icon":"fa-solid fa-print","id":"print_section","keywords":["Print entire section","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Print entire section","url":""},{"available":true,"description":"Print this page","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["Print this page","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"Print this page","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL required","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"Switch language","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["Switch language","language"],"kind":"choice","options":[{"active":true,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/start/"},{"active":false,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/start/"}],"placements":{"page":false,"palette":true},"target":"self","title":"Switch language","url":""},{"available":true,"description":"Toggle color theme","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["Toggle color theme","Light","Dark"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"System","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"Light","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"Dark","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"Toggle color theme","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"Report or review theme and documentation issues","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["bug","support","roadmap"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK issues","url":"https://github.com/pgsty/oink/issues"}],"language":"en","quickLinks":[{"available":true,"description":"OINK is a documentation theme that needs nothing but Hugo Extended — components are written in Markdown, assets ship with the theme, both languages work out of the box, and one source produces four outputs.","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["Docs","docs"],"kind":"url","target":"self","title":"Docs","url":"/docs/"},{"available":true,"description":"OINK engineering stories, immersive guides, and release notes","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["Blog","blog"],"kind":"url","target":"self","title":"Blog","url":"/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+
+<script src="/js/actions.js"></script>
+
+  </body>
+</html>

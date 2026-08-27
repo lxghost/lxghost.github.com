@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Operations on OINK</title>
+    <link>http://localhost:1313/docs/admin/</link>
+    <description>Recent content in Operations on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Thu, 27 Aug 2026 18:47:44 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/docs/admin/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>Local preview</title>
+        <link>http://localhost:1313/docs/admin/preview/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/admin/preview/</guid>
+        <description>&lt;p&gt;Two commands cover the daily work: &lt;code&gt;hugo server&lt;/code&gt; previews changes locally, and&#xA;&lt;code&gt;hugo&lt;/code&gt; produces a &lt;code&gt;public/&lt;/code&gt; deployable to any static host. The prerequisite is&#xA;Hugo Extended (0.160.1 or newer) on the machine, plus Go&#xA;when the theme comes in as a Hugo Module. The build depends on no Node.js, npm&#xA;or PostCSS — those serve only this repository&amp;rsquo;s own regression checks.&lt;/p&gt;&#xA;&lt;h2 id=&#34;hugo-server&#34;&gt;The preview server&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;From the site root (the directory holding &lt;code&gt;hugo.yml&lt;/code&gt;):&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Deploy</title>
+        <link>http://localhost:1313/docs/admin/deploy/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/admin/deploy/</guid>
+        <description>&lt;p&gt;An OINK site&amp;rsquo;s output is a plain static directory, deployable anywhere that&#xA;hosts static files, with no Node runtime, no server-side rendering and no build&#xA;plugin. The host&amp;rsquo;s side is three things: run one command with the right Hugo&#xA;version, publish &lt;code&gt;public/&lt;/code&gt;, and keep &lt;code&gt;baseURL&lt;/code&gt; matching the final address.&lt;/p&gt;&#xA;&lt;p&gt;The prerequisite is a warning-free&#xA;&lt;a href=&#34;http://localhost:1313/docs/admin/preview/#production-build&#34;&gt;production build&lt;/a&gt; locally.&lt;/p&gt;&#xA;&lt;h2 id=&#34;baseurl&#34;&gt;Getting baseURL right&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;baseURL&lt;/code&gt; is the commonest source of failure, and it fails quietly: the page&#xA;opens, but the search index 404s, page action links point at the wrong place,&#xA;and some assets do not load.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Comments</title>
+        <link>http://localhost:1313/docs/admin/comments/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/admin/comments/</guid>
+        <description>&lt;p&gt;OINK&amp;rsquo;s comments run on &lt;a href=&#34;https://giscus.app/&#34;&gt;giscus&lt;/a&gt;: each page maps to one&#xA;GitHub Discussion, readers sign in with a GitHub account to post, and&#xA;maintainers moderate in GitHub Discussions. The theme provides no comment&#xA;backend of its own and bundles no provider other than giscus.&lt;/p&gt;&#xA;&lt;p&gt;The prerequisite is a public GitHub repository; a visitor cannot read a private&#xA;repository&amp;rsquo;s Discussions.&lt;/p&gt;&#xA;&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;This is one of the few features in the theme that makes an outbound request&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;A page with comments enabled loads a script and an iframe from&#xA;&lt;code&gt;https://giscus.app&lt;/code&gt;, which does not work in a network-isolated environment.&#xA;It is off by default and loads only when explicitly enabled. Where a site has&#xA;a privacy policy, this external data boundary belongs in it.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Analytics and SEO</title>
+        <link>http://localhost:1313/docs/admin/analytics/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/admin/analytics/</guid>
+        <description>&lt;p&gt;The theme loads no analytics, form or advertising script by default, and makes&#xA;no outbound request until configured. Connecting one takes explicit&#xA;configuration, and that external data boundary belongs in the site&amp;rsquo;s privacy&#xA;statement. SEO is the opposite: canonical, hreflang, the &lt;code&gt;robots&lt;/code&gt; meta, Open&#xA;Graph and Twitter cards are generated per page by the theme, and what you have&#xA;to get right is &lt;code&gt;baseURL&lt;/code&gt; and each page&amp;rsquo;s &lt;code&gt;description&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;google-analytics&#34;&gt;Connecting Google Analytics&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Use Hugo&amp;rsquo;s built-in service configuration with a GA4 measurement ID:&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Upgrade</title>
+        <link>http://localhost:1313/docs/admin/upgrade/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/admin/upgrade/</guid>
+        <description>&lt;p&gt;Upgrading OINK is changing one pinned module version and confirming the site&#xA;still builds warning-free. Most content needs no change; where it does — 0.4&#xA;shortcodes becoming v5&amp;rsquo;s native Markdown forms — a dry-run-first migration tool&#xA;does it, so hundreds of files need not be edited by hand.&lt;/p&gt;&#xA;&lt;p&gt;An upgrade changes rendered output. Create an upgrade branch before starting,&#xA;and the cost of backing out is discarding a branch.&lt;/p&gt;&#xA;&lt;h2 id=&#34;release-notes&#34;&gt;Read the release notes first&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Every version&amp;rsquo;s changes, breaking changes and upgrade notes are in its release&#xA;notes; read the target version&amp;rsquo;s before upgrading:&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Troubleshooting</title>
+        <link>http://localhost:1313/docs/admin/troubleshooting/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/admin/troubleshooting/</guid>
+        <description>&lt;p&gt;When something goes wrong, run a clean production build first and read from the&#xA;first error; the ones after it are usually cascades:&lt;/p&gt;&#xA;&lt;div class=&#34;td-code td-code--titled&#34; id=&#34;td-code-16e2780a-fence-0&#34; data-td-code data-td-code-auto-id&#xA;     data-td-language=&#34;bash&#34; data-td-line-count=&#34;2&#34; role=&#34;group&#34; aria-labelledby=&#34;td-code-16e2780a-fence-0-title&#34;&gt;&#xA;  &lt;div class=&#34;td-code__header&#34;&gt;&#xA;    &lt;span class=&#34;td-code__filename&#34; id=&#34;td-code-16e2780a-fence-0-title&#34; title=&#34;Terminal&#34;&gt;Terminal&lt;/span&gt;&#xA;  &lt;/div&gt;&#xA;  &lt;div class=&#34;td-code__viewport&#34; id=&#34;td-code-16e2780a-fence-0-viewport&#34; data-td-code-viewport&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rm -rf public resources/_gen&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo --gc --minify --printPathWarnings --panicOnWarning --logLevel info&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;An npm, PostCSS, Autoprefixer or browser-asset download step in the log means&#xA;upstream Docsy&amp;rsquo;s process has crept into the configuration. A consuming OINK&#xA;build is one Hugo command.&lt;/p&gt;&#xA;&lt;p&gt;The four tables below are organized as symptom → cause → fix. Find the symptom&#xA;row; there is no need to read from the top.&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

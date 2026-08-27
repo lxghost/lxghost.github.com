@@ -1,0 +1,60 @@
+# Agent-Friendly Docs — https://afdocs.dev/reference/config-file.html
+
+url: https://oink.pgsty.com # Site to check. CLI flag overrides this
+
+checks:
+  # --- Content Discoverability ---
+  - llms-txt-exists
+  - llms-txt-valid
+  - llms-txt-size
+  - llms-txt-links-resolve
+  - llms-txt-links-markdown
+  - llms-txt-directive-html
+  - llms-txt-directive-md
+
+  # --- Markdown Availability ---
+  - markdown-url-support
+  # content-negotiation: the site is static hosting; no server honors
+  # Accept: text/markdown, so 0.20.x fails this everywhere. .md URLs and the
+  # llms.txt directive remain the supported markdown access paths.
+  # - content-negotiation
+
+  # --- Page Size and Truncation Risk ---
+  - rendering-strategy
+  - page-size-markdown
+  # page-size-html: the sampler crawls the "print entire section" links, and a
+  # print aggregate is a whole section by design. Agents get their bulk path
+  # from llms-full.txt, and page-size-markdown stays the enforced bar.
+  # - page-size-html
+  # - content-start-position
+
+  # --- Content Structure ---
+  - tabbed-content-serialization
+  - section-header-quality
+  - markdown-code-fence-validity
+
+  # --- URL Stability and Redirects ---
+  - http-status-codes
+  - redirect-behavior
+
+  # --- Observability and Content Health ---
+  # - markdown-content-parity
+  # cache-header-hygiene: the offline gate serves from hugo server, whose
+  # headers are not the production CDN's; the check also follows URLs quoted
+  # inside fenced tutorial examples. Production cache policy lives with the
+  # host, not this scorecard.
+  # - cache-header-hygiene
+
+  # --- Authentication and Access ---
+  - auth-gate-detection
+  - auth-alternative-access
+
+options:
+  samplingStrategy: deterministic # random | deterministic | curated | none
+  # maxLinksToTest: 50
+  # maxConcurrency: 3
+  # requestDelay: 200
+  # requestTimeout: 30000
+  # thresholds:
+  #   pass: 50000
+  #   fail: 100000

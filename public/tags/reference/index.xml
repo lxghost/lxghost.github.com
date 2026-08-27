@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reference on OINK</title>
+    <link>http://localhost:1313/tags/reference/</link>
+    <description>Recent content in Reference on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Sat, 22 Aug 2026 16:32:18 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/tags/reference/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>oink.pgsty.com</title>
+        <link>http://localhost:1313/case/oink/</link>
+        <pubDate>Tue, 11 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/oink/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://oink.pgsty.com/&#34;&gt;oink.pgsty.com&lt;/a&gt; is the site you are reading. It is the&#xA;theme&amp;rsquo;s public manual and a real consumer used for regression coverage. Its&#xA;component pages render live examples; the same repository also carries design&#xA;contracts, Book fixtures, download data, and home and landing-page data.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Documentation examples that are executable regression fixtures, not screenshots.&lt;/li&gt;&#xA;&lt;li&gt;One site serving users, content authors, theme developers, and reviewers.&lt;/li&gt;&#xA;&lt;li&gt;Component, Docs, Blog, Book, Case, download, and landing surfaces together.&lt;/li&gt;&#xA;&lt;li&gt;Bilingual content checked against a pinned Hugo Module dependency.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Use this repository as the broad reference implementation; use the narrower&#xA;cases when starting a site that needs only one or two OINK content models.&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

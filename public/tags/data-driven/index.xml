@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Driven on OINK</title>
+    <link>http://localhost:1313/tags/data-driven/</link>
+    <description>Recent content in Data Driven on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Sat, 22 Aug 2026 16:32:18 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/tags/data-driven/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>exp.pgsty.com</title>
+        <link>http://localhost:1313/case/pg-exporter/</link>
+        <pubDate>Fri, 07 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/pg-exporter/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://exp.pgsty.com/&#34;&gt;exp.pgsty.com&lt;/a&gt; documents PG Exporter, a Prometheus&#xA;metrics collector for PostgreSQL. The case snapshot counted 15 pages per&#xA;language and 37 bilingual blog posts. Generated navigation, home-page data, and&#xA;a structured metric catalogue do most of the organizational work.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Using &lt;code&gt;data/docs_nav.json&lt;/code&gt; for a small but deliberately ordered manual.&lt;/li&gt;&#xA;&lt;li&gt;Rendering a domain catalogue from structured data rather than repeated prose.&lt;/li&gt;&#xA;&lt;li&gt;Selecting &lt;code&gt;typography: system&lt;/code&gt; when a site should make no brand-font request.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This pattern suits technical products whose reference data is as important as&#xA;their narrative documentation, especially where a lightweight font stack is&#xA;preferred.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>ext.pgsty.com</title>
+        <link>http://localhost:1313/case/pgext-cloud/</link>
+        <pubDate>Sat, 01 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/pgext-cloud/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://ext.pgsty.com/&#34;&gt;ext.pgsty.com&lt;/a&gt; is the PostgreSQL Extension Catalog:&#xA;search across extensions, package families, dependencies, and the exact&#xA;PostgreSQL and operating-system combinations each one is available for. The&#xA;catalogue indexes 2,241 extensions, 576 of them packaged, across 16 Linux&#xA;platforms and 5 major PostgreSQL versions.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A queryable dataset presented as the primary object of a site, with the&#xA;reading shell kept out of its way.&lt;/li&gt;&#xA;&lt;li&gt;A catalogue and its prose living in one OINK site, the same arrangement&#xA;&lt;a href=&#34;http://localhost:1313/case/pg-exporter/&#34;&gt;PG Exporter&lt;/a&gt; and &lt;a href=&#34;http://localhost:1313/case/pigsty-io/&#34;&gt;pigsty.io&lt;/a&gt; use for&#xA;their own structured data.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;→ &lt;a href=&#34;http://localhost:1313/case/pg-exporter/&#34;&gt;PG Exporter case&lt;/a&gt; · &lt;a href=&#34;http://localhost:1313/case/pigsty-io/&#34;&gt;pigsty.io case&lt;/a&gt; · &lt;a href=&#34;http://localhost:1313/case/&#34;&gt;All OINK cases&lt;/a&gt;&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

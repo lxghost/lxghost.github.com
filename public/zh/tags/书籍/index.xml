@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>书籍 on OINK</title>
+    <link>http://localhost:1313/zh/tags/%E4%B9%A6%E7%B1%8D/</link>
+    <description>Recent content in 书籍 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Sat, 22 Aug 2026 16:32:18 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/tags/%E4%B9%A6%E7%B1%8D/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>ddia.vonng.com</title>
+        <link>http://localhost:1313/zh/case/ddia/</link>
+        <pubDate>Thu, 06 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/ddia/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://ddia.vonng.com/&#34;&gt;ddia.vonng.com&lt;/a&gt; 以多语言书籍形式发布《设计数据密集型&#xA;应用》。本案例快照包含简体与繁体中文各二十四章、第二版英文二十三章，以及&#xA;第一版的两套二十一章内容。&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;它展示了什么&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;带章节级导航的完整 &lt;code&gt;type: book&lt;/code&gt; 阅读外壳。&lt;/li&gt;&#xA;&lt;li&gt;一百三十多处图、表、公式与示例编号目标。&lt;/li&gt;&#xA;&lt;li&gt;跨多个版本保持稳定的交叉引用和生成式书籍索引。&lt;/li&gt;&#xA;&lt;li&gt;在同一出版物中承载多种书面语言变体。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;如果长篇内容更看重编号、引用与章节间移动，而不是文档式侧栏，可以采用&#xA;这一模式。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>tpme.vonng.com</title>
+        <link>http://localhost:1313/zh/case/tpme/</link>
+        <pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/tpme/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://tpme.vonng.com/&#34;&gt;tpme.vonng.com&lt;/a&gt; 以中英文发布 &lt;em&gt;The Product-Minded&#xA;Engineer&lt;/em&gt;，本案例快照中每种语言各十八章。它把支持的页面外壳收窄为 &lt;code&gt;[book]&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;它展示了什么&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;只有一种内容模型、完全不需要文档外壳的出版物。&lt;/li&gt;&#xA;&lt;li&gt;共享视觉与导航体系的双语章节对等页。&lt;/li&gt;&#xA;&lt;li&gt;比多版本 DDIA 站更精简的 Book 实现。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;对于单本教程或译著，这是更清晰的起点：先把站点架构保持精简，再按手稿需要&#xA;逐步加入编号与索引。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>pgint.vonng.com</title>
+        <link>http://localhost:1313/zh/case/pg-internal/</link>
+        <pubDate>Tue, 04 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/pg-internal/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pgint.vonng.com/&#34;&gt;pgint.vonng.com&lt;/a&gt; 发布《PG 技术内幕》——Hironobu&#xA;Suzuki《The Internals of PostgreSQL》的 2018 年中文译稿。站点包含两篇序言、&#xA;十一个章节、自动生成的目录，以及一页许可与授权说明，全部为简体中文，没有&#xA;英文对等版本。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

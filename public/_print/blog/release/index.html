@@ -1,0 +1,3073 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" dir="ltr" lang="en-US" data-td-typography="technical" data-td-theme-init>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#000000">
+
+<style>
+  html { background: Canvas; color: CanvasText; }
+  @media (prefers-color-scheme: dark) {
+    html { background: #0b0d12; color: #e6e6e6; }
+  }
+  html[data-td-theme-init] * { transition: none !important; }
+  [data-td-theme-toggle] > .td-shell-icon--sun { display: none !important; }
+  [data-td-theme-toggle] > [hidden] { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--moon { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--sun { display: inline-block !important; }
+</style>
+
+<script>
+  (function() {
+    const themeKey = 'td-color-theme';
+    let storedTheme = null;
+    try {
+      storedTheme = localStorage.getItem(themeKey);
+    } catch (_) {
+      
+      
+    }
+    let theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+    if (theme === 'auto') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    document.documentElement.classList.toggle('dark-mode', theme === 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<link rel="canonical" type="text/html" href="http://localhost:1313/blog/release/">
+<link rel="alternate" type="application/rss&#43;xml" href="http://localhost:1313/blog/release/index.xml">
+<link rel="alternate" type="text/markdown" href="http://localhost:1313/blog/release/index.md">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<title>Oink Release Notes | OINK</title>
+<meta name="description" content="Versioned OINK release notes, upgrade guidance, and compatibility notices">
+<link rel="canonical" href="http://localhost:1313/blog/release/">
+<link rel="alternate" hreflang="en-US" href="http://localhost:1313/blog/release/">
+<link rel="alternate" hreflang="zh-CN" href="http://localhost:1313/zh/blog/release/">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:url" content="http://localhost:1313/blog/release/">
+  <meta property="og:site_name" content="OINK">
+  <meta property="og:title" content="Oink Release Notes">
+  <meta property="og:description" content="Versioned OINK release notes, upgrade guidance, and compatibility notices">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+    <meta property="og:image" content="http://localhost:1313/images/releasenote.webp">
+
+  <meta itemprop="name" content="Oink Release Notes">
+  <meta itemprop="description" content="Versioned OINK release notes, upgrade guidance, and compatibility notices">
+  <meta itemprop="dateModified" content="2026-08-20T19:29:45+08:00">
+  <meta itemprop="image" content="http://localhost:1313/images/releasenote.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/images/releasenote.webp">
+  <meta name="twitter:title" content="Oink Release Notes">
+  <meta name="twitter:description" content="Versioned OINK release notes, upgrade guidance, and compatibility notices">
+<link href="/scss/fontawesome.css" rel="stylesheet">
+<link href="/scss/main.css" rel="stylesheet">
+
+  </head>
+  <body class="td-section td-blog td-print-view">
+    <a class="td-skip-link d-print-none" href="#td-main-content">Skip to content</a>
+
+    
+<header class="td-site-header d-print-none" data-td-header>
+  <div class="td-site-container">
+    <nav class="td-site-nav" aria-label="Main navigation">
+      <a href="/" class="td-nav-brand" data-td-navbar-route
+         aria-label="OINK — Home">
+        <img src="/icons/logo.svg" alt="" class="td-nav-logo" width="22" height="22">
+        <span class="td-nav-title">OINK</span>
+      </a><div class="td-nav-links td-nav-menu-zone"><div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link" href="/docs/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Docs"
+  data-td-navbar-region="desktop" data-td-navbar-label="Docs"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-docs-0" aria-expanded="false">
+  <i class="fa-solid fa-book" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Docs</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-docs-0" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/docs/about/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Introduction"
+  data-td-navbar-region="desktop" data-td-navbar-label="Introduction"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Introduction</span></a>
+<a class="td-nav-menu__item-link" href="/docs/start/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Get started"
+  data-td-navbar-region="desktop" data-td-navbar-label="Get started"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Get started</span></a>
+<a class="td-nav-menu__item-link" href="/docs/write/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Authoring"
+  data-td-navbar-region="desktop" data-td-navbar-label="Authoring"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Authoring</span></a>
+<a class="td-nav-menu__item-link" href="/docs/components/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Components"
+  data-td-navbar-region="desktop" data-td-navbar-label="Components"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-cubes" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Components</span></a>
+<a class="td-nav-menu__item-link" href="/docs/customize/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Customization"
+  data-td-navbar-region="desktop" data-td-navbar-label="Customization"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Customization</span></a>
+<a class="td-nav-menu__item-link" href="/docs/admin/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Operations"
+  data-td-navbar-region="desktop" data-td-navbar-label="Operations"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Operations</span></a>
+<a class="td-nav-menu__item-link" href="/docs/design/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Design"
+  data-td-navbar-region="desktop" data-td-navbar-label="Design"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-compass-drafting" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Design</span></a>
+
+  </div>
+</div><a class="nav-link" href="/book/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Book"
+  data-td-navbar-region="desktop" data-td-navbar-label="Book"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Book</span></a>
+<a class="nav-link" href="/case/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Case"
+  data-td-navbar-region="desktop" data-td-navbar-label="Case"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Case</span></a>
+<div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link active" href="/blog/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Blog"
+  data-td-navbar-region="desktop" data-td-navbar-label="Blog"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-blog-3" aria-expanded="false">
+  <i class="fa-solid fa-blog" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Blog</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-blog-3" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/blog/oink/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="OINK engineering"
+  data-td-navbar-region="desktop" data-td-navbar-label="OINK engineering"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">OINK engineering</span></a>
+<a class="td-nav-menu__item-link active" href="/blog/release/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Releases"
+  data-td-navbar-region="desktop" data-td-navbar-label="Releases"
+  data-td-navbar-external="false" aria-current="page">
+  <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Releases</span></a>
+
+  </div>
+</div>
+      </div><div class="td-nav-links td-nav-util-zone">
+        <div class="td-nav-hover-menu td-nav-version-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-nav-hover-open
+            title="v0.8.0" aria-label="v0.8.0" aria-expanded="false"><i class="td-shell-icon td-shell-icon--code-branch fa-solid fa-code-branch" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="v0.8.0">
+            <span class="td-nav-hover-menu__option td-is-disabled"><strong>Versions</strong></span>
+            <a class="td-nav-hover-menu__option td-is-active" aria-current="page" href="https://oink.pgsty.com">v0.8.0</a>
+          </div>
+        </div>
+          <div class="td-language-selector td-language-selector--menu td-nav-util td-site-nav__language">
+  <a class="td-language-selector__trigger" href="/zh/blog/release/"
+    lang="zh-CN" hreflang="zh-CN" dir="ltr"
+    title="Switch language: 简体中文"
+    aria-label="Switch language: 简体中文" aria-haspopup="true" aria-expanded="false">
+    <i class="fa-solid fa-language" aria-hidden="true"></i>
+    <span>简体中文</span>
+  </a>
+  <ul aria-label="Choose language">
+    <li>
+      <span class="td-language-selector__item active" lang="en-US" dir="ltr" aria-current="page">English</span>
+    </li>
+    <li>
+      <a class="td-language-selector__item" href="/zh/blog/release/" lang="zh-CN" hreflang="zh-CN" dir="ltr">简体中文</a>
+    </li>
+  </ul>
+</div><div class="td-nav-hover-menu td-nav-theme-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-theme-toggle
+            title="Toggle color theme" aria-label="Toggle color theme" aria-expanded="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="Toggle color theme">
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="light" aria-pressed="false"><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i><span>Light</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="dark" aria-pressed="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><span>Dark</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="auto" aria-pressed="false"><i class="td-shell-icon td-shell-icon--contrast fa-solid fa-circle-half-stroke" aria-hidden="true"></i><span>System</span>
+            </button>
+          </div>
+        </div>
+        <a href="https://github.com/pgsty/oink" class="td-nav-github" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="td-shell-icon td-shell-icon--github fa-brands fa-github" aria-hidden="true"></i></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+    <div class="container-fluid td-print-shell">
+      <main id="td-main-content" class="td-print-document" tabindex="-1">
+        
+
+
+
+
+<div class="td-content">
+<div class="td-page-notice td-page-notice--primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<button type="button" class="btn btn-link p-0 align-baseline" data-td-action="print">Click here to print</button>.
+</p><p>
+<a href="/blog/release/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Oink Release Notes</h1>
+<div class="lead">Versioned OINK release notes, upgrade guidance, and compatibility notices</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+  
+  
+
+  
+    
+    
+    <li>
+1: <a href="#pg-fba79020b8bbaa6084febd6b84a49b63">Oink 0.8.0 — A whole section in one fetch, the sidebar as data, and who links here</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+2: <a href="#pg-cfaf8c28f2bec01174313ca2fed6b63a">Oink 0.7.1 — Nothing leaves the page, and bad input stops breaking builds</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+3: <a href="#pg-a5991600349fdbf15277386f9aa88160">Oink 0.7.0 — A theme color, one typographic voice, and diagrams you can read</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+4: <a href="#pg-1dbbb4436784b57eee623af5208679db">Oink 0.6.0 — Immersive blogs, safer builds, smaller internals</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+5: <a href="#pg-ec346e98abe204d3b74410578bd1e35b">Oink 0.5.0 — Component API v5 and the converged configuration</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+6: <a href="#pg-abba69b27732ada82586c23f7bfd54f7">Oink 0.4.0 — Scenario components for complete publishing workflows</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+7: <a href="#pg-49c4519ebd827071434c0464071f16b3">Oink 0.3.0 — Authoring, navigation, and a lighter page</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+8: <a href="#pg-1062de651c30d6b692f975d461739449">Oink 0.2.0 — Richer content and sharper presentation</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+9: <a href="#pg-a2cdca5ef170b7c6d4a552f20071d08e">Oink 0.1.0 — A stable local-first foundation</a>
+
+
+    </li>
+  
+
+    </ul>
+<div class="content">
+      
+</div>
+</div>
+
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-fba79020b8bbaa6084febd6b84a49b63">1 - Oink 0.8.0 — A whole section in one fetch, the sidebar as data, and who links here</h1>
+    <div class="lead">Oink 0.8.0 adds two opt-in output formats for readers that arrive as programs — a full-text bundle holding an entire section in one file, and a navigation tree published as JSON — plus static backlinks, which list the pages that link to a page in its right rail. All three stay off until you ask.</div>
+	<p>Oink 0.8.0 changes no component API and needs no content edits. Two of its
+three additions serve the reader that arrives as a program. Every page already
+publishes a <code>.md</code> twin, which serves an agent that knows the page it wants; an
+agent that wants the manual still had to crawl it a page at a time, discovering
+links as it went. Two new output formats answer the other half: give me the
+whole section, and tell me what is in the site before I fetch anything. The
+third addition is for the reader who is a person — a page&rsquo;s right rail can now
+list the pages that link to it.</p>
+<div class="td-release-card-static">
+  <p><strong>v0.8.0</strong> · <time datetime="2026-08-27">2026-08-27</time></p>
+  <ul>
+    <li><a href="https://github.com/pgsty/oink/releases/tag/v0.8.0">View release</a></li>
+    <li><a href="https://github.com/pgsty/oink/archive/refs/tags/v0.8.0.tar.gz">Source · tar.gz</a></li>
+    <li><a href="https://github.com/pgsty/oink/archive/refs/tags/v0.8.0.zip">Source · zip</a></li>
+    <li><a href="https://github.com/pgsty/oink">pgsty/oink</a></li>
+  </ul>
+</div>
+<h2 id="pg-fba79020b8bbaa6084febd6b84a49b63--at-a-glance">At a glance
+</h2>
+<ul>
+<li><code>LLMSFULL</code> publishes <code>llms-full.txt</code> per top-level section: every page of
+the section, in sidebar reading order, in one file.</li>
+<li><code>NAVJSON</code> publishes <code>navigation.json</code> per language: the sidebar tree as
+data, versioned by a JSON Schema.</li>
+<li><code>params.ui.backlinks</code> lists the pages that link to a page in its right rail,
+derived at build time from the links already in your Markdown.</li>
+<li>All three are opt-in and none is ever turned on for you. A site that asks for
+none of them builds byte-for-byte what it built before.</li>
+<li><code>llms.txt</code> lists whichever ones you enabled, so discovery stays in the file
+an agent already fetches.</li>
+<li>A <code>data/docs_nav.json</code> node without a <code>children</code> key no longer crashes the
+build.</li>
+</ul>
+<h2 id="pg-fba79020b8bbaa6084febd6b84a49b63--full-text-bundle">The full-text bundle
+</h2>
+<p><code>LLMSFULL</code> collapses a whole section into one file: <code>llms-full.txt</code> at the
+section root, holding every page of that section concatenated in the order the
+sidebar and pager present them, each page introduced by a separator carrying
+its source URL. For an agent, <code>/docs/llms-full.txt</code> is one fetch where the
+alternative was one fetch per page plus a link graph to follow — and the
+result is ordered, so the section reads as a manual rather than as a bag of
+pages.</p>
+<p>A section asks for it in its own front matter; the theme never adds it to a
+site&rsquo;s output set:</p>
+<div class="td-code td-code--titled" id="td-code-aa0d9f14-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="4" role="group" aria-labelledby="td-code-aa0d9f14-fence-0-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-aa0d9f14-fence-0-title" title="content/docs/_index.md">content/docs/_index.md</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-aa0d9f14-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">Docs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">outputs</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">HTML, print, RSS, markdown, LLMSFULL]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">---</span></span></span></code></pre></div></div>
+</div>
+<p>Front matter <code>outputs</code> replaces the site-level list wholesale, so write back
+the formats the section already had. It is per language, so <code>_index.zh.md</code>
+repeats the line to get the Chinese bundle.</p>
+<p>What a page contributes is the <strong>same</strong> semantic Markdown its own <code>.md</code>
+carries — not a second rendering of it. The per-page Markdown body moved into
+a shared partial that both outputs call, so a bundle entry is byte-identical
+to that page&rsquo;s <code>.md</code> and the two cannot drift apart. Order comes from the same
+authority the sidebar reads: the explicit <code>data/docs_nav.json</code> tree where a
+<code>docs</code> or <code>book</code> section declares one, the weighted content tree otherwise.
+Pages held out of the sidebar stay out of the bundle.</p>
+<p>A bundle belongs to a top-level section, and there is no whole-site variant:
+an agent that wants everything reads one bundle per section. Listing
+<code>LLMSFULL</code> further down the tree warns and emits nothing, so <code>hugo server</code>
+keeps working while a publishing build with <code>--panicOnWarning</code> stops there.</p>
+<p>This site&rsquo;s docs section has it enabled:
+<a href="https://oink.pgsty.com/docs/llms-full.txt">https://oink.pgsty.com/docs/llms-full.txt</a> is the entire documentation in one
+fetch. Details, including the file&rsquo;s exact shape:
+<a href="/docs/customize/agents/#full-text-bundle">Full-text bundle</a>.</p>
+<h2 id="pg-fba79020b8bbaa6084febd6b84a49b63--navigation-json">Navigation JSON
+</h2>
+<p>The sidebar is the site&rsquo;s table of contents, and an agent that can read it
+plans a route before spending a single fetch on content. <code>NAVJSON</code> publishes
+it as data — <code>navigation.json</code>, one file per language at the language root.
+The site turns it on for the home page:</p>
+<div class="td-code td-code--titled" id="td-code-aa0d9f14-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="2" role="group" aria-labelledby="td-code-aa0d9f14-fence-1-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-aa0d9f14-fence-1-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-aa0d9f14-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">outputs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">home</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">HTML, LLMS, NAVJSON]</span></span></span></code></pre></div></div>
+</div>
+<p>The tree is not a second description of the site&rsquo;s structure. It serializes
+the same authority the sidebar and the pager already read, through the same
+partial: the explicit <code>data/docs_nav.json</code> tree where one is declared, the
+weighted content tree everywhere else. A check asserts that the docs subtree
+flattens to exactly the page sequence the full-text bundle emits — two
+template paths, one authority.</p>
+<p>Each node carries an <code>id</code> (the path with the language prefix removed, so the
+same page has the same <code>id</code> in every language), the absolute <code>url</code>, the
+<code>markdown</code> URL where the page publishes one, <code>title</code>, <code>description</code>, a <code>kind</code>,
+and its ordered <code>children</code>. Two properties are worth reading as promises
+rather than as implementation details:</p>
+<ul>
+<li><strong>Array order is the contract.</strong> The ordering has already been applied, and
+<code>weight</code> is never serialized — a consumer re-sorting the array would
+disagree with the sidebar the array came from.</li>
+<li><strong>The format is versioned.</strong> <code>schemaVersion</code> is <code>1</code>, and the contract ships
+in the theme repository as
+<a href="https://github.com/pgsty/oink/blob/main/schema/nav.v1.schema.json"><code>schema/nav.v1.schema.json</code></a>.
+Validate against it if you consume the file.</li>
+</ul>
+<p>This site&rsquo;s <a href="https://oink.pgsty.com/navigation.json">https://oink.pgsty.com/navigation.json</a> is a live instance.
+Details, including the placeholder rows and the full key table:
+<a href="/docs/customize/agents/#navigation-json">Navigation JSON</a>.</p>
+<h2 id="pg-fba79020b8bbaa6084febd6b84a49b63--backlinks">Who links here
+</h2>
+<p>A reader who lands on a page from search can see where it points and nothing
+about where it sits. Backlinks close that half: the pages that link to this one
+appear as a &ldquo;Backlinks&rdquo; group in the right rail below the table of contents,
+expanded by default; more than eight entries fold behind a disclosure. One key
+turns it on:</p>
+<div class="td-code td-code--titled" id="td-code-aa0d9f14-fence-2" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="3" role="group" aria-labelledby="td-code-aa0d9f14-fence-2-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-aa0d9f14-fence-2-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-aa0d9f14-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ui</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">backlinks</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span></span></span></code></pre></div></div>
+</div>
+<p>A page overrides it with the front matter key <code>backlinks</code>, and a section
+cascades it to everything below.</p>
+<p>The index is derived at build time from what you already wrote: ordinary
+Markdown links and <code>ref</code> / <code>relref</code> in the page source. There is no
+<code>[[wikilink]]</code> syntax to adopt, nothing to migrate, and no JavaScript — the
+links are in the HTML, they are in the page&rsquo;s Markdown output, and they are
+there for a reader with scripts off. Code fences and inline code are stripped
+before scanning; repeated links to one target merge into one entry; self links,
+external links and same-page anchors never count; each language has its own
+graph. Order is the stable page path, so the same content always builds the
+same list, and when nothing links in there is no block at all.</p>
+<p>One honest limit: reading the source misses a URL buried in a custom
+shortcode&rsquo;s parameters or in a raw <code>&lt;a href&gt;</code>, and a destination that will not
+resolve is dropped quietly. This is navigation, not link checking — a link
+checker is still the tool for finding broken links.</p>
+<p>This site enables it site-wide: look at the right rail of any docs page, and
+the most-referenced page — <a href="/docs/customize/config/">Configuration</a> — lists
+more than forty inbound links. Details:
+<a href="/docs/customize/navigation/#backlinks">Backlinks</a>.</p>
+<h2 id="pg-fba79020b8bbaa6084febd6b84a49b63--discovery">Discovery stays in <code>llms.txt</code>
+</h2>
+<p>Neither file is an alternate representation of a page, so neither appears in
+<code>&lt;head&gt;</code> or gains a page action. Instead <code>llms.txt</code> — the file an agent
+fetches first anyway — grows a <code>## Full-text bundles</code> list of this language&rsquo;s
+bundles, and lists this language&rsquo;s <code>navigation.json</code> in its site index. Both
+entries appear only where the site actually publishes the file: the theme
+never points at something it did not emit.</p>
+<h2 id="pg-fba79020b8bbaa6084febd6b84a49b63--docs-nav-leaf">A childless nav node no longer crashes the build
+</h2>
+<p>A node in <code>data/docs_nav.json</code> with no <code>children</code> key ended the build with a
+reflection error from inside the sidebar walker. The walker assumed every node
+had the key, which holds for generated JSON and does not hold for JSON someone
+writes by hand — where a leaf is naturally written as a node without children.
+Authored data now degrades instead of erroring: the childless node renders as
+the leaf it is.</p>
+<h2 id="pg-fba79020b8bbaa6084febd6b84a49b63--upgrading">Upgrading
+</h2>
+<div class="td-code td-code--untitled" id="td-code-aa0d9f14-fence-3" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="2">
+  <div class="td-code__viewport" id="td-code-aa0d9f14-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo mod get github.com/pgsty/oink@v0.8.0
+</span></span><span class="line"><span class="cl">hugo mod tidy</span></span></code></pre></div></div>
+</div>
+<p>Nothing changes until you ask for it. No component API changed and no content
+edits are required — the two formats are declared in <code>outputs</code>, backlinks are
+one boolean under <code>params.ui</code>, and a site that asks for none of the three
+publishes what it published under 0.7.1. The two output formats, and the shape
+of what they produce, are on
+<a href="/docs/customize/agents/">AI-agent support</a>; the backlink switch is on
+<a href="/docs/customize/navigation/#backlinks">Navigation and menus</a>.</p>
+<p>The complete list is in <a href="https://github.com/pgsty/oink/blob/main/CHANGELOG.md">CHANGELOG.md</a>.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-cfaf8c28f2bec01174313ca2fed6b63a">2 - Oink 0.7.1 — Nothing leaves the page, and bad input stops breaking builds</h1>
+    <div class="lead">Oink 0.7.1 is a security and validation patch. Swagger UI stops sending your spec URL to a third party, misconfigured values warn instead of killing an ordinary build, and the OpenAPI and terminal components finally behave in print, Markdown and RSS the way every other component already did.</div>
+	<p>Oink 0.7.1 changes no component API and needs no content edits. It closes the
+code findings from an external review of the 0.7.0 line: one real privacy leak,
+a class of configuration values that could stop a build outright, and three
+components that had never been taught what a non-HTML output is.</p>
+<div class="td-release-card-static">
+  <p><strong>v0.7.1</strong> · <time datetime="2026-08-26">2026-08-26</time></p>
+  <ul>
+    <li><a href="https://github.com/pgsty/oink/releases/tag/v0.7.1">View release</a></li>
+    <li><a href="https://github.com/pgsty/oink/archive/refs/tags/v0.7.1.tar.gz">Source · tar.gz</a></li>
+    <li><a href="https://github.com/pgsty/oink/archive/refs/tags/v0.7.1.zip">Source · zip</a></li>
+    <li><a href="https://github.com/pgsty/oink">pgsty/oink</a></li>
+  </ul>
+</div>
+<h2 id="pg-cfaf8c28f2bec01174313ca2fed6b63a--at-a-glance">At a glance
+</h2>
+<ul>
+<li>Swagger UI no longer contacts the online validator. A published API page made
+a third-party request on every view; it no longer makes any.</li>
+<li>A URL written into site configuration now passes the same safety check as one
+written by an author.</li>
+<li>A mistyped number or boolean in <code>params</code> warns and falls back instead of
+ending an ordinary <code>hugo server</code> session.</li>
+<li><code>swagger</code>, <code>redoc</code> and <code>asciinema</code> emit a plain link in print, Markdown and
+RSS, and load their runtime only in interactive HTML.</li>
+</ul>
+<h2 id="pg-cfaf8c28f2bec01174313ca2fed6b63a--swagger-validator">Swagger stopped phoning home
+</h2>
+<p>Swagger UI ships with an online validator enabled by default, pointed at
+<code>validator.swagger.io</code>. It skips that request for <code>localhost</code>, which is why no
+local preview and no browser test ever showed it — and why every <em>deployed</em>
+API page was quietly handing your spec URL to a third party. On an intranet
+that URL is an internal hostname.</p>
+<p>The initializer now pins <code>validatorUrl: null</code>, and it moved out of an inline
+<code>&lt;script&gt;</code> into a cacheable <code>js/chunks/swagger-init.js</code>. A normal build still
+downloads nothing, and now a normal <em>view</em> uploads nothing.</p>
+<h2 id="pg-cfaf8c28f2bec01174313ca2fed6b63a--url-policy">Configured URLs go through the same gate as authored ones
+</h2>
+<p>Two settings reached an <code>href</code> unchecked: the custom links in
+<code>params.ui.page_context_menu.links</code> and the archived-site banner&rsquo;s
+<code>params.url_latest_version</code>. A <code>javascript:</code> URL in either one rendered as a
+working, clickable script.</p>
+<p>Both now run through the theme&rsquo;s shared URL policy: an unsupported scheme
+warns and the link is dropped rather than repaired. The archived-version
+banner additionally escapes its URL where it is written into the page, because
+clearing the scheme is not the same as being safe inside an HTML attribute.</p>
+<p>Custom links also skip entries with a missing or non-text name, and the
+separator above them only appears when a link actually survives.</p>
+<h2 id="pg-cfaf8c28f2bec01174313ca2fed6b63a--validation">Bad configuration warns; it no longer kills the preview
+</h2>
+<p>The theme&rsquo;s rule has always been that invalid author or config input warns,
+falls back to a documented default, and keeps <code>hugo server</code> usable — with
+<code>--panicOnWarning</code> turning that warning into a failure where you publish.
+A group of numeric and boolean keys had never been wired into it.</p>
+<p>Before 0.7.1, a value like <code>blog_index_size: nope</code> ended the build with a Go
+template error. Others were worse for being quiet: <code>sidebar_width_min: -50</code>
+emitted a negative pixel width without a word, and <code>blog_index_columns: 2.5</code>
+fed a fraction into a CSS grid.</p>
+<p>Every numeric and boolean key now resolves through the shared validator:</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Input</th>
+      <th scope="col">Before</th>
+      <th scope="col">Now</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>blog_index_size: nope</code></td>
+      <td>build fails</td>
+      <td>warns, uses <code>12</code></td>
+    </tr>
+    <tr>
+      <td><code>blog_index_size: 0</code></td>
+      <td>silently becomes <code>12</code></td>
+      <td>warns, uses <code>12</code></td>
+    </tr>
+    <tr>
+      <td><code>sidebar_width_min: -50</code></td>
+      <td>emits <code>-50px</code></td>
+      <td>warns, uses <code>220</code></td>
+    </tr>
+    <tr>
+      <td><code>sidebar_width_min: 300</code> with <code>max: 200</code></td>
+      <td>inverted layout</td>
+      <td>warns, uses <code>220</code>/<code>480</code></td>
+    </tr>
+    <tr>
+      <td><code>blog_index_columns: 2.5</code></td>
+      <td>fraction into CSS</td>
+      <td>warns, uses <code>3</code></td>
+    </tr>
+    <tr>
+      <td><code>sidebar_item_overflow: clip</code></td>
+      <td>silently <code>ellipsis</code></td>
+      <td>warns, uses <code>ellipsis</code></td>
+    </tr>
+    <tr>
+      <td><code>print.toc: nope</code></td>
+      <td>silently <code>true</code></td>
+      <td>warns, uses <code>true</code></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>The same treatment reaches the Landing sections: the hero&rsquo;s <code>media.ratio</code> and
+<code>media.max_width</code>, the capabilities board&rsquo;s <code>columns</code> and <code>rules</code>, and a
+marquee&rsquo;s <code>rows</code>. The hero&rsquo;s two style inputs were the notable ones — they were
+written straight into a <code>style</code> attribute, so a page&rsquo;s own front matter could
+put arbitrary CSS on the page. <code>ratio</code> now takes exactly two track sizes
+(<code>'1fr 240px'</code>), <code>max_width</code> a plain CSS length.</p>
+<p>If you have been running with a value the theme silently corrected, you will
+see a new warning. That is the point — build once with <code>--panicOnWarning</code> after
+upgrading to find them.</p>
+<h2 id="pg-cfaf8c28f2bec01174313ca2fed6b63a--outputs">OpenAPI and terminal recordings respect the other outputs
+</h2>
+<p>Every Oink component renders once and then adapts to the output it lands in:
+interactive HTML, static print, plain Markdown for agents, and RSS. Sixteen
+components already did this. <code>swagger</code>, <code>redoc</code> and <code>asciinema</code> did not — they
+rendered their interactive markup into all four.</p>
+<p>The result was a Markdown output carrying <code>&lt;div class=&quot;td-asciinema&quot;&gt;</code> and a
+JSON config block, a printed page holding an empty container where a player
+should be, and a single-page print that actually downloaded the player runtime
+to show one frozen frame.</p>
+<p>All three now read the output format:</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Output</th>
+      <th scope="col">What you get</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HTML</td>
+      <td>the full interactive component</td>
+    </tr>
+    <tr>
+      <td>Print</td>
+      <td>a labelled static link showing the URL</td>
+    </tr>
+    <tr>
+      <td>Markdown / LLMS</td>
+      <td>a plain Markdown link, nothing else</td>
+    </tr>
+    <tr>
+      <td>RSS</td>
+      <td>the same plain link</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Only interactive HTML registers the runtime, so print and machine outputs load
+no player, no Swagger bundle and no ReDoc bundle. A cast or spec URL now also
+goes through the shared URL policy, and a mistyped <code>speed</code>, <code>cols</code>, <code>rows</code> or
+marker time warns and is ignored instead of ending the build.</p>
+<h2 id="pg-cfaf8c28f2bec01174313ca2fed6b63a--smaller-repairs">Smaller repairs
+</h2>
+<ul>
+<li>The capabilities board&rsquo;s rule bars render at their authored widths. The
+template had always emitted them; the stylesheet never read them.</li>
+<li>The generated configuration schemas match what Hugo actually parses. Trailing
+comments in <code>hugo.yaml</code> were leaking into eleven default values — <code>print.toc</code>
+shipped as the <em>string</em> <code>&quot;true # section print views…&quot;</code> — and four comment
+blocks documented the wrong key. Keys that exist only to warn about a rename
+no longer appear in editor completion.</li>
+<li>A <code>hero</code> whose <code>media</code> is not a map warns and drops the media instead of
+ending the build.</li>
+</ul>
+<h2 id="pg-cfaf8c28f2bec01174313ca2fed6b63a--upgrading">Upgrading
+</h2>
+<div class="td-code td-code--untitled" id="td-code-2c09d44c-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="2">
+  <div class="td-code__viewport" id="td-code-2c09d44c-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo mod get github.com/pgsty/oink@v0.7.1
+</span></span><span class="line"><span class="cl">hugo mod tidy</span></span></code></pre></div></div>
+</div>
+<p>No content, configuration or template changes are required. One thing to do
+after upgrading: run a build with <code>--panicOnWarning</code> once. Configuration that
+used to be corrected silently now says so, and that build is where you will
+see it.</p>
+<p>The complete list is in <a href="https://github.com/pgsty/oink/blob/main/CHANGELOG.md">CHANGELOG.md</a>.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-a5991600349fdbf15277386f9aa88160">3 - Oink 0.7.0 — A theme color, one typographic voice, and diagrams you can read</h1>
+    <div class="lead">Oink 0.7.0 gives a section its own accent through the shell&rsquo;s grounds, hands the site control of all seven typography roles, and turns a Mermaid fence into a figure that is centred, redrawn in place on a colour-scheme change, and openable at its own size.</div>
+	<p>Oink 0.7.0 changes no component API. It works on the two surfaces a reader
+actually spends time in — the shell around the page and the type on it — and
+finishes a fence that had never been designed, only inherited.</p>
+<div class="td-release-card-static">
+  <p><strong>v0.7.0</strong> · <time datetime="2026-08-25">2026-08-25</time></p>
+  <ul>
+    <li><a href="https://github.com/pgsty/oink/releases/tag/v0.7.0">View release</a></li>
+    <li><a href="https://github.com/pgsty/oink/archive/refs/tags/v0.7.0.tar.gz">Source · tar.gz</a></li>
+    <li><a href="https://github.com/pgsty/oink/archive/refs/tags/v0.7.0.zip">Source · zip</a></li>
+    <li><a href="https://github.com/pgsty/oink">pgsty/oink</a></li>
+  </ul>
+</div>
+<h2 id="pg-a5991600349fdbf15277386f9aa88160--at-a-glance">At a glance
+</h2>
+<ul>
+<li><code>params.ui.theme_color</code> gives a section its own accent, applied to the
+shell&rsquo;s <em>grounds</em> rather than to the prose.</li>
+<li><code>params.ui.fonts</code> reaches all seven typography roles; a Book no longer
+carries a face of its own.</li>
+<li>A <code>mermaid</code> fence is a figure: centred, unframed, redrawn in place when the
+colour scheme changes, and openable at full size in a pan/zoom dialog.</li>
+<li>Inline code is crimson ink on a hairline wash instead of a grey pill.</li>
+<li>First-party browser behaviour publishes as stable capability chunks under
+<code>js/chunks/</code>, so a page selects scripts instead of minting its own bundle.</li>
+<li>Configuration schemas are generated from the resolvers, not maintained by
+hand.</li>
+</ul>
+<h2 id="pg-a5991600349fdbf15277386f9aa88160--theme-color">A theme color
+</h2>
+<p><code>params.ui.theme_color</code> takes a <code>#rgb</code> or <code>#rrggbb</code> hex and tints the shell&rsquo;s
+accent grounds: the selected sidebar row and the ground its neighbours take
+under the pointer, hover washes, the outline pill with its travelling rail and
+dot, tag and chip hovers, a card&rsquo;s hovered edge, a share button&rsquo;s hover fill,
+text selection, and focus rings.</p>
+<div class="td-code td-code--titled" id="td-code-f55180d8-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="3" role="group" aria-labelledby="td-code-f55180d8-fence-0-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-f55180d8-fence-0-title" title="hugo.yaml">hugo.yaml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-f55180d8-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ui</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">theme_color</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;#2f6f4f&#34;</span></span></span></code></pre></div></div>
+</div>
+<p>A section can set its own, and a page opts out of an inherited one with
+<code>theme_color: false</code>. What it deliberately leaves alone is the reading
+surface — prose links, external URLs and inline code keep the brand palette in
+every section — so a colored section is a quiet signal of place rather than a
+recolor of the page.</p>
+<h2 id="pg-a5991600349fdbf15277386f9aa88160--typography">One typographic voice
+</h2>
+<p><code>params.ui.fonts</code> reaches the theme&rsquo;s seven typography roles from
+configuration, so a site can change its voice without shipping a stylesheet.</p>
+<p>A Book no longer carries typography of its own. Its numbers and captions used
+to render in a bundled monospace with a Latin subset only, which split a
+Chinese caption across two faces mid-sentence — the digits in one face and the
+characters in whatever fallback the reader happened to have. They now inherit
+the surrounding face, with <code>tabular-nums</code> holding the sidebar column aligned.</p>
+<h2 id="pg-a5991600349fdbf15277386f9aa88160--mermaid">Diagrams you can actually read
+</h2>
+<p>A <code>mermaid</code> fence used to be five lines of passthrough: it handed Mermaid the
+<code>&lt;pre&gt;</code> of a code block and let <code>startOnLoad</code> decide the rest. Three defects
+followed from that one decision, and all three needed the same fix — keeping
+the source readable after Mermaid has run.</p>
+<p>The fence now emits a figure holding an empty stage and its source as JSON,
+the shape <code>echarts</code> and <code>infographic</code> already use, and a runtime owns when
+each diagram is drawn.</p>
+<p><strong>Centred, and unframed.</strong> Mermaid emits <code>width=&quot;100%&quot;</code> with a <code>max-width</code> at
+the diagram&rsquo;s own size, so anything narrower than the column sat against the
+start edge with up to 300px of empty <em>bordered</em> box beside it — the border
+being the code block&rsquo;s. There is deliberately no alignment attribute: a
+diagram is a figure, and no reader wanted one flush right.</p>
+<p><strong>Openable at its own size.</strong> Mermaid does not overflow a narrow column, it
+<em>shrinks</em> to fit one, so <code>overflow-x</code> never offered a way back: on a 390px
+phone the sequence diagram on this site&rsquo;s own Mermaid page rendered at 35% of
+its natural width, turning 14px labels into five. Hovering a diagram — or
+reaching it with the keyboard — now reveals a control in its corner that
+renders the diagram a second time into a dialog at full size. Drag to pan,
+zoom with the wheel, a two-finger pinch or <code>+</code>/<code>-</code>, reset with <code>0</code>, close with
+<code>Esc</code>. A diagram that would have to shrink past half size to fit opens at 1:1
+at its starting corner instead of as a thumbnail, and zooming back out always
+reaches the whole diagram however large it is.</p>
+<p><strong>No more page reload on a colour-scheme change.</strong> The old runtime reloaded
+the whole page on every theme change on any page holding a diagram, citing a
+Mermaid limitation from the 8.x era. Mermaid 11 re-initializes cleanly, so the
+diagrams are redrawn in place, and each stage holds its height across the swap
+so nothing moves under the reader.</p>
+<p>A diagram inside a tab that is not the open one now renders at its proper
+size. Inside <code>display: none</code> every text measurement returns zero, and Mermaid
+wrote the resulting <code>max-width: 16px</code> into the SVG for good; revealing the tab
+never recovered it.</p>
+<p>Markdown, RSS and Print carry the fence source. Print had been carrying a
+<code>&lt;pre class=&quot;mermaid&quot;&gt;</code> that no runtime ever reached, at <code>font-size: 0</code>, so a
+printed diagram was a blank gap.</p>
+<h2 id="pg-a5991600349fdbf15277386f9aa88160--reading-surface">The reading surface
+</h2>
+<p>Inline code is crimson ink on a hairline wash rather than a grey pill. The old
+tint made every token a lozenge; the much fainter wash now marks token
+boundaries while the monospace face, weight and hue do the identifying, which
+keeps a token-dense paragraph readable instead of turning it into a field of
+grey controls.</p>
+<p>The series strip is a panel the width of the bar rather than a stack of links,
+taxonomy chips are quiet at rest and light up under the pointer, the navbar&rsquo;s
+dropdown panels breathe in and out instead of popping, and link hover leaves
+the muted navy for a vivid azure.</p>
+<h2 id="pg-a5991600349fdbf15277386f9aa88160--build">Build and infrastructure
+</h2>
+<ul>
+<li>First-party browser behaviour publishes as stable capability chunks under
+<code>js/chunks/</code>. A page selects script tags by capability instead of minting a
+bundle of its own, so the chunks cache across pages.</li>
+<li><code>bin/generate-config-schema.py</code> projects the schemas from the resolvers, and
+CI fails when a new <code>params</code> key lands without one.</li>
+<li>An opt-in <code>BookManifest</code> output records the Book sequence with stable ids.</li>
+<li>One media-result contract sits behind every resolved image.</li>
+<li>Google Analytics is limited to interactive HTML output; Print and machine
+outputs no longer carry it.</li>
+<li>The Book publication job renders its PDF. It never had: <code>chrome-headless-shell</code>
+needs unprivileged user namespaces, which Ubuntu 24.04 restricts through
+AppArmor, and the job had failed on every run it ever had.</li>
+</ul>
+<h2 id="pg-a5991600349fdbf15277386f9aa88160--upgrading">Upgrading
+</h2>
+<div class="td-code td-code--untitled" id="td-code-f55180d8-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="2">
+  <div class="td-code__viewport" id="td-code-f55180d8-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo mod get github.com/pgsty/oink@v0.7.0
+</span></span><span class="line"><span class="cl">hugo mod tidy</span></span></code></pre></div></div>
+</div>
+<p>Nothing in the component API changed, so no content edits are required. Two
+things are worth knowing:</p>
+<ul>
+<li>A <code>mermaid</code> fence no longer renders <code>&lt;pre class=&quot;mermaid&quot;&gt;</code>. Site CSS
+targeting that selector matches nothing now; the diagram is a
+<code>figure.td-diagram</code> holding <code>.td-diagram__stage</code>.</li>
+<li>If a site pins the theme version in a check of its own, that assertion moves
+with the pin.</li>
+</ul>
+<p>The complete list is in <a href="https://github.com/pgsty/oink/blob/main/CHANGELOG.md">CHANGELOG.md</a>.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-1dbbb4436784b57eee623af5208679db">4 - Oink 0.6.0 — Immersive blogs, safer builds, smaller internals</h1>
+    <div class="lead">Oink 0.6.0 adds an immersive presentation to the existing Blog shell, completes Blog publishing with images, authors, series, three index forms and sharing, and replaces build-stopping template errors with safe warnings.</div>
+	<p>Oink 0.6.0 keeps the component API established in 0.5 and improves the systems
+around it: long-form reading, Blog discovery, attribution, release publishing,
+build resilience, and maintainability.</p>
+<p>There is no new <code>article</code> type or second shell. Immersive reading is a
+configuration of the existing Blog shell, so articles remain in the same lists,
+feeds, taxonomies, series, and pager sequence.</p>
+<div class="td-release-card-static">
+  <p><strong>v0.6.0</strong> · <time datetime="2026-08-20">2026-08-20</time></p>
+  <ul>
+    <li><a href="https://github.com/pgsty/oink/releases/tag/v0.6.0">View release</a></li>
+    <li><a href="https://github.com/pgsty/oink/archive/refs/tags/v0.6.0.tar.gz">Source · tar.gz</a></li>
+    <li><a href="https://github.com/pgsty/oink/archive/refs/tags/v0.6.0.zip">Source · zip</a></li>
+    <li><a href="https://github.com/pgsty/oink">pgsty/oink</a></li>
+  </ul>
+</div>
+<h2 id="pg-1dbbb4436784b57eee623af5208679db--at-a-glance">At a glance
+</h2>
+<ul>
+<li>The Blog shell gains a full-bleed <code>hero</code> image and an in-flow outline rail.</li>
+<li>Blog publishing gains profiles and bylines, series order, list/cards/table
+indexes, and a local-first share bar.</li>
+<li>Vendored and translated pages gain optional, validated attribution.</li>
+<li>The theme no longer calls <code>errorf</code>: ordinary previews warn and safely
+degrade; publishing builds remain strict through <code>--panicOnWarning</code>.</li>
+<li>Release metadata is now one <code>release_url</code>, not a duplicated fact map.</li>
+<li>Repeated template work, page bundles, and checker builds have been reduced
+without pruning Font Awesome or other public authoring assets.</li>
+</ul>
+<h2 id="pg-1dbbb4436784b57eee623af5208679db--article-shell">Immersive Blog presentation
+</h2>
+<p>An immersive page uses four independent front matter keys:</p>
+<div class="td-code td-code--untitled" id="td-code-a86c4aaa-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-a86c4aaa-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">featured_image</span><span class="p">:</span><span class="w"> </span><span class="l">hero</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">toc_style</span><span class="p">:</span><span class="w"> </span><span class="l">flow</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">toc_taxonomies</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">sidebar_enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span></span></span></code></pre></div></div>
+</div>
+<p>Put the same keys in a section cascade to apply them to its posts. Hugo
+resolves cascade values on the section index that declares them as well as on
+its descendants, so a section that should share the presentation writes the
+keys once.</p>
+<p><code>hero</code> paints the resolved featured image behind the opening and masks it out
+before the article text. The ordinary navbar remains available and uses a
+fading scrim over the artwork. <code>toc_style: flow</code> gives the outline a wider
+in-flow rail that begins with the article and becomes sticky on scroll.
+<code>toc_taxonomies: false</code> removes term clouds from that rail.
+The Blog shell omits breadcrumbs by default; <code>breadcrumb: true</code> restores one
+for a page or cascade that wants it.</p>
+<p>Each switch is independent. A missing image produces the normal opening; an
+empty TOC and disabled clouds produce no empty rail. Nothing changes the page&rsquo;s
+Blog membership or output formats.</p>
+<h2 id="pg-1dbbb4436784b57eee623af5208679db--blog">The Blog, completed
+</h2>
+<h3 id="pg-1dbbb4436784b57eee623af5208679db--featured-image">Featured images
+</h3>
+<p><code>params.ui.featured_image</code> and the page key <code>featured_image</code> support:</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Mode</th>
+      <th scope="col">Presentation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>none</code></td>
+      <td>No article image; the default</td>
+    </tr>
+    <tr>
+      <td><code>banner</code></td>
+      <td>A framed 16:9 image above the title</td>
+    </tr>
+    <tr>
+      <td><code>wash</code></td>
+      <td>A low-opacity image behind the article header</td>
+    </tr>
+    <tr>
+      <td><code>hero</code></td>
+      <td>A full-bleed Blog backdrop</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>All modes reuse the representative-image resolver also used by list thumbnails
+and social metadata. Missing images are valid, and non-HTML outputs keep their
+static source-shaped forms.</p>
+<h3 id="pg-1dbbb4436784b57eee623af5208679db--authors">Authors
+</h3>
+<p>Declare <code>taxonomies: {author: authors}</code>. The author term page is the profile:
+its title is the name, its description and body are the biography, and its
+representative image is the portrait. Posts list authors with
+<code>authors: [vonng, oink]</code>; the order is preserved. The legacy <code>author:</code>
+string remains the fallback when the taxonomy is not used.</p>
+<h3 id="pg-1dbbb4436784b57eee623af5208679db--series">Series
+</h3>
+<p>Declare <code>taxonomies: {series: series}</code>. Posts name one or more terms with
+<code>series</code> and may set <code>series_weight</code>. Weighted members come first in
+ascending order; unweighted members follow by ascending date. The article and
+term page share that resolver, so the position strip and archive cannot drift.</p>
+<h3 id="pg-1dbbb4436784b57eee623af5208679db--blog-index">Three index forms
+</h3>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Key</th>
+      <th scope="col">Default</th>
+      <th scope="col">Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>ui.blog_index</code></td>
+      <td><code>list</code></td>
+      <td><code>list</code>, <code>cards</code>, or <code>table</code></td>
+    </tr>
+    <tr>
+      <td><code>ui.blog_index_columns</code></td>
+      <td><code>3</code></td>
+      <td>Card columns</td>
+    </tr>
+    <tr>
+      <td><code>ui.blog_index_size</code></td>
+      <td><code>12</code></td>
+      <td>Posts per list/cards page</td>
+    </tr>
+    <tr>
+      <td><code>ui.blog_index_toggle</code></td>
+      <td><code>false</code></td>
+      <td>Reader-side cycle among all three forms</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>List and cards share year grouping and pagination. A standalone table is a
+complete unpaginated archive. With the reader toggle enabled, all three forms
+share the current paginator slice; the full archive is not repeated on every
+generated page. The configured form controls first paint, and a local
+preference may override it.</p>
+<h3 id="pg-1dbbb4436784b57eee623af5208679db--share">Sharing
+</h3>
+<p><code>params.ui.share</code> is an ordered list drawn from <code>x</code>, <code>bluesky</code>,
+<code>mastodon</code>, <code>facebook</code>, <code>linkedin</code>, <code>reddit</code>, <code>hackernews</code>,
+<code>telegram</code>, <code>whatsapp</code>, <code>line</code>, <code>pinterest</code>, <code>weibo</code>, <code>chatgpt</code>,
+<code>claude</code>, <code>email</code>, and <code>copy</code>. Empty is the default; <code>share: false</code>
+opts out one page.</p>
+<p>The bar uses plain intent links and the local copy action. It loads no platform
+SDK, iframe, counter, or third-party stylesheet.</p>
+<h2 id="pg-1dbbb4436784b57eee623af5208679db--annotation">Page annotation
+</h2>
+<p><code>upstream_link</code> is the per-page source URL. Its companion facts are
+<code>upstream_name</code>, <code>upstream_copyright</code>, <code>upstream_license</code>,
+<code>upstream_notice</code>, <code>upstream_ref</code>, and <code>upstream_modified</code>. Constants may
+come from site parameters, a <code>data/upstreams</code> entry, or front matter.</p>
+<p>Incomplete facts, unknown licences, unsafe URLs, and invalid types warn and
+omit the whole attribution line. Strict builds reject the warning.
+<code>upstream_link: &quot;&quot;</code> explicitly opts a page out of an inherited attribution.</p>
+<p><code>params.ui.translation_notice</code> optionally names the authoritative language.
+It is never imposed as page front matter; a page may opt out with
+<code>translation_notice: false</code>.</p>
+<h2 id="pg-1dbbb4436784b57eee623af5208679db--warn-not-stop">Warnings instead of preview outages
+</h2>
+<p>The theme contains no <code>errorf</code> calls. Simple scalar values share
+<code>validate.html</code>; components retain the checks that understand their own
+records and markup.</p>
+<p>Invalid input follows one rule:</p>
+<ol>
+<li>warn with the bad value and the safe fallback or omission;</li>
+<li>do not emit unsafe or misleading output;</li>
+<li>let an ordinary <code>hugo server</code> continue;</li>
+<li>let <code>--panicOnWarning</code> stop CI and publication.</li>
+</ol>
+<p>This preserves strict gates without letting one typo take every preview URL
+down.</p>
+<h2 id="pg-1dbbb4436784b57eee623af5208679db--outline">Outline rail
+</h2>
+<p>The outline exposes a visible range and a current cursor on one SVG path. The
+cursor carries <code>aria-current=&quot;location&quot;</code>; reduced-motion and unsupported
+registered-property engines fall back without detaching the cursor from the
+line.</p>
+<h2 id="pg-1dbbb4436784b57eee623af5208679db--fixed">Fixed and simplified
+</h2>
+<ul>
+<li>Mounted content no longer publishes build-machine paths in Edit, History, or
+Create Child URLs.</li>
+<li>Generic <code>data-*</code> and <code>aria-*</code> values use one HTML-escaping emitter.</li>
+<li>Incomplete Algolia credentials emit no container, CSS, or JavaScript.</li>
+<li>Draw.io loads only on pages with PNG/SVG candidates and inspects each distinct
+URL once.</li>
+<li>Page actions, pager state, language targets, and section-index children reuse
+page- or site-scoped results instead of repeating full-site work.</li>
+<li>Language-neutral feature bundles are shared across translations.</li>
+<li>Field anchors are derived from field names and remain unique within a page.</li>
+<li>Print aggregates namespace headings and footnotes without changing regular
+page IDs.</li>
+<li>The maintained invalid-input checker batches equivalent cases: the content
+primitive stage now starts Hugo six times instead of 160 while preserving
+every warning and fallback assertion.</li>
+<li>Obsolete CSS, i18n keys, rejected Article-shell artifacts, duplicate checker
+blocks, and narrative code comments have been removed. The complete supported
+Font Awesome distribution remains intact.</li>
+</ul>
+<h2 id="pg-1dbbb4436784b57eee623af5208679db--configuration">Configuration
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Key</th>
+      <th scope="col">Default</th>
+      <th scope="col">Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>ui.featured_image</code></td>
+      <td><code>none</code></td>
+      <td><code>none</code> / <code>banner</code> / <code>wash</code> / <code>hero</code></td>
+    </tr>
+    <tr>
+      <td><code>ui.toc_style</code></td>
+      <td><code>fixed</code></td>
+      <td><code>fixed</code> / <code>flow</code></td>
+    </tr>
+    <tr>
+      <td><code>ui.toc_taxonomies</code></td>
+      <td><code>true</code></td>
+      <td>Show taxonomy clouds in the right rail</td>
+    </tr>
+    <tr>
+      <td><code>ui.blog_index</code></td>
+      <td><code>list</code></td>
+      <td><code>list</code> / <code>cards</code> / <code>table</code></td>
+    </tr>
+    <tr>
+      <td><code>ui.blog_index_columns</code></td>
+      <td><code>3</code></td>
+      <td>Card columns</td>
+    </tr>
+    <tr>
+      <td><code>ui.blog_index_size</code></td>
+      <td><code>12</code></td>
+      <td>List/cards page size</td>
+    </tr>
+    <tr>
+      <td><code>ui.blog_index_toggle</code></td>
+      <td><code>false</code></td>
+      <td>Reader-side three-form cycle</td>
+    </tr>
+    <tr>
+      <td><code>ui.share</code></td>
+      <td><code>[]</code></td>
+      <td>Ordered share targets</td>
+    </tr>
+    <tr>
+      <td><code>ui.translation_notice</code></td>
+      <td><code>false</code></td>
+      <td>Optional authoritative language</td>
+    </tr>
+    <tr>
+      <td><code>time_format_blog</code></td>
+      <td><code>2006-01-02</code></td>
+      <td>Changed default</td>
+    </tr>
+    <tr>
+      <td><code>time_format_default</code></td>
+      <td><code>2006-01-02</code></td>
+      <td>Changed default</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>The default shell and pager type lists remain <code>docs</code>, <code>book</code>, <code>blog</code>, and
+<code>swagger</code> where applicable. No <code>article</code> type is added.</p>
+<h2 id="pg-1dbbb4436784b57eee623af5208679db--migration">Migration
+</h2>
+<p>From 0.5:</p>
+<ol>
+<li>Keep explicit prose date formats if ISO dates are not desired.</li>
+<li>Ensure publishing commands use <code>--panicOnWarning</code>.</li>
+<li>Replace the old <code>release</code> map with
+<code>release_url: https://github.com/&lt;owner&gt;/&lt;repo&gt;/releases/tag/&lt;tag&gt;</code>.</li>
+<li>Replace <code>upstream_attribution</code> with <code>upstream_link</code>, and
+<code>downstream_modified</code> with <code>upstream_modified</code>.</li>
+<li>Do not migrate content to <code>type: article</code>; use the Blog presentation keys
+shown above.</li>
+</ol>
+<p>The migration tool operates on content Markdown and supported YAML front matter.
+Configuration-file mappings remain an explicit maintainer task. From 0.4, keep
+the established sequence: <code>report</code>, <code>migrate --write</code>, then <code>check</code>.</p>
+<h2 id="pg-1dbbb4436784b57eee623af5208679db--verification">Verification
+</h2>
+<p>The 0.6.0 release is verified with:</p>
+<ul>
+<li>Hugo Extended 0.160.1 and 0.164.0;</li>
+<li>40 HTML/print/Markdown/RSS/LLMS golden surfaces;</li>
+<li>85 migration tests and 38 browser-runtime tests;</li>
+<li>strict example, Hugo Module, system-font, legacy-font, and invalid-config
+builds;</li>
+<li>the bilingual project-site build and its non-browser regression suite;</li>
+<li>representative large-site performance measurement and real EN/ZH browser
+checks.</li>
+</ul>
+<p>Local validation, a commit, a tag, a push, a consumer pin, and deployment remain
+separate release states.</p>
+<h2 id="pg-1dbbb4436784b57eee623af5208679db--full-change-set">Full change set
+</h2>
+<p><a href="https://github.com/pgsty/oink/compare/v0.5.0...v0.6.0">v0.5.0 to v0.6.0</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-ec346e98abe204d3b74410578bd1e35b">5 - Oink 0.5.0 — Component API v5 and the converged configuration</h1>
+    <div class="lead">Oink 0.5.0 replaces most shortcodes with native Markdown forms, converges every configuration and front matter key on three rules, removes the 0.x compatibility layer, and ships the migration toolkit that rewrites a 0.4 site. Every old key, shape, and shortcode fails the build with its replacement instead of being silently ignored.</div>
+	<p>Oink 0.5.0 is the API-freeze release. It contains the change set that the 1.0
+line will freeze: the component API v5 (native Markdown forms first, 29
+shortcodes as full forms), configuration and front matter keys converged on
+three rules, one naming namespace for everything the theme emits, the removal
+of the 0.x compatibility layer and of the Docsy leftovers no site used, and a
+migration toolkit that rewrites a 0.4 site. Every retired key, shape, or
+shortcode fails the build with a message that names its replacement.</p>
+<p>This is a breaking release for every 0.4 site. Read <a href="#pg-ec346e98abe204d3b74410578bd1e35b--at-a-glance">At a glance</a>
+first, then the <a href="#pg-ec346e98abe204d3b74410578bd1e35b--migration">migration guide</a>; the reference sections in
+between list every change with its old and new form.</p>
+<div class="td-release-card-static">
+  <p><strong>v0.5.0</strong> · <time datetime="2026-08-18">2026-08-18</time></p>
+  <ul>
+    <li><a href="https://github.com/pgsty/oink/releases/tag/v0.5.0">View release</a></li>
+    <li><a href="https://github.com/pgsty/oink/archive/refs/tags/v0.5.0.tar.gz">Source · tar.gz</a></li>
+    <li><a href="https://github.com/pgsty/oink/archive/refs/tags/v0.5.0.zip">Source · zip</a></li>
+    <li><a href="https://github.com/pgsty/oink">pgsty/oink</a></li>
+  </ul>
+</div>
+<h2 id="pg-ec346e98abe204d3b74410578bd1e35b--at-a-glance">At a glance
+</h2>
+<ul>
+<li><strong>Content</strong>: most components are written as Markdown — <code>&gt; [!TYPE]</code> callouts,
+<code>{.steps}</code> and <code>{.cards}</code> lists, <code>{.fields}</code> / <code>{.matrix}</code> / <code>{caption=}</code> /
+<code>{#id num=}</code> / <code>{tab=}</code> tables, <code>```filetree</code> / <code>```gallery</code> /
+<code>```echarts</code> / <code>```infographic</code> / <code>```checksums</code> data
+fences, adjacent code fences as tabs, and the Markdown image with an
+attribute line. Of the 53 shortcodes in 0.4.2, 32 are gone or renamed and 8
+are new; 29 remain as full forms. <code>scripts/migrations/oink06.py</code> rewrites
+content.</li>
+<li><strong>Configuration</strong>: three rules — a switch is the bare feature name, single-key
+maps are flattened, a front matter key is the site key without <code>ui.</code>. Some
+forty keys are renamed or reshaped; every old one fails the build with its
+replacement. Every theme default is declared in the theme&rsquo;s <code>hugo.yaml</code>.</li>
+<li><strong>Front matter</strong>: no <code>ui:</code> block any more; page overrides are bare keys
+(<code>section_index: cards</code>), <code>page_context_menu</code> mirrors the site map,
+<code>manualLink*</code> are <code>manual_link*</code>, <code>hide_*</code>/<code>exclude_search</code> are gone.</li>
+<li><strong>Namespace</strong>: theme classes are <code>td-*</code>, data attributes <code>data-td-*</code>, custom
+properties <code>--td-*</code>, JS globals <code>Oink*</code>; the <code>oink-*</code> set and Docsy leftovers
+(<code>leaf</code>, <code>has-child</code>, <code>nav-*</code>, …) are gone. Callout labels are <code>callout_*</code>
+i18n keys.</li>
+<li><strong>Removed</strong>: the <code>home/**</code> adapter partials, <code>outputformat.html</code>,
+<code>td/render-heading.html</code>, the Docsy community page and <code>params.links</code>, the
+<code>td/code-dark</code> / <code>td/color-adjustments-dark</code> / <code>td/gcs-search-dark</code> /
+<code>td/extra</code> Sass files, <code>.td-box*</code> and <code>-bg-*</code> palette classes, Prism, Open
+Sans, <code>click-to-copy.js</code>, <code>swaggerui</code> (now <code>swagger</code>).</li>
+<li><strong>Behaviour</strong>: headings carry a self-link, print content is rendered once per
+build (a real race fixed), three cacheable JS bundles, print pages load 8 KB
+of JS instead of 100 KB, shell motion honours reduced motion by construction,
+giscus palettes ship with the theme and load only where comments render.</li>
+<li><strong>Migration</strong>: <code>oink06.py report → migrate --write → check</code> for content and
+front matter, then a build whose errors are the configuration checklist.</li>
+<li><strong>Release hardening</strong>: a two-round adversarial review repaired the client-side
+namespace migration, action-registry load order, fail-closed migration input,
+multi-instance OpenAPI embeds, shared attribute and image-URL policies, and
+consuming-site configuration preflight before the API freeze.</li>
+</ul>
+<h2 id="pg-ec346e98abe204d3b74410578bd1e35b--components">Component API v5
+</h2>
+<h3 id="pg-ec346e98abe204d3b74410578bd1e35b--native-forms">Native forms first
+</h3>
+<p>The v5 principle: a component that a Markdown block can express is written as
+Markdown; a shortcode exists only for what a block cannot carry. Render hooks
+recognise the native forms, and one attribute policy governs every hook.</p>
+<div class="td-fields">
+<p class="td-fields__label" id="td-fields-7149f6b4b3a24d153d976b4cc591dc4e-1-label">Components: native form and full form</p>
+<dl class="td-fields__list" aria-labelledby="td-fields-7149f6b4b3a24d153d976b4cc591dc4e-1-label">
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">Callout</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>native</code></span></span>
+</dt>
+<dd class="td-field__description"><p><code>&gt; [!NOTE] Title</code> blockquote; <code>[!TYPE]-</code> folded / <code>[!TYPE]+</code> open; optional <code>{icon=&quot;fa-solid fa-x&quot;}</code>; types <code>note tip important warning caution success danger question example quote details</code>. No shortcode.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">Tabs</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>native + shortcode</code></span></span>
+</dt>
+<dd class="td-field__description"><p>Native: adjacent fences (or tables) with <code>{tab= group= value=}</code>.</p>
+<p>Shortcode: <code>tabs group= default= label=</code> <code>tab label= value=</code> … <code>/tab</code> <code>/tabs</code>.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">Steps</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>native + shortcode</code></span></span>
+</dt>
+<dd class="td-field__description"><p>Native: <code>1.</code> list + <code>{.steps}</code>.</p>
+<p>Shortcode: <code>steps</code> with headings — the only shortcode written with the <code>%</code> delimiters (its body is page-level Markdown); headings inside steps enter the TOC.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">Cards</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>native + shortcode</code></span></span>
+</dt>
+<dd class="td-field__description"><p>Native: link list + <code>{.cards}</code>.</p>
+<p>Shortcode: <code>cards</code> <code>card title= link= icon= badge= image= image_alt=|decorative=</code> body <code>/card</code> <code>/cards</code>.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">Fields</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>native + shortcode</code></span></span>
+</dt>
+<dd class="td-field__description"><p>Native: table + <code>{.fields [caption=] [id=] [meta=&quot;type required default -&quot;]}</code> — first column name, last column description, middle columns metadata chips.</p>
+<p>Shortcode: <code>fields label= id= class=</code> <code>field name= type= required= default=</code> body <code>/field</code> <code>/fields</code> — for block-level descriptions (this list is one). Both forms render the same chips; every entry gets a <code>#field-&lt;name&gt;</code> anchor.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">FileTree</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>native</code></span></span>
+</dt>
+<dd class="td-field__description"><p><code>```filetree {title=}</code> fence, one <code>- name[/]  # comment {icon= tone= open= type=}</code> line per entry; 2/4-space, tab, or <code>tree</code> indentation. CSS + native <code>&lt;details&gt;</code>; the comment column is aligned at build time. No shortcode.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">Gallery</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>native</code></span></span>
+</dt>
+<dd class="td-field__description"><p><code>```gallery</code> fence, one <code>![alt](src) # description {link= class=}</code> line per image; alt is required, items are Zoom-eligible. No shortcode.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">Image</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>native</code></span></span>
+</dt>
+<dd class="td-field__description"><p><code>![alt](src &quot;title&quot;)</code> plus an attribute line <code>{#id num= caption= width= height= link= command= options=}</code> for figures, numbering, links, and Hugo image processing. <code>imgproc</code> is retired; there is no image shortcode.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">Table family</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>native</code></span></span>
+</dt>
+<dd class="td-field__description"><p><code>{.full-width}</code> <code>{.fields}</code> <code>{.matrix}</code> <code>{caption=}</code> <code>{#id}</code> <code>{#id num= caption=}</code> <code>{tab= group= value=}</code>; site classes pass through. Exclusivity: fields ⟂ matrix / full-width / num; num ⟂ tab.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">Fig / Tbl / Eq / Eg</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>native + shortcode</code></span></span>
+</dt>
+<dd class="td-field__description"><p>Native: image / table / <code>$$</code> block / fence + <code>{#id num= caption=}</code> (default ids <code>fig-</code>, <code>tbl-</code>, <code>eq-</code>, <code>eg-&lt;num&gt;</code>).</p>
+<p>Shortcode: <code>fig</code> <code>tbl</code> <code>eq</code> <code>eg</code> (<code>eg</code> caption required).</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">Xref</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>native + shortcode</code></span></span>
+</dt>
+<dd class="td-field__description"><p>Native: plain Markdown links (kind-less).</p>
+<p>Shortcode: <code>xref fig|tbl|eq|eg=&quot;…&quot; [page=] [anchor=]</code>.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">Book indexes</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>shortcode</code></span></span>
+</dt>
+<dd class="td-field__description"><p><code>book-toc</code> <code>book-figures</code> <code>book-tables</code> <code>book-equations</code> <code>book-examples</code> — no <code>kind=</code> parameter.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">Code fences</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>native</code></span></span>
+</dt>
+<dd class="td-field__description"><p>Fence attributes <code>{title copy wrap collapse label id tab group value num caption lineNos hl_lines lineNoStart anchorLineNos tabWidth}</code>; Chroma only.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">Data fences</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>native</code></span></span>
+</dt>
+<dd class="td-field__description"><p><code>mermaid plantuml markmap math chem echarts infographic checksums filetree gallery</code>; <code>echarts</code> is declarative, <code>$fn:&lt;name&gt;</code> callbacks come from <code>window.OinkEchartsFunctions</code>.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">Leaves</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>shortcode</code></span></span>
+</dt>
+<dd class="td-field__description"><p><code>kbd</code> <code>badge</code> <code>param</code> <code>include</code> <code>comment</code> <code>contributors</code> <code>asciinema</code> (raw <code>&lt;kbd&gt;</code> also works); <code>badge</code> has no <code>outline</code>, <code>param</code> is scalar only.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">Release / OpenAPI</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>shortcode</code></span></span>
+</dt>
+<dd class="td-field__description"><p><code>release-card</code> <code>release-assets</code> <code>download</code> / <code>swagger</code> <code>redoc</code>; the <code>checksums</code> fence is the native release form.</p>
+</dd>
+</div>
+</dl>
+</div>
+
+<p>The 29 shortcodes: core 14 (<code>tabs tab steps cards card fields field include kbd badge param comment contributors asciinema</code>), Book 10 (<code>fig tbl eq eg xref book-toc book-figures book-tables book-equations book-examples</code>), Release 3,
+OpenAPI 2. Nested names (<code>tab</code>, <code>card</code>, <code>field</code>) are valid only inside their
+parent; every shortcode validates its parameters, and an unknown parameter
+fails the build (<code>asciinema</code>, <code>redoc</code>, <code>swagger</code>, <code>param</code>, <code>comment</code>, and
+<code>steps</code> accepted anything silently in 0.4).</p>
+<h3 id="pg-ec346e98abe204d3b74410578bd1e35b--removed-shortcodes">Removed shortcodes and their replacements
+</h3>
+<p>The chip on each entry is the toolkit key (<code>scripts/migrations/oink06.py migrate --only &lt;key&gt;</code>); <code>manual</code> means the report lists it and a human edits.</p>
+<div class="td-fields">
+<p class="td-fields__label" id="td-fields-7149f6b4b3a24d153d976b4cc591dc4e-2-label">Removed shortcodes and their replacements</p>
+<dl class="td-fields__list" aria-labelledby="td-fields-7149f6b4b3a24d153d976b4cc591dc4e-2-label">
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">alert · details · td-page-notice</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>callout</code></span></span>
+</dt>
+<dd class="td-field__description"><p>0.4: <code>alert color=… title=…</code>, <code>details</code>, <code>td-page-notice</code> (all <code>%</code> shortcodes), raw <code>&lt;details&gt;&lt;summary&gt;</code>.</p>
+<p>0.5.0: <code>&gt; [!TYPE] title</code> callouts, <code>&gt; [!DETAILS]-</code> for a folded block.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">tabpane · tab · code-group · code-tab</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>tabs</code></span></span>
+</dt>
+<dd class="td-field__description"><p>0.4: <code>tabpane</code> with <code>tab header=…</code> (both <code>%</code> shortcodes), <code>code-group</code> with <code>code-tab</code>.</p>
+<p>0.5.0: adjacent fences with <code>{tab= group= value=}</code> (code-only panes), or <code>tabs</code> with <code>tab</code> for mixed content.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">filetree · filetree/folder · filetree/file</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>filetree</code></span></span>
+</dt>
+<dd class="td-field__description"><p>0.4: <code>filetree</code> with <code>filetree/folder</code> and <code>filetree/file</code>; the interim <code>{.filetree}</code> list marker.</p>
+<p>0.5.0: the <code>```filetree</code> fence — <code>label</code> becomes <code>title</code>; <code>open</code>, <code>icon</code>, <code>color</code>, <code>comment</code>, <code>link</code> are kept.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">gallery · gallery/image</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>gallery</code></span></span>
+</dt>
+<dd class="td-field__description"><p>0.4: <code>gallery</code> with <code>gallery/image</code>; an image list + <code>{.gallery}</code>.</p>
+<p>0.5.0: the <code>```gallery</code> fence.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">echarts · infographic</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>datafence</code></span></span>
+</dt>
+<dd class="td-field__description"><p>0.4: <code>echarts</code>, <code>infographic</code> shortcodes.</p>
+<p>0.5.0: same-named data fences; <code>$fn:</code> callbacks are unchanged, <code>js</code> sub-fences move to <code>window.OinkEchartsFunctions</code>.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">doc-cards · doc-card · nav-cards · nav-card · card · cardpane · doc-carousel</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>cards</code></span></span>
+</dt>
+<dd class="td-field__description"><p>0.4: the Docsy card family and the OINK <code>doc-cards</code> / <code>nav-cards</code> wrappers.</p>
+<p>0.5.0: <code>cards</code> with <code>card</code>, or a link list + <code>{.cards}</code>. <code>card</code> keeps its name as the child of <code>cards</code>, with a different contract.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">imgproc</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>image</code></span></span>
+</dt>
+<dd class="td-field__description"><p>0.4: <code>imgproc …</code> (and the pre-release <code>image …</code>).</p>
+<p>0.5.0: <code>![alt](src)</code> + <code>{command= options= caption=}</code> on the attribute line.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">readfile</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>include</code></span></span>
+</dt>
+<dd class="td-field__description"><p>0.4: <code>readfile file=…</code>.</p>
+<p>0.5.0: <code>include file=… [code=true lang=…]</code> — page resources, then assets, then content-relative paths.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">fence filename=</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>fencetitle</code></span></span>
+</dt>
+<dd class="td-field__description"><p>0.4: <code>{filename=&quot;x&quot;}</code> on a fence.</p>
+<p>0.5.0: <code>{title=&quot;x&quot;}</code>.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">badge outline=</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>badge</code></span></span>
+</dt>
+<dd class="td-field__description"><p>0.4: <code>badge … outline=…</code>.</p>
+<p>0.5.0: drop <code>outline</code> — there is one badge appearance.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">example · book-figures kind=</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>eg</code></span></span>
+</dt>
+<dd class="td-field__description"><p>0.4: self-closing <code>example …</code> + fence; <code>book-figures kind=&quot;tbl&quot;</code>.</p>
+<p>0.5.0: <code>eg</code> … <code>/eg</code>; <code>book-tables</code>, <code>book-equations</code>, <code>book-examples</code>.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">fields · field (percent form)</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>fieldsdelim</code></span></span>
+</dt>
+<dd class="td-field__description"><p>0.4: <code>fields</code> / <code>field</code> written with <code>%</code> delimiters (never shipped).</p>
+<p>0.5.0: <code>fields</code> / <code>field</code>.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">_param · iframe · conditional-text · netlify · kind-less xref</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>reportonly</code></span></span>
+</dt>
+<dd class="td-field__description"><p>Reported with <code>file:line</code> for manual review; <code>_param</code> placeholders are handled by the <code>param_placeholders</code> transform.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">blocks/cover · blocks/feature · blocks/lead · blocks/link-down · blocks/section</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>reportonly</code></span></span>
+</dt>
+<dd class="td-field__description"><p>0.5.0: <code>layout: landing</code> with <code>sections</code> (data file or inline front matter). Reported, not rewritten.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">swaggerui</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>manual</code></span></span>
+</dt>
+<dd class="td-field__description"><p>Renamed to <code>swagger</code>; change the call.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">pageinfo</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>manual</code></span></span>
+</dt>
+<dd class="td-field__description"><p>Write a <code>&gt; [!NOTE]</code> callout instead.</p>
+</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">td/site-build-info/netlify.md</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>manual</code></span></span>
+</dt>
+<dd class="td-field__description"><p>Removed without replacement.</p>
+</dd>
+</div>
+</dl>
+</div>
+
+<p>New in 0.5.0 relative to 0.4.2: <code>tabs</code>, <code>cards</code>, <code>include</code>, <code>eg</code>,
+<code>book-tables</code>, <code>book-equations</code>, <code>book-examples</code>, and <code>swagger</code> (renamed).
+<code>card</code> and <code>tab</code> keep their names but are now children of <code>cards</code> / <code>tabs</code>
+with a different contract.</p>
+<p>There is no image shortcode: the render hook resolves page resources,
+section resources, global assets, and static or remote paths for Markdown
+images, <code>fig</code>, and configuration image sources alike, and carries captions,
+numbering, links, and Hugo image processing (<code>command</code>, <code>options</code>) on the
+attribute line — everything <code>imgproc</code> did.</p>
+<h3 id="pg-ec346e98abe204d3b74410578bd1e35b--attribute-policy">The block-attribute policy
+</h3>
+<p>Every render hook (table, image, code block, passthrough, blockquote, heading)
+shares one policy: allowlisted keys are consumed by the hook, <code>class</code> is
+token-validated and passed through, <code>data-*</code> and <code>aria-*</code> pass through, and
+<code>style</code>, <code>on*</code>, and any unknown key fail the build. Site CSS classes on
+content are legitimate and keep working; inline styles and handlers never
+reach the output.</p>
+<h3 id="pg-ec346e98abe204d3b74410578bd1e35b--code-fences">Code fences
+</h3>
+<ul>
+<li><code>{filename=&quot;x&quot;}</code> is <code>{title=&quot;x&quot;}</code>. <code>title</code> and <code>filename</code> are mutually
+exclusive on the same fence.</li>
+<li>The Prism path is gone. <code>params.prism_syntax_highlighting</code>, <code>static/js/prism.js</code>,
+and <code>static/css/prism.css</code> no longer exist; Chroma with
+<code>params.highlight_classes</code> (default <code>true</code>) is the only highlighter. Prism
+could not coexist with <code>tab</code>, <code>group</code>, <code>value</code>, <code>num</code>, and <code>caption</code>, so any
+0.4 site using tabs or numbered examples already failed with it enabled.</li>
+<li>The Copy control follows <code>copy=all|command|true|false</code> on the fence, then the
+session-lexer default (<code>console</code>, <code>shell-session</code> → <code>command</code>), then <code>all</code>.
+<code>params.ui.code_copy: false</code> changes the site-wide default only; a fence
+that names <code>copy</code> still gets what it asks for. The old
+<code>disable_click2copy_chroma</code> silently overrode an explicit author value.</li>
+<li>Docsy&rsquo;s <code>click-to-copy.js</code> (never loaded since 0.3) and its
+<code>.td-click-to-copy</code> styles are removed.</li>
+</ul>
+<h2 id="pg-ec346e98abe204d3b74410578bd1e35b--configuration">Configuration
+</h2>
+<h3 id="pg-ec346e98abe204d3b74410578bd1e35b--config-rules">The three rules
+</h3>
+<ol>
+<li>A boolean switch is the bare feature name: <code>ui.annotation: true</code>, not
+<code>ui.annotation.enable</code> and not <code>ui.annotation_enabled</code>. The only <code>_enabled</code>
+suffixes left are <code>ui.navbar_enabled</code>, <code>ui.sidebar_enabled</code>, and
+<code>ui.sidebar_root_enabled</code>, whose bare names would collide with sibling
+families.</li>
+<li>A single-key map is flattened to a scalar. A map survives only for a feature
+with several settings — <code>comments</code>, <code>ui.feedback</code>, <code>ui.page_context_menu</code>,
+<code>ui.dark_mode</code>, <code>ui.command_palette</code>, <code>ui.alt_site</code>, <code>taxonomy</code>, <code>print</code>,
+<code>search</code>, <code>plantuml</code>, <code>drawio</code>, <code>mermaid</code>, <code>copyright</code>, <code>ui.taxonomy_icons</code>
+— and the on/off ones among them also accept a bare boolean
+(<code>comments: false</code>, <code>plantuml: false</code>, <code>dark_mode: true</code>, <code>feedback: true</code>,
+<code>page_context_menu: false</code>).</li>
+<li>A front matter key is the site key with its <code>ui.</code> prefix dropped, without
+exception (see <a href="#pg-ec346e98abe204d3b74410578bd1e35b--front-matter">Front matter</a>).</li>
+</ol>
+<p>Keys are snake_case, positive, and named for what they do. camelCase survives
+only where a value is passed straight through to an external runtime
+(<code>comments.giscus.*</code> carries giscus&rsquo;s own attribute names, <code>mermaid.*</code> is
+handed to <code>mermaid.initialize()</code>).</p>
+<p>Every old key or shape fails the build with a message that names the
+replacement — <code>layouts/_partials/config-legacy.html</code> for site configuration,
+<code>layouts/_partials/front-matter-legacy.html</code> for pages — so an upgrade is a
+matter of following the errors one by one. Nothing is silently ignored.</p>
+<h3 id="pg-ec346e98abe204d3b74410578bd1e35b--config-renames">Renamed and reshaped site keys
+</h3>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">0.4</th>
+      <th scope="col">0.5.0</th>
+      <th scope="col">Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>offlineSearch</code>, <code>offlineSearchIndex</code>, <code>offlineSearchMaxResults</code>, <code>offlineSearchOnServe</code>, <code>offlineSearchSummaryLength</code></td>
+      <td><code>offline_search</code>, <code>offline_search_index</code>, <code>offline_search_max_results</code>, <code>offline_search_on_serve</code>, <code>offline_search_summary_length</code></td>
+      <td>environment override: <code>HUGOxPARAMSxOFFLINE_SEARCH_ON_SERVE=true</code> (Hugo&rsquo;s alternate <code>x</code> delimiter; <code>_</code> cannot address snake_case keys)</td>
+    </tr>
+    <tr>
+      <td><code>ui.showLightDarkModeMenu</code> (<code>true</code> / <code>false</code> / <code>&quot;enable-only (experimental)&quot;</code>)</td>
+      <td><code>ui.dark_mode</code> — <code>true</code>, or <code>{ enable, show_menu }</code></td>
+      <td><code>show_menu: true</code> implies <code>enable</code></td>
+    </tr>
+    <tr>
+      <td><code>ui.scrollSpy.disable</code></td>
+      <td><code>ui.scroll_spy</code></td>
+      <td>inverted; default <code>false</code></td>
+    </tr>
+    <tr>
+      <td><code>ui.no_left_sidebar</code></td>
+      <td><code>ui.sidebar_enabled</code></td>
+      <td>inverted</td>
+    </tr>
+    <tr>
+      <td><code>ui.breadcrumb_disable</code></td>
+      <td><code>ui.breadcrumb</code></td>
+      <td>inverted; default <code>true</code></td>
+    </tr>
+    <tr>
+      <td><code>print.disable_toc</code></td>
+      <td><code>print.toc</code></td>
+      <td>inverted; default <code>true</code></td>
+    </tr>
+    <tr>
+      <td><code>disable_click2copy_chroma</code></td>
+      <td><code>ui.code_copy</code></td>
+      <td>inverted; sets the default only</td>
+    </tr>
+    <tr>
+      <td><code>ui.readingtime.enable</code></td>
+      <td><code>ui.reading_time</code></td>
+      <td>bare boolean</td>
+    </tr>
+    <tr>
+      <td><code>ui.ul_show</code></td>
+      <td><code>ui.sidebar_expand_levels</code></td>
+      <td>default 2</td>
+    </tr>
+    <tr>
+      <td><code>Taxonomy.taxonomyCloud</code>, <code>.taxonomyCloudTitle</code>, <code>.taxonomyPageHeader</code></td>
+      <td><code>taxonomy.cloud</code>, <code>.cloud_title</code>, <code>.page_header</code></td>
+      <td>one lowercase map</td>
+    </tr>
+    <tr>
+      <td><code>ui.annotation.enable</code>, <code>ui.image_zoom.enable</code>, <code>ui.keyboard_nav.enable</code></td>
+      <td><code>ui.annotation</code>, <code>ui.image_zoom</code>, <code>ui.keyboard_nav</code></td>
+      <td>bare booleans</td>
+    </tr>
+    <tr>
+      <td><code>ui.typography.preset</code></td>
+      <td><code>ui.typography</code></td>
+      <td><code>technical</code> | <code>system</code>; environment override <code>HUGO_PARAMS_UI_TYPOGRAPHY=system</code></td>
+    </tr>
+    <tr>
+      <td><code>ui.pager.types</code></td>
+      <td><code>ui.pager_types</code></td>
+      <td><code>[docs, book, blog]</code></td>
+    </tr>
+    <tr>
+      <td><code>markmap.enable</code></td>
+      <td><code>markmap</code></td>
+      <td>bare boolean</td>
+    </tr>
+    <tr>
+      <td><code>content_width</code> (<code>slim</code> | <code>norm</code> | <code>wide</code>)</td>
+      <td><code>reading_width</code> (<code>slim</code> | <code>normal</code> | <code>wide</code>)</td>
+      <td>Book reading measure; body class <code>td-book-content--normal</code>, token <code>--td-book-content-normal</code></td>
+    </tr>
+    <tr>
+      <td><code>ui.docs_root</code></td>
+      <td><code>ui.docs_sidebar_root</code></td>
+      <td><code>section</code> | <code>home</code></td>
+    </tr>
+    <tr>
+      <td><code>github_url</code></td>
+      <td><code>github_repo</code></td>
+      <td>edit, history, and issue links derive from the repo</td>
+    </tr>
+    <tr>
+      <td><code>algolia_docsearch</code></td>
+      <td><code>search.algolia</code> with <code>appId</code>, <code>apiKey</code>, <code>indexName</code></td>
+      <td>fails the build</td>
+    </tr>
+    <tr>
+      <td><code>rss_sections</code></td>
+      <td>removed</td>
+      <td>it was never read</td>
+    </tr>
+    <tr>
+      <td><code>params.links.user[]</code> / <code>.developer[]</code></td>
+      <td>removed</td>
+      <td>the Docsy community page is gone</td>
+    </tr>
+    <tr>
+      <td><code>plantuml.enable</code>, <code>drawio.enable</code></td>
+      <td>unchanged, and the maps accept <code>plantuml: false</code> / <code>drawio: false</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>comments.enable</code></td>
+      <td>unchanged, and <code>comments: false</code> is accepted</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>comments.giscus.lightTheme</code> / <code>darkTheme</code></td>
+      <td>unset by default</td>
+      <td>the theme&rsquo;s own palettes are the default (see <a href="#pg-ec346e98abe204d3b74410578bd1e35b--styles-assets">Styles and assets</a>)</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Every theme default is now declared in the theme&rsquo;s <code>hugo.yaml</code> with its value
+range in a comment. Previously template-only fallbacks that are now declared:
+<code>offline_search: false</code>, <code>offline_search_summary_length: 70</code>,
+<code>ui.breadcrumb: true</code>, <code>ui.reading_time: false</code>, <code>ui.dark_mode: false</code>,
+<code>ui.docs_sidebar_root: section</code>, <code>ui.sidebar_icon_policy: all</code>,
+<code>ui.section_index_columns: 2</code>, <code>ui.code_copy: true</code>, <code>print.toc: true</code>,
+<code>print.section_break_wordcount: 50</code>, <code>markmap: false</code>, <code>plantuml.enable: false</code>,
+<code>drawio.enable: false</code>, <code>github_branch: main</code>. Two defaults stay derived and
+are documented as such: <code>ui.quick_links</code> (from <code>docs_section</code> and
+<code>blog_section</code>) and <code>ui.taxonomy_icons</code> (built-in <code>categories</code>/<code>tags</code>
+glyphs). The template fallbacks for <code>ui.sidebar_expand_levels</code> (2) and
+<code>ui.sidebar_menu_truncate</code> (2000) match the declared values.</p>
+<p>Unchanged Docsy keys that keep working as they are: <code>github_repo</code>,
+<code>github_project_repo</code>, <code>github_branch</code>, <code>github_subdir</code>,
+<code>path_base_for_github_subdir</code>, <code>time_format_blog</code>, <code>time_format_default</code>,
+<code>version</code>, <code>versions</code>, <code>version_menu</code>, <code>version_menu_pagelinks</code>,
+<code>archived_version</code>, <code>url_latest_version</code>, <code>copyright</code>, <code>description</code>,
+<code>author</code>, <code>gcs_engine_id</code>, <code>search.algolia.*</code>, <code>mermaid</code>, <code>plantuml.*</code>,
+<code>drawio.*</code>, <code>ui.sidebar_menu_compact</code>, <code>ui.sidebar_menu_foldable</code>,
+<code>ui.sidebar_menu_truncate</code>, <code>ui.sidebar_cache_limit</code>,
+<code>ui.sidebar_root_enabled</code>, <code>ui.feedback.{enable,reasons}</code>.</p>
+<h3 id="pg-ec346e98abe204d3b74410578bd1e35b--fail-loud">Fail-loud, not silent
+</h3>
+<p>Configuring more than one search backend (<code>offline_search</code>, <code>gcs_engine_id</code>,
+<code>search.algolia</code>) now fails the build (it warned before). PlantUML without
+<code>plantuml.svg_image_url</code>, Diagrams.net without <code>drawio.drawio_server</code>, and
+Algolia without all three credentials still fail the build, as in 0.4. Build
+messages follow one shape — <code>&lt;component&gt;: &lt;subject&gt; &lt;expectation&gt;; got &lt;value&gt; at &lt;position&gt;</code> — lower case, one preposition for the location,
+configuration errors naming the full <code>params.</code> path; they no longer point at
+documentation URLs.</p>
+<h2 id="pg-ec346e98abe204d3b74410578bd1e35b--front-matter">Front matter
+</h2>
+<p>The page key is the site key without its <code>ui.</code> prefix, and front matter never
+carries a <code>ui:</code> block. A section cascade works the same way
+(<code>cascade: { params: { section_index: cards } }</code> or the bare key). One resolver
+(<code>ui-param.html</code>) reads the page value, else the site value, for every
+<code>params.ui.*</code> setting a page may override: <code>sidebar_menu_compact</code>,
+<code>sidebar_menu_foldable</code>, <code>sidebar_expand_levels</code>, <code>sidebar_width_min</code>,
+<code>sidebar_width_max</code>, <code>sidebar_item_overflow</code>, <code>sidebar_headings</code>,
+<code>sidebar_enabled</code>, <code>section_index</code>, <code>section_index_columns</code>, <code>lastmod_commit</code>,
+<code>breadcrumb</code>, <code>scroll_spy</code>, <code>code_copy</code>, <code>keyboard_nav</code>, <code>book_draft_banner</code>,
+plus the explicit page keys <code>navbar_enabled</code>, <code>navbar_autohide</code>,
+<code>footer_style</code>, <code>annotation</code>, <code>feedback</code>, <code>image_zoom</code>, <code>reading_time</code>,
+<code>page_context_menu</code>, <code>comments</code>, <code>page_width</code>, <code>reading_width</code>.</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">0.4 front matter</th>
+      <th scope="col">0.5.0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>params: { ui: { &lt;key&gt;: … } }</code> (any key)</td>
+      <td><code>&lt;key&gt;: …</code> at the top level (or under <code>params:</code>)</td>
+    </tr>
+    <tr>
+      <td><code>params.ui.image_zoom.enable</code></td>
+      <td><code>image_zoom: true | false</code></td>
+    </tr>
+    <tr>
+      <td><code>params.ui.keyboard_nav.enable</code>, <code>params.ui.annotation.enable</code></td>
+      <td><code>keyboard_nav</code>, <code>annotation</code> (bare booleans)</td>
+    </tr>
+    <tr>
+      <td><code>annotation: { enable: … }</code></td>
+      <td><code>annotation: true | false</code></td>
+    </tr>
+    <tr>
+      <td><code>context_menu</code></td>
+      <td><code>page_context_menu</code> (<code>true | false</code>, or <code>{ enable, assistant_links }</code>)</td>
+    </tr>
+    <tr>
+      <td><code>assistant_links</code> (top level)</td>
+      <td><code>page_context_menu: { assistant_links: false }</code> — a page can only narrow the site policy</td>
+    </tr>
+    <tr>
+      <td><code>hide_readingtime: true</code></td>
+      <td><code>reading_time: false</code></td>
+    </tr>
+    <tr>
+      <td><code>hide_feedback: true</code></td>
+      <td><code>feedback: false</code></td>
+    </tr>
+    <tr>
+      <td><code>exclude_search</code>, <code>excludeSearch</code></td>
+      <td><code>search_exclude</code></td>
+    </tr>
+    <tr>
+      <td><code>content_width: norm</code></td>
+      <td><code>reading_width: normal</code></td>
+    </tr>
+    <tr>
+      <td><code>manualLink</code>, <code>manualLinkTitle</code>, <code>manualLinkTarget</code>, <code>manualLinkRelref</code></td>
+      <td><code>manual_link</code>, <code>manual_link_title</code>, <code>manual_link_target</code>, <code>manual_link_relref</code></td>
+    </tr>
+    <tr>
+      <td><code>body_class: td-no-left-sidebar</code></td>
+      <td><code>sidebar_enabled: false</code></td>
+    </tr>
+    <tr>
+      <td><code>contributingUrl</code></td>
+      <td>removed with the community page</td>
+    </tr>
+    <tr>
+      <td><code>Icon</code></td>
+      <td><code>icon</code> (Hugo is case-insensitive; the theme reads the lowercase form)</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Unchanged page keys: <code>toc_hide</code>, <code>toc_root</code>, <code>notoc</code>, <code>no_print</code>, <code>no_list</code>,
+<code>simple_list</code>, <code>hide_summary</code>, <code>sidebar_root_for</code>, <code>sidebar_divider</code>,
+<code>sidebar_expanded</code>, <code>sidebar_root_menu</code>, <code>sidebar_root_link_self</code>,
+<code>search_keywords</code>, <code>search_boost</code>, <code>pager</code>, <code>landing</code>, <code>sections</code>,
+<code>book_number</code>, <code>book_status</code>, <code>release</code>, <code>release_products</code>,
+<code>release_group_by_product</code>, <code>upstream_attribution</code>, <code>downstream_modified</code>,
+<code>byline</code>, <code>author</code>, <code>body_class</code>.</p>
+<p><code>scripts/migrations/oink06.py migrate --only frontmatter</code> rewrites all of the
+renamed page keys, including inside <code>cascade:</code> maps and lists.</p>
+<h2 id="pg-ec346e98abe204d3b74410578bd1e35b--templates">Templates, partials, and layouts
+</h2>
+<p>Removed, with what a site that copied or called them should use instead:</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">0.4</th>
+      <th scope="col">0.5.0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>_partials/home/**</code> (18 adapters), <code>_partials/home-data.html</code></td>
+      <td><code>_partials/landing/**</code>, <code>landing/home-data.html</code></td>
+    </tr>
+    <tr>
+      <td><code>_partials/outputformat.html</code></td>
+      <td><code>.Store.Get &quot;tdOutputFormat&quot;</code> (<code>html</code> | <code>print</code> | <code>markdown</code> | <code>rss</code>, set by every base template)</td>
+    </tr>
+    <tr>
+      <td><code>_partials/td/render-heading.html</code> and a site-side <code>_markup/render-heading.html</code> that calls it</td>
+      <td>the theme&rsquo;s own <code>_markup/render-heading.html</code> — delete the site override</td>
+    </tr>
+    <tr>
+      <td><code>layouts/community/list.html</code>, <code>layouts/docs/community.html</code>, <code>_partials/community_links.html</code></td>
+      <td>none — the Docsy community page is gone</td>
+    </tr>
+    <tr>
+      <td><code>_partials/taxonomy_terms_article.html</code>, <code>taxonomy_terms_article_wrapper.html</code>, <code>taxonomy_terms_cloud.html</code></td>
+      <td><code>taxonomy-terms-article.html</code>, <code>taxonomy-terms-article-wrapper.html</code>, <code>taxonomy-terms-cloud.html</code></td>
+    </tr>
+    <tr>
+      <td><code>_partials/taxonomy_terms_clouds.html</code>, <code>code/markdown-escape.html</code></td>
+      <td>dead in 0.4 already; <code>shell/taxonomy-terms-clouds.html</code>, <code>content/markdown-escape.html</code></td>
+    </tr>
+    <tr>
+      <td><code>_shortcodes/swaggerui.html</code></td>
+      <td><code>_shortcodes/swagger.html</code></td>
+    </tr>
+    <tr>
+      <td><code>layouts/_default/_markup/render-*</code> copied from 0.4</td>
+      <td>compare against 0.5.0 before keeping any override — every hook changed</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Other template-level changes a site with overrides should know about:</p>
+<ul>
+<li>Both sidebar sources — the content tree and an explicit <code>data/docs_nav.json</code>
+— render every row through <code>shell/sidebar-node.html</code>. <code>shell/config.html</code>
+remains the single resolver for brand, logo, and section configuration.</li>
+<li>Every content-rendering layout calls <code>content/render.html</code> instead of
+<code>.Content</code> (that is where the Image Zoom candidate scan runs).</li>
+<li>Print: <code>print/page-content.html</code> renders each page&rsquo;s print content exactly
+once per build through <code>partialCached</code>; <code>print/render.html</code>,
+<code>print/content.html</code>, <code>book/print.html</code>, and the <code>single.print.html</code>
+layouts read that. Sites that copied a 0.4 print template should drop the
+copy — the 0.4 pipeline raced on the page store when a section that is
+itself a section was aggregated by its parent.</li>
+<li>The theme owns the heading render hook. Every heading carries its id and a
+hover-revealed self-link (<code>.td-heading-self-link</code>, label
+<code>ui_heading_self_link</code>); print and RSS strip the link.</li>
+<li>The DocSearch container is one <code>#td-docsearch</code> element; the two hard-coded
+<code>#docsearch-0/1</code> ids are gone.</li>
+</ul>
+<h2 id="pg-ec346e98abe204d3b74410578bd1e35b--styles-assets">Styles and assets
+</h2>
+<h3 id="pg-ec346e98abe204d3b74410578bd1e35b--namespace">One namespace
+</h3>
+<p>Everything the theme emits is namespaced, and <code>scripts/check-namespace.py</code>
+keeps it that way. Site CSS or JS that hooked the old names must move:</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Kind</th>
+      <th scope="col">0.4</th>
+      <th scope="col">0.5.0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Classes</td>
+      <td><code>oink-*</code> (landing subsystem), <code>leaf</code>, <code>has-child</code>, <code>active-path</code>, <code>is-open</code>, <code>is-active</code>, <code>is-hidden</code>, <code>is-disabled</code>, <code>landing-header</code>, <code>landing-nav</code>, <code>landing-container</code>, <code>article-meta</code>, <code>pageinfo</code>, <code>nav-*</code>, <code>taxonomy-*</code>, <code>ul-N</code></td>
+      <td><code>td-*</code> throughout; the site header and nav are <code>td-site-header</code>, <code>td-site-nav</code>, <code>td-site-container</code></td>
+    </tr>
+    <tr>
+      <td>Data attributes</td>
+      <td><code>data-oink-*</code></td>
+      <td><code>data-td-*</code></td>
+    </tr>
+    <tr>
+      <td>Custom properties</td>
+      <td><code>--oink-*</code>, <code>--term-*</code></td>
+      <td><code>--td-*</code></td>
+    </tr>
+    <tr>
+      <td>JS globals</td>
+      <td><code>oink*</code> / <code>echartsFunctions</code></td>
+      <td><code>window.OinkActions</code>, <code>OinkEchartsFunctions</code>, <code>OinkLanding</code>, <code>OinkSearchEngine</code>, <code>OinkSurfaceCoordinator</code></td>
+    </tr>
+    <tr>
+      <td>Author markers (unprefixed, unchanged)</td>
+      <td>—</td>
+      <td><code>{.steps}</code> <code>{.cards}</code> <code>{.fields}</code> <code>{.matrix}</code> <code>{.full-width}</code></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="pg-ec346e98abe204d3b74410578bd1e35b--sass">Sass and tokens
+</h3>
+<p>Removed Sass files (a site&rsquo;s <code>_styles_project.scss</code> that imports them fails
+to compile): <code>td/code-dark</code>, <code>td/color-adjustments-dark</code>,
+<code>td/gcs-search-dark</code>, <code>td/extra</code>, <code>td/extra/bs-defaults</code>, <code>td/extra/buttons</code>,
+<code>td/extra/main-container</code>, <code>td/extra/navbar</code>, <code>td/boxes</code> (<code>.td-box</code>,
+<code>.td-box--&lt;color&gt;</code>, <code>.td-box--height-*</code>), <code>td/colors</code> (<code>.-bg-&lt;name&gt;</code>,
+<code>.-text-&lt;name&gt;</code>). Removed variables: <code>$td-box-colors</code>, <code>$td-print-font-name</code>,
+<code>$td-enable-webfonts</code>.</p>
+<p>Renamed or new tokens: <code>--td-book-content-norm</code> → <code>--td-book-content-normal</code>
+(and <code>.td-book-content--norm</code> → <code>--normal</code>); <code>--td-print-font-family</code> keeps
+its role but follows <code>--td-body-font-family</code> in both presets; new
+<code>--td-motion-duration-fast</code> (100 ms), <code>--td-motion-duration</code> (150 ms),
+<code>--td-motion-duration-slow</code> (250 ms), which every shell transition uses and
+which <code>prefers-reduced-motion: reduce</code> sets to 0.</p>
+<p>Typography: Inter for UI and prose (variable weight, Latin/Latin-ext/Cyrillic/
+Greek/Vietnamese subsets served by <code>unicode-range</code>; CJK and emoji fall through
+to the platform stack), borderless inline code, quiet code cards with a
+hover-revealed Copy control, Mintlify-style field rows, a page-end pager of
+two text links, and a rule above card section indexes. Open Sans (18 woff2
+subsets, 652 KB, published to every site for a print-only face) is gone; a
+site that wants a different face on paper sets <code>--td-print-font-family</code> in its
+own stylesheet. The <code>system</code> preset still requests no brand fonts.</p>
+<p>Shell chrome icons are Font Awesome class pairs dispensed by
+<code>shell/icon.html</code> (<code>&lt;i class=&quot;td-shell-icon td-shell-icon--&lt;name&gt; fa-solid fa-…&quot;&gt;</code>)
+instead of inline SVG; <code>--td-shell-icon-size</code> sets the box.</p>
+<h3 id="pg-ec346e98abe204d3b74410578bd1e35b--published-assets">Published assets
+</h3>
+<ul>
+<li>Three JavaScript bundles instead of one per feature combination:
+<code>js/actions.js</code> and <code>js/core.js</code> are byte-identical on every page and stay
+cached; only a small <code>js/page-&lt;hash&gt;.js</code> varies. ECharts is its own
+<code>&lt;script&gt;</code>. Print output loads 7.9 KB instead of 100 KB.</li>
+<li><code>static/css/giscus-oink-{light,dark}.css</code> are gone. The palettes ship as
+<code>assets/css/giscus-{light,dark}.css</code>, are published only on pages that
+render comments, and are the default <code>comments.giscus.lightTheme</code> /
+<code>darkTheme</code>; a site that pointed at the old paths removes those two lines
+(or names a giscus built-in theme / its own stylesheet URL).</li>
+<li>Gone: <code>static/js/prism.js</code>, <code>static/css/prism.css</code>,
+<code>static/webfonts/open-sans/</code>, <code>assets/js/click-to-copy.js</code>. <code>VENDOR.json</code>
+and the vendor tree hashes are regenerated.</li>
+</ul>
+<h2 id="pg-ec346e98abe204d3b74410578bd1e35b--i18n">i18n
+</h2>
+<ul>
+<li>Callout labels are namespaced keys: <code>callout_note</code>, <code>callout_tip</code>,
+<code>callout_important</code>, <code>callout_warning</code>, <code>callout_caution</code>,
+<code>callout_success</code>, <code>callout_danger</code>, <code>callout_question</code>, <code>callout_example</code>,
+<code>callout_quote</code>, <code>callout_details</code>. The theme no longer claims bare
+top-level keys such as <code>note</code>, <code>example</code>, or <code>quote</code>; a site that overrode
+those in its own <code>i18n/</code> renames them.</li>
+<li>Removed: <code>community_join</code>, <code>community_introduce</code>, <code>community_learn</code>,
+<code>community_using</code>, <code>community_develop</code>, <code>community_contribute</code>,
+<code>community_how_to</code>, <code>community_guideline</code>.</li>
+<li>Added: <code>ui_heading_self_link</code> and <code>ui_field_self_link</code> (English fallback in
+every locale; reviewed Chinese variants).</li>
+<li>All 32 locale files keep exact key parity (174 keys).</li>
+</ul>
+<h2 id="pg-ec346e98abe204d3b74410578bd1e35b--data">Data files
+</h2>
+<ul>
+<li><code>data/home/&lt;lang&gt;.yaml</code> (or <code>data/home.yaml</code>) must list <code>sections</code>; the
+implicit <code>hero → metrics → capabilities → principles → cta</code> order is gone
+and its absence fails the build.</li>
+<li>The fat footer reads <code>data/footer/&lt;lang&gt;.yaml</code> (or <code>data/footer.yaml</code>) only.
+A <code>footer</code> key inside <code>data/home</code> fails the build naming the new location.</li>
+<li><code>data/landing/&lt;key&gt;/&lt;lang&gt;.yaml</code>, <code>data/docs_nav.json</code>,
+<code>data/download/&lt;key&gt;.yaml</code>, and <code>data/brand.yaml</code> are unchanged.</li>
+</ul>
+<h2 id="pg-ec346e98abe204d3b74410578bd1e35b--behavior">Behaviour and output changes
+</h2>
+<ul>
+<li>Headings carry a self-link revealed on hover; the anchor is stripped from
+print and RSS output, and Markdown output (<code>RenderShortcodes</code>) is unaffected.</li>
+<li>Print aggregates render each page&rsquo;s content exactly once per build. In 0.4
+a chapter that was itself a section was rendered by its own print output and
+by its parent&rsquo;s, concurrently, and the two renders raced on the page store —
+the visible symptom was intermittent duplicate <code>td-code-…</code> ids in <code>_print/</code>.</li>
+<li><code>&lt;main&gt;</code> no longer carries <code>role=&quot;main&quot;</code>, and the sidebar <code>&lt;aside&gt;</code> no longer
+duplicates the inner <code>&lt;nav&gt;</code>&rsquo;s &ldquo;Section navigation&rdquo; label.</li>
+<li><code>ui.dark_mode: true</code> turns on both the dark palette and the System / Light /
+Dark menu; <code>show_menu: true</code> alone implies <code>enable</code>.</li>
+<li><code>ui.code_copy: false</code> sets the default only (see <a href="#pg-ec346e98abe204d3b74410578bd1e35b--code-fences">Code fences</a>).</li>
+<li>The navbar renders on the home page; callout titles meet contrast; Gallery
+items are Zoom-eligible on the same terms as other images; the tabs runtime
+keeps its run boundaries, unique peer ids, and print titles; FileTree and
+the whole shell honour <code>prefers-reduced-motion</code>.</li>
+<li>The table render hook runs in print and RSS output, so tables keep caption,
+number, and scroll container outside interactive HTML; <code>fields</code> from either
+form produce one rendering, and every entry gets a <code>#field-&lt;name&gt;</code> anchor.</li>
+<li><code>llms.txt</code> reads <code>params.ui.docs_section</code> and lists documentation pages with
+their descriptions.</li>
+<li>Image resolver errors are labelled by the caller (<code>image:</code> for a Markdown
+image, the shortcode name for <code>fig</code>), and configuration image sources are
+held to the same URL policy as content.</li>
+</ul>
+<h2 id="pg-ec346e98abe204d3b74410578bd1e35b--release-hardening">Release-candidate hardening
+</h2>
+<p>The final review found one systemic migration gap: templates emitted the new
+<code>data-td-*</code> contract while several runtimes and test mocks still read the old
+dataset names. It also found that the action manifest followed the synchronous
+action-registry bundle, so the registry could initialize empty. Both are fixed,
+with structural checks that reject either regression. Page actions, Command
+Palette search, code copying and collapse, feedback identity, disclosure
+labels, Giscus themes, Image Zoom labels, and Asciinema timers now exercise the
+same attributes in tests and in the rendered DOM.</p>
+<p>The same hardening pass also:</p>
+<ul>
+<li>makes migration <code>report</code>, <code>migrate</code>, and <code>check</code> reject missing, empty,
+unreadable, or non-UTF-8 targets instead of reporting a misleading clean
+result, and parses JSON front matter with a JSON decoder;</li>
+<li>runs legacy front-matter guards in Markdown, RSS, and aggregate print output,
+and validates boolean/map shapes for page comments and other overrides;</li>
+<li>preserves accepted <code>data-*</code> / <code>aria-*</code> attributes through data fences and
+callouts, while keeping chart booleans strict;</li>
+<li>gives every Swagger and ReDoc embed a unique instance without replacing
+<code>window.onload</code> or publishing <code>window.ui</code>;</li>
+<li>applies the shared URL policy to shell logos, wordmarks, and configured
+featured images; and</li>
+<li>ships <code>scripts/check-site-markup.py</code>, which checks the resolved consuming-site
+configuration for the three Goldmark settings required by native forms.</li>
+</ul>
+<h2 id="pg-ec346e98abe204d3b74410578bd1e35b--migration">Migration guide
+</h2>
+<p>The order matters: content first (the toolkit is dry-run by default and
+idempotent), then the build errors drive the configuration and layout edits.</p>
+<p>Before rewriting content, verify that the consuming site can render the native
+forms:</p>
+<div class="td-code td-code--untitled" id="td-code-7149f6b4-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="sh" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-7149f6b4-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">python3 path/to/oink/scripts/check-site-markup.py --site ~/pgsty/example.com</span></span></code></pre></div></div>
+</div>
+<h3 id="pg-ec346e98abe204d3b74410578bd1e35b--migration-inventory">1. Inventory
+</h3>
+<div class="td-code td-code--untitled" id="td-code-7149f6b4-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="sh" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-7149f6b4-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">python3 scripts/migrations/oink06.py report --sites ~/pgsty/example.com --md report.md --json report.json</span></span></code></pre></div></div>
+</div>
+<p>The report lists, per site, every 0.4 construct the toolkit will rewrite,
+what it will not touch (with <code>file:line</code> and a reason), and what would still
+be flagged afterwards.</p>
+<h3 id="pg-ec346e98abe204d3b74410578bd1e35b--migration-content">2. Content and front matter
+</h3>
+<div class="td-code td-code--untitled" id="td-code-7149f6b4-fence-2" data-td-code data-td-code-auto-id
+     data-td-language="sh" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-7149f6b4-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">python3 scripts/migrations/oink06.py migrate --site ~/pgsty/example.com          <span class="c1"># dry run: diffs + counts</span>
+</span></span><span class="line"><span class="cl">python3 scripts/migrations/oink06.py migrate --site ~/pgsty/example.com --write  <span class="c1"># atomic rewrite</span>
+</span></span><span class="line"><span class="cl">python3 scripts/migrations/oink06.py migrate --site ~/pgsty/example.com --write  <span class="c1"># second run: changed 0</span>
+</span></span><span class="line"><span class="cl">python3 scripts/migrations/oink06.py check   --site ~/pgsty/example.com          <span class="c1"># residual legacy syntax → exit 1</span></span></span></code></pre></div></div>
+</div>
+<p>Transforms, in apply order: <code>frontmatter</code> (page keys, including <code>cascade:</code>),
+<code>callout</code>, <code>param_placeholders</code>, <code>tabs</code>, <code>filetree</code>, <code>gallery</code>, <code>datafence</code>,
+<code>cards</code>, <code>fieldsdelim</code>, <code>image</code>, <code>include</code>, <code>fencetitle</code>, <code>badge</code>, <code>eg</code>,
+<code>reportonly</code>. <code>--only &lt;key&gt;</code> selects a subset. Text inside fences is never
+rewritten; TOML/JSON front matter is reported, not rewritten. Across the eleven
+in-house sites the front matter transform touched 628 files with zero findings.</p>
+<p>Manual follow-ups the report lists: <code>swaggerui</code> → <code>swagger</code>, <code>pageinfo</code> →
+callout, <code>_param</code> placeholders, <code>iframe</code>/<code>conditional-text</code>/<code>blocks/*</code>,
+kind-less <code>xref</code>, and <code>js</code> sub-fences of <code>echarts</code> that must become
+<code>window.OinkEchartsFunctions</code> entries.</p>
+<h3 id="pg-ec346e98abe204d3b74410578bd1e35b--migration-config">3. Configuration
+</h3>
+<p>Build the site. Each old key fails with its replacement:</p>
+<div class="td-code td-code--untitled" id="td-code-7149f6b4-fence-3" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="5">
+  <div class="td-code__viewport" id="td-code-7149f6b4-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">ERROR params.offlineSearch was renamed: use params.offline_search
+</span></span><span class="line"><span class="cl">ERROR params.ui.typography.preset was flattened: use params.ui.typography: technical | system
+</span></span><span class="line"><span class="cl">ERROR params.ui.showLightDarkModeMenu was renamed: use params.ui.dark_mode.show_menu
+</span></span><span class="line"><span class="cl">ERROR params.print.disable_toc was renamed: use params.print.toc (inverted)
+</span></span><span class="line"><span class="cl">ERROR params.rss_sections was removed: the key was never read; delete it</span></span></code></pre></div></div>
+</div>
+<p>A typical 0.4 <code>hugo.yaml</code> becomes:</p>
+<div class="td-code td-code--untitled" id="td-code-7149f6b4-fence-4" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="29">
+  <div class="td-code__viewport" id="td-code-7149f6b4-fence-4-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">offline_search</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">offline_search_on_serve</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">offline_search_index</span><span class="p">:</span><span class="w"> </span><span class="l">summary</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">offline_search_summary_length</span><span class="p">:</span><span class="w"> </span><span class="m">70</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">offline_search_max_results</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">reading_width: normal            # was content_width</span><span class="p">:</span><span class="w"> </span><span class="l">norm</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">markmap: true                    # was markmap</span><span class="p">:</span><span class="w"> </span>{<span class="w"> </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">print</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">toc: true                      # was disable_toc</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">comments</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">giscus</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">giscus</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l">…                     </span><span class="w"> </span><span class="c"># lightTheme / darkTheme lines removed</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ui</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">typography: technical          # was typography</span><span class="p">:</span><span class="w"> </span>{<span class="w"> </span><span class="nt">preset</span><span class="p">:</span><span class="w"> </span><span class="l">technical }</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">dark_mode: true                # was showLightDarkModeMenu</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">sidebar_expand_levels: 2       # was ul_show</span><span class="p">:</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">scroll_spy: false              # was scrollSpy</span><span class="p">:</span><span class="w"> </span>{<span class="w"> </span><span class="nt">disable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">reading_time: false            # was readingtime</span><span class="p">:</span><span class="w"> </span>{<span class="w"> </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image_zoom: true               # was image_zoom</span><span class="p">:</span><span class="w"> </span>{<span class="w"> </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">keyboard_nav: true             # was keyboard_nav</span><span class="p">:</span><span class="w"> </span>{<span class="w"> </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">annotation: true               # was annotation</span><span class="p">:</span><span class="w"> </span>{<span class="w"> </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">pager_types: [docs, book, blog] # was pager</span><span class="p">:</span><span class="w"> </span>{<span class="w"> </span><span class="nt">types</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">...] }</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">docs_sidebar_root</span><span class="p">:</span><span class="w"> </span><span class="l">section    </span><span class="w"> </span><span class="c"># was docs_root</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">breadcrumb: true               # was breadcrumb_disable</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">sidebar_enabled: true          # was no_left_sidebar</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">code_copy: true                # was disable_click2copy_chroma</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="l">(top level)</span></span></span></code></pre></div></div>
+</div>
+<p>Delete <code>params.links</code>, <code>prism_syntax_highlighting</code>, <code>rss_sections</code>,
+<code>github_url</code> (use <code>github_repo</code>), <code>algolia_docsearch</code>, and the giscus
+<code>lightTheme</code> / <code>darkTheme</code> URLs.</p>
+<h3 id="pg-ec346e98abe204d3b74410578bd1e35b--migration-cascades">4. Cascades and section indexes
+</h3>
+<p>A <code>cascade</code> that set <code>params.ui.*</code> becomes bare keys — the transform handles
+<code>_index.md</code> files, but check hand-written cascades in <code>hugo.yaml</code>:</p>
+<div class="td-code td-code--untitled" id="td-code-7149f6b4-fence-5" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="5">
+  <div class="td-code__viewport" id="td-code-7149f6b4-fence-5-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">cascade</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">blog</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">sidebar_menu_compact</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">    </span><span class="c"># was params.ui.sidebar_menu_compact</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">sidebar_expand_levels</span><span class="p">:</span><span class="w"> </span><span class="m">3</span><span class="w">       </span><span class="c"># was params.ui.ul_show</span></span></span></code></pre></div></div>
+</div>
+<h3 id="pg-ec346e98abe204d3b74410578bd1e35b--migration-site-code">5. Sass, layouts, and site scripts
+</h3>
+<ul>
+<li><code>assets/scss/_styles_project.scss</code>: remove <code>@import 'td/color-adjustments-dark'</code>,
+<code>'td/code-dark'</code>, <code>'td/extra'</code>, <code>'td/extra/bs-defaults'</code>,
+<code>'td/gcs-search-dark'</code>; drop rules that targeted <code>.td-navbar-cover</code>,
+<code>.td-navbar-transparent</code>, <code>.td-box*</code>, <code>-bg-*</code>, <code>oink-*</code>, <code>--oink-*</code>.</li>
+<li><code>assets/scss/_variables_project.scss</code>: drop <code>$td-print-font-name</code>,
+<code>$td-enable-webfonts</code>, <code>$td-box-colors</code>.</li>
+<li><code>layouts/</code>: replace <code>partial &quot;home-data.html&quot;</code> / <code>&quot;home/section.html&quot;</code> with
+<code>landing/…</code>; replace <code>partial &quot;outputformat.html&quot;</code> with
+<code>.Store.Get &quot;tdOutputFormat&quot;</code>; delete a <code>_markup/render-heading.html</code> that
+called <code>td/render-heading.html</code>; rename <code>taxonomy_terms_*</code> calls;
+compare every other copied partial or hook with 0.5.0 before keeping it.</li>
+<li>Site JS and tests: <code>oink-*</code> ids and <code>data-oink-*</code> attributes are <code>td-*</code> /
+<code>data-td-*</code>; the action manifest is <code>#td-action-manifest</code>; the per-page
+bundle is <code>js/page-&lt;hash&gt;.js</code>, with <code>js/actions.js</code> and <code>js/core.js</code> beside it.</li>
+<li>Site <code>i18n/</code> overrides: rename <code>note</code>, <code>tip</code>, … to <code>callout_note</code>,
+<code>callout_tip</code>, ….</li>
+</ul>
+<h3 id="pg-ec346e98abe204d3b74410578bd1e35b--migration-data">6. Data
+</h3>
+<p>Move the <code>footer:</code> map out of <code>data/home/&lt;lang&gt;.yaml</code> into
+<code>data/footer/&lt;lang&gt;.yaml</code>; make sure <code>data/home/&lt;lang&gt;.yaml</code> lists <code>sections</code>.</p>
+<h3 id="pg-ec346e98abe204d3b74410578bd1e35b--migration-verify">7. Verify
+</h3>
+<div class="td-code td-code--untitled" id="td-code-7149f6b4-fence-6" data-td-code data-td-code-auto-id
+     data-td-language="sh" data-td-line-count="2">
+  <div class="td-code__viewport" id="td-code-7149f6b4-fence-6-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">hugo --printPathWarnings --panicOnWarning
+</span></span><span class="line"><span class="cl">python3 scripts/check-output-security.py --public public --base-url https://example.com/</span></span></code></pre></div></div>
+</div>
+<p>Then check the surfaces that changed most: a docs page with code tabs and a
+callout, a page with images (zoom on, zoom off), a Book chapter and its
+<code>_print/</code> aggregate, <code>index.md</code> Markdown output, an RSS feed, the home landing
+page, and the dark palette. Once the <code>v0.5.0</code> tag is pushed, pin it:</p>
+<div class="td-code td-code--untitled" id="td-code-7149f6b4-fence-7" data-td-code data-td-code-auto-id
+     data-td-language="sh" data-td-line-count="2">
+  <div class="td-code__viewport" id="td-code-7149f6b4-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">hugo mod get github.com/pgsty/oink@v0.5.0
+</span></span><span class="line"><span class="cl">hugo mod tidy</span></span></code></pre></div></div>
+</div>
+<h2 id="pg-ec346e98abe204d3b74410578bd1e35b--compatibility">Compatibility
+</h2>
+<ul>
+<li>Hugo Extended 0.160.1 remains the minimum; CI runs 0.160.1 and 0.164.0, and
+now also builds a consumer site in Hugo Module mode.</li>
+<li>The module path remains <code>github.com/pgsty/oink</code>; consumers still need no
+Node.js, no CDN, and no build-time download.</li>
+<li>There is no compatibility layer for 0.4: renamed keys, shapes, shortcodes,
+partials, and classes fail the build or vanish, by design. The old-key errors
+are the migration guide; the Docsy-origin entries among them also serve
+sites coming from Docsy.</li>
+<li>Docsy keys that were reasonable stay unchanged (see the list under
+<a href="#pg-ec346e98abe204d3b74410578bd1e35b--config-renames">Configuration</a>); the <code>sidebar_*</code> family keeps its names.</li>
+<li>Interactive features remain opt-in: <code>offline_search</code>, <code>ui.image_zoom</code>,
+<code>comments</code>, <code>ui.feedback</code>, <code>ui.dark_mode</code>, <code>page_context_menu.assistant_links</code>
+are off unless a site turns them on.</li>
+</ul>
+<h2 id="pg-ec346e98abe204d3b74410578bd1e35b--verification">Verification
+</h2>
+<p>Theme CI: 34 check scripts (i18n parity, taxonomy, font tokens, the
+navigation / component / content-primitive / Book contracts, runtime
+isolation, sidebar icons, search, actions, palette, reading, release assets,
+downloads, landing, Book migrations, shared scenarios, keyboard, shell,
+namespace, parameters, vendor inventory, output structure and security,
+four-state goldens over 30 surfaces, code blocks, content and media
+primitives, Image Zoom, Gallery, components), the browser runtime unit tests,
+the migration toolkit tests (85), the warning-strict fixture site on Hugo
+0.160.1 and 0.164.0, the <code>system</code> typography preset, legacy Sass overrides,
+an invalid preset failing the build, and the new Module-mode consumer build.
+<code>scripts/check-params.py</code> builds one site per retired key (32 site keys, 14
+page keys) and asserts that each fails naming its replacement.</p>
+<p>This project site builds warning-free on 0.5.0 after the migration described
+above. The final gate ran the complete matrix on Hugo 0.160.1 and 0.164.0; its
+media assertions accept each supported Hugo release&rsquo;s opaque derivative cache
+hash while still checking the rendered URL shape, dimensions, alt semantics,
+and Zoom exclusion. Source validation, the local annotated tag, remote tag
+publication, consumer pins, and deployment remain separately auditable gates.</p>
+<h2 id="pg-ec346e98abe204d3b74410578bd1e35b--full-change-set">Full change set
+</h2>
+<p>See the complete source diff from
+<a href="https://github.com/pgsty/oink/compare/v0.4.2...v0.5.0">v0.4.2 to v0.5.0</a> and
+the theme&rsquo;s <code>CHANGELOG.md</code>.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-abba69b27732ada82586c23f7bfd54f7">6 - Oink 0.4.0 — Scenario components for complete publishing workflows</h1>
+    <div class="lead">Oink 0.4.0 adds sequential reading and release surfaces, reusable landing pages, Book publishing with stable references, and a keyboard-first site shell in one consolidated Scenario Components release.</div>
+	<p>Oink 0.4.0 delivers the complete Scenario Components system. The original design
+separated Reading &amp; Release, Landing, and Book work into 0.4, 0.5, and 0.6
+milestones. The public release consolidates those tracks into one signed
+<code>v0.4.0</code> tag so consumers can adopt one coherent contract instead of a chain of
+interdependent previews.</p>
+<p>The release remains local-first: consumer sites still build with Hugo Extended
+and Go, without Node.js, a browser-time API, or a CDN. Interactive behavior is
+progressive enhancement; HTML, print, Markdown, and RSS output retain the
+content needed to understand each surface.</p>
+<div class="td-release-card-static">
+  <p><strong>v0.4.0</strong> · <time datetime="2026-08-14">2026-08-14</time></p>
+  <ul>
+    <li><a href="https://github.com/pgsty/oink/releases/tag/v0.4.0">View release</a></li>
+    <li><a href="https://github.com/pgsty/oink/archive/refs/tags/v0.4.0.tar.gz">Source · tar.gz</a></li>
+    <li><a href="https://github.com/pgsty/oink/archive/refs/tags/v0.4.0.zip">Source · zip</a></li>
+    <li><a href="https://github.com/pgsty/oink">pgsty/oink</a></li>
+  </ul>
+</div>
+<h2 id="pg-abba69b27732ada82586c23f7bfd54f7--release-highlights">Release highlights
+</h2>
+<h3 id="pg-abba69b27732ada82586c23f7bfd54f7--reading-and-release">Reading and release
+</h3>
+<p>Documentation, Book, and blog pages now have a sequential pager derived from the
+same flattened navigation tree readers see in the sidebar. Previous and next
+links also appear as same-origin <code>rel</code> metadata in the document head. Explicit
+navigation data, link-only entries, sidebar dividers, and blog time order keep
+their own semantics instead of becoming accidental destinations.</p>
+<p>Math can use Goldmark passthrough with the theme&rsquo;s local KaTeX renderer. Sites
+that cannot enable passthrough yet have a strict, parameter-free <code>eq</code> escape
+hatch for display math. Numbered Book equations use the same shortcode only when
+an explicit <code>num</code> is supplied.</p>
+<p>Release pages can render local front-matter facts, release cards, checksums, and
+asset lists without querying GitHub from the browser. A validated
+<code>data/download/&lt;key&gt;.yaml</code> model feeds both the <code>download</code> shortcode and Landing
+download sections, with separate rolling and pinned channels and an explicit
+pending-release state.</p>
+<p>See <a href="/docs/scenarios/reading/">Sequential reading and mathematics</a> and
+<a href="/docs/scenarios/releases/">Releases and downloads</a> for the complete contracts.</p>
+<h3 id="pg-abba69b27732ada82586c23f7bfd54f7--landing-pages">Landing pages
+</h3>
+<p>The data-driven homepage renderer is now a reusable <code>layout: landing</code> shell for
+ordinary pages. A page may load inline data or language-aware records from
+<code>data/landing/&lt;key&gt;/</code>, then compose 21 built-in sections including pricing,
+comparison tables, command boxes, steps, timelines, code plates, case studies,
+downloads, and bar charts.</p>
+<p>All facts are local at build time. Optional reveal, count-up, copy, theme-image,
+and compact-menu behavior loads only when a Landing page needs it. Without
+JavaScript, the same page remains complete; marquees pause on focus or request,
+respect reduced motion, and hide duplicate tracks from assistive technology.</p>
+<p>See <a href="/docs/scenarios/landing/">Landing pages</a> for data resolution, all 21
+section types, local-fact rules, and the output matrix.</p>
+<h3 id="pg-abba69b27732ada82586c23f7bfd54f7--book-publishing">Book publishing
+</h3>
+<p>Long-form manuals can declare Book metadata on the existing documentation shell.
+Chapters gain draft labels, active-page sidebar headings, and semantic <code>fig</code>,
+<code>tbl</code>, numbered <code>eq</code>, and language-aware <code>xref</code> targets. Whole-Book figure lists
+and tables of contents use those same registries.</p>
+<p>An opt-in aggregate print document rewrites cross-chapter component links into
+document-local references and namespaces repeated heading IDs. The accompanying
+migration tool is dry-run first and idempotent, with reproducible TPME, DDIA,
+and pg-internal recipes, machine-readable reports, ambiguity skips, and a
+second-run zero-change check.</p>
+<p>See <a href="/docs/scenarios/book/">Book publishing</a> for the authoring and migration
+contract.</p>
+<h3 id="pg-abba69b27732ada82586c23f7bfd54f7--keyboard-and-shell">Keyboard and shell
+</h3>
+<p>The shell now supports single-key reading navigation. <code>w</code> and <code>s</code> move through
+the sidebar, <code>a</code> and <code>d</code> fold or unfold groups, <code>j</code> and <code>k</code> move through the
+page outline, and <code>q</code> and <code>e</code> follow the sequential pager. <code>h</code> toggles a session
+reading mode; <code>l</code>, <code>t</code>, <code>f</code>, and <code>c</code> switch language, theme, search, and command
+surfaces. Every binding yields to editable controls, composition, held
+modifiers, and dialogs.</p>
+<p>The navbar now spans documentation, blog, taxonomy, and Swagger layouts with one
+compact state instead of a second mobile menu. Page actions move into the
+breadcrumb row as a Copy Markdown split button. Footers support validated <code>fat</code>,
+<code>slim</code>, and <code>none</code> styles, while readers can collapse the fat footer&rsquo;s link grid
+and retain that preference.</p>
+<p>See <a href="/docs/advanced/keyboard/">Keyboard navigation</a> and
+<a href="/docs/configure/navigation/">Navigation and menus</a>.</p>
+<h2 id="pg-abba69b27732ada82586c23f7bfd54f7--compatibility">Compatibility and behavior changes
+</h2>
+<ul>
+<li>Hugo Extended 0.160.1 remains the minimum supported version.</li>
+<li>The module path remains <code>github.com/pgsty/oink</code>; consumers still need no
+frontend toolchain.</li>
+<li>Pagers default to the <code>docs</code>, <code>book</code>, and <code>blog</code> content types. Set an
+explicit type list or <code>pager: false</code> when a page should opt out.</li>
+<li><code>/</code> now opens full search; <code>\</code> opens command-only mode. The <code>&gt;</code> prefix still
+selects command mode inside the Palette.</li>
+<li><code>params.footer_icp</code> and <code>params.footer_icp_url</code> are replaced by one inline
+Markdown value, <code>params.footer_center_info</code>. An explicit empty string hides
+the center region.</li>
+<li><code>params.ui.navbar_enabled</code> defaults to <code>true</code>. Sites can override it globally,
+by section cascade, or on one page.</li>
+<li>Legacy homepage data and Docsy block shortcodes remain compatible, but new
+Landing work should use the canonical section registry.</li>
+</ul>
+<h2 id="pg-abba69b27732ada82586c23f7bfd54f7--upgrade">Upgrade to 0.4.0
+</h2>
+<ol>
+<li>Pin the signed tag and tidy the module graph.</li>
+<li>Replace ICP-specific footer fields with <code>footer_center_info</code> if the site used
+them.</li>
+<li>Review pager defaults, <code>/</code> and <code>\</code> shortcuts, and any local navbar or footer
+overrides.</li>
+<li>Remove copied theme partials only after comparing their local differences
+with the 0.4 implementation.</li>
+<li>Build representative docs, blog, Landing, Book, print, Markdown, mobile, and
+color-mode surfaces.</li>
+</ol>
+<div class="td-code td-code--untitled" id="td-code-a67fe628-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="sh" data-td-line-count="3">
+  <div class="td-code__viewport" id="td-code-a67fe628-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">hugo mod get github.com/pgsty/oink@v0.4.0
+</span></span><span class="line"><span class="cl">hugo mod tidy
+</span></span><span class="line"><span class="cl">hugo --gc --minify</span></span></code></pre></div></div>
+</div>
+<p>Follow the project-site <a href="/docs/upgrade/v0-4/">0.4.0 upgrade guide</a> for the
+consumer checklist. The theme repository retains the frozen
+<a href="https://github.com/pgsty/oink/blob/v0.4.0/docs/prd5-migration-guide.md">PRD 5 migration reference</a>.</p>
+<h2 id="pg-abba69b27732ada82586c23f7bfd54f7--verification">Verification
+</h2>
+<p>The signed tag resolves to the same commit as the released theme source. Theme
+CI exercises Hugo Extended 0.160.1 and 0.164.0, 32-locale parity, vendored
+assets, runtime unit tests, every PRD 4/5/6 contract, and the warning-strict
+example site. The project site pins the public tag and covers bilingual source,
+rendered Markdown, internal links, alternate builds, browser behavior, and the
+full multilingual WCAG AA matrix.</p>
+<p>Representative documentation, portal, Book, and archive sites also build from
+the public <code>v0.4.0</code> module with workspaces disabled.</p>
+<p>Source validation, a public tag, a consumer pin, and hosted deployment are
+separate evidence gates. Publishing this note does not replace a smoke test of
+the deployed URL after the site pipeline finishes.</p>
+<h2 id="pg-abba69b27732ada82586c23f7bfd54f7--full-change-set">Full change set
+</h2>
+<p>See the complete source diff from
+<a href="https://github.com/pgsty/oink/compare/v0.3.0...v0.4.0">v0.3.0 to v0.4.0</a>.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-49c4519ebd827071434c0464071f16b3">7 - Oink 0.3.0 — Authoring, navigation, and a lighter page</h1>
+    <div class="lead">Oink 0.3.0 adds enhanced code blocks and code groups, everyday content primitives, nested navigation with a Command Palette, semantic typography presets, and removes jQuery from every page.</div>
+	<div class="td-release-card-static">
+  <p><strong>v0.3.0</strong> · <time datetime="2026-08-12">2026-08-12</time></p>
+  <ul>
+    <li><a href="https://github.com/pgsty/oink/releases/tag/v0.3.0">View release</a></li>
+    <li><a href="https://github.com/pgsty/oink/archive/refs/tags/v0.3.0.tar.gz">Source · tar.gz</a></li>
+    <li><a href="https://github.com/pgsty/oink/archive/refs/tags/v0.3.0.zip">Source · zip</a></li>
+    <li><a href="https://github.com/pgsty/oink">pgsty/oink</a></li>
+  </ul>
+</div>
+<p><strong>Publication gate:</strong> the linked tag must resolve, the project site must pin
+that exact tag, and the hosted checks must pass. Until then, treat this source
+page as release-candidate material.</p>
+<p>Oink 0.3.0 is the authoring and navigation release. Writing a page gets a modern
+code-block presentation and a set of small, everyday components; reading one
+gets nested navigation and a Command Palette; and every page gets measurably
+lighter because jQuery is gone.</p>
+<p>The module path, the minimum Hugo version, and the Hugo-only consumer build are
+unchanged. Three changes can affect an existing site and are documented in
+<a href="#pg-49c4519ebd827071434c0464071f16b3--breaking-changes">Breaking changes</a>.</p>
+<h2 id="pg-49c4519ebd827071434c0464071f16b3--release-highlights">Release highlights
+</h2>
+<h3 id="pg-49c4519ebd827071434c0464071f16b3--code-blocks-and-code-groups">Code blocks and code groups
+</h3>
+<p>Ordinary fenced code blocks now render a real code surface: an optional
+filename, a language label, a copy button rendered by the server rather than
+injected by script, opt-in wrapping, and collapsing for long listings. Hugo&rsquo;s
+own highlighting options — line numbers, line anchors, <code>hl_lines</code>, tab width —
+keep working exactly as before.</p>
+<p>Copy behaviour is deterministic rather than guessed. Session lexers such as
+<code>console</code> and <code>shell-session</code> default to copying commands without prompts and
+output; every other language copies the whole block. <code>copy=command</code> is rejected
+on lexers that cannot distinguish the two, because silently copying the wrong
+thing is worse than a build error.</p>
+<p>The <code>code-group</code> shortcode groups alternatives — package managers, languages,
+platforms — into synchronized tabs with a stable URL hash, so a link can open
+the exact variant a reader needs. Legacy <code>tabpane</code> content keeps working and
+keeps its storage key.</p>
+<p>See <a href="/docs/components/code-blocks/">Code blocks</a> for the full attribute
+contract.</p>
+<h3 id="pg-49c4519ebd827071434c0464071f16b3--everyday-content-primitives">Everyday content primitives
+</h3>
+<p>Alongside the existing large components, 0.3.0 adds the small ones authors
+actually reach for daily: <code>badge</code>, <code>kbd</code>, <code>fields</code>, <code>filetree</code>, <code>gallery</code>, and
+an opt-in <code>image_zoom</code>. All of them render semantic HTML, none of the
+non-interactive ones load JavaScript, and each has a defined presentation in
+print and Markdown output as well as HTML.</p>
+<p>A standalone public <code>icon</code> shortcode is deliberately still deferred; components
+use a private, allowlisted registry for their own decoration until that API is
+designed properly.</p>
+<p>See <a href="/docs/components/">Components</a> for each contract.</p>
+<h3 id="pg-49c4519ebd827071434c0464071f16b3--navigation-and-command-palette">Navigation and Command Palette
+</h3>
+<p>Top-level menus support one level of dropdowns on desktop and matching
+accordions on mobile, with the parent link and the disclosure control operated
+independently so a parent stays navigable. Flat menus are untouched.</p>
+<p>Local search becomes a Command Palette with three modes: an empty query offering
+quick links and page actions, a text query returning grouped page results, and a
+<code>&gt;</code> prefix that searches commands only. Pages can contribute <code>search_keywords</code>,
+a positive <code>search_boost</code>, and canonical exclusion; ranking applies the same
+boost on both the Lunr and CJK substring paths.</p>
+<p>Page actions and palette commands now run through one shared registry, so Copy
+text, Open in ChatGPT, Open in Claude, View source, View edit history, printing,
+and switching theme, language, or version behave identically wherever they are
+invoked. Assistant prompts resolve the browser URL at activation time,
+preserving the deployed host, query string, and fragment; history links derive
+from the same repository path as Edit this page. Assistant handoff links are
+disabled by default; sites must opt in with
+<code>params.ui.page_context_menu.assistant_links: true</code>. On activation, the full URL
+leaves the site, so do not place secrets in its query or fragment.</p>
+<p>Press <code>/</code> outside an editable control to open the Palette directly in command
+mode. Cmd/Ctrl-K remains the general entry point, and the single-character
+shortcut yields to inputs, textareas, selects, and contenteditable regions.</p>
+<p>Sidebars gain an icon-density policy — <code>all</code>, <code>groups</code>, or <code>none</code>. The
+compatibility default stays <code>all</code>; the starter example opts into <code>groups</code>.</p>
+<p>See the
+<a href="https://github.com/pgsty/oink/blob/v0.3.0/docs/prd4-migration-guide.md">migration reference</a>
+for the complete configuration surface.</p>
+<h3 id="pg-49c4519ebd827071434c0464071f16b3--typography-presets">Typography presets
+</h3>
+<p>Font choices move behind seven semantic <code>--td-*-font-family</code> roles covering UI,
+body, headings, code, display text, metadata, and print. Two validated presets
+ship: <code>technical</code>, which preserves the current Oink appearance, and <code>system</code>,
+which uses the platform stack and requests no Oink brand fonts at all. Existing
+Docsy and Bootstrap Sass font variables seed the roles, so prior overrides keep
+working.</p>
+<p>This is the typography slice of a larger design-token effort. Colour, surface,
+radius, density, and appearance presets are not part of this release.</p>
+<p>See
+<a href="https://github.com/pgsty/oink/blob/v0.3.0/docs/typography-tokens.md">Typography tokens</a>.</p>
+<h3 id="pg-49c4519ebd827071434c0464071f16b3--a-lighter-page">A lighter page
+</h3>
+<p>jQuery is gone. It was previously fetched render-blocking in <code>&lt;head&gt;</code> on every
+page — 87.5 KB before any content — while the theme&rsquo;s own architecture loads
+feature runtimes only on pages that use them. Nothing in the shell needed it,
+and the superseded <code>offline-search.js</code> runtime it powered was already replaced
+by the Command Palette.</p>
+<p>Two other costs were removed rather than accepted. The active output format is
+now read from the page store instead of being re-derived thousands of times per
+build, and the shell configuration is cached per language; on a 576-page build
+that is 357ms of template time reduced to 72ms, with byte-identical output. CJK
+search folds its index fields once instead of re-lowercasing the entire corpus
+on every keystroke, taking an 800-document query from 3.44ms to 0.34ms per
+character typed.</p>
+<p>On the measured project-site snapshot, removing jQuery and the superseded search
+runtime saved about 88 KB from a typical documentation page&rsquo;s combined CSS and
+JavaScript. Exact totals vary as later candidate assets change.</p>
+<h3 id="pg-49c4519ebd827071434c0464071f16b3--correctness-and-localization">Correctness and localization
+</h3>
+<p>This release also closes several less visible correctness gaps. Markdown pages
+link to <code>llms.txt</code> only when the active language actually publishes one, and the
+index no longer treats off-site menu chrome as content. Internal configured
+commands stay under a subpath deployment, while shared content types resolve to
+the right product root. The archived-version banner and Giscus fallback are now
+localized, and print or Markdown output strips interaction-only Image Zoom
+attributes regardless of quoting style. Legacy search links also percent-encode
+their query text instead of truncating a query at <code>&amp;</code>.</p>
+<p>Browser runtime tests now run in theme CI instead of relying on Hugo bundling as
+their only signal. Terminal recordings also wait for their configured font
+before fitting the player, avoiding geometry based on a fallback font.</p>
+<h2 id="pg-49c4519ebd827071434c0464071f16b3--breaking-changes">Breaking changes
+</h2>
+<p><strong>jQuery is no longer loaded.</strong> The third-party inventory previously listed it
+as part of the UI foundation, so a consuming site&rsquo;s own scripts may rely on the
+global <code>$</code>. No theme feature requires it. Sites that need it must now bundle it
+through project JavaScript:</p>
+<div class="td-code td-code--untitled" id="td-code-149591fe-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="html" data-td-line-count="2">
+  <div class="td-code__viewport" id="td-code-149591fe-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="c">&lt;!-- layouts/_partials/hooks/head-end.html --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ (resources.Get &#34;</span><span class="na">js</span><span class="err">/</span><span class="na">jquery</span><span class="err">.</span><span class="na">min</span><span class="err">.</span><span class="na">js</span><span class="err">&#34;).</span><span class="na">RelPermalink</span> <span class="err">}}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</div>
+<p><strong><code>static/js/tabpane-persist.js</code> is removed.</strong> <code>assets/js/code-tabs.js</code> took
+over the legacy persistence contract, keeping the <code>td-tp-persist</code> storage key
+and data attribute, so authored tab content is unaffected. Only a site that
+referenced the published file path directly needs to drop that reference.</p>
+<p><strong>Body and heading typography roles apply directly to content.</strong> A site that
+previously restyled raw <code>body</code> or heading selectors should move to the matching
+<code>--td-*-font-family</code> role or the established Sass variable:</p>
+<div class="td-code td-code--untitled" id="td-code-149591fe-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="scss" data-td-line-count="9">
+  <div class="td-code__viewport" id="td-code-149591fe-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="c1">// Before
+</span></span></span><span class="line"><span class="cl"><span class="nt">body</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">font-family</span><span class="o">:</span> <span class="s1">&#39;My Sans&#39;</span><span class="o">,</span> <span class="ni">sans-serif</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Oink 0.3.0
+</span></span></span><span class="line"><span class="cl"><span class="nd">:root</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">--td-body-font-family</span><span class="o">:</span> <span class="s1">&#39;My Sans&#39;</span><span class="o">,</span> <span class="ni">sans-serif</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+</div>
+<h2 id="pg-49c4519ebd827071434c0464071f16b3--upgrade">Upgrade to 0.3.0
+</h2>
+<ol>
+<li>Check whether any project JavaScript depends on the global <code>$</code>, and bundle
+jQuery yourself if so.</li>
+<li>Remove any direct reference to <code>static/js/tabpane-persist.js</code>; authored
+<code>tabpane</code> content itself does not change.</li>
+<li>Move raw <code>body</code> or heading font overrides to the typography roles.</li>
+<li>Decide whether to opt into assistant handoff links. If enabled, review URLs
+for sensitive query or fragment data and disclose the third-party boundary.</li>
+<li>Update the Hugo Module and tidy the module graph.</li>
+<li>Build and inspect representative documentation, blog, mobile, print, and
+color-mode pages.</li>
+</ol>
+<div class="td-code td-code--untitled" id="td-code-149591fe-fence-2" data-td-code data-td-code-auto-id
+     data-td-language="sh" data-td-line-count="3">
+  <div class="td-code__viewport" id="td-code-149591fe-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">hugo mod get github.com/pgsty/oink@v0.3.0
+</span></span><span class="line"><span class="cl">hugo mod tidy
+</span></span><span class="line"><span class="cl">hugo --gc --minify</span></span></code></pre></div></div>
+</div>
+<p>No Markdown content rewrite is required. Existing fenced code blocks, <code>tabpane</code>
+content, flat menus, shortcodes, and ordinary Docsy-compatible pages continue to
+work unchanged.</p>
+<h2 id="pg-49c4519ebd827071434c0464071f16b3--compatibility">Compatibility
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Contract</th>
+      <th scope="col">Oink 0.3.0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Hugo</td>
+      <td>Extended 0.160.1 or newer; unchanged</td>
+    </tr>
+    <tr>
+      <td>Module path</td>
+      <td><code>github.com/pgsty/oink</code>; unchanged</td>
+    </tr>
+    <tr>
+      <td>Consumer frontend toolchain</td>
+      <td>None; unchanged</td>
+    </tr>
+    <tr>
+      <td>Required content migration</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Required configuration migration</td>
+      <td>None; assistant links are opt-in</td>
+    </tr>
+    <tr>
+      <td>Required project-JS migration</td>
+      <td>Only if it depends on global <code>jQuery</code></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-49c4519ebd827071434c0464071f16b3--verification">Verification
+</h2>
+<p>The 0.3.0 candidate is exercised through the sibling Oink project site, so the
+site builds against the candidate theme rather than its last pinned release.
+Before publication, the theme gate must pass the complete contract suite, a
+warning-free example-site build on the minimum and current Hugo versions, both
+typography presets, and the browser runtime unit tests. The site gate must pass
+formatting, bilingual page pairs and stable heading IDs, rendered Markdown and
+internal links, Hugo Module fixtures, alternate-configuration builds, Markdown
+and favicon goldens, responsive and component browser behaviour, and axe
+accessibility checks. The tag, public-module resolution, site version pin, and
+hosted smoke tests remain separate post-approval gates.</p>
+<h2 id="pg-49c4519ebd827071434c0464071f16b3--full-change-set">Full change set
+</h2>
+<p>See the complete source diff from
+<a href="https://github.com/pgsty/oink/compare/v0.2.1...v0.3.0">v0.2.1 to v0.3.0</a>.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-1062de651c30d6b692f975d461739449">8 - Oink 0.2.0 — Richer content and sharper presentation</h1>
+    <div class="lead">Oink 0.2.0 adds composable homepage sections, theme-aware media, wordmarks, navigable component boards, a steps shortcode, polished terminal recordings, and a clearer release-publishing experience.</div>
+	<div class="td-release-card-static">
+  <p><strong>v0.2.0</strong> · <time datetime="2026-08-10">2026-08-10</time></p>
+  <ul>
+    <li><a href="https://github.com/pgsty/oink/releases/tag/v0.2.0">View release</a></li>
+    <li><a href="https://github.com/pgsty/oink/archive/refs/tags/v0.2.0.tar.gz">Source · tar.gz</a></li>
+    <li><a href="https://github.com/pgsty/oink/archive/refs/tags/v0.2.0.zip">Source · zip</a></li>
+    <li><a href="https://github.com/pgsty/oink">pgsty/oink</a></li>
+  </ul>
+</div>
+<p>Oink 0.2.0 focuses on the parts readers and authors touch most: the homepage,
+brand presentation, blog discovery, section indexes, and instructional content.
+It also turns the Oink project site into a clearer bilingual reference for the
+theme&rsquo;s current contracts.</p>
+<p>The module path, minimum Hugo version, and Hugo-only consumer build remain
+unchanged. The one configuration rename that can affect an existing site is
+documented in <a href="#pg-1062de651c30d6b692f975d461739449--breaking-change">Breaking change</a>.</p>
+<h2 id="pg-1062de651c30d6b692f975d461739449--release-highlights">Release highlights
+</h2>
+<h3 id="pg-1062de651c30d6b692f975d461739449--homepage-and-brand">Homepage and brand
+</h3>
+<p>The homepage now composes 12 built-in section types from an ordered <code>sections</code>
+list. A string selects data with the same name; a map can reuse a presentation
+through a different <code>key</code>, disable a block without deleting its data, or carry a
+small one-off block inline. Sites without <code>sections</code> retain the 0.1.x homepage
+order, so explicit composition is additive rather than a required migration.</p>
+<p>The data-driven homepage can now place responsive artwork beside the Hero.
+Authors may configure one shared image or separate Light and Dark sources, plus
+meaningful alternative text when the artwork carries information. The layout
+adapts from a two-column desktop Hero to a compact mobile presentation without
+requiring a site-level template override.</p>
+<p>Oink also adds <code>params.wordmark</code>. A configured wordmark is used consistently in
+the landing navigation, documentation header, drawer, and footer; sites that
+only configure <code>params.logo</code> keep the existing mark-plus-title presentation.</p>
+<p>Component boards on the homepage can become real navigation. Items accept links,
+optional external-link behavior, compact styling, and one to four columns.
+Decorative boards remain non-interactive, preserving the 0.1.0 contract.</p>
+<p>See <a href="/docs/customize/home/">Homepage and footer</a> for the
+complete data shape.</p>
+<h3 id="pg-1062de651c30d6b692f975d461739449--blog-and-release-publishing">Blog and release publishing
+</h3>
+<p>Blog rows now treat images and summaries as one responsive layout. Featured
+images no longer force the text outside tablet-width containers, summaries can
+break long machine-generated tokens, and posts without images use the full text
+width. The byline&rsquo;s section name is now a link, and RSS moves into the same
+action rail used by the rest of the page.</p>
+<p>Categories and tags use the same collapsible group grammar as the TOC and page
+actions. Terms render as scan-friendly rows with count badges in both the wide
+rail and the mobile drawer. Section indexes are quieter, descriptions have more
+room, and last-modified metadata follows the child-page index instead of
+interrupting the page introduction.</p>
+<p>The Oink project site now separates upstream Docsy history, Oink engineering
+articles, and versioned Oink release notes into distinct bilingual sections.
+That makes release reports discoverable without presenting inherited Docsy posts
+as Oink releases.</p>
+<h3 id="pg-1062de651c30d6b692f975d461739449--content-components">Content components
+</h3>
+<p>0.2.0 adds a Markdown-first <code>steps</code> shortcode. Direct child headings become
+automatically numbered steps connected by a guide line; moving, adding, or
+removing a step updates the visible sequence without maintaining numbers by
+hand. Authors can mark a supporting heading with <code>class=&quot;no-step-marker&quot;</code> so it
+does not consume a number.</p>
+<p>Asciinema recordings gain a polished terminal frame, title bar, compact control
+bar, color-mode-aware styling, and a font contract passed directly into the
+player. This avoids the player falling back to a different terminal font while
+keeping recordings responsive and readable in both themes.</p>
+<p>ECharts callback blocks keep the established trusted-author model: callback code
+is executable content that must be reviewed like inline HTML or another custom
+integration. The renderer no longer emits a redundant warning for every reviewed
+callback block.</p>
+<p>See <a href="/docs/components/steps/">Shortcodes</a> for the new steps contract and
+<a href="/docs/components/">Oink components</a> for the broader component model.</p>
+<h3 id="pg-1062de651c30d6b692f975d461739449--documentation-and-tests">Documentation and tests
+</h3>
+<p>The independent project site receives a matching documentation pass:</p>
+<ul>
+<li>Expands English and Chinese homepage and component examples.</li>
+<li>Documents all 12 composable homepage sections and uses the relevant ones on
+the project landing page.</li>
+<li>Adds a real Asciinema installation recording and a dedicated giscus guide.</li>
+<li>Moves examples under the documentation tree and removes obsolete community and
+maintainer-only pages.</li>
+<li>Consolidates Hugo configuration into the root <code>hugo.yml</code> and retires the old
+Netlify-specific tooling.</li>
+<li>Isolates browser tests from live reload and keeps responsive, accessibility,
+translation, rendered-Markdown, and link checks in the release gate.</li>
+</ul>
+<p>These are project-site changes, not new runtime dependencies for theme
+consumers.</p>
+<h2 id="pg-1062de651c30d6b692f975d461739449--breaking-change">Breaking change
+</h2>
+<p>0.2.0 renames the inherited featured-image setting from <code>default_featured_image</code>
+to <code>default_featured</code>. Update page, section cascade, and site-level
+configuration where the old key appears:</p>
+<div class="td-code td-code--untitled" id="td-code-be6ab29d-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="5">
+  <div class="td-code__viewport" id="td-code-be6ab29d-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># Oink 0.1.x</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">default_featured_image</span><span class="p">:</span><span class="w"> </span><span class="l">/images/blog-card.webp</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># Oink 0.2.0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">default_featured</span><span class="p">:</span><span class="w"> </span><span class="l">/images/blog-card.webp</span></span></span></code></pre></div></div>
+</div>
+<p>The implicit theme placeholder is also removed. If no post image, matching page
+resource, or explicit <code>default_featured</code> exists, Oink now renders a clean
+text-only list entry. Set <code>default_featured</code> to a site-owned image when a whole
+section should keep a visual identity; set it to <code>false</code> to make the opt-out
+explicit.</p>
+<p>There is no compatibility alias for the old key. This is the only required
+configuration migration in 0.2.0.</p>
+<h2 id="pg-1062de651c30d6b692f975d461739449--upgrade">Upgrade to 0.2.0
+</h2>
+<ol>
+<li>Replace every <code>default_featured_image</code> setting with <code>default_featured</code>.</li>
+<li>Update the Hugo Module and tidy the module graph.</li>
+<li>Build the site and inspect representative homepage, blog, documentation,
+mobile, and color-mode pages.</li>
+</ol>
+<div class="td-code td-code--untitled" id="td-code-be6ab29d-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="sh" data-td-line-count="3">
+  <div class="td-code__viewport" id="td-code-be6ab29d-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">hugo mod get github.com/pgsty/oink@v0.2.0
+</span></span><span class="line"><span class="cl">hugo mod tidy
+</span></span><span class="line"><span class="cl">hugo --gc --minify</span></span></code></pre></div></div>
+</div>
+<p>No Markdown content rewrite is required. Existing homepage sections, logo-only
+branding, shortcodes, and ordinary Docsy-compatible pages continue to work.</p>
+<h2 id="pg-1062de651c30d6b692f975d461739449--compatibility">Compatibility
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Contract</th>
+      <th scope="col">Oink 0.2.0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Hugo</td>
+      <td>Extended 0.160.1 or newer; unchanged</td>
+    </tr>
+    <tr>
+      <td>Module path</td>
+      <td><code>github.com/pgsty/oink</code>; unchanged</td>
+    </tr>
+    <tr>
+      <td>Consumer frontend toolchain</td>
+      <td>None; unchanged</td>
+    </tr>
+    <tr>
+      <td>Required content migration</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Required configuration migration</td>
+      <td>Rename <code>default_featured_image</code></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-1062de651c30d6b692f975d461739449--verification">Verification
+</h2>
+<p>The 0.2.0 candidate is exercised through the sibling Oink project site so the
+site builds against the candidate theme rather than only its last pinned
+release. The release gate covers formatting, bilingual page pairs and stable
+heading IDs, rendered Markdown and internal links, Hugo Module fixtures,
+responsive browser behavior, and axe accessibility checks.</p>
+<h2 id="pg-1062de651c30d6b692f975d461739449--full-change-set">Full change set
+</h2>
+<p>See the complete source diff from
+<a href="https://github.com/pgsty/oink/compare/v0.1.0...v0.2.0">v0.1.0 to v0.2.0</a>.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-a2cdca5ef170b7c6d4a552f20071d08e">9 - Oink 0.1.0 — A stable local-first foundation</h1>
+    <div class="lead">The first stable Oink release turns the implementation preview into a polished Hugo module with a responsive shell, multilingual infrastructure, local-first components, and a stronger accessibility baseline.</div>
+	<div class="td-release-card-static">
+  <p><strong>v0.1.0</strong> · <time datetime="2026-08-08">2026-08-08</time></p>
+  <ul>
+    <li><a href="https://github.com/pgsty/oink/releases/tag/v0.1.0">View release</a></li>
+    <li><a href="https://github.com/pgsty/oink/archive/refs/tags/v0.1.0.tar.gz">Source · tar.gz</a></li>
+    <li><a href="https://github.com/pgsty/oink/archive/refs/tags/v0.1.0.zip">Source · zip</a></li>
+    <li><a href="https://github.com/pgsty/oink">pgsty/oink</a></li>
+  </ul>
+</div>
+<p>Oink 0.1.0 is the first stable release of the Oink theme. It incorporates the
+0.0.1 implementation preview and the stabilization work that followed: one
+coherent documentation shell, a Hugo-only consumer build, local-first browser
+assets, multilingual behavior derived from Hugo, and reusable content
+components.</p>
+<p>This release keeps the module path <code>github.com/pgsty/oink</code> and requires Hugo
+Extended 0.160.1 or newer. A consuming site does not need Node.js, npm, PostCSS,
+Autoprefixer, or a CDN to build and serve theme-owned functionality.</p>
+<h2 id="pg-a2cdca5ef170b7c6d4a552f20071d08e--release-highlights">Release highlights
+</h2>
+<h3 id="pg-a2cdca5ef170b7c6d4a552f20071d08e--local-first-foundation">Local-first theme foundation
+</h3>
+<p>Oink ships the styles, fonts, icons, local search, diagrams, API documentation
+runtimes, and content-component runtimes that it owns. Optional assets load only
+on pages that use them, and the distributable repository is a root Hugo Module
+rather than an embedded project site or frontend workspace.</p>
+<p>The release also establishes the core product contracts:</p>
+<ul>
+<li>Hugo languages and translation objects drive language routes, switching,
+<code>hreflang</code>, writing direction, and locale metadata.</li>
+<li>The theme supports single-language, multilingual, and RTL sites without
+PGSTY-specific domain assumptions.</li>
+<li>Asciinema, ECharts, Infographic, diagrams, API references, tabs, cards, and
+other reusable components share local, page-scoped runtimes.</li>
+<li>GitHub Discussions comments are available through an opt-in giscus
+integration. No external comments script loads unless a site enables it.</li>
+<li>Docsy-compatible content organization, menus, taxonomies, print outputs, and
+extension hooks remain available.</li>
+</ul>
+<h3 id="pg-a2cdca5ef170b7c6d4a552f20071d08e--responsive-shell">Responsive shell
+</h3>
+<p>The documentation, blog, and API-reference layouts now use one responsive shell.
+Desktop navigation, the resizable sidebar, the table of contents (TOC), page
+actions, taxonomies, version selection, and the footer follow the same visual
+and interaction grammar.</p>
+<p>On tablets and phones, Oink moves the TOC, page actions, categories, and tags
+into the navigation drawer instead of rendering a second copy. This preserves
+unique IDs and keeps scroll tracking, disclosures, and copy actions working
+across live viewport changes. Language and color controls remain reachable at
+every width, and the color selector exposes Auto, Light, and Dark as explicit
+preferences.</p>
+<p>Navigation entries gain consistent icons, the mobile menu traps keyboard focus,
+footer columns fill the available width, and the compact page-action menu no
+longer duplicates the right rail. Copy Markdown, view Markdown, edit, issue, and
+print actions now come from one implementation.</p>
+<h3 id="pg-a2cdca5ef170b7c6d4a552f20071d08e--publishing-and-content">Publishing and content
+</h3>
+<p>Syntax highlighting now uses class-based Chroma output with coordinated light
+and dark palettes. Code remains readable before JavaScript initializes a color
+mode, and sites can still opt out with <code>params.highlight_classes: false</code>.</p>
+<p>Blog lists gain a deterministic featured-image resolver. In 0.1.0, it checks
+front matter <code>images</code>, a matching page resource, inherited
+<code>default_featured_image</code>, site parameters, and finally the theme placeholder.
+The same resolver serves both modern blog rows and the compatible legacy
+partial.</p>
+<p>The new ink-mark logo and the placeholder artwork respond correctly to all four
+system-theme and selected-theme combinations. Oink now declares the used
+<code>color-scheme</code> in both directions, so an explicit site preference wins over the
+operating-system preference.</p>
+<h3 id="pg-a2cdca5ef170b7c6d4a552f20071d08e--accessibility-and-correctness">Accessibility and correctness
+</h3>
+<p>0.1.0 fixes a set of issues found during desktop, mobile, print, and assistive
+technology review:</p>
+<ul>
+<li>Corrects heading order, landmark names, task-list labels, and printable list
+semantics.</li>
+<li>Keeps blog rows inside the viewport at tablet widths and lets long URLs or
+identifiers wrap safely.</li>
+<li>Builds GitHub issue links with correctly encoded titles and URLs.</li>
+<li>Localizes the 404 page and removes hard-coded punctuation from translated
+accessible names.</li>
+<li>Gives iframe embeds titles and lazy loading, registers their resize helper
+once, and safely handles cross-origin frames.</li>
+<li>Emits one <code>contentinfo</code> landmark per page and keeps theme extension partials
+and opt-in SCSS entry points available to consumer sites.</li>
+</ul>
+<p>The compatibility audit also removes genuinely unreachable legacy shell code
+while restoring files that downstream sites can import directly. Reachability is
+evaluated from consumer layouts and <code>_styles_project.scss</code>, not only from the
+theme&rsquo;s own entry points.</p>
+<h2 id="pg-a2cdca5ef170b7c6d4a552f20071d08e--upgrade">Upgrade to 0.1.0
+</h2>
+<p>Update the Hugo Module and rebuild the site:</p>
+<div class="td-code td-code--untitled" id="td-code-5b3d9163-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="sh" data-td-line-count="3">
+  <div class="td-code__viewport" id="td-code-5b3d9163-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">hugo mod get github.com/pgsty/oink@v0.1.0
+</span></span><span class="line"><span class="cl">hugo mod tidy
+</span></span><span class="line"><span class="cl">hugo --gc --minify</span></span></code></pre></div></div>
+</div>
+<p>No content migration is required. If a site imports Oink partials or SCSS
+directly, build that site as part of the upgrade so its customization surface is
+checked alongside the theme.</p>
+<h2 id="pg-a2cdca5ef170b7c6d4a552f20071d08e--compatibility">Compatibility
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Contract</th>
+      <th scope="col">Oink 0.1.0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Hugo</td>
+      <td>Extended 0.160.1 or newer</td>
+    </tr>
+    <tr>
+      <td>Module path</td>
+      <td><code>github.com/pgsty/oink</code></td>
+    </tr>
+    <tr>
+      <td>Consumer frontend toolchain</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Default browser dependencies</td>
+      <td>Local-first</td>
+    </tr>
+    <tr>
+      <td>Primary content model</td>
+      <td>Docsy-compatible Markdown and front matter</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-a2cdca5ef170b7c6d4a552f20071d08e--verification">Verification
+</h2>
+<p>The final 0.1.0 candidate was swept against the theme fixture and the Oink
+project site across seven viewport widths. The recorded run reported no console
+errors, failed requests, horizontal overflow, or axe violations. Separate
+fixtures cover minimum and current Hugo versions, LTR and RTL languages,
+subpaths, print output, repeated component instances, and network-isolated
+consumer builds.</p>
+<h2 id="pg-a2cdca5ef170b7c6d4a552f20071d08e--full-change-set">Full change set
+</h2>
+<p>See the <a href="https://github.com/pgsty/oink/tree/v0.1.0">v0.1.0 source snapshot</a>.</p>
+
+</div>
+
+
+
+    
+	
+  
+
+
+
+      </main>
+    </div>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"Copy Markdown","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["Copy Markdown","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Copy Markdown","url":"/blog/release/index.md"},{"available":true,"description":"Copy link","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["Copy link","Share","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"Copy link","url":"http://localhost:1313/blog/release/"},{"available":true,"description":"Open in ChatGPT","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["Open in ChatGPT","Ask about this page","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in ChatGPT","url":"https://chatgpt.com/?hints=search\u0026prompt=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fblog%2Frelease%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"Open in Claude","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["Open in Claude","Ask about this page","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in Claude","url":"https://claude.ai/new?q=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fblog%2Frelease%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"View markdown","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["View markdown","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View markdown","url":"/blog/release/index.md"},{"available":true,"description":"View edit history","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["View edit history","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View edit history","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/blog/release/_index.md"},{"available":true,"description":"Edit this page","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["Edit this page","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Edit this page","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/blog/release/_index.md"},{"available":true,"description":"Create child page","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["Create child page","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create child page","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/blog/release?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"Create docs issue","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["Create docs issue","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create docs issue","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=Oink+Release+Notes"},{"available":true,"description":"Create project issue","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["Create project issue","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create project issue","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"Print entire section","disabledReason":"Print entire section: unavailable","icon":"fa-solid fa-print","id":"print_section","keywords":["Print entire section","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Print entire section","url":""},{"available":true,"description":"Print this page","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["Print this page","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"Print this page","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL required","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"Switch language","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["Switch language","language"],"kind":"choice","options":[{"active":true,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/blog/release/"},{"active":false,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/blog/release/"}],"placements":{"page":false,"palette":true},"target":"self","title":"Switch language","url":""},{"available":true,"description":"Toggle color theme","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["Toggle color theme","Light","Dark"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"System","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"Light","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"Dark","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"Toggle color theme","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"Report or review theme and documentation issues","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["bug","support","roadmap"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK issues","url":"https://github.com/pgsty/oink/issues"}],"language":"en","quickLinks":[{"available":true,"description":"OINK is a documentation theme that needs nothing but Hugo Extended — components are written in Markdown, assets ship with the theme, both languages work out of the box, and one source produces four outputs.","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["Docs","docs"],"kind":"url","target":"self","title":"Docs","url":"/docs/"},{"available":true,"description":"OINK engineering stories, immersive guides, and release notes","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["Blog","blog"],"kind":"url","target":"self","title":"Blog","url":"/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+
+<script src="/js/actions.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>OINK Case on OINK</title>
+    <link>http://localhost:1313/case/</link>
+    <description>Recent content in OINK Case on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Sat, 22 Aug 2026 16:32:18 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/case/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>pgsty.com</title>
+        <link>http://localhost:1313/case/pgsty-com/</link>
+        <pubDate>Sat, 15 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/pgsty-com/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pgsty.com/&#34;&gt;pgsty.com&lt;/a&gt; is the bilingual corporate site behind Pigsty.&#xA;It has only about ten pages: a &lt;code&gt;type: home&lt;/code&gt; front page assembled from&#xA;&lt;code&gt;data/home/{en,zh}.yaml&lt;/code&gt;, followed by focused pages for solutions, company&#xA;information, and pricing.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Using OINK as a landing-page theme with almost no documentation tree.&lt;/li&gt;&#xA;&lt;li&gt;Maintaining compact English and Chinese marketing pages as peers.&lt;/li&gt;&#xA;&lt;li&gt;Building the home-page narrative from reusable data sections.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This pattern is appropriate when a project wants OINK&amp;rsquo;s brand, navigation,&#xA;search, and multilingual conventions but primarily needs a small public-facing&#xA;site rather than a manual.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>pigsty.cc</title>
+        <link>http://localhost:1313/case/pigsty-cc/</link>
+        <pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/pigsty-cc/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pigsty.cc/&#34;&gt;pigsty.cc&lt;/a&gt; publishes Pigsty in Simplified Chinese. The case&#xA;snapshot counted more than 1,490 content files and over 300 blog posts, with its&#xA;own data-driven pricing page and Chinese as the default content language.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Splitting a very large bilingual corpus into two independently deployed,&#xA;single-language sites.&lt;/li&gt;&#xA;&lt;li&gt;Connecting the pair through the alternate-site control and version menu.&lt;/li&gt;&#xA;&lt;li&gt;Letting each language keep its own publishing cadence and landing-page data.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This pattern trades same-domain language switching for clearer ownership and&#xA;smaller builds. It is useful when both languages are already substantial&#xA;products rather than occasional translations.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>pigsty.io</title>
+        <link>http://localhost:1313/case/pigsty-io/</link>
+        <pubDate>Thu, 13 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/pigsty-io/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pigsty.io/&#34;&gt;pigsty.io&lt;/a&gt; is the English home of Pigsty, the open-source&#xA;PostgreSQL distribution. At the snapshot used for this case, it contained more&#xA;than 1,400 Markdown files, over 200 blog posts, an extension catalogue, and a&#xA;data-driven pricing page.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A large documentation tree and editorial blog living in one Hugo site.&lt;/li&gt;&#xA;&lt;li&gt;Structured catalogues whose content and data are maintained separately.&lt;/li&gt;&#xA;&lt;li&gt;A &lt;code&gt;layout: landing&lt;/code&gt; pricing page assembled from &lt;code&gt;data/landing&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;Taxonomies and a version menu that also link to sibling and historical sites.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Choose this pattern when one English-first site must serve reference material,&#xA;news, catalogues, and commercial landing pages without splitting the toolchain.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>silo.pgsty.com</title>
+        <link>http://localhost:1313/case/silo/</link>
+        <pubDate>Wed, 12 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/silo/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://silo.pgsty.com/&#34;&gt;silo.pgsty.com&lt;/a&gt; documents SILO, an S3-compatible&#xA;object store. The case snapshot counted 411 pages per language. A migration&#xA;manifest covering 387 upstream pages generates &lt;code&gt;data/docs_nav.json&lt;/code&gt;, which then&#xA;drives the documentation sidebar. The site also has module taxonomy and a&#xA;download page.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Migrating a large upstream manual without flattening its information design.&lt;/li&gt;&#xA;&lt;li&gt;Generating navigation from a checked manifest instead of hand-maintaining it.&lt;/li&gt;&#xA;&lt;li&gt;Layering local bilingual content, taxonomy, and downloads around imported docs.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Use this pattern when the upstream corpus remains authoritative but the local&#xA;site needs its own navigation, language peers, and product surfaces.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>oink.pgsty.com</title>
+        <link>http://localhost:1313/case/oink/</link>
+        <pubDate>Tue, 11 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/oink/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://oink.pgsty.com/&#34;&gt;oink.pgsty.com&lt;/a&gt; is the site you are reading. It is the&#xA;theme&amp;rsquo;s public manual and a real consumer used for regression coverage. Its&#xA;component pages render live examples; the same repository also carries design&#xA;contracts, Book fixtures, download data, and home and landing-page data.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Documentation examples that are executable regression fixtures, not screenshots.&lt;/li&gt;&#xA;&lt;li&gt;One site serving users, content authors, theme developers, and reviewers.&lt;/li&gt;&#xA;&lt;li&gt;Component, Docs, Blog, Book, Case, download, and landing surfaces together.&lt;/li&gt;&#xA;&lt;li&gt;Bilingual content checked against a pinned Hugo Module dependency.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Use this repository as the broad reference implementation; use the narrower&#xA;cases when starting a site that needs only one or two OINK content models.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>caps.vonng.com</title>
+        <link>http://localhost:1313/case/capslock/</link>
+        <pubDate>Mon, 10 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/capslock/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://caps.vonng.com/&#34;&gt;caps.vonng.com&lt;/a&gt; is a two-page-per-language&#xA;site for the Capslock keyboard enhancement: a home page and an interactive&#xA;configuration generator. The generator reads &lt;code&gt;data/capslock-v3.json&lt;/code&gt; and uses&#xA;a custom &lt;code&gt;customizer&lt;/code&gt; shell type alongside the regular documentation shell.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The practical lower bound of an OINK site: a tiny project needs no front-end&#xA;application just to publish a tool and its introduction.&lt;/li&gt;&#xA;&lt;li&gt;Extending the shell registry for one purpose-built interactive page.&lt;/li&gt;&#xA;&lt;li&gt;Keeping generator data separate from its presentation and bilingual prose.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Use this pattern when documentation is small but one interactive tool deserves&#xA;the same navigation, theme, and language controls as the rest of the site.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>pig.pgsty.com</title>
+        <link>http://localhost:1313/case/pig/</link>
+        <pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/pig/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pig.pgsty.com/&#34;&gt;pig.pgsty.com&lt;/a&gt; documents PIG, the PostgreSQL extension&#xA;package manager. Its core manual is deliberately compact—18 pages per language&#xA;in the case snapshot—while a 50-post bilingual blog carries updates and deeper&#xA;explanations. The home page is assembled from &lt;code&gt;data/home&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A shallow, mostly single-file documentation tree for a focused CLI product.&lt;/li&gt;&#xA;&lt;li&gt;English and Chinese peers without duplicating navigation design.&lt;/li&gt;&#xA;&lt;li&gt;A data-driven home page paired with a larger stream of blog content.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Choose this pattern when the reference manual is small and stable but product&#xA;news, tutorials, and release context need room to grow.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>sow.pgsty.com</title>
+        <link>http://localhost:1313/case/sow/</link>
+        <pubDate>Sat, 08 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/sow/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://sow.pgsty.com/&#34;&gt;sow.pgsty.com&lt;/a&gt; documents SOW, an APT and YUM repository&#xA;manager. The case snapshot contained 55 pages per language and a dedicated&#xA;download page whose versions, tags, and release artifacts are generated from&#xA;structured release data.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Keeping operational documentation bilingual at a moderate scale.&lt;/li&gt;&#xA;&lt;li&gt;Giving downloads their own content type instead of embedding links in prose.&lt;/li&gt;&#xA;&lt;li&gt;Reusing release data so package metadata has one source of truth.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This pattern fits software that distributes many platform-specific artifacts&#xA;and needs installation instructions, repositories, and downloads to evolve&#xA;together.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>exp.pgsty.com</title>
+        <link>http://localhost:1313/case/pg-exporter/</link>
+        <pubDate>Fri, 07 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/pg-exporter/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://exp.pgsty.com/&#34;&gt;exp.pgsty.com&lt;/a&gt; documents PG Exporter, a Prometheus&#xA;metrics collector for PostgreSQL. The case snapshot counted 15 pages per&#xA;language and 37 bilingual blog posts. Generated navigation, home-page data, and&#xA;a structured metric catalogue do most of the organizational work.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Using &lt;code&gt;data/docs_nav.json&lt;/code&gt; for a small but deliberately ordered manual.&lt;/li&gt;&#xA;&lt;li&gt;Rendering a domain catalogue from structured data rather than repeated prose.&lt;/li&gt;&#xA;&lt;li&gt;Selecting &lt;code&gt;typography: system&lt;/code&gt; when a site should make no brand-font request.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This pattern suits technical products whose reference data is as important as&#xA;their narrative documentation, especially where a lightweight font stack is&#xA;preferred.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>ddia.vonng.com</title>
+        <link>http://localhost:1313/case/ddia/</link>
+        <pubDate>Thu, 06 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/ddia/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://ddia.vonng.com/&#34;&gt;ddia.vonng.com&lt;/a&gt; publishes &lt;em&gt;Designing Data-Intensive&#xA;Applications&lt;/em&gt; as a multilingual book. The case snapshot includes 24 chapters&#xA;each in Simplified and Traditional Chinese, 23 chapters of the English second&#xA;edition, and two 21-chapter first-edition sets.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A complete &lt;code&gt;type: book&lt;/code&gt; reading shell with chapter-level navigation.&lt;/li&gt;&#xA;&lt;li&gt;More than 130 numbered figure, table, equation, and example targets.&lt;/li&gt;&#xA;&lt;li&gt;Stable cross-references and generated book indexes across several editions.&lt;/li&gt;&#xA;&lt;li&gt;Multiple written-language variants inside one publication.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Use this pattern for long-form works where numbering, citations, and movement&#xA;between chapters matter more than documentation-style sidebars.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>tpme.vonng.com</title>
+        <link>http://localhost:1313/case/tpme/</link>
+        <pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/tpme/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://tpme.vonng.com/&#34;&gt;tpme.vonng.com&lt;/a&gt; publishes &lt;em&gt;The Product-Minded&#xA;Engineer&lt;/em&gt; in English and Chinese, with 18 chapters per language in the case&#xA;snapshot. Its configuration narrows the supported shell types to &lt;code&gt;[book]&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A publication with exactly one content model and no documentation shell.&lt;/li&gt;&#xA;&lt;li&gt;Bilingual chapter peers with a shared visual and navigational system.&lt;/li&gt;&#xA;&lt;li&gt;A smaller Book implementation than the multi-edition DDIA site.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This is the clearer starting point for a single-title tutorial or translated&#xA;book: keep the site architecture narrow, then add numbering and indexes only as&#xA;the manuscript needs them.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>pgint.vonng.com</title>
+        <link>http://localhost:1313/case/pg-internal/</link>
+        <pubDate>Tue, 04 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/pg-internal/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pgint.vonng.com/&#34;&gt;pgint.vonng.com&lt;/a&gt; publishes &lt;em&gt;PG 技术内幕&lt;/em&gt;, the 2018&#xA;Chinese translation of Hironobu Suzuki&amp;rsquo;s &lt;em&gt;The Internals of PostgreSQL&lt;/em&gt;. The site&#xA;carries two prefaces, eleven chapters, a generated table of contents, and a&#xA;licensing page — all in Simplified Chinese, with no English peer.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A deliberately monolingual OINK site: one language tree, and a language&#xA;switcher that stays out of the way because there is nothing to switch to.&lt;/li&gt;&#xA;&lt;li&gt;The Book shell carrying a finished translation rather than a living manual —&#xA;chapter navigation, whole-book print output, and a landing page in one site.&lt;/li&gt;&#xA;&lt;li&gt;A landing page that credits an upstream author alongside the translators, and&#xA;links outward to the continuously updated English original.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Use this pattern for a completed translation or a stable published text: the&#xA;content will not grow, so the site&amp;rsquo;s job is orientation, reading comfort, and&#xA;honest attribution rather than change management.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>pgsql.cc</title>
+        <link>http://localhost:1313/case/pgsql-cc/</link>
+        <pubDate>Mon, 03 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/pgsql-cc/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pgsql.cc/&#34;&gt;pgsql.cc&lt;/a&gt; brings the operating manuals for Patroni, HAProxy,&#xA;etcd, PgBouncer, pgBackRest, and pgBadger into one PostgreSQL-focused library.&#xA;The case snapshot counted 217 English pages and 80 Chinese pages.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Giving several upstream products a consistent local information architecture.&lt;/li&gt;&#xA;&lt;li&gt;Publishing English first while Chinese coverage grows over time.&lt;/li&gt;&#xA;&lt;li&gt;Keeping partial translation useful instead of blocking publication on parity.&lt;/li&gt;&#xA;&lt;li&gt;Using subtrees to preserve clear product boundaries inside an aggregate site.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Choose this pattern for a curated technical library where sources and&#xA;translation maturity vary, but readers benefit from one search and one visual&#xA;system.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>pgsty.pro</title>
+        <link>http://localhost:1313/case/pgsty-pro/</link>
+        <pubDate>Sun, 02 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/pgsty-pro/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pgsty.pro/&#34;&gt;pgsty.pro&lt;/a&gt; documents Pigsty v5 in English and Chinese. The&#xA;case snapshot counted 343 documentation pages per language and 67 bilingual&#xA;blog posts. Its release archive is the distinctive part: 128 localized pages&#xA;render version data through the reusable &lt;code&gt;release-card&lt;/code&gt; component.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Keeping a long product history navigable without hand-building every card.&lt;/li&gt;&#xA;&lt;li&gt;Sharing structured release data between download, archive, and detail pages.&lt;/li&gt;&#xA;&lt;li&gt;Maintaining documentation and editorial posts as bilingual peers.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Use this pattern for products with many supported or historical versions where&#xA;release metadata must stay consistent across several surfaces.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>ext.pgsty.com</title>
+        <link>http://localhost:1313/case/pgext-cloud/</link>
+        <pubDate>Sat, 01 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/pgext-cloud/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://ext.pgsty.com/&#34;&gt;ext.pgsty.com&lt;/a&gt; is the PostgreSQL Extension Catalog:&#xA;search across extensions, package families, dependencies, and the exact&#xA;PostgreSQL and operating-system combinations each one is available for. The&#xA;catalogue indexes 2,241 extensions, 576 of them packaged, across 16 Linux&#xA;platforms and 5 major PostgreSQL versions.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A queryable dataset presented as the primary object of a site, with the&#xA;reading shell kept out of its way.&lt;/li&gt;&#xA;&lt;li&gt;A catalogue and its prose living in one OINK site, the same arrangement&#xA;&lt;a href=&#34;http://localhost:1313/case/pg-exporter/&#34;&gt;PG Exporter&lt;/a&gt; and &lt;a href=&#34;http://localhost:1313/case/pigsty-io/&#34;&gt;pigsty.io&lt;/a&gt; use for&#xA;their own structured data.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;→ &lt;a href=&#34;http://localhost:1313/case/pg-exporter/&#34;&gt;PG Exporter case&lt;/a&gt; · &lt;a href=&#34;http://localhost:1313/case/pigsty-io/&#34;&gt;pigsty.io case&lt;/a&gt; · &lt;a href=&#34;http://localhost:1313/case/&#34;&gt;All OINK cases&lt;/a&gt;&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

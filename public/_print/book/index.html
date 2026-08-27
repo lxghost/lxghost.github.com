@@ -1,0 +1,562 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" dir="ltr" lang="en-US" data-td-typography="technical">
+  <head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#000000">
+
+<style>
+  html { background: Canvas; color: CanvasText; }
+  @media (prefers-color-scheme: dark) {
+    html { background: #0b0d12; color: #e6e6e6; }
+  }
+  html[data-td-theme-init] * { transition: none !important; }
+  [data-td-theme-toggle] > .td-shell-icon--sun { display: none !important; }
+  [data-td-theme-toggle] > [hidden] { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--moon { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--sun { display: inline-block !important; }
+</style>
+
+<script>
+  (function() {
+    const themeKey = 'td-color-theme';
+    let storedTheme = null;
+    try {
+      storedTheme = localStorage.getItem(themeKey);
+    } catch (_) {
+      
+      
+    }
+    let theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+    if (theme === 'auto') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    document.documentElement.classList.toggle('dark-mode', theme === 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<link rel="canonical" type="text/html" href="http://localhost:1313/book/">
+<link rel="alternate" type="text/markdown" href="http://localhost:1313/book/index.md">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<title>Write Beautiful Docs | OINK</title>
+<meta name="description" content="A practical tutorial for creating clear, beautiful, and maintainable technical content with OINK.">
+<link rel="canonical" href="http://localhost:1313/book/">
+<link rel="alternate" hreflang="en-US" href="http://localhost:1313/book/">
+<link rel="alternate" hreflang="zh-CN" href="http://localhost:1313/zh/book/">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:url" content="http://localhost:1313/book/">
+  <meta property="og:site_name" content="OINK">
+  <meta property="og:title" content="Write Beautiful Docs">
+  <meta property="og:description" content="A practical tutorial for creating clear, beautiful, and maintainable technical content with OINK.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="Write Beautiful Docs">
+  <meta itemprop="description" content="A practical tutorial for creating clear, beautiful, and maintainable technical content with OINK.">
+  <meta itemprop="dateModified" content="2026-08-23T23:39:43+08:00">
+  <meta itemprop="wordCount" content="312">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Write Beautiful Docs">
+  <meta name="twitter:description" content="A practical tutorial for creating clear, beautiful, and maintainable technical content with OINK.">
+<link href="/scss/fontawesome.css" rel="stylesheet">
+<link href="/scss/main.css" rel="stylesheet">
+</head>
+  <body class="td-section td-book td-print-view">
+    <a class="td-skip-link d-print-none" href="#td-main-content">Skip to content</a>
+
+    <div class="container-fluid td-print-shell">
+      <main id="td-main-content" class="td-print-document" tabindex="-1"><div class="td-content td-book-print-cover">
+  
+
+
+<h1 class="title">Write Beautiful Docs</h1>
+<div class="lead">A practical tutorial for creating clear, beautiful, and maintainable technical content with OINK.</div>
+
+
+  <nav class="td-book-print-toc" aria-label="Book contents">
+    <ol>
+      <li><a href="#pg-edca7cbb245146be752b62ec0ec546fa">Book</a></li>
+      <li><a href="#pg-a859162466fd3a7aac9e54eb3e153c46"><span class="td-book-number">1</span> Start with a working site</a></li>
+      <li><a href="#pg-74ebf20f39c8528d6f3b6bd1cfb3618d"><span class="td-book-number">2</span> Structure the content</a></li>
+      <li><a href="#pg-92bb64fe6419e43b69f384e94e9e051c"><span class="td-book-number">3</span> Compose the page</a></li>
+      <li><a href="#pg-1b7800752245630b618b435a0e684388"><span class="td-book-number">4</span> Shape the experience</a></li>
+      <li><a href="#pg-dc2b889a326084ac8d9fc12b67c7bb24"><span class="td-book-number">5</span> Choose a publishing surface</a></li>
+      <li><a href="#pg-54ec0297f8d65e9a795aa4d4b9fdc8be"><span class="td-book-number">6</span> Validate and ship</a></li>
+      <li><a href="#pg-0ad629119709abc7fb84d13d9fbf0d9c"><span class="td-book-number">A</span> Appendix: Patterns</a></li>
+    </ol>
+  </nav>
+</div><section class="td-content td-book-print-page" id="pg-edca7cbb245146be752b62ec0ec546fa" data-td-book-page="/book">
+  <h1>Write Beautiful Docs</h1>
+  <div class="lead">A practical tutorial for creating clear, beautiful, and maintainable technical content with OINK.</div>
+  <p><em>Write Beautiful Docs</em> is the tutorial companion to the OINK reference. The
+reference tells you what each parameter and component does; this book follows
+one site from its first local preview to a reviewed, published result.</p>
+<p>The first three chapters contain working material. Later chapters deliberately
+show the Book draft state while their full walkthroughs are being written.</p>
+<h2 id="pg-edca7cbb245146be752b62ec0ec546fa--contents">Contents
+</h2>
+<nav class="td-book-toc td-book-toc--depth-3" aria-label="Book contents"><ol class="td-book-toc__list"><li class="td-book-toc__item">
+    <a href="#pg-a859162466fd3a7aac9e54eb3e153c46"><span class="td-book-number">1</span> <span>Start with a working site</span></a><ol class="td-book-toc__headings td-book-toc__headings--level-1"><li><a href="#pg-a859162466fd3a7aac9e54eb3e153c46--outcome">Define the outcome</a></li><li><a href="#pg-a859162466fd3a7aac9e54eb3e153c46--prerequisite">Install the prerequisite</a></li><li><a href="#pg-a859162466fd3a7aac9e54eb3e153c46--preview">Run the preview</a></li><li><a href="#pg-a859162466fd3a7aac9e54eb3e153c46--baseline">Record the baseline</a></li>
+</ol></li><li class="td-book-toc__item">
+    <a href="#pg-74ebf20f39c8528d6f3b6bd1cfb3618d"><span class="td-book-number">2</span> <span>Structure the content</span></a><ol class="td-book-toc__headings td-book-toc__headings--level-1"><li><a href="#pg-74ebf20f39c8528d6f3b6bd1cfb3618d--reader-questions">Start from the reader’s questions</a></li><li><a href="#pg-74ebf20f39c8528d6f3b6bd1cfb3618d--content-tree">Build the tree</a></li><li><a href="#pg-74ebf20f39c8528d6f3b6bd1cfb3618d--ordering">Keep order explicit</a></li><li><a href="#pg-74ebf20f39c8528d6f3b6bd1cfb3618d--stable-addresses">Make stable addresses</a></li>
+</ol></li><li class="td-book-toc__item">
+    <a href="#pg-92bb64fe6419e43b69f384e94e9e051c"><span class="td-book-number">3</span> <span>Compose the page</span></a><ol class="td-book-toc__headings td-book-toc__headings--level-1"><li><a href="#pg-92bb64fe6419e43b69f384e94e9e051c--one-job">Give every block one job</a></li><li><a href="#pg-92bb64fe6419e43b69f384e94e9e051c--page-contract">Start from a small page contract</a></li><li><a href="#pg-92bb64fe6419e43b69f384e94e9e051c--quality">Measure quality without counting decoration</a></li><li><a href="#pg-92bb64fe6419e43b69f384e94e9e051c--connect-evidence">Connect the evidence</a></li>
+</ol></li><li class="td-book-toc__item td-book-toc__item--draft">
+    <a href="#pg-1b7800752245630b618b435a0e684388" data-td-draft-label="Draft"><span class="td-book-number">4</span> <span>Shape the experience</span></a><ol class="td-book-toc__headings td-book-toc__headings--level-1"><li><a href="#pg-1b7800752245630b618b435a0e684388--hierarchy">Establish the visual hierarchy</a></li><li><a href="#pg-1b7800752245630b618b435a0e684388--home">Compose the home page</a></li><li><a href="#pg-1b7800752245630b618b435a0e684388--navigation">Keep navigation predictable</a></li><li><a href="#pg-1b7800752245630b618b435a0e684388--languages">Design both languages at once</a></li>
+</ol></li><li class="td-book-toc__item td-book-toc__item--draft">
+    <a href="#pg-dc2b889a326084ac8d9fc12b67c7bb24" data-td-draft-label="Draft"><span class="td-book-number">5</span> <span>Choose a publishing surface</span></a><ol class="td-book-toc__headings td-book-toc__headings--level-1"><li><a href="#pg-dc2b889a326084ac8d9fc12b67c7bb24--surfaces">Match the surface to the reader</a></li><li><a href="#pg-dc2b889a326084ac8d9fc12b67c7bb24--blog-family">Configure a Blog family</a></li><li><a href="#pg-dc2b889a326084ac8d9fc12b67c7bb24--case-studies">Turn examples into Case studies</a></li><li><a href="#pg-dc2b889a326084ac8d9fc12b67c7bb24--book-and-docs">Keep Book and Docs complementary</a></li>
+</ol></li><li class="td-book-toc__item td-book-toc__item--draft">
+    <a href="#pg-54ec0297f8d65e9a795aa4d4b9fdc8be" data-td-draft-label="Draft"><span class="td-book-number">6</span> <span>Validate and ship</span></a><ol class="td-book-toc__headings td-book-toc__headings--level-1"><li><a href="#pg-54ec0297f8d65e9a795aa4d4b9fdc8be--delivery-states">Name every delivery state</a></li><li><a href="#pg-54ec0297f8d65e9a795aa4d4b9fdc8be--validate">Validate the smallest useful surface</a></li><li><a href="#pg-54ec0297f8d65e9a795aa4d4b9fdc8be--visual-review">Review the rendered result</a></li><li><a href="#pg-54ec0297f8d65e9a795aa4d4b9fdc8be--handoff">Hand off facts, not implications</a></li>
+</ol></li><li class="td-book-toc__item td-book-toc__item--draft">
+    <a href="#pg-0ad629119709abc7fb84d13d9fbf0d9c" data-td-draft-label="Draft"><span class="td-book-number">A</span> <span>Appendix: Patterns</span></a><ol class="td-book-toc__headings td-book-toc__headings--level-1"><li><a href="#pg-0ad629119709abc7fb84d13d9fbf0d9c--section-root">Book section root</a></li><li><a href="#pg-0ad629119709abc7fb84d13d9fbf0d9c--chapter-pattern">Book chapter</a></li><li><a href="#pg-0ad629119709abc7fb84d13d9fbf0d9c--article-pattern">Immersive Blog article</a></li><li><a href="#pg-0ad629119709abc7fb84d13d9fbf0d9c--output-matrix">Generated output matrix</a></li>
+</ol></li>
+</ol></nav>
+<h2 id="pg-edca7cbb245146be752b62ec0ec546fa--figures">Figures
+</h2>
+<ol class="td-book-figures td-book-figures--fig">
+  <li><a href="#fig-first-preview"><span class="td-book-label">Figure 1-1</span> <span class="td-book-figures__caption">— The first milestone is a site a reader can open, not a configuration file that merely looks plausible.</span></a></li>
+</ol>
+<h2 id="pg-edca7cbb245146be752b62ec0ec546fa--tables">Tables
+</h2>
+<ol class="td-book-figures td-book-figures--tbl">
+  <li><a href="#tbl-reading-order"><span class="td-book-label">Table 2-1</span> <span class="td-book-figures__caption">— One explicit order is reused by navigation, paging, and generated contents.</span></a></li>
+  <li><a href="#tbl-delivery-states"><span class="td-book-label">Table 6-1</span> <span class="td-book-figures__caption">— Each delivery state needs its own evidence and handoff.</span></a></li>
+  <li><a href="#tbl-output-matrix"><span class="td-book-label">Table A-1</span> <span class="td-book-figures__caption">— One source tree can expose several purpose-specific Book outputs.</span></a></li>
+</ol>
+<h2 id="pg-edca7cbb245146be752b62ec0ec546fa--equations">Equations
+</h2>
+<ol class="td-book-figures td-book-figures--eq">
+  <li><a href="#eq-page-quality"><span class="td-book-label">Equation 3.1</span> <span class="td-book-figures__caption">— A page fails when any one of clarity, accuracy, or consistency falls to zero.</span></a></li>
+</ol>
+<h2 id="pg-edca7cbb245146be752b62ec0ec546fa--examples">Examples
+</h2>
+<ol class="td-book-figures td-book-figures--eg">
+  <li><a href="#eg-page-contract"><span class="td-book-label">Example 3-1</span> <span class="td-book-figures__caption">— A page contract with one stable title, one summary, and an explicit place in the tree.</span></a></li>
+</ol>
+<h2 id="pg-edca7cbb245146be752b62ec0ec546fa--reading-path">How to read this book
+</h2>
+<p>Read chapters 1–3 in order when starting a site. Return to chapters 4–6 when
+you are shaping the public presentation and preparing a release. The appendix
+is a copy-and-adapt reference for the front matter patterns used throughout.</p>
+
+</section><section class="td-content td-book-print-page" id="pg-a859162466fd3a7aac9e54eb3e153c46" data-td-book-page="/book/01-start">
+  <h1><span class="td-book-number">1</span> Start with a working site</h1>
+  <div class="lead">Install the one required tool, run a local preview, and establish a visible baseline before changing the design.</div>
+  <p>A good tutorial begins with a result the reader can see. For OINK, that result
+is a bilingual site served locally by Hugo Extended—before any logo, palette,
+or content architecture is changed.</p>
+<h2 id="pg-a859162466fd3a7aac9e54eb3e153c46--outcome">Define the outcome
+</h2>
+<p>At the end of this chapter you should have an English home page, its Chinese
+peer, working Docs and Blog routes, local search, and a color-mode control. That
+small baseline is enough to distinguish a content mistake from a theme or
+deployment problem later.</p>
+<figure id="fig-first-preview" class="td-figure td-book-figure td-book-figure--fig" data-td-book-kind="fig" data-td-book-num="1-1">
+  <img src="/images/oink.webp" alt="The OINK documentation site after its first successful local build" width="600" height="300" loading="lazy" decoding="async"><figcaption><span class="td-fig-label">Figure 1-1</span> <span class="td-fig-caption">The first milestone is a site a reader can open, not a configuration file that merely looks plausible.</span></figcaption>
+</figure><h2 id="pg-a859162466fd3a7aac9e54eb3e153c46--prerequisite">Install the prerequisite
+</h2>
+<p>OINK consumers need Hugo Extended 0.160.1 or newer. Node.js is part of this
+repository&rsquo;s maintainer test harness, not a requirement for building an
+ordinary consuming site.</p>
+<div class="td-code td-code--untitled" id="td-code-c16536d3-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="console" data-td-line-count="2">
+  <div class="td-code__viewport" id="td-code-c16536d3-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> hugo version
+</span></span><span class="line"><span class="cl"><span class="go">hugo v0.160.1+extended
+</span></span></span></code></pre></div></div>
+</div>
+<h2 id="pg-a859162466fd3a7aac9e54eb3e153c46--preview">Run the preview
+</h2>
+<p>Clone the documentation site, enter the checkout, and start Hugo with drafts,
+future content, and expired content visible:</p>
+<div class="td-code td-code--untitled" id="td-code-c16536d3-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="console" data-td-line-count="3">
+  <div class="td-code__viewport" id="td-code-c16536d3-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> git clone https://github.com/pgsty/oink.pgsty.com.git my-docs
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">cd</span> my-docs
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> hugo server -DFE --disableFastRender
+</span></span></code></pre></div></div>
+</div>
+<p>Open the address Hugo prints. Change one sentence in <code>content/_index.md</code> and
+confirm that the browser shows it. A preview that responds to a content edit is
+more useful evidence than a terminal that only says the server started.</p>
+<h2 id="pg-a859162466fd3a7aac9e54eb3e153c46--baseline">Record the baseline
+</h2>
+<p>Before customizing anything, record four facts: the Hugo version, the theme
+version in <code>go.mod</code>, the commit under review, and the routes you opened. Chapter
+2 turns that running site into a content tree without losing this baseline.</p>
+<p>For the complete installation alternatives, see <a href="/docs/start/">Quick start</a>
+and <a href="/docs/start/from-scratch/">From scratch</a>.</p>
+
+</section><section class="td-content td-book-print-page" id="pg-74ebf20f39c8528d6f3b6bd1cfb3618d" data-td-book-page="/book/02-structure">
+  <h1><span class="td-book-number">2</span> Give the content a structure</h1>
+  <div class="lead">Turn directories, section indexes, page bundles, and weights into one predictable reading and navigation order.</div>
+  <p>OINK does not keep a second navigation database for an ordinary site. The
+content tree is the sidebar tree, and the same order drives the pager and the
+Book contents. A reader should not encounter three different answers to “what
+comes next?”</p>
+<h2 id="pg-74ebf20f39c8528d6f3b6bd1cfb3618d--reader-questions">Start from the reader&rsquo;s questions
+</h2>
+<p>Name the top-level sections after tasks or subjects the reader recognizes. A
+small engineering site usually needs a start section, a reference, operations
+guidance, and a record of change. Add a directory only when it gives several
+pages a useful shared context.</p>
+<h2 id="pg-74ebf20f39c8528d6f3b6bd1cfb3618d--content-tree">Build the tree
+</h2>
+<div class="td-filetree td-filetree--static td-filetree--plain" style="--td-filetree-name-col:25.5ch" role="group" aria-labelledby="td-filetree-4aec1ecb1fae8942810277a78de1dde3-f0-title"><div class="td-filetree__chrome"><p class="td-filetree__title" id="td-filetree-4aec1ecb1fae8942810277a78de1dde3-f0-title" dir="auto">A small bilingual documentation tree</p></div><div class="td-filetree__body"><ul class="td-filetree__list td-filetree__list--root"><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:0"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="content/">content/</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="_index.md">_index.md</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="_index.zh.md">_index.zh.md</span></span></span></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="docs/">docs/</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="_index.md">_index.md</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="_index.zh.md">_index.zh.md</span></span></span></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="start/">start/</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:3"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="_index.md">_index.md</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:3"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="_index.zh.md">_index.zh.md</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:3"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="install.md">install.md</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:3"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="install.zh.md">install.zh.md</span></span></span></li></ul></li></ul></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="blog/">blog/</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="_index.md">_index.md</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="_index.zh.md">_index.zh.md</span></span></span></li></ul></li></ul></li></ul></div></div><p>Every directory that readers can enter gets an <code>_index.md</code>. A translation sits
+beside its English source with the <code>.zh.md</code> suffix. Use a Page Bundle when a
+page owns images or downloads; keep a single Markdown file when it does not.</p>
+<h2 id="pg-74ebf20f39c8528d6f3b6bd1cfb3618d--ordering">Keep order explicit
+</h2>
+<p>Use weights in multiples of ten. The gaps leave room for a future page without
+renumbering every sibling.</p>
+<figure id="tbl-reading-order" class="td-book-figure td-book-figure--tbl" data-td-book-kind="tbl" data-td-book-num="2-1"><div class="td-book-figure__body"><div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Item</th>
+      <th scope="col" style="text-align: right">Weight</th>
+      <th scope="col">Why it comes here</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Get started</td>
+      <td style="text-align: right">10</td>
+      <td>Establish the working baseline</td>
+    </tr>
+    <tr>
+      <td>Write content</td>
+      <td style="text-align: right">20</td>
+      <td>Build on a running site</td>
+    </tr>
+    <tr>
+      <td>Customize</td>
+      <td style="text-align: right">30</td>
+      <td>Change presentation after structure</td>
+    </tr>
+    <tr>
+      <td>Operate</td>
+      <td style="text-align: right">40</td>
+      <td>Validate and publish the result</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div><figcaption><span class="td-tbl-label">Table 2-1</span> <span class="td-tbl-caption">One explicit order is reused by navigation, paging, and generated contents.</span></figcaption></figure>
+<h2 id="pg-74ebf20f39c8528d6f3b6bd1cfb3618d--stable-addresses">Make stable addresses
+</h2>
+<p>Write an explicit ID on every heading another page may cite. The English and
+Chinese pages use the same ID even though their visible headings differ. This
+keeps links, the table of contents, and whole-book print aligned across both
+languages.</p>
+<p>The <a href="/book/01-start/#baseline">Chapter 1 baseline</a> is a visible reference
+point. The tree in this chapter gives every later change a stable place
+relative to it.</p>
+<p>For the complete rules, see <a href="/docs/write/pages/">Writing pages</a> and
+<a href="/docs/write/organize/">Organizing content</a>.</p>
+
+</section><section class="td-content td-book-print-page" id="pg-92bb64fe6419e43b69f384e94e9e051c" data-td-book-page="/book/03-compose">
+  <h1><span class="td-book-number">3</span> Compose a page worth reading</h1>
+  <div class="lead">Combine prose, callouts, code, media, tables, and mathematics without turning the page into a component catalogue.</div>
+  <p>Components should clarify an argument, not compete with it. Begin with plain
+prose, then introduce structure only where a reader needs to compare, verify,
+copy, or pause.</p>
+<h2 id="pg-92bb64fe6419e43b69f384e94e9e051c--one-job">Give every block one job
+</h2>
+<div class="td-callout td-callout--tip" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-lightbulb" aria-hidden="true"></i><span class="td-callout__label">Write the sentence first</span></div>
+  <div class="td-callout__body">
+<p>If you cannot state why a component belongs on the page in one sentence,
+leave it as prose until the need becomes clear.</p>
+  </div>
+</div><p>Use a callout for a prerequisite or risk, a table for repeated fields, a code
+block for material the reader can run, and an image when shape or spatial
+relationships carry information that prose cannot.</p>
+<h2 id="pg-92bb64fe6419e43b69f384e94e9e051c--page-contract">Start from a small page contract
+</h2>
+<figure id="eg-page-contract" class="td-book-figure td-book-figure--eg" data-td-book-kind="eg" data-td-book-num="3-1">
+  <figcaption><span class="td-eg-label">Example 3-1</span> <span class="td-eg-caption">A page contract with one stable title, one summary, and an explicit place in the tree.</span></figcaption>
+  <div class="td-code td-code--untitled" id="td-code-13288d50-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="7">
+  <div class="td-code__viewport" id="td-code-13288d50-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">Back up a cluster</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Create and verify one recoverable backup.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="m">20</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c">## Verify the backup {#verify-backup}</span></span></span></code></pre></div></div>
+</div>
+
+</figure><p>The title names the reader&rsquo;s task. The description explains the result. The
+weight locates the page, and the explicit heading ID gives another page a
+durable target.</p>
+<h2 id="pg-92bb64fe6419e43b69f384e94e9e051c--quality">Measure quality without counting decoration
+</h2>
+<p>A useful page balances three independent properties:</p>
+<figure id="eq-page-quality" class="td-book-figure td-book-figure--eq" data-td-book-kind="eq" data-td-book-num="3.1">
+  <div class="td-book-equation__body"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>Q</mi><mo>=</mo><msub><mi>C</mi><mrow><mi>c</mi><mi>l</mi><mi>a</mi><mi>r</mi><mi>i</mi><mi>t</mi><mi>y</mi></mrow></msub><mo>×</mo><msub><mi>A</mi><mrow><mi>a</mi><mi>c</mi><mi>c</mi><mi>u</mi><mi>r</mi><mi>a</mi><mi>c</mi><mi>y</mi></mrow></msub><mo>×</mo><msub><mi>K</mi><mrow><mi>c</mi><mi>o</mi><mi>n</mi><mi>s</mi><mi>i</mi><mi>s</mi><mi>t</mi><mi>e</mi><mi>n</mi><mi>c</mi><mi>y</mi></mrow></msub></mrow><annotation encoding="application/x-tex">
+Q = C_{clarity} \times A_{accuracy} \times K_{consistency}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">Q</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">cc</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">cy</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">co</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">cy</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></span></div>
+  <figcaption><span class="td-eq-label">Equation 3.1</span> <span class="td-eq-caption">A page fails when any one of clarity, accuracy, or consistency falls to zero.</span></figcaption>
+</figure><p>The product form is intentional: visual polish cannot compensate for an
+incorrect command, and accurate prose still fails when readers cannot find or
+follow it.</p>
+<h2 id="pg-92bb64fe6419e43b69f384e94e9e051c--connect-evidence">Connect the evidence
+</h2>
+<p>Use <a class="td-book-xref td-book-xref--eg" href="#eg-page-contract" data-td-book-kind="eg" data-td-book-num="3-1">Example 3-1</a> as the source pattern,
+and use <a class="td-book-xref td-book-xref--eq" href="#eq-page-quality" data-td-book-kind="eq" data-td-book-num="3.1">Equation 3.1</a> as the review question.
+Chapter 4 applies both to the site-wide visual system.</p>
+<p>The component reference begins at <a href="/docs/components/">Components</a>. Read the
+individual page for a component only when the tutorial introduces a need for
+it.</p>
+
+</section><section class="td-content td-book-print-page" id="pg-1b7800752245630b618b435a0e684388" data-td-book-page="/book/04-design">
+  <h1><span class="td-book-number">4</span> Shape the reading experience</h1>
+  <div class="lead">Turn a sound content structure into a recognizable, responsive, and bilingual publication.</div>
+  <p>Design begins after the content tree works. This chapter will connect brand,
+home-page composition, navigation, typography, page width, and language
+behavior into one reviewable system.</p>
+<h2 id="pg-1b7800752245630b618b435a0e684388--hierarchy">Establish the visual hierarchy
+</h2>
+<p>Start with title, lead, body, headings, and local navigation. A reader should
+understand which region owns the next action before color or ornament is added.
+OINK provides the hierarchy; site variables provide the identity.</p>
+<p>The completed walkthrough will replace the site title, logo, wordmark, favicon,
+accent color, and fonts while keeping both color modes legible.</p>
+<h2 id="pg-1b7800752245630b618b435a0e684388--home">Compose the home page
+</h2>
+<p>The home page is data, not a one-off template. Its YAML registry should tell a
+short story: what the project is, who it serves, what readers can do next, and
+where they can see the theme in production.</p>
+<p>The worked version of this section will build a Hero, a component matrix, a
+Case gallery, and a final call to action from bilingual <code>data/home</code> files.</p>
+<h2 id="pg-1b7800752245630b618b435a0e684388--navigation">Keep navigation predictable
+</h2>
+<p>Navbar entries, the shell root switcher, the sidebar, the outline, and the
+pager answer different questions. Review them together on desktop and mobile,
+and ensure the same content order remains visible in both languages.</p>
+<h2 id="pg-1b7800752245630b618b435a0e684388--languages">Design both languages at once
+</h2>
+<p>Translations are peers, not a finishing pass. Preserve route meaning, explicit
+heading IDs, menu order, images, and functional parameters while translating
+reader-facing text into natural Chinese.</p>
+<p>Until the full exercise lands, use <a href="/docs/customize/brand/">Brand and appearance</a>,
+<a href="/docs/customize/home/">Home and landing pages</a>, and
+<a href="/docs/customize/i18n/">Languages</a> as the reference.</p>
+
+</section><section class="td-content td-book-print-page" id="pg-dc2b889a326084ac8d9fc12b67c7bb24" data-td-book-page="/book/05-publishing">
+  <h1><span class="td-book-number">5</span> Publish more than reference pages</h1>
+  <div class="lead">Use Docs, Blog, Case, Book, and release pages as distinct answers to distinct reader needs.</div>
+  <p>One site can publish several kinds of knowledge without forcing them into one
+layout. The content type selects the shell; front matter variants refine the
+presentation inside that shell.</p>
+<h2 id="pg-dc2b889a326084ac8d9fc12b67c7bb24--surfaces">Match the surface to the reader
+</h2>
+<ul>
+<li>Docs answer a task or reference question and expose their place in a tree.</li>
+<li>Blog posts are dated articles with authors, taxonomies, feeds, and sharing.</li>
+<li>Case pages explain how a real site applies the theme.</li>
+<li>Book chapters form a deliberate reading sequence with stable references.</li>
+<li>Release notes connect a version to migration and verification evidence.</li>
+</ul>
+<h2 id="pg-dc2b889a326084ac8d9fc12b67c7bb24--blog-family">Configure a Blog family
+</h2>
+<p>An ordinary Blog section can choose rows, cards, or a table. A section that
+needs an immersive opening keeps the same type and changes four independent
+presentation keys:</p>
+<div class="td-code td-code--untitled" id="td-code-069f4494-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="5">
+  <div class="td-code__viewport" id="td-code-069f4494-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">blog</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">featured_image</span><span class="p">:</span><span class="w"> </span><span class="l">hero</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">toc_style</span><span class="p">:</span><span class="w"> </span><span class="l">flow</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">toc_taxonomies</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">sidebar_enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span></span></span></code></pre></div></div>
+</div>
+<p>This is the same contract demonstrated by
+<a href="/blog/oink/immersive-reading/">Immersive reading</a>. There is no second Article
+type and no duplicated publishing pipeline.</p>
+<h2 id="pg-dc2b889a326084ac8d9fc12b67c7bb24--case-studies">Turn examples into Case studies
+</h2>
+<p>A Case index uses the Blog card form, while each internal page documents the
+site, source, language model, scale, and OINK features before linking to the
+live result. Keeping an internal explanation page makes the showcase part of
+the documentation rather than a wall of outbound logos.</p>
+<h2 id="pg-dc2b889a326084ac8d9fc12b67c7bb24--book-and-docs">Keep Book and Docs complementary
+</h2>
+<p>Reference pages remain exhaustive and independently searchable. A tutorial
+selects a path through that reference, introduces one decision at a time, and
+links back when a reader needs the full parameter table.</p>
+<p>The complete walkthrough will add a new article, one Case study, and a short
+Book chapter from the same source facts, then compare their reader experience.</p>
+
+</section><section class="td-content td-book-print-page" id="pg-54ec0297f8d65e9a795aa4d4b9fdc8be" data-td-book-page="/book/06-ship">
+  <h1><span class="td-book-number">6</span> Ship with confidence</h1>
+  <div class="lead">Separate local preview, repository integration, theme release, and hosted deployment, then verify each state with the right evidence.</div>
+  <p>Publishing is a sequence of independently verifiable states. A successful
+local preview proves that the content and theme can render together; it does
+not prove that a remote module tag exists or that the public site has deployed
+that revision.</p>
+<h2 id="pg-54ec0297f8d65e9a795aa4d4b9fdc8be--delivery-states">Name every delivery state
+</h2>
+<figure id="tbl-delivery-states" class="td-book-figure td-book-figure--tbl" data-td-book-kind="tbl" data-td-book-num="6-1"><div class="td-book-figure__body"><div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">State</th>
+      <th scope="col">Evidence</th>
+      <th scope="col">What it does not prove</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Local preview</td>
+      <td>The site renders against the intended checkout</td>
+      <td>A public theme release exists</td>
+    </tr>
+    <tr>
+      <td>Site integration</td>
+      <td>Content, configuration, and dependency changes are reviewed together</td>
+      <td>The hosting platform has deployed them</td>
+    </tr>
+    <tr>
+      <td>Theme release</td>
+      <td>The public tag and module checksum resolve without a local replacement</td>
+      <td>A consumer site has upgraded</td>
+    </tr>
+    <tr>
+      <td>Hosted deployment</td>
+      <td>The public revision and representative routes are reachable</td>
+      <td>Every language and viewport is correct</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div><figcaption><span class="td-tbl-label">Table 6-1</span> <span class="td-tbl-caption">Each delivery state needs its own evidence and handoff.</span></figcaption></figure>
+<h2 id="pg-54ec0297f8d65e9a795aa4d4b9fdc8be--validate">Validate the smallest useful surface
+</h2>
+<p>Start with the checker that owns the changed contract, then widen the scope.
+For this site, a strict local build against the sibling theme checkout is an
+explicit development operation:</p>
+<div class="td-code td-code--untitled" id="td-code-b48d9647-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="2">
+  <div class="td-code__viewport" id="td-code-b48d9647-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">HUGO_MODULE_REPLACEMENTS</span><span class="o">=</span><span class="s1">&#39;github.com/pgsty/oink -&gt; /path/to/oink&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  npm run build -- --panicOnWarning</span></span></code></pre></div></div>
+</div>
+<p>Before a public release, repeat the build without the replacement and verify
+the module selected by <code>go.mod</code>. Record which command produced each result so
+another maintainer can reproduce it.</p>
+<h2 id="pg-54ec0297f8d65e9a795aa4d4b9fdc8be--visual-review">Review the rendered result
+</h2>
+<p>Automated checks catch broken links, duplicate IDs, invalid shortcodes, and
+accessibility regressions. They do not decide whether a Hero crops well or
+whether a dense table remains readable on a phone. Review representative
+English and Chinese routes at desktop and narrow widths, including navigation,
+theme controls, code blocks, and the whole-book output.</p>
+<h2 id="pg-54ec0297f8d65e9a795aa4d4b9fdc8be--handoff">Hand off facts, not implications
+</h2>
+<p>A useful handoff lists changed files, commands and results, known limitations,
+and the next state still waiting to happen. Use
+<a class="td-book-xref td-book-xref--tbl" href="#tbl-delivery-states" data-td-book-kind="tbl" data-td-book-num="6-1">Table 6-1</a> to say exactly which
+state has been reached instead of compressing validation, release, and
+deployment into the word “done.”</p>
+<p>The full operational references are <a href="/docs/admin/preview/">Preview the site</a>,
+<a href="/docs/admin/deploy/">Deploy the site</a>, and
+<a href="/docs/admin/troubleshooting/">Troubleshoot a build</a>.</p>
+
+</section><section class="td-content td-book-print-page" id="pg-0ad629119709abc7fb84d13d9fbf0d9c" data-td-book-page="/book/appendix-patterns">
+  <h1><span class="td-book-number">A</span> Front matter patterns</h1>
+  <div class="lead">Copy-and-adapt contracts for Book roots, chapters, immersive Blog posts, and generated Book outputs.</div>
+  <p>These patterns are intentionally small. Copy the fields that establish the
+content contract, then add presentation options only when a reader-facing need
+requires them.</p>
+<h2 id="pg-0ad629119709abc7fb84d13d9fbf0d9c--section-root">Book section root
+</h2>
+<div class="td-code td-code--untitled" id="td-code-76d3d9ac-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="6">
+  <div class="td-code__viewport" id="td-code-76d3d9ac-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">book</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">book_kind</span><span class="p">:</span><span class="w"> </span><span class="l">book</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">outputs</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">HTML, print, markdown]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">cascade</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">book</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">book_draft_banner</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span></span></span></code></pre></div></div>
+</div>
+<p>The root declares the Book shell and generated outputs. It does not need a
+chapter number; numbering belongs to the material that appears in the reading
+sequence.</p>
+<h2 id="pg-0ad629119709abc7fb84d13d9fbf0d9c--chapter-pattern">Book chapter
+</h2>
+<div class="td-code td-code--untitled" id="td-code-76d3d9ac-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-76d3d9ac-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">book_kind</span><span class="p">:</span><span class="w"> </span><span class="l">chapter</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">book_number</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">book_status</span><span class="p">:</span><span class="w"> </span><span class="l">draft</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="m">10</span></span></span></code></pre></div></div>
+</div>
+<p>Use <code>book_status: draft</code> for a visible editorial state. Unlike Hugo&rsquo;s
+<code>draft: true</code>, it keeps the page available in a normal build so reviewers can
+read the unfinished chapter.</p>
+<h2 id="pg-0ad629119709abc7fb84d13d9fbf0d9c--article-pattern">Immersive Blog article
+</h2>
+<div class="td-code td-code--untitled" id="td-code-76d3d9ac-fence-2" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="6">
+  <div class="td-code__viewport" id="td-code-76d3d9ac-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">blog</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">authors</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">oink, vonng]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">featured_image</span><span class="p">:</span><span class="w"> </span><span class="l">hero</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">toc_style</span><span class="p">:</span><span class="w"> </span><span class="l">flow</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">toc_taxonomies</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">sidebar_enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span></span></span></code></pre></div></div>
+</div>
+<p>The article remains part of the Blog family—feeds, authors, series, and sharing
+continue to work—while the keys above change only its reading presentation.</p>
+<h2 id="pg-0ad629119709abc7fb84d13d9fbf0d9c--output-matrix">Generated output matrix
+</h2>
+<figure id="tbl-output-matrix" class="td-book-figure td-book-figure--tbl" data-td-book-kind="tbl" data-td-book-num="A-1"><div class="td-book-figure__body"><div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Output</th>
+      <th scope="col">Scope</th>
+      <th scope="col">Typical use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HTML</td>
+      <td>One root or chapter</td>
+      <td>Reading, navigation, and search</td>
+    </tr>
+    <tr>
+      <td>print</td>
+      <td>The complete Book</td>
+      <td>Review, printing, and PDF conversion</td>
+    </tr>
+    <tr>
+      <td>markdown</td>
+      <td>The source-shaped Book</td>
+      <td>Export and downstream processing</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div><figcaption><span class="td-tbl-label">Table A-1</span> <span class="td-tbl-caption">One source tree can expose several purpose-specific Book outputs.</span></figcaption></figure>
+<p>The generated contents, figure, table, equation, and example indexes on the
+Book root prove these contracts together. Keep explicit heading and object IDs
+aligned between translations so every format preserves the same references.</p>
+
+</section></main>
+    </div>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"Copy Markdown","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["Copy Markdown","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Copy Markdown","url":"/book/index.md"},{"available":true,"description":"Copy link","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["Copy link","Share","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"Copy link","url":"http://localhost:1313/book/"},{"available":true,"description":"Open in ChatGPT","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["Open in ChatGPT","Ask about this page","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in ChatGPT","url":"https://chatgpt.com/?hints=search\u0026prompt=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fbook%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"Open in Claude","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["Open in Claude","Ask about this page","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in Claude","url":"https://claude.ai/new?q=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fbook%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"View markdown","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["View markdown","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View markdown","url":"/book/index.md"},{"available":true,"description":"View edit history","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["View edit history","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View edit history","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/book/_index.md"},{"available":true,"description":"Edit this page","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["Edit this page","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Edit this page","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/book/_index.md"},{"available":true,"description":"Create child page","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["Create child page","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create child page","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/book?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"Create docs issue","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["Create docs issue","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create docs issue","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=Write+Beautiful+Docs"},{"available":true,"description":"Create project issue","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["Create project issue","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create project issue","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"Print entire section","disabledReason":"Print entire section: unavailable","icon":"fa-solid fa-print","id":"print_section","keywords":["Print entire section","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Print entire section","url":""},{"available":true,"description":"Print this page","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["Print this page","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"Print this page","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL required","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"Switch language","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["Switch language","language"],"kind":"choice","options":[{"active":true,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/book/"},{"active":false,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/book/"}],"placements":{"page":false,"palette":true},"target":"self","title":"Switch language","url":""},{"available":true,"description":"Toggle color theme","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["Toggle color theme","Light","Dark"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"System","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"Light","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"Dark","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"Toggle color theme","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"Report or review theme and documentation issues","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["bug","support","roadmap"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK issues","url":"https://github.com/pgsty/oink/issues"}],"language":"en","quickLinks":[{"available":true,"description":"OINK is a documentation theme that needs nothing but Hugo Extended — components are written in Markdown, assets ship with the theme, both languages work out of the box, and one source produces four outputs.","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["Docs","docs"],"kind":"url","target":"self","title":"Docs","url":"/docs/"},{"available":true,"description":"OINK engineering stories, immersive guides, and release notes","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["Blog","blog"],"kind":"url","target":"self","title":"Blog","url":"/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+
+<script src="/js/actions.js"></script>
+<link rel="stylesheet" href="/third_party/katex/katex.min.css">
+
+  </body>
+</html>

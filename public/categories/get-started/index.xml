@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Get Started on OINK</title>
+    <link>http://localhost:1313/categories/get-started/</link>
+    <description>Recent content in Get Started on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Thu, 20 Aug 2026 19:29:35 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/categories/get-started/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>Repository tour</title>
+        <link>http://localhost:1313/docs/start/anatomy/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/start/anatomy/</guid>
+        <description>&lt;p&gt;This page goes through every file and directory of a &lt;code&gt;pgsty/oink.pgsty.com&lt;/code&gt;&#xA;clone: what must stay, what to replace with your own details, what belongs to&#xA;the documentation site and can be deleted whole — plus a safe order to delete&#xA;in.&lt;/p&gt;&#xA;&lt;p&gt;The theme&amp;rsquo;s code is not in this repository. It is a Hugo Module pinned by&#xA;&lt;code&gt;go.mod&lt;/code&gt; and stored in Go&amp;rsquo;s module cache. This repository holds content,&#xA;configuration, and a small number of site-level overrides.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>From scratch and other install methods</title>
+        <link>http://localhost:1313/docs/start/from-scratch/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/start/from-scratch/</guid>
+        <description>&lt;p&gt;This page builds a minimal OINK site in an empty directory: a dozen lines of&#xA;&lt;code&gt;hugo.yml&lt;/code&gt; plus one &lt;code&gt;hugo mod get&lt;/code&gt; gives a single-language site you can preview.&#xA;The cost is that the home page, the example content and any component usage to&#xA;copy from are all yours to write.&lt;/p&gt;&#xA;&lt;p&gt;An existing Hugo site needs no scaffolding: install the theme module, add the&#xA;three Goldmark prerequisites (see &lt;a href=&#34;http://localhost:1313/docs/start/from-scratch/#config&#34;&gt;Writing &lt;code&gt;hugo.yml&lt;/code&gt;&lt;/a&gt;), and leave the&#xA;content alone. For an existing Docsy site, see &lt;a href=&#34;http://localhost:1313/docs/admin/upgrade/&#34;&gt;Upgrade&lt;/a&gt;.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Quick start</title>
+        <link>http://localhost:1313/docs/start/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/start/</guid>
+        <description>&lt;p&gt;This path does not start from an empty directory. It starts by cloning the site&#xA;you are reading, deleting what you do not need, and replacing the rest with your&#xA;own details. This site is OINK&amp;rsquo;s regression site: it contains every component&#xA;and every page type, and it tracks the theme version. Trimming it down is less&#xA;writing than adding configuration and examples one at a time to an empty&#xA;directory.&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

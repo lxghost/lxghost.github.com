@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>设计与开发 on OINK</title>
+    <link>http://localhost:1313/zh/docs/design/</link>
+    <description>Recent content in 设计与开发 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Thu, 27 Aug 2026 18:47:44 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/docs/design/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>架构契约</title>
+        <link>http://localhost:1313/zh/docs/design/architecture/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/architecture/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;这是随 OINK 0.8.0 正式发布的架构契约。本页是权威中文源文件，与英文版本&#xA;一同维护在 &lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;repository-and-assembly&#34;&gt;仓库与装配&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;仓库根目录是一个完整的 Hugo 模块与主题，不是站点，也不是 npm workspace。&#xA;Hugo Extended 负责编译 SCSS 与模板。浏览器运行时与第三方资源都已提交到仓库，&#xA;因此普通构建不会访问网络。公开的双语文档、示例与浏览器测试位于同级的&#xA;&lt;code&gt;oink.pgsty.com&lt;/code&gt; 仓库；主题仓库只在 &lt;code&gt;tests/site/&lt;/code&gt; 中保留范围明确的内部回归&#xA;夹具，不再维护独立的公开示例面。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>组件契约</title>
+        <link>http://localhost:1313/zh/docs/design/components/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/components/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;这是随 OINK 0.8.0 正式发布的组件契约。本页是权威中文源文件，与英文版本&#xA;一同维护在 &lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;教程与完整示例位于面向读者的&lt;a href=&#34;http://localhost:1313/zh/docs/components/&#34;&gt;组件&lt;/a&gt;专栏。本页定义这些&#xA;指南所依赖的 API 与行为。&lt;/p&gt;&#xA;&lt;h2 id=&#34;authoring-model&#34;&gt;创作模型&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;一个区块加属性便能表达组件时，使用普通 Markdown；需要复合正文或 Markdown&#xA;无法携带的事实时，使用 shortcode。OINK 没有并行的组件注册表。原生形态要求：&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>外壳与导航契约</title>
+        <link>http://localhost:1313/zh/docs/design/shell/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/shell/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;这是随 OINK 0.8.0 正式发布的外壳与导航契约。本页是权威中文源文件，与英文版本&#xA;一同维护在 &lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;authorities-and-navigation&#34;&gt;权威来源与导航&#xA;&lt;/h2&gt;&#xA;&lt;div class=&#34;td-table-scroll td-table-scroll--static&#34;&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;th scope=&#34;col&#34;&gt;关注点&lt;/th&gt;&#xA;      &lt;th scope=&#34;col&#34;&gt;权威来源&lt;/th&gt;&#xA;    &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;全局导航&lt;/td&gt;&#xA;      &lt;td&gt;Hugo &lt;code&gt;menus.main&lt;/code&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;Docs / Book 侧栏与翻页&lt;/td&gt;&#xA;      &lt;td&gt;内容树或 &lt;code&gt;data/docs_nav.json&lt;/code&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;根栏目切换器&lt;/td&gt;&#xA;      &lt;td&gt;解析后的顶层内容根&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;内容发现&lt;/td&gt;&#xA;      &lt;td&gt;各语言的本地搜索索引&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;页面与命令面板操作&lt;/td&gt;&#xA;      &lt;td&gt;共享操作注册表&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;任何功能都不能引入另一套菜单或页面树。菜单只允许一层子项交互；更深层级会警告，&#xA;并平铺到带链接的分组标题下。外部链接使用&#xA;&lt;code&gt;target=&amp;quot;_blank&amp;quot; rel=&amp;quot;noopener noreferrer&amp;quot;&lt;/code&gt;；内部链接保持语言与子路径感知。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>落地页契约</title>
+        <link>http://localhost:1313/zh/docs/design/landing/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/landing/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;这是随 OINK 0.8.0 正式发布的落地页契约。本页是权威中文源文件，与英文版本&#xA;一同维护在 &lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;共享规则见&lt;a href=&#34;http://localhost:1313/zh/docs/design/architecture/&#34;&gt;架构契约&lt;/a&gt;与&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/components/&#34;&gt;组件契约&lt;/a&gt;；迁移行为属于&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/migration/&#34;&gt;迁移边界&lt;/a&gt;。&lt;/p&gt;&#xA;&lt;h2 id=&#34;shell-and-data&#34;&gt;外壳与数据&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;任何普通页面都可以声明 &lt;code&gt;layout: landing&lt;/code&gt;。它渲染顶部导航栏、全宽画布与页脚，&#xA;不显示 docs 侧栏或 TOC 导轨。首页继续把 &lt;code&gt;data/home/&amp;lt;lang&amp;gt;.yaml&lt;/code&gt; 作为兼容的创作&#xA;路径，并通过同一个渲染器处理。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>OINK 迁移边界</title>
+        <link>http://localhost:1313/zh/docs/design/migration/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/migration/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;这是随 OINK 0.8.0 正式发布的迁移契约。本页是权威中文源文件，与英文版本&#xA;一同维护在 &lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;这是源码与配置指南，不是版本发布流水账。本地源码、提交、标签、推送、消费站点&#xA;固定版本、部署与生产一致仍是彼此独立的状态。面向读者的升级流程见&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/admin/upgrade/&#34;&gt;版本升级&lt;/a&gt;。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

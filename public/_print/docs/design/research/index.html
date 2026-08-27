@@ -1,0 +1,1271 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" dir="ltr" lang="en-US" data-td-typography="technical" data-td-theme-init>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#000000">
+
+<style>
+  html { background: Canvas; color: CanvasText; }
+  @media (prefers-color-scheme: dark) {
+    html { background: #0b0d12; color: #e6e6e6; }
+  }
+  html[data-td-theme-init] * { transition: none !important; }
+  [data-td-theme-toggle] > .td-shell-icon--sun { display: none !important; }
+  [data-td-theme-toggle] > [hidden] { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--moon { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--sun { display: inline-block !important; }
+</style>
+
+<script>
+  (function() {
+    const themeKey = 'td-color-theme';
+    let storedTheme = null;
+    try {
+      storedTheme = localStorage.getItem(themeKey);
+    } catch (_) {
+      
+      
+    }
+    let theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+    if (theme === 'auto') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    document.documentElement.classList.toggle('dark-mode', theme === 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<link rel="canonical" type="text/html" href="http://localhost:1313/docs/design/research/">
+<link rel="alternate" type="application/rss&#43;xml" href="http://localhost:1313/docs/design/research/index.xml">
+<link rel="alternate" type="text/markdown" href="http://localhost:1313/docs/design/research/index.md">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<title>Design research | OINK</title>
+<meta name="description" content="Dated experiments and consumer evidence used to make OINK design decisions, without normative force.">
+<link rel="canonical" href="http://localhost:1313/docs/design/research/">
+<link rel="alternate" hreflang="en-US" href="http://localhost:1313/docs/design/research/">
+<link rel="alternate" hreflang="zh-CN" href="http://localhost:1313/zh/docs/design/research/">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:url" content="http://localhost:1313/docs/design/research/">
+  <meta property="og:site_name" content="OINK">
+  <meta property="og:title" content="Design research">
+  <meta property="og:description" content="Dated experiments and consumer evidence used to make OINK design decisions, without normative force.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="Design research">
+  <meta itemprop="description" content="Dated experiments and consumer evidence used to make OINK design decisions, without normative force.">
+  <meta itemprop="dateModified" content="2026-08-26T14:54:14+08:00">
+  <meta itemprop="wordCount" content="182">
+  <meta itemprop="keywords" content="Design">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Design research">
+  <meta name="twitter:description" content="Dated experiments and consumer evidence used to make OINK design decisions, without normative force.">
+<link href="/scss/fontawesome.css" rel="stylesheet">
+<link href="/scss/main.css" rel="stylesheet">
+
+  </head>
+  <body class="td-section td-print-view">
+    <a class="td-skip-link d-print-none" href="#td-main-content">Skip to content</a>
+
+    
+<header class="td-site-header d-print-none" data-td-header>
+  <div class="td-site-container">
+    <nav class="td-site-nav" aria-label="Main navigation">
+      <a href="/" class="td-nav-brand" data-td-navbar-route
+         aria-label="OINK — Home">
+        <img src="/icons/logo.svg" alt="" class="td-nav-logo" width="22" height="22">
+        <span class="td-nav-title">OINK</span>
+      </a><div class="td-nav-links td-nav-menu-zone"><div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link active" href="/docs/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Docs"
+  data-td-navbar-region="desktop" data-td-navbar-label="Docs"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-docs-0" aria-expanded="false">
+  <i class="fa-solid fa-book" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Docs</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-docs-0" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/docs/about/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Introduction"
+  data-td-navbar-region="desktop" data-td-navbar-label="Introduction"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Introduction</span></a>
+<a class="td-nav-menu__item-link" href="/docs/start/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Get started"
+  data-td-navbar-region="desktop" data-td-navbar-label="Get started"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Get started</span></a>
+<a class="td-nav-menu__item-link" href="/docs/write/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Authoring"
+  data-td-navbar-region="desktop" data-td-navbar-label="Authoring"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Authoring</span></a>
+<a class="td-nav-menu__item-link" href="/docs/components/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Components"
+  data-td-navbar-region="desktop" data-td-navbar-label="Components"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-cubes" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Components</span></a>
+<a class="td-nav-menu__item-link" href="/docs/customize/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Customization"
+  data-td-navbar-region="desktop" data-td-navbar-label="Customization"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Customization</span></a>
+<a class="td-nav-menu__item-link" href="/docs/admin/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Operations"
+  data-td-navbar-region="desktop" data-td-navbar-label="Operations"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Operations</span></a>
+<a class="td-nav-menu__item-link active" href="/docs/design/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Design"
+  data-td-navbar-region="desktop" data-td-navbar-label="Design"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-compass-drafting" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Design</span></a>
+
+  </div>
+</div><a class="nav-link" href="/book/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Book"
+  data-td-navbar-region="desktop" data-td-navbar-label="Book"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Book</span></a>
+<a class="nav-link" href="/case/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Case"
+  data-td-navbar-region="desktop" data-td-navbar-label="Case"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Case</span></a>
+<div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link" href="/blog/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Blog"
+  data-td-navbar-region="desktop" data-td-navbar-label="Blog"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-blog-3" aria-expanded="false">
+  <i class="fa-solid fa-blog" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Blog</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-blog-3" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/blog/oink/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="OINK engineering"
+  data-td-navbar-region="desktop" data-td-navbar-label="OINK engineering"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">OINK engineering</span></a>
+<a class="td-nav-menu__item-link" href="/blog/release/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Releases"
+  data-td-navbar-region="desktop" data-td-navbar-label="Releases"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Releases</span></a>
+
+  </div>
+</div>
+      </div><div class="td-nav-links td-nav-util-zone">
+        <div class="td-nav-hover-menu td-nav-version-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-nav-hover-open
+            title="v0.8.0" aria-label="v0.8.0" aria-expanded="false"><i class="td-shell-icon td-shell-icon--code-branch fa-solid fa-code-branch" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="v0.8.0">
+            <span class="td-nav-hover-menu__option td-is-disabled"><strong>Versions</strong></span>
+            <a class="td-nav-hover-menu__option td-is-active" aria-current="page" href="https://oink.pgsty.com">v0.8.0</a>
+          </div>
+        </div>
+          <div class="td-language-selector td-language-selector--menu td-nav-util td-site-nav__language">
+  <a class="td-language-selector__trigger" href="/zh/docs/design/research/"
+    lang="zh-CN" hreflang="zh-CN" dir="ltr"
+    title="Switch language: 简体中文"
+    aria-label="Switch language: 简体中文" aria-haspopup="true" aria-expanded="false">
+    <i class="fa-solid fa-language" aria-hidden="true"></i>
+    <span>简体中文</span>
+  </a>
+  <ul aria-label="Choose language">
+    <li>
+      <span class="td-language-selector__item active" lang="en-US" dir="ltr" aria-current="page">English</span>
+    </li>
+    <li>
+      <a class="td-language-selector__item" href="/zh/docs/design/research/" lang="zh-CN" hreflang="zh-CN" dir="ltr">简体中文</a>
+    </li>
+  </ul>
+</div><div class="td-nav-hover-menu td-nav-theme-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-theme-toggle
+            title="Toggle color theme" aria-label="Toggle color theme" aria-expanded="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="Toggle color theme">
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="light" aria-pressed="false"><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i><span>Light</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="dark" aria-pressed="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><span>Dark</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="auto" aria-pressed="false"><i class="td-shell-icon td-shell-icon--contrast fa-solid fa-circle-half-stroke" aria-hidden="true"></i><span>System</span>
+            </button>
+          </div>
+        </div>
+        <a href="https://github.com/pgsty/oink" class="td-nav-github" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="td-shell-icon td-shell-icon--github fa-brands fa-github" aria-hidden="true"></i></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+    <div class="container-fluid td-print-shell">
+      <main id="td-main-content" class="td-print-document" tabindex="-1">
+        
+
+
+
+
+<div class="td-content">
+<div class="td-page-notice td-page-notice--primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<button type="button" class="btn btn-link p-0 align-baseline" data-td-action="print">Click here to print</button>.
+</p><p>
+<a href="/docs/design/research/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Design research</h1>
+<div class="lead">Dated experiments and consumer evidence used to make OINK design decisions, without normative force.</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+  
+  
+
+  
+    
+    
+    <li>
+1: <a href="#pg-a3650583e8beb30928a9f3d184e9d0c9">Goldmark block-attribute evidence</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+2: <a href="#pg-f0f04a62627ef9f4d197a20b81a4051b">Consumer and migration evidence</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+3: <a href="#pg-3cebe437d2917abe511bf1eac11b2866">OINK comprehensive review, 2026-08-26</a>
+
+
+    </li>
+  
+
+    </ul>
+<div class="content">
+      <div class="td-callout td-callout--note" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-info" aria-hidden="true"></i><span class="td-callout__label">Evidence, not a contract</span></div>
+  <div class="td-callout__body">
+<p>Research records what was measured, with which inputs and tool versions.
+Results may explain a decision, but they do not override the current
+contracts or implementation.</p>
+  </div>
+</div><p>Research belongs in the public Design tree when another maintainer can inspect
+its method, understand its limits, and repeat the relevant check. Raw agent
+transcripts, temporary build logs, and local absolute paths do not meet that
+standard.</p>
+<h2 id="pg-a562598951692cac41aa1084e81f0de6--research-map">Research map
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Record</th>
+      <th scope="col">Evidence</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="/docs/design/research/goldmark-attributes/">Goldmark block attributes</a></td>
+      <td>Render-hook visibility and CommonMark container limits on the supported Hugo floor</td>
+    </tr>
+    <tr>
+      <td><a href="/docs/design/research/consumer-evidence/">Consumer and migration evidence</a></td>
+      <td>A dated corpus survey plus deterministic Book migration results</td>
+    </tr>
+    <tr>
+      <td><a href="/docs/design/research/2026-08-26-comprehensive-review/">Comprehensive review, 2026-08-26</a></td>
+      <td>Implementation, configuration, output, security, test, performance, and doc audit</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-a562598951692cac41aa1084e81f0de6--publication-rules">Publication rules
+</h2>
+<p>A research record states its date, inputs, relevant versions, method, result,
+and known limits. Volatile counts are labeled as snapshots. External framework
+comparisons are refreshed from primary sources before publication and distilled
+into OINK-relevant conclusions rather than copied as a competitor catalogue.</p>
+<p>When a result becomes a stable product choice, link it from an accepted
+<a href="/docs/design/decisions/">decision</a>. When it proposes behaviour that does not
+exist, move the design question to <a href="/docs/design/proposals/">Proposals</a>.</p>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-a3650583e8beb30928a9f3d184e9d0c9">1 - Goldmark block-attribute evidence</h1>
+    <div class="lead">Reproducible findings for lists, images, tables, passthrough blocks, fences, callouts, and nested containers on Hugo 0.160.1 and 0.164.0.</div>
+	<div class="td-callout td-callout--note" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-info" aria-hidden="true"></i><span class="td-callout__label">Verified snapshot</span></div>
+  <div class="td-callout__body">
+<p>These probes produced byte-identical relevant output on Hugo Extended
+0.160.1 and 0.164.0. They explain OINK&rsquo;s native component forms; the current
+<a href="/docs/design/components/">component contract</a> remains authoritative.</p>
+  </div>
+</div><h2 id="pg-a3650583e8beb30928a9f3d184e9d0c9--method">Method
+</h2>
+<p>The probe used a minimal Hugo site without OINK templates. Render hooks printed
+their context fields and <code>.Attributes</code> as visible markers. The site enabled
+Goldmark block attributes, passthrough delimiters for inline and block math,
+unsafe rendering for the deliberately inspected raw HTML, and
+<code>wrapStandAloneImageWithinParagraph: false</code>.</p>
+<p>Each source shape was rendered with the compatibility-floor Hugo and the then
+current Hugo version. Relevant output was compared byte for byte. The findings
+below record platform behaviour, not visual styling.</p>
+<h2 id="pg-a3650583e8beb30928a9f3d184e9d0c9--findings">Findings
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Source shape</th>
+      <th scope="col">Hook result</th>
+      <th scope="col">Design consequence</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ordered list with paragraphs, fences, callouts, nested lists, and <code>{.steps}</code></td>
+      <td>The class attaches to the outer <code>&lt;ol&gt;</code> and rich list-item blocks survive</td>
+      <td>A Markdown list is the native Steps form</td>
+    </tr>
+    <tr>
+      <td>Heading inside a list item</td>
+      <td>The heading remains inside <code>&lt;li&gt;</code> and enters <code>.TableOfContents</code></td>
+      <td>Native Steps can carry navigable headings</td>
+    </tr>
+    <tr>
+      <td>Nested list with <code>{.filetree}</code></td>
+      <td>The class attaches to the outer <code>&lt;ul&gt;</code></td>
+      <td>FileTree needs no wrapper merely to preserve hierarchy</td>
+    </tr>
+    <tr>
+      <td>Standalone image plus <code>{#id num= caption= .class}</code></td>
+      <td><code>render-image</code> receives <code>IsBlock=true</code> and all attributes</td>
+      <td>A Book figure can have a native image form</td>
+    </tr>
+    <tr>
+      <td>Inline image inside a paragraph</td>
+      <td><code>IsBlock=false</code>; the image receives no block attributes</td>
+      <td>Inline images cannot use the block-figure contract</td>
+    </tr>
+    <tr>
+      <td>Block math plus <code>{#id num=}</code></td>
+      <td><code>render-passthrough</code> receives block type and attributes</td>
+      <td>A numbered equation can use the native passthrough form</td>
+    </tr>
+    <tr>
+      <td>Table plus <code>{.fields #id num= caption=}</code></td>
+      <td><code>render-table</code> receives the class and named attributes</td>
+      <td>Field tables, matrix markers, captions, and Book numbering can share one hook</td>
+    </tr>
+    <tr>
+      <td>Fenced code plus <code>{#id num= caption=}</code></td>
+      <td>The code-block hook receives the attributes</td>
+      <td>A numbered example can be the fence itself</td>
+    </tr>
+    <tr>
+      <td>Callout plus <code>{icon= tab=}</code></td>
+      <td>The blockquote hook receives callout metadata and attributes</td>
+      <td>Folding, inline title markup, icon, and tab metadata can coexist</td>
+    </tr>
+    <tr>
+      <td>Attribute line separated from its block by a blank line</td>
+      <td>The attribute silently disappears</td>
+      <td>Source checks must reject orphan attribute lines</td>
+    </tr>
+    <tr>
+      <td>Adjacent tables with <code>tab=</code></td>
+      <td>Each table hook receives its own tab label</td>
+      <td>Adjacent-block tabs can extend beyond code fences</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-a3650583e8beb30928a9f3d184e9d0c9--container-boundary">Container boundary
+</h2>
+<p>Hugo&rsquo;s <code>%</code> shortcode delimiter renders <code>.Inner</code> as Markdown, but its template
+must put a blank line before and after that inner Markdown. Without both blank
+lines, a following list may be treated as literal HTML-block content instead of
+Markdown.</p>
+<p>A multi-line <code>%</code> container inside a CommonMark list item has a harder limit:
+the generated HTML is not indented as list content, so the list closes before
+the container and restarts afterwards. This is why OINK keeps a full Steps form
+for steps that must contain another full container. Ordinary rich blocks,
+fences, and <code>&lt;</code> shortcodes do not have that limitation.</p>
+<p>Nested <code>%</code> shortcodes also receive already rendered inner HTML in the relevant
+collector shape. A collector that requires the child&rsquo;s original Markdown uses
+<code>&lt;</code> delimiters and renders the captured body through the shared scoped block
+renderer.</p>
+<h2 id="pg-a3650583e8beb30928a9f3d184e9d0c9--attribute-ownership">Attribute ownership
+</h2>
+<p>An available attribute is not automatically a public attribute. Every hook
+owns a documented allowlist. <code>style</code> and inline <code>on*</code> handlers are rejected;
+URL-bearing values pass the shared URL policy. A site class is retained only on
+the surfaces where downstream CSS is an established extension mechanism.</p>
+<p>The experiment also showed that gallery images inside list items can be block
+images while still receiving no knowledge of their parent list&rsquo;s marker. A
+runtime may therefore need either a theme-emitted marker or a narrow structural
+fallback; it cannot assume the image hook sees arbitrary ancestors.</p>
+<h2 id="pg-a3650583e8beb30928a9f3d184e9d0c9--limits-and-verification">Limits and verification
+</h2>
+<p>These results cover Hugo 0.160.1 and 0.164.0 with the stated Goldmark settings.
+They do not promise identical behaviour for a site that changes those settings
+or for a later Hugo release. A Hugo-floor change reruns the focused component,
+Book, table, gallery, and Markdown-output checks before this snapshot is
+updated.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-f0f04a62627ef9f4d197a20b81a4051b">2 - Consumer and migration evidence</h1>
+    <div class="lead">A dated corpus snapshot that shaped OINK&rsquo;s shells, authoring primitives, and deterministic Book migration policy.</div>
+	<div class="td-callout td-callout--note" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-info" aria-hidden="true"></i><span class="td-callout__label">Dated corpus snapshot</span></div>
+  <div class="td-callout__body">
+<p>These counts describe the repositories inspected in August 2026. They are
+evidence for design choices, not live product metrics or compatibility
+promises.</p>
+  </div>
+</div><h2 id="pg-f0f04a62627ef9f4d197a20b81a4051b--corpus">Corpus
+</h2>
+<p>The authoring survey scanned the <code>content/</code> trees of eleven OINK consumer sites:
+5,325 Markdown files, of which 5,293 had YAML front matter. The set included
+single-language English and Chinese references, bilingual product sites,
+release archives, custom landing pages, and separate Book consumers.</p>
+<p>The survey deliberately measured source Markdown rather than generated HTML.
+It counted shortcode calls, fenced-code attributes, callouts, table markers,
+raw HTML, front-matter keys, content types, and site-local layouts. A later
+Book-focused pass added five long-form consumers.</p>
+<h2 id="pg-f0f04a62627ef9f4d197a20b81a4051b--findings">Findings that changed the design
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Evidence</th>
+      <th scope="col">Resulting choice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Content ranged from nearly plain Markdown to pages with many nested components</td>
+      <td>Native Markdown is the default form; a full form survives only for a named capability gap</td>
+    </tr>
+    <tr>
+      <td>Documentation, Blog, Landing, releases, and books repeatedly reimplemented navigation or cards locally</td>
+      <td>Extend the shared shell, registry, and primitive rather than adding a parallel system</td>
+    </tr>
+    <tr>
+      <td>Site-specific table classes were common, while canonical Field-table headings were rare</td>
+      <td>Hook attributes use an allowlist but preserve documented site-class extension points; Fields cannot be inferred from arbitrary two-column tables</td>
+    </tr>
+    <tr>
+      <td>Book sites carried private figure, table, equation, example, and cross-reference conventions</td>
+      <td>Numbered primitives and migration profiles need deterministic classification, stable IDs, and rendered-target verification</td>
+    </tr>
+    <tr>
+      <td>Sites mixed single-language, peer-file bilingual, and generated-language content</td>
+      <td>Language authority and generation boundaries must be explicit; a migration never treats an untracked generated tree as source</td>
+    </tr>
+    <tr>
+      <td>Rich HTML pages still needed print, Markdown, feeds, and agent output</td>
+      <td>Every component declares its output degradation before its interactive HTML is accepted</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>The evidence also rejected several attractive additions. Documentation sites
+did not justify a second Landing system; Book sites did not need a new cover
+component; a serial archive did not justify a new shell type; and remote API
+collection belonged to site-side CI rather than a Hugo theme that promises
+local builds.</p>
+<h2 id="pg-f0f04a62627ef9f4d197a20b81a4051b--block-and-table-evidence">Block and table evidence
+</h2>
+<p>A focused pass over eleven sites plus Book consumers found 11,484 pipe tables.
+Only eleven already matched the strict Field-table heading vocabulary, while
+roughly 874 were reference-style tables and about 1,300 were compatibility
+matrices. The result was explicit <code>.fields</code> and <code>.matrix</code> markers rather than
+shape guessing.</p>
+<p>The same pass found eighteen Steps blocks in the eleven-site corpus. They all
+used the full form with headings and rich content. Platform probes showed that
+a native ordered list could carry most of that content, while another full <code>%</code>
+container inside a list item could not. OINK therefore keeps both forms for a
+technical capability boundary, not merely for stylistic preference.</p>
+<h2 id="pg-f0f04a62627ef9f4d197a20b81a4051b--book-migration">Deterministic Book migration
+</h2>
+<p>Three dated dry-run profiles tested whether the migration rules could account
+for every recognized source without inventing semantics:</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Profile snapshot</th>
+      <th scope="col">Classified result</th>
+      <th scope="col">Manual boundary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DDIA v2</td>
+      <td>106 figures, 3 tables, 22 code examples, and all 304 relevant links accounted for</td>
+      <td>One caption link flattened to visible text; no unaccounted skip</td>
+    </tr>
+    <tr>
+      <td>DDIA v1</td>
+      <td>90 numbered figures and 203 matching references</td>
+      <td>14 decorative or unnumbered images deliberately left alone</td>
+    </tr>
+    <tr>
+      <td>TPME</td>
+      <td>31 figures, 10 tables, 44 numbered references, and 1,018 generic stable references</td>
+      <td>No skipped recognized item</td>
+    </tr>
+    <tr>
+      <td>Private Book profile</td>
+      <td>119 figures, 5 tables, and 136 numbered references</td>
+      <td>3 ambiguous images retained for manual review</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Each profile was dry-run first, wrote only after its ambiguity boundary was
+understood, produced zero changes on a second run, built with warnings fatal,
+and passed rendered kind/number/anchor checks. The public migration toolkit and
+current profile boundaries are documented in
+<a href="/docs/write/book/#migrate">Writing a book</a> and the
+<a href="/docs/design/migration/">migration contract</a>.</p>
+<h2 id="pg-f0f04a62627ef9f4d197a20b81a4051b--limits">Limits
+</h2>
+<p>These counts should not be copied into product marketing or used as a current
+site inventory. Repeating the research requires a fresh repository list and a
+new dated report. Paths, uncommitted content, private repository names, raw
+agent transcripts, and generated build artifacts are intentionally excluded
+from this public record.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-3cebe437d2917abe511bf1eac11b2866">3 - OINK comprehensive review, 2026-08-26</h1>
+    <div class="lead">An evidence-based review of OINK&rsquo;s post-v0.7.0 implementation, configuration, outputs, security, tests, performance, bilingual contracts, and real integration site.</div>
+	<div class="td-callout td-callout--warning" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="td-callout__label">Review snapshot, not a new contract</span></div>
+  <div class="td-callout__body">
+<p>This page records evidence collected against <code>github.com/pgsty/oink</code> and its integration site on 2026-08-26.
+It changes no API and does not mean that any recommendation below is implemented. Current Design contracts,
+implementation, and owning checkers remain authoritative.</p>
+<p><strong>Superseded in part by OINK 0.7.1.</strong> The code findings F01–F06 were fixed in that release — see the
+<a href="/blog/release/0.7.1/">0.7.1 release notes</a>. Read the findings below as the evidence that motivated the fix,
+not as the current state of the theme.</p>
+  </div>
+</div><h2 id="pg-3cebe437d2917abe511bf1eac11b2866--verdict">Review verdict
+</h2>
+<p>OINK&rsquo;s main-line quality is substantially above that of a typical Hugo theme. The default path builds, bilingual coverage is
+strong, component tests are broad, and the project treats output and trust boundaries seriously. The real site showed no
+general breakage across desktop, mobile, light/dark, and the primary accessibility paths. Theme and site worktrees were clean,
+their current remote checks were green, and every locally rerun first-party suite passed.</p>
+<p>Green checks do not prove that every published invariant holds. This review found <strong>4 P1, 9 P2, and 5 P3 findings</strong>.
+The recurring pattern is that OINK has a strong modern contract, while several early or peripheral surfaces have not joined it;
+the current gates are excellent at preserving selected positive scenarios but do not systematically cover configuration space,
+static-output degradation, or the semantic accuracy of public documentation.</p>
+<p>Before the next release tag, at minimum:</p>
+<ol>
+<li>disable Swagger UI&rsquo;s default online validator and lock zero implicit egress with a non-localhost browser test;</li>
+<li>place all public configuration and Landing data behind common type, range, URL, and CSS-value validation;</li>
+<li>redesign Swagger, Redoc, and Asciinema output degradation and runtime gates; and</li>
+<li>repair generated schemas and bring the public configuration/front-matter references back to current behavior.</li>
+</ol>
+<h2 id="pg-3cebe437d2917abe511bf1eac11b2866--baseline-and-method">Baseline and method
+</h2>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--review-baseline">Review baseline
+</h3>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Item</th>
+      <th scope="col">Snapshot</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Theme repository</td>
+      <td>clean <code>main</code> at <code>fe439fdb1d7c2df745088c9bfcbb8c350403ee63</code>, equal to <code>origin/main</code></td>
+    </tr>
+    <tr>
+      <td>Current stable tag</td>
+      <td><code>v0.7.0</code> at <code>cbb6f4e0bfe47e17ba7aa41d04b8651c943cf858</code></td>
+    </tr>
+    <tr>
+      <td>Documentation site</td>
+      <td>clean <code>main</code> at <code>fd5fcde</code>, publicly pinned to <code>github.com/pgsty/oink v0.7.0</code></td>
+    </tr>
+    <tr>
+      <td>Local tools</td>
+      <td>Hugo Extended 0.164.0, Python 3.14.6, Node 26.4.0, npm 11.17.0</td>
+    </tr>
+    <tr>
+      <td>Remote CI</td>
+      <td>theme HEAD <a href="https://github.com/pgsty/oink/actions/runs/32792753866">GitHub Actions run 32792753866</a> succeeded</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--executed-validation">Validation executed
+</h3>
+<ul>
+<li>all 31 theme checkers passed;</li>
+<li>all 85 migration unit tests passed;</li>
+<li>all 38 theme browser-runtime unit tests passed;</li>
+<li>all 40 HTML/Print/Markdown/RSS/LLMS golden surfaces passed;</li>
+<li>the strict <code>tests/site</code> Hugo build passed;</li>
+<li>the real bilingual site&rsquo;s <code>npm test</code> passed: 121/121 page pairs, 886 heading IDs, 24,860 internal links, and
+3,172 fragments;</li>
+<li>the full real-site Playwright suite passed: sitemap-wide axe, 29 accessibility cases, 45 responsive/navigation cases,
+16 keyboard cases, 10 content-component cases, 18 code-block cases, 4 PRD5 cases, and 5 theme-color cases;</li>
+<li>extra visual review at 320 CSS px covered the EN home, ZH configuration, ZH Book, and OpenAPI/Redoc pages with no
+page-level horizontal overflow;</li>
+<li><code>npm audit</code> reported no advisory among the site&rsquo;s 79 npm dependencies; an
+<a href="https://google.github.io/osv.dev/post-v1-querybatch/">OSV Query API</a> batch for the 26 exact versions in <code>VENDOR.json</code>
+returned no known advisory;</li>
+<li><code>measure-baseline.py assets --fixture-site</code> passed its isolated strict build.</li>
+</ul>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--severity">Severity
+</h3>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Level</th>
+      <th scope="col">Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>P1</td>
+      <td>Breaks a core product, security/privacy, or ordinary-editing invariant; fix before the next tag</td>
+    </tr>
+    <tr>
+      <td>P2</td>
+      <td>Material behavior, contract, or compatibility defect; fix soon with a behavior gate</td>
+    </tr>
+    <tr>
+      <td>P3</td>
+      <td>Maintainability, performance, process, or documentation-governance debt</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-3cebe437d2917abe511bf1eac11b2866--finding-summary">Finding summary
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Level</th>
+      <th scope="col">Finding</th>
+      <th scope="col">Default-site impact</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>F01</td>
+      <td>P1</td>
+      <td>Swagger UI enables its online validator on production URLs</td>
+      <td>Pages using <code>swagger</code> only</td>
+    </tr>
+    <tr>
+      <td>F02</td>
+      <td>P1</td>
+      <td>Invalid configuration can crash ordinary Hugo or silently emit bad output</td>
+      <td>Depends on authored configuration</td>
+    </tr>
+    <tr>
+      <td>F03</td>
+      <td>P1</td>
+      <td>Swagger/Redoc/Asciinema violate static-output and runtime-isolation contracts</td>
+      <td>Pages using those shortcodes</td>
+    </tr>
+    <tr>
+      <td>F04</td>
+      <td>P1</td>
+      <td>Landing sends unvalidated data to <code>safeCSS</code> and lets other bad values pass silently</td>
+      <td>Related Landing fields</td>
+    </tr>
+    <tr>
+      <td>F05</td>
+      <td>P2</td>
+      <td>Custom page-action and archived-version URLs bypass the shared URL policy</td>
+      <td>Sites configuring those options</td>
+    </tr>
+    <tr>
+      <td>F06</td>
+      <td>P2</td>
+      <td>Generated JSON Schemas contain wrong defaults, types, descriptions, and candidate keys</td>
+      <td>Authors using editor schemas</td>
+    </tr>
+    <tr>
+      <td>F07</td>
+      <td>P2</td>
+      <td>The supposedly complete configuration/front-matter references lag v0.7 behavior</td>
+      <td>All maintainers and consumers</td>
+    </tr>
+    <tr>
+      <td>F08</td>
+      <td>P2</td>
+      <td>Design contracts and proposal lifecycle present conflicting authorities</td>
+      <td>Maintainers</td>
+    </tr>
+    <tr>
+      <td>F09</td>
+      <td>P2</td>
+      <td>OpenAPI accessibility defects are excluded while Redoc is presented as an alternative</td>
+      <td>OpenAPI readers</td>
+    </tr>
+    <tr>
+      <td>F10</td>
+      <td>P2</td>
+      <td>Strict-CSP guidance omits theme-owned inline script and style</td>
+      <td>Strict-CSP consumers</td>
+    </tr>
+    <tr>
+      <td>F11</td>
+      <td>P2</td>
+      <td>No browser support baseline; automation is Chromium-only</td>
+      <td>Firefox, Safari, RTL, forced-color users</td>
+    </tr>
+    <tr>
+      <td>F12</td>
+      <td>P2</td>
+      <td>Output-security and rendered-Markdown gates have systematic blind spots</td>
+      <td>Consumers relying on those verdicts</td>
+    </tr>
+    <tr>
+      <td>F13</td>
+      <td>P2</td>
+      <td>Real cross-repository candidate integration is manual and non-atomic</td>
+      <td>Every public behavior change</td>
+    </tr>
+    <tr>
+      <td>F14</td>
+      <td>P3</td>
+      <td>Checker duplication and source-string coupling are high</td>
+      <td>Maintainers and isolated worktrees</td>
+    </tr>
+    <tr>
+      <td>F15</td>
+      <td>P3</td>
+      <td>Baseline CSS and fonts remain the main first-visit payload</td>
+      <td>Every HTML page</td>
+    </tr>
+    <tr>
+      <td>F16</td>
+      <td>P3</td>
+      <td>Vendor integrity is strong, but vulnerability/SBOM and CI supply-chain gates are manual</td>
+      <td>Release maintainers</td>
+    </tr>
+    <tr>
+      <td>F17</td>
+      <td>P3</td>
+      <td>Changelog, implemented proposals, and behaviorless metadata reduce signal</td>
+      <td>Maintainers and upgraders</td>
+    </tr>
+    <tr>
+      <td>F18</td>
+      <td>P3</td>
+      <td>The Print <code>isHTML</code> FIXME no longer explains the real dependency</td>
+      <td>Print-template maintainers</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-3cebe437d2917abe511bf1eac11b2866--detailed-findings">Detailed findings
+</h2>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--f01-swagger-validator">F01 — Swagger UI implicitly contacts the online validator (P1)
+</h3>
+<p><code>layouts/_shortcodes/swagger.html</code> initializes <code>SwaggerUIBundle</code> without <code>validatorUrl: null</code>. The vendored
+<code>swagger-ui-bundle.js</code> defaults that option to <code>https://validator.swagger.io/validator</code> and suppresses the badge only when
+the specification URL contains <code>localhost</code> or <code>127.0.0.1</code>. On a deployed host it creates an online-validator badge whose
+request includes the specification URL.</p>
+<p>This violates the promises that theme-owned network features are off by default, that same-origin specifications remain
+local, and that OINK is local-first. An intranet deployment can disclose its internal hostname/specification URL. The
+localhost exemption is also why every current local browser test misses the request.</p>
+<p>Set <code>validatorUrl: null</code> explicitly. Any future online validator should be an explicit opt-in URL, pass the shared URL policy,
+and be documented as a privacy/CSP integration. Test a production-like non-localhost origin while intercepting every request
+and require same-origin specifications to fetch first-party resources only.</p>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--f02-config-validation">F02 — Invalid configuration does not consistently warn and fall back (P1)
+</h3>
+<p><code>ui-param.html</code> says callers validate types; several do not. Minimal builds produced the following results:</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Input</th>
+      <th scope="col">Actual result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>ui.blog_index_size: nope</code></td>
+      <td>ordinary build fails because <code>.Paginate</code> requires a positive integer</td>
+    </tr>
+    <tr>
+      <td><code>ui.sidebar_expand_levels: nope</code></td>
+      <td>ordinary build fails in <code>add</code></td>
+    </tr>
+    <tr>
+      <td><code>ui.sidebar_menu_truncate: nope</code></td>
+      <td>ordinary build fails while <code>first</code> casts the value</td>
+    </tr>
+    <tr>
+      <td><code>offline_search_summary_length: nope</code></td>
+      <td>ordinary build fails while <code>truncate</code> casts the value</td>
+    </tr>
+    <tr>
+      <td><code>ui.sidebar_width_min: &quot;1; color: red&quot;</code></td>
+      <td>warning-free build emits <code>--td-shell-sidebar-min: ZgotmplZpx</code></td>
+    </tr>
+    <tr>
+      <td><code>ui.sidebar_width_min: -50</code></td>
+      <td>warning-free build emits <code>-50px</code></td>
+    </tr>
+    <tr>
+      <td><code>blog_index_columns: 2.5</code> / <code>section_index_columns: 2.5</code></td>
+      <td>warning-free build feeds <code>2.5</code> to CSS <code>repeat()</code></td>
+    </tr>
+    <tr>
+      <td><code>ui.sidebar_item_overflow: clip</code></td>
+      <td>warning-free build silently behaves as <code>ellipsis</code></td>
+    </tr>
+    <tr>
+      <td><code>ui.sidebar_menu_foldable: definitely</code></td>
+      <td>the non-boolean string is truthy and enables folding</td>
+    </tr>
+    <tr>
+      <td><code>ui.blog_index_size: 0</code></td>
+      <td>Hugo <code>default</code> silently converts it back to 12</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Landing <code>marquee.rows</code>/<code>capabilities.columns</code> and Asciinema numeric parameters also call <code>int</code>/<code>float</code> directly. Other bad
+types, such as <code>print.toc</code> or <code>offline_search_max_results</code>, silently change behavior.</p>
+<p>This directly contradicts the Diagnostics decision: ordinary <code>hugo server</code> may become unusable, while some bad input reaches
+a strict publishing gate without any warning. Add shared integer, positive-integer, range, paired-range, and grid-count
+validators. Normalize before arithmetic or output. Every public key needs legal site and page cases plus illegal ordinary
+(warn/fallback) and strict (failure) cases. Cross-field invariants such as <code>min &lt;= max</code>, pager size <code>&gt;= 1</code>, and integer grid
+counts belong in domain resolvers.</p>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--f03-static-output-leakage">F03 — OpenAPI and Asciinema remain HTML-only islands (P1)
+</h3>
+<p>Architecture and Components require Markdown/LLMS without theme component markup, static Print, and safe static RSS or explicit
+omission. Current behavior disagrees:</p>
+<ul>
+<li>Redoc emits <code>&lt;style&gt;</code>, <code>&lt;div class=&quot;td-redoc&quot;&gt;</code>, and <code>&lt;redoc spec-url=...&gt;</code> into generated <code>.md</code>;</li>
+<li>Swagger places an executable inline initializer in its shortcode;</li>
+<li>Asciinema <code>.md</code> contains the full <code>td-asciinema</code> tree and JSON script;</li>
+<li>Asciinema Print loads about 185 KB of player JS/CSS and can print only an incidental frame;</li>
+<li>Swagger/Redoc leave empty Print containers and can still select 1–2 MB runtimes; and</li>
+<li>these shortcodes are absent from the Markdown/RSS/Print golden matrix.</li>
+</ul>
+<p>Agent output contains theme HTML, paper/EPUB readers receive empty shells, Print carries useless runtime, and Swagger breaks a
+strict CSP. Reader-facing guides currently document these defects as output behavior, contradicting the normative contracts.</p>
+<p>Make all three branch on <code>tdOutputFormat</code>: full behavior in interactive HTML; a titled static link and spec/cast address in
+Print/Markdown/RSS, or explicit omission. Only interactive HTML should set capability flags. Move Swagger initialization into
+a stable chunk and Redoc styles into a stylesheet; add four-output goldens and runtime-absence assertions.</p>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--f04-landing-validation">F04 — Landing CSS, URL, and numeric inputs do not share one trust boundary (P1)
+</h3>
+<p><code>hero.html</code> validates <code>title_size</code> but concatenates <code>media.ratio</code> and <code>media.max_width</code> verbatim before marking the complete
+string <code>safeCSS</code>. This input:</p>
+<div class="td-code td-code--untitled" id="td-code-596e55e4-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="8">
+  <div class="td-code__viewport" id="td-code-596e55e4-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">sections</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">hero</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">data</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">Probe</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">/icons/logo.svg</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">media</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">ratio</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;1fr; background-image: url(https://example.invalid/x)&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">max_width</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;240px; color: red&#34;</span></span></span></code></pre></div></div>
+</div>
+<p>builds strictly with no warning and emits:</p>
+<div class="td-code td-code--untitled" id="td-code-596e55e4-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="html" data-td-line-count="2">
+  <div class="td-code__viewport" id="td-code-596e55e4-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">style=&#34;--td-hero-columns: 1fr; background-image: url(https://example.invalid/x);
+</span></span><span class="line"><span class="cl">       --td-hero-media-max: 240px; color: red;&#34;</span></span></code></pre></div></div>
+</div>
+<p>Landing permits inline <code>sections</code> in page front matter, so this is not merely an internal repository constant. Other section
+<code>columns</code>, <code>rules</code>, dimensions, styles, icons, and URLs are handled ad hoc. A <code>javascript:</code> URL often becomes <code>#ZgotmplZ</code>
+without warning; bad columns become <code>ZgotmplZ</code>; some direct integer casts abort the build.</p>
+<p>Add a section normalization layer with common class, icon, URL, CSS-length, grid-count, boolean, and enum handling.
+<code>hero.media.ratio</code> should be two constrained track values rather than arbitrary CSS; <code>max_width</code> should use the length
+validator. All Landing actions should reuse <code>content/url.html</code>, and each built-in section needs negative tests.</p>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--f05-url-policy-bypass">F05 — Two configuration URL surfaces bypass shared policy (P2)
+</h3>
+<p><code>params.ui.page_context_menu.links</code> passes through <code>url-template.html</code> and directly into <code>safeURL</code>; <code>url_latest_version</code> is
+also treated as trusted configuration and marked <code>safeURL</code>. Neither path validates scheme, host, whitespace, or
+protocol-relative URLs. A warning-free build can produce:</p>
+<div class="td-code td-code--untitled" id="td-code-596e55e4-fence-2" data-td-code data-td-code-auto-id
+     data-td-language="html" data-td-line-count="2">
+  <div class="td-code__viewport" id="td-code-596e55e4-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;td-page-actions__item&#34;</span>
+</span></span><span class="line"><span class="cl">   <span class="na">href</span><span class="o">=</span><span class="s">&#34;javascript:document.body.dataset.pwned=1;undefined&#34;</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</div>
+<p>Clicking executes JavaScript. Site configuration is high-trust input, so this is not a default remote exploit, but it violates
+the published safe-URL model and gives copied configuration unnecessary execution power.</p>
+<p>Allow only HTTP(S) and explicitly supported first-party relative URLs, using the shared resolver. Validate archived-version
+URLs too. The browser action registry&rsquo;s second check is good defense, but the progressive-enhancement anchor must not bypass it.</p>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--f06-schema-generation">F06 — Generated schemas disagree with actual YAML (P2)
+</h3>
+<p>The small parser in <code>generate-config-schema.py</code> does not strip inline comments. At least 11 defaults become strings, including
+<code>print.toc</code> (<code>&quot;true # ...&quot;</code> instead of boolean), <code>print.section_break_wordcount</code>, both index column counts, and enum defaults
+such as <code>footer_style</code>, <code>blog_index</code>, and <code>typography</code>.</p>
+<p>Comment association also drifts: breadcrumb commentary is attached to <code>section_index</code>; quick-link commentary to
+<code>sidebar_icon_policy</code>; taxonomy-icon commentary to <code>pager_types</code>; and local-chrome commentary to <code>image_zoom</code>.</p>
+<p>The front-matter schema advertises removed detector keys (<code>release</code>, <code>upstream_attribution</code>, <code>downstream_modified</code>) and
+misclassifies navbar-menu <code>Params.columns</code> as page front matter. The drift check compares the same buggy generator with its
+committed output, so it reliably preserves the error.</p>
+<p>Use a real comment-preserving parser or explicit machine metadata markers rather than extending the ad-hoc parser. The scanner
+must distinguish page, menu, shortcode, and legacy-detector contexts. Tests should compare each schema default to Hugo&rsquo;s actual
+parsed value and keep removed keys out of completion.</p>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--f07-public-doc-drift">F07 — Public configuration and front-matter references are not current (P2)
+</h3>
+<p>Both reference pages claim to list every key the theme reads. Material drift includes:</p>
+<ul>
+<li>long English date defaults where <code>hugo.yaml</code> now uses ISO <code>2006-01-02</code>;</li>
+<li>Blog docs missing <code>hero</code>, <code>table</code>, toggle, size, <code>toc_style</code>, and <code>toc_taxonomies</code>;</li>
+<li>the removed <code>release</code> map and release filters presented as current, while <code>release_url</code> is absent;</li>
+<li><code>images: []</code> described as disabling featured images even though bundle discovery continues;</li>
+<li><code>upstream_modified</code> described as adding a line, while current behavior changes the attribution verb;</li>
+<li>inconsistent claims that invalid input directly fails versus warns in ordinary preview and fails only at a strict gate;</li>
+<li>the Book guide saying OINK stops at Print HTML after v0.7 shipped BookManifest/EPUB/PDF tooling;</li>
+<li>Asciinema/OpenAPI guides turning static-output defects into product contracts; and</li>
+<li>Features saying 28 vendor dependencies when the authoritative manifest has 26.</li>
+</ul>
+<p>English and Chinese usually agree on the stale answer, so translation parity cannot detect the error. Treat the two references
+as a focused contract migration. Derive a comparable key inventory from implementation/schema, keep semantics reviewed by hand,
+and gate current-key coverage, removed-key placement, enums, and defaults.</p>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--f08-design-governance">F08 — The Design tree contains conflicting authorities and unretired proposals (P2)
+</h3>
+<p>The clearest contradiction is that Shell retires navbar <code>columns</code>/mega panels and promises a warning plus one column, while
+Landing still says navbar mega-menu columns accept 1–4. Implementation and tests follow Shell.</p>
+<p>Lifecycle is also incomplete. <code>config-schema</code> is marked implemented but remains an Active proposal. Book publication has shipped
+manifest, EPUB, PDF, and most CI work while a Draft proposal duplicates the Architecture contract. Media convergence retains
+implemented milestones and the open M4 in one original design record.</p>
+<p>Correct Landing, move stable config-schema facts into Architecture/Decision and retire the proposal, and reduce Book publication
+to the remaining consumer-migration question or replace it with a narrow follow-up. Active proposals should not contain a
+second current API.</p>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--f09-openapi-accessibility">F09 — OpenAPI accessibility claims conflict with test exclusions (P2)
+</h3>
+<p>The axe suite excludes both <code>.td-swagger-ui</code> and <code>.td-redoc</code>. Its comments name Swagger&rsquo;s unnamed server selector and
+non-keyboard scrollable version stamp, plus Redoc operation-description contrast. The guide discloses only Swagger&rsquo;s defects and
+presents the rendered Redoc as the alternative, implying that Redoc meets the site&rsquo;s zero-violation gate.</p>
+<p>Publish the real boundary in both languages. Fix Redoc contrast in theme CSS where possible; use a narrow post-render adapter
+for fixable Swagger DOM. Remaining upstream defects should have versioned waivers, upstream issue links, and a separate axe
+report instead of excluding the whole supported surface while claiming a site-wide zero.</p>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--f10-csp">F10 — The current theme does not directly support a strict CSP (P2)
+</h3>
+<p>Deployment guidance says strict CSP is workable but lists only author scripts, ECharts callbacks, analytics, remote specs or
+diagram services, and Giscus. A normal Docs page already emits two theme-owned executable inline scripts (theme first paint and
+shell prepaint) plus inline style. Markmap, Swagger, Algolia, and Google CSE add more theme-owned inline initializers. There is no
+nonce API, hash manifest, or complete sample policy.</p>
+<p><code>script-src 'self'</code> blocks theme first paint and shell-state restoration; <code>style-src 'self'</code> blocks theme color, font roles,
+Landing, and several inline custom properties. Consumers must add <code>'unsafe-inline'</code>, maintain hashes, or override templates,
+none of which the guide states.</p>
+<p>Move stable initializers into same-origin chunks with data/JSON configuration. For unavoidable inline content, provide a
+generated hash manifest or one nonce hook. Publish minimal-core, Markmap/OpenAPI, and third-party-integration policies and state
+the <code>style-src</code> requirements.</p>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--f11-browser-compatibility">F11 — Browser compatibility has no baseline or cross-engine proof (P2)
+</h3>
+<p>CI installs Chromium only, and product documentation names no minimum Chrome, Firefox, or Safari version. The implementation
+uses or enhances with <code>:has()</code>, <code>dialog</code>, <code>inert</code>, <code>color-mix()</code>, <code>@property</code>, logical properties, and discrete display
+transitions. Some paths have fallbacks, but there is no engine matrix.</p>
+<p>RTL assurance is mostly source markers, small JS tests, and one element-level geometry mutation rather than a full RTL-language
+site. Most forced-color assurance only checks that strings exist in SCSS rather than computed behavior.</p>
+<p>Publish a small support matrix and run core shell/navigation/content/dialog cases on Chromium, Firefox, and WebKit. Add a real
+<code>languageDirection: rtl</code> integration configuration plus forced-colors, reduced-motion, 320 px, and 200% zoom scenarios.</p>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--f12-checker-blind-spots">F12 — Output-security and Markdown gates do not inspect every claimed surface (P2)
+</h3>
+<p>For <code>.md</code>, <code>check-output-security.py</code> scans only Markdown-link syntax; it does not feed raw HTML through the HTML scanner, so
+Redoc/Asciinema scripts, <code>spec-url</code>, and raw <code>href</code> are invisible. It also ignores URLs in CSS and JSON configuration, while the
+fixture runs with a broad <code>--third-party</code> allowance.</p>
+<p><code>check-rendered-markdown.mjs</code> is also misleadingly named: it scans generated HTML text nodes for leftover Markdown syntax; it
+does not read generated <code>.md</code>. The actual Markdown golden set covers 15 pages and omits OpenAPI/Asciinema.</p>
+<p>Separate HTML trust, machine-output purity, and rendered-text residue into clearly named gates. Give generated Markdown a very
+narrow raw-HTML allowlist; parse CSS URLs, form actions, JSON URLs, and non-executable JSON scripts deliberately. Every public
+shortcode should enter at least one Markdown/Print/RSS behavior case.</p>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--f13-cross-repo-gate">F13 — Candidate integration across the two repositories is manual (P2)
+</h3>
+<p>Theme CI tests only synthetic <code>tests/site</code>; documentation-site CI tests only the public tag pinned by <code>go.mod</code>. Real EN/ZH and
+Playwright validation of a theme PR depends on a maintainer&rsquo;s local <code>HUGO_MODULE_REPLACEMENTS</code>, and changes in the two
+repositories cannot be committed atomically.</p>
+<p>Both repositories can therefore be green while public references drift from implementation, as this review demonstrates.
+The written release-state separation is correct, but automation does not enforce the same-delivery rule for implementation,
+owning checker, and paired contract.</p>
+<p>Add a read-only candidate workflow that checks out a theme PR SHA and a declared documentation-site SHA, applies a temporary
+module replacement, and runs <code>npm test</code> plus the critical browser suites. Allow a Design-contract PR to identify the candidate
+theme SHA too. Tag, pin, and deployment remain distinct, but the candidate pair gains one traceable joint verdict.</p>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--f14-checker-maintainability">F14 — Checker maintenance cost and source coupling are high (P3)
+</h3>
+<p>The coverage is valuable, but 34 <code>check-*.py</code> files contain 546 <code>read_text()</code> calls. Many repeat <code>require</code>, temporary-site
+creation, file writes, Hugo invocation, and error aggregation. Numerous assertions freeze template/SCSS spelling, nearby
+comments, or whole-file equality instead of observable behavior.</p>
+<p>Some helpers hard-code <code>theme: oink</code> with <code>--themesDir &lt;repo-parent&gt;</code>, making the checkout/worktree basename an implicit
+precondition. There is no unified Python lint/type gate. This makes checkers quick to add but encourages shared blind spots.</p>
+<p>Create a common fixture builder and assertion library; move negative cases into table-driven data. Keep source checks for true
+topology invariants only and move the rest to parsed output or computed styles. Load the theme through an explicit symlink or
+module replacement rather than repository basename.</p>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--f15-performance">F15 — Runtime splitting succeeded, but baseline CSS/fonts dominate first visit (P3)
+</h3>
+<p>The isolated strict fixture baseline was:</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Metric</th>
+      <th scope="col" style="text-align: right">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Cold/warm build</td>
+      <td style="text-align: right">1.256 s / 1.273 s</td>
+    </tr>
+    <tr>
+      <td>Pages</td>
+      <td style="text-align: right">249</td>
+    </tr>
+    <tr>
+      <td>Stable JS chunks</td>
+      <td style="text-align: right">18</td>
+    </tr>
+    <tr>
+      <td>Main + Font Awesome CSS</td>
+      <td style="text-align: right">549.8 KB raw / 91.1 KB gzip</td>
+    </tr>
+    <tr>
+      <td>Fonts total (FA portion)</td>
+      <td style="text-align: right">999.7 KB raw / 248.5 KB gzip</td>
+    </tr>
+    <tr>
+      <td>Median Docs-page JS</td>
+      <td style="text-align: right">176.9 KB raw / 55.3 KB gzip</td>
+    </tr>
+    <tr>
+      <td>Generated public</td>
+      <td style="text-align: right">26.2 MB</td>
+    </tr>
+    <tr>
+      <td>v0.7.0 Go module zip</td>
+      <td style="text-align: right">7.8 MB (about 20.5 MB and 1,140 files expanded)</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Stable first-party capability chunks correctly removed combinatorial bundles, and large third-party runtimes are page-local.
+The remaining common cost is Bootstrap/theme/Landing CSS and the complete Font Awesome distribution.</p>
+<p>Do not prune Font Awesome by observed template usage; that would violate the authoring contract. Instead measure whether
+Landing, Book, or Swagger CSS can become independently cached/surface-local, inspect fonts actually requested on first visit,
+and maintain a trend report rather than an arbitrary hard threshold.</p>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--f16-supply-chain">F16 — Vendor builds are reproducible, but advisory and CI supply-chain gates remain manual (P3)
+</h3>
+<p>Positive evidence: <code>VENDOR.json</code> pins 26 packages, 56 artifacts, 31 license files, and tree hashes; <code>check-vendor.py</code> passed;
+OSV and npm audit reported no known advisory in this snapshot.</p>
+<p>The custom manifest is not part of a common SBOM/advisory gate, and <code>npm audit</code> cannot see vendored browser packages.
+Two documentation-site workflows download a Hugo <code>.deb</code> and immediately install it with <code>sudo dpkg -i</code> without a checksum.
+Actions use movable major tags, and theme CI floats Python at <code>3.x</code>.</p>
+<p>Generate CycloneDX/SPDX from <code>VENDOR.json</code>, schedule OSV scanning, pin Hugo archive/deb SHA-256, pin high-trust release actions
+to commit SHAs, and choose a specific Python version or matrix.</p>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--f17-governance-noise">F17 — Design and release records have lost signal (P3)
+</h3>
+<p><code>CHANGELOG.md</code> has 1,768 lines; the v0.7.0 section alone is about 300 lines, and Unreleased spends about 20 lines on one checker
+retry. The narratives are useful engineering history but make breaking changes, migrations, and observable behavior harder for
+upgraders to find.</p>
+<p><code>book_kind</code> and <code>book_part</code> are acknowledged by contract and repeated in content front matter while templates explicitly do not
+read them. They impose API-like authoring cost without behavior. Implemented proposals remaining active add another duplicate
+answer.</p>
+<p>Keep the changelog to observable changes, breaking/migration notes, and concise fixes; move long design stories to Blog/Research
+and link them. Give behaviorless metadata a consumer/schema or demote it to site-owned fields.</p>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--f18-print-ishtml">F18 — The Print <code>isHTML</code> FIXME is no longer accurate (P3)
+</h3>
+<p><code>hugo.yaml</code> says to leave <code>isHTML</code> unset until Hugo fixes issue #14381. Hugo closed that issue on 2026-01-17, and the fix shipped
+before OINK&rsquo;s 0.160.1 floor. Simply enabling <code>isHTML: true</code> still produces missing page/section/landing Print-layout warnings in
+the current theme, causing a strict build to fail.</p>
+<p>The actual dependency has shifted from “waiting for an alias fix” to “the current Print template names rely on non-HTML lookup
+rules.” Do not simply delete the workaround. First complete the HTML-classified Print lookup matrix and alias/subpath tests; if
+false remains intentional, update the comment to the real reason and add a test that prevents cleanup based on a closed issue.</p>
+<h2 id="pg-3cebe437d2917abe511bf1eac11b2866--strengths">Strengths
+</h2>
+<ul>
+<li>Source, local validation, commit, tag, public module, consumer pin, and deployment are explicitly separated.</li>
+<li>The Hugo 0.160.1 floor plus 0.164/0.165 theme matrix is strong.</li>
+<li>Most newer components follow warning/fallback, four-output, shared URL/attribute, and capability-flag contracts.</li>
+<li>The 32 locale schemas match, with strong real EN/ZH page, heading-ID, link, and narrow-navigation gates.</li>
+<li>Search, keyboard behavior, surface coordination, page actions, and theme color have both unit and browser behavior tests.</li>
+<li>Vendor license/hash checks and EPUB/PDF path, loopback, CSP, and overwrite boundaries are thoughtfully designed.</li>
+<li>Manual 320 px review found no page-level overflow; current core visual quality is good.</li>
+<li>Builds are fast, and first-party JS now uses stable capability chunks.</li>
+</ul>
+<h2 id="pg-3cebe437d2917abe511bf1eac11b2866--remediation-roadmap">Recommended remediation roadmap
+</h2>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--phase-0">Phase 0: before the next tag
+</h3>
+<ol>
+<li>Set Swagger <code>validatorUrl: null</code> and add a production-origin no-network test.</li>
+<li>Build the public-parameter inventory and validate every F02/F04 field with negative cases.</li>
+<li>Redesign four-output behavior and runtime gates for Swagger, Redoc, and Asciinema.</li>
+<li>Validate custom action and archived-version URLs.</li>
+<li>Repair the schema parser/scanner and regenerate both schemas.</li>
+<li>Synchronize paired Config, Front matter, OpenAPI, Asciinema, Book, Features, and Landing-contract pages.</li>
+</ol>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--phase-1">Phase 1: contract gates
+</h3>
+<ol>
+<li>Create a minimum HTML/Print/Markdown/RSS coverage map for all 29 shortcodes.</li>
+<li>Split and strengthen output-trust and machine-output-purity gates.</li>
+<li>Normalize all Landing section input centrally.</li>
+<li>Externalize theme-owned inline initializers and publish CSP guidance.</li>
+<li>Add a cross-repository candidate workflow.</li>
+</ol>
+<h3 id="pg-3cebe437d2917abe511bf1eac11b2866--phase-2">Phase 2: compatibility and structure
+</h3>
+<ol>
+<li>Add Firefox/WebKit, real RTL, forced colors, and 200% zoom.</li>
+<li>Consolidate the Python checker harness and source-string assertions.</li>
+<li>Evaluate surface-specific CSS and actual font requests.</li>
+<li>Generate an SBOM, schedule OSV, and pin CI download digests.</li>
+<li>Retire implemented proposals and reduce changelog volume.</li>
+</ol>
+<h2 id="pg-3cebe437d2917abe511bf1eac11b2866--acceptance-criteria">Acceptance criteria
+</h2>
+<ul>
+<li>A same-origin Swagger specification on a production-like origin makes no third-party request.</li>
+<li>Every invalid public configuration warns and falls back/omits in ordinary builds, fails strictly, and emits no <code>ZgotmplZ</code>.</li>
+<li>Generated <code>.md</code> contains no <code>td-*</code>, theme script/style, or empty interactive container.</li>
+<li>Print loads no Swagger/Redoc/Asciinema runtime and provides an understandable static alternative.</li>
+<li>Schema default types exactly match Hugo parsing, and removed keys are absent from completion.</li>
+<li>EN/ZH configuration and front-matter key/enum/default inventories match implementation.</li>
+<li>Core Playwright passes on Chromium, Firefox, and WebKit, with real RTL and forced-color behavior assertions.</li>
+<li>Every candidate theme SHA has a traceable joint validation against the real documentation site.</li>
+</ul>
+<h2 id="pg-3cebe437d2917abe511bf1eac11b2866--limits">Review limits
+</h2>
+<p>This pass did not individually audit every consumer repository, production response headers/CDN caches, real Firefox/Safari,
+or screen readers, and it did not manually reverse-engineer 13 MB of minified third-party source. Advisory checks are a
+2026-08-26 snapshot and may change. Existing CI/contract evidence was used for DDIA/TPME EPUB/PDF consumers; no site was
+republished or deployed during this review.</p>
+
+</div>
+
+
+
+    
+	
+  
+
+
+
+      </main>
+    </div>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"Copy Markdown","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["Copy Markdown","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Copy Markdown","url":"/docs/design/research/index.md"},{"available":true,"description":"Copy link","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["Copy link","Share","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"Copy link","url":"http://localhost:1313/docs/design/research/"},{"available":true,"description":"Open in ChatGPT","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["Open in ChatGPT","Ask about this page","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in ChatGPT","url":"https://chatgpt.com/?hints=search\u0026prompt=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fdesign%2Fresearch%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"Open in Claude","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["Open in Claude","Ask about this page","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in Claude","url":"https://claude.ai/new?q=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fdesign%2Fresearch%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"View markdown","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["View markdown","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View markdown","url":"/docs/design/research/index.md"},{"available":true,"description":"View edit history","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["View edit history","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View edit history","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/design/research/_index.md"},{"available":true,"description":"Edit this page","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["Edit this page","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Edit this page","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/design/research/_index.md"},{"available":true,"description":"Create child page","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["Create child page","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create child page","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/design/research?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"Create docs issue","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["Create docs issue","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create docs issue","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=Design+research"},{"available":true,"description":"Create project issue","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["Create project issue","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create project issue","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"Print entire section","disabledReason":"Print entire section: unavailable","icon":"fa-solid fa-print","id":"print_section","keywords":["Print entire section","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Print entire section","url":""},{"available":true,"description":"Print this page","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["Print this page","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"Print this page","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL required","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"Switch language","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["Switch language","language"],"kind":"choice","options":[{"active":true,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/design/research/"},{"active":false,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/design/research/"}],"placements":{"page":false,"palette":true},"target":"self","title":"Switch language","url":""},{"available":true,"description":"Toggle color theme","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["Toggle color theme","Light","Dark"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"System","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"Light","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"Dark","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"Toggle color theme","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"Report or review theme and documentation issues","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["bug","support","roadmap"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK issues","url":"https://github.com/pgsty/oink/issues"}],"language":"en","quickLinks":[{"available":true,"description":"OINK is a documentation theme that needs nothing but Hugo Extended — components are written in Markdown, assets ship with the theme, both languages work out of the box, and one source produces four outputs.","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["Docs","docs"],"kind":"url","target":"self","title":"Docs","url":"/docs/"},{"available":true,"description":"OINK engineering stories, immersive guides, and release notes","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["Blog","blog"],"kind":"url","target":"self","title":"Blog","url":"/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+
+<script src="/js/actions.js"></script>
+
+  </body>
+</html>

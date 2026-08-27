@@ -1,0 +1,2354 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" dir="ltr" lang="zh-CN" data-td-typography="technical" data-td-theme-init>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#000000">
+
+<style>
+  html { background: Canvas; color: CanvasText; }
+  @media (prefers-color-scheme: dark) {
+    html { background: #0b0d12; color: #e6e6e6; }
+  }
+  html[data-td-theme-init] * { transition: none !important; }
+  [data-td-theme-toggle] > .td-shell-icon--sun { display: none !important; }
+  [data-td-theme-toggle] > [hidden] { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--moon { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--sun { display: inline-block !important; }
+</style>
+
+<script>
+  (function() {
+    const themeKey = 'td-color-theme';
+    let storedTheme = null;
+    try {
+      storedTheme = localStorage.getItem(themeKey);
+    } catch (_) {
+      
+      
+    }
+    let theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+    if (theme === 'auto') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    document.documentElement.classList.toggle('dark-mode', theme === 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<link rel="canonical" type="text/html" href="http://localhost:1313/zh/docs/admin/">
+<link rel="alternate" type="application/rss&#43;xml" href="http://localhost:1313/zh/docs/admin/index.xml">
+<link rel="alternate" type="text/markdown" href="http://localhost:1313/zh/docs/admin/index.md">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<title>维护管理 | OINK</title>
+<meta name="description" content="站点从本机到线上的运维事项：本地预览、发布上线、评论、分析与 SEO、版本升级与排错。">
+<link rel="canonical" href="http://localhost:1313/zh/docs/admin/">
+<link rel="alternate" hreflang="en-US" href="http://localhost:1313/docs/admin/">
+<link rel="alternate" hreflang="zh-CN" href="http://localhost:1313/zh/docs/admin/">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="http://localhost:1313/zh/docs/admin/">
+  <meta property="og:site_name" content="OINK">
+  <meta property="og:title" content="维护管理">
+  <meta property="og:description" content="站点从本机到线上的运维事项：本地预览、发布上线、评论、分析与 SEO、版本升级与排错。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="维护管理">
+  <meta itemprop="description" content="站点从本机到线上的运维事项：本地预览、发布上线、评论、分析与 SEO、版本升级与排错。">
+  <meta itemprop="dateModified" content="2026-08-20T19:29:35+08:00">
+  <meta itemprop="wordCount" content="230">
+  <meta itemprop="keywords" content="维护管理">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="维护管理">
+  <meta name="twitter:description" content="站点从本机到线上的运维事项：本地预览、发布上线、评论、分析与 SEO、版本升级与排错。">
+<link href="/scss/fontawesome.css" rel="stylesheet">
+<link href="/scss/main.css" rel="stylesheet">
+
+  </head>
+  <body class="td-section td-print-view">
+    <a class="td-skip-link d-print-none" href="#td-main-content">跳转到主要内容</a>
+
+    
+<header class="td-site-header d-print-none" data-td-header>
+  <div class="td-site-container">
+    <nav class="td-site-nav" aria-label="主导航">
+      <a href="/zh/" class="td-nav-brand" data-td-navbar-route
+         aria-label="OINK — 首页">
+        <img src="/icons/logo.svg" alt="" class="td-nav-logo" width="22" height="22">
+        <span class="td-nav-title">OINK</span>
+      </a><div class="td-nav-links td-nav-menu-zone"><div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link active" href="/zh/docs/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="文档"
+  data-td-navbar-region="desktop" data-td-navbar-label="文档"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-docs-0" aria-expanded="false">
+  <i class="fa-solid fa-book" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">文档</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-docs-0" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/zh/docs/about/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="简介"
+  data-td-navbar-region="desktop" data-td-navbar-label="简介"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">简介</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/start/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="快速上手"
+  data-td-navbar-region="desktop" data-td-navbar-label="快速上手"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">快速上手</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/write/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="创作内容"
+  data-td-navbar-region="desktop" data-td-navbar-label="创作内容"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">创作内容</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/components/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="组件"
+  data-td-navbar-region="desktop" data-td-navbar-label="组件"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-cubes" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">组件</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/customize/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="定制站点"
+  data-td-navbar-region="desktop" data-td-navbar-label="定制站点"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">定制站点</span></a>
+<a class="td-nav-menu__item-link active" href="/zh/docs/admin/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="维护管理"
+  data-td-navbar-region="desktop" data-td-navbar-label="维护管理"
+  data-td-navbar-external="false" aria-current="page">
+  <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">维护管理</span></a>
+<a class="td-nav-menu__item-link" href="/zh/docs/design/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="设计契约"
+  data-td-navbar-region="desktop" data-td-navbar-label="设计契约"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-compass-drafting" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">设计契约</span></a>
+
+  </div>
+</div><a class="nav-link" href="/zh/book/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="教程"
+  data-td-navbar-region="desktop" data-td-navbar-label="教程"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">教程</span></a>
+<a class="nav-link" href="/zh/case/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="案例"
+  data-td-navbar-region="desktop" data-td-navbar-label="案例"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">案例</span></a>
+<div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link" href="/zh/blog/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="博客"
+  data-td-navbar-region="desktop" data-td-navbar-label="博客"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-blog-3" aria-expanded="false">
+  <i class="fa-solid fa-blog" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">博客</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-blog-3" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/zh/blog/oink/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="OINK 工程实践"
+  data-td-navbar-region="desktop" data-td-navbar-label="OINK 工程实践"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">OINK 工程实践</span></a>
+<a class="td-nav-menu__item-link" href="/zh/blog/release/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="版本发布"
+  data-td-navbar-region="desktop" data-td-navbar-label="版本发布"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">版本发布</span></a>
+
+  </div>
+</div>
+      </div><div class="td-nav-links td-nav-util-zone">
+        <div class="td-nav-hover-menu td-nav-version-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-nav-hover-open
+            title="v0.8.0" aria-label="v0.8.0" aria-expanded="false"><i class="td-shell-icon td-shell-icon--code-branch fa-solid fa-code-branch" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="v0.8.0">
+            <span class="td-nav-hover-menu__option td-is-disabled"><strong>Versions</strong></span>
+            <a class="td-nav-hover-menu__option td-is-active" aria-current="page" href="https://oink.pgsty.com">v0.8.0</a>
+          </div>
+        </div>
+          <div class="td-language-selector td-language-selector--menu td-nav-util td-site-nav__language">
+  <a class="td-language-selector__trigger" href="/docs/admin/"
+    lang="en-US" hreflang="en-US" dir="ltr"
+    title="切换语言: English"
+    aria-label="切换语言: English" aria-haspopup="true" aria-expanded="false">
+    <i class="fa-solid fa-language" aria-hidden="true"></i>
+    <span>English</span>
+  </a>
+  <ul aria-label="选择语言">
+    <li>
+      <a class="td-language-selector__item" href="/docs/admin/" lang="en-US" hreflang="en-US" dir="ltr">English</a>
+    </li>
+    <li>
+      <span class="td-language-selector__item active" lang="zh-CN" dir="ltr" aria-current="page">简体中文</span>
+    </li>
+  </ul>
+</div><div class="td-nav-hover-menu td-nav-theme-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-theme-toggle
+            title="切换配色" aria-label="切换配色" aria-expanded="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="切换配色">
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="light" aria-pressed="false"><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i><span>亮色</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="dark" aria-pressed="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><span>暗色</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="auto" aria-pressed="false"><i class="td-shell-icon td-shell-icon--contrast fa-solid fa-circle-half-stroke" aria-hidden="true"></i><span>跟随系统</span>
+            </button>
+          </div>
+        </div>
+        <a href="https://github.com/pgsty/oink" class="td-nav-github" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="td-shell-icon td-shell-icon--github fa-brands fa-github" aria-hidden="true"></i></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+    <div class="container-fluid td-print-shell">
+      <main id="td-main-content" class="td-print-document" tabindex="-1">
+        
+
+
+
+
+<div class="td-content">
+<div class="td-page-notice td-page-notice--primary d-print-none">
+<p>
+这是本节的多页打印视图。
+<button type="button" class="btn btn-link p-0 align-baseline" data-td-action="print">点击此处打印</button>.
+</p><p>
+<a href="/zh/docs/admin/">返回本页常规视图</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">维护管理</h1>
+<div class="lead">站点从本机到线上的运维事项：本地预览、发布上线、评论、分析与 SEO、版本升级与排错。</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+  
+  
+
+  
+    
+    
+    <li>
+1: <a href="#pg-e5bcca0cf1585025c1116d5eb879ccbd">本地预览</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+2: <a href="#pg-614787edae23a3a475ee68217d4ea33b">发布上线</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+3: <a href="#pg-56c9cd7c638ec6a0681fab083553fa36">启用评论</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+4: <a href="#pg-61fdea1bfeb3a89524d5463b8cd7ebbd">分析与 SEO</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+5: <a href="#pg-8c28118288960b4a1fa9bcab791b85ea">版本升级</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+6: <a href="#pg-d5f21bc276eee8dcf6d0fdefb8247fa8">排错与检查</a>
+
+
+    </li>
+  
+
+    </ul>
+<div class="content">
+      <p>本栏目覆盖内容写完之后的运维事项：在本机预览、构建并部署产物、接入评论与分析、跟随主题版本升级、故障定位。前面五个栏目决定站点的外观与内容，这一栏决定站点能否构建、部署在哪、出问题如何排查。</p>
+<h2 id="pg-18ad11faed9cae622ec4959445968680--where-to-go">按任务导航
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">你要做的事</th>
+      <th scope="col">去哪</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>在本机看到改动</td>
+      <td><a href="/zh/docs/admin/preview/">本地预览</a></td>
+    </tr>
+    <tr>
+      <td>构建出能部署的 <code>public/</code></td>
+      <td><a href="/zh/docs/admin/preview/#production-build">本地预览</a></td>
+    </tr>
+    <tr>
+      <td>部署到 GitHub Pages / Cloudflare / Netlify</td>
+      <td><a href="/zh/docs/admin/deploy/">发布上线</a></td>
+    </tr>
+    <tr>
+      <td>部署到 <code>example.com/docs/</code> 这样的子路径</td>
+      <td><a href="/zh/docs/admin/deploy/#baseurl">发布上线</a></td>
+    </tr>
+    <tr>
+      <td>让读者在页面底部留言</td>
+      <td><a href="/zh/docs/admin/comments/">启用评论</a></td>
+    </tr>
+    <tr>
+      <td>接 Google Analytics 或自建统计</td>
+      <td><a href="/zh/docs/admin/analytics/">分析与 SEO</a></td>
+    </tr>
+    <tr>
+      <td>让搜索引擎正确收录</td>
+      <td><a href="/zh/docs/admin/analytics/#indexing">分析与 SEO</a></td>
+    </tr>
+    <tr>
+      <td>升到新版主题 / 从 Docsy 或 0.4 迁移</td>
+      <td><a href="/zh/docs/admin/upgrade/">版本升级</a></td>
+    </tr>
+    <tr>
+      <td>构建报错、搜不到、页面 404</td>
+      <td><a href="/zh/docs/admin/troubleshooting/">排错与检查</a></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-e5bcca0cf1585025c1116d5eb879ccbd">1 - 本地预览</h1>
+    <div class="lead">用 hugo server 在本机预览改动，用 hugo &ndash;panicOnWarning 构建可部署的 public/，不需要 Node 与 CDN。</div>
+	<p>两条命令覆盖日常工作：<code>hugo server</code> 在本机预览改动，<code>hugo</code> 产出可以部署到任何静态托管的 <code>public/</code>。前提是本机安装了 Hugo Extended（不低于 0.160.1）；用 Hugo Module 引入主题时还需要 Go。构建不依赖 Node.js、npm 与 PostCSS，它们只服务于本仓库自身的回归检查。</p>
+<h2 id="pg-e5bcca0cf1585025c1116d5eb879ccbd--hugo-server">预览服务器
+</h2>
+<p>在站点根目录（<code>hugo.yml</code> 所在的目录）执行：</p>
+<div class="td-code td-code--titled" id="td-code-a49af061-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1" role="group" aria-labelledby="td-code-a49af061-fence-0-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-a49af061-fence-0-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-a49af061-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo server</span></span></code></pre></div></div>
+</div>
+<p>打开 <a href="http://localhost:1313/">http://localhost:1313/</a>。保存文件后 Hugo 重新构建并刷新浏览器，切换 Git 分支同样触发重建。首次启动较慢：用 Hugo Module 引入主题时，Hugo 要先通过 Go 把模块下载到缓存，之后的启动都走缓存。</p>
+<h2 id="pg-e5bcca0cf1585025c1116d5eb879ccbd--server-flags">常用开关
+</h2>
+<div class="td-fields">
+<dl class="td-fields__list">
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">-D</code> / <code>--buildDrafts</code>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>关</code></span></span>
+</dt>
+<dd class="td-field__description">把 <code>draft: true</code> 的页面也构建出来</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">-F</code> / <code>--buildFuture</code>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>关</code></span></span>
+</dt>
+<dd class="td-field__description">把 <code>date</code> / <code>publishDate</code> 在未来的页面也构建出来</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">-E</code> / <code>--buildExpired</code>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>关</code></span></span>
+</dt>
+<dd class="td-field__description">把 <code>expiryDate</code> 已过的页面也构建出来</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">--disableFastRender</code>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>关</code></span></span>
+</dt>
+<dd class="td-field__description">每次改动都整站重渲染，不用增量</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">-M</code> / <code>--renderToMemory</code>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>关（写磁盘）</code></span></span>
+</dt>
+<dd class="td-field__description">只在内存里渲染，不落 <code>public/</code></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">-N</code> / <code>--navigateToChanged</code>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>关</code></span></span>
+</dt>
+<dd class="td-field__description">保存哪个页面，浏览器就跳到哪个页面</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">--bind</code>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>127.0.0.1</code></span></span>
+</dt>
+<dd class="td-field__description">监听地址；要让局域网或容器外访问就设 <code>0.0.0.0</code></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">-p</code> / <code>--port</code>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>1313</code></span></span>
+</dt>
+<dd class="td-field__description">监听端口</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">--minify</code>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>关</code></span></span>
+</dt>
+<dd class="td-field__description">预览也压缩输出，用来复现生产环境下的渲染</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">--printPathWarnings</code>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>关</code></span></span>
+</dt>
+<dd class="td-field__description">有两个页面写到同一个目标路径时告警</dd>
+</div>
+</dl>
+</div>
+
+<p>本站开发时用的组合是：</p>
+<div class="td-code td-code--titled" id="td-code-a49af061-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="3" role="group" aria-labelledby="td-code-a49af061-fence-1-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-a49af061-fence-1-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-a49af061-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo server -DFE <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --disableFastRender --renderToMemory --minify <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --printPathWarnings --logLevel info</span></span></code></pre></div></div>
+</div>
+<p><code>-DFE</code> 是 <code>-D -F -E</code> 的合写，草稿、未来与过期页面一并构建，写作时新建的页面才可见。</p>
+<h3 id="pg-e5bcca0cf1585025c1116d5eb879ccbd--fast-render">改动没有生效
+</h3>
+<p>Hugo 默认开启快速渲染（fast render），只重建它判定受影响的部分。修改布局、配置、<code>data/</code> 或被 <code>include</code> 引用的文件时，增量判定可能不准，页面看起来没有变化。三步排查：</p>
+<ol class="steps">
+<li>加 <code>--disableFastRender</code> 重启，看是否恢复。</li>
+<li>硬刷新浏览器（<code>Cmd</code>/<code>Ctrl</code> + <code>Shift</code> + <code>R</code>），排除浏览器缓存。</li>
+<li>仍未恢复则<a href="#pg-e5bcca0cf1585025c1116d5eb879ccbd--clean-caches">清缓存</a>后重启。</li>
+</ol>
+<h3 id="pg-e5bcca0cf1585025c1116d5eb879ccbd--bind">从其它设备访问
+</h3>
+<p><code>hugo server</code> 默认只监听 <code>127.0.0.1</code>，其它设备访问不到。要在手机或另一台机器上预览：</p>
+<div class="td-code td-code--titled" id="td-code-a49af061-fence-2" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1" role="group" aria-labelledby="td-code-a49af061-fence-2-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-a49af061-fence-2-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-a49af061-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo server --bind 0.0.0.0 --port <span class="m">1313</span> --baseURL http://192.168.1.10:1313/</span></span></code></pre></div></div>
+</div>
+<p><code>--baseURL</code> 必须写成对方可访问的地址，否则页面能打开，但 CSS 与搜索索引这类走绝对路径的资源会指向 <code>localhost</code>。</p>
+<h2 id="pg-e5bcca0cf1585025c1116d5eb879ccbd--production-build">生产构建
+</h2>
+<p>部署产物用 <code>hugo</code> 构建，不用 <code>hugo server</code>：</p>
+<div class="td-code td-code--titled" id="td-code-a49af061-fence-3" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1" role="group" aria-labelledby="td-code-a49af061-fence-3-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-a49af061-fence-3-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-a49af061-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo --gc --minify --printPathWarnings --panicOnWarning</span></span></code></pre></div></div>
+</div>
+<p>产物写入 <code>public/</code>，该目录可以脱离源码树独立部署。四个开关各管一件事：</p>
+<div class="td-fields">
+<dl class="td-fields__list">
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">--gc</code>
+</dt>
+<dd class="td-field__description">构建后清掉 <code>resources/_gen</code> 里不再被引用的缓存资源</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">--minify</code>
+</dt>
+<dd class="td-field__description">压缩 HTML、CSS、JS 与 XML 输出</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">--printPathWarnings</code>
+</dt>
+<dd class="td-field__description">两个页面撞到同一个输出路径时告警，多语言站点最常见的静默错误</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">--panicOnWarning</code>
+</dt>
+<dd class="td-field__description">遇到第一条 WARNING 就让构建失败</dd>
+</div>
+</dl>
+</div>
+
+<p><code>--panicOnWarning</code> 需要单独说明。OINK 的多数降级路径是告警而不是报错：giscus 必填键缺失、<code>params.comments.type</code> 取了不支持的值、Hugo 弃用的配置键，都只打一条 WARNING 然后跳过。CI 日志通常无人逐行阅读，这些问题会带到线上。把这个开关写进构建命令，等于要求零告警才算构建通过。</p>
+<p>本站 CI 的构建步骤（<code>.github/workflows/site-checks.yml</code>）是 <code>hugo --cleanDestinationDir --gc --minify --environment production --printPathWarnings --panicOnWarning</code>，任何一条告警都会让部署停在构建阶段。</p>
+<h3 id="pg-e5bcca0cf1585025c1116d5eb879ccbd--baseurl-and-environment">baseURL 与构建环境
+</h3>
+<p><code>baseURL</code> 写在 <code>hugo.yml</code> 里，也可以在命令行覆盖：</p>
+<div class="td-code td-code--titled" id="td-code-a49af061-fence-4" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="1" role="group" aria-labelledby="td-code-a49af061-fence-4-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-a49af061-fence-4-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-a49af061-fence-4-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">baseURL</span><span class="p">:</span><span class="w"> </span><span class="l">https://oink.pgsty.com</span></span></span></code></pre></div></div>
+</div>
+<div class="td-code td-code--titled" id="td-code-a49af061-fence-5" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1" role="group" aria-labelledby="td-code-a49af061-fence-5-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-a49af061-fence-5-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-a49af061-fence-5-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo --minify --baseURL <span class="s2">&#34;https://example.com/docs/&#34;</span></span></span></code></pre></div></div>
+</div>
+<p>部署到子路径时 <code>--baseURL</code> 必须带上那段路径，细节见<a href="/zh/docs/admin/deploy/#baseurl">发布上线</a>。</p>
+<p>构建环境用 <code>-e</code> / <code>--environment</code> 选择，<code>hugo</code> 默认 <code>production</code>，<code>hugo server</code> 默认 <code>development</code>。这个选择在 OINK 里有三处可见后果：</p>
+<ul>
+<li><code>production</code> 下才输出 <code>&lt;meta name=&quot;robots&quot; content=&quot;index, follow&quot;&gt;</code>，其它环境输出 <code>noindex, nofollow</code>。</li>
+<li><code>production</code> 下 <code>robots.txt</code> 是 <code>Allow: /</code>，其它环境是 <code>Disallow: /</code>。</li>
+<li><code>production</code> 下才渲染 Hugo 的 Google Analytics 模板，静态资源也才做指纹与 SRI。</li>
+</ul>
+<p>预览部署（PR preview、staging）用非 production 环境构建，产物自带不被搜索引擎收录、不上报分析的行为：</p>
+<div class="td-code td-code--titled" id="td-code-a49af061-fence-6" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1" role="group" aria-labelledby="td-code-a49af061-fence-6-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-a49af061-fence-6-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-a49af061-fence-6-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo --minify --environment staging --baseURL <span class="s2">&#34;</span><span class="nv">$PREVIEW_URL</span><span class="s2">&#34;</span></span></span></code></pre></div></div>
+</div>
+<h2 id="pg-e5bcca0cf1585025c1116d5eb879ccbd--container">容器内预览
+</h2>
+<p>容器不是必需的。两种情况适合用容器：团队需要固定工具链版本，或不希望在每台开发机上安装 Hugo。</p>
+<div class="td-code td-code--titled" id="td-code-a49af061-fence-7" data-td-code data-td-code-auto-id
+     data-td-language="dockerfile" data-td-line-count="21" role="group" aria-labelledby="td-code-a49af061-fence-7-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-a49af061-fence-7-title" title="Dockerfile">Dockerfile</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-a49af061-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="s">debian:bookworm-slim</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> <span class="nv">HUGO_VERSION</span><span class="o">=</span><span class="m">0</span>.164.0<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> <span class="nv">GO_VERSION</span><span class="o">=</span><span class="m">1</span>.26.6<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ARG</span> TARGETARCH<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">RUN</span> apt-get update <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> apt-get install -y --no-install-recommends ca-certificates curl git <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> curl -L -o /tmp/hugo.deb <span class="se">\
+</span></span></span><span class="line"><span class="cl">      <span class="s2">&#34;https://github.com/gohugoio/hugo/releases/download/v</span><span class="si">${</span><span class="nv">HUGO_VERSION</span><span class="si">}</span><span class="s2">/hugo_extended_</span><span class="si">${</span><span class="nv">HUGO_VERSION</span><span class="si">}</span><span class="s2">_linux-</span><span class="si">${</span><span class="nv">TARGETARCH</span><span class="si">}</span><span class="s2">.deb&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> apt-get install -y /tmp/hugo.deb <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> curl -L -o /tmp/go.tgz <span class="se">\
+</span></span></span><span class="line"><span class="cl">      <span class="s2">&#34;https://go.dev/dl/go</span><span class="si">${</span><span class="nv">GO_VERSION</span><span class="si">}</span><span class="s2">.linux-</span><span class="si">${</span><span class="nv">TARGETARCH</span><span class="si">}</span><span class="s2">.tar.gz&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> tar -C /usr/local -xzf /tmp/go.tgz <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="o">&amp;&amp;</span> rm -rf /var/lib/apt/lists/* /tmp/hugo.deb /tmp/go.tgz<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ENV</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;/usr/local/go/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">&#34;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/src</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">EXPOSE</span><span class="w"> </span><span class="s">1313</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;hugo&#34;</span><span class="p">]</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;server&#34;</span><span class="p">,</span> <span class="s2">&#34;--bind&#34;</span><span class="p">,</span> <span class="s2">&#34;0.0.0.0&#34;</span><span class="p">,</span> <span class="s2">&#34;--disableFastRender&#34;</span><span class="p">]</span></span></span></code></pre></div></div>
+</div>
+<div class="td-code td-code--titled" id="td-code-a49af061-fence-8" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="12" role="group" aria-labelledby="td-code-a49af061-fence-8-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-a49af061-fence-8-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-a49af061-fence-8-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker build -t oink-hugo .
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 预览：把站点源码挂进去，顺带挂上 Go 模块缓存</span>
+</span></span><span class="line"><span class="cl">docker run --rm -it -p 1313:1313 <span class="se">\
+</span></span></span><span class="line"><span class="cl">  -v <span class="s2">&#34;</span><span class="nv">$PWD</span><span class="s2">:/src&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  -v <span class="s2">&#34;</span><span class="nv">$HOME</span><span class="s2">/go/pkg/mod:/root/go/pkg/mod&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  oink-hugo
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 生产构建：覆盖默认的 server 命令</span>
+</span></span><span class="line"><span class="cl">docker run --rm --user <span class="s2">&#34;</span><span class="k">$(</span>id -u<span class="k">)</span><span class="s2">:</span><span class="k">$(</span>id -g<span class="k">)</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  -v <span class="s2">&#34;</span><span class="nv">$PWD</span><span class="s2">:/src&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  oink-hugo --gc --minify</span></span></code></pre></div></div>
+</div>
+<p>镜像里装 Go 的原因：用 Hugo Module 引入主题时，Hugo 需要 Go 解析并下载模块。用 submodule、离线归档或直接克隆的站点可以去掉 Go，镜像会小很多。</p>
+<div class="td-callout td-callout--warning" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="td-callout__label">不要让 root 写 <code>public/</code></span></div>
+  <div class="td-callout__body">
+<p>容器里的进程默认是 root，生成的 <code>public/</code> 属于 root，宿主机上删不掉。共享环境里用 <code>--user &quot;$(id -u):$(id -g)&quot;</code> 映射用户 ID（上面的生产构建命令已经带了）。</p>
+  </div>
+</div><p>镜像不需要 Node.js、npm 与 PostCSS，也不应出现拉取远程浏览器资源的步骤。网络隔离环境需要预先镜像基础镜像与这两个软件包。</p>
+<h2 id="pg-e5bcca0cf1585025c1116d5eb879ccbd--clean-caches">清缓存
+</h2>
+<p>Hugo 的中间产物分三处，从轻到重依次清：</p>
+<div class="td-fields">
+<dl class="td-fields__list">
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">public/</code>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">内容</span><span class="td-field__meta-value">上一次的构建产物</span></span>
+</dt>
+<dd class="td-field__description">删了页面但线上还在；或用 <code>hugo --cleanDestinationDir</code> 让构建自己清</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">resources/_gen/</code>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">内容</span><span class="td-field__meta-value">处理过的图片与编译出的 CSS</span></span>
+</dt>
+<dd class="td-field__description">换了图片处理参数、换了字体或主色，页面还是旧样子</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">hugo mod clean</code>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">内容</span><span class="td-field__meta-value">Hugo Module 缓存</span></span>
+</dt>
+<dd class="td-field__description">换了主题版本但解析出来还是旧的；加 <code>--all</code> 清整个模块缓存</dd>
+</div>
+</dl>
+</div>
+
+<div class="td-code td-code--titled" id="td-code-a49af061-fence-9" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="3" role="group" aria-labelledby="td-code-a49af061-fence-9-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-a49af061-fence-9-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-a49af061-fence-9-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm -rf public resources/_gen
+</span></span><span class="line"><span class="cl">hugo mod clean          <span class="c1"># 只清当前项目用到的模块</span>
+</span></span><span class="line"><span class="cl">hugo mod clean --all    <span class="c1"># 清整个模块缓存，下次构建重新下载</span></span></span></code></pre></div></div>
+</div>
+<p><code>public/</code> 与 <code>resources/</code> 都应该写进 <code>.gitignore</code>，不要提交生成产物。</p>
+<h2 id="pg-e5bcca0cf1585025c1116d5eb879ccbd--theme-workspace">与主题一起改
+</h2>
+<p>同时修改主题与站点时才需要这一节。用 <code>HUGO_MODULE_REPLACEMENTS</code> 把模块临时指向本地 checkout，<code>go.mod</code> 保持不变：</p>
+<div class="td-code td-code--titled" id="td-code-a49af061-fence-10" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1" role="group" aria-labelledby="td-code-a49af061-fence-10-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-a49af061-fence-10-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-a49af061-fence-10-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">HUGO_MODULE_REPLACEMENTS</span><span class="o">=</span><span class="s1">&#39;github.com/pgsty/oink -&gt; /absolute/path/to/oink&#39;</span> hugo server</span></span></code></pre></div></div>
+</div>
+<p>本站的 <code>Makefile</code> 封装了这几条命令，要求主题 checkout 在同级目录 <code>../oink</code>：</p>
+<div class="td-code td-code--titled" id="td-code-a49af061-fence-11" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="4" role="group" aria-labelledby="td-code-a49af061-fence-11-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-a49af061-fence-11-title" title="Makefile 目标">Makefile 目标</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-a49af061-fence-11-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">make dev     # 替换为 ../oink 的开发服务器
+</span></span><span class="line"><span class="cl">make check   # 替换为 ../oink 跑完整回归套件（npm test）
+</span></span><span class="line"><span class="cl">make build   # 用 go.mod 里的版本构建
+</span></span><span class="line"><span class="cl">make serve   # 按生产配置起预览服务器</span></span></code></pre></div></div>
+</div>
+<div class="td-callout td-callout--danger" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-fire" aria-hidden="true"></i><span class="td-callout__label">替换只作用于本机</span></div>
+  <div class="td-callout__body">
+<p>无论用环境变量还是 Go workspace（<code>go work init</code> + <code>HUGO_MODULE_WORKSPACE=go.work</code>），CI 与生产构建都只看 <code>go.mod</code>；<code>go.work</code> 记录的是开发机的路径，不能提交。判定一个发布标签是否可用时，去掉替换、用 <code>go.mod</code> 里的版本单独构建一次。</p>
+  </div>
+</div><h2 id="pg-e5bcca0cf1585025c1116d5eb879ccbd--air-gapped">断网构建验证
+</h2>
+<p>网络隔离环境的验收要同时覆盖构建阶段与浏览器阶段。六步：</p>
+<ol class="steps">
+<li>从一份已校验的主题归档与空的模块缓存开始（<code>hugo mod clean --all</code>）。</li>
+<li>阻断出站 HTTP、HTTPS 与 Go module proxy。</li>
+<li>运行生产构建 <code>hugo --gc --minify --printPathWarnings --panicOnWarning</code>。</li>
+<li>浏览产物里两种语言的页面：文档页、博客页、首页、404。</li>
+<li>操作搜索、深浅色切换、图表与内容组件。</li>
+<li>检查子资源来源，确认没有意外的远程主机。</li>
+</ol>
+<p>最后一步用主题仓库里的脚本，它不依赖站点的测试框架：</p>
+<div class="td-code td-code--titled" id="td-code-a49af061-fence-12" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="2" role="group" aria-labelledby="td-code-a49af061-fence-12-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-a49af061-fence-12-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-a49af061-fence-12-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 bin/check-output-security.py <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --public public --base-url https://docs.internal.example.com/</span></span></code></pre></div></div>
+</div>
+<p>脚本扫描四种输出里的每个 <code>href</code> / <code>src</code> / <code>srcset</code> / <code>poster</code> 与表单 <code>action</code>，要求它们是站内相对路径或 <code>http</code> / <code>https</code> / <code>mailto</code> / <code>tel</code>，并拒绝行内 <code>on*</code> 事件处理器与 <code>javascript:</code> URL。指向别的主机的 <code>&lt;iframe&gt;</code> <code>&lt;script&gt;</code> <code>&lt;link&gt;</code> <code>&lt;img&gt;</code> <code>&lt;video&gt;</code> <code>&lt;audio&gt;</code> <code>&lt;embed&gt;</code> <code>&lt;object&gt;</code> <code>&lt;source&gt;</code> 一律报错，站点确实要嵌入第三方内容时加 <code>--third-party</code> 放行，多域名语言配置用 <code>--allow-host</code> 追加首方主机。</p>
+<p>一次通过只证明当次提交与当次环境。每个主题候选版本、每次随附依赖更新之后都要重跑一遍。</p>
+<h2 id="pg-e5bcca0cf1585025c1116d5eb879ccbd--verify">验证
+</h2>
+<p>一次干净的生产构建应该是这样：</p>
+<div class="td-code td-code--titled" id="td-code-a49af061-fence-13" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="2" role="group" aria-labelledby="td-code-a49af061-fence-13-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-a49af061-fence-13-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-a49af061-fence-13-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm -rf public resources/_gen
+</span></span><span class="line"><span class="cl">hugo --gc --minify --printPathWarnings --panicOnWarning</span></span></code></pre></div></div>
+</div>
+<p>看到 <code>Total in …</code> 且没有 ERROR / WARNING 才算通过。然后确认：</p>
+<ul>
+<li>日志里没有 npm、PostCSS、Autoprefixer 或下载浏览器资源的步骤。出现了说明配置里混进了上游 Docsy 的流程。</li>
+<li><code>public/</code> 下有 <code>sitemap.xml</code>、<code>robots.txt</code>，<code>robots.txt</code> 是 <code>Allow: /</code>。</li>
+<li>开了本地搜索的站点，<code>public/</code> 根下有 <code>offline-search-index.&lt;语言&gt;.json</code>。</li>
+<li>用 <code>hugo server</code> 打开代表性页面：一个文档页、一个博客页、首页、404，两种语言、两种配色都看一遍。</li>
+</ul>
+<p>构建失败或结果不对，去<a href="/zh/docs/admin/troubleshooting/">排错与检查</a>。</p>
+<h2 id="pg-e5bcca0cf1585025c1116d5eb879ccbd--related">相关
+</h2>
+<ul>
+<li><a href="/zh/docs/admin/deploy/">发布上线</a> — 把 <code>public/</code> 发到 GitHub Pages、Cloudflare 或别处</li>
+<li><a href="/zh/docs/admin/troubleshooting/">排错与检查</a> — 构建、语言、搜索、平台四类常见故障</li>
+<li><a href="/zh/docs/start/from-scratch/">从零建站与其它安装方式</a> — Hugo Module / submodule / 离线归档的取舍</li>
+<li><a href="/zh/docs/customize/config/">配置总览</a> — <code>hugo.yml</code> 里每个键的定义</li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-614787edae23a3a475ee68217d4ea33b">2 - 发布上线</h1>
+    <div class="lead">把 public/ 部署到 GitHub Pages、Cloudflare Pages 或任何静态托管：baseURL 配对、内容安全策略、验收清单与回滚。</div>
+	<p>OINK 站点的产物是一个纯静态目录，任何能托管静态文件的地方都能部署，不需要 Node 运行时、服务端渲染或构建插件。托管商一侧只有三件事：用正确的 Hugo 版本执行一条命令、发布 <code>public/</code>、让 <code>baseURL</code> 与最终访问地址一致。</p>
+<p>前提是本机已经能完成零告警的<a href="/zh/docs/admin/preview/#production-build">生产构建</a>。</p>
+<h2 id="pg-614787edae23a3a475ee68217d4ea33b--baseurl">确定 baseURL
+</h2>
+<p><code>baseURL</code> 是最常见的故障源，失败方式也隐蔽：页面能打开，但搜索索引 404、页面操作链接指向错误位置、部分资源加载失败。</p>
+<p>部署到域名根目录：</p>
+<div class="td-code td-code--titled" id="td-code-45880007-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="1" role="group" aria-labelledby="td-code-45880007-fence-0-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-45880007-fence-0-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-45880007-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">baseURL</span><span class="p">:</span><span class="w"> </span><span class="l">https://oink.pgsty.com</span></span></span></code></pre></div></div>
+</div>
+<p>部署到子路径（<code>https://example.com/docs/</code>）时，路径必须写进 <code>baseURL</code>：</p>
+<div class="td-code td-code--titled" id="td-code-45880007-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="1" role="group" aria-labelledby="td-code-45880007-fence-1-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-45880007-fence-1-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-45880007-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">baseURL</span><span class="p">:</span><span class="w"> </span><span class="l">https://example.com/docs/</span></span></span></code></pre></div></div>
+</div>
+<p>也可以在构建时覆盖，让同一份源码部署到不同位置：</p>
+<div class="td-code td-code--titled" id="td-code-45880007-fence-2" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1" role="group" aria-labelledby="td-code-45880007-fence-2-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-45880007-fence-2-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-45880007-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo --gc --minify --baseURL <span class="s2">&#34;https://example.com/docs/&#34;</span></span></span></code></pre></div></div>
+</div>
+<div class="td-callout td-callout--warning" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="td-callout__label">不要用 <code>canonifyURLs</code> 修子路径</span></div>
+  <div class="td-callout__body">
+<p>Hugo 的 <code>canonifyURLs</code> 默认 <code>false</code>，保持这个默认值。OINK 的模板与内容链接都基于 <code>baseURL</code> 解析：路径不对是 <code>baseURL</code> 不对，打开 <code>canonifyURLs</code> 会把本来正确的相对链接一起改写，让问题更难定位。</p>
+  </div>
+</div><p>判断是否配对，看构建后搜索索引的请求路径：浏览器应当去 <code>&lt;baseURL&gt;/offline-search-index.zh.json</code> 取索引，取到别处就是 <code>baseURL</code> 不对。</p>
+<h2 id="pg-614787edae23a3a475ee68217d4ea33b--hosts">选一个托管商
+</h2>
+<div class="td-tabs td-tabs--shortcode" id="td-tabs-45880007-0">
+  <div class="td-tabs__panel" id="host-ghpages" data-td-tabs-value="ghpages" data-td-tabs-active>
+    <div class="td-tabs__panel-title" aria-hidden="true">GitHub Pages</div>
+    <div class="td-tabs__panel-body"><p>源码托管在 GitHub 时，一份 Actions 工作流就够：构建在 Actions 里执行，产物通过 Pages 部署 API 发布，不需要维护 <code>gh-pages</code> 分支。</p>
+<p>把下面的文件提交到仓库：</p>
+<div class="td-code td-code--titled" id="td-code-45880007-tabs0-ghpages-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="77" role="group" aria-labelledby="td-code-45880007-tabs0-ghpages-fence-0-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-45880007-tabs0-ghpages-fence-0-title" title=".github/workflows/pages.yml">.github/workflows/pages.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-45880007-tabs0-ghpages-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy Oink site to GitHub Pages</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">main]</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="nt">permissions</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w">  </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l">read</span><span class="w">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w">  </span><span class="nt">pages</span><span class="p">:</span><span class="w"> </span><span class="l">write</span><span class="w">
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w">  </span><span class="nt">id-token</span><span class="p">:</span><span class="w"> </span><span class="l">write</span><span class="w">
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="nt">concurrency</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="w">  </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l">pages</span><span class="w">
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="w">  </span><span class="nt">cancel-in-progress</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="nt">env</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="w">  </span><span class="nt">GO_VERSION</span><span class="p">:</span><span class="w"> </span><span class="m">1.26.6</span><span class="w">
+</span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="w">  </span><span class="nt">HUGO_VERSION</span><span class="p">:</span><span class="w"> </span><span class="m">0.164.0</span><span class="w">
+</span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="w">  </span><span class="c"># 同级 checkout 的 workspace 绝不能参与 CI 构建</span><span class="w">
+</span></span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="w">  </span><span class="nt">GOWORK</span><span class="p">:</span><span class="w"> </span><span class="kc">off</span><span class="w">
+</span></span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="w">  </span><span class="nt">HUGO_MODULE_WORKSPACE</span><span class="p">:</span><span class="w"> </span><span class="kc">off</span><span class="w">
+</span></span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="w">  </span><span class="nt">HUGO_CACHEDIR</span><span class="p">:</span><span class="w"> </span><span class="l">${{ github.workspace }}/.hugo_cache</span><span class="w">
+</span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="w">  </span><span class="nt">GOMODCACHE</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="w">    </span><span class="l">${{ github.workspace }}/.hugo_cache/modules/filecache/modules/pkg/mod</span><span class="w">
+</span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">29</span><span class="cl"><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build Pages artifact</span><span class="w">
+</span></span></span><span class="line"><span class="ln">30</span><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="ln">31</span><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">32</span><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Checkout</span><span class="w">
+</span></span></span><span class="line"><span class="ln">33</span><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v7</span><span class="w">
+</span></span></span><span class="line"><span class="ln">34</span><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">35</span><span class="cl"><span class="w">          </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span></span></span><span class="line"><span class="ln">36</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">37</span><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Set up Go</span><span class="w">
+</span></span></span><span class="line"><span class="ln">38</span><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/setup-go@v6</span><span class="w">
+</span></span></span><span class="line"><span class="ln">39</span><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">40</span><span class="cl"><span class="w">          </span><span class="nt">go-version</span><span class="p">:</span><span class="w"> </span><span class="l">${{ env.GO_VERSION }}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">41</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">42</span><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Set up Pages</span><span class="w">
+</span></span></span><span class="line"><span class="ln">43</span><span class="cl"><span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">pages</span><span class="w">
+</span></span></span><span class="line"><span class="ln">44</span><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/configure-pages@v6</span><span class="w">
+</span></span></span><span class="line"><span class="ln">45</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">46</span><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install Hugo Extended</span><span class="w">
+</span></span></span><span class="line"><span class="ln">47</span><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="ln">48</span><span class="cl"><span class="sd">          curl --fail --location --silent --show-error \
+</span></span></span><span class="line"><span class="ln">49</span><span class="cl"><span class="sd">            --output &#34;${RUNNER_TEMP}/hugo.deb&#34; \
+</span></span></span><span class="line"><span class="ln">50</span><span class="cl"><span class="sd">            &#34;https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb&#34;
+</span></span></span><span class="line"><span class="ln">51</span><span class="cl"><span class="sd">          sudo dpkg -i &#34;${RUNNER_TEMP}/hugo.deb&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">52</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">53</span><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Download Hugo module</span><span class="w">
+</span></span></span><span class="line"><span class="ln">54</span><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l">go mod download github.com/pgsty/oink</span><span class="w">
+</span></span></span><span class="line"><span class="ln">55</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">56</span><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build site</span><span class="w">
+</span></span></span><span class="line"><span class="ln">57</span><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="ln">58</span><span class="cl"><span class="sd">          hugo --cleanDestinationDir --gc --minify --environment production \
+</span></span></span><span class="line"><span class="ln">59</span><span class="cl"><span class="sd">            --printPathWarnings --panicOnWarning \
+</span></span></span><span class="line"><span class="ln">60</span><span class="cl"><span class="sd">            --baseURL &#34;${{ steps.pages.outputs.base_url }}/&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">61</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">62</span><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Upload Pages artifact</span><span class="w">
+</span></span></span><span class="line"><span class="ln">63</span><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/upload-pages-artifact@v5</span><span class="w">
+</span></span></span><span class="line"><span class="ln">64</span><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">65</span><span class="cl"><span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">public</span><span class="w">
+</span></span></span><span class="line"><span class="ln">66</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">67</span><span class="cl"><span class="w">  </span><span class="nt">deploy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">68</span><span class="cl"><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy to GitHub Pages</span><span class="w">
+</span></span></span><span class="line"><span class="ln">69</span><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">70</span><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">github-pages</span><span class="w">
+</span></span></span><span class="line"><span class="ln">71</span><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">${{ steps.deployment.outputs.page_url }}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">72</span><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="ln">73</span><span class="cl"><span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l">build</span><span class="w">
+</span></span></span><span class="line"><span class="ln">74</span><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">75</span><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy</span><span class="w">
+</span></span></span><span class="line"><span class="ln">76</span><span class="cl"><span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">deployment</span><span class="w">
+</span></span></span><span class="line"><span class="ln">77</span><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/deploy-pages@v5</span></span></span></code></pre></div></div>
+</div>
+<p>这是本站正在使用的工作流。几处不能删：</p>
+<ul>
+<li><code>fetch-depth: 0</code> — 站点开了 <code>enableGitInfo</code> 时，「最后修改时间」和贡献者信息要读完整 Git 历史，浅克隆会让它们为空。</li>
+<li><code>setup-go</code> + <code>go mod download</code> — Hugo Module 方式引入主题时，Hugo 需要 Go 才能解析模块。用 submodule 安装主题的站点改成 <code>submodules: recursive</code>，用离线归档的站点把 <code>themes/oink/</code> 提交进仓库，这两步都可以去掉。</li>
+<li><code>GOWORK: off</code> 与 <code>HUGO_MODULE_WORKSPACE: off</code> — 防止本地开发用的 <code>go.work</code> 意外参与 CI 构建，保证 CI 验证的是 <code>go.mod</code> 里固定的那个公开标签。</li>
+<li><code>--baseURL &quot;${{ steps.pages.outputs.base_url }}/&quot;</code> — 项目站点的 URL 形如 <code>https://&lt;OWNER&gt;.github.io/&lt;REPO&gt;/</code>，<code>configure-pages</code> 会把它算出来，不用手写。</li>
+<li><code>--panicOnWarning</code> — 有告警不发布。</li>
+</ul>
+<p>在仓库 Settings → Pages → Build and deployment 里把 Source 设为 GitHub Actions，推一次 <code>main</code>，在 Actions 标签页查看第一次运行。</p>
+<p>自定义域名在同一设置页的 Custom domain 里填写，并按提示配置 DNS，随后把 <code>hugo.yml</code> 里的 <code>baseURL</code> 换成这个域名。发布流程需要产物里带 <code>CNAME</code> 文件时，把它放进 <code>static/CNAME</code>，Hugo 会原样复制到 <code>public/</code>。</p>
+</div>
+  </div>
+  <div class="td-tabs__panel" id="host-cloudflare" data-td-tabs-value="cloudflare">
+    <div class="td-tabs__panel-title" aria-hidden="true">Cloudflare Pages</div>
+    <div class="td-tabs__panel-body"><p>Cloudflare Pages 从关联的 GitHub / GitLab 仓库构建，并为每个评审分支创建预览部署。构建在平台侧完成，仓库里不用放工作流。</p>
+<p>在 Workers &amp; Pages 里导入仓库，选定生产分支：</p>
+<div class="td-fields">
+<dl class="td-fields__list">
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">构建命令</code>
+</dt>
+<dd class="td-field__description"><code>hugo --gc --minify --printPathWarnings --panicOnWarning</code></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">构建输出目录</code>
+</dt>
+<dd class="td-field__description"><code>public</code></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">HUGO_VERSION</code>
+</dt>
+<dd class="td-field__description"><code>0.164.0</code>（或主题验证过的其它版本）</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">GO_VERSION</code>
+</dt>
+<dd class="td-field__description">仅 Hugo Module 方式需要；固定一个构建镜像支持的版本</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">SKIP_DEPENDENCY_INSTALL</code>
+</dt>
+<dd class="td-field__description"><code>1</code></dd>
+</div>
+</dl>
+</div>
+
+<p>四点说明：</p>
+<ol class="steps">
+<li><code>HUGO_VERSION</code> 必须显式设置，Production 与 Preview 两个环境都要设。Cloudflare v3 构建镜像的默认 Hugo 版本低于 OINK 要求的 <code>0.160.1</code>，不固定版本会在构建镜像更新时静默改变工具链。</li>
+<li><code>SKIP_DEPENDENCY_INSTALL=1</code> 关掉通用依赖安装步骤。OINK 消费端不需要 Node.js，仓库里只给维护工具用的 <code>package.json</code> 不应由平台安装。</li>
+<li>Hugo 站点不在仓库根目录时，把 Root directory 设成站点目录，输出目录相对它解析。</li>
+<li>预览部署不要当成生产发布。预览需要用自动生成的 Pages URL 作 base URL 时，构建命令改成 <code>hugo --gc --minify --baseURL &quot;$CF_PAGES_URL&quot;</code>，生产发布用规范域名重新构建一次。</li>
+</ol>
+<p>检查第一次构建日志：正常的 OINK 消费端构建只有一条 Hugo 命令，不会执行 npm、PostCSS、Autoprefixer，也不会下载主题自有的浏览器资源。</p>
+</div>
+  </div>
+  <div class="td-tabs__panel" id="host-other" data-td-tabs-value="other">
+    <div class="td-tabs__panel-title" aria-hidden="true">其它</div>
+    <div class="td-tabs__panel-body"><p><strong>Netlify</strong> — 构建命令 <code>hugo --gc --minify</code>，发布目录 <code>public</code>，环境变量 <code>HUGO_VERSION</code>。同样的设置可以写进仓库：</p>
+<div class="td-code td-code--titled" id="td-code-45880007-tabs0-other-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="toml" data-td-line-count="6" role="group" aria-labelledby="td-code-45880007-tabs0-other-fence-0-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-45880007-tabs0-other-fence-0-title" title="netlify.toml">netlify.toml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-45880007-tabs0-other-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">build</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">command</span> <span class="p">=</span> <span class="s2">&#34;hugo --gc --minify --printPathWarnings --panicOnWarning&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">publish</span> <span class="p">=</span> <span class="s2">&#34;public&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">build</span><span class="p">.</span><span class="nx">environment</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">HUGO_VERSION</span> <span class="p">=</span> <span class="s2">&#34;0.164.0&#34;</span></span></span></code></pre></div></div>
+</div>
+<p>用 submodule 安装主题就打开递归 submodule 检出；用 Hugo Module 就要求构建环境有 Git 和 Go。生产与预览应使用同一个 Hugo 版本，除非预览环境本来就是用来测升级的。</p>
+<p><strong>Vercel</strong> — 同样的三件事：构建命令 <code>hugo --gc --minify</code>、输出目录 <code>public</code>、环境变量 <code>HUGO_VERSION</code>。它同样不需要安装 npm 依赖。</p>
+<p><strong>任何静态服务器（Nginx / Caddy）</strong> — 把 <code>public/</code> 的内容整个铺上去：</p>
+<div class="td-code td-code--titled" id="td-code-45880007-tabs0-other-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="nginx" data-td-line-count="12" role="group" aria-labelledby="td-code-45880007-tabs0-other-fence-1-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-45880007-tabs0-other-fence-1-title" title="/etc/nginx/conf.d/docs.conf">/etc/nginx/conf.d/docs.conf</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-45880007-tabs0-other-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">server_name</span> <span class="s">docs.example.com</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">root</span> <span class="s">/var/www/oink</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">index</span> <span class="s">index.html</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">error_page</span> <span class="mi">404</span> <span class="s">/404.html</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+</div>
+<p>站点是纯静态的，没有需要转发给应用服务器的路径。</p>
+<p><strong>对象存储</strong> — Hugo 自带 <code>deploy</code> 命令，把目标写进配置即可：</p>
+<div class="td-code td-code--titled" id="td-code-45880007-tabs0-other-fence-2" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="5" role="group" aria-labelledby="td-code-45880007-tabs0-other-fence-2-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-45880007-tabs0-other-fence-2-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-45880007-tabs0-other-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">deployment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">targets</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">aws</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">URL</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;s3://www.your-domain.tld&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">cloudFrontDistributionID</span><span class="p">:</span><span class="w"> </span><span class="l">E9RZ8T1EXAMPLEID</span></span></span></code></pre></div></div>
+</div>
+<p>构建之后执行 <code>hugo deploy</code>：它比对远端与 <code>public/</code> 的差异，只上传变化的文件，并在给了 <code>cloudFrontDistributionID</code> 时使 CDN 缓存失效。不带 <code>--target</code> 时用第一个目标，<code>--dryRun</code> 先看要改什么。两个前提：Hugo 二进制带 <code>withdeploy</code>（<code>hugo version</code> 的输出里能看到），云厂商凭据由标准环境变量或配置文件提供（AWS 上先用 <code>aws s3 ls</code> 确认）。</p>
+<p><strong>离线打包</strong> — 网络隔离环境里，在能联网的机器上构建，把产物打成一个包带过去：</p>
+<div class="td-code td-code--titled" id="td-code-45880007-tabs0-other-fence-3" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="5" role="group" aria-labelledby="td-code-45880007-tabs0-other-fence-3-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-45880007-tabs0-other-fence-3-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-45880007-tabs0-other-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo --gc --minify --baseURL <span class="s2">&#34;https://docs.internal.example.com/&#34;</span>
+</span></span><span class="line"><span class="cl">tar -czf oink-site-<span class="k">$(</span>date +%Y%m%d<span class="k">)</span>.tar.gz -C public .
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 目标机器上</span>
+</span></span><span class="line"><span class="cl">tar -xzf oink-site-20260817.tar.gz -C /var/www/oink</span></span></code></pre></div></div>
+</div>
+<p>构建时就要用目标环境的 <code>baseURL</code>，产物里的绝对链接不能在解包之后再改。</p>
+<p><strong>托管商没有 Go</strong> — 用 Hugo Module 引入主题需要构建环境有 Go。平台不提供时，改用 Git submodule（构建前执行 <code>git submodule update --init</code>）或离线归档（把 <code>themes/oink/</code> 提交进仓库），见<a href="/zh/docs/start/from-scratch/">从零建站与其它安装方式</a>。</p>
+</div>
+  </div>
+</div>
+<h2 id="pg-614787edae23a3a475ee68217d4ea33b--preview-builds">预览部署不要被收录
+</h2>
+<p>Hugo 的 <code>-e</code> / <code>--environment</code> 只选择构建期行为，不改变站点内容，但 OINK 有三处会跟着它变：<code>production</code> 环境才输出 <code>&lt;meta name=&quot;robots&quot; content=&quot;index, follow&quot;&gt;</code>、才让 <code>robots.txt</code> 变成 <code>Allow: /</code>、才渲染 Google Analytics 模板。PR preview、staging 这类构建不要用 <code>--environment production</code>：</p>
+<div class="td-code td-code--titled" id="td-code-45880007-fence-3" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1" role="group" aria-labelledby="td-code-45880007-fence-3-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-45880007-fence-3-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-45880007-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo --gc --minify --environment staging --baseURL <span class="s2">&#34;</span><span class="nv">$PREVIEW_URL</span><span class="s2">&#34;</span></span></span></code></pre></div></div>
+</div>
+<p>出来的产物自带 <code>noindex, nofollow</code> 与 <code>Disallow: /</code>，也不会向分析服务上报数据。</p>
+<h2 id="pg-614787edae23a3a475ee68217d4ea33b--csp">内容安全策略
+</h2>
+<p>主题自带的运行时、字体与图标都是同源资源，严格的内容安全策略（CSP）因此可行。主题不提供一份通用策略：需要哪些指令由站点启用了什么决定。</p>
+<p>改变所需指令的地方有五处：</p>
+<ul>
+<li>作者写的行内 HTML 与行内脚本，<code>renderer.unsafe: true</code> 之下由作者负责。</li>
+<li><a href="/zh/docs/components/echarts/#callbacks">ECharts 的 <code>$fn:</code> 回调</a>：回调函数由站点注册到 <code>window.OinkEchartsFunctions</code>，注册脚本的来源要进 <code>script-src</code>。</li>
+<li><a href="/zh/docs/admin/analytics/#other-analytics">分析脚本</a>：站点自己插入的那段脚本与它上报的目标。</li>
+<li><a href="/zh/docs/write/openapi/#spec-file">远程 API 规范</a>与<a href="/zh/docs/components/plantuml/#server">自建图表服务</a>：落在 <code>connect-src</code> 与 <code>img-src</code>。</li>
+<li><a href="/zh/docs/admin/comments/#privacy">giscus</a>：<code>script-src</code> 与 <code>frame-src</code> 要一起放行。</li>
+</ul>
+<p>从只覆盖已审查功能的最小策略起步，逐项放行：不需要回调时让 ECharts 选项保持纯数据，审查作者写的行内脚本，只为站点主动启用的集成添加远程来源。产物里的子资源来源可以先用<a href="/zh/docs/admin/preview/#air-gapped">断网构建验证</a>里的脚本扫一遍。</p>
+<h2 id="pg-614787edae23a3a475ee68217d4ea33b--checklist">验收清单
+</h2>
+<p>部署完成后按这张表走一遍。前四项是构建期的，后面几项要在真实 URL 上查。</p>
+<div class="td-fields">
+<dl class="td-fields__list">
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">零告警构建</code>
+</dt>
+<dd class="td-field__description">构建命令带 <code>--printPathWarnings --panicOnWarning</code>，日志里有 <code>Total in …</code></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name"><code>baseURL</code> 正确</code>
+</dt>
+<dd class="td-field__description">页面源码里 <code>&lt;link rel=&quot;canonical&quot;&gt;</code> 指向真实生产地址（含子路径）</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">站点地图</code>
+</dt>
+<dd class="td-field__description"><code>&lt;baseURL&gt;/sitemap.xml</code> 可访问；多语言站点是一个索引，指向 <code>/en/sitemap.xml</code>、<code>/zh/sitemap.xml</code></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">robots</code>
+</dt>
+<dd class="td-field__description"><code>&lt;baseURL&gt;/robots.txt</code> 是 <code>Allow: /</code> 并带 <code>Sitemap:</code> 行；预览部署应该是 <code>Disallow: /</code></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">搜索索引</code>
+</dt>
+<dd class="td-field__description">浏览器能取到 <code>&lt;baseURL&gt;/offline-search-index.&lt;语言&gt;.json</code>，站内搜索有结果</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">Markdown 输出</code>
+</dt>
+<dd class="td-field__description">任一页面 URL 后面加 <code>index.md</code> 能取到纯文本（站点在 <code>outputs.page</code> 里开了 <code>markdown</code> 时）</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">llms.txt</code>
+</dt>
+<dd class="td-field__description"><code>&lt;baseURL&gt;/llms.txt</code> 与 <code>&lt;baseURL&gt;/zh/llms.txt</code> 可访问（站点在 <code>outputs.home</code> 里开了 <code>LLMS</code> 时）</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">两种语言</code>
+</dt>
+<dd class="td-field__description">两边的文档页、博客页、首页都能打开，语言切换落到对应页面而不是首页</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">外观与交互</code>
+</dt>
+<dd class="td-field__description">深浅色切换、打印视图、代表性组件（提示块、标签页、代码块复制）正常</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">404</code>
+</dt>
+<dd class="td-field__description">访问一个不存在的路径，看到站点自己的 404 页</dd>
+</div>
+</dl>
+</div>
+
+<p><code>sitemap.xml</code>、<code>robots.txt</code>、<code>.md</code> 与 <code>llms.txt</code> 这几项的开关在<a href="/zh/docs/customize/config/">配置总览</a>，Agent 输出的细节见 <a href="/zh/docs/customize/agents/">Agent 支持</a>。</p>
+<h2 id="pg-614787edae23a3a475ee68217d4ea33b--rollback">回滚
+</h2>
+<p>静态站点的回滚就是重新发布上一个已知可用的 commit，不要在生产上手工改文件。</p>
+<ul>
+<li>GitHub Pages：在 Actions 里找到上一次成功的 <code>Deploy Oink site to GitHub Pages</code> 运行，点 Re-run all jobs；或者 <code>git revert</code> 出问题的提交再推一次。</li>
+<li>Cloudflare Pages / Netlify / Vercel：在部署列表里选上一个成功的部署，用平台的 Rollback / Publish deploy 把它重新设为生产版本。</li>
+<li>自建静态服务器：保留上一份 <code>tar.gz</code>，解压覆盖。<a href="#pg-614787edae23a3a475ee68217d4ea33b--hosts">离线打包</a>里给产物加日期后缀就是为了这一步。</li>
+</ul>
+<p>问题出在主题升级而不是内容时，回滚的是 <code>go.mod</code> 里固定的版本，见<a href="/zh/docs/admin/upgrade/#rollback">版本升级</a>。</p>
+<h2 id="pg-614787edae23a3a475ee68217d4ea33b--related">相关
+</h2>
+<ul>
+<li><a href="/zh/docs/admin/preview/">本地预览</a> — 生产构建的完整命令、清缓存与断网验证</li>
+<li><a href="/zh/docs/admin/troubleshooting/">排错与检查</a> — 404、搜索无结果、平台相关故障</li>
+<li><a href="/zh/docs/admin/analytics/">分析与 SEO</a> — 上线之后让搜索引擎正确收录</li>
+<li><a href="/zh/docs/admin/upgrade/">版本升级</a> — 升级主题版本与回滚</li>
+<li><a href="/zh/docs/customize/config/">配置总览</a> — <code>baseURL</code>、<code>outputs</code> 与其它站点键</li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-56c9cd7c638ec6a0681fab083553fa36">3 - 启用评论</h1>
+    <div class="lead">用 giscus 把 GitHub Discussions 接成页面底部的评论区，全站开、按页关、跟随深浅色。</div>
+	<p>OINK 的评论走 <a href="https://giscus.app/zh-CN">giscus</a>：每个页面对应一条 GitHub Discussion，读者用 GitHub 账号登录后发言，维护者在 GitHub Discussions 里审核与管理。主题不提供自建评论后端，也不内置 giscus 以外的服务商。</p>
+<p>前提是一个公开的 GitHub 仓库，访客读不到私有仓库的 Discussions。</p>
+<div class="td-callout td-callout--important" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-exclamation" aria-hidden="true"></i><span class="td-callout__label">这是主题里少数对外发请求的功能</span></div>
+  <div class="td-callout__body">
+<p>启用评论的页面会从 <code>https://giscus.app</code> 加载脚本和 iframe，网络隔离环境里用不了。它默认关闭，只在显式打开时才加载。站点有隐私政策时，这条外部数据边界应当写进去。</p>
+  </div>
+</div><h2 id="pg-56c9cd7c638ec6a0681fab083553fa36--prepare-github">准备 GitHub 仓库
+</h2>
+<ol class="steps">
+<li>
+<p>选一个公开仓库存放评论线程，可以就是站点源码仓库。</p>
+</li>
+<li>
+<p>在仓库 Settings → General → Features 里勾选 Discussions。</p>
+</li>
+<li>
+<p>为该仓库安装 <a href="https://github.com/apps/giscus">giscus GitHub App</a>。未安装 App 时访客无法评论或表态。</p>
+</li>
+<li>
+<p>选一个 Discussion 分类。giscus 推荐 Announcements 类型：只有维护者与 giscus bot 能在该类型下新建 Discussion，读者不会误开话题。</p>
+</li>
+</ol>
+<p>仓库 ID 与分类 ID 是公开标识符，不是凭据。不要往 Hugo 配置里放 personal access token、OAuth secret 或密码。</p>
+<h2 id="pg-56c9cd7c638ec6a0681fab083553fa36--generate">生成配置
+</h2>
+<p>打开 <a href="https://giscus.app/zh-CN">giscus.app</a>，按表单填仓库、映射方式和分类，页面下方会生成一段 <code>&lt;script&gt;</code>。把里面四个属性抄进 OINK 配置：</p>
+<div class="td-fields">
+<dl class="td-fields__list">
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">data-repo</code>
+</dt>
+<dd class="td-field__description"><code>repo</code></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">data-repo-id</code>
+</dt>
+<dd class="td-field__description"><code>repoId</code></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">data-category</code>
+</dt>
+<dd class="td-field__description"><code>category</code></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">data-category-id</code>
+</dt>
+<dd class="td-field__description"><code>categoryId</code></dd>
+</div>
+</dl>
+</div>
+
+<p>映射方式（<code>mapping</code>）决定哪个页面对应哪条 Discussion。OINK 默认 <code>pathname</code>，适合发布路径稳定、同一个仓库要服务多个域名或预览环境的站点。开始收集评论之后再改 <code>mapping</code> 或移动页面，giscus 会去找另一条 Discussion：已有评论不会被删除，但页面上再也找不到它们。映射方式要在上线前定好；确实要改 URL 时，同时保留重定向或重命名 Discussion。</p>
+<h2 id="pg-56c9cd7c638ec6a0681fab083553fa36--enable">全站启用
+</h2>
+<p>把生成的标识符写进站点配置：</p>
+<div class="td-code td-code--titled" id="td-code-1f623ac4-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="13" role="group" aria-labelledby="td-code-1f623ac4-fence-0-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-1f623ac4-fence-0-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-1f623ac4-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">comments</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">giscus</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">giscus</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l">pgsty/oink.pgsty.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">repoId</span><span class="p">:</span><span class="w"> </span><span class="l">R_kgDOTzFZAg</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="l">Announcements</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">categoryId</span><span class="p">:</span><span class="w"> </span><span class="l">DIC_kwDOTzFZAs4DDCm-</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">mapping</span><span class="p">:</span><span class="w"> </span><span class="l">pathname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">inputPosition</span><span class="p">:</span><span class="w"> </span><span class="l">bottom</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">theme</span><span class="p">:</span><span class="w"> </span><span class="l">auto</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">loading</span><span class="p">:</span><span class="w"> </span><span class="l">lazy</span></span></span></code></pre></div></div>
+</div>
+<p>上面是本站正在使用的配置。<code>repo</code>、<code>repoId</code>、<code>category</code>、<code>categoryId</code> 四个键缺一不可：任何一个缺失或只有空白字符，Hugo 打一条 WARNING 并跳过 giscus，构建不会失败，因此生产构建要带 <code>--panicOnWarning</code>。<code>type</code> 目前只接受 <code>giscus</code>，写别的值同样是告警加跳过。<code>params.comments</code> 的键名与 Hextra 同形，从 Hextra 迁来的配置可以照搬。</p>
+<p>其余的键（<code>strict</code>、<code>reactionsEnabled</code>、<code>emitMetadata</code>、<code>term</code>、<code>lang</code>、<code>lightTheme</code>、<code>darkTheme</code>、<code>ariaLabel</code>、<code>errorMessage</code>）都有默认值，完整定义见<a href="/zh/docs/customize/config/">配置总览</a>。功能开关既可以写 YAML 布尔值，也可以写 giscus 风格的 <code>0</code> / <code>1</code>。</p>
+<h2 id="pg-56c9cd7c638ec6a0681fab083553fa36--per-page">按页开关
+</h2>
+<p>front matter 里的 <code>comments</code> 可以从任一方向覆盖全站开关，离页面最近的值优先。</p>
+<p>只给某些页面开评论。全站关掉但保留完整仓库配置，再让选中的页面显式打开：</p>
+<div class="td-code td-code--titled" id="td-code-1f623ac4-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="4" role="group" aria-labelledby="td-code-1f623ac4-fence-1-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-1f623ac4-fence-1-title" title="content/blog/2026-roadmap.md">content/blog/2026-roadmap.md</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-1f623ac4-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="m">2026</span><span class="w"> </span><span class="l">路线图</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">comments</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">---</span></span></span></code></pre></div></div>
+</div>
+<p>只关掉某些页面。全站开着，让不适合讨论的页面退出：</p>
+<div class="td-code td-code--titled" id="td-code-1f623ac4-fence-2" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="4" role="group" aria-labelledby="td-code-1f623ac4-fence-2-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-1f623ac4-fence-2-title" title="content/about/security.md">content/about/security.md</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-1f623ac4-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">安全政策</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">comments</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">---</span></span></span></code></pre></div></div>
+</div>
+<p>整个栏目统一设置用 cascade。本站在 <code>content/docs/_index.zh.md</code> 的 cascade 里写了 <code>comments: true</code>，本页底部因此有一个真实的 giscus 评论区。</p>
+<div class="td-code td-code--titled" id="td-code-1f623ac4-fence-3" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="6" role="group" aria-labelledby="td-code-1f623ac4-fence-3-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-1f623ac4-fence-3-title" title="content/docs/_index.zh.md">content/docs/_index.zh.md</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-1f623ac4-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">OINK 文档</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">cascade</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">docs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">comments</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">---</span></span></span></code></pre></div></div>
+</div>
+<p>站点同时配了 <code>services.disqus.shortname</code> 时，giscus 优先：giscus 生效即抑制 Disqus，<code>comments: false</code> 同时关掉两者，giscus 必填键不全则告警跳过、由 Disqus 兜底。</p>
+<h2 id="pg-56c9cd7c638ec6a0681fab083553fa36--i18n">多语言文案
+</h2>
+<p>giscus 的界面语言自动跟随当前 Hugo 语言：简体、繁体、香港繁体分别映射到对应的 giscus locale，不支持的语言回退英文。只有自动选择不合适时才显式设 <code>lang</code>。</p>
+<p>需要翻译的是 OINK 一侧的两句文案：评论区的无障碍标签与加载失败提示。它们按语言配置，与全局仓库配置合并：</p>
+<div class="td-code td-code--titled" id="td-code-1f623ac4-fence-4" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="13" role="group" aria-labelledby="td-code-1f623ac4-fence-4-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-1f623ac4-fence-4-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-1f623ac4-fence-4-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">languages</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">en</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">comments</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">giscus</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">ariaLabel</span><span class="p">:</span><span class="w"> </span><span class="l">Comments</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">errorMessage</span><span class="p">:</span><span class="w"> </span><span class="l">Comments could not be loaded. Please try again later.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">zh</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">comments</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">giscus</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">ariaLabel</span><span class="p">:</span><span class="w"> </span><span class="l">评论</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">errorMessage</span><span class="p">:</span><span class="w"> </span><span class="l">评论加载失败，请稍后重试。</span></span></span></code></pre></div></div>
+</div>
+<p>语言层只需要写差异部分，<code>repo</code> / <code>repoId</code> / <code>category</code> / <code>categoryId</code> 留在 <code>params.comments</code> 里就够了。</p>
+<h2 id="pg-56c9cd7c638ec6a0681fab083553fa36--theme">跟随深浅色
+</h2>
+<p><code>theme: auto</code> 时，giscus iframe 跟随 OINK 的深浅色切换按钮和浏览器的 <code>prefers-color-scheme</code>，读者切换主题时评论区一起变。</p>
+<p>需要更贴合站点配色时，用 <code>lightTheme</code> / <code>darkTheme</code> 分别指定两套 giscus 主题，取值是 giscus 内置主题名或站点自己托管的 CSS。本站用的是后者：</p>
+<div class="td-code td-code--titled" id="td-code-1f623ac4-fence-5" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="6" role="group" aria-labelledby="td-code-1f623ac4-fence-5-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-1f623ac4-fence-5-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-1f623ac4-fence-5-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">comments</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">giscus</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">theme</span><span class="p">:</span><span class="w"> </span><span class="l">auto</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">lightTheme</span><span class="p">:</span><span class="w"> </span><span class="l">/css/giscus-oink-light.css?v=0.4.0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">darkTheme</span><span class="p">:</span><span class="w"> </span><span class="l">/css/giscus-oink-dark.css?v=0.4.0</span></span></span></code></pre></div></div>
+</div>
+<p><code>theme</code> 写成固定主题名时不再跟随切换。</p>
+<div class="td-callout td-callout--note td-callout--collapsible" role="note" data-td-callout-collapsible>
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-info" aria-hidden="true"></i><span class="td-callout__label">自定义 giscus 主题需要跨域可读</span></div>
+  <div class="td-callout__body">
+<p>giscus 的 iframe 从 <code>giscus.app</code> 加载，要读站点上的这个 CSS 文件需要 CORS 允许。本站在 <code>hugo.yml</code> 的 <code>server.headers</code> 里给本地预览加了 <code>Access-Control-Allow-Origin: '*'</code>；线上由托管商的响应头配置决定。</p>
+  </div>
+</div><h2 id="pg-56c9cd7c638ec6a0681fab083553fa36--privacy">隐私与 CSP
+</h2>
+<ul>
+<li>OINK 不会索取或保存读者的 GitHub 密码与访问令牌，登录与发帖全程在 giscus / GitHub 一侧完成。</li>
+<li>评论初始化脚本是主题自带的同源资源，只加入启用了评论的页面，未开评论的页面没有这段脚本。</li>
+<li><code>loading: lazy</code> 时，读者滚动到评论区附近才加载 iframe。</li>
+<li>站点有严格的内容安全策略时，<code>script-src</code> 和 <code>frame-src</code> 都要放行 giscus，合并进现有策略而不是替换其它指令（总则见<a href="/zh/docs/admin/deploy/#csp">内容安全策略</a>）：</li>
+</ul>
+<div class="td-code td-code--titled" id="td-code-1f623ac4-fence-6" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="2" role="group" aria-labelledby="td-code-1f623ac4-fence-6-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-1f623ac4-fence-6-title" title="CSP 片段">CSP 片段</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-1f623ac4-fence-6-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">script-src &#39;self&#39; https://giscus.app;
+</span></span><span class="line"><span class="cl">frame-src &#39;self&#39; https://giscus.app;</span></span></code></pre></div></div>
+</div>
+<p>外部脚本加载失败或没能创建 iframe 时，OINK 结束加载状态并在实时状态区域显示 <code>errorMessage</code>，不会让页面停在「加载中」。</p>
+<h2 id="pg-56c9cd7c638ec6a0681fab083553fa36--verify">验证
+</h2>
+<div class="td-code td-code--titled" id="td-code-1f623ac4-fence-7" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="2" role="group" aria-labelledby="td-code-1f623ac4-fence-7-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-1f623ac4-fence-7-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-1f623ac4-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo --minify --panicOnWarning     <span class="c1"># 必填键缺失会在这里失败</span>
+</span></span><span class="line"><span class="cl">hugo server --disableFastRender</span></span></code></pre></div></div>
+</div>
+<p>然后逐项确认：</p>
+<ol class="steps">
+<li>打开一个应该有评论的页面，页面底部出现 giscus，显示「使用 GitHub 登录」，界面语言是当前页面的语言。</li>
+<li>切换 OINK 的深浅色，评论区跟着变（<code>theme: auto</code> 时）。</li>
+<li>打开设置了 <code>comments: false</code> 的页面，确认那里既没有 giscus 也没有其它评论组件。</li>
+<li>发一条测试评论，回到 GitHub 看指定分类下是否出现了对应的 Discussion，并且能在 GitHub 上管理。</li>
+</ol>
+<p>首次评论或表态创建 Discussion 之前，浏览器控制台提示「找不到 Discussion」是正常现象。</p>
+<p>出问题时按这个顺序查：构建日志里的 WARNING（四个必填键）→ <code>params.comments.enable</code> 与 <code>type</code> → 页面 front matter 的 <code>comments</code> → 仓库是否公开、Discussions 是否开启、giscus App 是否安装 → 浏览器控制台与响应头（CSP 是否拦了 <code>giscus.app</code>）。找不到已有评论线程，先恢复原来的 <code>mapping</code> 和页面路径。</p>
+<h2 id="pg-56c9cd7c638ec6a0681fab083553fa36--related">相关
+</h2>
+<ul>
+<li><a href="/zh/docs/customize/repository/">仓库与页面信息</a> — 编辑本页、提 issue、贡献者与「这篇文档有用吗」反馈组件</li>
+<li><a href="/zh/docs/admin/analytics/">分析与 SEO</a> — 另一类需要接外部服务的能力</li>
+<li><a href="/zh/docs/admin/deploy/">发布上线</a> — 内容安全策略与预览部署的外部集成</li>
+<li><a href="/zh/docs/customize/config/">配置总览</a> — <code>params.comments.*</code> 每个键的定义</li>
+<li><a href="/zh/docs/write/frontmatter/">页面参数</a> — front matter 里的 <code>comments</code></li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-61fdea1bfeb3a89524d5463b8cd7ebbd">4 - 分析与 SEO</h1>
+    <div class="lead">接入一个分析服务（或者不接），并把主题已经生成的 canonical、hreflang、社交卡片、站点地图与 robots 配对。</div>
+	<p>主题默认不加载任何分析、表单或广告脚本，不配置就没有对外请求。接入需要显式配置，并把这条外部数据边界写进站点的隐私说明。SEO 一侧相反：canonical、hreflang、<code>robots</code> meta、Open Graph 与 Twitter 卡片由主题逐页生成，需要你做的是把 <code>baseURL</code> 与每页的 <code>description</code> 写对。</p>
+<h2 id="pg-61fdea1bfeb3a89524d5463b8cd7ebbd--google-analytics">接 Google Analytics
+</h2>
+<p>用 Hugo 内置的服务配置，填 GA4 的 measurement ID：</p>
+<div class="td-code td-code--titled" id="td-code-47035fe0-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="3" role="group" aria-labelledby="td-code-47035fe0-fence-0-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-47035fe0-fence-0-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-47035fe0-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">googleAnalytics</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">G-6JLQEHYFQG</span></span></span></code></pre></div></div>
+</div>
+<p>主题只在 production 环境渲染这段脚本（<code>hugo</code> 构建默认 production，<code>hugo server</code> 默认 development）。本地预览与预览部署因此不上报数据，不需要另加开关。</p>
+<p>不要同时设置已经弃用的顶层 <code>googleAnalytics</code> 键。不需要分析时删掉整段配置，不要填一个假 ID。</p>
+<div class="td-callout td-callout--warning" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="td-callout__label">这与网络隔离环境不兼容</span></div>
+  <div class="td-callout__body">
+<p>配上之后，页面浏览量与事件会发给 Google。严格的同源内容安全策略也需要为它放行，见<a href="/zh/docs/admin/deploy/#csp">内容安全策略</a>。这是站点决策，不是主题默认。</p>
+  </div>
+</div><h2 id="pg-61fdea1bfeb3a89524d5463b8cd7ebbd--other-analytics">接其它分析服务
+</h2>
+<p>Plausible、Umami、Matomo 这类服务只要求插入一段脚本。主题提供两个注入点，在站点仓库里建同名文件即可，不用改主题：</p>
+<div class="td-fields">
+<dl class="td-fields__list">
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">layouts/_partials/hooks/head-end.html</code>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">插入位置</span><span class="td-field__meta-value"><code>&lt;/head&gt;</code> 之前，在 Google Analytics 模板之前</span></span>
+</dt>
+<dd class="td-field__description">分析脚本、cookie 同意脚本、主题没提供的 meta 标签</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">layouts/_partials/hooks/body-end.html</code>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">插入位置</span><span class="td-field__meta-value">页面脚本的最后</span></span>
+</dt>
+<dd class="td-field__description">只影响交互、不影响首屏的第三方代码</dd>
+</div>
+</dl>
+</div>
+
+<div class="td-code td-code--titled" id="td-code-47035fe0-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="go-html-template" data-td-line-count="4" role="group" aria-labelledby="td-code-47035fe0-fence-1-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-47035fe0-fence-1-title" title="layouts/_partials/hooks/head-end.html">layouts/_partials/hooks/head-end.html</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-47035fe0-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go-html-template" data-lang="go-html-template"><span class="line"><span class="cl"><span class="cp">{{</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">hugo</span><span class="na">.IsProduction</span><span class="w"> </span><span class="cp">}}</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">defer</span> <span class="na">data-domain</span><span class="o">=</span><span class="s">&#34;oink.pgsty.com&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://plausible.io/js/script.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">{{</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cp">}}</span></span></span></code></pre></div></div>
+</div>
+<p><code>hugo.IsProduction</code> 这一层不要省：没有它，每个人的本地预览都会向你的统计上报数据。</p>
+<div class="td-callout td-callout--note" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-info" aria-hidden="true"></i><span class="td-callout__label">head-end 在 Google Analytics 之前执行</span></div>
+  <div class="td-callout__body">
+<p>这是有意的：cookie 同意脚本必须先于分析脚本运行，才能真正拦住它。</p>
+  </div>
+</div><p>「这篇文档解决了你的问题吗」反馈组件是另一件事：默认关闭，不发网络请求，配置见<a href="/zh/docs/customize/repository/">仓库与页面信息</a>。</p>
+<h2 id="pg-61fdea1bfeb3a89524d5463b8cd7ebbd--description">页面描述
+</h2>
+<p><code>&lt;meta name=&quot;description&quot;&gt;</code> 按这个顺序取值，取到第一个非空的就停：</p>
+<ol class="steps">
+<li>页面 front matter 的 <code>description</code></li>
+<li>Hugo 计算出的页面摘要（<code>.Summary</code>）</li>
+<li>站点配置里的 <code>params.description</code></li>
+</ol>
+<p>每页写一句 <code>description</code> 是唯一需要作者做的 SEO 动作。它同时用于三处：搜索引擎的摘要、栏目首页的卡片副标题、站内搜索的结果预览。</p>
+<div class="td-code td-code--titled" id="td-code-47035fe0-fence-2" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="4" role="group" aria-labelledby="td-code-47035fe0-fence-2-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-47035fe0-fence-2-title" title="content/docs/admin/analytics.zh.md（本页）">content/docs/admin/analytics.zh.md（本页）</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-47035fe0-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">分析与 SEO</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">接入一个分析服务（或者不接），并把主题已经生成的 canonical、hreflang、社交卡片、站点地图与 robots 配对。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">---</span></span></span></code></pre></div></div>
+</div>
+<p>多语言站点要给每种语言各写一句，不要把英文描述抄到中文页上。站点级默认值也是分语言的：</p>
+<div class="td-code td-code--titled" id="td-code-47035fe0-fence-3" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="7" role="group" aria-labelledby="td-code-47035fe0-fence-3-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-47035fe0-fence-3-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-47035fe0-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">languages</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">en</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">A Hugo theme for engineering docs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">zh</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">为工程而设计的 Hugo 文档主题</span></span></span></code></pre></div></div>
+</div>
+<h2 id="pg-61fdea1bfeb3a89524d5463b8cd7ebbd--canonical-hreflang">canonical 与 hreflang
+</h2>
+<p>主题为每个页面输出一条 canonical 和一组 <code>hreflang</code> 备用链接，不需要配置：</p>
+<div class="td-code td-code--titled" id="td-code-47035fe0-fence-4" data-td-code data-td-code-auto-id
+     data-td-language="html" data-td-line-count="3" role="group" aria-labelledby="td-code-47035fe0-fence-4-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-47035fe0-fence-4-title" title="渲染结果（本页）">渲染结果（本页）</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-47035fe0-fence-4-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;canonical&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://oink.pgsty.com/zh/docs/admin/analytics/&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;alternate&#34;</span> <span class="na">hreflang</span><span class="o">=</span><span class="s">&#34;zh-CN&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://oink.pgsty.com/zh/docs/admin/analytics/&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;alternate&#34;</span> <span class="na">hreflang</span><span class="o">=</span><span class="s">&#34;en-US&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://oink.pgsty.com/&#34;</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</div>
+<p><code>hreflang</code> 的语言代码来自各语言的 <code>locale</code>（本站是 <code>en-US</code> / <code>zh-CN</code>），链接来自 Hugo 的译文关系。上面英文那一条指向站点首页而不是对应的英文页：本页没有英文对等文件，Hugo 找不到译文时回退到目标语言首页。这是预期行为，也可以用来判断译文关系有没有被 Hugo 认出来。</p>
+<p>canonical 由 <code>baseURL</code> 拼出。<code>baseURL</code> 配错时 canonical 会把搜索引擎指向不存在的地址，比构建失败更难发现。上线前照<a href="/zh/docs/admin/deploy/#checklist">发布上线的验收清单</a>查一遍。</p>
+<p>多语言的完整配置在<a href="/zh/docs/customize/i18n/">多语言</a>。</p>
+<h2 id="pg-61fdea1bfeb3a89524d5463b8cd7ebbd--social-cards">社交卡片
+</h2>
+<p>主题调用 Hugo 内置的 Open Graph 与 Twitter 卡片模板，标题、描述、URL、语言、站名都是自动的：</p>
+<div class="td-code td-code--titled" id="td-code-47035fe0-fence-5" data-td-code data-td-code-auto-id
+     data-td-language="html" data-td-line-count="6" role="group" aria-labelledby="td-code-47035fe0-fence-5-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-47035fe0-fence-5-title" title="渲染结果（本页）">渲染结果（本页）</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-47035fe0-fence-5-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;og:title&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;分析与 SEO&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;og:type&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;article&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;og:url&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;https://oink.pgsty.com/zh/docs/admin/analytics/&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;og:locale&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;zh_CN&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;og:locale:alternate&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;en_US&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;twitter:card&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;summary&#34;</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</div>
+<p>要让分享出去的链接带图，在 front matter 里给 <code>images</code>：</p>
+<div class="td-code td-code--titled" id="td-code-47035fe0-fence-6" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="4" role="group" aria-labelledby="td-code-47035fe0-fence-6-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-47035fe0-fence-6-title" title="任意页面">任意页面</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-47035fe0-fence-6-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">OINK v0.8.0 发布</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">images</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">/images/releasenote.webp]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">---</span></span></span></code></pre></div></div>
+</div>
+<p>给全站一张兜底图就把同样的键写进 <code>params</code>：</p>
+<div class="td-code td-code--titled" id="td-code-47035fe0-fence-7" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="2" role="group" aria-labelledby="td-code-47035fe0-fence-7-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-47035fe0-fence-7-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-47035fe0-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">images</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">/images/oink.webp]</span></span></span></code></pre></div></div>
+</div>
+<p>有图时 <code>twitter:card</code> 从 <code>summary</code> 变成 <code>summary_large_image</code>，并多出 <code>og:image</code> 与 <code>twitter:image</code> 两条。本站两处都没有设置，上面的渲染结果里因此看不到图片相关的标签。</p>
+<h2 id="pg-61fdea1bfeb3a89524d5463b8cd7ebbd--sitemap">站点地图
+</h2>
+<p>Hugo 自动生成，多语言站点生成的是一个索引：</p>
+<div class="td-code td-code--titled" id="td-code-47035fe0-fence-8" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="3" role="group" aria-labelledby="td-code-47035fe0-fence-8-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-47035fe0-fence-8-title" title="public/ 下的结构">public/ 下的结构</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-47035fe0-fence-8-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">sitemap.xml        ← 索引，指向下面两个
+</span></span><span class="line"><span class="cl">en/sitemap.xml
+</span></span><span class="line"><span class="cl">zh/sitemap.xml</span></span></code></pre></div></div>
+</div>
+<p>站点级默认值和页面级覆盖都是 Hugo 原生的：</p>
+<div class="td-code td-code--titled" id="td-code-47035fe0-fence-9" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="4" role="group" aria-labelledby="td-code-47035fe0-fence-9-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-47035fe0-fence-9-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-47035fe0-fence-9-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">sitemap</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">changefreq</span><span class="p">:</span><span class="w"> </span><span class="l">monthly</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l">sitemap.xml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="m">0.5</span></span></span></code></pre></div></div>
+</div>
+<div class="td-code td-code--titled" id="td-code-47035fe0-fence-10" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="5" role="group" aria-labelledby="td-code-47035fe0-fence-10-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-47035fe0-fence-10-title" title="某个页面">某个页面</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-47035fe0-fence-10-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">发布说明</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">sitemap</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="m">0.8</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">---</span></span></span></code></pre></div></div>
+</div>
+<p><code>changefreq</code> 与 <code>priority</code> 是提示不是承诺，搜索引擎可以忽略。值得做的是发布前确认草稿、私有内容与非规范副本没有进入站点地图，并且每种语言的那份都生成了。</p>
+<h2 id="pg-61fdea1bfeb3a89524d5463b8cd7ebbd--robots">robots.txt 与不收录
+</h2>
+<p>Hugo 只在站点配置里打开开关时才生成 <code>robots.txt</code>：</p>
+<div class="td-code td-code--titled" id="td-code-47035fe0-fence-11" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="1" role="group" aria-labelledby="td-code-47035fe0-fence-11-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-47035fe0-fence-11-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-47035fe0-fence-11-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">enableRobotsTXT</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span></span></span></code></pre></div></div>
+</div>
+<p>主题提供的模板按构建环境给出两种结果，不需要你写内容：</p>
+<div class="td-code td-code--titled" id="td-code-47035fe0-fence-12" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="4" role="group" aria-labelledby="td-code-47035fe0-fence-12-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-47035fe0-fence-12-title" title="production 构建">production 构建</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-47035fe0-fence-12-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">User-agent: *
+</span></span><span class="line"><span class="cl">Allow: /
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Sitemap: https://oink.pgsty.com/sitemap.xml</span></span></code></pre></div></div>
+</div>
+<div class="td-code td-code--titled" id="td-code-47035fe0-fence-13" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="2" role="group" aria-labelledby="td-code-47035fe0-fence-13-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-47035fe0-fence-13-title" title="非 production 构建">非 production 构建</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-47035fe0-fence-13-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">User-agent: *
+</span></span><span class="line"><span class="cl">Disallow: /</span></span></code></pre></div></div>
+</div>
+<p>页面里的 <code>robots</code> meta 跟着同一个开关走：production 且不是打印输出时是 <code>index, follow</code>，否则是 <code>noindex, nofollow</code>。预览部署不要用 <code>--environment production</code> 构建，非 production 自带不收录的行为。</p>
+<p>主题没有按页 <code>noindex</code> 的开关。某一页不该被收录时，可靠的做法是不发布它（<code>draft: true</code>，或用 Hugo 的 <code>_build</code> 选项）。既要发布又不想被收录，就用 <code>head-end.html</code> 钩子自己输出；主题已经输出了一条 <code>robots</code> meta，两条同时存在时如何合并由搜索引擎决定。</p>
+<h2 id="pg-61fdea1bfeb3a89524d5463b8cd7ebbd--indexing">收录检查
+</h2>
+<p>上线一两周后，按这个顺序确认搜索引擎看到的东西和你以为的一致：</p>
+<ol class="steps">
+<li>抓取权限：访问 <code>&lt;baseURL&gt;/robots.txt</code>，确认是 <code>Allow: /</code> 而不是 <code>Disallow: /</code>。</li>
+<li>页面清单：访问 <code>&lt;baseURL&gt;/sitemap.xml</code>，点进语言子地图，看页面数量对不对。</li>
+<li>收录数量：在搜索引擎里查 <code>site:你的域名</code>，数量级对得上就行，不必逐页核对。</li>
+<li>规范地址：搜索结果应当落在 canonical 指向的 URL 上，而不是带 <code>?</code> 参数或旧域名的版本。</li>
+<li>主动提交：在 Google Search Console / Bing Webmaster Tools 里加上站点并提交 <code>sitemap.xml</code> 的地址，比等着被爬快。</li>
+</ol>
+<p>搜索元数据补不了内容本身的问题：单薄、重复、过时的页面，写再好的 <code>description</code> 也一样。</p>
+<h2 id="pg-61fdea1bfeb3a89524d5463b8cd7ebbd--verify">验证
+</h2>
+<div class="td-code td-code--titled" id="td-code-47035fe0-fence-14" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1" role="group" aria-labelledby="td-code-47035fe0-fence-14-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-47035fe0-fence-14-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-47035fe0-fence-14-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo --gc --minify --printPathWarnings --panicOnWarning</span></span></code></pre></div></div>
+</div>
+<p>在产物里查这几项：</p>
+<div class="td-code td-code--titled" id="td-code-47035fe0-fence-15" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="12" role="group" aria-labelledby="td-code-47035fe0-fence-15-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-47035fe0-fence-15-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-47035fe0-fence-15-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># canonical 指向真实生产地址</span>
+</span></span><span class="line"><span class="cl">grep -o <span class="s1">&#39;&lt;link rel=&#34;canonical&#34;[^&gt;]*&gt;&#39;</span> public/zh/docs/admin/analytics/index.html
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># production 构建才有 index, follow</span>
+</span></span><span class="line"><span class="cl">grep -o <span class="s1">&#39;&lt;meta name=&#34;robots&#34;[^&gt;]*&gt;&#39;</span> public/zh/docs/admin/analytics/index.html
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># robots.txt 与站点地图</span>
+</span></span><span class="line"><span class="cl">cat public/robots.txt
+</span></span><span class="line"><span class="cl">head -5 public/sitemap.xml
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 没接分析时，产物里不应该有任何 gtag / analytics 请求</span>
+</span></span><span class="line"><span class="cl">grep -rl <span class="s1">&#39;googletagmanager\|gtag(&#39;</span> public/ <span class="p">|</span> head</span></span></code></pre></div></div>
+</div>
+<p>浏览器里再确认一次：打开一个代表性页面，看开发者工具的网络面板，没接分析的站点不应有指向第三方域名的请求。</p>
+<h2 id="pg-61fdea1bfeb3a89524d5463b8cd7ebbd--related">相关
+</h2>
+<ul>
+<li><a href="/zh/docs/admin/deploy/">发布上线</a> — <code>baseURL</code>、验收清单与预览部署不被收录</li>
+<li><a href="/zh/docs/customize/repository/">仓库与页面信息</a> — 页面反馈组件、编辑本页与最后修改时间</li>
+<li><a href="/zh/docs/customize/i18n/">多语言</a> — 语言配置决定 <code>hreflang</code> 与译文关系</li>
+<li><a href="/zh/docs/customize/agents/">Agent 支持</a> — 给大模型看的 <code>.md</code> 输出与 <code>llms.txt</code></li>
+<li><a href="/zh/docs/customize/config/">配置总览</a> — <code>services</code>、<code>sitemap</code>、<code>enableRobotsTXT</code> 等键的定义</li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-8c28118288960b4a1fa9bcab791b85ea">5 - 版本升级</h1>
+    <div class="lead">升到新版主题、用迁移工具把 0.4 的 shortcode 改成 v5 语法、从 Docsy 迁过来，以及出问题怎么退回去。</div>
+	<p>升级 OINK 是换一个固定的模块版本，再确认站点仍能零告警构建。内容多数不用改；需要改的场景（0.4 的 shortcode 换成 v5 的 Markdown 原生形态）有一个可以干跑的迁移工具，不必手改几百个文件。</p>
+<p>升级会改变渲染结果。先建一个升级分支再动手，回退的代价就是丢弃一个分支。</p>
+<h2 id="pg-8c28118288960b4a1fa9bcab791b85ea--release-notes">先看发布注记
+</h2>
+<p>每个版本的变更、破坏性改动与升级要点都写在发布注记里，升级前先读一遍目标版本那篇：</p>
+<ul>
+<li>本站的 <a href="/zh/blog/">项目博客</a> 里的 release 系列</li>
+<li>GitHub 上的 <a href="https://github.com/pgsty/oink/releases">Releases 页面</a></li>
+</ul>
+<p>注记说明这次要不要改内容、有没有配置键被移除、默认行为有没有变化。跳过这一步的代价是升级后对着一个变了样的页面猜原因。</p>
+<h2 id="pg-8c28118288960b4a1fa9bcab791b85ea--hugo-module">升级 Hugo Module
+</h2>
+<p>生产站点固定发布标签或不可变 commit，不跟随分支，也不用 <code>@latest</code>：</p>
+<div class="td-code td-code--titled" id="td-code-11967b51-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="3" role="group" aria-labelledby="td-code-11967b51-fence-0-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-11967b51-fence-0-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-11967b51-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo mod get github.com/pgsty/oink@v0.8.0   <span class="c1"># 换成发布注记里的标签</span>
+</span></span><span class="line"><span class="cl">hugo mod tidy
+</span></span><span class="line"><span class="cl">hugo mod graph <span class="p">|</span> grep github.com/pgsty/oink</span></span></code></pre></div></div>
+</div>
+<p>最后一条要能看到解析结果是那个标签本身，而不是伪版本（<code>v0.0.0-2026...-abcdef</code>）或 <code>main</code>。固定的版本落在 <code>go.mod</code> 里，跟着代码一起提交：</p>
+<div class="td-code td-code--titled" id="td-code-11967b51-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="go" data-td-line-count="5" role="group" aria-labelledby="td-code-11967b51-fence-1-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-11967b51-fence-1-title" title="go.mod">go.mod</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-11967b51-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">module</span><span class="w"> </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">pgsty</span><span class="o">/</span><span class="nx">oink</span><span class="p">.</span><span class="nx">pgsty</span><span class="p">.</span><span class="nx">com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">go</span><span class="w"> </span><span class="mf">1.26.6</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nx">require</span><span class="w"> </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">pgsty</span><span class="o">/</span><span class="nx">oink</span><span class="w"> </span><span class="nx">v0</span><span class="mf">.8.0</span></span></span></code></pre></div></div>
+</div>
+<div class="td-callout td-callout--danger" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-fire" aria-hidden="true"></i><span class="td-callout__label">本地模块替换会盖掉这个固定版本</span></div>
+  <div class="td-callout__body">
+<p><code>make dev</code> 和 <code>make check</code> 会仅对当前命令设置 <code>HUGO_MODULE_REPLACEMENTS</code>，使用同级的主题 checkout。判定某个发布标签是否可用时使用不带替换的 <code>make build</code>，否则验证的是本地那份代码。</p>
+  </div>
+</div><p>其它安装方式各一句。Git submodule：用 <code>git submodule update --remote themes/oink</code> 拉到新 ref，再提交 submodule 指针。离线归档与克隆：把 <code>themes/oink/</code> 整个换成新版本的解压结果，确认 <code>theme:</code> 的值仍与目录名一致。三种方式的取舍见<a href="/zh/docs/start/from-scratch/">从零建站与其它安装方式</a>。</p>
+<h2 id="pg-8c28118288960b4a1fa9bcab791b85ea--after-upgrade">升级后必做
+</h2>
+<div class="td-code td-code--titled" id="td-code-11967b51-fence-2" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="2" role="group" aria-labelledby="td-code-11967b51-fence-2-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-11967b51-fence-2-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-11967b51-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm -rf public resources/_gen
+</span></span><span class="line"><span class="cl">hugo --gc --minify --printPathWarnings --panicOnWarning --logLevel info</span></span></code></pre></div></div>
+</div>
+<p>三件事一起做了：清掉可能过期的缓存、用新版本重新构建、把任何告警变成失败。</p>
+<p><code>--logLevel info</code> 是为了看见 Hugo 的弃用提示。Hugo 的弃用分两级：先是 <code>WARN</code> 级提示（仍可使用），下一个版本变成 <code>ERROR</code>（构建失败）。带上 <code>--panicOnWarning</code> 相当于提前一个版本发现它们，把修复的时间留给自己。</p>
+<p>构建通过之后，人眼再过一遍：首页、一个文档页、一个博客页、404、两种语言、两种配色、打印视图，以及站点自己定制过的地方。</p>
+<h2 id="pg-8c28118288960b4a1fa9bcab791b85ea--migration-toolkit">内容迁移工具
+</h2>
+<p>0.4 的一批 shortcode 在 v5 里换成了 Markdown 原生形态。主题仓库带了一个只依赖 Python 标准库的工具做这件事：</p>
+<div class="td-code td-code--titled" id="td-code-11967b51-fence-3" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="14" role="group" aria-labelledby="td-code-11967b51-fence-3-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-11967b51-fence-3-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-11967b51-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/pgsty/oink
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> oink
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 1. 只读盘点：一次看多个站点要改什么，可导出 Markdown / JSON 报告</span>
+</span></span><span class="line"><span class="cl">python3 bin/migrations/oink06.py report --sites ~/pgsty/oink.pgsty.com ~/www/ddia --md report.md
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 2. 干跑：打印每个文件的 diff 与计数，不写任何东西</span>
+</span></span><span class="line"><span class="cl">python3 bin/migrations/oink06.py migrate --site ~/pgsty/oink.pgsty.com
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 3. 真改：原子写入</span>
+</span></span><span class="line"><span class="cl">python3 bin/migrations/oink06.py migrate --site ~/pgsty/oink.pgsty.com --write
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 4. 查残留：还有旧语法就退出码 1</span>
+</span></span><span class="line"><span class="cl">python3 bin/migrations/oink06.py check --site ~/pgsty/oink.pgsty.com</span></span></code></pre></div></div>
+</div>
+<p>用它的时候记住四条：</p>
+<ul>
+<li>干跑是默认行为，只有 <code>--write</code> 才落盘。先干跑，读 diff，再写。</li>
+<li>重跑一次应该零改动。第二次 <code>--write</code> 还报改动，说明有转换不收敛，停下来看那几个文件。</li>
+<li>围栏里的文字不动，文档站里示范旧写法的代码块不会被误伤。</li>
+<li>表达不了的构造原样保留，并附 <code>file:line</code> 与原因列出，作为手工处理清单，不是失败。</li>
+</ul>
+<p>只想先转某一类时用 <code>--only</code>，键名见下表最后一列：</p>
+<div class="td-code td-code--titled" id="td-code-11967b51-fence-4" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1" role="group" aria-labelledby="td-code-11967b51-fence-4-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-11967b51-fence-4-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-11967b51-fence-4-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 bin/migrations/oink06.py migrate --site ~/www/ddia --only callout,tabs --write</span></span></code></pre></div></div>
+</div>
+<p>改完重新构建一次（带 <code>--panicOnWarning</code>），并逐页看渲染结果：工具保证语法正确，不保证语义符合预期。</p>
+<h2 id="pg-8c28118288960b4a1fa9bcab791b85ea--syntax-map">0.4 → v5 语法映射
+</h2>
+<div class="td-fields">
+<dl class="td-fields__list">
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">{{%/* alert color= title= */%}}</code>、<code>{{%/* details */%}}</code>、<code>{{%/* pageinfo */%}}</code>、手写 <code>&lt;details&gt;&lt;summary&gt;</code>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">v5 的写法</span><span class="td-field__meta-value"><code>&gt; [!TYPE] 标题</code> / <code>&gt; [!DETAILS]-</code></span></span>
+</dt>
+<dd class="td-field__description"><code>callout</code></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">{{&lt;/* tabpane */&gt;}}</code> + <code>{{%/* tab header= */%}}</code>、<code>{{&lt;/* code-group */&gt;}}</code> + <code>{{&lt;/* code-tab */&gt;}}</code>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">v5 的写法</span><span class="td-field__meta-value">相邻围栏加 <code>{tab= group= value=}</code>；正文型标签页用 <code>{{&lt;/* tabs */&gt;}}</code> + <code>{{&lt;/* tab */&gt;}}</code></span></span>
+</dt>
+<dd class="td-field__description"><code>tabs</code></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">{{&lt;/* filetree */&gt;}}</code> 与 <code>filetree/folder</code>、<code>filetree/file</code>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">v5 的写法</span><span class="td-field__meta-value"><code>filetree</code> 数据围栏</span></span>
+</dt>
+<dd class="td-field__description"><code>filetree</code></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">{{&lt;/* gallery */&gt;}}</code> 与 <code>gallery/image</code>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">v5 的写法</span><span class="td-field__meta-value"><code>gallery</code> 数据围栏</span></span>
+</dt>
+<dd class="td-field__description"><code>gallery</code></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">{{&lt;/* echarts */&gt;}}</code>、<code>{{&lt;/* infographic */&gt;}}</code>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">v5 的写法</span><span class="td-field__meta-value">同名数据围栏（<code>$fn:</code> 不变，<code>js</code> 子围栏要挪到 <code>window.OinkEchartsFunctions</code>）</span></span>
+</dt>
+<dd class="td-field__description"><code>datafence</code></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">doc-cards</code> / <code>doc-card</code>、<code>nav-cards</code> / <code>nav-card</code>、<code>card</code> / <code>cardpane</code>、<code>doc-carousel</code>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">v5 的写法</span><span class="td-field__meta-value"><code>{{&lt;/* cards */&gt;}}</code> + <code>{{&lt;/* card */&gt;}}</code>，或链接列表加 <code>{.cards}</code></span></span>
+</dt>
+<dd class="td-field__description"><code>cards</code></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">{{&lt;/* imgproc */&gt;}}</code>、<code>{{&lt;/* image */&gt;}}</code>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">v5 的写法</span><span class="td-field__meta-value"><code>![alt](src)</code> 加属性行 <code>{command= options= caption=}</code></span></span>
+</dt>
+<dd class="td-field__description"><code>image</code></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">{{&lt;/* readfile file= */&gt;}}</code>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">v5 的写法</span><span class="td-field__meta-value"><code>{{&lt;/* include file= */&gt;}}</code></span></span>
+</dt>
+<dd class="td-field__description"><code>include</code></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">围栏属性 <code>{filename=&quot;x&quot;}</code></code>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">v5 的写法</span><span class="td-field__meta-value"><code>{title=&quot;x&quot;}</code></span></span>
+</dt>
+<dd class="td-field__description"><code>fencetitle</code></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">{{&lt;/* badge outline= */&gt;}}</code>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">v5 的写法</span><span class="td-field__meta-value">去掉 <code>outline</code> 参数</span></span>
+</dt>
+<dd class="td-field__description"><code>badge</code></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">{{&lt;/* example */&gt;}}</code> + 围栏、<code>{{&lt;/* book-figures kind=&quot;tbl&quot; */&gt;}}</code>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">v5 的写法</span><span class="td-field__meta-value"><code>{{&lt;/* eg */&gt;}}…{{&lt;/* /eg */&gt;}}</code>、<code>{{&lt;/* book-tables */&gt;}}</code></span></span>
+</dt>
+<dd class="td-field__description"><code>eg</code></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">{{%/* _param x */%}}</code>、<code>iframe</code>、<code>conditional-text</code>、<code>blocks/*</code>、<code>netlify</code>、不带 kind 的 <code>xref</code>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">v5 的写法</span><span class="td-field__meta-value">工具只报告，需要手工处理</span></span>
+</dt>
+<dd class="td-field__description"><code>reportonly</code></dd>
+</div>
+</dl>
+</div>
+
+<p>每个新写法长什么样、有哪些参数，去<a href="/zh/docs/components/">组件</a>里对应的那一页。</p>
+<h2 id="pg-8c28118288960b4a1fa9bcab791b85ea--from-docsy">从 Docsy 迁移
+</h2>
+<p>OINK 是 Docsy 的硬分支：内容模型、<code>td-</code> 命名、Sass 变量、大部分 front matter 都还在。迁移的核心动作是删掉站点里复制的公共外壳，让主题的实现接管，而不是重写正文。</p>
+<ol class="steps">
+<li>
+<p>固定目标版本。在 <code>go.mod</code> 里换成 OINK 的发布标签，或者用完整的版本化归档。评估期可以用不提交的 <code>go.work</code> 指向本地 checkout。</p>
+</li>
+<li>
+<p>清点覆盖项。把 <code>layouts/</code>、<code>assets/</code>、<code>static/</code> 下每个站点级文件归成四类：公共外壳的副本（验证后删）、OINK 已提供的组件（删或机械重命名）、品牌定制（保留，缩到最小 hook）、业务专属数据与交互（留在站点）。按引用关系删，不要清空 <code>layouts/</code>：首页、下载页这些地方可能还在调用你要删的 partial。</p>
+</li>
+<li>
+<p>搬配置。<code>title</code>、<code>languages.*</code>、<code>github_repo</code>、<code>github_branch</code>、<code>page_width</code>、<code>params.ui.*</code> 全部留在原来的语义位置，OINK 没有另起一套命名空间。搜索与 Logo 这类只要打开对应的键：</p>
+<div class="td-code td-code--titled" id="td-code-11967b51-fence-5" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="3" role="group" aria-labelledby="td-code-11967b51-fence-5-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-11967b51-fence-5-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-11967b51-fence-5-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">logo</span><span class="p">:</span><span class="w"> </span><span class="l">img/product.svg</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">offline_search</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span></span></span></code></pre></div></div>
+</div>
+<p>Docsy 的驼峰式检索键在 OINK 中已改名：<code>offlineSearch</code>、<code>offlineSearchIndex</code>、<code>offlineSearchMaxResults</code>、<code>offlineSearchOnServe</code>、<code>offlineSearchSummaryLength</code> 一律改为下划线形式。这一步要自己盯着改——那份「中断构建并报出新键名」的迁移登记表已经删除，旧键现在只是一个没人读的键，检索会一声不响地保持关闭。</p>
+</li>
+<li>
+<p>字体与样式的兼容点。站点的 <code>assets/scss/_variables_project.scss</code> 里那些 Docsy Sass 变量仍然生效，会作为字体角色的种子值，不用为了升级把它们删掉：<code>$td-fonts-serif</code>、<code>$font-family-sans-serif</code>、<code>$headings-font-family</code>、<code>$font-family-code</code> 各自喂给对应的字体角色。Docsy 的 Google Fonts 开关 <code>$td-enable-google-fonts</code>、<code>$td-google-font-name</code> 与 <code>$td-web-font-path</code> 主题已不再读取，留在文件里不影响构建，也不产生任何效果：OINK 自带 Inter、Chakra Petch 与 IBM Plex Mono，任何预设都不向 Google Fonts 发请求。想换字体走 token 层，见<a href="/zh/docs/customize/brand/">品牌外观</a>。</p>
+</li>
+<li>
+<p>换 shortcode。Docsy 的 <code>alert</code>、<code>pageinfo</code>、<code>tabpane</code>、<code>card</code> 系列在 v5 里都有对应形态，用上面的<a href="#pg-8c28118288960b4a1fa9bcab791b85ea--migration-toolkit">迁移工具</a>批量转，<code>--only</code> 一类一类来。</p>
+</li>
+<li>
+<p>一次删一组，每组构建一次。在临时副本里演练，记下主题 commit、Hugo 版本、删了哪些文件、产出多少个 HTML；确认等价之后再在生产分支上重做一遍。</p>
+</li>
+</ol>
+<p>第二步里「验证后删」的那一类，通常是这些文件：</p>
+<ul>
+<li><code>layouts/baseof.html</code> 与公共的 docs / blog <code>baseof*.html</code>；</li>
+<li>navbar、footer、sidebar、TOC、search、head CSS 的 partial 及其对应 hook；</li>
+<li>旧的品牌文档外壳 partial；</li>
+<li><code>asciinema</code>、<code>echarts</code>、<code>infographic</code>、<code>doc-carousel</code>、<code>details</code>、<code>tab</code> / <code>tabpane</code>、card 与 <code>param</code> 的 shortcode 副本；</li>
+<li>只服务于上述实现的 JavaScript、Lunr 副本、轮播代码与 SCSS；</li>
+<li>不再被任何站点资源需要的 PostCSS 与 Autoprefixer 步骤。</li>
+</ul>
+<p>删完之后有两类问题会浮出来。</p>
+<p>站点自己的脚本报 <code>$ is not defined</code>：主题不带 jQuery，它以前由 Docsy 在每个页面的 <code>&lt;head&gt;</code> 里加载。主题的功能都不需要它，仍然需要的站点自己引入：</p>
+<div class="td-code td-code--titled" id="td-code-11967b51-fence-6" data-td-code data-td-code-auto-id
+     data-td-language="html" data-td-line-count="1" role="group" aria-labelledby="td-code-11967b51-fence-6-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-11967b51-fence-6-title" title="layouts/_partials/hooks/head-end.html">layouts/_partials/hooks/head-end.html</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-11967b51-fence-6-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ (resources.Get &#34;</span><span class="na">js</span><span class="err">/</span><span class="na">jquery</span><span class="err">.</span><span class="na">min</span><span class="err">.</span><span class="na">js</span><span class="err">&#34;).</span><span class="na">RelPermalink</span> <span class="err">}}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</div>
+<p>用 Docsy <code>blocks/*</code> 搭的首页在 v5 构建失败，报 <code>template for shortcode &quot;blocks/cover&quot; not found</code>：主题没有这一组 shortcode。改用 <code>data/home/&lt;语言&gt;.yaml</code> 的首页分区，或给页面写 <code>layout: landing</code>，见<a href="/zh/docs/customize/home/">首页与落地页</a>。</p>
+<h2 id="pg-8c28118288960b4a1fa9bcab791b85ea--from-0-4">从 0.4 升级的要点
+</h2>
+<p>0.4 改了几个默认行为。升级后发现页面多了或少了东西，先看这几条：</p>
+<ul>
+<li>
+<p>顺序翻页默认开启。<code>docs</code>、<code>book</code>、<code>blog</code> 页尾都有上一页 / 下一页；文档沿侧栏树走，博客沿时间走。刻意不属于任何序列的页面用 <code>pager: false</code> 退出。</p>
+</li>
+<li>
+<p>顶栏在所有布局上都显示。紧凑状态只有一行图标导航，没有第二套移动端手风琴菜单，依赖旧移动菜单的本地脚本与测试要删掉。整个分区不要顶栏时用 cascade 里的 <code>navbar_enabled: false</code>。</p>
+</li>
+<li>
+<p>页脚默认 <code>fat</code> 且全站生效。只接受 <code>fat</code> / <code>slim</code> / <code>none</code>；页脚数据必须放在 <code>data/footer/&lt;语言&gt;.yaml</code>（单语言站点用 <code>data/footer.yaml</code>），<code>data/home</code> 里残留的 <code>footer</code> 键会让构建失败并提示新位置。</p>
+</li>
+<li>
+<p>单键导航默认开启：<code>/</code> 打开完整搜索，<code>\</code> 只进命令模式。培训材料里描述旧行为的地方要改。页面操作也挪到了面包屑旁边的拆分按钮上。</p>
+</li>
+<li>
+<p>代码块的 DOM 变了。<code>.td-code</code> 外壳套在原来的 <code>.highlight</code> 外面（<code>.highlight</code> 与 <code>.chroma</code> 都保留），站点 CSS 里 <code>.td-content &gt; .highlight</code> 这类直接子选择器要改成后代选择器 <code>.td-content .highlight</code>。</p>
+</li>
+<li>
+<p>两个 ICP 页脚参数被移除：<code>footer_icp</code> 与 <code>footer_icp_url</code> 换成一个支持行内 Markdown 的字符串。</p>
+<div class="td-code td-code--titled" id="td-code-11967b51-fence-7" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="2" role="group" aria-labelledby="td-code-11967b51-fence-7-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-11967b51-fence-7-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-11967b51-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">footer_center_info</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;[京ICP备00000000号](https://beian.miit.gov.cn/)&#39;</span></span></span></code></pre></div></div>
+</div>
+</li>
+<li>
+<p>数学公式要站点自己开 passthrough。Hugo 不会合并主题的 <code>markup</code> 配置，用 <code>\(…\)</code>、<code>\[…\]</code>、<code>$$…$$</code> 的站点必须在自己的 <code>hugo.yml</code> 里启用 goldmark passthrough 扩展，见<a href="/zh/docs/components/math/">公式</a>。</p>
+</li>
+</ul>
+<p>这几项的完整配置都在<a href="/zh/docs/customize/config/">配置总览</a>与<a href="/zh/docs/customize/layout/">布局与页面类型</a>。</p>
+<h2 id="pg-8c28118288960b4a1fa9bcab791b85ea--verify">验证
+</h2>
+<p>升级不是「构建通过」就算完，按表面分别看：</p>
+<div class="td-fields">
+<dl class="td-fields__list">
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">文档 / Book</code>
+</dt>
+<dd class="td-field__description">侧栏顺序、翻页、标题、页面操作、编号与交叉引用</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">博客</code>
+</dt>
+<dd class="td-field__description">时间顺序翻页、RSS 归属、顶栏与页脚</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">首页 / Landing</code>
+</dt>
+<dd class="td-field__description">无 JS 时的内容、紧凑菜单、打印</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">发布页</code>
+</dt>
+<dd class="td-field__description">推导出的下载 URL、校验和、发布状态</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">组件</code>
+</dt>
+<dd class="td-field__description">站点用得最多的那几个组件各找一页看渲染结果</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">无障碍</code>
+</dt>
+<dd class="td-field__description">纯键盘走一遍、焦点顺序、两种配色、强制颜色模式</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">部署</code>
+</dt>
+<dd class="td-field__description">站内链接与资源都保留了 base path 前缀</dd>
+</div>
+</dl>
+</div>
+
+<p>本站的完整门禁是：</p>
+<div class="td-code td-code--titled" id="td-code-11967b51-fence-8" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="2" role="group" aria-labelledby="td-code-11967b51-fence-8-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-11967b51-fence-8-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-11967b51-fence-8-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm <span class="nb">test</span>           <span class="c1"># 构建断言、Markdown 与 favicon goldens、翻译对等、渲染后链接</span>
+</span></span><span class="line"><span class="cl">npm run test:browser   <span class="c1"># Playwright：无障碍、响应式外壳、键盘导航、内容组件、代码块、场景组件</span></span></span></code></pre></div></div>
+</div>
+<p>其它站点跑等价的构建、链接、输出与浏览器检查即可，细节见<a href="/zh/docs/admin/troubleshooting/#site-checks">排错与检查</a>。</p>
+<div class="td-callout td-callout--important" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-exclamation" aria-hidden="true"></i><span class="td-callout__label">本地构建成功不等于发布完成</span></div>
+  <div class="td-callout__body">
+<p>源码可构建、标签已签名并能通过 Go proxy 解析、站点已固定该标签、线上已部署，这是四件事，要分别记录。别用一次绿色的本地构建代替它们。</p>
+  </div>
+</div><p>最后一步在真实环境上做：先部署一份预览，在真实 URL 上验证页面与浏览器的网络请求，评审通过再合并，合并后在生产上做一次冒烟测试。</p>
+<h2 id="pg-8c28118288960b4a1fa9bcab791b85ea--rollback">回滚
+</h2>
+<p>回滚的是版本固定，不是工作树：</p>
+<div class="td-code td-code--titled" id="td-code-11967b51-fence-9" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="4" role="group" aria-labelledby="td-code-11967b51-fence-9-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-11967b51-fence-9-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-11967b51-fence-9-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo mod get github.com/pgsty/oink@v0.4.0   <span class="c1"># 上一个已知可用的标签</span>
+</span></span><span class="line"><span class="cl">hugo mod tidy
+</span></span><span class="line"><span class="cl">rm -rf public resources/_gen
+</span></span><span class="line"><span class="cl">hugo --gc --minify --panicOnWarning</span></span></code></pre></div></div>
+</div>
+<p>三条原则：</p>
+<ul>
+<li>保留升级前的模块固定、站点 commit 与已知可用的部署产物，回滚时三者一起恢复。</li>
+<li>不要只回滚一部分。给新主题塞回几个旧布局副本，会得到一个比任何完整版本都更难诊断的混合状态。</li>
+<li>升级分支与验收证据都留着。回滚是为了先恢复线上，不是丢掉已经做完的工作。</li>
+</ul>
+<p>线上产物本身的回滚（重新发布上一个部署）见<a href="/zh/docs/admin/deploy/#rollback">发布上线</a>。</p>
+<h2 id="pg-8c28118288960b4a1fa9bcab791b85ea--related">相关
+</h2>
+<ul>
+<li><a href="/zh/docs/admin/deploy/">发布上线</a> — 部署产物的回滚</li>
+<li><a href="/zh/docs/admin/troubleshooting/">排错与检查</a> — 升级后构建报错怎么读</li>
+<li><a href="/zh/docs/admin/preview/">本地预览</a> — 清缓存与 <code>go.work</code> 工作区</li>
+<li><a href="/zh/docs/start/from-scratch/">从零建站与其它安装方式</a> — 四种安装方式的取舍</li>
+<li><a href="/zh/docs/components/">组件总览</a> — v5 每个组件的新写法</li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-d5f21bc276eee8dcf6d0fdefb8247fa8">6 - 排错与检查</h1>
+    <div class="lead">构建、语言、搜索、平台四类故障的症状 → 原因 → 修法，以及站点可以自己跑的那几项检查。</div>
+	<p>出问题时先做一次干净的生产构建，从第一条错误开始看，后面的多半是级联结果：</p>
+<div class="td-code td-code--titled" id="td-code-1f758e18-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="2" role="group" aria-labelledby="td-code-1f758e18-fence-0-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-1f758e18-fence-0-title" title="终端">终端</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-1f758e18-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm -rf public resources/_gen
+</span></span><span class="line"><span class="cl">hugo --gc --minify --printPathWarnings --panicOnWarning --logLevel info</span></span></code></pre></div></div>
+</div>
+<p>日志里出现 npm、PostCSS、Autoprefixer 或下载浏览器资源的步骤，说明配置里混进了上游 Docsy 的流程。OINK 消费端的构建只有一条 Hugo 命令。</p>
+<p>下面四张表按「症状 → 原因 → 修法」组织，找到症状那一行即可，不必从头读。</p>
+<h2 id="pg-d5f21bc276eee8dcf6d0fdefb8247fa8--build">构建
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">症状</th>
+      <th scope="col">原因</th>
+      <th scope="col">修法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>构建报要求更高的 Hugo 版本</td>
+      <td>装的是标准版而不是 Extended，或版本低于 0.160.1</td>
+      <td><code>hugo version</code> 输出里必须有 <code>extended</code>。多个 Hugo 共存时先查 <code>PATH</code> 与版本固定配置，而不是再装一份</td>
+    </tr>
+    <tr>
+      <td><code>module &quot;github.com/pgsty/oink&quot; not found</code></td>
+      <td>主题没解析出来</td>
+      <td>Hugo Module：看 <code>hugo mod graph</code>、<code>go.mod</code>、<code>go.sum</code>，以及有没有多余的 workspace / replace。submodule：CI 有没有在 Hugo 之前跑 <code>git submodule update --init</code>。归档 / 克隆：<code>theme:</code> 的值要与 <code>themes/</code> 下的目录名一致</td>
+    </tr>
+    <tr>
+      <td>模块下载卡住或超时</td>
+      <td>Go 的模块代理不通</td>
+      <td>Hugo 通过 Go 拉模块，所以走 <code>GOPROXY</code>。国内网络可以 <code>export GOPROXY=https://goproxy.cn,direct</code>；隔离环境改用离线归档或提交 <code>themes/oink/</code></td>
+    </tr>
+    <tr>
+      <td>页面上出现 <code>{.cards}</code>、<code>{.steps}</code>、<code>{caption=…}</code> 这类原样文字</td>
+      <td>站点没开 goldmark 的块级属性</td>
+      <td>站点的 <code>hugo.yml</code> 里必须有下面那三项，主题的 <code>markup</code> 配置不会被 Hugo 合并进来</td>
+    </tr>
+    <tr>
+      <td>图片带属性行时被包进了 <code>&lt;p&gt;</code>，图注没生效</td>
+      <td>缺 <code>wrapStandAloneImageWithinParagraph: false</code></td>
+      <td>同上，三项一起加</td>
+    </tr>
+    <tr>
+      <td>行内 HTML 被转义成文字</td>
+      <td>缺 <code>renderer.unsafe: true</code></td>
+      <td>同上</td>
+    </tr>
+    <tr>
+      <td><code>\(…\)</code> <code>$$…$$</code> 原样显示</td>
+      <td>站点没启用 goldmark passthrough</td>
+      <td>见<a href="/zh/docs/components/math/">公式</a>；<code>math: true</code> 不是启用开关</td>
+    </tr>
+    <tr>
+      <td><code>shortcode &quot;tabs&quot; must be closed or self-closed</code></td>
+      <td>有 <code>{{&lt; tabs &gt;}}</code> 没写对应的 <code>{{&lt; /tabs &gt;}}</code></td>
+      <td>报错里带 <code>文件:行:列</code>，去那一行补上闭合标记</td>
+    </tr>
+    <tr>
+      <td><code>template for shortcode &quot;tabs&quot; not found</code></td>
+      <td>正文里写了一个不存在的 shortcode，或引用 shortcode 语法时没有转义</td>
+      <td>文档里讲解 shortcode 语法时必须转义：在开标记与闭标记的内侧各加一对 <code>/*</code> 与 <code>*/</code>，Hugo 才会把它当文字而不是调用。名字打错就改回正确的名字</td>
+    </tr>
+    <tr>
+      <td><code>... attributes: unknown attribute &quot;witdh&quot; at ...</code></td>
+      <td>属性行里的键拼错或不被允许</td>
+      <td>属性行只接受该组件的允许键、<code>class</code>、<code>data-*</code>、<code>aria-*</code>；<code>style</code> 与 <code>on*</code> 一律构建失败。允许的键就写在报错括号里</td>
+    </tr>
+    <tr>
+      <td><code>shortcode &quot;field&quot;: unsupported parameter &quot;colour&quot; at ...</code></td>
+      <td>shortcode 参数名不对</td>
+      <td><strong>组件参数</strong>——shortcode 参数与属性行的键——一律构建失败，不做静默降级。报错格式固定为「哪个 shortcode → 哪个参数 → 哪个文件的第几行」，照着改即可</td>
+    </tr>
+    <tr>
+      <td><code>invalid params.ui.page_width &quot;widee&quot; (allowed: normal | wide | full) -- using &quot;normal&quot;</code></td>
+      <td><strong>配置或 front matter 的取值</strong>，不在允许集合里</td>
+      <td>配置类的错误降级而不中断，一个笔误不会让 <code>hugo server</code> 下每个 URL 都返回 500。消息里带键名、收到的值和实际用的回退值。构建加 <code>--panicOnWarning</code>，它就上不了线</td>
+    </tr>
+    <tr>
+      <td>某个页面设置不生效，也没有任何提示</td>
+      <td>键写在了 front matter 的 <code>ui:</code> 段里</td>
+      <td>页面键写在 front matter 顶层，键名是站点键去掉 <code>ui.</code>。写进 <code>ui:</code> 段的键没有人读，也没有人报错，见<a href="/zh/docs/write/frontmatter/">页面参数</a></td>
+    </tr>
+    <tr>
+      <td>构建通过但线上少东西</td>
+      <td>有 WARNING 没人看</td>
+      <td>构建命令加 <code>--panicOnWarning</code>。非法配置取值、giscus 必填键缺失、不支持的 <code>comments.type</code>、Hugo 的弃用提示都只是告警</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>那三项 goldmark 配置：</p>
+<div class="td-code td-code--titled" id="td-code-1f758e18-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="8" role="group" aria-labelledby="td-code-1f758e18-fence-1-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-1f758e18-fence-1-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-1f758e18-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">markup</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">goldmark</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">parser</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">wrapStandAloneImageWithinParagraph</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">attribute</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">block</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">renderer</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">unsafe</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span></span></span></code></pre></div></div>
+</div>
+<p>两个最常见的 shortcode 报错长这样，注意结尾的 <code>文件:行:列</code>：</p>
+<div class="td-code td-code--titled" id="td-code-1f758e18-fence-2" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="7" role="group" aria-labelledby="td-code-1f758e18-fence-2-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-1f758e18-fence-2-title" title="构建输出">构建输出</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-1f758e18-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">ERROR error building site: assemble: failed to create page from pageMetaSource /a:
+</span></span><span class="line"><span class="cl">  &#34;…/content/docs/x.md:4:1&#34;: failed to extract shortcode:
+</span></span><span class="line"><span class="cl">  shortcode &#34;tabs&#34; must be closed or self-closed
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ERROR error building site: assemble: failed to create page from pageMetaSource /a:
+</span></span><span class="line"><span class="cl">  &#34;…/content/docs/x.md:4:5&#34;: failed to extract shortcode:
+</span></span><span class="line"><span class="cl">  template for shortcode &#34;tabs&#34; not found</span></span></code></pre></div></div>
+</div>
+<h2 id="pg-d5f21bc276eee8dcf6d0fdefb8247fa8--language">语言
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">症状</th>
+      <th scope="col">原因</th>
+      <th scope="col">修法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>译文页面不出现</td>
+      <td>四种可能，按顺序查</td>
+      <td>① <code>hugo.yml</code> 里有 <code>languages.zh</code> 且设了 <code>weight</code>；② 文件名是 <code>page.zh.md</code>，<code>zh</code> 必须小写；③ 译文 front matter 没有 <code>draft: true</code>，<code>date</code> 不在未来；④ 影响路由的元数据与源文件一致</td>
+    </tr>
+    <tr>
+      <td>语言切换跳到了首页</td>
+      <td>Hugo 没找到对应译文</td>
+      <td>这是设计行为：找不到译文就回退到目标语言首页。要跳到对应页面，需要那个译文文件确实存在</td>
+    </tr>
+    <tr>
+      <td>锚点链接打开了页面却不定位</td>
+      <td>译文标题文字不同，自动生成的 ID 也不同</td>
+      <td>在译文标题上显式写英文 ID：<code>## 安装 {#installation}</code>。标题里含 shortcode 或行内 HTML 时不要凭文本猜 ID，去看英文页渲染出来的 HTML</td>
+    </tr>
+    <tr>
+      <td>菜单 / 首页分区没翻译</td>
+      <td>这些不在页面里，在配置和数据文件里</td>
+      <td>菜单在 <code>languages.&lt;lang&gt;.menus</code>，首页分区在 <code>data/home/&lt;lang&gt;.yaml</code>，界面字符串在 <code>i18n/&lt;lang&gt;.yaml</code>，见<a href="/zh/docs/customize/i18n/">多语言</a></td>
+    </tr>
+    <tr>
+      <td>中文页 <code>hreflang</code> 指向英文首页</td>
+      <td>该页没有英文对等文件</td>
+      <td>补上英文页，或接受这个回退：它同时是「Hugo 有没有认出译文关系」的探针</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-d5f21bc276eee8dcf6d0fdefb8247fa8--search">搜索
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">症状</th>
+      <th scope="col">原因</th>
+      <th scope="col">修法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>搜索框有但一直没结果</td>
+      <td>索引没生成</td>
+      <td><code>params.offline_search: true</code> 之后，产物根目录下应该有 <code>offline-search-index.&lt;语言&gt;.json</code>，每种语言一份。没有就是没开</td>
+    </tr>
+    <tr>
+      <td>索引文件请求 404</td>
+      <td><code>baseURL</code> 不对</td>
+      <td>子路径部署下 <code>baseURL</code> 配错是索引 404 最常见的原因。先在浏览器网络面板看它去哪里取索引，见<a href="/zh/docs/admin/deploy/#baseurl">发布上线</a></td>
+    </tr>
+    <tr>
+      <td><code>hugo server</code> 下搜不了，构建出来就正常</td>
+      <td>站点把预览期的索引关掉了</td>
+      <td><code>params.offline_search_on_serve</code> 默认为 <code>true</code>，预览与线上行为一致；配置里显式写成 <code>false</code> 时预览不生成索引，删掉或改回 <code>true</code></td>
+    </tr>
+    <tr>
+      <td>中文搜不到</td>
+      <td>多数不是分词问题</td>
+      <td>中文查询走主题的 CJK 子串回退。先确认那个中文页面的内容进了中文索引（打开 <code>offline-search-index.zh.json</code> 查一下），再看分词</td>
+    </tr>
+    <tr>
+      <td>新页面搜不到，旧页面正常</td>
+      <td>索引是构建产物</td>
+      <td>重新构建。<code>hugo server</code> 下改了页面要等它重建完</td>
+    </tr>
+    <tr>
+      <td><code>params.search.algolia requires explicit appId, apiKey, and indexName values</code></td>
+      <td>Algolia 三个键没配全</td>
+      <td>三个键必须显式给全，主题不会替你用别的项目的 DocSearch 凭据。不用 Algolia 就把这段配置删掉</td>
+    </tr>
+    <tr>
+      <td>命令面板搜不到内容</td>
+      <td>它与全文检索是两件事</td>
+      <td>索引不可用时命令面板仍然能打开，只是提示索引不可用，页面操作与命令照常，见<a href="/zh/docs/customize/panel/">命令面板</a></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-d5f21bc276eee8dcf6d0fdefb8247fa8--platform">平台
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">症状</th>
+      <th scope="col">原因</th>
+      <th scope="col">修法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GitHub Pages 上页面 404 或样式全丢</td>
+      <td>项目站点的 URL 带仓库路径，<code>baseURL</code> 没带</td>
+      <td>用工作流里的 <code>--baseURL &quot;${{ steps.pages.outputs.base_url }}/&quot;</code>，别手写。完整工作流见<a href="/zh/docs/admin/deploy/#hosts">发布上线</a></td>
+    </tr>
+    <tr>
+      <td>GitHub Pages 上「最后修改时间」「贡献者」全空</td>
+      <td>checkout 是浅克隆</td>
+      <td><code>actions/checkout</code> 加 <code>fetch-depth: 0</code>：<code>enableGitInfo</code> 要读完整历史</td>
+    </tr>
+    <tr>
+      <td>Cloudflare Pages 构建报 Hugo 版本太低</td>
+      <td>构建镜像的默认 Hugo 低于主题要求</td>
+      <td>在 Production 和 Preview 两个环境都设 <code>HUGO_VERSION</code>，并设 <code>SKIP_DEPENDENCY_INSTALL=1</code></td>
+    </tr>
+    <tr>
+      <td>托管商构建时拉不到主题</td>
+      <td>构建环境没有 Go</td>
+      <td>Hugo Module 需要 Go。平台不提供就改用 submodule 或把 <code>themes/oink/</code> 提交进仓库</td>
+    </tr>
+    <tr>
+      <td>CI 上构建结果和本地不一样</td>
+      <td><code>go.work</code> 参与了 CI 构建</td>
+      <td>CI 里设 <code>GOWORK: off</code> 与 <code>HUGO_MODULE_WORKSPACE: off</code>，让它只认 <code>go.mod</code> 里固定的版本</td>
+    </tr>
+    <tr>
+      <td>预览部署被搜索引擎收录了</td>
+      <td>预览也用了 production 环境构建</td>
+      <td>预览构建不要带 <code>--environment production</code>，非 production 自带 <code>noindex</code> 与 <code>Disallow: /</code>，见<a href="/zh/docs/admin/analytics/#robots">分析与 SEO</a></td>
+    </tr>
+    <tr>
+      <td>macOS 报打开文件过多</td>
+      <td>实时预览监视的文件超过了 shell 限制</td>
+      <td>先把生成目录与无关目录排除出监视范围，这通常才是根因；再考虑 <code>ulimit -n</code></td>
+    </tr>
+    <tr>
+      <td>WSL 下很慢或漏掉改动</td>
+      <td>跨 Windows 挂载点工作</td>
+      <td>让 Hugo 处理 Linux 文件系统里的路径，跨文件系统的变更通知和权限行为会让实时重载失效</td>
+    </tr>
+    <tr>
+      <td>缺 Bootstrap / Font Awesome / Lunr / Mermaid 之类资源</td>
+      <td>发行物不完整</td>
+      <td>不要用 CDN URL 掩盖。确认 <code>assets/third_party/</code>、<code>assets/js/third_party/</code>、<code>static/webfonts/</code>、<code>VENDOR.json</code> 都在；确实缺就重新获取同一个固定版本</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-d5f21bc276eee8dcf6d0fdefb8247fa8--site-checks">站点自带检查
+</h2>
+<p>除了构建本身，站点还可以自己跑这几项。前两条任何 OINK 站点都能用，后面几条是本仓库的 npm 脚本，其它站点跑等价的检查即可。</p>
+<div class="td-fields">
+<dl class="td-fields__list">
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">零告警构建</code>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">命令</span><span class="td-field__meta-value"><code>hugo --printPathWarnings --panicOnWarning</code></span></span>
+</dt>
+<dd class="td-field__description">重复输出路径、参数非法、外部集成配置不全</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">输出信任检查</code>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">命令</span><span class="td-field__meta-value"><code>python3 bin/check-output-security.py --public public --base-url https://oink.pgsty.com/</code></span></span>
+</dt>
+<dd class="td-field__description">四种输出里的每个 <code>href</code> / <code>src</code> 都是站内相对或 <code>http(s)</code> / <code>mailto</code> / <code>tel</code>；没有 <code>javascript:</code> URL、没有行内 <code>on*</code> 事件处理器；跨站的 <code>&lt;iframe&gt;</code> <code>&lt;script&gt;</code> <code>&lt;img&gt;</code> 等要显式加 <code>--third-party</code> 才放行</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">翻译对等</code>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">命令</span><span class="td-field__meta-value"><code>node scripts/check-doc-translations.mjs --public public</code></span></span>
+</dt>
+<dd class="td-field__description">每个英文页有没有中文对等页，以及渲染后的标题 ID 是否逐一对齐；锚点链接错位在这里暴露</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">完整门禁</code>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">命令</span><span class="td-field__meta-value"><code>npm test</code></span></span>
+</dt>
+<dd class="td-field__description">下面六项串起来跑</dd>
+</div>
+</dl>
+</div>
+
+<p><code>npm test</code> 里的六项各管一段：</p>
+<ul>
+<li><code>test:base</code> — 先构建一次，再跑 Markdown 风格、翻译对等、渲染后的 Markdown 与链接检查。</li>
+<li><code>test:hugo-build</code> — 构建断言：博客元数据、RSS、内容组件、构建过程零弃用提示。</li>
+<li><code>test:md-output</code> — Markdown 与 <code>llms.txt</code> 输出的 golden 比对，字节级。改了组件的 Markdown 形态就会在这里挂。</li>
+<li><code>test:alt-site</code> — 用 <code>tests/fixtures/*.yml</code> 里的替代配置各构建一次，确认不同配置组合都能起来。</li>
+<li><code>test:favicons</code> — head 输出的 golden 比对。</li>
+<li><code>test:release-pin-contract</code> — 站点公告的版本与 <code>go.mod</code> 固定的版本是否一致。</li>
+</ul>
+<p>浏览器行为另开一套：<code>npm run test:browser</code> 依次跑 Playwright 的无障碍（axe WCAG AA）、响应式外壳、键盘导航、内容组件、代码块与场景组件六个套件。</p>
+<div class="td-callout td-callout--tip" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-lightbulb" aria-hidden="true"></i><span class="td-callout__label"><code>check-output-security.py</code> 在主题仓库里</span></div>
+  <div class="td-callout__body">
+<p>它在主题仓库的 <code>bin/</code> 下，是产品级的信任检查，任何 OINK 站点都可以跑，不依赖站点的测试框架。克隆主题仓库后指向自己的 <code>public/</code> 即可，参数与用法见<a href="/zh/docs/admin/preview/#air-gapped">断网构建验证</a>。</p>
+  </div>
+</div><h2 id="pg-d5f21bc276eee8dcf6d0fdefb8247fa8--habits">诊断习惯
+</h2>
+<p>上面的表覆盖不到的问题，按这几条挖：</p>
+<ul>
+<li>用固定的 Hugo Extended 版本复现，不在版本浮动的环境里判断。</li>
+<li>清掉 <code>public/</code> 与 <code>resources/_gen</code> 再重建，排除陈旧缓存。</li>
+<li>对比开发与生产两套配置层，很多只在线上出现的问题是环境差异。</li>
+<li>看第一条错误，不是最后那条。</li>
+<li>用一个最小页面区分「主题行为」和「站点覆盖」：把可疑内容单独放一页，站点覆盖分批重新启用，定位到具体那一项。</li>
+<li>看故障页面的浏览器控制台与网络面板，尤其是 404 的资源路径。</li>
+</ul>
+<h2 id="pg-d5f21bc276eee8dcf6d0fdefb8247fa8--getting-help">求助渠道
+</h2>
+<p>开 issue 时带上这几样，能省掉一轮来回：Hugo 版本（<code>hugo version</code> 完整输出）、主题版本（<code>hugo mod graph | grep oink</code>）、第一条完整错误、能复现的最小页面或最小站点。</p>
+<ul>
+<li>主题与文档的问题：<a href="https://github.com/pgsty/oink/issues">https://github.com/pgsty/oink/issues</a></li>
+<li>本站内容的问题：<a href="https://github.com/pgsty/oink.pgsty.com/issues">https://github.com/pgsty/oink.pgsty.com/issues</a></li>
+<li>上游 Docsy 的兼容性讨论：<a href="https://github.com/google/docsy/discussions">https://github.com/google/docsy/discussions</a></li>
+</ul>
+<h2 id="pg-d5f21bc276eee8dcf6d0fdefb8247fa8--related">相关
+</h2>
+<ul>
+<li><a href="/zh/docs/admin/preview/">本地预览</a> — 干净构建、清缓存、容器与工作区</li>
+<li><a href="/zh/docs/admin/deploy/">发布上线</a> — <code>baseURL</code>、验收清单与回滚</li>
+<li><a href="/zh/docs/admin/upgrade/">版本升级</a> — 升级引入的问题与迁移工具</li>
+<li><a href="/zh/docs/customize/search/">全文检索</a> — 索引范围、权重与 Algolia</li>
+<li><a href="/zh/docs/customize/i18n/">多语言</a> — 语言配置与锚点对齐流程</li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+
+
+
+      </main>
+    </div>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"复制 Markdown 文本","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["复制 Markdown 文本","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"复制 Markdown 文本","url":"/zh/docs/admin/index.md"},{"available":true,"description":"复制链接","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["复制链接","分享","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"复制链接","url":"http://localhost:1313/zh/docs/admin/"},{"available":true,"description":"在 ChatGPT 中打开","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["在 ChatGPT 中打开","就本页提问","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 ChatGPT 中打开","url":"https://chatgpt.com/?hints=search\u0026prompt=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fdocs%2Fadmin%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":true,"description":"在 Claude 中打开","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["在 Claude 中打开","就本页提问","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 Claude 中打开","url":"https://claude.ai/new?q=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fdocs%2Fadmin%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":true,"description":"查阅 Markdown 源码","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["查阅 Markdown 源码","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅 Markdown 源码","url":"/zh/docs/admin/index.md"},{"available":true,"description":"查阅编辑历史","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["查阅编辑历史","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅编辑历史","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/admin/_index.zh.md"},{"available":true,"description":"编辑当前页面","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["编辑当前页面","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"编辑当前页面","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/admin/_index.zh.md"},{"available":true,"description":"添加子页面","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["添加子页面","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"添加子页面","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/admin?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"提交文档议题","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["提交文档议题","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交文档议题","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=%E7%BB%B4%E6%8A%A4%E7%AE%A1%E7%90%86"},{"available":true,"description":"提交项目议题","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["提交项目议题","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交项目议题","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"打印完整章节","disabledReason":"打印完整章节: 暂不可用","icon":"fa-solid fa-print","id":"print_section","keywords":["打印完整章节","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"打印完整章节","url":""},{"available":true,"description":"打印此页面","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["打印此页面","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"打印此页面","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL 必填","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"切换语言","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["切换语言","language"],"kind":"choice","options":[{"active":false,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/admin/"},{"active":true,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/admin/"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换语言","url":""},{"available":true,"description":"切换配色","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["切换配色","亮色","暗色"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"跟随系统","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"亮色","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"暗色","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换配色","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"报告或查看主题与文档问题","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["缺陷","支持","路线图"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK 问题反馈","url":"https://github.com/pgsty/oink/issues"}],"language":"zh","quickLinks":[{"available":true,"description":"OINK 是一款只需 Hugo Extended 的技术文档主题：组件写在 Markdown 里，资源随主题分发，双语开箱可用，一份内容产出四种输出。","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["文档","docs"],"kind":"url","target":"self","title":"文档","url":"/zh/docs/"},{"available":true,"description":"OINK 工程实践、沉浸式阅读指南与发布注记","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["博客","blog"],"kind":"url","target":"self","title":"博客","url":"/zh/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+
+<script src="/js/actions.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Components on OINK</title>
+    <link>http://localhost:1313/categories/components/</link>
+    <description>Recent content in Components on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Thu, 27 Aug 2026 18:47:44 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/categories/components/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>Callouts</title>
+        <link>http://localhost:1313/docs/components/callout/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/callout/</guid>
+        <description>&lt;p&gt;A callout is a GitHub / Obsidian style blockquote: &lt;code&gt;&amp;gt; [!TYPE]&lt;/code&gt; on the first&#xA;line, the body underneath. Use it to lift a prerequisite, a warning or an aside&#xA;out of the running text; if a sentence in the prose says it, a callout is not&#xA;needed.&lt;/p&gt;&#xA;&lt;h2 id=&#34;minimal&#34;&gt;Shortest form&#xA;&lt;/h2&gt;&#xA;&lt;div class=&#34;td-code td-code--titled&#34; id=&#34;td-code-31213a44-fence-0&#34; data-td-code data-td-code-auto-id&#xA;     data-td-language=&#34;markdown&#34; data-td-line-count=&#34;2&#34; role=&#34;group&#34; aria-labelledby=&#34;td-code-31213a44-fence-0-title&#34;&gt;&#xA;  &lt;div class=&#34;td-code__header&#34;&gt;&#xA;    &lt;span class=&#34;td-code__filename&#34; id=&#34;td-code-31213a44-fence-0-title&#34; title=&#34;Source&#34;&gt;Source&lt;/span&gt;&#xA;  &lt;/div&gt;&#xA;  &lt;div class=&#34;td-code__viewport&#34; id=&#34;td-code-31213a44-fence-0-viewport&#34; data-td-code-viewport&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;&amp;gt; &lt;/span&gt;&lt;span class=&#34;ge&#34;&gt;[!NOTE]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; Hugo Modules need Go on the machine; an offline archive does not.&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;Note&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;Hugo Modules need Go on the machine; an offline archive does not.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Images</title>
+        <link>http://localhost:1313/docs/components/image/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/image/</guid>
+        <description>&lt;p&gt;There is one way to write an image: Markdown&amp;rsquo;s &lt;code&gt;![alt text](source &amp;quot;title&amp;quot;)&lt;/code&gt;. An&#xA;image standing alone as its own paragraph can be followed by a &lt;code&gt;{…}&lt;/code&gt; attribute&#xA;line, making it a captioned figure, a zoom candidate, a numbered figure, or a&#xA;derivative processed by Hugo. The theme has no image shortcode.&lt;/p&gt;&#xA;&lt;h2 id=&#34;minimal&#34;&gt;Shortest form&#xA;&lt;/h2&gt;&#xA;&lt;div class=&#34;td-code td-code--titled&#34; id=&#34;td-code-30676200-fence-0&#34; data-td-code data-td-code-auto-id&#xA;     data-td-language=&#34;markdown&#34; data-td-line-count=&#34;1&#34; role=&#34;group&#34; aria-labelledby=&#34;td-code-30676200-fence-0-title&#34;&gt;&#xA;  &lt;div class=&#34;td-code__header&#34;&gt;&#xA;    &lt;span class=&#34;td-code__filename&#34; id=&#34;td-code-30676200-fence-0-title&#34; title=&#34;Source&#34;&gt;Source&lt;/span&gt;&#xA;  &lt;/div&gt;&#xA;  &lt;div class=&#34;td-code__viewport&#34; id=&#34;td-code-30676200-fence-0-viewport&#34; data-td-code-viewport&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;![&lt;span class=&#34;nt&#34;&gt;The OINK documentation shell: sidebar, article and table of contents&lt;/span&gt;](&lt;span class=&#34;na&#34;&gt;oink-shell.webp&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;img class=&#34;td-image&#34; src=&#34;http://localhost:1313/docs/components/image/oink-shell.webp&#34; alt=&#34;The OINK documentation shell: sidebar, article and table of contents&#34; width=&#34;1200&#34; height=&#34;771&#34; loading=&#34;lazy&#34; decoding=&#34;async&#34;&gt;&lt;p&gt;This image sits in the same directory as the page (a page bundle), so the theme&#xA;reads its intrinsic size and writes &lt;code&gt;width&lt;/code&gt;/&lt;code&gt;height&lt;/code&gt;, and the page does not&#xA;shift while loading; every image is lazy-loaded. Alternative text serves screen&#xA;readers and search engines and should always be written; an empty alt marks a&#xA;decorative image, which zoom skips.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Code Blocks</title>
+        <link>http://localhost:1313/docs/components/code/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/code/</guid>
+        <description>&lt;p&gt;A code block is an ordinary Markdown fence. Highlighting is done at build time&#xA;by Chroma, which Hugo embeds; there is no highlighter in the browser. Use it for&#xA;commands, configuration snippets and source. The &lt;code&gt;{…}&lt;/code&gt; attributes on the fence&amp;rsquo;s&#xA;info line decide the title bar, copy behaviour, line numbers and line anchors.&#xA;Diagram-style fences (&lt;code&gt;mermaid&lt;/code&gt;, &lt;code&gt;echarts&lt;/code&gt;, &lt;code&gt;filetree&lt;/code&gt; and friends) never take&#xA;this path — each has its own render hook.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Components</title>
+        <link>http://localhost:1313/docs/components/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/</guid>
+        <description>&lt;p&gt;This section answers one question: how do I write this component in Markdown?&#xA;Every page has the same shape — the shortest example, progressively richer&#xA;examples, the output matrix, the parameter table, the limits. For syntax at a&#xA;glance, use the cheatsheet below.&lt;/p&gt;&#xA;&lt;h2 id=&#34;two-forms&#34;&gt;Two forms&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;A component&amp;rsquo;s first form is Markdown itself: blockquotes, lists, tables,&#xA;images, fences — plus a single &lt;code&gt;{…}&lt;/code&gt; attribute line right after them. The&#xA;native form stays readable on GitHub and in any Markdown editor, and the&#xA;Markdown output keeps the source rather than the rendered HTML.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Tabs</title>
+        <link>http://localhost:1313/docs/components/tabs/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/tabs/</guid>
+        <description>&lt;p&gt;Tabs put equivalent alternatives side by side: package managers, distributions,&#xA;YAML / TOML / JSON, an environment variable versus a configuration key. Ordered&#xA;steps and unrelated content do not belong in tabs — the reader sees only one&#xA;panel at a time.&lt;/p&gt;&#xA;&lt;p&gt;The native form is a &lt;code&gt;tab&lt;/code&gt; attribute on adjacent blocks. Reach for the&#xA;&lt;code&gt;tabs&lt;/code&gt;/&lt;code&gt;tab&lt;/code&gt; shortcode only when the panels hold running text: several&#xA;paragraphs, lists, callouts. Both forms share one runtime, one DOM and the same&#xA;keyboard behaviour.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Tables</title>
+        <link>http://localhost:1313/docs/components/table/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/table/</guid>
+        <description>&lt;p&gt;A table is an ordinary GFM pipe table. The theme&amp;rsquo;s table render hook wraps every&#xA;one in a horizontally scrollable region, and the &lt;code&gt;{…}&lt;/code&gt; attribute line underneath&#xA;decides which kind of table it is: captioned, a compatibility matrix, a field&#xA;list, a numbered table, or a tab set. Merged cells, sorting and filtering are&#xA;out of scope; when you need them, change how the data is presented.&lt;/p&gt;&#xA;&lt;h2 id=&#34;minimal&#34;&gt;Shortest form&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Without an attribute line it is just a table. Alignment still comes from the&#xA;delimiter row, and header cells are &lt;code&gt;th scope=&amp;quot;col&amp;quot;&lt;/code&gt;.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Fields</title>
+        <link>http://localhost:1313/docs/components/fields/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/fields/</guid>
+        <description>&lt;p&gt;Fields render &amp;ldquo;a list of named values with metadata and a description&amp;rdquo; as a&#xA;responsive definition list: the name gets its own line, type / required /&#xA;default sit beside it as small chips, the description starts on the next line,&#xA;and every entry carries its own anchor. Use it for configuration keys, command&#xA;flags and API fields. When readers need to compare many rows across the same&#xA;columns, keep a plain table; when the content is a sequence of actions, use&#xA;steps.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Steps</title>
+        <link>http://localhost:1313/docs/components/steps/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/steps/</guid>
+        <description>&lt;p&gt;Steps are an ordered list with numbered dots and a rule running through them: a&#xA;plain ordered list plus a &lt;code&gt;{.steps}&lt;/code&gt; marker line. The dots and the rule are&#xA;drawn in CSS and no script is loaded. Use it for procedures that have an order.&#xA;Parallel items with no order belong in a plain list or in cards.&lt;/p&gt;&#xA;&lt;p&gt;There are two spellings: an ordered list plus &lt;code&gt;{.steps}&lt;/code&gt; (the default choice),&#xA;and the &lt;code&gt;{{% steps %}}&lt;/code&gt; shortcode, for when each step needs its own heading&#xA;and those headings belong in the table of contents.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Cards</title>
+        <link>http://localhost:1313/docs/components/cards/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/cards/</guid>
+        <description>&lt;p&gt;Cards are a set of parallel links: each card is a linked title plus a sentence,&#xA;and the grid adapts to the container width. They suit section landing pages,&#xA;&amp;ldquo;what to read next&amp;rdquo;, and a handful of parallel entry points. They do not suit&#xA;running prose (use paragraphs) or a wall of images (use a&#xA;&lt;a href=&#34;http://localhost:1313/docs/components/gallery/&#34;&gt;gallery&lt;/a&gt;).&lt;/p&gt;&#xA;&lt;h2 id=&#34;minimal&#34;&gt;Shortest form&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;A link list with &lt;code&gt;{.cards}&lt;/code&gt; is a card grid. The link is the title; whatever&#xA;follows &lt;code&gt;—&lt;/code&gt; is the description.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>FileTree</title>
+        <link>http://localhost:1313/docs/components/filetree/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/filetree/</guid>
+        <description>&lt;p&gt;A file tree is a &lt;code&gt;filetree&lt;/code&gt; fence whose body is the listing itself: indentation&#xA;is depth, a trailing &lt;code&gt;/&lt;/code&gt; marks a directory, and everything after &lt;code&gt;#&lt;/code&gt; is a&#xA;comment. Use it to explain the part of a directory structure that concerns the&#xA;reader, one annotation at a time. When the reader has to copy the listing&#xA;verbatim, use an ordinary code block.&lt;/p&gt;&#xA;&lt;h2 id=&#34;minimal&#34;&gt;Shortest form&#xA;&lt;/h2&gt;&#xA;&lt;div class=&#34;td-code td-code--titled&#34; id=&#34;td-code-dcf303b2-fence-0&#34; data-td-code data-td-code-auto-id&#xA;     data-td-language=&#34;markdown&#34; data-td-line-count=&#34;8&#34; role=&#34;group&#34; aria-labelledby=&#34;td-code-dcf303b2-fence-0-title&#34;&gt;&#xA;  &lt;div class=&#34;td-code__header&#34;&gt;&#xA;    &lt;span class=&#34;td-code__filename&#34; id=&#34;td-code-dcf303b2-fence-0-title&#34; title=&#34;Source&#34;&gt;Source&lt;/span&gt;&#xA;  &lt;/div&gt;&#xA;  &lt;div class=&#34;td-code__viewport&#34; id=&#34;td-code-dcf303b2-fence-0-viewport&#34; data-td-code-viewport&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt;```filetree&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;- content/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  - _index.md&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  - docs/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  - blog/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;- hugo.yml&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;- go.mod&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt;```&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;pre class=&#34;td-filetree-source&#34;&gt;&lt;code class=&#34;language-filetree&#34;&gt;- content/&#xA;  - _index.md&#xA;  - docs/&#xA;  - blog/&#xA;- hugo.yml&#xA;- go.mod&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Bullets (&lt;code&gt;-&lt;/code&gt;, &lt;code&gt;*&lt;/code&gt;, &lt;code&gt;+&lt;/code&gt;) may be omitted; the result is the same. An entry with&#xA;children is a directory. Without children, a trailing &lt;code&gt;/&lt;/code&gt; tells the theme it is&#xA;one.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Math</title>
+        <link>http://localhost:1313/docs/components/math/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/math/</guid>
+        <description>&lt;p&gt;Mathematics is rendered by KaTeX at build time into HTML + MathML. A page with&#xA;formulas gains one local KaTeX stylesheet and nothing else — no JavaScript, no&#xA;request to a remote maths service. Inline formulas are &lt;code&gt;\(…\)&lt;/code&gt;, display&#xA;formulas are &lt;code&gt;$$…$$&lt;/code&gt; or &lt;code&gt;\[…\]&lt;/code&gt;, and there are &lt;code&gt;math&lt;/code&gt; and &lt;code&gt;chem&lt;/code&gt; fences. For&#xA;TikZ drawings or macro packages KaTeX does not support, use a pre-rendered&#xA;&lt;a href=&#34;http://localhost:1313/docs/components/image/&#34;&gt;image&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;minimal&#34;&gt;Shortest form&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;An inline formula sits inside a sentence, with the surrounding spaces and&#xA;punctuation outside the delimiters.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Mermaid</title>
+        <link>http://localhost:1313/docs/components/mermaid/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/mermaid/</guid>
+        <description>&lt;p&gt;A &lt;code&gt;mermaid&lt;/code&gt; fence renders text as a flowchart, sequence diagram, Gantt chart,&#xA;class diagram, ER diagram or state diagram. The diagram exists as source: it goes&#xA;into Git, it reviews as a diff, and search finds it. Rendering happens in the&#xA;reader&amp;rsquo;s browser with the Mermaid copy the theme ships — no external service is&#xA;contacted. Diagrams that need pixel-level control belong in an SVG, used as an&#xA;&lt;a href=&#34;http://localhost:1313/docs/components/image/&#34;&gt;image&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;minimal&#34;&gt;Shortest form&#xA;&lt;/h2&gt;&#xA;&lt;div class=&#34;td-code td-code--titled&#34; id=&#34;td-code-64dc8f05-fence-0&#34; data-td-code data-td-code-auto-id&#xA;     data-td-language=&#34;markdown&#34; data-td-line-count=&#34;7&#34; role=&#34;group&#34; aria-labelledby=&#34;td-code-64dc8f05-fence-0-title&#34;&gt;&#xA;  &lt;div class=&#34;td-code__header&#34;&gt;&#xA;    &lt;span class=&#34;td-code__filename&#34; id=&#34;td-code-64dc8f05-fence-0-title&#34; title=&#34;Source&#34;&gt;Source&lt;/span&gt;&#xA;  &lt;/div&gt;&#xA;  &lt;div class=&#34;td-code__viewport&#34; id=&#34;td-code-64dc8f05-fence-0-viewport&#34; data-td-code-viewport&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt;```mermaid&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;flowchart LR&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  content[&amp;#34;content/&amp;#34;] --&amp;gt; Hugo&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  config[&amp;#34;hugo.yml&amp;#34;] --&amp;gt; Hugo&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  theme[&amp;#34;OINK theme&amp;#34;] --&amp;gt; Hugo&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Hugo --&amp;gt; site[&amp;#34;public/&amp;#34;]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt;```&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;pre class=&#34;td-mermaid-source&#34;&gt;&lt;code class=&#34;language-mermaid&#34;&gt;flowchart LR&#xA;  content[&amp;#34;content/&amp;#34;] --&amp;gt; Hugo&#xA;  config[&amp;#34;hugo.yml&amp;#34;] --&amp;gt; Hugo&#xA;  theme[&amp;#34;OINK theme&amp;#34;] --&amp;gt; Hugo&#xA;  Hugo --&amp;gt; site[&amp;#34;public/&amp;#34;]&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The fence language is &lt;code&gt;mermaid&lt;/code&gt; and there is no other switch. Only when the&#xA;theme sees such a fence does it add the Mermaid runtime to that page, and ten&#xA;diagrams on one page still load it once.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>PlantUML</title>
+        <link>http://localhost:1313/docs/components/plantuml/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/plantuml/</guid>
+        <description>&lt;p&gt;A &lt;code&gt;plantuml&lt;/code&gt; fence holds PlantUML source. The browser compresses and encodes it,&#xA;appends it to the URL of a PlantUML server, and gets an SVG back. It suits&#xA;sequence, class, component, activity and use-case diagrams that need the full&#xA;expressiveness of UML. Rendering depends on that server: the theme ships no&#xA;default endpoint, and &lt;code&gt;enable: true&lt;/code&gt; without &lt;code&gt;svg_image_url&lt;/code&gt; fails the build.&#xA;With no server available, use &lt;a href=&#34;http://localhost:1313/docs/components/mermaid/&#34;&gt;Mermaid&lt;/a&gt; instead.&lt;/p&gt;&#xA;&lt;div class=&#34;td-callout td-callout--warning&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-triangle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;This page shows source only, not rendered diagrams&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;PlantUML has to reach a server you run, and this site assumes no endpoint on&#xA;the reader&amp;rsquo;s behalf. In the current theme version the &lt;code&gt;plantuml&lt;/code&gt; fence also&#xA;double-escapes &lt;code&gt;&amp;lt;&lt;/code&gt;, &lt;code&gt;&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;amp;&lt;/code&gt; and &lt;code&gt;&amp;quot;&lt;/code&gt;, so source with arrows or quotes comes&#xA;back from the endpoint as a &lt;code&gt;Syntax Error?&lt;/code&gt; image (see &lt;a href=&#34;http://localhost:1313/docs/components/plantuml/#limits&#34;&gt;Limits&lt;/a&gt;).&#xA;Every snippet below is correct PlantUML in itself.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Markmap</title>
+        <link>http://localhost:1313/docs/components/markmap/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/markmap/</guid>
+        <description>&lt;p&gt;The body of a &lt;code&gt;markmap&lt;/code&gt; fence is a plain Markdown outline: headings and lists&#xA;give the hierarchy, and the browser draws it as a tree you can expand and&#xA;collapse. It suits showing &amp;ldquo;what this section covers&amp;rdquo; at one glance. For flows&#xA;with direction and conditions, use &lt;a href=&#34;http://localhost:1313/docs/components/mermaid/&#34;&gt;Mermaid&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;minimal&#34;&gt;Shortest form&#xA;&lt;/h2&gt;&#xA;&lt;div class=&#34;td-code td-code--titled&#34; id=&#34;td-code-68b37749-fence-0&#34; data-td-code data-td-code-auto-id&#xA;     data-td-language=&#34;markdown&#34; data-td-line-count=&#34;14&#34; role=&#34;group&#34; aria-labelledby=&#34;td-code-68b37749-fence-0-title&#34;&gt;&#xA;  &lt;div class=&#34;td-code__header&#34;&gt;&#xA;    &lt;span class=&#34;td-code__filename&#34; id=&#34;td-code-68b37749-fence-0-title&#34; title=&#34;Source&#34;&gt;Source&lt;/span&gt;&#xA;  &lt;/div&gt;&#xA;  &lt;div class=&#34;td-code__viewport&#34; id=&#34;td-code-68b37749-fence-0-viewport&#34; data-td-code-viewport&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt;```markmap&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# OINK&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;## Local-first&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;- every runtime ships with the theme&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;- no CDN involved&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;## Markdown-native&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;- components are fences and attribute lines&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;- usable without writing a shortcode&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;## Four output states&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;- HTML&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;- print&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;- Markdown&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;- RSS&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt;```&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-markmap&#34;&gt;# OINK&#xA;## Local-first&#xA;- every runtime ships with the theme&#xA;- no CDN involved&#xA;## Markdown-native&#xA;- components are fences and attribute lines&#xA;- usable without writing a shortcode&#xA;## Four output states&#xA;- HTML&#xA;- print&#xA;- Markdown&#xA;- RSS&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;The first-level heading is the root; other headings and list items hang under it&#xA;by indentation. Click the dot on a node to fold or unfold that branch, scroll to&#xA;zoom, drag to pan. The toolbar at the bottom right offers zoom, fit-to-window&#xA;and download-as-SVG.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Draw.io</title>
+        <link>http://localhost:1313/docs/components/drawio/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/drawio/</guid>
+        <description>&lt;p&gt;The Draw.io integration has neither a fence nor a shortcode — it uses plain&#xA;Markdown images. Tick &amp;ldquo;Include a copy of my diagram&amp;rdquo; when exporting from&#xA;Draw.io and the SVG or PNG carries an &lt;code&gt;mxfile&lt;/code&gt; copy inside it; the theme&amp;rsquo;s&#xA;runtime spots that copy and adds an edit button to the image. It suits diagrams&#xA;readers are meant to take away and change. A diagram that is only there to be&#xA;looked at is an ordinary &lt;a href=&#34;http://localhost:1313/docs/components/image/&#34;&gt;image&lt;/a&gt;.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>ECharts</title>
+        <link>http://localhost:1313/docs/components/echarts/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/echarts/</guid>
+        <description>&lt;p&gt;The body of an &lt;code&gt;echarts&lt;/code&gt; fence is an ECharts option object in YAML or JSON — not&#xA;code. Use it for quantitative charts that need axes, series and a legend. For&#xA;relationships and flows use &lt;a href=&#34;http://localhost:1313/docs/components/mermaid/&#34;&gt;Mermaid&lt;/a&gt;; for order and&#xA;hierarchy use &lt;a href=&#34;http://localhost:1313/docs/components/infographic/&#34;&gt;Infographic&lt;/a&gt;. Hugo parses the&#xA;options at build time and fails the build if they do not parse; the browser&#xA;draws with the ECharts copy the theme ships, and only a page that uses it loads&#xA;the runtime.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Infographic</title>
+        <link>http://localhost:1313/docs/components/infographic/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/infographic/</guid>
+        <description>&lt;p&gt;An &lt;code&gt;infographic&lt;/code&gt; fence picks an AntV template and renders &amp;ldquo;a title plus a list&#xA;of items&amp;rdquo; as an infographic. Use it for structure: order, hierarchy, comparison.&#xA;When you need axes and numeric precision use&#xA;&lt;a href=&#34;http://localhost:1313/docs/components/echarts/&#34;&gt;ECharts&lt;/a&gt;; when you need a flow with conditional&#xA;branches use &lt;a href=&#34;http://localhost:1313/docs/components/mermaid/&#34;&gt;Mermaid&lt;/a&gt;. The fence body is data, and&#xA;it stays readable text on GitHub.&lt;/p&gt;&#xA;&lt;h2 id=&#34;minimal&#34;&gt;Shortest form&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;The first line is &lt;code&gt;infographic &amp;lt;template&amp;gt;&lt;/code&gt;, followed by a &lt;code&gt;data&lt;/code&gt; block: &lt;code&gt;title&lt;/code&gt;&#xA;is the title and every entry under &lt;code&gt;items&lt;/code&gt; needs at least a &lt;code&gt;label&lt;/code&gt;.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Gallery</title>
+        <link>http://localhost:1313/docs/components/gallery/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/gallery/</guid>
+        <description>&lt;p&gt;A gallery arranges related images in a responsive grid, one image per line&#xA;inside the fence. It suits several views of one thing: a few screenshots, a few&#xA;states, a few colour schemes. A single image is an&#xA;&lt;a href=&#34;http://localhost:1313/docs/components/image/&#34;&gt;image&lt;/a&gt;, and images with no order or comparison between&#xA;them do not belong in one gallery.&lt;/p&gt;&#xA;&lt;h2 id=&#34;minimal&#34;&gt;Shortest form&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;One image per line, written as Markdown&amp;rsquo;s &lt;code&gt;![alt](src)&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;div class=&#34;td-code td-code--titled&#34; id=&#34;td-code-c7d36151-fence-0&#34; data-td-code data-td-code-auto-id&#xA;     data-td-language=&#34;markdown&#34; data-td-line-count=&#34;4&#34; role=&#34;group&#34; aria-labelledby=&#34;td-code-c7d36151-fence-0-title&#34;&gt;&#xA;  &lt;div class=&#34;td-code__header&#34;&gt;&#xA;    &lt;span class=&#34;td-code__filename&#34; id=&#34;td-code-c7d36151-fence-0-title&#34; title=&#34;Source&#34;&gt;Source&lt;/span&gt;&#xA;  &lt;/div&gt;&#xA;  &lt;div class=&#34;td-code__viewport&#34; id=&#34;td-code-c7d36151-fence-0-viewport&#34; data-td-code-viewport&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt;```gallery&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;![OINK&amp;#39;s default documentation shell](/images/oink.webp)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;![The classic Docsy layout upstream](/images/docsy.webp)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s&#34;&gt;```&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;ul class=&#34;td-gallery td-gallery--static&#34;&gt;&lt;li class=&#34;td-gallery__item&#34;&gt;&lt;img class=&#34;td-gallery__image&#34; src=&#34;http://localhost:1313/images/oink.webp&#34; alt=&#34;OINK&amp;#39;s default documentation shell&#34; loading=&#34;lazy&#34; decoding=&#34;async&#34;&gt;&lt;/li&gt;&lt;li class=&#34;td-gallery__item&#34;&gt;&lt;img class=&#34;td-gallery__image&#34; src=&#34;http://localhost:1313/images/docsy.webp&#34; alt=&#34;The classic Docsy layout upstream&#34; loading=&#34;lazy&#34; decoding=&#34;async&#34;&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Alternative text is mandatory: it is the item&amp;rsquo;s title, the only text a screen&#xA;reader gets, and what decides whether the image can zoom. There is no column&#xA;parameter — the grid adapts to the container and drops columns on a narrow&#xA;screen.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Badge</title>
+        <link>http://localhost:1313/docs/components/badge/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/badge/</guid>
+        <description>&lt;p&gt;A badge is an inline status label that sits right after a name: Beta,&#xA;deprecated, v0.5, needs a server. It suits a status of one or two words. The&#xA;author picks a semantic tone and the theme picks the colour, with contrast&#xA;guaranteed in light and dark. When the status needs an explanation, a procedure&#xA;or a deadline, use prose or a &lt;a href=&#34;http://localhost:1313/docs/components/callout/&#34;&gt;callout&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;minimal&#34;&gt;Shortest form&#xA;&lt;/h2&gt;&#xA;&lt;div class=&#34;td-code td-code--titled&#34; id=&#34;td-code-0421c838-fence-0&#34; data-td-code data-td-code-auto-id&#xA;     data-td-language=&#34;markdown&#34; data-td-line-count=&#34;1&#34; role=&#34;group&#34; aria-labelledby=&#34;td-code-0421c838-fence-0-title&#34;&gt;&#xA;  &lt;div class=&#34;td-code__header&#34;&gt;&#xA;    &lt;span class=&#34;td-code__filename&#34; id=&#34;td-code-0421c838-fence-0-title&#34; title=&#34;Source&#34;&gt;Source&lt;/span&gt;&#xA;  &lt;/div&gt;&#xA;  &lt;div class=&#34;td-code__viewport&#34; id=&#34;td-code-0421c838-fence-0-viewport&#34; data-td-code-viewport&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{&amp;lt; badge text=&amp;#34;Beta&amp;#34; tone=&amp;#34;warning&amp;#34; &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;span class=&#34;td-badge td-badge--warning&#34;&gt;Beta&lt;/span&gt;&#xA;&lt;p&gt;&lt;code&gt;text&lt;/code&gt; is the only required parameter and must be a non-empty string.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Kbd</title>
+        <link>http://localhost:1313/docs/components/kbd/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/kbd/</guid>
+        <description>&lt;p&gt;Keys separate what the reader has to press from the prose. Use it for shortcuts&#xA;and chords: one positional parameter per key, and the theme draws the caps, adds&#xA;the separators, and gives screen readers a readable sequence. Command names,&#xA;flags and text to type are inline code — they are not physical keys.&lt;/p&gt;&#xA;&lt;h2 id=&#34;minimal&#34;&gt;Shortest form&#xA;&lt;/h2&gt;&#xA;&lt;div class=&#34;td-code td-code--titled&#34; id=&#34;td-code-16335da9-fence-0&#34; data-td-code data-td-code-auto-id&#xA;     data-td-language=&#34;markdown&#34; data-td-line-count=&#34;1&#34; role=&#34;group&#34; aria-labelledby=&#34;td-code-16335da9-fence-0-title&#34;&gt;&#xA;  &lt;div class=&#34;td-code__header&#34;&gt;&#xA;    &lt;span class=&#34;td-code__filename&#34; id=&#34;td-code-16335da9-fence-0-title&#34; title=&#34;Source&#34;&gt;Source&lt;/span&gt;&#xA;  &lt;/div&gt;&#xA;  &lt;div class=&#34;td-code__viewport&#34; id=&#34;td-code-16335da9-fence-0-viewport&#34; data-td-code-viewport&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Press {{&amp;lt; kbd &amp;#34;Ctrl&amp;#34; &amp;#34;K&amp;#34; &amp;gt;}} to open the command palette.&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;Press &lt;span class=&#34;td-kbd-sequence&#34;&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;&lt;span class=&#34;td-kbd-sequence__separator&#34; aria-hidden=&#34;true&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;visually-hidden&#34;&gt; with &lt;/span&gt;&lt;kbd&gt;K&lt;/kbd&gt;&lt;/span&gt; to open the command palette.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Includes</title>
+        <link>http://localhost:1313/docs/components/include/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/include/</guid>
+        <description>&lt;p&gt;Three shortcodes, one job each: &lt;code&gt;include&lt;/code&gt; puts another file&amp;rsquo;s contents into this&#xA;page, &lt;code&gt;param&lt;/code&gt; prints a page or site parameter, and &lt;code&gt;comment&lt;/code&gt; discards a passage.&#xA;They are for fragments reused across pages and constants scattered over many:&#xA;one set of install steps that appears on three pages is an &lt;code&gt;include&lt;/code&gt;, a version&#xA;number that appears on dozens is a &lt;code&gt;param&lt;/code&gt;, and either way you edit one place.&#xA;Content that appears on one page belongs on that page.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Asciinema</title>
+        <link>http://localhost:1313/docs/components/asciinema/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/docs/components/asciinema/</guid>
+        <description>&lt;p&gt;&lt;code&gt;asciinema&lt;/code&gt; renders a &lt;code&gt;.cast&lt;/code&gt; recording as a terminal player on the page. It&#xA;suits command-line walkthroughs: the text in the terminal is still text, it can&#xA;be selected and copied, and the near-two-minute install excerpt on this page is&#xA;about 110 KB. Graphical interfaces belong in screenshots or video — this&#xA;component plays terminal recordings only. The player and its styles ship with&#xA;the theme, nothing is downloaded at build time, no CDN is contacted at runtime,&#xA;and the runtime loads only on a page that uses it, and only in its HTML&#xA;output.&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

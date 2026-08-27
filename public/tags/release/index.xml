@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Release on OINK</title>
+    <link>http://localhost:1313/tags/release/</link>
+    <description>Recent content in Release on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Thu, 27 Aug 2026 16:59:53 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/tags/release/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>Oink 0.8.0 — A whole section in one fetch, the sidebar as data, and who links here</title>
+        <link>http://localhost:1313/blog/release/0.8.0/</link>
+        <pubDate>Thu, 27 Aug 2026 00:00:00 +0800</pubDate>
+        
+        <guid>http://localhost:1313/blog/release/0.8.0/</guid>
+        <description>&lt;p&gt;Oink 0.8.0 changes no component API and needs no content edits. Two of its&#xA;three additions serve the reader that arrives as a program. Every page already&#xA;publishes a &lt;code&gt;.md&lt;/code&gt; twin, which serves an agent that knows the page it wants; an&#xA;agent that wants the manual still had to crawl it a page at a time, discovering&#xA;links as it went. Two new output formats answer the other half: give me the&#xA;whole section, and tell me what is in the site before I fetch anything. The&#xA;third addition is for the reader who is a person — a page&amp;rsquo;s right rail can now&#xA;list the pages that link to it.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Oink 0.7.1 — Nothing leaves the page, and bad input stops breaking builds</title>
+        <link>http://localhost:1313/blog/release/0.7.1/</link>
+        <pubDate>Wed, 26 Aug 2026 00:00:00 +0800</pubDate>
+        
+        <guid>http://localhost:1313/blog/release/0.7.1/</guid>
+        <description>&lt;p&gt;Oink 0.7.1 changes no component API and needs no content edits. It closes the&#xA;code findings from an external review of the 0.7.0 line: one real privacy leak,&#xA;a class of configuration values that could stop a build outright, and three&#xA;components that had never been taught what a non-HTML output is.&lt;/p&gt;&#xA;&lt;div class=&#34;td-release-card-static&#34;&gt;&#xA;  &lt;p&gt;&lt;strong&gt;v0.7.1&lt;/strong&gt; · &lt;time datetime=&#34;2026-08-26&#34;&gt;2026-08-26&lt;/time&gt;&lt;/p&gt;&#xA;  &lt;ul&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/releases/tag/v0.7.1&#34;&gt;View release&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.7.1.tar.gz&#34;&gt;Source · tar.gz&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.7.1.zip&#34;&gt;Source · zip&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink&#34;&gt;pgsty/oink&lt;/a&gt;&lt;/li&gt;&#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;h2 id=&#34;at-a-glance&#34;&gt;At a glance&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Swagger UI no longer contacts the online validator. A published API page made&#xA;a third-party request on every view; it no longer makes any.&lt;/li&gt;&#xA;&lt;li&gt;A URL written into site configuration now passes the same safety check as one&#xA;written by an author.&lt;/li&gt;&#xA;&lt;li&gt;A mistyped number or boolean in &lt;code&gt;params&lt;/code&gt; warns and falls back instead of&#xA;ending an ordinary &lt;code&gt;hugo server&lt;/code&gt; session.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;swagger&lt;/code&gt;, &lt;code&gt;redoc&lt;/code&gt; and &lt;code&gt;asciinema&lt;/code&gt; emit a plain link in print, Markdown and&#xA;RSS, and load their runtime only in interactive HTML.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;swagger-validator&#34;&gt;Swagger stopped phoning home&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Swagger UI ships with an online validator enabled by default, pointed at&#xA;&lt;code&gt;validator.swagger.io&lt;/code&gt;. It skips that request for &lt;code&gt;localhost&lt;/code&gt;, which is why no&#xA;local preview and no browser test ever showed it — and why every &lt;em&gt;deployed&lt;/em&gt;&#xA;API page was quietly handing your spec URL to a third party. On an intranet&#xA;that URL is an internal hostname.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Oink 0.7.0 — A theme color, one typographic voice, and diagrams you can read</title>
+        <link>http://localhost:1313/blog/release/0.7.0/</link>
+        <pubDate>Tue, 25 Aug 2026 00:00:00 +0800</pubDate>
+        
+        <guid>http://localhost:1313/blog/release/0.7.0/</guid>
+        <description>&lt;p&gt;Oink 0.7.0 changes no component API. It works on the two surfaces a reader&#xA;actually spends time in — the shell around the page and the type on it — and&#xA;finishes a fence that had never been designed, only inherited.&lt;/p&gt;&#xA;&lt;div class=&#34;td-release-card-static&#34;&gt;&#xA;  &lt;p&gt;&lt;strong&gt;v0.7.0&lt;/strong&gt; · &lt;time datetime=&#34;2026-08-25&#34;&gt;2026-08-25&lt;/time&gt;&lt;/p&gt;&#xA;  &lt;ul&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/releases/tag/v0.7.0&#34;&gt;View release&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.7.0.tar.gz&#34;&gt;Source · tar.gz&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.7.0.zip&#34;&gt;Source · zip&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink&#34;&gt;pgsty/oink&lt;/a&gt;&lt;/li&gt;&#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;h2 id=&#34;at-a-glance&#34;&gt;At a glance&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;params.ui.theme_color&lt;/code&gt; gives a section its own accent, applied to the&#xA;shell&amp;rsquo;s &lt;em&gt;grounds&lt;/em&gt; rather than to the prose.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;params.ui.fonts&lt;/code&gt; reaches all seven typography roles; a Book no longer&#xA;carries a face of its own.&lt;/li&gt;&#xA;&lt;li&gt;A &lt;code&gt;mermaid&lt;/code&gt; fence is a figure: centred, unframed, redrawn in place when the&#xA;colour scheme changes, and openable at full size in a pan/zoom dialog.&lt;/li&gt;&#xA;&lt;li&gt;Inline code is crimson ink on a hairline wash instead of a grey pill.&lt;/li&gt;&#xA;&lt;li&gt;First-party browser behaviour publishes as stable capability chunks under&#xA;&lt;code&gt;js/chunks/&lt;/code&gt;, so a page selects scripts instead of minting its own bundle.&lt;/li&gt;&#xA;&lt;li&gt;Configuration schemas are generated from the resolvers, not maintained by&#xA;hand.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;theme-color&#34;&gt;A theme color&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;params.ui.theme_color&lt;/code&gt; takes a &lt;code&gt;#rgb&lt;/code&gt; or &lt;code&gt;#rrggbb&lt;/code&gt; hex and tints the shell&amp;rsquo;s&#xA;accent grounds: the selected sidebar row and the ground its neighbours take&#xA;under the pointer, hover washes, the outline pill with its travelling rail and&#xA;dot, tag and chip hovers, a card&amp;rsquo;s hovered edge, a share button&amp;rsquo;s hover fill,&#xA;text selection, and focus rings.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Oink 0.6.0 — Immersive blogs, safer builds, smaller internals</title>
+        <link>http://localhost:1313/blog/release/0.6.0/</link>
+        <pubDate>Thu, 20 Aug 2026 00:00:00 +0800</pubDate>
+        
+        <guid>http://localhost:1313/blog/release/0.6.0/</guid>
+        <description>&lt;p&gt;Oink 0.6.0 keeps the component API established in 0.5 and improves the systems&#xA;around it: long-form reading, Blog discovery, attribution, release publishing,&#xA;build resilience, and maintainability.&lt;/p&gt;&#xA;&lt;p&gt;There is no new &lt;code&gt;article&lt;/code&gt; type or second shell. Immersive reading is a&#xA;configuration of the existing Blog shell, so articles remain in the same lists,&#xA;feeds, taxonomies, series, and pager sequence.&lt;/p&gt;&#xA;&lt;div class=&#34;td-release-card-static&#34;&gt;&#xA;  &lt;p&gt;&lt;strong&gt;v0.6.0&lt;/strong&gt; · &lt;time datetime=&#34;2026-08-20&#34;&gt;2026-08-20&lt;/time&gt;&lt;/p&gt;&#xA;  &lt;ul&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/releases/tag/v0.6.0&#34;&gt;View release&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.6.0.tar.gz&#34;&gt;Source · tar.gz&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.6.0.zip&#34;&gt;Source · zip&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink&#34;&gt;pgsty/oink&lt;/a&gt;&lt;/li&gt;&#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;h2 id=&#34;at-a-glance&#34;&gt;At a glance&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The Blog shell gains a full-bleed &lt;code&gt;hero&lt;/code&gt; image and an in-flow outline rail.&lt;/li&gt;&#xA;&lt;li&gt;Blog publishing gains profiles and bylines, series order, list/cards/table&#xA;indexes, and a local-first share bar.&lt;/li&gt;&#xA;&lt;li&gt;Vendored and translated pages gain optional, validated attribution.&lt;/li&gt;&#xA;&lt;li&gt;The theme no longer calls &lt;code&gt;errorf&lt;/code&gt;: ordinary previews warn and safely&#xA;degrade; publishing builds remain strict through &lt;code&gt;--panicOnWarning&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;Release metadata is now one &lt;code&gt;release_url&lt;/code&gt;, not a duplicated fact map.&lt;/li&gt;&#xA;&lt;li&gt;Repeated template work, page bundles, and checker builds have been reduced&#xA;without pruning Font Awesome or other public authoring assets.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;article-shell&#34;&gt;Immersive Blog presentation&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;An immersive page uses four independent front matter keys:&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Oink 0.5.0 — Component API v5 and the converged configuration</title>
+        <link>http://localhost:1313/blog/release/0.5.0/</link>
+        <pubDate>Tue, 18 Aug 2026 00:00:00 +0800</pubDate>
+        
+        <guid>http://localhost:1313/blog/release/0.5.0/</guid>
+        <description>&lt;p&gt;Oink 0.5.0 is the API-freeze release. It contains the change set that the 1.0&#xA;line will freeze: the component API v5 (native Markdown forms first, 29&#xA;shortcodes as full forms), configuration and front matter keys converged on&#xA;three rules, one naming namespace for everything the theme emits, the removal&#xA;of the 0.x compatibility layer and of the Docsy leftovers no site used, and a&#xA;migration toolkit that rewrites a 0.4 site. Every retired key, shape, or&#xA;shortcode fails the build with a message that names its replacement.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Oink 0.4.0 — Scenario components for complete publishing workflows</title>
+        <link>http://localhost:1313/blog/release/0.4.0/</link>
+        <pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/blog/release/0.4.0/</guid>
+        <description>&lt;p&gt;Oink 0.4.0 delivers the complete Scenario Components system. The original design&#xA;separated Reading &amp;amp; Release, Landing, and Book work into 0.4, 0.5, and 0.6&#xA;milestones. The public release consolidates those tracks into one signed&#xA;&lt;code&gt;v0.4.0&lt;/code&gt; tag so consumers can adopt one coherent contract instead of a chain of&#xA;interdependent previews.&lt;/p&gt;&#xA;&lt;p&gt;The release remains local-first: consumer sites still build with Hugo Extended&#xA;and Go, without Node.js, a browser-time API, or a CDN. Interactive behavior is&#xA;progressive enhancement; HTML, print, Markdown, and RSS output retain the&#xA;content needed to understand each surface.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Oink 0.3.0 — Authoring, navigation, and a lighter page</title>
+        <link>http://localhost:1313/blog/release/0.3.0/</link>
+        <pubDate>Wed, 12 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/blog/release/0.3.0/</guid>
+        <description>&lt;div class=&#34;td-release-card-static&#34;&gt;&#xA;  &lt;p&gt;&lt;strong&gt;v0.3.0&lt;/strong&gt; · &lt;time datetime=&#34;2026-08-12&#34;&gt;2026-08-12&lt;/time&gt;&lt;/p&gt;&#xA;  &lt;ul&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/releases/tag/v0.3.0&#34;&gt;View release&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.3.0.tar.gz&#34;&gt;Source · tar.gz&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.3.0.zip&#34;&gt;Source · zip&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink&#34;&gt;pgsty/oink&lt;/a&gt;&lt;/li&gt;&#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&lt;strong&gt;Publication gate:&lt;/strong&gt; the linked tag must resolve, the project site must pin&#xA;that exact tag, and the hosted checks must pass. Until then, treat this source&#xA;page as release-candidate material.&lt;/p&gt;&#xA;&lt;p&gt;Oink 0.3.0 is the authoring and navigation release. Writing a page gets a modern&#xA;code-block presentation and a set of small, everyday components; reading one&#xA;gets nested navigation and a Command Palette; and every page gets measurably&#xA;lighter because jQuery is gone.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Oink 0.2.0 — Richer content and sharper presentation</title>
+        <link>http://localhost:1313/blog/release/0.2.0/</link>
+        <pubDate>Mon, 10 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/blog/release/0.2.0/</guid>
+        <description>&lt;div class=&#34;td-release-card-static&#34;&gt;&#xA;  &lt;p&gt;&lt;strong&gt;v0.2.0&lt;/strong&gt; · &lt;time datetime=&#34;2026-08-10&#34;&gt;2026-08-10&lt;/time&gt;&lt;/p&gt;&#xA;  &lt;ul&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/releases/tag/v0.2.0&#34;&gt;View release&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.2.0.tar.gz&#34;&gt;Source · tar.gz&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.2.0.zip&#34;&gt;Source · zip&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink&#34;&gt;pgsty/oink&lt;/a&gt;&lt;/li&gt;&#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;Oink 0.2.0 focuses on the parts readers and authors touch most: the homepage,&#xA;brand presentation, blog discovery, section indexes, and instructional content.&#xA;It also turns the Oink project site into a clearer bilingual reference for the&#xA;theme&amp;rsquo;s current contracts.&lt;/p&gt;&#xA;&lt;p&gt;The module path, minimum Hugo version, and Hugo-only consumer build remain&#xA;unchanged. The one configuration rename that can affect an existing site is&#xA;documented in &lt;a href=&#34;http://localhost:1313/blog/release/0.2.0/#breaking-change&#34;&gt;Breaking change&lt;/a&gt;.&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Oink 0.1.0 — A stable local-first foundation</title>
+        <link>http://localhost:1313/blog/release/0.1.0/</link>
+        <pubDate>Sat, 08 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/blog/release/0.1.0/</guid>
+        <description>&lt;div class=&#34;td-release-card-static&#34;&gt;&#xA;  &lt;p&gt;&lt;strong&gt;v0.1.0&lt;/strong&gt; · &lt;time datetime=&#34;2026-08-08&#34;&gt;2026-08-08&lt;/time&gt;&lt;/p&gt;&#xA;  &lt;ul&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/releases/tag/v0.1.0&#34;&gt;View release&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.1.0.tar.gz&#34;&gt;Source · tar.gz&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.1.0.zip&#34;&gt;Source · zip&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink&#34;&gt;pgsty/oink&lt;/a&gt;&lt;/li&gt;&#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;Oink 0.1.0 is the first stable release of the Oink theme. It incorporates the&#xA;0.0.1 implementation preview and the stabilization work that followed: one&#xA;coherent documentation shell, a Hugo-only consumer build, local-first browser&#xA;assets, multilingual behavior derived from Hugo, and reusable content&#xA;components.&lt;/p&gt;&#xA;&lt;p&gt;This release keeps the module path &lt;code&gt;github.com/pgsty/oink&lt;/code&gt; and requires Hugo&#xA;Extended 0.160.1 or newer. A consuming site does not need Node.js, npm, PostCSS,&#xA;Autoprefixer, or a CDN to build and serve theme-owned functionality.&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

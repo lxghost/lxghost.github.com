@@ -1,0 +1,1244 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" dir="ltr" lang="en-US" data-td-typography="technical" data-td-theme-init>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#000000">
+
+<style>
+  html { background: Canvas; color: CanvasText; }
+  @media (prefers-color-scheme: dark) {
+    html { background: #0b0d12; color: #e6e6e6; }
+  }
+  html[data-td-theme-init] * { transition: none !important; }
+  [data-td-theme-toggle] > .td-shell-icon--sun { display: none !important; }
+  [data-td-theme-toggle] > [hidden] { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--moon { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--sun { display: inline-block !important; }
+</style>
+
+<script>
+  (function() {
+    const themeKey = 'td-color-theme';
+    let storedTheme = null;
+    try {
+      storedTheme = localStorage.getItem(themeKey);
+    } catch (_) {
+      
+      
+    }
+    let theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+    if (theme === 'auto') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    document.documentElement.classList.toggle('dark-mode', theme === 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<link rel="canonical" type="text/html" href="http://localhost:1313/docs/design/proposals/">
+<link rel="alternate" type="application/rss&#43;xml" href="http://localhost:1313/docs/design/proposals/index.xml">
+<link rel="alternate" type="text/markdown" href="http://localhost:1313/docs/design/proposals/index.md">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<title>Design proposals and PRDs | OINK</title>
+<meta name="description" content="The canonical bilingual home for OINK PRDs and designs that are still being evaluated.">
+<link rel="canonical" href="http://localhost:1313/docs/design/proposals/">
+<link rel="alternate" hreflang="en-US" href="http://localhost:1313/docs/design/proposals/">
+<link rel="alternate" hreflang="zh-CN" href="http://localhost:1313/zh/docs/design/proposals/">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:url" content="http://localhost:1313/docs/design/proposals/">
+  <meta property="og:site_name" content="OINK">
+  <meta property="og:title" content="Design proposals and PRDs">
+  <meta property="og:description" content="The canonical bilingual home for OINK PRDs and designs that are still being evaluated.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="Design proposals and PRDs">
+  <meta itemprop="description" content="The canonical bilingual home for OINK PRDs and designs that are still being evaluated.">
+  <meta itemprop="dateModified" content="2026-08-27T15:45:30+08:00">
+  <meta itemprop="wordCount" content="454">
+  <meta itemprop="keywords" content="Design">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Design proposals and PRDs">
+  <meta name="twitter:description" content="The canonical bilingual home for OINK PRDs and designs that are still being evaluated.">
+<link href="/scss/fontawesome.css" rel="stylesheet">
+<link href="/scss/main.css" rel="stylesheet">
+
+  </head>
+  <body class="td-section td-print-view">
+    <a class="td-skip-link d-print-none" href="#td-main-content">Skip to content</a>
+
+    
+<header class="td-site-header d-print-none" data-td-header>
+  <div class="td-site-container">
+    <nav class="td-site-nav" aria-label="Main navigation">
+      <a href="/" class="td-nav-brand" data-td-navbar-route
+         aria-label="OINK — Home">
+        <img src="/icons/logo.svg" alt="" class="td-nav-logo" width="22" height="22">
+        <span class="td-nav-title">OINK</span>
+      </a><div class="td-nav-links td-nav-menu-zone"><div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link active" href="/docs/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Docs"
+  data-td-navbar-region="desktop" data-td-navbar-label="Docs"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-docs-0" aria-expanded="false">
+  <i class="fa-solid fa-book" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Docs</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-docs-0" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/docs/about/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Introduction"
+  data-td-navbar-region="desktop" data-td-navbar-label="Introduction"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Introduction</span></a>
+<a class="td-nav-menu__item-link" href="/docs/start/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Get started"
+  data-td-navbar-region="desktop" data-td-navbar-label="Get started"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Get started</span></a>
+<a class="td-nav-menu__item-link" href="/docs/write/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Authoring"
+  data-td-navbar-region="desktop" data-td-navbar-label="Authoring"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Authoring</span></a>
+<a class="td-nav-menu__item-link" href="/docs/components/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Components"
+  data-td-navbar-region="desktop" data-td-navbar-label="Components"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-cubes" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Components</span></a>
+<a class="td-nav-menu__item-link" href="/docs/customize/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Customization"
+  data-td-navbar-region="desktop" data-td-navbar-label="Customization"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Customization</span></a>
+<a class="td-nav-menu__item-link" href="/docs/admin/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Operations"
+  data-td-navbar-region="desktop" data-td-navbar-label="Operations"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Operations</span></a>
+<a class="td-nav-menu__item-link active" href="/docs/design/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Design"
+  data-td-navbar-region="desktop" data-td-navbar-label="Design"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-compass-drafting" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Design</span></a>
+
+  </div>
+</div><a class="nav-link" href="/book/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Book"
+  data-td-navbar-region="desktop" data-td-navbar-label="Book"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Book</span></a>
+<a class="nav-link" href="/case/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Case"
+  data-td-navbar-region="desktop" data-td-navbar-label="Case"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Case</span></a>
+<div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link" href="/blog/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Blog"
+  data-td-navbar-region="desktop" data-td-navbar-label="Blog"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-blog-3" aria-expanded="false">
+  <i class="fa-solid fa-blog" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Blog</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-blog-3" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/blog/oink/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="OINK engineering"
+  data-td-navbar-region="desktop" data-td-navbar-label="OINK engineering"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">OINK engineering</span></a>
+<a class="td-nav-menu__item-link" href="/blog/release/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Releases"
+  data-td-navbar-region="desktop" data-td-navbar-label="Releases"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Releases</span></a>
+
+  </div>
+</div>
+      </div><div class="td-nav-links td-nav-util-zone">
+        <div class="td-nav-hover-menu td-nav-version-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-nav-hover-open
+            title="v0.8.0" aria-label="v0.8.0" aria-expanded="false"><i class="td-shell-icon td-shell-icon--code-branch fa-solid fa-code-branch" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="v0.8.0">
+            <span class="td-nav-hover-menu__option td-is-disabled"><strong>Versions</strong></span>
+            <a class="td-nav-hover-menu__option td-is-active" aria-current="page" href="https://oink.pgsty.com">v0.8.0</a>
+          </div>
+        </div>
+          <div class="td-language-selector td-language-selector--menu td-nav-util td-site-nav__language">
+  <a class="td-language-selector__trigger" href="/zh/docs/design/proposals/"
+    lang="zh-CN" hreflang="zh-CN" dir="ltr"
+    title="Switch language: 简体中文"
+    aria-label="Switch language: 简体中文" aria-haspopup="true" aria-expanded="false">
+    <i class="fa-solid fa-language" aria-hidden="true"></i>
+    <span>简体中文</span>
+  </a>
+  <ul aria-label="Choose language">
+    <li>
+      <span class="td-language-selector__item active" lang="en-US" dir="ltr" aria-current="page">English</span>
+    </li>
+    <li>
+      <a class="td-language-selector__item" href="/zh/docs/design/proposals/" lang="zh-CN" hreflang="zh-CN" dir="ltr">简体中文</a>
+    </li>
+  </ul>
+</div><div class="td-nav-hover-menu td-nav-theme-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-theme-toggle
+            title="Toggle color theme" aria-label="Toggle color theme" aria-expanded="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="Toggle color theme">
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="light" aria-pressed="false"><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i><span>Light</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="dark" aria-pressed="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><span>Dark</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="auto" aria-pressed="false"><i class="td-shell-icon td-shell-icon--contrast fa-solid fa-circle-half-stroke" aria-hidden="true"></i><span>System</span>
+            </button>
+          </div>
+        </div>
+        <a href="https://github.com/pgsty/oink" class="td-nav-github" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="td-shell-icon td-shell-icon--github fa-brands fa-github" aria-hidden="true"></i></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+    <div class="container-fluid td-print-shell">
+      <main id="td-main-content" class="td-print-document" tabindex="-1">
+        
+
+
+
+
+<div class="td-content">
+<div class="td-page-notice td-page-notice--primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<button type="button" class="btn btn-link p-0 align-baseline" data-td-action="print">Click here to print</button>.
+</p><p>
+<a href="/docs/design/proposals/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Design proposals and PRDs</h1>
+<div class="lead">The canonical bilingual home for OINK PRDs and designs that are still being evaluated.</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+  
+  
+
+  
+    
+    
+    <li>
+1: <a href="#pg-cf142e6e987c1637a09c2683b1d3b016">Backlinks and knowledge graph</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+2: <a href="#pg-7ed21127540d3783bca2f3d613580a43">Media convergence</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+3: <a href="#pg-5e18f4f0fdef06f22e02279e78201146">Bulk agent indexes</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+4: <a href="#pg-7be5d407e1731fe0d9afc340d1b6d80d">Book publication pipeline</a>
+
+
+    </li>
+  
+
+    </ul>
+<div class="content">
+      <div class="td-callout td-callout--warning" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="td-callout__label">Non-normative material</span></div>
+  <div class="td-callout__body">
+<p>A proposal describes behaviour that may not exist. Current behaviour is
+defined by the contracts, accepted decisions, implementation, and owning
+checkers. Never use a proposal as a configuration reference.</p>
+  </div>
+</div><p>This section is the canonical home for OINK product requirement documents,
+RFC-style designs, and unresolved maintainer proposals. Do not create a local
+<code>plan/</code>, <code>plans/</code>, <code>proposal/</code>, or parallel design tree in the theme repository
+or the documentation repository.</p>
+<h2 id="pg-c4144f0fbb65a66b7a949fd356225368--active-proposals">Active proposals
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Proposal</th>
+      <th scope="col">Current boundary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="/docs/design/proposals/knowledge-graph/">Backlinks and knowledge graph</a></td>
+      <td>G1 (static backlinks) is accepted, implemented on the theme&rsquo;s main branch, and ships with OINK 0.8.0; the local and global graphs (G2/G3) remain draft</td>
+    </tr>
+    <tr>
+      <td><a href="/docs/design/proposals/media-convergence/">Media convergence</a></td>
+      <td>Partially implemented; the media-result contract and Landing resource metadata shipped, M3 resolved for native-image processing, retirement (M4) open</td>
+    </tr>
+    <tr>
+      <td><a href="/docs/design/proposals/agent-indexes/">Bulk agent indexes</a></td>
+      <td>Accepted (2026-08-27); both outputs are implemented on the theme&rsquo;s main branch and ship with OINK 0.8.0, after which this proposal retires</td>
+    </tr>
+    <tr>
+      <td><a href="/docs/design/proposals/book-publication/">Book publication pipeline</a></td>
+      <td>Manifest and EPUB/PDF tooling are released — see <a href="/docs/design/architecture/">Architecture</a>; only consumer migration is still open here</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>The generated-configuration-schema proposal has been retired through the
+lifecycle: the behaviour is documented normatively in
+<a href="/docs/customize/config/#editor-schema">Configuration</a>, the long-lived
+rationale moved to the
+<a href="/docs/design/decisions/config-schema/">generated configuration schema decision</a>,
+and the draft text is preserved by Git history.</p>
+<h2 id="pg-c4144f0fbb65a66b7a949fd356225368--where-a-new-prd-goes">Where a new PRD goes
+</h2>
+<p>Create one English-primary page and its Simplified Chinese peer:</p>
+<div class="td-code td-code--untitled" id="td-code-b27f3f21-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="2">
+  <div class="td-code__viewport" id="td-code-b27f3f21-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">content/docs/design/proposals/&lt;slug&gt;.md
+</span></span><span class="line"><span class="cl">content/docs/design/proposals/&lt;slug&gt;.zh.md</span></span></code></pre></div></div>
+</div>
+<p>Use explicit, stable English heading IDs in both files. Keep code, keys, paths,
+versions, and API names unchanged in Chinese. A proposal begins with visible
+draft status and includes:</p>
+<ol>
+<li>status, owner, date, and affected contract surface;</li>
+<li>context and evidence;</li>
+<li>goals and explicit non-goals;</li>
+<li>proposed behaviour and output/accessibility/security boundaries;</li>
+<li>compatibility and migration impact;</li>
+<li>implementation and owning-checker plan;</li>
+<li>acceptance criteria and open decisions;</li>
+<li>a decision log for later changes to the proposal itself.</li>
+</ol>
+<p>Large experiments may add a dated page under
+<a href="/docs/design/research/"><code>../research/</code></a>, but temporary logs and generated
+artifacts stay outside Hugo content and outside Git.</p>
+<h2 id="pg-c4144f0fbb65a66b7a949fd356225368--lifecycle">Lifecycle
+</h2>
+<div class="td-code td-code--untitled" id="td-code-b27f3f21-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="7">
+  <div class="td-code__viewport" id="td-code-b27f3f21-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">draft proposal
+</span></span><span class="line"><span class="cl">    ├── rejected/superseded → remove from the active tree; preserve Git history
+</span></span><span class="line"><span class="cl">    └── accepted
+</span></span><span class="line"><span class="cl">          ├── implementation + owning checker
+</span></span><span class="line"><span class="cl">          ├── affected EN/ZH contract
+</span></span><span class="line"><span class="cl">          ├── accepted Design decision when rationale is durable
+</span></span><span class="line"><span class="cl">          └── changelog, migration, and user docs when their audiences need them</span></span></code></pre></div></div>
+</div>
+<p>Acceptance does not turn the PRD into a second contract. Move stable behaviour
+into the owning contract, stable rationale into Decisions, and user steps into
+the relevant guide. Then retire the proposal from active navigation. A local
+build, commit, tag, public module, consumer pin, and deployment remain separate
+completion states.</p>
+<h2 id="pg-c4144f0fbb65a66b7a949fd356225368--review-gate">Review gate
+</h2>
+<p>Before implementation, reviewers confirm that the proposal does not duplicate
+an existing shell, resolver, component family, or data authority. During
+implementation, a changed design updates this bilingual proposal before code
+silently diverges. Acceptance requires the narrow theme checker, the real
+documentation site, rendered EN/ZH, relevant outputs, accessibility, and
+responsive review.</p>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-cf142e6e987c1637a09c2683b1d3b016">1 - Backlinks and knowledge graph</h1>
+    <div class="lead">A draft three-stage design for deriving backlinks and local or global graph views from ordinary Hugo links.</div>
+	<div class="td-callout td-callout--important" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-exclamation" aria-hidden="true"></i><span class="td-callout__label">G1 implemented; G2/G3 remain draft</span></div>
+  <div class="td-callout__body">
+<p>On 2026-08-27 every G1 open decision was resolved and G1 (static backlinks)
+was accepted. It is implemented on the theme&rsquo;s main branch and ships with
+OINK 0.8.0. The local and global graphs (G2/G3) stay draft pending real-world
+evidence from G1; their names and configuration are not public API until
+accepted.</p>
+  </div>
+</div><h2 id="pg-cf142e6e987c1637a09c2683b1d3b016--premise">Premise
+</h2>
+<p>Reverse navigation and a view of connected pages are properties of the link
+graph, not of <code>[[wikilink]]</code> spelling. Hugo already accepts ordinary Markdown
+links and <code>ref</code> / <code>relref</code>. OINK can derive a graph from content authors already
+write, without adding a parser, Goldmark extension, or parallel authoring
+syntax.</p>
+<p>The first value is backlinks, not visualization. A static inbound-link list is
+useful without JavaScript and can degrade into print and Markdown. An
+interactive graph remains an optional enhancement over that complete list.</p>
+<h2 id="pg-cf142e6e987c1637a09c2683b1d3b016--goals-and-non-goals">Goals and non-goals
+</h2>
+<p>Goals:</p>
+<ul>
+<li>derive one language-local link index per build;</li>
+<li>show deterministic inbound links on a page;</li>
+<li>optionally show a bounded local neighbourhood;</li>
+<li>optionally publish a whole-site view and a machine-readable graph;</li>
+<li>preserve ordinary preview when an edited link is stale or incomplete.</li>
+</ul>
+<p>Non-goals:</p>
+<ul>
+<li>introducing <code>[[wikilink]]</code> syntax;</li>
+<li>indexing external, <code>mailto:</code>, same-page anchor, or self links;</li>
+<li>executing JavaScript to discover links already present in content;</li>
+<li>turning a visualization into the only way to navigate;</li>
+<li>promising perfect extraction from arbitrary shortcode parameters or raw HTML.</li>
+</ul>
+<h2 id="pg-cf142e6e987c1637a09c2683b1d3b016--delivery-stages">Delivery stages
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Stage</th>
+      <th scope="col">Deliverable</th>
+      <th scope="col">Runtime</th>
+      <th scope="col">Independent value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>G1</td>
+      <td>Language-local link index and backlink list</td>
+      <td>None</td>
+      <td>Reverse navigation in HTML, Print, and Markdown</td>
+    </tr>
+    <tr>
+      <td>G2</td>
+      <td>Local graph around the current page</td>
+      <td>Existing ECharts plus a small local runtime</td>
+      <td>Spatial view with G1 as the accessible fallback</td>
+    </tr>
+    <tr>
+      <td>G3</td>
+      <td>Global graph page and graph data output</td>
+      <td>Same runtime</td>
+      <td>Whole-site exploration and machine-readable edges</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Each stage is accepted separately. G1 does not wait for G2, and G2 does not
+force every page to load graph code.</p>
+<h2 id="pg-cf142e6e987c1637a09c2683b1d3b016--extraction-contract">Extraction contract
+</h2>
+<p>The proposed index scans source content once per language and records one edge
+per source/target pair. It strips fenced code and inline code before extracting
+ordinary Markdown links and <code>ref</code> / <code>relref</code>; then it resolves only internal
+pages, removes fragments for page identity, drops self-links, and deduplicates
+repeated references.</p>
+<p>The implementation must test at least:</p>
+<ul>
+<li>duplicate links collapse to one edge;</li>
+<li>fenced and inline code produce no edge;</li>
+<li>external, protocol-relative, mail, same-page anchor, and self links are
+excluded;</li>
+<li><code>ref</code> and <code>relref</code> are included;</li>
+<li>each language produces an independent graph;</li>
+<li>an unresolved derived edge warns or is reported by the focused checker
+without making ordinary <code>hugo server</code> unusable.</li>
+</ul>
+<p>Raw source scanning has known omissions. A URL stored in a custom shortcode
+parameter or raw <code>&lt;a href&gt;</code> may not appear. Those omissions must be documented
+instead of hidden behind a claim of a complete semantic graph.</p>
+<h2 id="pg-cf142e6e987c1637a09c2683b1d3b016--backlink-output">Backlink output
+</h2>
+<p>G1 renders an aside group in the right rail, a sibling of the table of contents
+and the taxonomy clouds: what is on this page beside what points at this page.
+The group is expanded by default and shows the first eight entries; the rest
+fold behind a native disclosure so a heavily referenced page cannot swallow the
+rail. The switch is the site key <code>params.ui.backlinks</code> (bare boolean, default
+off); a page overrides it with the prefix-free front matter key <code>backlinks</code>,
+and a section can cascade it. Order is deterministic: the stable page path —
+language-independent, naturally grouped with navigation, and needing no second
+ordering authority. The group uses ordinary links and is omitted when there are
+no inbound pages.</p>
+<p>Unresolvable derived edges are dropped silently and recorded as a known gap:
+G1 is a local navigation enhancement, not a link checker, and having it report
+broken links for the site would only duplicate warnings.</p>
+<p>Print and Markdown keep the readable list. RSS omits it unless feed-level
+research demonstrates that backlinks improve an article feed rather than
+creating noisy site navigation.</p>
+<h2 id="pg-cf142e6e987c1637a09c2683b1d3b016--interactive-graph-boundary">Interactive graph boundary
+</h2>
+<p>G2 reuses the locally vendored ECharts graph series. The current page is the
+centre; direct inbound and outbound neighbours form the default depth. A hard
+node cap prevents unreadable or expensive views. Keyboard focus, text
+alternatives, reduced motion, forced colours, narrow screens, and print are
+acceptance requirements, not later polish.</p>
+<p>If JavaScript or ECharts is unavailable, G1 remains complete and visible. The
+runtime is loaded only on pages that render a graph and must join the existing
+feature-bundle key so unlike pages cannot collide in the asset cache.</p>
+<h2 id="pg-cf142e6e987c1637a09c2683b1d3b016--global-output">Global output
+</h2>
+<p>G3 may add a dedicated graph page and an opt-in JSON output. The JSON schema
+would contain a version, language, nodes, and directed edges with stable URLs;
+it would not expose local file paths or unpublished pages. The output must be
+derived from the same index as G1 and G2 so three representations cannot drift.</p>
+<h2 id="pg-cf142e6e987c1637a09c2683b1d3b016--compatibility-and-migration">Compatibility and migration
+</h2>
+<p>Ordinary Markdown remains unchanged, so content migration is unnecessary.
+Configuration names remain undecided until a prototype proves the smallest
+surface. The default for every interactive or global output is off; a static
+backlink list may be considered separately because it is local navigation with
+no network or browser state.</p>
+<h2 id="pg-cf142e6e987c1637a09c2683b1d3b016--acceptance-criteria">Acceptance criteria
+</h2>
+<p>Acceptance requires a focused graph checker, extraction fixtures, HTML/Print/
+Markdown goldens, strict-build negative cases, browser accessibility and
+responsive tests, and a real bilingual-site build. Performance is measured on
+a representative large site, but a dated prototype timing is not a permanent
+budget.</p>
+<h2 id="pg-cf142e6e987c1637a09c2683b1d3b016--open-decisions">Open decisions
+</h2>
+<p>Every G1 question is resolved (see the decision log). Still open, and owned by
+G2/G3:</p>
+<ol>
+<li>Does the local graph expose one depth or a tightly capped second depth?</li>
+<li>Which page metadata, if any, is useful enough to enter graph JSON?</li>
+<li>Is G3 useful enough to justify a new output format before G1 and G2 have
+production evidence?</li>
+</ol>
+<h2 id="pg-cf142e6e987c1637a09c2683b1d3b016--decision-log">Decision log
+</h2>
+<ul>
+<li>2026-08-19: Drafted the three-stage design.</li>
+<li>2026-08-27: Resolved and accepted G1, scheduled for OINK 0.8.0. G1 is
+opt-in: the site key <code>params.ui.backlinks</code> is a bare boolean defaulting to
+off, pages override with <code>backlinks</code>, and no shell-type gating — policy
+belongs to the site and the page, not the shell. Ordering simplifies to a
+single stable-page-path sort, dropping the section → weight → title chain:
+one deterministic authority is enough for reverse navigation, and a
+multi-level sort would be a second navigation authority. Unresolvable edges
+drop silently and are recorded as a known gap, never warned. G2/G3 and the
+graph data output keep waiting for production evidence.</li>
+<li>2026-08-27: Design review moved the block from the page end to the right
+rail. Backlinks are page metadata and pair with the table of contents, while
+the page end is the reader&rsquo;s completion zone — share, feedback, provenance,
+pager, comments. The rail group also adds the eight-entry cap, with the rest
+behind a native disclosure.</li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-7ed21127540d3783bca2f3d613580a43">2 - Media convergence</h1>
+    <div class="lead">A draft for the remaining convergence between content images, numbered figures, Landing media, and featured-image selection.</div>
+	<div class="td-callout td-callout--important" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-exclamation" aria-hidden="true"></i><span class="td-callout__label">Partially implemented</span></div>
+  <div class="td-callout__body">
+<p>M1 (the shared media-result contract) and M2 (Landing resource metadata)
+are implemented on the theme&rsquo;s main branch, and M3 is resolved as option 2:
+processing stays exclusively on native Markdown images, and the full <code>fig</code>
+source form remains a container whose parameter list deliberately excludes
+<code>command</code>/<code>options</code>. M4 (compatibility retirement) stays open pending a
+consumer inventory. The sections below are the original design record.</p>
+  </div>
+</div><h2 id="pg-7ed21127540d3783bca2f3d613580a43--current-baseline">Current baseline
+</h2>
+<p>The content image hook, numbered <code>fig</code>, cards, and galleries resolve local page
+resources, section resources, global assets, static files, and explicit remote
+URLs through <code>content/image-resolve.html</code>. Raster resources can contribute
+intrinsic dimensions and processing derivatives. HTML Zoom eligibility is
+marked with <code>data-td-image-zoom</code>; the build-time detector only checks that
+theme-emitted marker.</p>
+<p>Standalone Markdown images can already combine caption or Book numbering with
+processing and a link. Numbered image figures share <code>td-figure</code> and
+<code>td-book-figure</code> semantics. Landing media passes the shared URL trust policy,
+while featured images intentionally use a ranking resolver because their job
+is to select a representative image rather than render one explicit source.</p>
+<h2 id="pg-7ed21127540d3783bca2f3d613580a43--remaining-problem">Remaining problem
+</h2>
+<p>The shared safety boundary is stronger than the shared media model. Landing
+media still does not obtain the same page-resource metadata and processing
+result as body images. Featured-image selection and explicit image resolution
+have separate result shapes. Some compatibility class names remain in markup,
+and Book&rsquo;s full <code>fig</code> form cannot express every processing option available to
+the native image hook.</p>
+<p>The design question is therefore no longer “replace seven image entry points.”
+It is whether the remaining surfaces can share a small result contract without
+erasing their different semantics.</p>
+<h2 id="pg-7ed21127540d3783bca2f3d613580a43--goals-and-non-goals">Goals and non-goals
+</h2>
+<p>Goals:</p>
+<ul>
+<li>define one normalized media-result shape for URL, source URL, dimensions,
+alternative text, attribution, processability, and external status;</li>
+<li>let explicit content images, Landing media, and representative images reuse
+that shape where their source semantics overlap;</li>
+<li>keep figure markup and Zoom eligibility single-owned;</li>
+<li>decide whether the full <code>fig</code> form needs processing or whether authors should
+use the native image form for processed numbered images;</li>
+<li>retire compatibility markup only after consumer evidence and a release note.</li>
+</ul>
+<p>Non-goals:</p>
+<ul>
+<li>adding a third-party lightbox or remote image service;</li>
+<li>changing image Zoom from opt-in to site policy by accident;</li>
+<li>giving galleries a new caption, sequence, or carousel model;</li>
+<li>merging non-image Book targets such as tables, equations, and examples into
+an image-only base class;</li>
+<li>making featured-image ranking identical to explicit image resolution.</li>
+</ul>
+<h2 id="pg-7ed21127540d3783bca2f3d613580a43--proposed-phases">Proposed phases
+</h2>
+<h3 id="pg-7ed21127540d3783bca2f3d613580a43--m1-result-contract">M1 — Result contract
+</h3>
+<p>Document the fields returned by the content and representative-image
+resolvers, then extract the intersection into one internal media-result
+contract. Keep source ranking in the featured resolver and source resolution in
+the content resolver. This is an internal refactor with byte-stable output.</p>
+<h3 id="pg-7ed21127540d3783bca2f3d613580a43--m2-landing-resource-metadata">M2 — Landing resource metadata
+</h3>
+<p>Allow Landing items to resolve eligible local resources through the media
+contract, gaining intrinsic dimensions and the same URL/security decision.
+Explicit width and height in Landing data continue to win. Remote and static
+sources remain valid but cannot pretend to have processable-resource metadata.</p>
+<h3 id="pg-7ed21127540d3783bca2f3d613580a43--m3-full-figure-capability">M3 — Full figure capability decision
+</h3>
+<p>Choose one of two answers:</p>
+<ol>
+<li>add processing arguments to the full <code>fig</code> source form and normalize them
+through the same processing helper; or</li>
+<li>keep processing exclusively on native Markdown images and document full
+<code>fig</code> as the container for arbitrary numbered block content.</li>
+</ol>
+<p>No implementation should leave both answers half-supported. Markdown/LLMS
+must link to the documented source or derivative consistently in both forms.</p>
+<h3 id="pg-7ed21127540d3783bca2f3d613580a43--m4-compatibility-retirement">M4 — Compatibility retirement
+</h3>
+<p>Inventory downstream CSS and JavaScript before removing old image-element
+classes or attributes. If a compatibility name is still used, retain it for a
+documented release window or migrate the owning site in the same release train.</p>
+<h2 id="pg-7ed21127540d3783bca2f3d613580a43--safety-output-and-accessibility">Safety, output, and accessibility
+</h2>
+<ul>
+<li>Image URLs keep the shared scheme and remote-host policy.</li>
+<li>Missing required alternative text warns and renders a decorative fallback
+only where the current contract permits it.</li>
+<li>Width and height never claim metadata that an SVG, static file, or remote
+source did not provide.</li>
+<li>Linked images are not Zoom targets; the runtime preserves dialog focus,
+keyboard close, reduced motion, and narrow-screen containment.</li>
+<li>Print, Markdown, RSS, and LLMS strip interaction markers while retaining the
+intended image, caption, attribution, number, and link.</li>
+</ul>
+<h2 id="pg-7ed21127540d3783bca2f3d613580a43--acceptance-criteria">Acceptance criteria
+</h2>
+<p>Each phase owns byte-level HTML and Markdown evidence, content and Landing
+resolver tests, URL/security checks, image-processing tests, Book targets,
+gallery/Zoom browser tests, and real-site EN/ZH narrow-screen review. The
+proposal is accepted only after the M3 capability choice is explicit.</p>
+<h2 id="pg-7ed21127540d3783bca2f3d613580a43--open-decisions">Open decisions
+</h2>
+<ol>
+<li>Is one shared result struct enough, or would a common lower-level URL/resource
+record keep resolver ownership clearer?</li>
+<li>Should Landing consume resource attribution, or only dimensions and URL?</li>
+<li>Does full <code>fig</code> processing solve a real consumer need now that native images
+support numbering, captions, links, and processing together?</li>
+<li>Which emitted compatibility names are still used by real consumers?</li>
+</ol>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-5e18f4f0fdef06f22e02279e78201146">3 - Bulk agent indexes</h1>
+    <div class="lead">Optional per-section full-text bundles and a stable navigation JSON, built on OINK&rsquo;s existing Markdown outputs and navigation authority.</div>
+	<div class="td-callout td-callout--important" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-exclamation" aria-hidden="true"></i><span class="td-callout__label">Implemented; ships with OINK 0.8.0</span></div>
+  <div class="td-callout__body">
+<p>Accepted on 2026-08-27 after resolving every open decision. Both outputs &ndash;
+the per-top-level-section <code>LLMSFULL</code> bundles and the <code>NAVJSON</code> navigation
+tree at the language root &ndash; are implemented on the theme&rsquo;s <code>main</code> branch and
+ship with OINK 0.8.0, after which this proposal retires; released behaviour is
+owned by the
+<a href="/docs/design/architecture/#outputs-and-runtime">Architecture contract</a>.
+OINK already shipped per-page Markdown, the in-language <code>llms.txt</code>, the HTML
+discovery link, and Copy Markdown; this page covers only the two new outputs.</p>
+  </div>
+</div><h2 id="pg-5e18f4f0fdef06f22e02279e78201146--current-baseline">Current baseline
+</h2>
+<p>A site can enable Hugo&rsquo;s Markdown output for pages and sections, and the <code>LLMS</code> home output that
+generates <code>llms.txt</code>. OINK renders shortcodes as semantic Markdown, keeps source URLs and the
+in-language LLMS index discoverable, and Copy Markdown reads the same alternative output URL. The
+theme declares output formats but never forces a site&rsquo;s <code>outputs</code> choice.</p>
+<p>Navigation already has an authority chain: an explicit <code>data/docs_nav.json</code> tree when present,
+otherwise the content tree and weights. The sidebar, the pager, and declared section indexes share
+that authority. Machine navigation output must derive from the same tree rather than invent ordering.</p>
+<h2 id="pg-5e18f4f0fdef06f22e02279e78201146--goals-and-non-goals">Goals and non-goals
+</h2>
+<p>Goals:</p>
+<ul>
+<li>Optionally assemble an in-language full-text bundle for each explicitly enabled top-level section;</li>
+<li>Optionally publish a versioned navigation JSON for agents and external tools;</li>
+<li>Reuse the human site&rsquo;s page renderer, page-inclusion rules, and navigation authority;</li>
+<li>Keep every output opt-in through Hugo output configuration;</li>
+<li>Validate links, language isolation, media types, and deterministic order.</li>
+</ul>
+<p>Non-goals:</p>
+<ul>
+<li>Replacing per-page Markdown or <code>llms.txt</code>;</li>
+<li>A new <code>params.oink.*</code> configuration tree;</li>
+<li>Scraping generated <code>public/</code> files during the Hugo build;</li>
+<li>Embedding private source paths, draft pages, or cross-language fallback;</li>
+<li>Promising that one giant full-text file fits every model context.</li>
+</ul>
+<h2 id="pg-5e18f4f0fdef06f22e02279e78201146--full-text-bundle">Full-text bundle
+</h2>
+<p>The <code>llms-full.txt</code> output concatenates the same semantic Markdown used for per-page output, with a
+stable, visible separator and source URL between pages. Version 1 implements per-top-level-section
+bundles only: each top-level section that explicitly enables the format in its <code>_index</code> front matter
+<code>outputs</code> gets one file per language. The whole-site single-file shape is deferred until real-site
+evidence shows per-section bundling is not enough — a giant single file both outgrows model contexts
+and couples every section&rsquo;s updates to one artifact.</p>
+<p>Hugo output configuration decides which sections receive the format, never a theme parameter. The
+theme ships a checker that reports mismatches between intent and actual output, but must not modify
+the site&rsquo;s output set.</p>
+<p>The bundle is assembled inside Hugo through the shared page-render partial; it never reads sibling
+artifacts from <code>public/</code> and never depends on output build order. File size is reported as evidence;
+no arbitrary threshold may let <code>--panicOnWarning</code> reject an otherwise legal publish.</p>
+<h2 id="pg-5e18f4f0fdef06f22e02279e78201146--navigation-json">Navigation JSON
+</h2>
+<p>The navigation JSON is a home output beside <code>llms.txt</code>: one file per language at the language root.
+It carries a schema version, the language, the root node, and recursive ordered nodes. Page nodes
+carry a stable ID (the in-language permalink path), title, HTML URL, Markdown URL when enabled,
+kind, and children — plus the description when one exists. Explicit external navigation nodes carry
+only a label, a URL, and the external kind.</p>
+<p>Nodes <strong>do not serialize <code>weight</code></strong>: array order is the contract, weight is the private mechanism
+that derives it, and publishing it would invite consumers to re-sort. The output follows the same
+visibility and ordering rules as the rendered sidebar, excluding drafts, headless resources, hidden
+navigation items, and pages unavailable in the current language, and never serializes local
+filenames.</p>
+<p>The format owns its JSON Schema (<code>schema/nav.v1.schema.json</code>, a hand-authored, versioned contract
+artifact outside the generated configuration schema&rsquo;s drift gate) and golden fixtures, and is marked
+<code>notAlternative</code> so Hugo never advertises it as a page-level alternate.</p>
+<h2 id="pg-5e18f4f0fdef06f22e02279e78201146--discovery-and-output-boundaries">Discovery and output boundaries
+</h2>
+<p><code>llms.txt</code> lists the enabled bundles and the navigation JSON by default — discovery belongs in the
+index file; that is what it is for. The HTML head keeps discovering per-page Markdown and the
+in-language LLMS index without stuffing every bulk artifact into every page.</p>
+<p>Shortcodes, Landing sections, Book targets, and interactive components keep their current Markdown
+degradation. The new outputs may not add component HTML, scripts, comments, feedback controls, or
+navigation chrome.</p>
+<h2 id="pg-5e18f4f0fdef06f22e02279e78201146--compatibility">Compatibility and migration
+</h2>
+<p>Both outputs default off; a site that does not enable them is byte-identical. Enabling is a
+site-side Hugo <code>outputs</code> choice — no new <code>params</code> keys, no renames, no migration steps. Disabling an
+output is a complete exit with no residue.</p>
+<h2 id="pg-5e18f4f0fdef06f22e02279e78201146--implementation-plan">Implementation and owning-checker plan
+</h2>
+<ol>
+<li>Output formats: <code>LLMSFULL</code> (<code>text/plain</code>, <code>baseName: llms-full</code>, <code>notAlternative</code>, section
+level) and <code>NAVJSON</code> (<code>application/json</code>, <code>notAlternative</code>, home level), declared beside the
+existing <code>MARKDOWN</code>/<code>LLMS</code> definitions.</li>
+<li>Templates: the section <code>llms-full</code> layout concatenates the shared per-page Markdown render
+partial in navigation order; the home navigation JSON layout walks the existing navigation
+authority partial rather than introducing a second tree traversal.</li>
+<li>Owning checker: a new <code>bin/check-agent-indexes.py</code> validates, on the <code>tests/site</code> fixture,
+language isolation, link resolvability, sidebar-consistent order, schema compliance, and
+byte-stable rebuilds, and reports each bundle&rsquo;s bytes and page count (report only, no ceiling
+gate).</li>
+<li>Goldens: the <code>check-goldens.py</code> matrix gains llms-full and navigation JSON fixtures.</li>
+<li>Documentation: the site gains a bilingual agent-index guide; <code>llms.txt</code> discovery behaviour
+folds into the existing LLMS documentation; this proposal retires through the lifecycle.</li>
+</ol>
+<h2 id="pg-5e18f4f0fdef06f22e02279e78201146--acceptance-criteria">Acceptance criteria
+</h2>
+<ul>
+<li>EN and ZH outputs contain only their own language&rsquo;s pages and URLs.</li>
+<li>Every listed Markdown URL exists; every navigation URL resolves or is explicitly external.</li>
+<li>Order under the same root matches the rendered sidebar and pager.</li>
+<li>The navigation JSON validates against <code>schema/nav.v1.schema.json</code>.</li>
+<li>With a pinned Hugo version and inputs, rebuilding the same sources is byte-stable.</li>
+<li>With the new formats off, HTML, Markdown, Print, RSS, and LLMS goldens show no regression.</li>
+<li>A large-site fixture proves per-top-level-section bundling rather than a file for every nested
+section.</li>
+</ul>
+<h2 id="pg-5e18f4f0fdef06f22e02279e78201146--decision-log">Decision log
+</h2>
+<ul>
+<li>2026-08-20: Drafted; the bundle listed whole-site and per-section shapes, and the navigation
+JSON&rsquo;s location was undecided.</li>
+<li>2026-08-27: Resolved the five open decisions and accepted the proposal. Version 1 builds
+per-top-level-section bundles only, deferring the whole-site file until real evidence; the
+navigation JSON is a home output; schema v1 node metadata is the minimal set (stable ID, title,
+HTML URL, Markdown URL, kind, children, optional description) with <code>weight</code> never serialized;
+<code>llms.txt</code> lists both enabled artifacts by default; the checker reports size evidence without
+enforcing any model-context ceiling.</li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-7be5d407e1731fe0d9afc340d1b6d80d">4 - Book publication pipeline</h1>
+    <div class="lead">Move Book semantic lowering and generic EPUB/PDF packaging into OINK without taking publication facts away from consumers.</div>
+	<div class="td-callout td-callout--warning" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="td-callout__label">Draft proposal with implemented publication tooling</span></div>
+  <div class="td-callout__body">
+<p>The opt-in <code>BookManifest</code>, the generic EPUB and PDF runners and their artifact
+validation are released, and the normative account of them is in
+<a href="/docs/design/architecture/">Architecture</a>. No build publishes either file on
+its own. What remains open here, and only here, is consumer migration.</p>
+  </div>
+</div><h2 id="pg-7be5d407e1731fe0d9afc340d1b6d80d--context-and-evidence">Context and evidence
+</h2>
+<p>OINK already owns Book navigation order, numbered figures, tables, equations,
+examples, cross-references, whole-Book Print HTML, heading and footnote
+namespacing, and per-page Markdown degradation. The missing boundary is a
+machine-readable whole-Book handoff that a generic packager can consume.</p>
+<p>DDIA currently carries a substantial EPUB preprocessor that follows OINK&rsquo;s
+numbered primitives, cross-page links, footnotes, image paths, and Book order.
+TPME retains an older exporter whose historical root-file inputs no longer
+match its current Hugo content tree. The first proves that publication is real;
+the second proves that a consumer-local recipe can quietly become stale.</p>
+<p>An EPUB is not one rendered template. It is a ZIP container with publication
+metadata, a resource manifest, a spine, navigation, content documents, styles,
+and media. Hugo can render an intermediate output, but a packaging tool must
+produce and validate the final file.</p>
+<h2 id="pg-7be5d407e1731fe0d9afc340d1b6d80d--goals">Goals
+</h2>
+<ol>
+<li>Give every Book primitive one theme-owned semantic result for publication.</li>
+<li>Publish an opt-in whole-Book intermediate with deterministic page order,
+stable targets, and cross-references; resolve local resources from the
+semantic Print document only during explicit packaging.</li>
+<li>Provide a generic, versioned EPUB packager and a version-pinned Print-to-PDF
+runner that consumers invoke with their own publication facts.</li>
+<li>Prove the boundary on two structurally different public Book consumers.</li>
+</ol>
+<h2 id="pg-7be5d407e1731fe0d9afc340d1b6d80d--non-goals">Non-goals
+</h2>
+<ul>
+<li>Do not enable an expensive aggregate output for every site or section.</li>
+<li>Do not call a Markdown, JSON, or HTML intermediate an EPUB.</li>
+<li>Do not infer title, author, cover, ISBN, edition, rights, or release policy.</li>
+<li>Do not fetch remote images or services during an ordinary Hugo build.</li>
+<li>Do not add a second Book shell, duplicate navigation authority, or a generic
+publication-configuration namespace.</li>
+<li>Do not promise pixel-identical PDF pagination across browser engines.</li>
+</ul>
+<h2 id="pg-7be5d407e1731fe0d9afc340d1b6d80d--ownership-boundary">Ownership boundary
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">OINK owns</th>
+      <th scope="col">The consumer owns</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Book order derived from the existing navigation authority</td>
+      <td>Which language, edition, and Book root to publish</td>
+    </tr>
+    <tr>
+      <td>Semantic lowering for <code>fig</code>, <code>tbl</code>, <code>eq</code>, <code>eg</code>, xrefs, headings, and footnotes</td>
+      <td>Title, authors, identifier, cover, rights, and imprint</td>
+    </tr>
+    <tr>
+      <td>Stable intermediate schema and generic packager behavior</td>
+      <td>Optional chapter exclusions and publication-specific front/back matter</td>
+    </tr>
+    <tr>
+      <td>EPUB structure/link validation and Print-to-PDF runner</td>
+      <td>Release automation, signing, distribution, and legal approval</td>
+    </tr>
+    <tr>
+      <td>Theme fixtures and compatibility checks</td>
+      <td>Content correctness and final artifact approval</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>The consumer passes facts; it does not patch OINK markup. OINK supplies
+semantics; it does not decide whether a book may be distributed.</p>
+<h2 id="pg-7be5d407e1731fe0d9afc340d1b6d80d--proposed-behavior">Proposed behavior
+</h2>
+<p>The first implementation is an opt-in Book manifest, not a final ebook. It
+references the already published per-page Markdown and records only facts the
+theme can derive honestly:</p>
+<ul>
+<li>schema version and language;</li>
+<li>Book root and flattened page order;</li>
+<li>page title, optional Book number, HTML URL, and Markdown URL;</li>
+<li>stable heading and numbered-object targets;</li>
+<li>cross-page references.</li>
+</ul>
+<p>The manifest is emitted only for a Book root that explicitly enables the output.
+The normal HTML, Print, Markdown, RSS, search, and navigation builds remain
+byte-for-byte independent of that opt-in.</p>
+<p>The OINK EPUB packager consumes the manifest and the existing whole-Book Print
+HTML, whose semantic output already contains namespaced headings and footnotes,
+numbered targets, raw authored anchors, MathML, and static interaction
+fallbacks. It rewrites only publication URLs, invokes pinned Pandoc 3.10,
+and validates the result with EPUBCheck plus OINK&rsquo;s internal-target checker. A
+consumer supplies a small metadata file and cover. Per-page Markdown remains in
+the manifest as an auditable source-shaped output, not as a second semantic
+conversion path.</p>
+<p>Local resources must exist under the generated <code>public/</code> tree and are packaged
+without network access. A consumer that knowingly retains a remote image must
+opt in with <code>--allow-remote-resources</code>; this permits passive HTTP(S) media only,
+never remote scripts or local-file schemes. The tool refuses to replace an
+existing EPUB unless <code>--force</code> is explicit.</p>
+<p>PDF derives from the same whole-Book Print HTML. The runner exposes the build on
+a temporary loopback server with <code>script-src 'none'</code>, blocks external resources
+by default, invokes an explicit Chrome/Chromium binary, and refuses implicit
+replacement. Print CSS
+owns A4 size, paper-safe code wrapping, full-width numbered equations, and page
+numbers. The checker uses Poppler to verify the PDF structure, A4 geometry,
+extractable Book titles, and sampled page-number margins; final approval still
+includes rendered-page review.</p>
+<p>The reference workflow remains four explicit steps, not a new Hugo mode:</p>
+<div class="td-code td-code--untitled" id="td-code-864d14bf-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="sh" data-td-line-count="8">
+  <div class="td-code__viewport" id="td-code-864d14bf-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">python3 /path/to/oink/bin/book-epub.py --manifest public/book/book.json <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --public public --metadata metadata.yaml --output output/book.epub
+</span></span><span class="line"><span class="cl">python3 /path/to/oink/bin/check-book-epub.py output/book.epub <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --manifest public/book/book.json
+</span></span><span class="line"><span class="cl">python3 /path/to/oink/bin/book-pdf.py --manifest public/book/book.json <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --public public --chrome /path/to/chrome-headless-shell --output output/book.pdf
+</span></span><span class="line"><span class="cl">python3 /path/to/oink/bin/check-book-pdf.py output/book.pdf <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --manifest public/book/book.json</span></span></code></pre></div></div>
+</div>
+<h2 id="pg-7be5d407e1731fe0d9afc340d1b6d80d--output-accessibility-security">Output, accessibility, and security
+</h2>
+<ul>
+<li>HTML and existing outputs do not load an exporter or gain browser runtime.</li>
+<li>The intermediate preserves document language, heading hierarchy, alternative
+text, table headers, link text, and source order.</li>
+<li>Interactive controls degrade to their existing static Markdown/Print forms.</li>
+<li>Resource paths must resolve inside the build output or be explicit outbound
+links; packaging never follows an arbitrary local path from authored content.</li>
+<li>No consumer value becomes raw HTML, CSS, command arguments, or a filesystem
+path without the same validation and normalization used by current outputs.</li>
+</ul>
+<h2 id="pg-7be5d407e1731fe0d9afc340d1b6d80d--compatibility-and-migration">Compatibility and migration
+</h2>
+<p>This is additive and opt-in. Existing Book sites keep their current outputs and
+scripts. The DDIA pilot removes consumer-side transformations only after the
+theme intermediate accounts for every currently validated chapter, numbered
+object, footnote, image, and internal link. TPME is the second-consumer gate;
+no DDIA-specific route, label, or chapter list may enter the generic schema.</p>
+<h2 id="pg-7be5d407e1731fe0d9afc340d1b6d80d--prototype-evidence">Prototype evidence
+</h2>
+<p>An isolated opt-in build against the first manifest prototype produced these
+results without modifying either consumer checkout:</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Consumer</th>
+      <th scope="col" style="text-align: right">Ordered pages</th>
+      <th scope="col" style="text-align: right">Headings</th>
+      <th scope="col" style="text-align: right">Raw Markdown anchors</th>
+      <th scope="col" style="text-align: right">Numbered targets</th>
+      <th scope="col" style="text-align: right">Xrefs</th>
+      <th scope="col" style="text-align: right">Unresolved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DDIA</td>
+      <td style="text-align: right">23</td>
+      <td style="text-align: right">597</td>
+      <td style="text-align: right">33</td>
+      <td style="text-align: right">131 (106 figures, 3 tables, 22 examples)</td>
+      <td style="text-align: right">292</td>
+      <td style="text-align: right">0</td>
+    </tr>
+    <tr>
+      <td>TPME</td>
+      <td style="text-align: right">18</td>
+      <td style="text-align: right">295</td>
+      <td style="text-align: right">946</td>
+      <td style="text-align: right">41 (31 figures, 10 tables)</td>
+      <td style="text-align: right">1,062</td>
+      <td style="text-align: right">0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Neither manifest contained a duplicate numbered target ID. Strict builds added
+about 0.28 seconds for DDIA and 0.22 seconds for TPME in this local sample. The
+large TPME raw-anchor count is decisive: the packager must consume a rendered
+output where those explicit anchors survive. Whole-Book Print HTML already does
+so while also carrying namespaced headings, footnotes, numbered targets, and
+MathML; the manifest must not duplicate the whole document tree.</p>
+<p>The same isolated snapshots were then packaged through one generic command:</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Consumer</th>
+      <th scope="col" style="text-align: right">EPUB chapters</th>
+      <th scope="col" style="text-align: right">Typed targets</th>
+      <th scope="col" style="text-align: right">Package size</th>
+      <th scope="col">OINK package/link check</th>
+      <th scope="col">EPUBCheck 5.3.0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DDIA</td>
+      <td style="text-align: right">23</td>
+      <td style="text-align: right">131</td>
+      <td style="text-align: right">22.9 MB</td>
+      <td>0 errors</td>
+      <td>0 errors, 0 warnings</td>
+    </tr>
+    <tr>
+      <td>TPME</td>
+      <td style="text-align: right">18</td>
+      <td style="text-align: right">41</td>
+      <td style="text-align: right">2.2 MB</td>
+      <td>0 errors</td>
+      <td>0 errors, 0 warnings</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>DDIA&rsquo;s one remote poster required the explicit network-resource opt-in; TPME
+packaged entirely from local output. The generic checker verifies every page
+anchor and each target&rsquo;s <code>kind</code> and <code>num</code> against <code>BookManifest</code>, rather than
+depending on the old DDIA preprocessor&rsquo;s wrapper classes. The theme fixture
+also passes after a minified Hugo build. Publication CI pins Pandoc 3.10 and
+EPUBCheck 5.3.0 by version and archive digest, in a separate job from the Hugo
+compatibility matrix.</p>
+<p>The Print-to-PDF pilot uses Chrome for Testing headless shell 151.0.7922.34,
+pinned by archive digest in the same publication CI job:</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Consumer</th>
+      <th scope="col" style="text-align: right">Book pages</th>
+      <th scope="col" style="text-align: right">PDF pages</th>
+      <th scope="col" style="text-align: right">Package size</th>
+      <th scope="col">Structural/text/page-number check</th>
+      <th scope="col">Rendered review</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Theme fixture</td>
+      <td style="text-align: right">5</td>
+      <td style="text-align: right">23</td>
+      <td style="text-align: right">1.1 MB</td>
+      <td>0 errors</td>
+      <td>cover, tables, code, equations, footnotes</td>
+    </tr>
+    <tr>
+      <td>DDIA</td>
+      <td style="text-align: right">23</td>
+      <td style="text-align: right">527</td>
+      <td style="text-align: right">60.3 MB</td>
+      <td>0 errors</td>
+      <td>CJK, tables, figures, code, references, end matter</td>
+    </tr>
+    <tr>
+      <td>TPME</td>
+      <td style="text-align: right">18</td>
+      <td style="text-align: right">197</td>
+      <td style="text-align: right">8.4 MB</td>
+      <td>0 errors</td>
+      <td>CJK, wide tables, code, callouts, end matter</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>All three PDFs are tagged, unencrypted A4 documents. The real-consumer checker
+found every manifest page title and the first, middle, and last CSS page number.
+Visual review exposed and fixed three pre-existing Print defects: child math did
+not propagate the KaTeX stylesheet to the Book aggregate; a broad Bootstrap
+column reset matched KaTeX <code>col-align-*</code> internals; and <code>pre &gt; code</code> defeated
+paper-edge wrapping. These are narrow print fixes, not exporter-specific DOM
+rewrites.</p>
+<h2 id="pg-7be5d407e1731fe0d9afc340d1b6d80d--implementation-plan">Implementation plan
+</h2>
+<ol>
+<li><strong>Done:</strong> extract the Print page sequence into one shared Book partial without
+changing rendered Print output.</li>
+<li><strong>Done:</strong> add the disabled-by-default manifest and fixture checker.</li>
+<li><strong>Done:</strong> package isolated DDIA and TPME snapshots with one generic EPUB path,
+then validate typed targets, internal links, and EPUB 3.3 conformance.</li>
+<li><strong>Done:</strong> render the theme fixture plus isolated DDIA and TPME snapshots with
+one pinned Chrome runner; validate and visually review representative pages.</li>
+<li><strong>Next consumer migration:</strong> replace DDIA&rsquo;s semantic preprocessor with metadata
+plus one invocation only after its repository independently accepts the new
+publication gate.</li>
+</ol>
+<h2 id="pg-7be5d407e1731fe0d9afc340d1b6d80d--acceptance-criteria">Acceptance criteria
+</h2>
+<ul>
+<li>Default sites publish no new aggregate file and incur no material build cost.</li>
+<li>Hugo 0.160.1 and the current supported Hugo build the opt-in fixture with
+warnings fatal.</li>
+<li>Existing HTML, Print, Markdown, RSS, navigation, search, and browser tests pass.</li>
+<li>The DDIA pilot retains 23 chapters and all 106 figures, 3 tables, 22 examples,
+and internal links as typed semantic targets with zero unresolved target.</li>
+<li>TPME produces an artifact through the same schema and packager.</li>
+<li>No consumer script contains OINK primitive-specific regular expressions.</li>
+<li>EPUBCheck and OINK&rsquo;s package/link checker pass; the PDF structure/text/page
+checker and representative rendered-page review pass.</li>
+</ul>
+<h2 id="pg-7be5d407e1731fe0d9afc340d1b6d80d--open-decisions">Open decisions
+</h2>
+<ol>
+<li>Should consumer migration happen before or after the next OINK release tag?</li>
+</ol>
+<h2 id="pg-7be5d407e1731fe0d9afc340d1b6d80d--decision-log">Decision log
+</h2>
+<ul>
+<li>2026-08-24: Drafted the theme/consumer ownership boundary. Chose an opt-in
+semantic intermediate before any final EPUB API or implementation.</li>
+<li>2026-08-24: The DDIA/TPME isolated pilot resolved the first format decision:
+keep one JSON manifest and consume existing whole-Book Print HTML; do not add
+a generated whole-Book Markdown output or another semantic lowering path.</li>
+<li>2026-08-24: The packager consumes whole-Book Print HTML, so the manifest uses
+the existing <code>no_print</code> exclusion too. This keeps one publication sequence
+and avoids a second output-specific exclusion key.</li>
+<li>2026-08-24: Implemented the generic EPUB path and pinned Pandoc 3.10 plus
+EPUBCheck 5.3.0 in publication CI. Isolated DDIA and TPME packages pass both
+the typed-target/internal-link checker and official EPUB 3.3 validation.</li>
+<li>2026-08-24: Remote publication resources remain rejected by default. DDIA&rsquo;s
+historical remote poster exercises an explicit opt-in instead of weakening
+the default or adding a DDIA-specific rewrite.</li>
+<li>2026-08-24: Added the loopback Print-to-PDF runner and pinned Chrome for
+Testing headless shell 151.0.7922.34 by archive digest. Theme, DDIA, and TPME
+PDFs pass structural, text, A4, and page-number checks plus rendered review.</li>
+<li>2026-08-24: PDF review fixed only the owning Print contracts: aggregate math
+capability propagation, Bootstrap column-selector scope, code wrapping,
+single-column numbered equations, and CSS page margins.</li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+
+
+
+      </main>
+    </div>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"Copy Markdown","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["Copy Markdown","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Copy Markdown","url":"/docs/design/proposals/index.md"},{"available":true,"description":"Copy link","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["Copy link","Share","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"Copy link","url":"http://localhost:1313/docs/design/proposals/"},{"available":true,"description":"Open in ChatGPT","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["Open in ChatGPT","Ask about this page","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in ChatGPT","url":"https://chatgpt.com/?hints=search\u0026prompt=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fdesign%2Fproposals%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"Open in Claude","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["Open in Claude","Ask about this page","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in Claude","url":"https://claude.ai/new?q=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fdesign%2Fproposals%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"View markdown","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["View markdown","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View markdown","url":"/docs/design/proposals/index.md"},{"available":true,"description":"View edit history","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["View edit history","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View edit history","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/design/proposals/_index.md"},{"available":true,"description":"Edit this page","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["Edit this page","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Edit this page","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/design/proposals/_index.md"},{"available":true,"description":"Create child page","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["Create child page","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create child page","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/design/proposals?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"Create docs issue","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["Create docs issue","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create docs issue","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=Design+proposals+and+PRDs"},{"available":true,"description":"Create project issue","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["Create project issue","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create project issue","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"Print entire section","disabledReason":"Print entire section: unavailable","icon":"fa-solid fa-print","id":"print_section","keywords":["Print entire section","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Print entire section","url":""},{"available":true,"description":"Print this page","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["Print this page","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"Print this page","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL required","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"Switch language","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["Switch language","language"],"kind":"choice","options":[{"active":true,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/design/proposals/"},{"active":false,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/design/proposals/"}],"placements":{"page":false,"palette":true},"target":"self","title":"Switch language","url":""},{"available":true,"description":"Toggle color theme","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["Toggle color theme","Light","Dark"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"System","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"Light","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"Dark","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"Toggle color theme","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"Report or review theme and documentation issues","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["bug","support","roadmap"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK issues","url":"https://github.com/pgsty/oink/issues"}],"language":"en","quickLinks":[{"available":true,"description":"OINK is a documentation theme that needs nothing but Hugo Extended — components are written in Markdown, assets ship with the theme, both languages work out of the box, and one source produces four outputs.","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["Docs","docs"],"kind":"url","target":"self","title":"Docs","url":"/docs/"},{"available":true,"description":"OINK engineering stories, immersive guides, and release notes","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["Blog","blog"],"kind":"url","target":"self","title":"Blog","url":"/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+
+<script src="/js/actions.js"></script>
+
+  </body>
+</html>

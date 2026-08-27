@@ -1,0 +1,32 @@
+# pigsty.cc
+
+> PIGSTY: the Chinese home of the open-source PostgreSQL distribution. Deployed as an independent single-language site so a very large translation corpus evolves on its own.
+
+---
+
+LLMS index: [llms.txt](/llms.txt)
+
+---
+
+[pigsty.cc](https://pigsty.cc/) publishes Pigsty in Simplified Chinese. The case
+snapshot counted more than 1,490 content files and over 300 blog posts, with its
+own data-driven pricing page and Chinese as the default content language.
+
+## What it demonstrates {#what-it-demonstrates}
+
+- Splitting a very large bilingual corpus into two independently deployed,
+  single-language sites.
+- Connecting the pair through the alternate-site control and version menu.
+- Letting each language keep its own publishing cadence and landing-page data.
+
+This pattern trades same-domain language switching for clearer ownership and
+smaller builds. It is useful when both languages are already substantial
+products rather than occasional translations.
+
+→ [Multilingual configuration](/docs/customize/i18n/) · [pigsty.io case](/case/pigsty-io/)
+
+---
+
+Backlinks:
+
+- [Cases](/docs/about/showcase/)

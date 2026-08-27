@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Oink 博客 on OINK</title>
+    <link>http://localhost:1313/zh/blog/oink/</link>
+    <description>Recent content in Oink 博客 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Thu, 20 Aug 2026 19:29:45 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/blog/oink/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>在 Blog 外壳上沉浸式阅读</title>
+        <link>http://localhost:1313/zh/blog/oink/immersive-reading/</link>
+        <pubDate>Wed, 19 Aug 2026 00:00:00 +0000</pubDate>
+        <dc:creator>Vonng</dc:creator>
+        <guid>http://localhost:1313/zh/blog/oink/immersive-reading/</guid>
+        <description>用四个 front matter 键为普通 Blog 文章增加全幅 Hero、随文大纲与无侧栏的 沉浸式阅读外壳。</description>
+      </item>
+    <item>
+        <title>OINK 实施日记：从复制外壳到统一主题</title>
+        <link>http://localhost:1313/zh/blog/oink/oink-implementation-diary/</link>
+        <pubDate>Sat, 08 Aug 2026 00:00:00 +0000</pubDate>
+        <dc:creator>Vonng</dc:creator>
+        <guid>http://localhost:1313/zh/blog/oink/oink-implementation-diary/</guid>
+        <description>&lt;p&gt;OINK 始于一个令人不安的事实：多个生产文档站之所以看起来相互关联，是因为它们确实源于同一套实现；但公共实现却以复制文件的形式散落在各处。呈现效果足够一致，维护模型却并非如此。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>OINK 实现预览正式亮相</title>
+        <link>http://localhost:1313/zh/blog/oink/oink-announcement/</link>
+        <pubDate>Sat, 08 Aug 2026 00:00:00 +0000</pubDate>
+        <dc:creator>OINK</dc:creator><dc:creator>Vonng</dc:creator>
+        <guid>http://localhost:1313/zh/blog/oink/oink-announcement/</guid>
+        <description>&lt;p&gt;今天，我们发布 OINK 实现预览：它从 Docsy 直接演化而来，提供唯一标准产品外壳、仅依赖 Hugo 的消费端构建、本地优先浏览器依赖、通用多语言框架，以及一组从 PGSTY 文档站提炼出的可复用内容组件。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

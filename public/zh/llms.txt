@@ -1,0 +1,100 @@
+# OINK
+
+> 本地优先、仅依赖 Hugo 的技术文档主题
+
+## Site index
+
+- [Home page](http://localhost:1313/zh/index.md)
+- [navigation.json](http://localhost:1313/zh/navigation.json)
+- [文档](http://localhost:1313/zh/docs/index.md): OINK 是一款只需 Hugo Extended 的技术文档主题：组件写在 Markdown 里，资源随主题分发，双语开箱可用，一份内容产出四种输出。
+- [教程](http://localhost:1313/zh/book/index.md): 一本实战教程：用 OINK 创作清晰、优美且易于维护的技术内容。
+- [案例](http://localhost:1313/zh/case/index.md): 十五个真实站点展示 OINK 如何覆盖两页小工具、多语言文档群与三本书籍。
+- [博客](http://localhost:1313/zh/blog/index.md): OINK 工程实践、沉浸式阅读指南与发布注记
+
+## Documentation index
+
+- [简介](http://localhost:1313/zh/docs/about/index.md): 一款只需 Hugo Extended 的技术文档主题，从 Docsy 演化而来，组件写在 Markdown 里，资源随主题分发，十四个生产站点在用。
+  - [亮点特性](http://localhost:1313/zh/docs/about/features/index.md): 逐条列出 OINK 与普通 Hugo 主题的差别，每条链接到讲它的指南页。
+  - [案例](http://localhost:1313/zh/docs/about/showcase/index.md): 按文档、书籍、落地页与交互工具的形态，找到最接近自己需求的 OINK 生产案例。
+  - [开源许可与致谢](http://localhost:1313/zh/docs/about/license/index.md): 查清哪一层适用哪份许可证：主题 Apache-2.0、文档 CC BY 4.0、随主题分发的第三方运行时各自保留原许可。
+- [快速上手](http://localhost:1313/zh/docs/start/index.md): 克隆 OINK 文档站，本地预览，替换站点信息，部署到 GitHub Pages。
+  - [仓库导览](http://localhost:1313/zh/docs/start/anatomy/index.md): 克隆下来的每个目录是什么：哪些必须保留、哪些替换为你的信息、哪些是文档站自用可以整个删除。
+  - [从零建站](http://localhost:1313/zh/docs/start/from-scratch/index.md): 从空目录搭一个最小 OINK 站点，以及 Module / submodule / 离线归档 / 克隆四种安装方式的取舍。
+- [创作内容](http://localhost:1313/zh/docs/write/index.md): 写文档页、博客、书籍、发布页与 API 文档：一页文档长什么样，内容怎么组织。
+  - [编写页面](http://localhost:1313/zh/docs/write/pages/index.md): 新建一页文档：文件放在哪、front matter 写什么、标题锚点为什么要手写、链接与图片怎么写、页尾会自动出现什么。
+  - [组织内容](http://localhost:1313/zh/docs/write/organize/index.md): 目录结构就是侧栏树：`_index.md` 与 weight、栏目首页样式、图标与折叠、隐藏页面、把文档放在任意路径。
+  - [页面参数](http://localhost:1313/zh/docs/write/frontmatter/index.md): front matter 全表：主题真正读取的每一个页面键，按侧栏、外壳、搜索、输出、页尾、Book、Landing、发布页分组。
+  - [博客与文章](http://localhost:1313/zh/docs/write/blog/index.md): 开一个博客栏目：目录约定、文章的 front matter、封面图、按年份分组的列表页与 RSS。
+  - [书籍出版](http://localhost:1313/zh/docs/write/book/index.md): 用 `type: book` 把一棵目录树变成一本书：章节编号、图表式例编号、交叉引用、生成式索引与整本打印。
+  - [发布与下载页](http://localhost:1313/zh/docs/write/releases/index.md): 把版本号、标签、归档链接、校验和与安装命令写成本地事实，再让发布卡片、资产表、下载区块和索引页从同一份记录推导出来。
+  - [API 文档](http://localhost:1313/zh/docs/write/openapi/index.md): 把 OpenAPI 规范放进站点，用随主题分发的 Swagger UI 或 Redoc 渲染成可浏览的接口文档，不连 CDN。
+- [组件](http://localhost:1313/zh/docs/components/index.md): 写文档时可用的全部组件，一个组件一页，例子由浅入深，参数表在页尾。
+  - [提示块](http://localhost:1313/zh/docs/components/callout/index.md): 用 `> [!NOTE]` 这样的块引用写出带颜色、图标与标题的提示、警告与折叠块，不需要短代码。
+  - [图片](http://localhost:1313/zh/docs/components/image/index.md): 用普通 Markdown 图片语法写图，加一行属性就得到图注、尺寸、缩放、链接、编号与 Hugo 图片处理。
+  - [代码块](http://localhost:1313/zh/docs/components/code/index.md): 普通 Markdown 围栏加一行属性，就得到文件名标题、精确复制、行号、高亮、换行、折叠与可链接的行。
+  - [标签页](http://localhost:1313/zh/docs/components/tabs/index.md): 给相邻的围栏或表格加一个 `{tab=}` 属性就得到标签页；加上 group 之后可分享链接、跨组同步、记住读者的选择。
+  - [表格](http://localhost:1313/zh/docs/components/table/index.md): 普通 GFM 表格加一行属性，就得到标题、兼容矩阵、参数表、编号表或标签页；宽表格自己横向滚动，不撑宽页面。
+  - [参数表](http://localhost:1313/zh/docs/components/fields/index.md): 用一张普通表格加 `{.fields}` 记录配置项、命令参数与 API 字段：名称、类型、默认值、说明各就各位，窄屏不挤，每条都能单独链接。
+  - [步骤](http://localhost:1313/zh/docs/components/steps/index.md): 有序列表加 `{.steps}` 就是带编号圆点与竖线的操作步骤；步骤要带标题、要进目录时改用 steps shortcode。
+  - [卡片](http://localhost:1313/zh/docs/components/cards/index.md): 用带 `{.cards}` 的链接列表排出导航卡片网格；需要图标、徽章、图片时改用 shortcode。
+  - [文件树](http://localhost:1313/zh/docs/components/filetree/index.md): 用 `filetree` 围栏画带注释的目录结构：对齐的注释列、逐条目图标、可折叠目录、可拖动的分栏。
+  - [公式](http://localhost:1313/zh/docs/components/math/index.md): 用 KaTeX 写行内与块级数学公式，构建期渲染完毕，读者不下载任何脚本。
+  - [Mermaid](http://localhost:1313/zh/docs/components/mermaid/index.md): 用 `mermaid` 围栏把文本写成流程图、时序图、甘特图、类图与状态图，本地渲染、跟随深浅色、diff 友好。
+  - [PlantUML](http://localhost:1313/zh/docs/components/plantuml/index.md): 用 `plantuml` 围栏写时序图、类图、组件图、活动图与用例图；渲染必须由你自己配置一个 PlantUML 服务。
+  - [思维导图](http://localhost:1313/zh/docs/components/markmap/index.md): 用 `markmap` 围栏把一段 Markdown 大纲变成可展开、可缩放的思维导图，源码本身就是能读的提纲。
+  - [Draw.io](http://localhost:1313/zh/docs/components/drawio/index.md): 把带着可编辑副本的 `.drawio.svg` 当普通图片放进页面，读者鼠标移上去就能点开 Draw.io 编辑器改图。
+  - [ECharts](http://localhost:1313/zh/docs/components/echarts/index.md): 在 `echarts` 围栏里用 YAML 或 JSON 写图表选项，Hugo 构建期校验，浏览器用本地 ECharts 画出跟随深浅色的统计图。
+  - [Infographic](http://localhost:1313/zh/docs/components/infographic/index.md): 用 `infographic` 围栏挑一个 AntV 模板，把标题与条目渲染成流程、时间线、漏斗、网格或层级信息图。
+  - [画廊](http://localhost:1313/zh/docs/components/gallery/index.md): 用 `gallery` 围栏把一组相关截图排成响应式网格，每张可带说明或链接，并复用页面的图片缩放对话框。
+  - [徽章](http://localhost:1313/zh/docs/components/badge/index.md): 在功能名、版本号或表格单元格旁边放一枚语义状态标签，五种 tone，不需要自定义颜色。
+  - [按键](http://localhost:1313/zh/docs/components/kbd/index.md): 用 `kbd` 写快捷键：一个 shortcode 接一串按键名，输出语义化的按键序列，打印与 Markdown 输出里同样可读。
+  - [引用](http://localhost:1313/zh/docs/components/include/index.md): 用 include 插入外部文件，用 param 插入站点参数，用 comment 写不会出现在任何输出里的注释。
+  - [Asciinema](http://localhost:1313/zh/docs/components/asciinema/index.md): 把 .cast 终端录像放进页面：文字仍然是可选中的文字，播放器随主题分发，不连 CDN。
+- [定制站点](http://localhost:1313/zh/docs/customize/index.md): 站点级配置：品牌、导航、布局、搜索、多语言、多版本、打印与 Agent 输出。
+  - [配置总览](http://localhost:1313/zh/docs/customize/config/index.md): 主题真正会读的每一个站点参数：类型、默认值、去哪一页改。查参数从这里开始。
+  - [品牌外观](http://localhost:1313/zh/docs/customize/brand/index.md): 替换站名、Logo、favicon、主色、深浅色与字体，只需改配置与两个 SCSS 入口文件。
+  - [首页与落地页](http://localhost:1313/zh/docs/customize/home/index.md): 用一份本地 YAML 组合首页：Hero、卡片、能力面板、时间线、定价、案例、下载。任意页面也能用同一套分区做成落地页。
+  - [导航与菜单](http://localhost:1313/zh/docs/customize/navigation/index.md): 配置顶栏菜单与下拉、栏目切换器、面包屑、页面操作、翻页器和页脚链接。
+  - [布局与页面类型](http://localhost:1313/zh/docs/customize/layout/index.md): 用 type 决定一页用哪种外壳，再调侧栏宽度与图标、目录深度、栏目首页样式和页宽。
+  - [全文检索](http://localhost:1313/zh/docs/customize/search/index.md): 打开本地搜索，控制索引体积与结果排序，让中文查询也能命中。
+  - [命令面板](http://localhost:1313/zh/docs/customize/panel/index.md): 一个对话框同时承担页面搜索、页面动作与站点命令：如何打开、包含哪些分组、如何添加自定义命令。
+  - [键盘导航](http://localhost:1313/zh/docs/customize/keyboard/index.md): 全部单键快捷键、它们何时让行给输入，以及按站点或按页面关闭的方法。
+  - [多语言](http://localhost:1313/zh/docs/customize/i18n/index.md): 增加一种语言、并排放置译文、按语言配置菜单与界面文案，并对齐中英标题锚点。
+  - [多版本](http://localhost:1313/zh/docs/customize/versions/index.md): 配置版本切换菜单与归档横幅，并选择多个版本在域名上的部署布局。
+  - [分类体系](http://localhost:1313/zh/docs/customize/taxonomy/index.md): 用 tags / categories 给页面加一条横跨目录的索引：术语页、筛选芯片、右栏分类云与顶栏分类面板都是自动的。
+  - [仓库与页面信息](http://localhost:1313/zh/docs/customize/repository/index.md): 把「编辑当前页面」「提交文档议题」「查阅编辑历史」接到你的仓库，并在页尾显示最后修改时间、贡献者与反馈组件。
+  - [打印支持](http://localhost:1313/zh/docs/customize/print/index.md): 单页交给浏览器的 Cmd/Ctrl+P，整个栏目用 print 输出格式合成一份连续文档。
+  - [Agent 支持](http://localhost:1313/zh/docs/customize/agents/index.md): 每一页多产出一份 .md，站点根目录多一份 llms.txt，读者可以把当前页交给 ChatGPT 或 Claude。
+- [维护管理](http://localhost:1313/zh/docs/admin/index.md): 站点从本机到线上的运维事项：本地预览、发布上线、评论、分析与 SEO、版本升级与排错。
+  - [本地预览](http://localhost:1313/zh/docs/admin/preview/index.md): 用 hugo server 在本机预览改动，用 hugo --panicOnWarning 构建可部署的 public/，不需要 Node 与 CDN。
+  - [发布上线](http://localhost:1313/zh/docs/admin/deploy/index.md): 把 public/ 部署到 GitHub Pages、Cloudflare Pages 或任何静态托管：baseURL 配对、内容安全策略、验收清单与回滚。
+  - [启用评论](http://localhost:1313/zh/docs/admin/comments/index.md): 用 giscus 把 GitHub Discussions 接成页面底部的评论区，全站开、按页关、跟随深浅色。
+  - [分析与 SEO](http://localhost:1313/zh/docs/admin/analytics/index.md): 接入一个分析服务（或者不接），并把主题已经生成的 canonical、hreflang、社交卡片、站点地图与 robots 配对。
+  - [版本升级](http://localhost:1313/zh/docs/admin/upgrade/index.md): 升到新版主题、用迁移工具把 0.4 的 shortcode 改成 v5 语法、从 Docsy 迁过来，以及出问题怎么退回去。
+  - [排错与检查](http://localhost:1313/zh/docs/admin/troubleshooting/index.md): 构建、语言、搜索、平台四类故障的症状 → 原因 → 修法，以及站点可以自己跑的那几项检查。
+- [设计](http://localhost:1313/zh/docs/design/index.md): 在唯一的双语专栏中管理 OINK 维护者契约、已接受决策、定期研究与候选提案。
+  - [Goldmark 属性](http://localhost:1313/zh/docs/design/research/goldmark-attributes/index.md): Hugo 0.160.1 与 0.164.0 上列表、图片、表格、passthrough、围栏、callout 与嵌套容器的可复现实测。
+  - [架构](http://localhost:1313/zh/docs/design/architecture/index.md): 仓库装配、配置、诊断、输出、性能、安全、CSS、无障碍与发布状态的边界。
+  - [诊断策略](http://localhost:1313/zh/docs/design/decisions/diagnostics/index.md): 作者输入无效时，预览阶段发出警告并安全降级；--panicOnWarning 在发布阶段恢复硬门禁。
+  - [知识图谱](http://localhost:1313/zh/docs/design/proposals/knowledge-graph/index.md): 从普通 Hugo 链接推导反向链接、局部与全站图谱的三阶段设计草案。
+  - [媒体收敛](http://localhost:1313/zh/docs/design/proposals/media-convergence/index.md): 正文图片、编号图、Landing 媒体与代表图片选择之间剩余收敛工作的设计草案。
+  - [配置模型](http://localhost:1313/zh/docs/design/decisions/configuration/index.md): OINK 延长 Hugo 与 Docsy 兼容配置，不另造第二套命名空间或全局 resolver。
+  - [消费站证据](http://localhost:1313/zh/docs/design/research/consumer-evidence/index.md): 塑造 OINK 外壳、创作原语与确定性 Book 迁移策略的定期语料快照。
+  - [组件](http://localhost:1313/zh/docs/design/components/index.md): OINK 创作原语、校验、Book、发布行为与输出降级的维护者契约。
+  - [2026-08-26 全面审查](http://localhost:1313/zh/docs/design/research/2026-08-26-comprehensive-review/index.md): 对 OINK v0.7.0 后主线的实现、配置、输出、安全、测试、性能、双语契约与真实站点所做的证据化全面审查。
+  - [Agent 索引](http://localhost:1313/zh/docs/design/proposals/agent-indexes/index.md): 基于 OINK 既有 Markdown 输出与导航权威，可选生成按 section 分包的全文包和稳定导航 JSON。
+  - [Markdown 优先创作](http://localhost:1313/zh/docs/design/decisions/authoring/index.md): 原生 Markdown 承载常见语义；shortcode 只填补真实能力缺口，各内容模型延长共享外壳而不是分叉。
+  - [外壳与导航](http://localhost:1313/zh/docs/design/shell/index.md): 导航权威、沉浸式博客、搜索、操作、分类法、索引与页尾组合契约。
+  - [Book 出版](http://localhost:1313/zh/docs/design/proposals/book-publication/index.md): 把 Book 语义降级与通用 EPUB/PDF 打包收回 OINK，同时让出版事实继续属于消费站。
+  - [落地页](http://localhost:1313/zh/docs/design/landing/index.md): 落地页数据、内置区块注册表、语言解析、运行时、无障碍与输出的维护者契约。
+  - [配置 Schema](http://localhost:1313/zh/docs/design/decisions/config-schema/index.md): 编辑器 Schema 是从既有配置权威投影生成的，CI 漂移门禁保证它永远不会成为第三个权威。
+  - [迁移边界](http://localhost:1313/zh/docs/design/migration/index.md): 从 OINK 0.4 到 OINK 0.8.0 所支持的源码、配置与验证迁移边界。
+
+## Full-text bundles
+
+- [文档](http://localhost:1313/zh/docs/llms-full.txt)
+
+## Site locales
+
+- [English](http://localhost:1313/index.md)
+- [简体中文](http://localhost:1313/zh/index.md)

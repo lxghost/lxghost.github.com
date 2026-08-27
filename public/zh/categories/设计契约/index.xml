@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>设计契约 on OINK</title>
+    <link>http://localhost:1313/zh/categories/%E8%AE%BE%E8%AE%A1%E5%A5%91%E7%BA%A6/</link>
+    <description>Recent content in 设计契约 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Thu, 27 Aug 2026 18:47:44 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/categories/%E8%AE%BE%E8%AE%A1%E5%A5%91%E7%BA%A6/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>Goldmark 块属性实测</title>
+        <link>http://localhost:1313/zh/docs/design/research/goldmark-attributes/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/research/goldmark-attributes/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;已验证快照&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;这些探针在 Hugo Extended 0.160.1 与 0.164.0 上得到字节一致的相关输出。它们解释&#xA;OINK 的原生组件形态；当前&lt;a href=&#34;http://localhost:1313/zh/docs/design/components/&#34;&gt;组件契约&lt;/a&gt;仍是权威。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;method&#34;&gt;方法&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;探针使用一个不带 OINK 模板的最小 Hugo 站点。渲染钩子把上下文字段与 &lt;code&gt;.Attributes&lt;/code&gt; 输出为&#xA;可见标记。站点开启 Goldmark 块属性、行内与块级数学 passthrough 分隔符，以及为检查原始 HTML&#xA;而刻意启用的 unsafe 渲染，并设置 &lt;code&gt;wrapStandAloneImageWithinParagraph: false&lt;/code&gt;。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>架构契约</title>
+        <link>http://localhost:1313/zh/docs/design/architecture/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/architecture/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;这是随 OINK 0.8.0 正式发布的架构契约。本页是权威中文源文件，与英文版本&#xA;一同维护在 &lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;repository-and-assembly&#34;&gt;仓库与装配&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;仓库根目录是一个完整的 Hugo 模块与主题，不是站点，也不是 npm workspace。&#xA;Hugo Extended 负责编译 SCSS 与模板。浏览器运行时与第三方资源都已提交到仓库，&#xA;因此普通构建不会访问网络。公开的双语文档、示例与浏览器测试位于同级的&#xA;&lt;code&gt;oink.pgsty.com&lt;/code&gt; 仓库；主题仓库只在 &lt;code&gt;tests/site/&lt;/code&gt; 中保留范围明确的内部回归&#xA;夹具，不再维护独立的公开示例面。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>警告与安全回退</title>
+        <link>http://localhost:1313/zh/docs/design/decisions/diagnostics/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/decisions/diagnostics/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;决策&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;OINK 不调用 Hugo 的 &lt;code&gt;errorf&lt;/code&gt;。作者或站点输入无效时，主题发出警告，并使用文档中&#xA;明确的安全回退，或者省略无效片段。版本发布与部署构建使用 &lt;code&gt;--panicOnWarning&lt;/code&gt;，&#xA;因此同一条警告在发布门禁中仍会导致硬失败。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>反向链接与知识图谱</title>
+        <link>http://localhost:1313/zh/docs/design/proposals/knowledge-graph/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/proposals/knowledge-graph/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;G1 已实现，G2/G3 仍是草案&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;2026-08-27 决议 G1 的全部待决问题并接受 G1（静态反向链接）。它已在主题 main&#xA;分支实现，随 OINK 0.8.0 发布。局部与全站图谱（G2/G3）保持草案状态，等待 G1 的&#xA;真实使用证据；它们的名称和配置在被接受之前不是公开 API。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>媒体收敛</title>
+        <link>http://localhost:1313/zh/docs/design/proposals/media-convergence/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/proposals/media-convergence/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;部分已实现&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;M1（共享 media-result 契约）与 M2（Landing 资源元数据）已在主题 main 分支实现；&#xA;M3 已决议为方案 2：图片处理只属于原生 Markdown 图片形态，完整 &lt;code&gt;fig&lt;/code&gt; 源形态保持&#xA;容器语义，其参数表刻意不含 &lt;code&gt;command&lt;/code&gt;/&lt;code&gt;options&lt;/code&gt;。M4（兼容退役）在完成消费方盘点&#xA;之前保持开放。以下各节为原始设计记录。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>配置模型</title>
+        <link>http://localhost:1313/zh/docs/design/decisions/configuration/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/decisions/configuration/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;决策&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;OINK 保留 Hugo 原生键与仍有价值的 Docsy 兼容键，把主题呈现和行为放在&#xA;&lt;code&gt;params.ui.*&lt;/code&gt; 下，并用同名的顶层 front matter 键提供页面覆盖。它不增加&#xA;&lt;code&gt;params.oink.*&lt;/code&gt; 配置树，也不建立一套遮蔽 Hugo 配置模型的注册表。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>消费站与迁移证据</title>
+        <link>http://localhost:1313/zh/docs/design/research/consumer-evidence/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/research/consumer-evidence/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;带日期的语料快照&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;这些计数描述 2026 年 8 月被检查的仓库。它们是设计选择的证据，不是实时产品指标或兼容承诺。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;corpus&#34;&gt;语料&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;创作语料盘点扫描了十一个 OINK 消费站点的 &lt;code&gt;content/&lt;/code&gt; 树：共 5,325 个 Markdown 文件，其中&#xA;5,293 个带 YAML front matter。样本同时包含单语言英文与中文参考站、双语产品站、发布归档、&#xA;自定义落地页，以及独立的 Book 消费站。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>组件契约</title>
+        <link>http://localhost:1313/zh/docs/design/components/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/components/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;这是随 OINK 0.8.0 正式发布的组件契约。本页是权威中文源文件，与英文版本&#xA;一同维护在 &lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;教程与完整示例位于面向读者的&lt;a href=&#34;http://localhost:1313/zh/docs/components/&#34;&gt;组件&lt;/a&gt;专栏。本页定义这些&#xA;指南所依赖的 API 与行为。&lt;/p&gt;&#xA;&lt;h2 id=&#34;authoring-model&#34;&gt;创作模型&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;一个区块加属性便能表达组件时，使用普通 Markdown；需要复合正文或 Markdown&#xA;无法携带的事实时，使用 shortcode。OINK 没有并行的组件注册表。原生形态要求：&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>OINK 全面审查（2026-08-26）</title>
+        <link>http://localhost:1313/zh/docs/design/research/2026-08-26-comprehensive-review/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/research/2026-08-26-comprehensive-review/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--warning&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-triangle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;审查快照，不是新契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本文记录 2026-08-26 对 &lt;code&gt;github.com/pgsty/oink&lt;/code&gt; 主线与本站集成面的审查证据。&#xA;它不会改变既有 API，也不表示文中建议已经实现。当前行为仍以 Design 契约、实现与 owning checker 为准。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;其中一部分已被 OINK 0.7.1 取代。&lt;/strong&gt; F01–F06 这些代码问题已在该版本修复，见&#xA;&lt;a href=&#34;http://localhost:1313/zh/blog/release/0.7.1/&#34;&gt;0.7.1 发布说明&lt;/a&gt;。下面的发现应当读作促成修复的证据，而不是主题当前的状态。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Agent 批量索引</title>
+        <link>http://localhost:1313/zh/docs/design/proposals/agent-indexes/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/proposals/agent-indexes/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;已实现，随 OINK 0.8.0 发布&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;2026-08-27 决议全部待决问题后接受本提案。两类输出——按顶层 section 分包的&#xA;&lt;code&gt;LLMSFULL&lt;/code&gt; 与语言根下的 &lt;code&gt;NAVJSON&lt;/code&gt; 导航树——都已在主题 &lt;code&gt;main&lt;/code&gt; 分支实现，随 OINK&#xA;0.8.0 发布，之后本提案退役；发布后的行为由&lt;a href=&#34;http://localhost:1313/zh/docs/design/architecture/#outputs-and-runtime&#34;&gt;架构契约&lt;/a&gt;&#xA;承担。OINK 已经支持每页 Markdown、语言内 &lt;code&gt;llms.txt&lt;/code&gt;、HTML discovery link 与&#xA;Copy Markdown；本页只覆盖新增的两类。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Markdown 优先创作</title>
+        <link>http://localhost:1313/zh/docs/design/decisions/authoring/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/decisions/authoring/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;决策&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;Goldmark 能保留目标语义时，优先提供原生 Markdown 形态。只有原生形态无法表达真实能力时，&#xA;才保留 shortcode。新增内容场景时延长既有外壳和数据模型，不另建一套并行渲染系统。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>外壳与导航契约</title>
+        <link>http://localhost:1313/zh/docs/design/shell/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/shell/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;这是随 OINK 0.8.0 正式发布的外壳与导航契约。本页是权威中文源文件，与英文版本&#xA;一同维护在 &lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;authorities-and-navigation&#34;&gt;权威来源与导航&#xA;&lt;/h2&gt;&#xA;&lt;div class=&#34;td-table-scroll td-table-scroll--static&#34;&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;th scope=&#34;col&#34;&gt;关注点&lt;/th&gt;&#xA;      &lt;th scope=&#34;col&#34;&gt;权威来源&lt;/th&gt;&#xA;    &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;全局导航&lt;/td&gt;&#xA;      &lt;td&gt;Hugo &lt;code&gt;menus.main&lt;/code&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;Docs / Book 侧栏与翻页&lt;/td&gt;&#xA;      &lt;td&gt;内容树或 &lt;code&gt;data/docs_nav.json&lt;/code&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;根栏目切换器&lt;/td&gt;&#xA;      &lt;td&gt;解析后的顶层内容根&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;内容发现&lt;/td&gt;&#xA;      &lt;td&gt;各语言的本地搜索索引&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;页面与命令面板操作&lt;/td&gt;&#xA;      &lt;td&gt;共享操作注册表&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;任何功能都不能引入另一套菜单或页面树。菜单只允许一层子项交互；更深层级会警告，&#xA;并平铺到带链接的分组标题下。外部链接使用&#xA;&lt;code&gt;target=&amp;quot;_blank&amp;quot; rel=&amp;quot;noopener noreferrer&amp;quot;&lt;/code&gt;；内部链接保持语言与子路径感知。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Book 出版链路</title>
+        <link>http://localhost:1313/zh/docs/design/proposals/book-publication/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/proposals/book-publication/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--warning&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-triangle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;已实现出版工具的提案草案&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;选择启用的 &lt;code&gt;BookManifest&lt;/code&gt;、通用 EPUB/PDF runner 与产物校验都已随版本发布，&#xA;其规范性描述在&lt;a href=&#34;http://localhost:1313/zh/docs/design/architecture/&#34;&gt;架构&lt;/a&gt;。没有任何一次构建会自己产出这两种文件。&#xA;本提案仍然未决、且只在本提案未决的，是消费站迁移。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>落地页契约</title>
+        <link>http://localhost:1313/zh/docs/design/landing/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/landing/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;这是随 OINK 0.8.0 正式发布的落地页契约。本页是权威中文源文件，与英文版本&#xA;一同维护在 &lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;共享规则见&lt;a href=&#34;http://localhost:1313/zh/docs/design/architecture/&#34;&gt;架构契约&lt;/a&gt;与&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/components/&#34;&gt;组件契约&lt;/a&gt;；迁移行为属于&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/migration/&#34;&gt;迁移边界&lt;/a&gt;。&lt;/p&gt;&#xA;&lt;h2 id=&#34;shell-and-data&#34;&gt;外壳与数据&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;任何普通页面都可以声明 &lt;code&gt;layout: landing&lt;/code&gt;。它渲染顶部导航栏、全宽画布与页脚，&#xA;不显示 docs 侧栏或 TOC 导轨。首页继续把 &lt;code&gt;data/home/&amp;lt;lang&amp;gt;.yaml&lt;/code&gt; 作为兼容的创作&#xA;路径，并通过同一个渲染器处理。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>生成式配置 Schema</title>
+        <link>http://localhost:1313/zh/docs/design/decisions/config-schema/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/decisions/config-schema/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;决策&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;&lt;code&gt;schema/&lt;/code&gt; 下的两份 JSON Schema 由 &lt;code&gt;bin/generate-config-schema.py&lt;/code&gt; 从主题的&#xA;&lt;code&gt;hugo.yaml&lt;/code&gt; 与模板读取点投影生成，手工编辑无法通过 CI。Schema 是既有权威的&#xA;只读投影，不是第三个配置权威。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;context&#34;&gt;背景&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;主题已有两个配置权威：&lt;code&gt;hugo.yaml&lt;/code&gt; 在注释旁声明每个默认值；&lt;code&gt;check-params.py&lt;/code&gt;&#xA;的读取点扫描知道模板实际消费的每一个键。编辑器对两者一无所知，作者只能凭记忆&#xA;敲 &lt;code&gt;params.ui.*&lt;/code&gt; 和 front matter。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>OINK 迁移边界</title>
+        <link>http://localhost:1313/zh/docs/design/migration/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/migration/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;这是随 OINK 0.8.0 正式发布的迁移契约。本页是权威中文源文件，与英文版本&#xA;一同维护在 &lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;这是源码与配置指南，不是版本发布流水账。本地源码、提交、标签、推送、消费站点&#xA;固定版本、部署与生产一致仍是彼此独立的状态。面向读者的升级流程见&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/admin/upgrade/&#34;&gt;版本升级&lt;/a&gt;。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>设计决策</title>
+        <link>http://localhost:1313/zh/docs/design/decisions/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/decisions/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;已接受的理由&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;决策记录解释 OINK 为什么在多个兼容方案中选择了当前设计。上方五份契约仍是&#xA;现行行为的规范描述；实现与归属检查器仍是可执行事实。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;OINK 过去把评审、PRD 与执行记录放在本地 &lt;code&gt;plan/&lt;/code&gt; 目录中。这样既不便发现有价值的&#xA;推理，也容易让已经放弃的设计看起来仍有权威。已经接受的理由现在统一进入这座双语、&#xA;版本化的文档站，与它所支撑的契约放在一起。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>设计与开发</title>
+        <link>http://localhost:1313/zh/docs/design/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本专栏公开随 OINK 0.8.0 正式发布的维护者契约，兼容性下限为 Hugo Extended&#xA;0.160.1。唯一的中英文契约源文件位于本站仓库的 &lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;本专栏是 OINK 可长期维护的设计记录。站内其它专栏按任务讲解如何搭建站点；&#xA;这里集中说明现行不变量、这些选择背后的理由、用于比较方案的证据，以及仍处于&#xA;候选阶段的工作。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>设计研究</title>
+        <link>http://localhost:1313/zh/docs/design/research/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/research/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;证据，不是契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;研究记录测量了什么、使用了哪些输入与工具版本。它可以解释决策，但不能覆盖当前契约或实现。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;只有其他维护者能够检查方法、理解边界并复现相关检查时，研究才适合进入公开 Design 内容树。&#xA;原始 Agent 对话、临时构建日志和本机绝对路径不符合这一标准。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>设计提案与 PRD</title>
+        <link>http://localhost:1313/zh/docs/design/proposals/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/proposals/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--warning&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-triangle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;非规范性材料&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;提案描述的行为可能尚不存在。当前行为由契约、已接受决策、实现与归属检查器定义。不能把提案&#xA;当作配置参考。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;本栏目是 OINK 产品需求文档、RFC 风格设计与未决维护者提案的唯一正本位置。不要在主题仓库或&#xA;文档仓库中另建本地 &lt;code&gt;plan/&lt;/code&gt;、&lt;code&gt;plans/&lt;/code&gt;、&lt;code&gt;proposal/&lt;/code&gt; 或其它并行设计树。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

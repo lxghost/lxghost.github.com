@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>多语言 on OINK</title>
+    <link>http://localhost:1313/zh/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/</link>
+    <description>Recent content in 多语言 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Sat, 22 Aug 2026 16:32:18 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>ddia.vonng.com</title>
+        <link>http://localhost:1313/zh/case/ddia/</link>
+        <pubDate>Thu, 06 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/ddia/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://ddia.vonng.com/&#34;&gt;ddia.vonng.com&lt;/a&gt; 以多语言书籍形式发布《设计数据密集型&#xA;应用》。本案例快照包含简体与繁体中文各二十四章、第二版英文二十三章，以及&#xA;第一版的两套二十一章内容。&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;它展示了什么&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;带章节级导航的完整 &lt;code&gt;type: book&lt;/code&gt; 阅读外壳。&lt;/li&gt;&#xA;&lt;li&gt;一百三十多处图、表、公式与示例编号目标。&lt;/li&gt;&#xA;&lt;li&gt;跨多个版本保持稳定的交叉引用和生成式书籍索引。&lt;/li&gt;&#xA;&lt;li&gt;在同一出版物中承载多种书面语言变体。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;如果长篇内容更看重编号、引用与章节间移动，而不是文档式侧栏，可以采用&#xA;这一模式。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>pgsql.cc</title>
+        <link>http://localhost:1313/zh/case/pgsql-cc/</link>
+        <pubDate>Mon, 03 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/case/pgsql-cc/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://pgsql.cc/&#34;&gt;pgsql.cc&lt;/a&gt; 把 Patroni、HAProxy、etcd、PgBouncer、pgBackRest&#xA;与 pgBadger 的运维手册汇总为一套 PostgreSQL 专题文库。本案例快照中有&#xA;二百一十七页英文内容与八十页中文内容。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

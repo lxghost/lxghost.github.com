@@ -1,0 +1,728 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" dir="ltr" lang="en-US" data-td-typography="technical" data-td-theme-init>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#000000">
+
+<style>
+  html { background: Canvas; color: CanvasText; }
+  @media (prefers-color-scheme: dark) {
+    html { background: #0b0d12; color: #e6e6e6; }
+  }
+  html[data-td-theme-init] * { transition: none !important; }
+  [data-td-theme-toggle] > .td-shell-icon--sun { display: none !important; }
+  [data-td-theme-toggle] > [hidden] { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--moon { display: none !important; }
+  html[data-bs-theme='dark'] [data-td-theme-toggle] > .td-shell-icon--sun { display: inline-block !important; }
+</style>
+
+<script>
+  (function() {
+    const themeKey = 'td-color-theme';
+    let storedTheme = null;
+    try {
+      storedTheme = localStorage.getItem(themeKey);
+    } catch (_) {
+      
+      
+    }
+    let theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+    if (theme === 'auto') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    document.documentElement.classList.toggle('dark-mode', theme === 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<link rel="canonical" type="text/html" href="http://localhost:1313/blog/oink/">
+<link rel="alternate" type="application/rss&#43;xml" href="http://localhost:1313/blog/oink/index.xml">
+<link rel="alternate" type="text/markdown" href="http://localhost:1313/blog/oink/index.md">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<title>Oink Blog | OINK</title>
+<meta name="description" content="OINK announcements, engineering stories, and implementation notes">
+<link rel="canonical" href="http://localhost:1313/blog/oink/">
+<link rel="alternate" hreflang="en-US" href="http://localhost:1313/blog/oink/">
+<link rel="alternate" hreflang="zh-CN" href="http://localhost:1313/zh/blog/oink/">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:url" content="http://localhost:1313/blog/oink/">
+  <meta property="og:site_name" content="OINK">
+  <meta property="og:title" content="Oink Blog">
+  <meta property="og:description" content="OINK announcements, engineering stories, and implementation notes">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+    <meta property="og:image" content="http://localhost:1313/images/oink.webp">
+
+  <meta itemprop="name" content="Oink Blog">
+  <meta itemprop="description" content="OINK announcements, engineering stories, and implementation notes">
+  <meta itemprop="dateModified" content="2026-08-20T19:29:45+08:00">
+  <meta itemprop="image" content="http://localhost:1313/images/oink.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/images/oink.webp">
+  <meta name="twitter:title" content="Oink Blog">
+  <meta name="twitter:description" content="OINK announcements, engineering stories, and implementation notes">
+<link href="/scss/fontawesome.css" rel="stylesheet">
+<link href="/scss/main.css" rel="stylesheet">
+
+  </head>
+  <body class="td-section td-blog td-print-view">
+    <a class="td-skip-link d-print-none" href="#td-main-content">Skip to content</a>
+
+    
+<header class="td-site-header d-print-none" data-td-header>
+  <div class="td-site-container">
+    <nav class="td-site-nav" aria-label="Main navigation">
+      <a href="/" class="td-nav-brand" data-td-navbar-route
+         aria-label="OINK — Home">
+        <img src="/icons/logo.svg" alt="" class="td-nav-logo" width="22" height="22">
+        <span class="td-nav-title">OINK</span>
+      </a><div class="td-nav-links td-nav-menu-zone"><div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link" href="/docs/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Docs"
+  data-td-navbar-region="desktop" data-td-navbar-label="Docs"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-docs-0" aria-expanded="false">
+  <i class="fa-solid fa-book" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Docs</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-docs-0" data-td-navbar-panel hidden><a class="td-nav-menu__item-link" href="/docs/about/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Introduction"
+  data-td-navbar-region="desktop" data-td-navbar-label="Introduction"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Introduction</span></a>
+<a class="td-nav-menu__item-link" href="/docs/start/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Get started"
+  data-td-navbar-region="desktop" data-td-navbar-label="Get started"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Get started</span></a>
+<a class="td-nav-menu__item-link" href="/docs/write/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Authoring"
+  data-td-navbar-region="desktop" data-td-navbar-label="Authoring"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Authoring</span></a>
+<a class="td-nav-menu__item-link" href="/docs/components/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Components"
+  data-td-navbar-region="desktop" data-td-navbar-label="Components"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-cubes" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Components</span></a>
+<a class="td-nav-menu__item-link" href="/docs/customize/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Customization"
+  data-td-navbar-region="desktop" data-td-navbar-label="Customization"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Customization</span></a>
+<a class="td-nav-menu__item-link" href="/docs/admin/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Operations"
+  data-td-navbar-region="desktop" data-td-navbar-label="Operations"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Operations</span></a>
+<a class="td-nav-menu__item-link" href="/docs/design/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Design"
+  data-td-navbar-region="desktop" data-td-navbar-label="Design"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-compass-drafting" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Design</span></a>
+
+  </div>
+</div><a class="nav-link" href="/book/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Book"
+  data-td-navbar-region="desktop" data-td-navbar-label="Book"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Book</span></a>
+<a class="nav-link" href="/case/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Case"
+  data-td-navbar-region="desktop" data-td-navbar-label="Case"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Case</span></a>
+<div class="td-nav-menu" data-td-navbar-menu>
+  <a class="nav-link td-nav-menu__parent-link active" href="/blog/"
+  data-td-navbar-level="0" data-td-navbar-kind="link" data-td-navbar-route
+  aria-label="Blog"
+  data-td-navbar-region="desktop" data-td-navbar-label="Blog"
+  data-td-navbar-external="false" aria-controls="td-navbar-desktop-blog-3" aria-expanded="false">
+  <i class="fa-solid fa-blog" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Blog</span></a>
+
+  <div class="td-nav-menu__panel" id="td-navbar-desktop-blog-3" data-td-navbar-panel hidden><a class="td-nav-menu__item-link active" href="/blog/oink/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="OINK engineering"
+  data-td-navbar-region="desktop" data-td-navbar-label="OINK engineering"
+  data-td-navbar-external="false" aria-current="page">
+  <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">OINK engineering</span></a>
+<a class="td-nav-menu__item-link" href="/blog/release/"
+  data-td-navbar-level="1" data-td-navbar-kind="link"
+  aria-label="Releases"
+  data-td-navbar-region="desktop" data-td-navbar-label="Releases"
+  data-td-navbar-external="false">
+  <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+  <span class="td-navbar-entry__label">Releases</span></a>
+
+  </div>
+</div>
+      </div><div class="td-nav-links td-nav-util-zone">
+        <div class="td-nav-hover-menu td-nav-version-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-nav-hover-open
+            title="v0.8.0" aria-label="v0.8.0" aria-expanded="false"><i class="td-shell-icon td-shell-icon--code-branch fa-solid fa-code-branch" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="v0.8.0">
+            <span class="td-nav-hover-menu__option td-is-disabled"><strong>Versions</strong></span>
+            <a class="td-nav-hover-menu__option td-is-active" aria-current="page" href="https://oink.pgsty.com">v0.8.0</a>
+          </div>
+        </div>
+          <div class="td-language-selector td-language-selector--menu td-nav-util td-site-nav__language">
+  <a class="td-language-selector__trigger" href="/zh/blog/oink/"
+    lang="zh-CN" hreflang="zh-CN" dir="ltr"
+    title="Switch language: 简体中文"
+    aria-label="Switch language: 简体中文" aria-haspopup="true" aria-expanded="false">
+    <i class="fa-solid fa-language" aria-hidden="true"></i>
+    <span>简体中文</span>
+  </a>
+  <ul aria-label="Choose language">
+    <li>
+      <span class="td-language-selector__item active" lang="en-US" dir="ltr" aria-current="page">English</span>
+    </li>
+    <li>
+      <a class="td-language-selector__item" href="/zh/blog/oink/" lang="zh-CN" hreflang="zh-CN" dir="ltr">简体中文</a>
+    </li>
+  </ul>
+</div><div class="td-nav-hover-menu td-nav-theme-menu" data-td-nav-hover>
+          <button type="button" class="td-nav-util" data-td-nav-hover-trigger data-td-theme-toggle
+            title="Toggle color theme" aria-label="Toggle color theme" aria-expanded="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i></button>
+          <div class="td-nav-hover-menu__pop" role="group" aria-label="Toggle color theme">
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="light" aria-pressed="false"><i class="td-shell-icon td-shell-icon--sun fa-solid fa-sun" aria-hidden="true"></i><span>Light</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="dark" aria-pressed="false"><i class="td-shell-icon td-shell-icon--moon fa-solid fa-moon" aria-hidden="true"></i><span>Dark</span>
+            </button>
+            <button type="button" class="td-nav-hover-menu__option" data-bs-theme-value="auto" aria-pressed="false"><i class="td-shell-icon td-shell-icon--contrast fa-solid fa-circle-half-stroke" aria-hidden="true"></i><span>System</span>
+            </button>
+          </div>
+        </div>
+        <a href="https://github.com/pgsty/oink" class="td-nav-github" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="td-shell-icon td-shell-icon--github fa-brands fa-github" aria-hidden="true"></i></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+    <div class="container-fluid td-print-shell">
+      <main id="td-main-content" class="td-print-document" tabindex="-1">
+        
+
+
+
+
+<div class="td-content">
+<div class="td-page-notice td-page-notice--primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<button type="button" class="btn btn-link p-0 align-baseline" data-td-action="print">Click here to print</button>.
+</p><p>
+<a href="/blog/oink/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Oink Blog</h1>
+<div class="lead">OINK announcements, engineering stories, and implementation notes</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+  
+  
+
+  
+    
+    
+    <li>
+1: <a href="#pg-ce657107cdde338e8335a445fcb69925">Immersive reading on the Blog shell</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+2: <a href="#pg-1314ec6a4dcb4a3c00bdc4e352b6da78">Introducing the OINK implementation preview</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+3: <a href="#pg-efd6ef6eeecc6916877b8d35ec750da4">OINK implementation diary: from copied shells to one theme</a>
+
+
+    </li>
+  
+
+    </ul>
+<div class="content">
+      
+</div>
+</div>
+
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-ce657107cdde338e8335a445fcb69925">1 - Immersive reading on the Blog shell</h1>
+    <div class="lead">Four front matter keys turn an ordinary Blog page into a reading-first layout with a full-bleed hero and an in-flow outline rail.</div>
+	<p>This page is rendered by the ordinary Blog shell. There is no special content
+type behind it. Four front matter keys change the presentation, and a section
+can set the same recipe once in a cascade:</p>
+<div class="td-code td-code--untitled" id="td-code-b33790b4-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-b33790b4-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">featured_image</span><span class="p">:</span><span class="w"> </span><span class="l">hero     </span><span class="w"> </span><span class="c"># the image becomes a full-bleed opening</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">toc_style</span><span class="p">:</span><span class="w"> </span><span class="l">flow          </span><span class="w"> </span><span class="c"># a wider outline starts with the article</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">toc_taxonomies</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">     </span><span class="c"># the rail carries the outline alone</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">sidebar_enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span></span></span></code></pre></div></div>
+</div>
+<h2 id="pg-ce657107cdde338e8335a445fcb69925--the-hero">The hero
+</h2>
+<p>A page with a featured image can open with it. <code>hero</code> turns that image into a
+full-bleed backdrop across the top of the viewport, moves the title down to
+give it room, and masks the artwork away before the body begins. Because the
+shell paints it, the same presentation also works on a section index.</p>
+<p>The page card, social preview, and Hero all use the same representative-image
+resolver. <code>featured_image: banner</code> keeps the framed alternative, while a page
+without a suitable image simply falls back to the normal opening.</p>
+<h2 id="pg-ce657107cdde338e8335a445fcb69925--the-rail">The outline rail
+</h2>
+<p><code>toc_style: flow</code> replaces the viewport-pinned outline with a wider rail in the
+content flow. It starts beside the article below the Hero and becomes sticky
+only after scrolling. The switch is independent of the image, so one section
+can keep a consistent outline even when some pages have no artwork.</p>
+<p><code>toc_taxonomies: false</code> removes the taxonomy clouds. If a page has neither an
+outline nor clouds, the empty rail is omitted completely.</p>
+<h2 id="pg-ce657107cdde338e8335a445fcb69925--what-stays-on">What remains available
+</h2>
+<p>Everything below the opening is still a normal Blog article: date and reading
+time, tag badges, authors and profiles, the series strip, the description lead,
+sharing, annotation, sequential navigation, and comments. The Blog shell omits
+breadcrumbs by default; <code>breadcrumb: true</code> restores one for a page that needs
+its position in the tree to remain visible.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-1314ec6a4dcb4a3c00bdc4e352b6da78">2 - Introducing the OINK implementation preview</h1>
+    <div class="lead">OINK turns a directly customized Docsy codebase into a local-first, Hugo-only documentation theme with multilingual infrastructure and reusable content components.</div>
+	<p>Today we are publishing the OINK implementation preview: a directly evolved
+Docsy theme with one canonical product shell, a Hugo-only consumer build,
+local-first browser dependencies, a general multilingual framework, and a set of
+reusable content components drawn from PGSTY documentation sites.</p>
+<p>This is an implementation and documentation milestone, not a public versioned
+release. The final public brand, module and package identities, first version,
+and production Cloudflare Pages deployment remain explicit release gates.</p>
+<h2 id="pg-1314ec6a4dcb4a3c00bdc4e352b6da78--why-oink-exists">Why OINK exists
+</h2>
+<p>Several mature documentation sites had independently copied the same Docsy
+layouts, navigation, search code, SCSS, JavaScript, and shortcodes. A common fix
+had to be repeated across repositories, while each site also carried a frontend
+toolchain and implicit network dependencies that made isolated builds harder
+than they needed to be.</p>
+<p>OINK consolidates the genuinely reusable layer. Product matrices, portals,
+pricing pages, and other business-specific behavior stay in their own sites. The
+shared theme owns the documentation shell, browser runtimes, multilingual
+routing, accessibility behavior, and content-component contracts.</p>
+<h2 id="pg-1314ec6a4dcb4a3c00bdc4e352b6da78--what-changes">What changes
+</h2>
+<h3 id="pg-1314ec6a4dcb4a3c00bdc4e352b6da78--one-product-instead-of-a-mode">One product instead of a mode
+</h3>
+<p>OINK is not an optional skin. There is no <code>oink.enabled</code> flag, <code>params.oink.*</code>
+namespace, or parallel upstream-versus-brand template tree. The implementation
+in <code>theme/</code> is the product.</p>
+<p>That decision avoids two visual systems and two test matrices. Native Hugo
+settings and compatible Docsy parameters keep their established meanings.</p>
+<h3 id="pg-1314ec6a4dcb4a3c00bdc4e352b6da78--hugo-only-consumer-builds">Hugo-only consumer builds
+</h3>
+<p>A complete consuming site builds with:</p>
+<div class="td-code td-code--untitled" id="td-code-398b2600-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="sh" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-398b2600-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">hugo --gc --minify</span></span></code></pre></div></div>
+</div>
+<p>Bootstrap, Font Awesome, fonts, search, diagrams, API documentation runtimes,
+and OINK components are committed with the theme. Node.js, npm, PostCSS,
+Autoprefixer, and CDN downloads are not consumer requirements.</p>
+<p>Repository maintainers still use Node-based tools for tests and vendor
+refreshes. That maintenance toolchain is deliberately outside the public
+site-build contract.</p>
+<h3 id="pg-1314ec6a4dcb4a3c00bdc4e352b6da78--local-first-browser-behavior">Local-first browser behavior
+</h3>
+<p>The default starter serves its shell, fonts, icons, search, Mermaid, KaTeX,
+Markmap, Swagger UI, Redoc, Asciinema, ECharts, and Infographic dependencies
+from the generated site. Optional runtimes are selected per page and loaded at
+most once.</p>
+<p>PlantUML and Diagrams.net do not receive public service defaults. A site must
+configure a controlled endpoint, use a pre-rendered result, or make an explicit
+remote-service choice.</p>
+<h3 id="pg-1314ec6a4dcb4a3c00bdc4e352b6da78--multilingual-infrastructure">Multilingual infrastructure
+</h3>
+<p>Language routing comes from Hugo&rsquo;s language and translation objects. One
+configured language hides the selector. With two or more languages, a click
+advances by configured weight, while a short hover or keyboard focus opens the
+complete menu. If the current page lacks a translation, the selector goes to the
+target-language home page instead of a dead path.</p>
+<p>The starter and documentation site use English as the primary language and
+Simplified Chinese as the second. Every page in the core docs and blog scope has
+a colocated <code>.zh.md</code> translation with stable explicit heading IDs.</p>
+<h3 id="pg-1314ec6a4dcb4a3c00bdc4e352b6da78--reusable-components">Reusable components
+</h3>
+<p>OINK adds theme-owned Asciinema, ECharts, Infographic, document carousel,
+details, tabs, cards, navigation cards, document cards, and parameter
+components. They generate unique instance IDs and load their local assets only
+when used.</p>
+<p>ECharts accepts structured JSON or YAML plus optional JavaScript callbacks
+referenced as <code>$fn:name</code>. Callback code runs only on pages that declare it.</p>
+<h2 id="pg-1314ec6a4dcb4a3c00bdc4e352b6da78--what-stays-familiar">What stays familiar
+</h2>
+<p>OINK retains Docsy&rsquo;s content organization, front matter, documentation and blog
+sections, menus, taxonomies, print output, repository links, common shortcodes,
+diagrams, API reference features, and extension hooks. Existing sites can remove
+duplicated common implementations without rewriting ordinary Markdown.</p>
+<p>The project also preserves Docsy&rsquo;s Apache-2.0 history and attribution. A vendor
+manifest records pinned third-party sources, licenses, artifacts, and checksums.</p>
+<h2 id="pg-1314ec6a4dcb4a3c00bdc4e352b6da78--try-the-starter">Try the starter
+</h2>
+<p>Install Hugo Extended <code>0.160.1</code> or newer, then run from this checkout:</p>
+<div class="td-code td-code--untitled" id="td-code-398b2600-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="sh" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-398b2600-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">hugo --source starter --gc --minify</span></span></code></pre></div></div>
+</div>
+<p>The current validation baseline is Hugo Extended <code>0.164.0</code>. Open the generated
+English and Chinese pages, switch languages, search locally, change color mode,
+and visit the component examples.</p>
+<p>For a network-isolated transfer, maintainers can create a complete archive:</p>
+<div class="td-code td-code--untitled" id="td-code-398b2600-fence-2" data-td-code data-td-code-auto-id
+     data-td-language="sh" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-398b2600-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">scripts/package-offline.sh /absolute/path/oink-preview.tar.gz preview</span></span></code></pre></div></div>
+</div>
+<p>The archive includes the theme, starter, licenses, upstream record, migration
+guide, vendor manifest, and a sidecar checksum.</p>
+<h2 id="pg-1314ec6a4dcb4a3c00bdc4e352b6da78--current-validation">Current validation
+</h2>
+<p>The implementation includes automated coverage for:</p>
+<ul>
+<li>minimum-version and current Hugo Extended builds;</li>
+<li>forbidden consumer Node/npm/PostCSS/Autoprefixer paths;</li>
+<li>LTR, RTL, subpath, print, color-mode, and production assets;</li>
+<li>hidden, click-to-cycle, hover-menu, translation-fallback, and RTL language
+behavior;</li>
+<li>local per-page runtimes and repeated component instances;</li>
+<li>ECharts structured options and callback integration;</li>
+<li>an offline bilingual starter and offline release archive;</li>
+<li>vendor licenses and checksums;</li>
+<li>non-mutating migration rehearsals for SILO, PGSTY, SOW, and Pigsty.</li>
+</ul>
+<p>The latest four-site rehearsal built temporary copies successfully. It did not
+modify or deploy those production repositories.</p>
+<h2 id="pg-1314ec6a4dcb4a3c00bdc4e352b6da78--what-remains-before-release">What remains before release
+</h2>
+<p>The public identity and first version must be approved and applied consistently
+to the module, package, source tags, nested theme tag, archive, and
+documentation. The target Cloudflare Pages project must then be connected to the
+source branch, built with the pinned Hugo version, published, and verified at
+its hosted URL.</p>
+<p>Until those gates close, use the preview for evaluation and migration rehearsal,
+not as an unversioned production dependency.</p>
+<h2 id="pg-1314ec6a4dcb4a3c00bdc4e352b6da78--read-next">Read next
+</h2>
+<ul>
+<li><a href="/docs/about/">OINK overview</a></li>
+<li><a href="/docs/about/architecture/">Architecture</a></li>
+<li><a href="/docs/about/local-first/">Local-first operation</a></li>
+<li><a href="/docs/components/">Content components</a></li>
+<li><a href="/docs/customize/config/">Configuration</a></li>
+<li><a href="/docs/upgrade/from-docsy/">Migration guide</a></li>
+<li><a href="/docs/about/">Release process</a></li>
+<li><a href="/blog/oink/oink-implementation-diary/">Implementation diary</a></li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-efd6ef6eeecc6916877b8d35ec750da4">3 - OINK implementation diary: from copied shells to one theme</h1>
+    <div class="lead">A technical diary of the decisions, migrations, safety boundaries, tests, and documentation work behind the OINK implementation preview.</div>
+	<p>OINK began with an awkward observation: several production documentation sites
+looked related because they were related, but their common implementation lived
+as copied files. The visible result was consistent enough; the maintenance model
+was not.</p>
+<p>This diary records how the project moved from repeated site overrides to one
+directly evolved theme. It focuses on decisions and evidence rather than a
+commit-by-commit transcript.</p>
+<h2 id="pg-efd6ef6eeecc6916877b8d35ec750da4--locking-the-contract">Locking the contract
+</h2>
+<p>The first useful work was subtraction. We wrote down what the product must be
+before choosing how to implement it:</p>
+<ul>
+<li>an independent theme derived directly from Docsy;</li>
+<li>one canonical shell, not a switchable skin;</li>
+<li>Hugo Extended as the only consumer build dependency;</li>
+<li>local-first delivery for every theme-owned browser asset;</li>
+<li>multilingual behavior derived from Hugo rather than PGSTY domains;</li>
+<li>reusable components in the theme, business semantics in the site;</li>
+<li>preserved Docsy history, licenses, and upstream traceability.</li>
+</ul>
+<p>This ruled out an attractive but costly shortcut: adding <code>params.oink.enabled</code>
+and leaving the old shell in place. A mode switch would have made every layout
+change, accessibility fix, and test support two products. Direct evolution made
+the intended design the only design.</p>
+<h2 id="pg-efd6ef6eeecc6916877b8d35ec750da4--replacing-the-shell">Replacing the shell
+</h2>
+<p>The documentation, blog, and API-reference layouts were rebuilt around shared,
+small partials. The resulting shell includes:</p>
+<ul>
+<li>global navigation and responsive sub-navigation;</li>
+<li>a resizable, foldable sidebar;</li>
+<li>local search and quick links;</li>
+<li>language and color-mode controls;</li>
+<li>breadcrumbs, table of contents, page metadata, and feedback;</li>
+<li>a consistent footer and print layout.</li>
+</ul>
+<p>The hard part was not drawing a navbar. It was preserving existing Docsy
+extension points while removing copied <code>baseof.html</code> files. Narrow hooks remain;
+site-wide shell duplication no longer has to be the normal customization path.</p>
+<h2 id="pg-efd6ef6eeecc6916877b8d35ec750da4--removing-the-consumer-toolchain">Removing the consumer toolchain
+</h2>
+<p>The original dependency chain assumed npm-provided Bootstrap and Font Awesome,
+and some paths invoked PostCSS. OINK moved the required sources and compiled
+artifacts into the theme and kept SCSS inside Hugo&rsquo;s own asset pipeline.</p>
+<p>Tests do more than check that <code>hugo</code> succeeds. Fixture traps fail if a consumer
+build tries to run Node.js, npm, PostCSS, or Autoprefixer, or if a template uses
+<code>resources.GetRemote</code>. LTR and RTL pages go through the same constraint.</p>
+<p>This distinction matters: the repository still uses Node for its maintainer test
+harness. &ldquo;Hugo-only&rdquo; describes what a consuming site needs after it has a
+complete theme, not a ban on development tooling inside the theme repository.</p>
+<h2 id="pg-efd6ef6eeecc6916877b8d35ec750da4--vendoring-browser-runtimes">Vendoring browser runtimes
+</h2>
+<p>The next layer was every dependency the browser might otherwise fetch:
+Bootstrap, Font Awesome, fonts, jQuery, Lunr, Mermaid, KaTeX, Markmap, Swagger
+UI, Redoc, Asciinema, ECharts, Infographic, and their supporting libraries.</p>
+<p>Each selected artifact received a source, fixed version, license path, checksum,
+and update procedure in <code>theme/VENDOR.json</code>. Licenses live beside the vendored
+material. The manifest is validated against the actual files rather than treated
+as an aspirational inventory.</p>
+<p>PlantUML and Diagrams.net forced a useful distinction. They are service-backed
+features, not merely JavaScript libraries. OINK refuses to invent a public
+endpoint: enabling one without a configured service fails the build.</p>
+<h2 id="pg-efd6ef6eeecc6916877b8d35ec750da4--building-the-multilingual-core">Building the multilingual core
+</h2>
+<p>The previous language behavior was scattered across navigation and site-specific
+assumptions. The new core starts with Hugo&rsquo;s configured languages,
+<code>.Translations</code>, and <code>.AllTranslations</code>.</p>
+<p>The presentation is deliberately stable: one language hides the selector; two or
+more use the same icon button. Clicking advances by configured weight, while a
+short hover or keyboard focus opens the complete language menu.</p>
+<p>A missing translation falls back to the target-language home page. Language
+labels use each language&rsquo;s own name. The same objects drive <code>lang</code>, direction,
+canonical, <code>hreflang</code>, and Open Graph locale metadata, so the visible selector
+cannot drift from SEO output.</p>
+<p>The tests construct every state with an RTL current language as well as normal
+LTR cases. Native links and disclosure controls keep keyboard behavior
+predictable.</p>
+<h2 id="pg-efd6ef6eeecc6916877b8d35ec750da4--promoting-components">Promoting components
+</h2>
+<p>Asciinema, ECharts, Infographic, document carousel, details, tabs, cards, and
+parameter rendering had already proved valuable in PGSTY sites. The work was to
+turn them from copies into product APIs:</p>
+<ul>
+<li>normalize parameter names and defaults;</li>
+<li>generate unique IDs from page identity and shortcode ordinal;</li>
+<li>load each runtime once per page and omit it from unused pages;</li>
+<li>preserve subpath URLs;</li>
+<li>support repeated identical instances;</li>
+<li>provide print, dark-mode, mobile, keyboard, and reduced-motion behavior;</li>
+<li>retain compatible aliases for imported content.</li>
+</ul>
+<p>Product matrices and other business widgets did not move. Reuse is not measured
+by the number of repositories containing a copy; it requires a stable,
+business-neutral contract.</p>
+<h2 id="pg-efd6ef6eeecc6916877b8d35ec750da4--designing-safe-echarts">Supporting ECharts callbacks
+</h2>
+<p>ECharts callbacks are legitimate chart options that JSON and YAML cannot
+express. Existing pages use them for tooltip formatting, label formatting, and
+data-dependent colors. Treating those callbacks as a separate migration
+exception added configuration without creating a sandbox.</p>
+<p>The shortcode therefore keeps one direct contract:</p>
+<ol>
+<li>content supplies JSON or YAML, which Hugo parses and safely serializes;</li>
+<li>an optional fenced JavaScript block declares callbacks;</li>
+<li><code>$fn:name</code> values reconnect those callbacks after the options are parsed;</li>
+<li>authors review executable code under the same trust model as inline HTML and
+other custom integrations.</li>
+</ol>
+<p>Tests cover repeated identical charts, invalid CSS lengths, structured options,
+and callback registration.</p>
+<h2 id="pg-efd6ef6eeecc6916877b8d35ec750da4--creating-the-starter-and-archive">Creating the starter and archive
+</h2>
+<p>A contract is easier to trust when the smallest example demonstrates it. The
+starter contains bilingual home, docs, blog, and component pages; local search;
+dark mode; diagrams; API documentation; and the new components. It has no
+<code>package.json</code> and no site workflow.</p>
+<p>The offline packager combines <code>theme/</code>, <code>starter/</code>, licenses, the upstream
+record, and migration guidance, excluding generated output and dependency
+caches. It writes a sidecar SHA-256 file and refuses to overwrite an existing
+artifact.</p>
+<p>The acceptance test copies the starter and theme to a temporary directory,
+empties caches, blocks HTTP/HTTPS and Go proxies, builds with Hugo, and examines
+HTML and CSS for third-party subresources.</p>
+<h2 id="pg-efd6ef6eeecc6916877b8d35ec750da4--rehearsing-four-migrations">Rehearsing four migrations
+</h2>
+<p>SILO, PGSTY, SOW, and Pigsty provided the reality check. The rehearsal tool
+copies each workspace instead of modifying it, removes only classified common
+overrides, applies a local theme replacement, forbids network and frontend
+tools, and runs the production build.</p>
+<p>The latest rehearsal removed 20 common overrides from SILO, PGSTY, and SOW and
+24 from Pigsty. Pigsty retained its three business matrix shortcodes and
+existing ECharts callbacks. All temporary copies built, producing 1,095, 16,
+128, and 2,473 HTML files respectively.</p>
+<p>Those numbers prove the rehearsal at the recorded commits. They do not prove
+that any production repository was changed or any hosted site was deployed.</p>
+<h2 id="pg-efd6ef6eeecc6916877b8d35ec750da4--turning-the-sample-into-oink-docs">Turning the sample into OINK docs
+</h2>
+<p>The inherited <code>docsy.dev</code> site was valuable as a regression corpus, but it
+described only Docsy. The documentation phase did four things:</p>
+<ol>
+<li>made English primary and Simplified Chinese second; a later shell review
+removed French from the demonstration site;</li>
+<li>translated every core documentation and blog source into a colocated <code>.zh.md</code>
+page;</li>
+<li>preserved English heading IDs explicitly in every Chinese heading;</li>
+<li>added the OINK product guide, announcement, and this implementation diary.</li>
+</ol>
+<p>Before translation, we established a terminology and typography guide. A checker
+then verifies source/translation pairs, heading counts, explicit Chinese IDs,
+and rendered English/Chinese heading-ID equality.</p>
+<p>Historical Docsy release posts remain faithful translations. Their npm-era
+instructions are historical context, while the OINK architecture and migration
+guides state the current Hugo-only product contract.</p>
+<h2 id="pg-efd6ef6eeecc6916877b8d35ec750da4--what-testing-changed">What testing changed
+</h2>
+<p>Several tests changed the design rather than merely blessing it:</p>
+<ul>
+<li>subpath fixtures forced every local component URL through Hugo URL handling;</li>
+<li>repeated-instance tests replaced content hashes with page-and-ordinal IDs;</li>
+<li>offline browser checks exposed implicit runtime requests;</li>
+<li>RTL language matrices prevented a selector implementation that only worked for
+the starter&rsquo;s two LTR languages;</li>
+<li>ECharts callback fixtures kept callback registration and structured options
+interoperable;</li>
+<li>migration rehearsals preserved site-specific partials that a blanket
+<code>layouts/</code> deletion would have removed.</li>
+</ul>
+<p>The strongest test suite is one that constrains the product boundary, not just
+the current HTML snapshot.</p>
+<h2 id="pg-efd6ef6eeecc6916877b8d35ec750da4--remaining-work">Remaining work
+</h2>
+<p>Two release gates remain intentionally open. The public brand, repository,
+module and package identities, and first version need approval. A real
+Cloudflare Pages project then needs to build from the source branch and pass
+hosted verification.</p>
+<p>Production migrations should proceed one site at a time, with dedicated
+branches, preview deployments, visual regression, and rollback artifacts. The
+temporary four-site rehearsal is a foundation for that work, not a substitute.</p>
+<h2 id="pg-efd6ef6eeecc6916877b8d35ec750da4--lessons">Lessons
+</h2>
+<ul>
+<li>Write the product boundary before moving files.</li>
+<li>A local-first promise needs both build-time and browser-time evidence.</li>
+<li>Configuration is healthier when it expresses user choices, not internal
+implementation branches.</li>
+<li>Translation quality includes stable links, code fidelity, typography, and
+rendered structure—not prose alone.</li>
+<li>Reuse should remove maintenance copies without absorbing business semantics.</li>
+<li>&ldquo;Built,&rdquo; &ldquo;packaged,&rdquo; &ldquo;published,&rdquo; &ldquo;deployed,&rdquo; and &ldquo;migrated&rdquo; are different
+claims and need different evidence.</li>
+</ul>
+<p>The result is less dramatic than a rewrite and more useful: one theme that can
+be understood, built, tested, translated, and migrated as a coherent product.</p>
+
+</div>
+
+
+
+    
+	
+  
+
+
+
+      </main>
+    </div>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"Copy Markdown","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["Copy Markdown","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Copy Markdown","url":"/blog/oink/index.md"},{"available":true,"description":"Copy link","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["Copy link","Share","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"Copy link","url":"http://localhost:1313/blog/oink/"},{"available":true,"description":"Open in ChatGPT","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["Open in ChatGPT","Ask about this page","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in ChatGPT","url":"https://chatgpt.com/?hints=search\u0026prompt=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fblog%2Foink%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"Open in Claude","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["Open in Claude","Ask about this page","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in Claude","url":"https://claude.ai/new?q=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fblog%2Foink%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"View markdown","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["View markdown","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View markdown","url":"/blog/oink/index.md"},{"available":true,"description":"View edit history","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["View edit history","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View edit history","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/blog/oink/_index.md"},{"available":true,"description":"Edit this page","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["Edit this page","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Edit this page","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/blog/oink/_index.md"},{"available":true,"description":"Create child page","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["Create child page","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create child page","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/blog/oink?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"Create docs issue","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["Create docs issue","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create docs issue","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=Oink+Blog"},{"available":true,"description":"Create project issue","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["Create project issue","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create project issue","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"Print entire section","disabledReason":"Print entire section: unavailable","icon":"fa-solid fa-print","id":"print_section","keywords":["Print entire section","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Print entire section","url":""},{"available":true,"description":"Print this page","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["Print this page","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"Print this page","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL required","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"Switch language","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["Switch language","language"],"kind":"choice","options":[{"active":true,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/blog/oink/"},{"active":false,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/blog/oink/"}],"placements":{"page":false,"palette":true},"target":"self","title":"Switch language","url":""},{"available":true,"description":"Toggle color theme","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["Toggle color theme","Light","Dark"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"System","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"Light","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"Dark","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"Toggle color theme","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"Report or review theme and documentation issues","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["bug","support","roadmap"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK issues","url":"https://github.com/pgsty/oink/issues"}],"language":"en","quickLinks":[{"available":true,"description":"OINK is a documentation theme that needs nothing but Hugo Extended — components are written in Markdown, assets ship with the theme, both languages work out of the box, and one source produces four outputs.","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["Docs","docs"],"kind":"url","target":"self","title":"Docs","url":"/docs/"},{"available":true,"description":"OINK engineering stories, immersive guides, and release notes","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["Blog","blog"],"kind":"url","target":"self","title":"Blog","url":"/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+
+<script src="/js/actions.js"></script>
+
+  </body>
+</html>

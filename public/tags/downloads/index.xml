@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Downloads on OINK</title>
+    <link>http://localhost:1313/tags/downloads/</link>
+    <description>Recent content in Downloads on OINK</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    
+    
+    
+      <lastBuildDate>Sat, 22 Aug 2026 16:32:18 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/tags/downloads/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>sow.pgsty.com</title>
+        <link>http://localhost:1313/case/sow/</link>
+        <pubDate>Sat, 08 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/case/sow/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://sow.pgsty.com/&#34;&gt;sow.pgsty.com&lt;/a&gt; documents SOW, an APT and YUM repository&#xA;manager. The case snapshot contained 55 pages per language and a dedicated&#xA;download page whose versions, tags, and release artifacts are generated from&#xA;structured release data.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-it-demonstrates&#34;&gt;What it demonstrates&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Keeping operational documentation bilingual at a moderate scale.&lt;/li&gt;&#xA;&lt;li&gt;Giving downloads their own content type instead of embedding links in prose.&lt;/li&gt;&#xA;&lt;li&gt;Reusing release data so package metadata has one source of truth.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This pattern fits software that distributes many platform-specific artifacts&#xA;and needs installation instructions, repositories, and downloads to evolve&#xA;together.&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>

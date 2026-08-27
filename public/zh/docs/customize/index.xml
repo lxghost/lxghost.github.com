@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>定制站点 on OINK</title>
+    <link>http://localhost:1313/zh/docs/customize/</link>
+    <description>Recent content in 定制站点 on OINK</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    
+    
+      <lastBuildDate>Thu, 27 Aug 2026 17:15:16 +0800</lastBuildDate>
+    
+    
+      <atom:link href="http://localhost:1313/zh/docs/customize/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title>配置总览</title>
+        <link>http://localhost:1313/zh/docs/customize/config/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/customize/config/</guid>
+        <description>&lt;p&gt;站点参数的唯一归属页。主题读取的每个键在下面某张表里有一行，给出类型、默认值与一句说明，并链接到讲它的指南页。指南页只给可粘贴的片段，不重复定义。页面级参数（front matter）见&lt;a href=&#34;http://localhost:1313/zh/docs/write/frontmatter/&#34;&gt;页面参数&lt;/a&gt;。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>品牌外观</title>
+        <link>http://localhost:1313/zh/docs/customize/brand/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/customize/brand/</guid>
+        <description>&lt;p&gt;本页覆盖站点外观：站名与 Logo 写在 &lt;code&gt;hugo.yml&lt;/code&gt;，配色与字体走 SCSS 入口，页宽与页脚形态是参数。前提是站点已能构建（&lt;a href=&#34;http://localhost:1313/zh/docs/start/&#34;&gt;十分钟上手&lt;/a&gt;）。&lt;/p&gt;&#xA;&lt;p&gt;需要改动的文件有四个：&lt;code&gt;hugo.yml&lt;/code&gt;、&lt;code&gt;static/&lt;/code&gt; 下的图标、&lt;code&gt;assets/scss/_variables_project.scss&lt;/code&gt;、&lt;code&gt;assets/scss/_styles_project.scss&lt;/code&gt;。&lt;strong&gt;不要改主题目录里的文件&lt;/strong&gt;：主题是 Hugo Module，升级时整个目录会被替换。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>首页与落地页</title>
+        <link>http://localhost:1313/zh/docs/customize/home/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/customize/home/</guid>
+        <description>&lt;p&gt;首页不是模板，是一份数据：&lt;code&gt;data/home/&amp;lt;语言&amp;gt;.yaml&lt;/code&gt; 里的 &lt;code&gt;sections&lt;/code&gt; 列表决定页面从上到下有哪些分区，每个分区的内容在同一份文件里按名字取。普通页面加 &lt;code&gt;layout: landing&lt;/code&gt; 也能用同一套分区。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>导航与菜单</title>
+        <link>http://localhost:1313/zh/docs/customize/navigation/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/customize/navigation/</guid>
+        <description>&lt;p&gt;本页覆盖读者在页面之间移动的入口：顶栏菜单、栏目切换器、面包屑、页面操作、上一页 / 下一页与页脚。侧栏树与目录属于&lt;a href=&#34;http://localhost:1313/zh/docs/customize/layout/&#34;&gt;布局与页面类型&lt;/a&gt;。&lt;/p&gt;&#xA;&lt;p&gt;导航没有第二套信息架构：顶栏来自 Hugo 的 &lt;code&gt;menus.main&lt;/code&gt;，侧栏来自 &lt;code&gt;content/&lt;/code&gt; 的目录结构。主题不读 &lt;code&gt;docs.json&lt;/code&gt;、&lt;code&gt;navigation.yaml&lt;/code&gt; 一类的并行导航树。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>布局与页面类型</title>
+        <link>http://localhost:1313/zh/docs/customize/layout/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/customize/layout/</guid>
+        <description>&lt;p&gt;本页覆盖页面骨架：有没有侧栏、侧栏多宽、目录收几级、栏目首页是列表还是卡片。内容放在哪个目录见&lt;a href=&#34;http://localhost:1313/zh/docs/write/organize/&#34;&gt;组织内容&lt;/a&gt;，这里只讲外壳。&lt;/p&gt;&#xA;&lt;p&gt;规则是 &lt;strong&gt;外壳看 &lt;code&gt;type&lt;/code&gt;，不看路径&lt;/strong&gt;。文档可以放在 &lt;code&gt;content/&lt;/code&gt; 下的任何位置，只要给它 &lt;code&gt;type: docs&lt;/code&gt;。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>全文检索</title>
+        <link>http://localhost:1313/zh/docs/customize/search/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/customize/search/</guid>
+        <description>&lt;p&gt;OINK 的搜索是本地搜索：Hugo 在构建时给每种语言生成一份 JSON 索引，读者的浏览器下载它，在本地完成检索。不需要爬虫、账号、CDN，也不需要联网。主题默认不启用，一行配置即可开启。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>命令面板</title>
+        <link>http://localhost:1313/zh/docs/customize/panel/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/customize/panel/</guid>
+        <description>&lt;p&gt;命令面板是站点唯一的模态入口：搜索页面、复制本页 Markdown、切换语言、切换版本、跳转到站点自定义链接，都在这一个对话框里完成。它随本地搜索一起装配：&lt;code&gt;params.offline_search&lt;/code&gt; 关闭时，面板连同索引与 Lunr 都不进入页面，见&lt;a href=&#34;http://localhost:1313/zh/docs/customize/search/&#34;&gt;全文检索&lt;/a&gt;。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>键盘导航</title>
+        <link>http://localhost:1313/zh/docs/customize/keyboard/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/customize/keyboard/</guid>
+        <description>&lt;p&gt;OINK 的交互式页面自带一套单键快捷键：WASD 在侧栏树中移动，&lt;span class=&#34;td-kbd-sequence&#34;&gt;&lt;kbd&gt;J&lt;/kbd&gt;&lt;/span&gt; &lt;span class=&#34;td-kbd-sequence&#34;&gt;&lt;kbd&gt;K&lt;/kbd&gt;&lt;/span&gt; 在标题间跳转，&lt;span class=&#34;td-kbd-sequence&#34;&gt;&lt;kbd&gt;Q&lt;/kbd&gt;&lt;/span&gt; &lt;span class=&#34;td-kbd-sequence&#34;&gt;&lt;kbd&gt;E&lt;/kbd&gt;&lt;/span&gt; 翻页，另有几个单键切换主题、语言与命令面板。默认开启，所有绑定都给输入让行，可以按站点或按页面关闭。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>多语言</title>
+        <link>http://localhost:1313/zh/docs/customize/i18n/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/customize/i18n/</guid>
+        <description>&lt;p&gt;OINK 使用 Hugo 的多语言模型，不额外引入目录约定：配置一个 &lt;code&gt;languages&lt;/code&gt; 块，译文与原文并排放在同一个目录里，用文件名后缀区分。以下内容覆盖单语言站点扩展为双语站点需要改动的位置，以及双语站点的两处易错点：资源归属与标题锚点。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>多版本</title>
+        <link>http://localhost:1313/zh/docs/customize/versions/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/customize/versions/</guid>
+        <description>&lt;p&gt;产品有多个受支持版本时，文档通常也要分版本。主题提供两项功能：顶栏的版本切换菜单，与旧版本站点上的归档提示横幅。部署布局由站点决定：主题不做跨版本的单次构建，每个版本是一次独立的 Hugo 构建。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>分类体系</title>
+        <link>http://localhost:1313/zh/docs/customize/taxonomy/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/customize/taxonomy/</guid>
+        <description>&lt;p&gt;目录树只有一条路径，分类体系（taxonomy）给页面加第二条：同一篇 PostgreSQL 备份文档既在「运维」目录下，又能从「备份」标签页找到。启用它只需要 Hugo 的 &lt;code&gt;taxonomies:&lt;/code&gt; 配置，术语页、筛选芯片、右栏分类云与顶栏分类面板都由主题自动生成，无需编写模板。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>仓库与页面信息</title>
+        <link>http://localhost:1313/zh/docs/customize/repository/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/customize/repository/</guid>
+        <description>&lt;p&gt;面包屑行右侧的 &lt;strong&gt;操作菜单&lt;/strong&gt; 里与仓库有关的条目，由几个 &lt;code&gt;github_*&lt;/code&gt; 参数推导；页尾的「最后修改」信息行来自 git 历史。前提是内容存放在一个 GitHub 风格的仓库里。&lt;/p&gt;&#xA;&lt;h2 id=&#34;link-configuration&#34;&gt;四个键接通全部链接&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;操作菜单里所有跟仓库有关的条目，都由这几个键推导出来：&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>打印支持</title>
+        <link>http://localhost:1313/zh/docs/customize/print/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/customize/print/</guid>
+        <description>&lt;p&gt;单页打印不需要配置：外壳（侧栏、目录、顶栏、按钮）都带 &lt;code&gt;d-print-none&lt;/code&gt;，浏览器的 &lt;code&gt;Cmd/Ctrl+P&lt;/code&gt; 得到的是一份干净的正文。主题因此没有页面级的「打印本页」按钮。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Agent 支持</title>
+        <link>http://localhost:1313/zh/docs/customize/agents/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/customize/agents/</guid>
+        <description>&lt;p&gt;HTML 页面里有侧栏、脚本与样式，模型读它要先剥掉这层外壳。OINK 让同一份内容再产出一份纯 Markdown：每页一个 &lt;code&gt;.md&lt;/code&gt;，站点根目录一份 &lt;code&gt;llms.txt&lt;/code&gt; 索引，页面上一个「复制 Markdown 文本」按钮。三者都是构建期产物，没有运行时服务，也不需要内容协商。&lt;/p&gt;</description>
+      </item>
+    
+  </channel>
+</rss>
