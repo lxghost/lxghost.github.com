@@ -28,7 +28,7 @@ outputs:
 
 services:
   googleAnalytics:
-    id: G-6JLQEHYFQG
+    id: 
 
 imaging:
   resampleFilter: CatmullRom # cSpell:disable-line
@@ -405,7 +405,7 @@ params:
     enable: true
     drawio_server: https://embed.diagrams.net/
 
-baseURL: *productionURL
+baseURL: http://lxghost.github.io/
 
 taxonomies:
   tag: tags
