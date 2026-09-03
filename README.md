@@ -19,7 +19,7 @@
 <p align="center">
   <a href="https://oink.pgsty.com"><img alt="ONLINE" src="https://img.shields.io/badge/STATUS-ONLINE-27ae60?style=flat-square"/></a>
   <img alt="Hugo" src="https://img.shields.io/badge/HUGO-EXTENDED-27ae60?style=flat-square"/>
-  <img alt="Theme" src="https://img.shields.io/badge/THEME-oink%40v0.8.0-00e5ff?style=flat-square"/>
+  <img alt="Theme" src="https://img.shields.io/badge/THEME-oink%40v1.0.0-00e5ff?style=flat-square"/>
   <img alt="Langs" src="https://img.shields.io/badge/LANGS-EN%20%C2%B7%20ZH%20%C3%97357-00e5ff?style=flat-square"/>
 </p>
 
@@ -67,8 +67,3 @@ PAYLOAD : explore another side of the world
 ```
 
 ▓▒░────────────────────────░▒▓
-
-
-<p align="center">
-  <code>END OF TRANSMISSION</code>
-</p>
