@@ -277,6 +277,13 @@
             "markdown": "http://localhost:1313/zh/blog/oink/index.md",
             "title": "Oink",
             "url": "http://localhost:1313/zh/blog/oink/"
+          },
+          {
+            "id": "/blog/threat/packagist-themes-ios-spyware/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/zh/blog/threat/packagist-themes-ios-spyware/index.md",
+            "title": "",
+            "url": "http://localhost:1313/zh/blog/threat/packagist-themes-ios-spyware/"
           }
         ],
         "description": "OINK 工程实践、沉浸式阅读指南与发布注记",

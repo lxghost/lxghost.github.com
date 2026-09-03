@@ -1677,6 +1677,18 @@
     <loc>http://localhost:1313/tags/catalogue/</loc>
     <lastmod>2026-08-28T00:08:16+08:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/blog/threat/packagist-themes-ios-spyware/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/threat/packagist-themes-ios-spyware/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/blog/threat/packagist-themes-ios-spyware/"
+                />
+  </url><url>
     <loc>http://localhost:1313/categories/authoring/</loc>
     <lastmod>2026-08-28T00:08:16+08:00</lastmod>
   </url><url>

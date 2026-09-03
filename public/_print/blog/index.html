@@ -402,6 +402,14 @@ This is the multi-page printable view of this section.
       
     </li>
   
+    
+    
+    <li>
+3: <a href="#pg-651b08da5a857936ca28b3ae08941635"></a>
+
+
+    </li>
+  
 
     </ul>
 <div class="content">
@@ -3592,6 +3600,1212 @@ be understood, built, tested, translated, and migrated as a coherent product.</p
     
 	
   
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-651b08da5a857936ca28b3ae08941635">3 - </h1>
+    
+	<h1 id="pg-651b08da5a857936ca28b3ae08941635--ai驱动的情报系统">AI驱动的情报系统
+</h1>
+<p><a href="/static/view/packagist-themes-ios-spyware.html">可视化报告</a></p>
+<h2 id="pg-651b08da5a857936ca28b3ae08941635--执行摘要">执行摘要
+</h2>
+<p>Socket 发布的研究报告披露了一起针对 <strong>Packagist / Composer 软件供应链</strong>的恶意软件投递活动。</p>
+<p>攻击者在多个 PHP Composer 主题包中植入恶意 JavaScript。这些主题主要用于基于 <strong>OphimCMS</strong> 和 <strong>KKPhim</strong> 的电影、漫画流媒体网站。网站管理员安装受污染的主题后，恶意 JavaScript 会被部署到生产网站，并自动提供给访问网站的终端用户。</p>
+<p>攻击活动主要包含两条链路：</p>
+<ol>
+<li>
+<p><strong>移动端广告欺诈与赌博跳转</strong></p>
+<ul>
+<li>针对 Android 和 iPhone 等移动设备；</li>
+<li>注入广告内容；</li>
+<li>将用户重定向至赌博网站；</li>
+<li>使用随机子域名、Cookie 和多级跳转进行流量追踪和规避。</li>
+</ul>
+</li>
+<li>
+<p><strong>针对存在漏洞 iPhone 的 iOS 间谍软件攻击链</strong></p>
+<ul>
+<li>恶意主题加载远程 JavaScript；</li>
+<li>根据 iOS 版本选择对应的 WebKit 漏洞利用代码；</li>
+<li>获得 Safari/WebContent 进程中的内存操作能力；</li>
+<li>通过 IOSurface 等机制继续构建跨进程攻击能力；</li>
+<li>最终利用 IOKit 相关接口实现内核级攻击；</li>
+<li>部署 iOS 间谍软件；</li>
+<li>窃取 Keychain、短信、照片、浏览器数据及加密货币钱包助记词等敏感信息。</li>
+</ul>
+</li>
+</ol>
+<p>从攻击架构来看，这是一次典型的：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="22">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">恶意 Composer Package
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">网站管理员安装
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">恶意 Theme 部署到生产网站
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">恶意 JavaScript 自动分发
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">网站访问者
+</span></span><span class="line"><span class="cl">        ├── 移动广告 / 赌博欺诈
+</span></span><span class="line"><span class="cl">        │
+</span></span><span class="line"><span class="cl">        └── iPhone
+</span></span><span class="line"><span class="cl">              ↓
+</span></span><span class="line"><span class="cl">          WebKit Exploit
+</span></span><span class="line"><span class="cl">              ↓
+</span></span><span class="line"><span class="cl">         Sandbox / Process Pivot
+</span></span><span class="line"><span class="cl">              ↓
+</span></span><span class="line"><span class="cl">          Kernel Escape
+</span></span><span class="line"><span class="cl">              ↓
+</span></span><span class="line"><span class="cl">          iOS Spyware
+</span></span><span class="line"><span class="cl">              ↓
+</span></span><span class="line"><span class="cl">     数据与钱包助记词窃取</span></span></code></pre></div></div>
+</div>
+<p>这意味着攻击者实施的并非传统意义上的单层软件供应链攻击，而是：</p>
+<blockquote>
+<p><strong>攻击 Package → 感染网站 → 利用网站作为终端 Exploit 分发平台。</strong></p>
+</blockquote>
+<p>对于安全团队而言，最重要的风险在于：恶意 Composer 包的最终受害者不只是开发者或网站管理员，而可能是访问生产网站的大量普通用户。</p>
+<hr>
+<h2 id="pg-651b08da5a857936ca28b3ae08941635--已确认恶意-package">已确认恶意 Package
+</h2>
+<p>Socket 确认了 13 个恶意 Packagist 主题包，涉及多个 Vendor Namespace。</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Vendor</th>
+      <th scope="col">Package</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>vsmov</td>
+      <td>theme-dy</td>
+    </tr>
+    <tr>
+      <td>vsmov</td>
+      <td>theme-rrdyw</td>
+    </tr>
+    <tr>
+      <td>vsmov</td>
+      <td>theme-motchill</td>
+    </tr>
+    <tr>
+      <td>vsmov</td>
+      <td>theme-vsmov</td>
+    </tr>
+    <tr>
+      <td>vsphim</td>
+      <td>theme-heovl</td>
+    </tr>
+    <tr>
+      <td>vsphim</td>
+      <td>theme-thempho</td>
+    </tr>
+    <tr>
+      <td>haiau009</td>
+      <td>kkphim-legend</td>
+    </tr>
+    <tr>
+      <td>haiau009</td>
+      <td>kkphim-motchill</td>
+    </tr>
+    <tr>
+      <td>chilltvcms</td>
+      <td>theme-legend</td>
+    </tr>
+    <tr>
+      <td>ophimcms</td>
+      <td>theme-dy</td>
+    </tr>
+    <tr>
+      <td>ophimcms</td>
+      <td>theme-motchill</td>
+    </tr>
+    <tr>
+      <td>ophimcms</td>
+      <td>theme-pcc</td>
+    </tr>
+    <tr>
+      <td>ophimcms</td>
+      <td>theme-rrdyw</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>对应完整 Package Name：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="17">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">vsmov/theme-dy
+</span></span><span class="line"><span class="cl">vsmov/theme-rrdyw
+</span></span><span class="line"><span class="cl">vsmov/theme-motchill
+</span></span><span class="line"><span class="cl">vsmov/theme-vsmov
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">vsphim/theme-heovl
+</span></span><span class="line"><span class="cl">vsphim/theme-thempho
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">haiau009/kkphim-legend
+</span></span><span class="line"><span class="cl">haiau009/kkphim-motchill
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">chilltvcms/theme-legend
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ophimcms/theme-dy
+</span></span><span class="line"><span class="cl">ophimcms/theme-motchill
+</span></span><span class="line"><span class="cl">ophimcms/theme-pcc
+</span></span><span class="line"><span class="cl">ophimcms/theme-rrdyw</span></span></code></pre></div></div>
+</div>
+<p>建议对以下 Namespace 进行全面供应链审计：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-2" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="5">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">vsmov
+</span></span><span class="line"><span class="cl">vsphim
+</span></span><span class="line"><span class="cl">haiau009
+</span></span><span class="line"><span class="cl">chilltvcms
+</span></span><span class="line"><span class="cl">ophimcms</span></span></code></pre></div></div>
+</div>
+<p>需要注意的是，<strong>当前尚未发现活动 Payload 的其他 Package 也不能自动视为安全</strong>。</p>
+<p>如果这些 Package：</p>
+<ul>
+<li>由相同维护者控制；</li>
+<li>存在相似代码；</li>
+<li>共享 JavaScript 注入机制；</li>
+<li>可以通过 Composer Update 更新；</li>
+</ul>
+<p>那么它们依然可能构成 <strong>Sleeper Supply-chain Risk（休眠型供应链风险）</strong>。</p>
+<hr>
+<h2 id="pg-651b08da5a857936ca28b3ae08941635--攻击背景">攻击背景
+</h2>
+<p>OphimCMS 和 KKPhim 是用于搭建电影、电视剧和漫画流媒体网站的 PHP/Laravel 项目。</p>
+<p>其部署模型通常为：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-3" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="5">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Laravel CMS Core
+</span></span><span class="line"><span class="cl">      +
+</span></span><span class="line"><span class="cl">Composer Theme Package
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Streaming Website</span></span></code></pre></div></div>
+</div>
+<p>Theme Package 除了提供页面模板外，通常还包含：</p>
+<ul>
+<li>JavaScript；</li>
+<li>jQuery；</li>
+<li>视频播放器；</li>
+<li>Banner；</li>
+<li>Slider；</li>
+<li>页面交互逻辑；</li>
+<li>第三方前端组件。</li>
+</ul>
+<p>攻击者利用这一特点，在正常 Theme 的前端 JavaScript 中植入恶意 Loader。</p>
+<p>管理员执行类似操作：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-4" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-4-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">composer require vendor/theme</span></span></code></pre></div></div>
+</div>
+<p>随后：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-5" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="9">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-5-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Composer 安装恶意 Theme
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Theme 部署到生产服务器
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">恶意 JavaScript 进入网站静态资源
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">用户访问网页
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">浏览器自动执行恶意 JavaScript</span></span></code></pre></div></div>
+</div>
+<p>因此，攻击链实现了从：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-6" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-6-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Developer / Website Operator</span></span></code></pre></div></div>
+</div>
+<p>向：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-7" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Website Visitors</span></span></code></pre></div></div>
+</div>
+<p>的攻击扩散。</p>
+<p>这是本次事件最值得关注的供应链特征。</p>
+<hr>
+<h2 id="pg-651b08da5a857936ca28b3ae08941635--完整攻击链">完整攻击链
+</h2>
+<p>整体攻击链可以概括为：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-8" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="31">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-8-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Packagist
+</span></span><span class="line"><span class="cl">    ↓
+</span></span><span class="line"><span class="cl">Trojanized Composer Theme
+</span></span><span class="line"><span class="cl">    ↓
+</span></span><span class="line"><span class="cl">Production Streaming Website
+</span></span><span class="line"><span class="cl">    ↓
+</span></span><span class="line"><span class="cl">Malicious JavaScript Loader
+</span></span><span class="line"><span class="cl">    ↓
+</span></span><span class="line"><span class="cl">Traffic Filtering
+</span></span><span class="line"><span class="cl">    │
+</span></span><span class="line"><span class="cl">    ├── Mobile Advertising / Gambling
+</span></span><span class="line"><span class="cl">    │
+</span></span><span class="line"><span class="cl">    └── iOS Exploit Chain
+</span></span><span class="line"><span class="cl">            ↓
+</span></span><span class="line"><span class="cl">        iOS Version Detection
+</span></span><span class="line"><span class="cl">            ↓
+</span></span><span class="line"><span class="cl">        WebKit Exploit
+</span></span><span class="line"><span class="cl">            ↓
+</span></span><span class="line"><span class="cl">        Memory Primitive
+</span></span><span class="line"><span class="cl">            ↓
+</span></span><span class="line"><span class="cl">        IOSurface / Process Pivot
+</span></span><span class="line"><span class="cl">            ↓
+</span></span><span class="line"><span class="cl">        IOKit Kernel Escape
+</span></span><span class="line"><span class="cl">            ↓
+</span></span><span class="line"><span class="cl">        Spyware Payload
+</span></span><span class="line"><span class="cl">            ↓
+</span></span><span class="line"><span class="cl">        Sensitive Data Collection
+</span></span><span class="line"><span class="cl">            ↓
+</span></span><span class="line"><span class="cl">        Crypto Wallet Seed Theft
+</span></span><span class="line"><span class="cl">            ↓
+</span></span><span class="line"><span class="cl">        Encrypted C2 Exfiltration</span></span></code></pre></div></div>
+</div>
+<p>攻击者首先利用 JavaScript 对目标进行筛选，包括：</p>
+<ul>
+<li>操作系统；</li>
+<li>浏览器；</li>
+<li>User-Agent；</li>
+<li>iOS Version；</li>
+<li>Referrer；</li>
+<li>是否为移动设备。</li>
+</ul>
+<p>这种筛选机制可以降低 Payload 被：</p>
+<ul>
+<li>自动扫描器；</li>
+<li>Desktop Sandbox；</li>
+<li>普通爬虫；</li>
+<li>安全研究人员；</li>
+</ul>
+<p>发现的概率。</p>
+<hr>
+<h2 id="pg-651b08da5a857936ca28b3ae08941635--移动广告与赌博跳转">移动广告与赌博跳转
+</h2>
+<p>攻击链的一部分并不针对 iOS Exploit，而是用于移动流量变现。</p>
+<p>恶意 JavaScript 会检测以下平台：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-9" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-9-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">iPhone
+</span></span><span class="line"><span class="cl">iPod
+</span></span><span class="line"><span class="cl">Android
+</span></span><span class="line"><span class="cl">iOS</span></span></code></pre></div></div>
+</div>
+<p>匹配成功后可能执行：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-10" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="11">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-10-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Mobile Visitor
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Malicious Banner
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Traffic Redirector
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Session Cookie
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Randomized Subdomain
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Gambling Landing Page</span></span></code></pre></div></div>
+</div>
+<p>Socket 观察到攻击者使用：</p>
+<ul>
+<li>Campaign ID；</li>
+<li>Cookie；</li>
+<li>多级 HTTP Redirect；</li>
+<li>随机化 <code>.vip</code> 子域名；</li>
+<li>非标准端口；</li>
+</ul>
+<p>实现流量分发和用户追踪。</p>
+<p>这部分活动更接近：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-11" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="5">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-11-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Malvertising
+</span></span><span class="line"><span class="cl">+
+</span></span><span class="line"><span class="cl">Traffic Hijacking
+</span></span><span class="line"><span class="cl">+
+</span></span><span class="line"><span class="cl">Gambling Affiliate Fraud</span></span></code></pre></div></div>
+</div>
+<p>因此，同一个供应链可能同时服务于低成本、大规模的流量变现活动。</p>
+<hr>
+<h2 id="pg-651b08da5a857936ca28b3ae08941635--ios-exploit-chain">iOS Exploit Chain
+</h2>
+<p>更严重的攻击链针对未安装相关安全更新的 iPhone。</p>
+<p>恶意 JavaScript 在识别到符合条件的 iOS 设备后，会加载对应版本的 Exploit。</p>
+<p>攻击流程为：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-12" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="19">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-12-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Malicious Website
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Second-stage JavaScript
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Hidden iframe
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">iOS Version Detection
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Select Exploit
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">WebKit / JavaScriptCore Exploit
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Arbitrary Read / Write
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Further Privilege Escalation
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Kernel-level Access
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Spyware</span></span></code></pre></div></div>
+</div>
+<p>Socket 识别到攻击链使用了针对不同 iOS 版本的漏洞，包括：</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">CVE</th>
+      <th scope="col">相关攻击目标</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CVE-2025-31277</td>
+      <td>iOS 18.4 - 18.5</td>
+    </tr>
+    <tr>
+      <td>CVE-2025-43529</td>
+      <td>iOS 18.6 及相关版本</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>攻击代码会根据目标系统版本选择不同 Exploit Worker。</p>
+<p>这意味着攻击者并非简单嵌入一个公开 PoC，而是具备一定的：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-13" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="5">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-13-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Exploit Version Selection
+</span></span><span class="line"><span class="cl">+
+</span></span><span class="line"><span class="cl">Device Compatibility Management
+</span></span><span class="line"><span class="cl">+
+</span></span><span class="line"><span class="cl">Offset Management</span></span></code></pre></div></div>
+</div>
+<p>能力。</p>
+<hr>
+<h2 id="pg-651b08da5a857936ca28b3ae08941635--webkit-利用机制">WebKit 利用机制
+</h2>
+<p>Socket 对公开攻击代码的分析显示，攻击链通过 WebKit / JavaScriptCore 内存破坏漏洞建立进一步攻击能力。</p>
+<p>技术过程可以抽象为：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-14" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="11">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-14-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Memory Corruption
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Object Address Disclosure
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Fake Object Construction
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Corrupted Typed Array
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Arbitrary Memory Read
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Arbitrary Memory Write</span></span></code></pre></div></div>
+</div>
+<p>攻击代码同时包含针对不同：</p>
+<ul>
+<li>iOS Build；</li>
+<li>Device Model；</li>
+<li>SoC / Chipset；</li>
+</ul>
+<p>的适配信息。</p>
+<p>这表明攻击者维护的是一个具有工程化特征的：</p>
+<blockquote>
+<p><strong>Browser Exploit Delivery Framework</strong></p>
+</blockquote>
+<p>而不是一次性漏洞利用代码。</p>
+<hr>
+<h2 id="pg-651b08da5a857936ca28b3ae08941635--iosurface-与跨进程攻击">IOSurface 与跨进程攻击
+</h2>
+<p>获得 WebContent 进程中的能力后，攻击链继续尝试扩大权限范围。</p>
+<p>Socket 描述攻击代码涉及：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-15" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="3">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-15-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">IOSurface
+</span></span><span class="line"><span class="cl">mach Messaging
+</span></span><span class="line"><span class="cl">Pointer Authentication</span></span></code></pre></div></div>
+</div>
+<p>攻击路径可以抽象为：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-16" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="11">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-16-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Safari / WebContent
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">WebKit Exploit
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Renderer Memory Primitive
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">IOSurface Abuse
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Cross-process Primitive
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">GPU-related Process</span></span></code></pre></div></div>
+</div>
+<p>这一阶段的目标是突破单一浏览器渲染进程的安全边界。</p>
+<p>从攻击模型来看：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-17" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-17-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Browser Exploitation</span></span></code></pre></div></div>
+</div>
+<p>只是 Initial Foothold。</p>
+<p>真正的攻击目标是继续构建：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-18" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="3">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-18-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Sandbox Escape
+</span></span><span class="line"><span class="cl">+
+</span></span><span class="line"><span class="cl">Privilege Escalation</span></span></code></pre></div></div>
+</div>
+<p>能力。</p>
+<hr>
+<h2 id="pg-651b08da5a857936ca28b3ae08941635--iokit-kernel-escape">IOKit Kernel Escape
+</h2>
+<p>攻击链最终涉及 Apple IOKit 相关接口。</p>
+<p>Socket 的分析指出，恶意代码与以下组件存在关联：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-19" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-19-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">AppleM2ScalerCSCDriver</span></span></code></pre></div></div>
+</div>
+<p>攻击流程涉及：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-20" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="9">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-20-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mediaplaybackd XPC
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">IOServiceOpen
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">External Method
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">IOSurface Interaction
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Kernel Memory Primitive</span></span></code></pre></div></div>
+</div>
+<p>攻击代码公开特征包括：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-21" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-21-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">IOServiceOpen Type: 0
+</span></span><span class="line"><span class="cl">Selector: 1
+</span></span><span class="line"><span class="cl">Input Struct: 432 bytes
+</span></span><span class="line"><span class="cl">IOSurface IDs: 2</span></span></code></pre></div></div>
+</div>
+<p>Socket 指出，这一攻击表面与后来公开的：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-22" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-22-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">CVE-2026-43655</span></span></code></pre></div></div>
+</div>
+<p>存在关联，但实际攻击链与公开 PoC 并不完全相同。</p>
+<p>公开信息显示，攻击者使用的 Kernel Escape 针对已经修复的漏洞状态，而不是直接针对当时最新系统的未知漏洞。</p>
+<p>因此，这条攻击链更符合：</p>
+<blockquote>
+<p><strong>Operationalized N-day Exploitation</strong></p>
+</blockquote>
+<p>即攻击者快速将已经存在或已经修复前后的漏洞能力工程化，并持续用于真实攻击活动。</p>
+<hr>
+<h2 id="pg-651b08da5a857936ca28b3ae08941635--ios-间谍软件能力">iOS 间谍软件能力
+</h2>
+<p>成功获得更高权限后，最终 Payload 可以访问和窃取大量设备敏感信息。</p>
+<p>目标包括：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-23" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="12">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-23-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Keychain
+</span></span><span class="line"><span class="cl">Wi-Fi Passwords
+</span></span><span class="line"><span class="cl">SMS Database
+</span></span><span class="line"><span class="cl">Contacts
+</span></span><span class="line"><span class="cl">Photos
+</span></span><span class="line"><span class="cl">Browser Cookies
+</span></span><span class="line"><span class="cl">Browsing History
+</span></span><span class="line"><span class="cl">Call History
+</span></span><span class="line"><span class="cl">Location History
+</span></span><span class="line"><span class="cl">Account Databases
+</span></span><span class="line"><span class="cl">Notes
+</span></span><span class="line"><span class="cl">Calendar</span></span></code></pre></div></div>
+</div>
+<p>攻击流程：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-24" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="11">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-24-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Sensitive iOS Data
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Data Collection
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Local Processing
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">AES Encryption
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">HTTPS POST
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">C2 Server</span></span></code></pre></div></div>
+</div>
+<p>攻击者同时通过远程基础设施跟踪：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-25" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="2">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-25-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Exploit Status
+</span></span><span class="line"><span class="cl">Payload Execution</span></span></code></pre></div></div>
+</div>
+<p>因此，该 Payload 不只是简单的信息窃取脚本，而具有完整的：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-26" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="7">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-26-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Collection
+</span></span><span class="line"><span class="cl">+
+</span></span><span class="line"><span class="cl">Encryption
+</span></span><span class="line"><span class="cl">+
+</span></span><span class="line"><span class="cl">Command and Control
+</span></span><span class="line"><span class="cl">+
+</span></span><span class="line"><span class="cl">Exfiltration</span></span></code></pre></div></div>
+</div>
+<p>能力。</p>
+<hr>
+<h2 id="pg-651b08da5a857936ca28b3ae08941635--加密货币钱包助记词窃取">加密货币钱包助记词窃取
+</h2>
+<p>2026 年 8 月，攻击者重新部署攻击基础设施，并扩展了 Spyware 的数据窃取能力。</p>
+<p>新版本增加了针对加密货币钱包数据的 Keychain 查询。</p>
+<p>报告中涉及的钱包包括：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-27" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="7">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-27-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Bitget
+</span></span><span class="line"><span class="cl">BitKeep
+</span></span><span class="line"><span class="cl">Bitpie
+</span></span><span class="line"><span class="cl">Phantom
+</span></span><span class="line"><span class="cl">Tonkeeper
+</span></span><span class="line"><span class="cl">Trust Wallet
+</span></span><span class="line"><span class="cl">OKX</span></span></code></pre></div></div>
+</div>
+<p>相关代码命名包括：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-28" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="6">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-28-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">keychain_query_bitget
+</span></span><span class="line"><span class="cl">keychain_query_bitpie
+</span></span><span class="line"><span class="cl">keychain_query_phantom
+</span></span><span class="line"><span class="cl">keychain_query_tonkeeper
+</span></span><span class="line"><span class="cl">keychain_query_trust
+</span></span><span class="line"><span class="cl">mnemonics_vault_</span></span></code></pre></div></div>
+</div>
+<p>这代表攻击目标从传统的：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-29" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-29-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Surveillance</span></span></code></pre></div></div>
+</div>
+<p>进一步升级为：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-30" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="7">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-30-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Surveillance
+</span></span><span class="line"><span class="cl">      +
+</span></span><span class="line"><span class="cl">Credential Theft
+</span></span><span class="line"><span class="cl">      +
+</span></span><span class="line"><span class="cl">Crypto Wallet Seed Theft
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Potential Direct Financial Theft</span></span></code></pre></div></div>
+</div>
+<p>助记词或 Seed Phrase 一旦泄露，攻击者理论上可以绕过传统登录保护，直接恢复对应钱包。</p>
+<p>因此，这是本次事件中最直接的金融风险。</p>
+<hr>
+<h2 id="pg-651b08da5a857936ca28b3ae08941635--基础设施">基础设施
+</h2>
+<p>Socket 将多个阶段与 FUNNULL 基础设施关联。</p>
+<p>观察到的关键基础设施包括：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-31" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-31-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">union[.]macoms[.]la
+</span></span><span class="line"><span class="cl">cdn[.]data-2920[.]com
+</span></span><span class="line"><span class="cl">www[.]cloudfareintcdn[.]com
+</span></span><span class="line"><span class="cl">cloudfareintcdn[.]com</span></span></code></pre></div></div>
+</div>
+<p>其中：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-32" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-32-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">cloudfareintcdn[.]com</span></span></code></pre></div></div>
+</div>
+<p>采用了明显类似 Cloudflare 的仿冒式命名。</p>
+<p>整体基础设施关系可以理解为：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-33" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="11">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-33-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Theme Operators
+</span></span><span class="line"><span class="cl">      │
+</span></span><span class="line"><span class="cl">      ├── Malicious Composer Packages
+</span></span><span class="line"><span class="cl">      │
+</span></span><span class="line"><span class="cl">      └── Compromised / Weaponized Websites
+</span></span><span class="line"><span class="cl">                    ↓
+</span></span><span class="line"><span class="cl">            Shared Delivery Infrastructure
+</span></span><span class="line"><span class="cl">                    ↓
+</span></span><span class="line"><span class="cl">                  FUNNULL
+</span></span><span class="line"><span class="cl">                    ↓
+</span></span><span class="line"><span class="cl">       Exploit / C2 / Payload Delivery</span></span></code></pre></div></div>
+</div>
+<p>需要注意的是：</p>
+<blockquote>
+<p>共享基础设施不等于所有活动均由同一个攻击者直接执行。</p>
+</blockquote>
+<p>更合理的 CTI 判断是：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-34" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="5">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-34-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Multiple Operators
+</span></span><span class="line"><span class="cl">        +
+</span></span><span class="line"><span class="cl">Shared Infrastructure
+</span></span><span class="line"><span class="cl">        +
+</span></span><span class="line"><span class="cl">Shared Service Provider / Ecosystem</span></span></code></pre></div></div>
+</div>
+<p>而不是简单归因为单一 APT。</p>
+<hr>
+<h2 id="pg-651b08da5a857936ca28b3ae08941635--ioc">IOC
+</h2>
+<p>建议结合以下 IOC 进行威胁狩猎。</p>
+<p>高风险 Package：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-35" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="17">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-35-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">vsmov/theme-dy
+</span></span><span class="line"><span class="cl">vsmov/theme-rrdyw
+</span></span><span class="line"><span class="cl">vsmov/theme-motchill
+</span></span><span class="line"><span class="cl">vsmov/theme-vsmov
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">vsphim/theme-heovl
+</span></span><span class="line"><span class="cl">vsphim/theme-thempho
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">haiau009/kkphim-legend
+</span></span><span class="line"><span class="cl">haiau009/kkphim-motchill
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">chilltvcms/theme-legend
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ophimcms/theme-dy
+</span></span><span class="line"><span class="cl">ophimcms/theme-motchill
+</span></span><span class="line"><span class="cl">ophimcms/theme-pcc
+</span></span><span class="line"><span class="cl">ophimcms/theme-rrdyw</span></span></code></pre></div></div>
+</div>
+<p>高风险 Namespace：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-36" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="5">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-36-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">vsmov
+</span></span><span class="line"><span class="cl">vsphim
+</span></span><span class="line"><span class="cl">haiau009
+</span></span><span class="line"><span class="cl">chilltvcms
+</span></span><span class="line"><span class="cl">ophimcms</span></span></code></pre></div></div>
+</div>
+<p>恶意或可疑域名：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-37" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-37-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">union[.]macoms[.]la
+</span></span><span class="line"><span class="cl">cdn[.]data-2920[.]com
+</span></span><span class="line"><span class="cl">www[.]cloudfareintcdn[.]com
+</span></span><span class="line"><span class="cl">cloudfareintcdn[.]com</span></span></code></pre></div></div>
+</div>
+<p>广告与流量跳转基础设施：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-38" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="6">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-38-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">23[.]225[.]52[.]67:4466
+</span></span><span class="line"><span class="cl">23[.]225[.]48[.]20:4466
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">im[.]ue8im[.]com
+</span></span><span class="line"><span class="cl">xl0ph4qz[.]vip:7740
+</span></span><span class="line"><span class="cl">cre-ads[.]com</span></span></code></pre></div></div>
+</div>
+<p>部分公开文件 Hash：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-39" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-39-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">start-view.html
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SHA256:
+</span></span><span class="line"><span class="cl">60b6771958cb7e553994ba6752f108575ba70e02d24affb51d8936a17eb0bf5e</span></span></code></pre></div></div>
+</div>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-40" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-40-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">a4tt4g37f36gdd7q7kdc.js
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SHA256:
+</span></span><span class="line"><span class="cl">d9530e8cd79ac7b3d02b04e05426653afca7075fcf7424eec4d59c6e95745933</span></span></code></pre></div></div>
+</div>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-41" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-41-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">a84snnb6pknt3aflt01r.js
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SHA256:
+</span></span><span class="line"><span class="cl">92c7d246d2c163c076f783dcc19f87f5b9b9ac301b106b87a7aaea9346ce0052</span></span></code></pre></div></div>
+</div>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-42" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-42-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">921w48jmeqvt3ygn0wwx.js
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SHA256:
+</span></span><span class="line"><span class="cl">f2fdfddbc436acc24a654092f5205b2c5bd3208b126b2c2754ac63e7aea22298</span></span></code></pre></div></div>
+</div>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-43" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-43-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">4ap5xpu18z70wwslqybu.js
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SHA256:
+</span></span><span class="line"><span class="cl">9d6b58886189c0e23f706c32d3d8dda97b0b6d927ece6de07270813f070295b5</span></span></code></pre></div></div>
+</div>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-44" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-44-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">qljbd9a1h4a83gw8lxcj.js
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SHA256:
+</span></span><span class="line"><span class="cl">de539a63cbe27bbd4a7db30fc796cd6dc5309c02ef5e60a3c5cf0835e5601283</span></span></code></pre></div></div>
+</div>
+<p>攻击者重新部署后还观察到新的阶段文件名：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-45" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="3">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-45-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">98jgbibyeep2qfkvcq.html
+</span></span><span class="line"><span class="cl">pf2zdl2b4i4cxggjg9s7.js
+</span></span><span class="line"><span class="cl">sejpbqlu090u7lz0z6ax.js</span></span></code></pre></div></div>
+</div>
+<p>IOC 应被视为时间敏感指标。攻击者已经表现出基础设施和 Payload 文件名轮换能力，因此不能仅依赖静态 Domain Blocklist。</p>
+<hr>
+<h2 id="pg-651b08da5a857936ca28b3ae08941635--检测建议">检测建议
+</h2>
+<p>对于使用 Composer 的服务器，可以首先检查：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-46" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="2">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-46-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grep -RniE <span class="s2">&#34;vsmov|vsphim|haiau009|chilltvcms|ophimcms&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">composer.json composer.lock vendor/ 2&gt;/dev/null</span></span></code></pre></div></div>
+</div>
+<p>重点检查：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-47" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="5">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-47-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">composer.json
+</span></span><span class="line"><span class="cl">composer.lock
+</span></span><span class="line"><span class="cl">vendor/
+</span></span><span class="line"><span class="cl">CI/CD Dependency Cache
+</span></span><span class="line"><span class="cl">Deployment Artifact</span></span></code></pre></div></div>
+</div>
+<p>同时检查 Theme JavaScript 是否存在：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-48" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="8">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-48-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Base64 Encoded URLs
+</span></span><span class="line"><span class="cl">Custom Decoder
+</span></span><span class="line"><span class="cl">eval(
+</span></span><span class="line"><span class="cl">document.createElement(&#39;script&#39;)
+</span></span><span class="line"><span class="cl">Hidden iframe
+</span></span><span class="line"><span class="cl">navigator.userAgent
+</span></span><span class="line"><span class="cl">document.referrer
+</span></span><span class="line"><span class="cl">IOSurface</span></span></code></pre></div></div>
+</div>
+<p>特别关注以下模式：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-49" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="3">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-49-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">正常 JavaScript Library
+</span></span><span class="line"><span class="cl">        +
+</span></span><span class="line"><span class="cl">文件末尾追加未知 Loader</span></span></code></pre></div></div>
+</div>
+<p>例如：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-50" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="5">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-50-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">正常 jQuery
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Unexpected Appended JavaScript
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Remote Script Loader</span></span></code></pre></div></div>
+</div>
+<p>这是本次攻击中非常重要的文件完整性检测思路。</p>
+<hr>
+<h2 id="pg-651b08da5a857936ca28b3ae08941635--网络检测建议">网络检测建议
+</h2>
+<p>建议在：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-51" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="6">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-51-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">DNS
+</span></span><span class="line"><span class="cl">Proxy
+</span></span><span class="line"><span class="cl">NDR
+</span></span><span class="line"><span class="cl">SIEM
+</span></span><span class="line"><span class="cl">CDN Logs
+</span></span><span class="line"><span class="cl">Web Server Logs</span></span></code></pre></div></div>
+</div>
+<p>中进行关联检测。</p>
+<p>基础规则：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-52" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="7">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-52-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Client Platform = iOS
+</span></span><span class="line"><span class="cl">      AND
+</span></span><span class="line"><span class="cl">访问流媒体网站
+</span></span><span class="line"><span class="cl">      AND
+</span></span><span class="line"><span class="cl">随后访问未知随机命名 JavaScript
+</span></span><span class="line"><span class="cl">      AND
+</span></span><span class="line"><span class="cl">连接已知恶意基础设施</span></span></code></pre></div></div>
+</div>
+<p>高风险关联：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-53" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="11">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-53-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">iOS Device
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Affected Website
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">union.macoms.la
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">data-2920.com
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">cloudfareintcdn.com
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Large / Unusual POST Exfiltration</span></span></code></pre></div></div>
+</div>
+<p>对于网站运营者，应特别统计：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-54" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="7">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-54-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">恶意 Theme 存在期间
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Unique Visitors
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">iPhone / iPad Visitors
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">对应访问时间</span></span></code></pre></div></div>
+</div>
+<p>这是确定潜在受害范围的重要依据。</p>
+<hr>
+<h2 id="pg-651b08da5a857936ca28b3ae08941635--mitre-attck-映射">MITRE ATT&amp;CK 映射
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">战术</th>
+      <th scope="col">技术</th>
+      <th scope="col">本事件表现</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Initial Access</td>
+      <td>Drive-by Compromise</td>
+      <td>用户访问被感染网站</td>
+    </tr>
+    <tr>
+      <td>Execution</td>
+      <td>JavaScript Execution</td>
+      <td>恶意 Theme 注入 JavaScript</td>
+    </tr>
+    <tr>
+      <td>Defense Evasion</td>
+      <td>Obfuscated Files or Information</td>
+      <td>Base64、编码和自定义 Decoder</td>
+    </tr>
+    <tr>
+      <td>Discovery</td>
+      <td>System Information Discovery</td>
+      <td>检测 iOS Version、User-Agent、Platform</td>
+    </tr>
+    <tr>
+      <td>Exploitation</td>
+      <td>Exploitation for Client Execution</td>
+      <td>WebKit 漏洞利用</td>
+    </tr>
+    <tr>
+      <td>Privilege Escalation</td>
+      <td>Exploitation for Privilege Escalation</td>
+      <td>Kernel Escape</td>
+    </tr>
+    <tr>
+      <td>Credential Access</td>
+      <td>Credentials from Password Stores</td>
+      <td>Keychain 与钱包数据</td>
+    </tr>
+    <tr>
+      <td>Collection</td>
+      <td>Data from Local System</td>
+      <td>SMS、照片、Cookie、联系人</td>
+    </tr>
+    <tr>
+      <td>Command and Control</td>
+      <td>Application Layer Protocol</td>
+      <td>HTTPS 通信</td>
+    </tr>
+    <tr>
+      <td>Exfiltration</td>
+      <td>Exfiltration Over Web Service</td>
+      <td>HTTPS POST 数据上传</td>
+    </tr>
+    <tr>
+      <td>Impact</td>
+      <td>Financial Theft</td>
+      <td>Crypto Wallet Seed / Mnemonic Theft</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr>
+<h2 id="pg-651b08da5a857936ca28b3ae08941635--处置建议">处置建议
+</h2>
+<p>如果发现服务器安装了相关 Package，应立即执行以下操作。</p>
+<p><strong>第一步：隔离和确认</strong></p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-55" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="9">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-55-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">确认 Package Name
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">确认安装时间
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">确认首次部署时间
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">确认恶意 JavaScript 是否进入生产环境
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">确认访问日志保存范围</span></span></code></pre></div></div>
+</div>
+<p><strong>第二步：移除恶意依赖</strong></p>
+<p>不要仅删除单个 JavaScript 文件。</p>
+<p>应完整检查：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-56" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="8">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-56-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">composer.json
+</span></span><span class="line"><span class="cl">composer.lock
+</span></span><span class="line"><span class="cl">vendor/
+</span></span><span class="line"><span class="cl">Theme Assets
+</span></span><span class="line"><span class="cl">Deployment Artifact
+</span></span><span class="line"><span class="cl">CDN Cache
+</span></span><span class="line"><span class="cl">CI/CD Cache
+</span></span><span class="line"><span class="cl">Backup</span></span></code></pre></div></div>
+</div>
+<p>然后从可信来源重新构建部署环境。</p>
+<p><strong>第三步：凭据轮换</strong></p>
+<p>建议轮换：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-57" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="7">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-57-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">SSH Credentials
+</span></span><span class="line"><span class="cl">CMS Administrator Passwords
+</span></span><span class="line"><span class="cl">Database Passwords
+</span></span><span class="line"><span class="cl">API Keys
+</span></span><span class="line"><span class="cl">OAuth Secrets
+</span></span><span class="line"><span class="cl">Cloud Credentials
+</span></span><span class="line"><span class="cl">CI/CD Tokens</span></span></code></pre></div></div>
+</div>
+<p><strong>第四步：用户影响调查</strong></p>
+<p>建立时间线：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-58" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="11">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-58-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Malicious Package Introduced
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Production Deployment
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Malicious JS Active
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Malicious Domain Connection
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">iOS Visitors
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Potential Exploitation Window</span></span></code></pre></div></div>
+</div>
+<p>核心调查问题是：</p>
+<blockquote>
+<p>在恶意 JavaScript 活跃期间，有多少 iOS 用户访问过受影响网站？</p>
+</blockquote>
+<hr>
+<h2 id="pg-651b08da5a857936ca28b3ae08941635--核心威胁判断">核心威胁判断
+</h2>
+<h3 id="pg-651b08da5a857936ca28b3ae08941635--供应链攻击正在成为终端攻击分发渠道">供应链攻击正在成为终端攻击分发渠道
+</h3>
+<p>传统供应链攻击通常被理解为：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-59" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="5">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-59-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Malicious Package
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Developer
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Developer Workstation</span></span></code></pre></div></div>
+</div>
+<p>本次事件展示了新的传播模型：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-60" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="11">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-60-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Malicious Package
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Website Operator
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Production Website
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Large Number of Visitors
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Browser Exploitation
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">Endpoint Compromise</span></span></code></pre></div></div>
+</div>
+<p>攻击面已经扩展为：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-61" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="7">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-61-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Package
+</span></span><span class="line"><span class="cl">   ↓
+</span></span><span class="line"><span class="cl">Service Provider
+</span></span><span class="line"><span class="cl">   ↓
+</span></span><span class="line"><span class="cl">Customer
+</span></span><span class="line"><span class="cl">   ↓
+</span></span><span class="line"><span class="cl">Endpoint</span></span></code></pre></div></div>
+</div>
+<p>因此，Package 风险评估不能只考虑：</p>
+<blockquote>
+<p>“该依赖是否会影响开发者主机？”</p>
+</blockquote>
+<p>还必须考虑：</p>
+<blockquote>
+<p>“该依赖是否能够向生产用户分发主动攻击代码？”</p>
+</blockquote>
+<hr>
+<h3 id="pg-651b08da5a857936ca28b3ae08941635--恶意-javascript-是高价值-exploit-delivery-layer">恶意 JavaScript 是高价值 Exploit Delivery Layer
+</h3>
+<p>一旦攻击者控制网站 JavaScript：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-62" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-62-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">No Malicious App Installation
+</span></span><span class="line"><span class="cl">No APK
+</span></span><span class="line"><span class="cl">No Traditional File Download
+</span></span><span class="line"><span class="cl">No Explicit Permission Prompt</span></span></code></pre></div></div>
+</div>
+<p>用户只需要访问网站，就可能进入漏洞利用流程。</p>
+<p>因此，受污染的 Web Asset 实际上可以成为：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-63" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-63-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Exploit Delivery Infrastructure</span></span></code></pre></div></div>
+</div>
+<p>这也是为什么：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-64" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="5">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-64-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Third-party JavaScript
+</span></span><span class="line"><span class="cl">Theme
+</span></span><span class="line"><span class="cl">Analytics Script
+</span></span><span class="line"><span class="cl">Ad Script
+</span></span><span class="line"><span class="cl">CDN Asset</span></span></code></pre></div></div>
+</div>
+<p>需要被视为软件供应链的一部分。</p>
+<hr>
+<h3 id="pg-651b08da5a857936ca28b3ae08941635--广告欺诈与高价值攻击可以使用同一基础设施">广告欺诈与高价值攻击可以使用同一基础设施
+</h3>
+<p>攻击者可以同时采用两种收益模型：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-65" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="3">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-65-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Mass-scale Monetization
+</span></span><span class="line"><span class="cl">    ├── Ad Fraud
+</span></span><span class="line"><span class="cl">    └── Gambling Redirect</span></span></code></pre></div></div>
+</div>
+<p>以及：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-66" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-66-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">High-value Targeting
+</span></span><span class="line"><span class="cl">    ├── Spyware
+</span></span><span class="line"><span class="cl">    ├── Credential Theft
+</span></span><span class="line"><span class="cl">    └── Crypto Asset Theft</span></span></code></pre></div></div>
+</div>
+<p>因此，同一个恶意 Package 并不一定只有一个 Payload 目的。</p>
+<p>攻击者可能根据：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-67" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-67-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Device
+</span></span><span class="line"><span class="cl">OS Version
+</span></span><span class="line"><span class="cl">User Value
+</span></span><span class="line"><span class="cl">Traffic Source</span></span></code></pre></div></div>
+</div>
+<p>动态选择攻击方式。</p>
+<hr>
+<h3 id="pg-651b08da5a857936ca28b3ae08941635--需要关注休眠型恶意-package">需要关注休眠型恶意 Package
+</h3>
+<p>本次事件再次说明：</p>
+<blockquote>
+<p>当前没有发现恶意 Payload，不代表 Package 是可信的。</p>
+</blockquote>
+<p>如果攻击者仍然拥有：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-68" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="5">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-68-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Package Ownership
+</span></span><span class="line"><span class="cl">+
+</span></span><span class="line"><span class="cl">Update Permission
+</span></span><span class="line"><span class="cl">+
+</span></span><span class="line"><span class="cl">Code Injection Capability</span></span></code></pre></div></div>
+</div>
+<p>那么 Package 本身就可能成为未来攻击的预置入口。</p>
+<p>因此，SCA 和 SBOM 不应只依赖：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-69" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="1">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-69-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Known Malicious Hash</span></span></code></pre></div></div>
+</div>
+<p>更应该建立：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-70" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="13">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-70-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Package Provenance
+</span></span><span class="line"><span class="cl">+
+</span></span><span class="line"><span class="cl">Publisher Reputation
+</span></span><span class="line"><span class="cl">+
+</span></span><span class="line"><span class="cl">Maintainer Relationship
+</span></span><span class="line"><span class="cl">+
+</span></span><span class="line"><span class="cl">Namespace Analysis
+</span></span><span class="line"><span class="cl">+
+</span></span><span class="line"><span class="cl">Code Provenance
+</span></span><span class="line"><span class="cl">+
+</span></span><span class="line"><span class="cl">Update Behavior
+</span></span><span class="line"><span class="cl">+
+</span></span><span class="line"><span class="cl">Runtime Network Behavior</span></span></code></pre></div></div>
+</div>
+<p>的综合供应链风险模型。</p>
+<hr>
+<h2 id="pg-651b08da5a857936ca28b3ae08941635--最终结论">最终结论
+</h2>
+<p>这起事件展示了一种非常值得关注的现代攻击模式：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-71" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="15">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-71-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Software Supply Chain Compromise
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Production Website Compromise
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Browser-based Payload Delivery
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Traffic Filtering
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">N-day Exploitation
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Privilege Escalation
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Mobile Spyware
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Financial Data Theft</span></span></code></pre></div></div>
+</div>
+<p>攻击者首先利用 Packagist 和 Composer Theme 作为供应链入口，再利用合法网站的用户访问流量作为恶意 Payload 的分发渠道。</p>
+<p>从 CTI 视角，本事件反映出三个重要趋势：</p>
+<ol>
+<li><strong>软件供应链正在成为浏览器和终端漏洞利用的规模化分发渠道；</strong></li>
+<li><strong>恶意 Web JavaScript、广告欺诈和高端 Exploit Infrastructure 正在融合；</strong></li>
+<li><strong>传统 Spyware 正逐渐加入加密钱包和数字资产窃取能力。</strong></li>
+</ol>
+<p>建议企业建立跨层防御体系：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-72" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="15">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-72-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Package Security
+</span></span><span class="line"><span class="cl">        +
+</span></span><span class="line"><span class="cl">SBOM / Dependency Inventory
+</span></span><span class="line"><span class="cl">        +
+</span></span><span class="line"><span class="cl">Publisher Reputation
+</span></span><span class="line"><span class="cl">        +
+</span></span><span class="line"><span class="cl">JavaScript Integrity Monitoring
+</span></span><span class="line"><span class="cl">        +
+</span></span><span class="line"><span class="cl">CDN / Web Asset Monitoring
+</span></span><span class="line"><span class="cl">        +
+</span></span><span class="line"><span class="cl">Network Detection
+</span></span><span class="line"><span class="cl">        +
+</span></span><span class="line"><span class="cl">Threat Intelligence
+</span></span><span class="line"><span class="cl">        +
+</span></span><span class="line"><span class="cl">Mobile Incident Response</span></span></code></pre></div></div>
+</div>
+<p>对于使用 PHP、Laravel、Composer 和第三方 Theme 的组织，尤其应将：</p>
+<div class="td-code td-code--untitled" id="td-code-2618f470-fence-73" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="3">
+  <div class="td-code__viewport" id="td-code-2618f470-fence-73-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">第三方 Theme
+</span></span><span class="line"><span class="cl">=
+</span></span><span class="line"><span class="cl">Production Supply Chain Component</span></span></code></pre></div></div>
+</div>
+<p>纳入正式的供应链安全管理范围。</p>
+<hr>
+<h2 id="pg-651b08da5a857936ca28b3ae08941635--参考来源">参考来源
+</h2>
+<p><strong>Socket Threat Research</strong></p>
+<p>《13 Malicious Packagist Themes Deliver iOS Spyware That Steals Crypto Wallet Seeds》</p>
+<p>发布日期：2026-08-31</p>
+<p>原文：</p>
+<p><a href="https://socket.dev/blog/packagist-themes-ios-spyware">https://socket.dev/blog/packagist-themes-ios-spyware</a></p>
+
+</div>
+
+
 
     
 	

@@ -110,6 +110,14 @@
         <guid>http://localhost:1313/zh/blog/oink/oink-announcement/</guid>
         <description>&lt;p&gt;今天，我们发布 OINK 实现预览：它从 Docsy 直接演化而来，提供唯一标准产品外壳、仅依赖 Hugo 的消费端构建、本地优先浏览器依赖、通用多语言框架，以及一组从 PGSTY 文档站提炼出的可复用内容组件。&lt;/p&gt;</description>
       </item>
+    <item>
+        <title></title>
+        <link>http://localhost:1313/zh/blog/threat/packagist-themes-ios-spyware/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/blog/threat/packagist-themes-ios-spyware/</guid>
+        <description>&lt;h2 id=&#34;执行摘要&#34;&gt;执行摘要&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Socket 发布的研究报告披露了一起针对 &lt;strong&gt;Packagist / Composer 软件供应链&lt;/strong&gt;的恶意软件投递活动。&lt;/p&gt;&#xA;&lt;p&gt;攻击者在多个 PHP Composer 主题包中植入恶意 JavaScript。这些主题主要用于基于 &lt;strong&gt;OphimCMS&lt;/strong&gt; 和 &lt;strong&gt;KKPhim&lt;/strong&gt; 的电影、漫画流媒体网站。网站管理员安装受污染的主题后，恶意 JavaScript 会被部署到生产网站，并自动提供给访问网站的终端用户。&lt;/p&gt;</description>
+      </item>
     
   </channel>
 </rss>
