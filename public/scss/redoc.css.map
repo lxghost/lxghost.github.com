@@ -1,9 +1,9 @@
 {
 	"version": 3,
 	"file": "redoc.css",
-	"sourceRoot": "/Users/lx/blog",
+	"sourceRoot": "/Users/lx/lxghost.github.com",
 	"sources": [
-		"/Users/lx/Library/Caches/hugo_cache/modules/filecache/modules/pkg/mod/github.com/pgsty/oink@v0.8.0/assets/scss/redoc.scss"
+		"/Users/lx/Library/Caches/hugo_cache/modules/filecache/modules/pkg/mod/github.com/pgsty/oink@v1.0.0/assets/scss/redoc.scss"
 	],
 	"sourcesContent": [
 		"// Theme overrides for the ReDoc reader. Compiled standalone and loaded only\n// on pages that render the interactive component, next to its runtime -- the\n// global stylesheet must not carry per-capability rules to every page.\n.td-redoc input {\n  height: 64px;\n}\n\n.td-redoc span[type='put'],\n.td-redoc span[type='get'],\n.td-redoc span[type='delete'],\n.td-redoc span[type='post'],\n.td-redoc span[type='options'],\n.td-redoc span[type='patch'],\n.td-redoc span[type='basic'],\n.td-redoc span[type='link'],\n.td-redoc span[type='head'] {\n  border-radius: 4px;\n}\n\n.td-redoc h2 {\n  margin-top: 0;\n}\n\n.td-redoc img[alt='redocly logo'] {\n  display: none;\n}\n\n.td-redoc a[href='https://redocly.com/redoc/'] {\n  display: none;\n}\n"

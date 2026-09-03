@@ -11073,9 +11073,13 @@ samp {
 body.td-book .td-shell-tree__link {
   text-align: start; }
   body.td-book .td-shell-tree__link > .td-book-number {
-    flex: 0 0 1.75rem;
+    flex: 0 0 auto;
     min-width: 1.75rem;
-    text-align: end; }
+    overflow: visible;
+    overflow-wrap: normal;
+    text-align: end;
+    text-overflow: clip;
+    white-space: nowrap; }
   body.td-book .td-shell-tree__link > .td-book-number + span {
     flex: 1 1 auto;
     text-align: start; }

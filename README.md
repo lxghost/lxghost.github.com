@@ -1,44 +1,69 @@
-# oink.pgsty.com
+<pre align="center">
+███████╗ ███████╗███████╗  ████████╗ ██╗   ██╗ ███████╗ ███████╗ ███╗   ██╗
+██╔══██╗ ██╔════╝██╔══██╗  ██╔═══██╗ ██║   ██║ ██╔════╝ ██╔════╝ ████╗  ██║
+██████╔╝ █████╗  ██║  ██║  ██║   ██║ ██║   ██║ █████╗   █████╗   ██╔██╗ ██║
+██╔══██╗ ██╔══╝  ██║  ██║  ██║▄▄ ██║ ██║   ██║ ██╔══╝   ██╔══╝   ██║╚██╗██║
+██║  ██║ ███████╗██████╔╝  ╚██████╔╝ ╚██████╔╝ ███████╗ ███████╗ ██║ ╚████║
+╚═╝  ╚═╝ ╚══════╝╚═════╝    ╚══▀▀═╝  ╚═════╝ ╚══════╝ ╚══════╝╚═╝  ╚═══╝
+</pre>
 
-This repository contains the source for
-[oink.pgsty.com](https://oink.pgsty.com), the documentation and regression site
-for the [Oink Hugo theme](https://github.com/pgsty/oink).
+<p align="center">
+  <b>R̴E̸D̷ ̶Q̸U̵E̷E̶N̸ ▓▒░ SIGNAL COMPROMISED ░▒▓</b><br/>
+  <code>hacked by helen</code>
+</p>
 
-The bilingual maintainer contracts under `content/docs/design/` are the
-canonical prose source for OINK architecture, components, reading shells,
-Landing pages, and migration boundaries.
+<p align="center">
+  <img alt="typing" src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=20&duration=3500&pause=700&color=FF2A2A&center=true&vCenter=true&width=560&height=60&lines=we%20re%20all%20going%20to%20die%20down%20here"/>
+</p>
 
-## Local development
+<p align="center">
+  <a href="https://oink.pgsty.com"><img alt="ONLINE" src="https://img.shields.io/badge/STATUS-ONLINE-27ae60?style=flat-square"/></a>
+  <img alt="Hugo" src="https://img.shields.io/badge/HUGO-EXTENDED-27ae60?style=flat-square"/>
+  <img alt="Theme" src="https://img.shields.io/badge/THEME-oink%40v1.0.0-00e5ff?style=flat-square"/>
+  <img alt="Langs" src="https://img.shields.io/badge/LANGS-EN%20%C2%B7%20ZH%20%C3%97357-00e5ff?style=flat-square"/>
+</p>
 
-For theme development, clone both repositories as siblings:
 
-```text
-~/pgsty/
-├── oink/
-└── oink.pgsty.com/
+---
+
+```console
+[BOOT SEQUENCE]
+
+[░░░░░░░░░░░░░░░░░░░░]   0%  :: null
+[███░░░░░░░░░░░░░░░░░]  15%  :: sexy
+[███████░░░░░░░░░░░░░]  35%  :: nerd
+[███████████░░░░░░░░░]  55%  :: arts
+[███████████████░░░░░]  75%  :: wild
+[████████████████████] 100%  :: evil
+
+$ whoami
+lxghost
+
+$ cat /etc/passwd
+luxiao
 ```
 
-The four Make targets separate published-theme checks from local-theme work:
+▓▒░────────────────────────░▒▓
 
-```sh
-make build  # Build production output with the version pinned in go.mod
-make check  # Test the sibling theme with the non-browser regression suite
-make dev    # Start the fastest server with the sibling theme
-make serve  # Preview the pinned theme in the production environment
+## [ 0 ] // MISSION
+
+```
+TARGET  : lxghost.github.io
+ROLE    : worked in cybersecurity for 20 years
+PAYLOAD : explore another side of the world
 ```
 
-`build` and `serve` invoke Hugo directly and resolve the published version of
-`github.com/pgsty/oink` pinned in `go.mod`. `dev` and `check` set a one-command
-module replacement to `../oink`; they do not create a `go.work` file or modify
-`go.mod`. `dev` keeps Hugo's fast-render defaults and renders to memory;
-`serve` uses the production environment, minifies the output, performs full
-renders after changes, and does not inject live reload. Node and npm are needed
-for the regression tests, not to build the OINK theme or site.
+▓▒░────────────────────────░▒▓
 
-## License
+## [ 1 ] // GOAL
 
-Site code, build tooling, and material derived from the Docsy project site are
-licensed under the [Apache License 2.0](LICENSE).
+```
+~/AI Security/
+├── AI-powered Threat Intelligence       
+└── Multi-Agent Cyber Systems
+└── Security Knowledge Graphs
+└── Autonomous Threat Hunting
+└── Source Tracing Analysis
+```
 
-Unless otherwise noted, original Oink documentation content is licensed under
-the [Creative Commons Attribution 4.0 International License](LICENSE-CC-BY-4.0).
+▓▒░────────────────────────░▒▓
