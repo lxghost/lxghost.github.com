@@ -48,7 +48,7 @@ luxiao
 ## [ 0 ] // MISSION
 
 ```
-TARGET  : lxghost.github.io
+TARGET  : lxghost.github.io/blog
 ROLE    : worked in cybersecurity for 20 years
 PAYLOAD : explore another side of the world
 ```
