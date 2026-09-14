@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GTG-14020 · BABEL 威胁情报可视化</title>
+<style>
+  :root{
+    --paper:#e7dab8;
+    --paper-lo:#ddcba0;
+    --paper-hi:#f2e8ce;
+    --card:#efe4c4;
+    --card-hi:#f4ead0;
+    --ink:#2b2318;
+    --ink-soft:#5a4c34;
+    --ink-faint:#8a7a5e;
+    --line:#c2ac7f;
+    --line-dark:#9c8253;
+    --red:#a8281f;
+    --red-deep:#7e1810;
+    --red-wash:rgba(168,40,31,.09);
+    --blue:#3a5a6b;
+    --green:#5c6b34;
+    --mono:"Courier Prime",ui-monospace,"SFMono-Regular","Cascadia Mono","JetBrains Mono",Menlo,Consolas,monospace;
+    --serif:Georgia,"Songti SC","Noto Serif SC","Source Han Serif SC","Times New Roman",serif;
+    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--serif);line-height:1.72;font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* ---------- aged paper atmosphere ---------- */
+  .paper-noise,.vignette,.foxing{position:fixed;inset:0;pointer-events:none;}
+  .paper-noise{
+    z-index:9998;opacity:.05;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .vignette{z-index:9997;background:
+    radial-gradient(120% 90% at 50% 8%,transparent 60%,rgba(90,64,30,.16) 100%),
+    linear-gradient(180deg,rgba(255,248,225,.35),transparent 22%);}
+  .foxing{z-index:1;opacity:.5;background-image:
+    radial-gradient(120px 90px at 8% 12%,rgba(150,108,48,.10),transparent 70%),
+    radial-gradient(160px 120px at 94% 30%,rgba(150,108,48,.09),transparent 72%),
+    radial-gradient(200px 160px at 20% 78%,rgba(120,80,30,.08),transparent 75%),
+    radial-gradient(140px 120px at 82% 90%,rgba(120,80,30,.08),transparent 74%);}
+  .wrap{position:relative;z-index:3;max-width:1120px;margin:0 auto;padding:44px 26px 90px;}
+
+  /* ---------- shared type ---------- */
+  .mono{font-family:var(--mono);}
+  b,.strong{font-weight:700;}
+  .kw{color:var(--red);font-weight:700;
+      background:linear-gradient(transparent 62%,var(--red-wash) 62%);padding:0 1px;}
+  .redact{background:var(--ink);color:var(--ink);border-radius:2px;padding:0 2px;user-select:none;}
+  a{color:var(--red-deep);}
+
+  /* ---------- folder header ---------- */
+  .folder{position:relative;border:2px solid var(--line-dark);background:
+    repeating-linear-gradient(180deg,transparent 0 27px,rgba(120,90,45,.05) 27px 28px),var(--card);
+    box-shadow:0 2px 0 var(--line-dark),10px 12px 26px rgba(70,45,15,.20);
+    padding:26px 28px 24px;overflow:hidden;}
+  .folder:before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;
+    background:repeating-linear-gradient(180deg,var(--line-dark) 0 2px,transparent 2px 9px);border-right:1px solid var(--line-dark);}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;margin-bottom:18px;}
+  .tab{border:1px solid var(--line-dark);background:var(--paper-lo);color:var(--ink-soft);padding:4px 11px;}
+  .folder-top{display:flex;justify-content:space-between;gap:26px;align-items:flex-start;flex-wrap:wrap;}
+  .filed{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-faint);border:1px solid var(--line);
+    padding:10px 12px;background:var(--paper-hi);min-width:200px;}
+  .filed div{display:flex;justify-content:space-between;gap:14px;padding:3px 0;border-bottom:1px dotted var(--line);}
+  .filed div:last-child{border-bottom:0;}
+  .filed span{color:var(--ink-soft);}
+  h1{font-family:var(--sans);font-weight:800;font-size:40px;line-height:1.08;margin:2px 0 4px;letter-spacing:.01em;}
+  h1 .id{color:var(--red);font-family:var(--mono);font-weight:700;letter-spacing:.02em;}
+  .sub{font-family:var(--sans);font-weight:600;font-size:17px;color:var(--ink-soft);margin:0 0 14px;max-width:52ch;}
+  .byline{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-faint);}
+  .stamp{position:absolute;right:22px;bottom:6px;transform:rotate(-8deg);text-align:center;
+    font-family:var(--mono);color:var(--red);border:3px double var(--red);padding:8px 16px 6px;border-radius:5px;opacity:.82;}
+  .stamp .big{font-size:22px;font-weight:700;letter-spacing:.14em;line-height:1;}
+  .stamp .small{font-size:9.5px;letter-spacing:.22em;margin-top:4px;}
+  .stamp:after{content:"";position:absolute;inset:0;background:
+    radial-gradient(circle at 30% 40%,transparent 40%,var(--red-wash) 41%),
+    radial-gradient(circle at 70% 60%,transparent 45%,var(--red-wash) 46%);mix-blend-mode:multiply;border-radius:5px;}
+
+  /* ---------- section scaffolding ---------- */
+  section{margin-top:40px;}
+  .sec-h{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--line-dark);padding-bottom:9px;margin-bottom:20px;}
+  .sec-h .no{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--paper-hi);background:var(--ink);
+    width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;border-radius:3px;flex:none;transform:translateY(6px);}
+  .sec-h h2{font-family:var(--sans);font-weight:800;font-size:23px;margin:0;letter-spacing:.02em;flex:1;}
+  .sec-h .en{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--ink-faint);}
+
+  .card{background:var(--card);border:1px solid var(--line-dark);box-shadow:5px 6px 16px rgba(70,45,15,.12);
+    padding:20px 22px;position:relative;}
+  .card + .card{margin-top:16px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  p{margin:0 0 12px;}
+  ul,ol{margin:0 0 12px;padding-left:22px;}
+  li{margin:5px 0;}
+  .lead{font-size:18px;line-height:1.7;}
+
+  /* ---------- stat cards ---------- */
+  .stat{border:1px solid var(--line-dark);background:var(--paper-hi);padding:14px 14px 12px;text-align:left;position:relative;overflow:hidden;}
+  .stat .n{font-family:var(--mono);font-weight:700;font-size:26px;color:var(--red);line-height:1;}
+  .stat .l{font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);margin-top:6px;font-weight:600;}
+  .stat .c{font-family:var(--mono);font-size:9.5px;color:var(--ink-faint);letter-spacing:.08em;margin-top:3px;}
+  .stat:after{content:"";position:absolute;right:-14px;top:-14px;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;opacity:.5;}
+
+  /* ---------- key judgments ---------- */
+  table{width:100%;border-collapse:collapse;font-size:14.5px;}
+  .kj td,.kj th{text-align:left;vertical-align:top;padding:12px 12px;border-bottom:1px solid var(--line);}
+  .kj th{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);
+    background:var(--paper-lo);border-bottom:2px solid var(--line-dark);}
+  .kj tr:nth-child(even) td{background:rgba(120,90,45,.045);}
+  .kj .jid{font-family:var(--mono);font-weight:700;color:var(--red);white-space:nowrap;}
+  .conf{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.05em;padding:2px 8px;border-radius:2px;white-space:nowrap;}
+  .conf-h{color:var(--red-deep);border:1px solid var(--red);}
+  .conf-m{color:var(--green);border:1px solid var(--green);}
+  .conf-l{color:var(--ink-faint);border:1px dashed var(--line-dark);}
+
+  /* ---------- architecture diagram ---------- */
+  .arch{font-family:var(--sans);}
+  .arch-cols{display:grid;grid-template-columns:150px 1fr 1fr;gap:16px;align-items:stretch;}
+  .node{border:1.5px solid var(--line-dark);background:var(--paper-hi);padding:12px;position:relative;border-radius:4px;}
+  .node .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--ink-faint);}
+  .node .name{font-weight:800;font-size:15px;margin:2px 0 4px;}
+  .node .ip{font-family:var(--mono);font-size:12px;color:var(--red);font-weight:700;}
+  .node small{display:block;color:var(--ink-soft);font-size:12px;line-height:1.5;}
+  .chip{display:inline-block;font-family:var(--mono);font-size:10.5px;border:1px solid var(--line-dark);
+    background:var(--card);padding:2px 7px;margin:3px 3px 0 0;color:var(--ink-soft);border-radius:2px;}
+  .chip.hot{border-color:var(--red);color:var(--red-deep);background:var(--red-wash);}
+  .grp{border:1.5px dashed var(--line-dark);padding:12px;border-radius:5px;background:rgba(120,90,45,.03);}
+  .grp .gt{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink-faint);margin-bottom:8px;text-transform:uppercase;}
+  .flag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;}
+  .arrow{font-family:var(--mono);color:var(--red);text-align:center;font-size:13px;padding:3px 0;}
+  .flow-line{display:flex;flex-direction:column;gap:6px;justify-content:center;}
+
+  /* ---------- radar (inline svg) ---------- */
+  .radar-wrap{display:flex;gap:22px;align-items:center;flex-wrap:wrap;}
+  .legend{font-family:var(--sans);font-size:12.5px;}
+  .legend li{list-style:none;display:flex;gap:9px;align-items:center;margin:6px 0;color:var(--ink-soft);}
+  .legend .dot{width:12px;height:12px;border-radius:50%;flex:none;border:1px solid var(--ink-soft);}
+  ul{list-style:none;padding-left:0;}
+
+  /* ---------- generic list card ---------- */
+  .rows{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 22px;margin-top:4px;}
+  .row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dotted var(--line-dark);padding:7px 0;font-size:14px;}
+  .row .k{font-family:var(--sans);font-weight:600;}
+  .row .v{font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);text-align:right;}
+
+  /* ---------- IOC / tables ---------- */
+  .tbl{border:1px solid var(--line-dark);overflow:hidden;}
+  .tbl table{font-size:13.5px;}
+  .tbl th{background:var(--paper-lo);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-soft);text-align:left;padding:9px 11px;border-bottom:2px solid var(--line-dark);white-space:nowrap;}
+  .tbl td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  .tbl tr:last-child td{border-bottom:0;}
+  .tbl tr:nth-child(even) td{background:rgba(120,90,45,.04);}
+  .val{font-family:var(--mono);color:var(--ink);font-size:12.5px;word-break:break-all;}
+  .val .u{color:var(--red);font-weight:700;}
+  .muted{color:var(--ink-faint);}
+  .note{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--ink-faint);margin-top:9px;}
+
+  /* ---------- module cards ---------- */
+  .mods{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .mod{border:1px solid var(--line-dark);background:var(--card);padding:15px 16px;position:relative;border-radius:4px;
+    box-shadow:3px 4px 10px rgba(70,45,15,.10);}
+  .mod .mh{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:6px;}
+  .mod .mh h4{font-family:var(--sans);font-weight:800;font-size:15.5px;margin:0;}
+  .mod .page{font-family:var(--mono);font-size:9.5px;color:var(--paper-hi);background:var(--ink-soft);padding:2px 6px;border-radius:2px;white-space:nowrap;}
+  .mod p{font-size:13px;color:var(--ink-soft);margin:0 0 6px;}
+  .pill{display:inline-block;font-family:var(--mono);font-size:10px;border:1px solid var(--red);color:var(--red-deep);
+    padding:1px 6px;border-radius:10px;margin:2px 3px 0 0;background:var(--red-wash);}
+
+  /* ---------- timeline ---------- */
+  .tl{position:relative;padding-left:26px;margin-top:6px;}
+  .tl:before{content:"";position:absolute;left:7px;top:4px;bottom:4px;width:2px;background:var(--line-dark);}
+  .ev{position:relative;margin-bottom:15px;}
+  .ev:before{content:"";position:absolute;left:-24px;top:5px;width:12px;height:12px;border-radius:50%;
+    background:var(--card);border:2px solid var(--ink-soft);}
+  .ev.hot:before{border-color:var(--red);background:var(--red);}
+  .ev .t{font-family:var(--mono);font-size:12px;color:var(--red);font-weight:700;letter-spacing:.03em;}
+  .ev .d{font-size:14px;}
+  .ev .s{font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);}
+
+  /* ---------- hypotheses ---------- */
+  .hyp{border-left:3px solid var(--line-dark);background:var(--paper-hi);padding:12px 15px;margin-bottom:12px;border-radius:0 4px 4px 0;}
+  .hyp.rank1{border-left-color:var(--red);}
+  .hyp h4{margin:0 0 5px;font-family:var(--sans);font-size:15px;}
+  .hyp .lab{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--ink-faint);text-transform:uppercase;}
+  .hyp p{font-size:13px;margin:4px 0 0;color:var(--ink-soft);}
+
+  /* ---------- confidence bars ---------- */
+  .bars{display:flex;flex-direction:column;gap:11px;}
+  .bar .bh{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11.5px;margin-bottom:4px;}
+  .bar .bh .b{color:var(--ink-soft);}
+  .track{height:11px;background:var(--paper-lo);border:1px solid var(--line-dark);border-radius:2px;overflow:hidden;}
+  .fill{height:100%;background:repeating-linear-gradient(45deg,var(--red) 0 7px,var(--red-deep) 7px 14px);}
+  .fill.m{background:repeating-linear-gradient(45deg,var(--blue) 0 7px,#2a4552 7px 14px);}
+  .fill.g{background:repeating-linear-gradient(45deg,var(--green) 0 7px,#45521f 7px 14px);}
+
+  /* ---------- recos ---------- */
+  .reco{display:flex;gap:13px;margin-bottom:12px;}
+  .reco .rn{font-family:var(--mono);font-weight:700;color:var(--paper-hi);background:var(--red);width:26px;height:26px;
+    display:flex;align-items:center;justify-content:center;border-radius:3px;flex:none;}
+  .reco .rb b{font-family:var(--sans);}
+
+  /* ---------- footer ---------- */
+  .foot{margin-top:46px;border-top:2px solid var(--line-dark);padding-top:16px;font-family:var(--mono);
+    font-size:11px;color:var(--ink-faint);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;letter-spacing:.04em;}
+  .disc{background:var(--red-wash);border:1px solid var(--red);border-left-width:5px;padding:14px 18px;margin-top:20px;font-size:13.5px;}
+  .disc b{color:var(--red-deep);}
+  .classbar{font-family:var(--mono);text-align:center;font-size:11px;letter-spacing:.34em;color:var(--red);
+    border-top:1px solid var(--red);border-bottom:1px solid var(--red);padding:5px 0;margin:0 0 26px;}
+
+  @media(max-width:820px){
+    h1{font-size:30px;} .arch-cols,.grid2,.grid3,.rows,.mods{grid-template-columns:1fr;}
+    .stamp{display:none;} .wrap{padding:26px 15px 60px;}
+  }
+</style>
+</head>
+<body>
+<div class="paper-noise"></div>
+<div class="foxing"></div>
+<div class="vignette"></div>
+
+<div class="wrap">
+
+  <!-- ============ FOLDER HEADER ============ -->
+  <div class="classbar">OSINT · 防御性威胁情报 · 已对敏感个人信息脱敏</div>
+
+  <header class="folder">
+    <div class="tabs">
+      <span class="tab">CASE FILE</span>
+      <span class="tab">THREAT INTEL</span>
+      <span class="tab">STATE-Linked / CIPU</span>
+      <span class="tab">OSINT SURVEILLANCE</span>
+      <span class="tab">AI-ASSISTED</span>
+    </div>
+    <div class="folder-top">
+      <div style="flex:1;min-width:280px;">
+        <h1><span class="id">GTG-14020</span><br>BABEL 全球 OSINT 监控平台</h1>
+        <p class="sub">单名操作者以 <span class="kw">AI 辅助编码</span> 搭建、疑似关联中国刑事侦查警察学院的<span class="kw">在线大规模监控</span>系统</p>
+        <p class="byline">PREPARED BY · 威胁情报分析 (threat-intelligence-analysis) · ANALYSIS DATE 2026-09-14 · LANGUAGE 中文为主 / 保留英文术语</p>
+      </div>
+      <div class="filed">
+        <div><span>Classification</span><span class="kw">OSINT / 公开源</span></div>
+        <div><span>Event window</span><span>2024-05 → 2026-07</span></div>
+        <div><span>Collection cutoff</span><span>2026-09-14 18:39</span></div>
+        <div><span>Source</span><span>Substack 叙事报告</span></div>
+        <div><span>Overall confidence</span><span class="kw">Medium (M)</span></div>
+        <div><span>Handling</span><span>PII 已脱敏</span></div>
+      </div>
+    </div>
+    <div class="stamp">
+      <div class="big">MEDIUM</div>
+      <div class="small">CONFIDENCE</div>
+    </div>
+  </header>
+
+  <!-- ============ 1 EXEC SUMMARY ============ -->
+  <section>
+    <div class="sec-h"><span class="no">01</span><h2>执行摘要</h2><span class="en">EXECUTIVE SUMMARY</span></div>
+    <div class="card">
+      <p class="lead">来源报告 <b>GTG-14020</b> 主张：一家美国 AI 公司（叙事指向 <span class="kw">Anthropic</span>）称其协助破获了一套由单一操作者借助 <span class="kw">Claude</span>「vibe-coded」搭建的<span class="kw">在线大规模监控 (mass-surveillance)</span> 系统，代号为 <span class="kw">BABEL</span>。该系统的核心是一台 <span class="kw">OSINT 采集平台</span>，运行网页爬虫、区块链追踪器与 Telegram 哨兵，名义上服务于「执法」，但实际目标集中于<span class="kw">维吾尔侨民</span>、<span class="kw">西藏流亡政治人物</span>、日韩<span class="kw">基督教群体</span>与<span class="kw">内蒙古独立人士</span>。</p>
+      <p>基础设施分布于<span class="kw">两台境外 VPS</span>（报告正文称美国与马来西亚，图示 IP 指向 <span class="kw">美国 / 韩国</span>，存在矛盾），分析推理由 <span class="kw">MiniClaw / MiniClaw Agent</span> 驱动，底层模型经中国侧模型路由商 <span class="kw">huoshenai.com（火神AI）</span> 汇聚 Claude、GPT、Gemini、DeepSeek、Kimi 等境外与境内 LLM。项目被指与 <span class="kw">中国刑事侦查警察学院 (CIPU)</span> 直接关联。</p>
+      <p>报告以十余页界面截图佐证：目标画像雷达、境外"分裂势力"组织架构图谱、涉藏数据库分析聊天助手、Telegram/Reddit 采集、区块链地址投毒+Approve 钓鱼追踪、涉毒人员画像与"卡商"资金链路、以及一款 <span class="kw">类案串并·串分析</span> 工具。<b>关键判断：这是一次"AI 赋能单兵 OSINT 监控平台"的能力展示 (proof of capability)</b>，其政治监控属性带来的<span class="kw">人权与外泄风险</span>高于传统网络犯罪风险；但多数高影响结论依赖<b>单一未独立验证的叙事来源</b>，证据链需保持审慎。</p>
+    </div>
+  </section>
+
+  <!-- ============ 2 KEY NUMBERS ============ -->
+  <section>
+    <div class="sec-h"><span class="no">02</span><h2>规模速览</h2><span class="en">AT A GLANCE</span></div>
+    <div class="grid3" style="grid-template-columns:repeat(4,1fr);">
+      <div class="stat"><div class="n">4</div><div class="l">监控目标群体</div><div class="c">维/藏/韩日基督/蒙</div></div>
+      <div class="stat"><div class="n">2</div><div class="l">境外 VPS 节点</div><div class="c">US + KR/MY</div></div>
+      <div class="stat"><div class="n">1</div><div class="l">单名操作者</div><div class="c">AI-assisted</div></div>
+      <div class="stat"><div class="n">6+</div><div class="l">采集渠道</div><div class="c">Web/Reddit/TG/FB/链/微信</div></div>
+    </div>
+    <div class="grid2" style="margin-top:14px;">
+      <div class="card">
+        <div class="sec-h" style="border:0;padding:0;margin-bottom:10px;"><h2 style="font-size:15px;">涉藏数据库规模 <span class="mono muted" style="font-size:11px;">(聊天助手·E-011)</span></h2></div>
+        <div class="rows" style="grid-template-columns:1fr;">
+          <div class="row"><span class="k">数据库记录 (records)</span><span class="v">124,000,000 · 约 1.24 亿</span></div>
+          <div class="row"><span class="k">唯一身份 (unique_identity)</span><span class="v">23,400,000 · 约 2,340 万</span></div>
+          <div class="row"><span class="k">数据页 (data_pages)</span><span class="v">127,000,000 · 约 1.27 亿</span></div>
+          <div class="row"><span class="k">页面快照 (page_snapshots)</span><span class="v">45,600,000 · 约 4,560 万</span></div>
+          <div class="row"><span class="k">覆盖时间</span><span class="v">2024-05-04 → 2026-07</span></div>
+        </div>
+        <div class="note">⚠ 单页快照计数在两处截图显示 1456 / 11456 不一致 (见矛盾 M-05)。数值来自系统聊天助手自述，未经独立验证。</div>
+      </div>
+      <div class="card">
+        <div class="sec-h" style="border:0;padding:0;margin-bottom:10px;"><h2 style="font-size:15px;">"讯速·类案串并·串分析" 工具 <span class="mono muted" style="font-size:11px;">(E-015)</span></h2></div>
+        <div class="rows" style="grid-template-columns:1fr;">
+          <div class="row"><span class="k">案件数</span><span class="v">107</span></div>
+          <div class="row"><span class="k">涉案流水</span><span class="v">¥1,572,261</span></div>
+          <div class="row"><span class="k">智能分析条目</span><span class="v">164,278</span></div>
+          <div class="row"><span class="k">节点部署</span><span class="v">DE-NODE / US-NODE / JP-NODE / AU-NODE</span></div>
+          <div class="row"><span class="k">主界面横幅</span><span class="v">"讯速提取"</span></div>
+        </div>
+        <div class="note">跨境节点部署与"类案串并"表明这是一套可复用的执法分析中间件，而非一次性脚本。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3 KEY JUDGMENTS ============ -->
+  <section>
+    <div class="sec-h"><span class="no">03</span><h2>关键判断</h2><span class="en">KEY JUDGMENTS</span></div>
+    <div class="tbl">
+      <table class="kj">
+        <thead><tr><th style="width:56px;">ID</th><th>判断</th><th style="width:74px;">置信</th><th style="width:120px;">证据</th><th style="width:200px;">为何重要</th></tr></thead>
+        <tbody>
+          <tr><td class="jid">J-001</td>
+            <td><span class="kw">BABEL</span> 是一套以 OSINT 采集为核心、<b>面向特定族群/异见群体的监控平台</b>，而非通用刑事侦查工具。</td>
+            <td><span class="conf conf-h">高 H</span></td><td class="mono">E-001,002,004,006,008</td>
+            <td>画像雷达与架构模块命名高度一致地指向维、藏、蒙及宗教群体，政治监控属性明确。</td></tr>
+          <tr><td class="jid">J-002</td>
+            <td>系统由<b>单一操作者借助 <span class="kw">LLM 编码助手</span>（报告称 Claude）</b>搭建；AI 大幅降低此类平台的构建门槛。</td>
+            <td><span class="conf conf-m">中 M</span></td><td class="mono">E-001,005</td>
+            <td>核心议题是"AI 使个体具备组织级监控能力"——防御方需按此趋势扩容监测。</td></tr>
+          <tr><td class="jid">J-003</td>
+            <td>操作者经 <span class="kw">模型路由商 huoshenai.com</span> 汇聚访问多家境外 LLM，构成<b>受制裁/合规规避与数据出境渠道</b>。</td>
+            <td><span class="conf conf-h">高 H</span></td><td class="mono">E-005,006,009</td>
+            <td>路由层是可见的单点：既能观测模型用量，也是敏感数据流向境外模型的中转站。</td></tr>
+          <tr><td class="jid">J-004</td>
+            <td>项目与 <span class="kw">中国刑事侦查警察学院 (CIPU)</span> 存在<b>关联线索</b>（截图含"CIPU"、校方典礼照片、机构叙事）。</td>
+            <td><span class="conf conf-l">低 L</span></td><td class="mono">E-002,007,014</td>
+            <td>若属实意味"院校—执法—平台"链条；但现有材料不足以完成机构归因。</td></tr>
+          <tr><td class="jid">J-005</td>
+            <td>BABEL 附带 <b>区块链追踪 / 地址投毒+Approve 钓鱼追踪</b> 模块，能力横跨"OSINT 监控"与"链上犯罪取证"。</td>
+            <td><span class="conf conf-m">中 M</span></td><td class="mono">E-012,013</td>
+            <td>说明平台被用于涉加密资产的执法追踪，但也可能被反向滥用于画像。</td></tr>
+          <tr><td class="jid">J-006</td>
+            <td>涉毒人员画像模块含<b>疑似真实身份证号/姓名/微信/手机号</b>，提示底层可能接入真实 PII 泄露数据集。</td>
+            <td><span class="conf conf-l">低 L</span></td><td class="mono">E-014</td>
+            <td>若为真，则泄露/滥用个人数据风险重大（本可视化已脱敏，不复制 PII）。</td></tr>
+          <tr><td class="jid">J-007</td>
+            <td><b>归因应保持假设。</b>整套叙述主要来自单一 Substack 来源，部分数据存在自相矛盾，非独立验证。</td>
+            <td><span class="conf conf-h">高 H</span></td><td class="mono">S-001</td>
+            <td>高影响结论（破获、归因、规模）需以独立证据复核后方可据以行动。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ 4 ARCHITECTURE ============ -->
+  <section>
+    <div class="sec-h"><span class="no">04</span><h2>系统架构与数据流</h2><span class="en">ARCHITECTURE &amp; DATA FLOW</span></div>
+    <div class="card arch">
+      <div class="arch-cols">
+        <!-- left: developer -->
+        <div class="flow-line">
+          <div class="node">
+            <div class="tag">OPERATOR</div>
+            <div class="name">单一操作者</div>
+            <small>中国境内开发机<br>flag <span class="flag">🇨🇳 CN</span></small>
+          </div>
+          <div class="arrow">▼ vibe-code</div>
+          <div class="node">
+            <div class="tag">AI CODING</div>
+            <div class="name" style="color:var(--red);">Claude</div>
+            <small>负责创建爬虫与"本地数据基础设施"；服务器留有"指纹"（报告称）</small>
+          </div>
+        </div>
+        <!-- middle: router -->
+        <div class="flow-line">
+          <div class="node" style="border-color:var(--red);">
+            <div class="tag">MODEL ROUTER · API 聚合</div>
+            <div class="name"><span class="kw">火神AI</span></div>
+            <div class="ip">huoshenai.com</div>
+            <small>访问境外 LLM 的中转层<br>
+              <span class="chip">Claude</span><span class="chip">OpenAI</span><span class="chip">Gemini</span><span class="chip">Antigravity</span><span class="chip">Grok</span><span class="chip hot">DeepSeek</span><span class="chip">Kimi</span><span class="chip">MiniMax</span><span class="chip">Zhipu GLM</span></small>
+          </div>
+          <div class="arrow">▲ 经人民币支付 / 规避信用卡与合规</div>
+        </div>
+        <!-- right: infra -->
+        <div class="flow-line">
+          <div class="grp">
+            <div class="gt">Node A · <span class="flag">🇺🇸 US</span></div>
+            <div class="node">
+              <div class="ip">72.249.206.130</div>
+              <div class="name">VPS + BABEL / Snow-Gazer <span class="muted">观雪</span></div>
+              <small>MiniClaw Agent · 报告生成 / 数据分类<br>
+                <span class="chip">Webpage-scraper</span><span class="chip">Reddit-scraper</span><span class="chip">Telegram-scraper</span><span class="chip">Facebook-scraper</span><span class="chip">Blockchain-investigator</span></small>
+            </div>
+          </div>
+          <div class="arrow">↕ 数据分类 / 报告生成</div>
+          <div class="grp">
+            <div class="gt">Node B · <span class="flag">🇰🇷 KR(图示) / MY(正文)</span></div>
+            <div class="node">
+              <div class="ip">38.55.254.138</div>
+              <div class="name">VPS · 宗教资讯归档</div>
+              <small><span class="kw">Gyrfalcon</span> 海东青 · <span class="kw">Shoushan</span> 守沙 · Southern Mongolian Congress<br>
+                <span class="chip hot">涉蒙反分裂势力监控·高危</span><span class="chip">宗教资讯归档</span></small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="note">LLM 后端标注存在冲突：图示将 <span class="kw">DeepSeek 🐳</span> 绑至 Node A、<span class="kw">OpenAI </span> 绑至 Node B，而聊天终端自述 "I'm Codes, … based on GPT-5"（见矛盾 M-02）。架构以报告手绘图 (E-005) 与基础设施图 (E-016) 为准复原，不代表实际归属已独立证实。</div>
+    </div>
+  </section>
+
+  <!-- ============ 5 IOC TABLE ============ -->
+  <section>
+    <div class="sec-h"><span class="no">05</span><h2>指标清单 (IOC / 实体)</h2><span class="en">INDICATORS &amp; ENTITIES</span></div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th style="width:52px;">ID</th><th style="width:64px;">类型</th><th>值 (展示 / defanged)</th><th style="width:150px;">角色 / 上下文</th><th style="width:52px;">置信</th><th style="width:60px;">状态</th></tr></thead>
+        <tbody>
+          <tr><td class="jid">I-001</td><td class="mono">ipv4</td><td class="val"><span class="u">72</span>[.]249[.]206[.]130</td><td>VPS Node A · BABEL/Snow-Gazer</td><td><span class="conf conf-h">H</span></td><td class="mono">active*</td></tr>
+          <tr><td class="jid">I-002</td><td class="mono">ipv4</td><td class="val"><span class="u">38</span>[.]55[.]254[.]138</td><td>VPS Node B · 宗教资讯归档</td><td><span class="conf conf-h">H</span></td><td class="mono">active*</td></tr>
+          <tr><td class="jid">I-003</td><td class="mono">domain</td><td class="val">huoshenai[.]com</td><td>模型路由 / API 聚合商</td><td><span class="conf conf-h">H</span></td><td class="mono">active*</td></tr>
+          <tr><td class="jid">I-004</td><td class="mono">wallet</td><td class="val">0xB0B0e0FD697B46fB375304745B916f822E7D5a18</td><td>链上投毒/钓鱼·主追踪地址 (BSC/Gnosis)</td><td><span class="conf conf-m">M</span></td><td class="mono">disputed</td></tr>
+          <tr><td class="jid">I-005</td><td class="mono">wallet</td><td class="val">0x166174e…(GasFeed→受害者) · 0x25872368… · 0x791b65d…(钓鱼合约)</td><td>攻击链关联地址 (6 个) / USDT approve 目标</td><td><span class="conf conf-m">M</span></td><td class="mono">active*</td></tr>
+          <tr><td class="jid">I-006</td><td class="mono">handle</td><td class="val">FreeTheUighurs (TG) · r/FreeTibet (Reddit) · tibetparliament[.]in[.]kr</td><td>被采集 / 被监控的公开账号与站点</td><td><span class="conf conf-m">M</span></td><td class="mono">victim</td></tr>
+          <tr><td class="jid">I-007</td><td class="mono">artifact</td><td class="val">tibetan_parliament_india_report.doc (8.9 KB) · 报告 "…_report_26"</td><td>AI 助手生成的下游产物</td><td><span class="conf conf-m">M</span></td><td class="mono">generated</td></tr>
+        </tbody>
+      </table>
+      <div class="note">* <b>状态与位置为报告内声称，未做主动探测。</b>依据本技能边界，本次分析仅被动使用用户提供材料，未访问、未验证上述基础设施。钱包地址部分为截断展示；机构/人物 PII 未纳入。</div>
+    </div>
+  </section>
+
+  <!-- ============ 6 TTP / ATT&CK ============ -->
+  <section>
+    <div class="sec-h"><span class="no">06</span><h2>行为与 ATT&CK 映射</h2><span class="en">TTP · MITRE ATT&amp;CK</span></div>
+    <div class="grid2">
+      <div class="tbl">
+        <table>
+          <thead><tr><th>战术</th><th>观察行为</th><th style="width:120px;">Technique</th><th style="width:50px;">置信</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">Recon<br>侦察</td><td>多源 OSINT 采集：网页/Reddit/Telegram/Facebook/区块链</td><td class="val">T1593</td><td><span class="conf conf-h">H</span></td></tr>
+            <tr><td class="mono">Recon</td><td>身份标识解析与聚合 (ID/微信/手机/账号)</td><td class="val">T1589.001/.002</td><td><span class="conf conf-m">M</span></td></tr>
+            <tr><td class="mono">Recon</td><td>受害者画像：CTA 雷达、组织架构图谱、宗教人员档案</td><td class="val">T1590.005</td><td><span class="conf conf-m">M</span></td></tr>
+            <tr><td class="mono">Collection<br>收集</td><td>哨兵持续监听 (Telegram bot / 频道举报 / sentry)</td><td class="val">T1594</td><td><span class="conf conf-m">M</span></td></tr>
+            <tr><td class="mono">C2<br>命令控制</td><td>基于 Web 服务通信 (对境外 LLM 的 API 调用)</td><td class="val">T1102</td><td><span class="conf conf-l">L</span></td></tr>
+            <tr><td class="mono">— 非敌对链</td><td class="muted">链上"地址投毒+Approve 钓鱼"为<b>被追踪的第三方犯罪</b>，非 BABEL 自身 TTP</td><td class="muted">未映射</td><td class="muted">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;justify-content:center;">
+        <div class="note" style="margin:0 0 8px;">能力覆盖度 (分析师主观估计，按证据强度归一化)</div>
+        <div class="bars">
+          <div class="bar"><div class="bh"><span>OSINT 采集广度</span><span class="b">高</span></div><div class="track"><div class="fill" style="width:90%"></div></div></div>
+          <div class="bar"><div class="bh"><span>AI 自动化分析</span><span class="b">中高</span></div><div class="track"><div class="fill" style="width:80%"></div></div></div>
+          <div class="bar"><div class="bh"><span>族群/异见画像深度</span><span class="b">高</span></div><div class="track"><div class="fill" style="width:85%"></div></div></div>
+          <div class="bar"><div class="bh"><span>链上追踪能力</span><span class="b">中</span></div><div class="track"><div class="fill m" style="width:60%"></div></div></div>
+          <div class="bar"><div class="bh"><span>机构归因证据</span><span class="b">低</span></div><div class="track"><div class="fill g" style="width:30%"></div></div></div>
+          <div class="bar"><div class="bh"><span>来源独立性</span><span class="b">低</span></div><div class="track"><div class="fill g" style="width:25%"></div></div></div>
+        </div>
+        <div class="note" style="margin:12px 0 0;">仅在行为有证据时映射 TTP；未对"入侵/持久化/横向移动"作强映射——现有材料未见主机层攻击证据。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7 VICTIMOLOGY ============ -->
+  <section>
+    <div class="sec-h"><span class="no">07</span><h2>目标群体画像</h2><span class="en">VICTIMOLOGY</span></div>
+    <div class="card">
+      <div class="radar-wrap">
+        <svg viewBox="0 0 340 340" width="300" height="300" aria-label="target radar">
+          <g transform="translate(170 170)">
+            <g stroke="#9c8253" stroke-width="1" fill="none" opacity=".7">
+              <circle r="150"/><circle r="112"/><circle r="74"/><circle r="37"/>
+            </g>
+            <g stroke="#b8a078" stroke-width="1" opacity=".55">
+              <line x1="0" y1="0" x2="0" y2="-150"/><line x1="0" y1="0" x2="106" y2="-106"/><line x1="0" y1="0" x2="150" y2="0"/>
+              <line x1="0" y1="0" x2="106" y2="106"/><line x1="0" y1="0" x2="0" y2="150"/><line x1="0" y1="0" x2="-106" y2="106"/>
+              <line x1="0" y1="0" x2="-150" y2="0"/><line x1="0" y1="0" x2="-106" y2="-106"/>
+            </g>
+            <polygon points="0,-140 98,-98 140,0 60,60 0,118 -60,60 -140,0 -98,-98"
+              fill="rgba(168,40,31,.16)" stroke="#a8281f" stroke-width="2"/>
+            <g fill="#a8281f"><circle cx="0" cy="-140" r="4"/><circle cx="98" cy="-98" r="4"/><circle cx="140" cy="0" r="4"/>
+              <circle cx="60" cy="60" r="4"/><circle cx="0" cy="118" r="4"/><circle cx="-60" cy="60" r="4"/><circle cx="-140" cy="0" r="4"/><circle cx="-98" cy="-98" r="4"/></g>
+            <circle r="9" fill="#2b2318"/>
+            <text x="0" y="-152" text-anchor="middle" font-family="var(--mono)" font-size="11" fill="#7e1810">维吾尔侨民</text>
+            <text x="150" y="-118" text-anchor="middle" font-family="var(--mono)" font-size="11" fill="#7e1810">西藏流亡政治</text>
+            <text x="160" y="6" text-anchor="middle" font-family="var(--mono)" font-size="11" fill="#7e1810">涉藏组织</text>
+            <text x="90" y="128" text-anchor="middle" font-family="var(--mono)" font-size="11" fill="#7e1810">内蒙古独立</text>
+            <text x="0" y="146" text-anchor="middle" font-family="var(--mono)" font-size="11" fill="#7e1810">日韩基督教群体</text>
+            <text x="-92" y="128" text-anchor="middle" font-family="var(--mono)" font-size="11" fill="#5a4c34">宗教人员档案</text>
+            <text x="-165" y="6" text-anchor="middle" font-family="var(--mono)" font-size="11" fill="#5a4c34">链上资金</text>
+            <text x="-98" y="-118" text-anchor="middle" font-family="var(--mono)" font-size="11" fill="#5a4c34">社交账号</text>
+          </g>
+        </svg>
+        <div class="legend" style="flex:1;min-width:230px;">
+          <ul>
+            <li><span class="dot" style="background:var(--red);"></span><b>维吾尔侨民</b> — 出现于 CTA 雷达"疆独/藏独"分类，及"Contact to Counter Uyghur"Telegram 采集</li>
+            <li><span class="dot" style="background:var(--red);"></span><b>西藏流亡政治人物</b> — "中央藏人行政中央 (CTA)" 人物画像、涉藏议会报告生成</li>
+            <li><span class="dot" style="background:var(--red);"></span><b>内蒙古独立人士</b> — "涉蒙反分裂势力监控·风险等级 高危"、Southern Mongolian Congress</li>
+            <li><span class="dot" style="background:var(--red);"></span><b>日韩基督教群体</b> — 报告正文列为目标（截图未直接展示，标注为 Lead）</li>
+            <li><span class="dot" style="background:var(--line-dark);"></span><b>延伸目标</b> — 宗教人员档案、宗教组织信息流转、涉外关系、链上资金流</li>
+          </ul>
+          <div class="note">雷达为能力覆盖示意，非受害计数。日本/韩国基督教群体仅有文字主张、缺界面证据，按 <b>Lead</b> 处理。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8 MODULES ============ -->
+  <section>
+    <div class="sec-h"><span class="no">08</span><h2>功能模块拆解</h2><span class="en">CAPABILITY MODULES</span></div>
+    <div class="mods">
+      <div class="mod"><div class="mh"><h4>BABEL 主控台</h4><span class="page">P1 · v3.0</span></div>
+        <p>以中国版图为底、层级金字塔叠加的"资讯扫描"总览，含统计面板与"重点敏感案类"快捷入口。</p>
+        <span class="pill">态势总览</span><span class="pill">数据面板 2873/521/196/821</span><span class="pill">重点敏感案类</span></div>
+      <div class="mod"><div class="mh"><h4>中央藏人行政中央 (CTA) 人物画像</h4><span class="page">P2</span></div>
+        <p>以目标人物为中心，聚合达赖喇嘛尊者办公室、藏青会 (TYC)、西藏议会、RFA/FreeTibet、国际声援西藏运动、西藏大学、藏人行政中央等关联节点的关系雷达。</p>
+        <span class="pill">关系图谱</span><span class="pill">政治归属标签</span><span class="pill">涉藏/疆独分类</span></div>
+      <div class="mod"><div class="mh"><h4>境外分裂势力组织架构图谱</h4><span class="page">P2</span></div>
+        <p>"涉疆 / 涉藏"组织架构树，指标：境外团体 <b>91</b>、核心人物 <b>2</b>、关联组织 <b>89</b>、关联人员 <b>18</b>；含"东突厥斯坦"网络与人员详情。</p>
+        <span class="pill">组织树</span><span class="pill">人数统计</span><span class="pill">世界分布</span></div>
+      <div class="mod"><div class="mh"><h4>议会 / 人物归档模块</h4><span class="page">P3</span></div>
+        <p>"tibetparliament.in.kr" 人物与会议档案、流亡议会 (Tibetan Assembly) 席位与代表画像；侧栏多标签管理。</p>
+        <span class="pill">人物档案</span><span class="pill">会议/发言</span><span class="pill">多源标签</span></div>
+      <div class="mod"><div class="mh"><h4>数据库分析聊天助手</h4><span class="page">P4</span></div>
+        <p>自然语言查询涉藏监测库，返回来源统计、命中记录与<b>事件时间线</b>，一键导出 <code class="val">tibetan_parliament_india_report.doc</code>。</p>
+        <span class="pill">NL 检索</span><span class="pill">来源归并</span><span class="pill">报告生成</span></div>
+      <div class="mod"><div class="mh"><h4>Telegram 哨兵 / 频道举报</h4><span class="page">P7</span></div>
+        <p>含 AutoModerator（"我是一个机器人…"）监听、按楼层/点赞/评论/收藏排序的公开频道采集，界面出现 <code class="val">r/FreeTibet</code> 等元素。</p>
+        <span class="pill">Bot 监听</span><span class="pill">频道举报</span><span class="pill">Reddit 爬虫</span></div>
+      <div class="mod"><div class="mh"><h4>区块链追踪 / 地址投毒+Approve 钓鱼</h4><span class="page">P7-P8</span></div>
+        <p>完整追踪报告：<b>97</b> 活动记录、<b>BSC+Gnosis</b> 双链、<b>6</b> 关联地址、<b>2</b> 钓鱼授权合约、<b>50+</b> 诈骗代币空投、首次攻击 <b>2026-05-08</b>；逐笔攻击时间线 (Gas 补给→资金出口→USDT approve)。</p>
+        <span class="pill">链上取证</span><span class="pill">授权合约风险</span><span class="pill">受害者资金流</span></div>
+      <div class="mod"><div class="mh"><h4>人员画像 · 涉毒人员档案</h4><span class="page">P9</span></div>
+        <p>"第一层 主犯—一级毒贩"：微信主号/副号、交易笔数 <b>469</b>、资金收入、资金流出、<b>13 名下线购毒者</b> 明细与风险标签串并。<b>含疑似真实 PII（本卷宗已脱敏）。</b></p>
+        <span class="pill">主/副号</span><span class="pill">资金链路</span><span class="pill">下线串并</span></div>
+      <div class="mod"><div class="mh"><h4>讯速 · 类案串并 · 串分析</h4><span class="page">P7</span></div>
+        <p>跨境节点 (DE/US/JP/AU) 部署的案件关联分析中间件："讯速提取"、智能分析、进入案件列表；反映可复用的执法分析能力。</p>
+        <span class="pill">类案串并</span><span class="pill">跨境节点</span><span class="pill">智能提取</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 9 TIMELINE ============ -->
+  <section>
+    <div class="sec-h"><span class="no">09</span><h2>时间线</h2><span class="en">TIMELINE (UTC)</span></div>
+    <div class="grid2">
+      <div class="card">
+        <div class="sec-h" style="border:0;padding:0;margin:0 0 10px;"><h2 style="font-size:15px;">平台与活动窗口</h2></div>
+        <div class="tl">
+          <div class="ev"><div class="t">2024-05-04</div><div class="d">涉藏监测库数据页覆盖起点</div><div class="s">E-011</div></div>
+          <div class="ev"><div class="t">2026-07-13 → 08-04</div><div class="d">聊天助手分析窗口 (约 11,456 条结果文本/标题)</div><div class="s">E-011</div></div>
+          <div class="ev hot"><div class="t">2026-09-14</div><div class="d">来源报告 PDF 生成 (Chromium/Skia 导出)</div><div class="s">S-001</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="sec-h" style="border:0;padding:0;margin:0 0 10px;"><h2 style="font-size:15px;">链上攻击日 <span class="kw">2026-05-08</span> (关键日)</h2></div>
+        <div class="tl">
+          <div class="ev"><div class="t">05:25:52</div><div class="d">Gas 补给站 → 受害者</div><div class="s">E-013 · 注入 BNB 手续费</div></div>
+          <div class="ev"><div class="t">05:26:12 / :30</div><div class="d">受害者 → 资金出口 (0x080…→0x25872368 @USDT；0x8B8→BNB)</div><div class="s">E-013</div></div>
+          <div class="ev hot"><div class="t">05:26:47</div><div class="d">受害者 → 钓鱼合约 · <span class="kw">USDT approve 无限授权</span></div><div class="s">E-013 · 核心攻击</div></div>
+          <div class="ev"><div class="t">05:27:23</div><div class="d">受害者 → 钓鱼合约 · USDT approve (二次授权)</div><div class="s">E-013</div></div>
+          <div class="ev"><div class="t">至 2026-06-26</div><div class="d">钓鱼合约仍在活跃 (最后资金移动)</div><div class="s">E-013</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10 EVIDENCE MATRIX ============ -->
+  <section>
+    <div class="sec-h"><span class="no">10</span><h2>证据矩阵与来源可靠性</h2><span class="en">EVIDENCE &amp; SOURCE RELIABILITY</span></div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th style="width:52px;">E-ID</th><th>原子观察 (截取自报告)</th><th style="width:78px;">页码</th><th style="width:66px;">来源可靠</th><th style="width:66px;">信息可信</th><th style="width:96px;">对判断作用</th></tr></thead>
+        <tbody>
+          <tr><td class="jid">E-001</td><td>执行摘要文字：Anthropic 称破获；OSINT+爬虫+链追踪+TG哨兵；目标维/藏/日韩基督/蒙</td><td class="mono">P1</td><td class="mono">M</td><td class="mono">M</td><td>支撑 J-001/002</td></tr>
+          <tr><td class="jid">E-002</td><td>BABEL 主控台 v3.0 截图 + 中文执法口径英文摘要</td><td class="mono">P1</td><td class="mono">M</td><td class="mono">H</td><td>支撑 J-001</td></tr>
+          <tr><td class="jid">E-004</td><td>CTA 人物关系雷达 + 境外分裂势力组织架构图谱 (91/2/89/18)</td><td class="mono">P2</td><td class="mono">M</td><td class="mono">H</td><td>支撑 J-001</td></tr>
+          <tr><td class="jid">E-005</td><td>手绘架构图：CN开发机→Claude→huoshenAI→双VPS+MiniClaw+爬虫</td><td class="mono">P5</td><td class="mono">M</td><td class="mono">M</td><td>支撑 J-002/003</td></tr>
+          <tr><td class="jid">E-006</td><td>huoshenai.com 路由后台：多模型 token/cost/request 面板</td><td class="mono">P6</td><td class="mono">M</td><td class="mono">H</td><td>支撑 J-003</td></tr>
+          <tr><td class="jid">E-007</td><td>CIPU 关联：文本主张 + 校方典礼照片 + "CIPU" 截图</td><td class="mono">P6</td><td class="mono">M</td><td class="mono">L</td><td>支撑 J-004 (弱)</td></tr>
+          <tr><td class="jid">E-011</td><td>聊天助手输出：1.24亿记录/4560万快照/时间线/生成 doc</td><td class="mono">P4</td><td class="mono">M</td><td class="mono">M</td><td>支撑规模 (自述)</td></tr>
+          <tr><td class="jid">E-013</td><td>地址投毒+Approve 钓鱼完整追踪报告 (97条/双链/时间线)</td><td class="mono">P8</td><td class="mono">M</td><td class="mono">M</td><td>支撑 J-005</td></tr>
+          <tr><td class="jid">E-014</td><td>涉毒人员画像含姓名/身份证/手机/微信 + 13 下线</td><td class="mono">P9</td><td class="mono">M</td><td class="mono">L</td><td>支撑 J-006 (PII 存疑)</td></tr>
+          <tr><td class="jid">E-015</td><td>"讯速·类案串并·串分析" (107案/¥1,572,261/164,278/跨境节点)</td><td class="mono">P7</td><td class="mono">M</td><td class="mono">M</td><td>能力面佐证</td></tr>
+          <tr><td class="jid">E-016</td><td>基础设施图：72.249.206.130↔38.55.254.138 与模块映射</td><td class="mono">P10</td><td class="mono">M</td><td class="mono">M</td><td>支撑 J-003/基础设施</td></tr>
+        </tbody>
+      </table>
+      <div class="note">来源可靠性 (S) 与信息可信度 (I) 分开评估：全部证据均取自 <b>S-001</b>（单一 Substack 叙事 + 界面截图）。因缺乏独立第二来源，即便截图可信度高，<b>机构归因与"破获"叙述整体仍按 Medium/Low 校准</b>。</div>
+    </div>
+  </section>
+
+  <!-- ============ 11 HYPOTHESES + CONTRADICTIONS ============ -->
+  <section>
+    <div class="sec-h"><span class="no">11</span><h2>竞争假设 · 矛盾 · 缺口</h2><span class="en">HYPOTHESES · CONTRADICTIONS · GAPS</span></div>
+    <div class="grid2">
+      <div>
+        <div class="hyp rank1">
+          <div class="lab">H-001 · 首要 (排名 1 / M)</div>
+          <h4>"AI 赋能单兵监控平台"的能力展示</h4>
+          <p>证据一致：OSINT 采集 + AI 助手 + 路由商 + 可复用分析中间件。最贴合材料，行动含义清晰。</p>
+        </div>
+        <div class="hyp">
+          <div class="lab">H-002 · 次级 (排名 2 / L)</div>
+          <h4>真实机构级 (CIPU) 在运项目</h4>
+          <p>反证：无组织级日志/二源；含"示例数据"字样与个人 vibe-coding 叙事。<b>判别项</b>：服务器归属、支付主体、代码提交者身份。</p>
+        </div>
+        <div class="hyp">
+          <div class="lab">H-003 · 需排除 (排名 3 / M)</div>
+          <h4>演示/Demo 数据或合成样本</h4>
+          <p>聊天助手自述 "sample database / 示例数据"；若为真则规模数字不可据此行动。<b>判别项</b>：哈希级原始数据抽样。</p>
+        </div>
+        <div class="hyp">
+          <div class="lab">H-004 · 机会主义 (排名 4 / L)</div>
+          <h4>借监控外衣行链上犯罪</h4>
+          <p>投毒/钓鱼与涉毒画像更像执法取证对象而非 BABEL 自身行为；作为反证纳入，不作主归因。</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="sec-h" style="border:0;padding:0;margin-bottom:10px;"><h2 style="font-size:15px;">关键矛盾 <span class="en">CONTRADICTIONS</span></h2></div>
+        <div class="rows" style="grid-template-columns:1fr;">
+          <div class="row"><span class="k">M-01 地理：正文"美/马" vs 图示 IP 归属"美/韩"</span></div>
+          <div class="row"><span class="k">M-02 模型：终端自述 "GPT-5/Codes" vs 叙事 "Claude/MiniClaw"；节点↔模型映射与正文"DeepSeek/OpenAI 各一"方向相反</span></div>
+          <div class="row"><span class="k">M-03 命名：MiniClaw vs MiniClaw Agent vs "火神AI 小龙虾/Huo Shen AI"</span></div>
+          <div class="row"><span class="k">M-04 归因：CIPU 仅以叙事+照片佐证，未见技术指纹直连机构</span></div>
+          <div class="row"><span class="k">M-05 规模：快照计数 1456 / 11456 不一致</span></div>
+          <div class="row"><span class="k">M-06 PII：涉毒画像含疑似真实身份证号，或为真实泄露、或为合成样本，报告未界定</span></div>
+        </div>
+        <div class="disc" style="margin-top:14px;"><b>分析缺口 (Collection Gaps)：</b>缺少对基础设施的被动测绘（DNS/证书/ASN/注册时间线）、操作者钱包归属、路由商与本平台的可核验账务关系、以及独立的第二来源交叉印证。上述任一到位都可能在"能力展示 vs 机构在运"之间完成判别。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 12 RECOMMENDATIONS ============ -->
+  <section>
+    <div class="sec-h"><span class="no">12</span><h2>防御建议 · 情报需求</h2><span class="en">DEFENSE &amp; REQUIREMENTS</span></div>
+    <div class="grid2">
+      <div class="card">
+        <p class="mono" style="font-size:11px;letter-spacing:.14em;color:var(--ink-faint);">NOW WHAT · 可执行动作（防御性）</p>
+        <div class="reco"><div class="rn">1</div><div class="rb"><b>监测但不接触</b>：对 I-001/002/003 建立被动观测（历史解析、证书、ASN、信誉），<span class="kw">不主动探测</span>，避免向疑似执法/对手基础设施发起交互。</div></div>
+        <div class="reco"><div class="rn">2</div><div class="rb"><b>关注路由商渠道</b>：将 <span class="kw">huoshenai.com</span> 作为模型出境/合规规避与数据外泄的观测面；跟踪其被滥用与整改动态。</div></div>
+        <div class="reco"><div class="rn">3</div><div class="rb"><b>降低暴露面（面向被监控群体）</b>：对维/藏/蒙/宗教社群与非政府机构做开源暴露面评估与 OSINT 卫生培训；按本报告能力清单反向自查可被采集点。</div></div>
+        <div class="reco"><div class="rn">4</div><div class="rb"><b>链上模块按取证而非威胁处置</b>：投毒/钓鱼时间线用于受害者保护 (revoke、风险地址标注)，勿误判为 BABEL 的进攻 TTP。</div></div>
+        <div class="reco"><div class="rn">5</div><div class="rb"><b>PII 合规</b>：任何含身份证号/手机/微信的下游数据，须按数据保护要求隔离、脱敏、限制流转；本可视化不复制 PII。</div></div>
+      </div>
+      <div class="card">
+        <p class="mono" style="font-size:11px;letter-spacing:.14em;color:var(--ink-faint);">SO WHAT · 情报需求 (PIRs)</p>
+        <table>
+          <thead><tr><th>需求</th><th style="width:70px;">优先级</th></tr></thead>
+          <tbody>
+            <tr><td>两台 VPS 的注册/ASN/到期与历史共驻关系 → 判别机构 vs 个人</td><td class="mono" style="color:var(--red);font-weight:700;">P1</td></tr>
+            <tr><td>操作者钱包与平台模块的支付/资金关联</td><td class="mono" style="color:var(--red);font-weight:700;">P1</td></tr>
+            <tr><td>涉藏/涉蒙数据集是否对应真实泄露源（抽样哈希核验，脱敏）</td><td class="mono" style="color:var(--red);font-weight:700;">P1</td></tr>
+            <tr><td>Anthropic/CIPU 的独立公开确认（新闻稿、执法公告）</td><td class="mono" style="color:var(--green);font-weight:700;">P2</td></tr>
+            <tr><td>路由商后台真实用量数据（区分演示/刷量）</td><td class="mono" style="color:var(--green);font-weight:700;">P2</td></tr>
+            <tr><td>日韩基督教群体采集的具体界面/日志证据</td><td class="mono" style="color:var(--ink-faint);font-weight:700;">P3</td></tr>
+          </tbody>
+        </table>
+        <div class="note"><b>会改变判断的触发条件：</b>若被动测绘显示两台 VPS 与院校/机构同注册主体或长期共驻，J-004 置信升至 M/H；若抽样证明数据集为合成样本，规模类判断整体下调。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section>
+    <div class="sec-h"><span class="no">13</span><h2>来源</h2><span class="en">SOURCES</span></div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th style="width:52px;">ID</th><th>出版方 / 载体</th><th>标题 / 描述</th><th style="width:120px;">发布 / 采集</th><th style="width:64px;">类型</th></tr></thead>
+        <tbody>
+          <tr><td class="jid">S-001</td><td>Netaskari</td><td><span class="val">Anthropic + Chinese online surveillance = BABEL</td><td class="mono">2026-09-14 / 2026-09-14</td><td class="mono">primary*</td></tr>
+        </tbody>
+      </table>
+      <div class="note">* primary 指"用户提供的原始材料"，非独立权威一手证据。文中"到我们的 substack 看深度解读"表明其为叙事/营销载体，需外部交叉验证。本分析未访问任何报告中提及的活跃基础设施。</div>
+    </div>
+  </section>
+
+  <div class="disc">
+    <b>处理说明 (Handling)：</b>本卷宗为<b>被动、防御性</b>威胁情报分析，仅使用用户提供材料；未探测、未访问报告中提及的服务器/钱包/域名。涉毒人员画像等截图含疑似真实身份证号、手机号、微信与姓名，属敏感 PII，正文与表格<b>已脱敏</b>（红块 <span class="redact">████████</span> 表示遮盖），未复制具体号码，请勿在任何下游分发中还原。所有高影响结论（"破获"、机构归因、数据规模）依赖<b>单一未独立验证来源</b>，据以行动前请完成第 12 节情报需求。
+  </div>
+
+  <footer class="foot">
+    <span>GTG-14020 · BABEL · 威胁情报可视化卷宗</span>
+    <span>OSINT / 防御性 · PII 已脱敏</span>
+    <span>Collection cutoff 2026-09-14 18:39 CST · Overall Confidence MEDIUM</span>
+  </footer>
+
+</div>
+</body>
+</html>
