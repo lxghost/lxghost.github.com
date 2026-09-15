@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ICBC 伦敦机密档案调查 · 情报可视化</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0f2b34;--body:#3f5b64;--muted:#7d969e;--line:#e2eef0;--bg:#f5fbfb;
+  --teal:#0d9488;--teal-d:#0b7c72;--teal-l:#e3f4f1;--cyan:#155e75;--cyan-l:#e5f1f6;
+  --amber:#b8730a;--amber-l:#fdf1e0;--rose:#c24b5e;--rose-l:#fbeaec;--slate-l:#eef4f5;
+}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei","Helvetica Neue",system-ui,sans-serif;
+  background:var(--bg);color:var(--body);line-height:1.72;-webkit-font-smoothing:antialiased;font-size:14.5px}
+.wrap{max-width:1060px;margin:0 auto;padding:28px 20px 60px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin-top:16px}
+h2{font-size:19px;color:var(--ink);font-weight:800;letter-spacing:-.3px}
+.h2bar{display:inline-block;width:4px;height:17px;background:var(--teal);border-radius:2px;margin-right:10px;vertical-align:-2px}
+.sub{font-size:12.5px;color:var(--muted);margin:6px 0 18px;line-height:1.6}
+.eyebrow{display:inline-block;font-size:11px;letter-spacing:1.4px;color:var(--teal-d);background:var(--teal-l);padding:4px 11px;border-radius:99px;font-weight:800}
+strong{color:var(--ink);font-weight:700}
+
+/* masthead */
+.mast{background:linear-gradient(158deg,#eefaf7 0%,#fff 62%);border-top:3px solid var(--teal)}
+.mast h1{font-size:28px;line-height:1.36;color:var(--ink);margin:13px 0 9px;font-weight:800;letter-spacing:-.6px}
+.lead{font-size:14.5px;color:var(--body);max-width:760px}
+.meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.meta span{font-size:11.5px;background:#fff;border:1px solid var(--line);color:var(--muted);padding:4px 11px;border-radius:99px}
+
+/* kpi */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-top:18px}
+.kpi{background:var(--teal-l);border-radius:13px;padding:16px 15px;border-left:3px solid var(--teal)}
+.kpi .n{font-size:24px;font-weight:800;color:var(--teal-d);line-height:1.1;letter-spacing:-.8px}
+.kpi .u{font-size:12px;color:var(--cyan);font-weight:700;margin-top:2px}
+.kpi .l{font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.5}
+
+/* thesis */
+.thesis{background:linear-gradient(135deg,#e8f5f2,#f3faf9);border-left:4px solid var(--teal);border-radius:13px;padding:19px 21px;margin-top:16px;font-size:15px;color:var(--ink);line-height:1.82}
+
+/* bars */
+.bar{display:grid;grid-template-columns:16px minmax(148px,1.75fr) 1fr 76px;align-items:center;gap:11px;padding:7.5px 0}
+.rk{font-size:11.5px;color:var(--muted);font-weight:800;text-align:center}
+.bname{font-size:12.8px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.track{height:22px;background:var(--slate-l);border-radius:5px;overflow:hidden}
+.fill{height:100%;width:var(--w);background:linear-gradient(90deg,#b3c6cc,#95b0b8);border-radius:5px;animation:grow 1.1s cubic-bezier(.2,.8,.2,1)}
+.bar.hl .fill{background:linear-gradient(90deg,#2cb3a5,#0b7c72)}
+.bar.hl .bname{font-weight:800}
+.bv{font-size:12.5px;font-weight:800;color:var(--ink);text-align:right}
+.bar.hl .bv{color:var(--teal-d)}
+@keyframes grow{from{width:0}to{width:var(--w)}}
+.legend{display:flex;gap:18px;font-size:11.5px;color:var(--muted);margin-top:14px;flex-wrap:wrap}
+.legend i{display:inline-block;width:20px;height:8px;border-radius:3px;margin-right:6px;vertical-align:1px}
+
+/* quote */
+.quote{background:var(--cyan-l);border-radius:13px;padding:18px 21px;margin-top:13px;font-size:14.5px;color:#0e3f4f;font-style:italic;line-height:1.8}
+.quote cite{display:block;font-size:12px;color:var(--muted);font-style:normal;margin-top:9px;font-weight:700}
+
+/* cases */
+.case{border:1px solid var(--line);border-radius:13px;padding:18px 20px;margin-top:13px;background:#fff}
+.case h4{font-size:15.5px;color:var(--ink);font-weight:800}
+.case .cap{font-size:11.5px;color:var(--muted);margin:3px 0 12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:13px}
+.chip{font-size:11px;padding:3px 10px;border-radius:99px;font-weight:700}
+.c-rose{background:var(--rose-l);color:var(--rose)}
+.c-amber{background:var(--amber-l);color:var(--amber)}
+.c-teal{background:var(--teal-l);color:var(--teal-d)}
+.c-cyan{background:var(--cyan-l);color:var(--cyan)}
+.case ul{list-style:none;display:grid;gap:9px}
+.case li{font-size:13.5px;padding-left:16px;position:relative;line-height:1.68}
+.case li:before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+.note{font-size:12px;color:var(--muted);margin-top:12px;padding-top:11px;border-top:1px dashed var(--line);line-height:1.6}
+
+/* timeline */
+.tl{list-style:none;margin-top:6px}
+.tl li{display:grid;grid-template-columns:96px 1fr;gap:15px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:13.5px}
+.tl li:last-child{border-bottom:0}
+.tl .yr{font-weight:800;color:var(--teal-d);font-variant-numeric:tabular-nums}
+.tl li.on{background:linear-gradient(90deg,var(--teal-l),transparent);border-radius:8px;padding:12px 10px;border-bottom:0;margin:4px -10px}
+.tl li.on .yr{color:var(--rose)}
+
+/* network svg */
+.netwrap{margin-top:6px;overflow-x:auto}
+.netwrap svg{min-width:600px;width:100%;height:auto;display:block}
+
+/* findings grid */
+.find{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:6px}
+.find .f{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px 17px}
+.find .f .idx{font-size:11px;font-weight:800;color:#fff;background:var(--teal);width:20px;height:20px;border-radius:6px;display:inline-grid;place-items:center;margin-right:8px}
+.find .f h5{font-size:13.5px;color:var(--ink);display:inline;font-weight:800}
+.find .f p{font-size:12.8px;margin-top:8px;line-height:1.65;color:var(--body)}
+
+/* responses */
+.resp{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:6px}
+.rbox{border-radius:12px;padding:15px 17px;font-size:13.2px;line-height:1.7}
+.r-official{background:#f2f7f8;border:1px solid var(--line)}
+.r-expert{background:var(--amber-l);border:1px solid #f0dcbf}
+.rbox h5{font-size:11px;letter-spacing:.6px;text-transform:uppercase;margin-bottom:9px;font-weight:800}
+.r-official h5{color:var(--cyan)}.r-expert h5{color:var(--amber)}
+.rbox p{margin-top:9px;padding-left:10px;border-left:2px solid rgba(0,0,0,.09)}
+.rbox em{display:block;font-size:11.5px;color:var(--muted);font-style:normal;margin-top:5px;padding-left:10px}
+
+.foot{margin-top:20px;padding:20px 22px;background:var(--slate-l);border:1px solid var(--line);border-radius:14px;font-size:12.3px;color:var(--muted);line-height:1.85}
+a{color:var(--teal-d);text-decoration:none;border-bottom:1px solid rgba(13,148,136,.32)}
+
+@media(max-width:740px){
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .find,.resp{grid-template-columns:1fr}
+  .bar{grid-template-columns:16px 1fr 62px}
+  .track{display:none}
+  .mast h1{font-size:22px}
+  .tl li{grid-template-columns:66px 1fr;gap:10px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ============ MASTHEAD ============ -->
+<section class="card mast">
+  <span class="eyebrow">ICIJ · CHINA CAPITAL 调查报道 · 可视化研究报告</span>
+  <h1>「世界最大银行」的伦敦支点<br>工商银行被指为寡头、独裁者关联企业提供融资</h1>
+  <p class="lead">国际调查记者同盟（ICIJ）首次获取中国工商银行（ICBC）伦敦机构 2005–2024 年的机密档案，揭示这家全球资产规模最大的国有银行如何将伦敦作为融资枢纽，服务于受制裁的俄白寡头关联企业、被指控腐败的威权统治者，以及中国的政治战略目标——并在这一过程中多次突破自身的反洗钱与制裁合规底线。</p>
+  <div class="meta">
+    <span>原始来源：ICIJ（icij.org）</span>
+    <span>数据范围：2005–2024</span>
+    <span>4.8M 条机密记录</span>
+    <span>23 家媒体伙伴协作</span>
+    <span>4,000+ 企业客户档案</span>
+    <span>报告生成：2026-09-15</span>
+  </div>
+</section>
+
+<!-- ============ 核心发现 KPI ============ -->
+<section class="card">
+  <h2><i class="h2bar"></i>核心数据速览</h2>
+  <p class="sub">全部数字直接引自报道原文，未作二次推算。</p>
+  <div class="kpis">
+    <div class="kpi"><div class="n">4.8M</div><div class="u">条机密记录</div><div class="l">伦敦分行与子公司档案，中英双语，2005–2024</div></div>
+    <div class="kpi"><div class="n">$8T+</div><div class="u">资产规模</div><div class="l">全球资产第一大行；410 家分支机构分布于 49 个国家/地区</div></div>
+    <div class="kpi"><div class="n">~200</div><div class="u">笔贷款协议</div><div class="l">2010–2024 伦敦承诺贷款，单笔约 $3M–$400M，覆盖约 30 国</div></div>
+    <div class="kpi"><div class="n">$370M</div><div class="u">2024 俄罗斯收入</div><div class="l">入侵乌克兰后不降反升，2022–2023 对俄毛收入翻倍以上</div></div>
+  </div>
+  <div class="thesis">
+    <strong>核心论点。</strong>工行并非普通商业银行。它与财政部及国有主体控股的其他三家中国国有大行一样，背负<strong>「双重使命」</strong>——既为上市股东追求利润，也为党国服务经济利益。当两者冲突时，机密记录显示<strong>政治目标优先于合规规则</strong>：伦敦被用作推进「一带一路」与「中国制造 2025」的融资通道，而西方银行因腐败、制裁风险拒绝的客户，往往在工行获得"可靠"的金融支持。
+  </div>
+</section>
+
+<!-- ============ 全球银行业格局 ============ -->
+<section class="card">
+  <h2><i class="h2bar"></i>结构性位置：全球资产前十银行（2026）</h2>
+  <p class="sub">总资产，单位十亿美元 · 截至 2025 年 12 月 31 日 · 数据：S&amp;P Global Market Intelligence</p>
+  <div class="bars">
+    <div class="bar hl" style="--w:100%"><div class="rk">1</div><div class="bname">中国工商银行 ICBC ★</div><div class="track"><div class="fill"></div></div><div class="bv">7,645.8</div></div>
+    <div class="bar hl" style="--w:91.2%"><div class="rk">2</div><div class="bname">中国农业银行 ★</div><div class="track"><div class="fill"></div></div><div class="bv">6,974.8</div></div>
+    <div class="bar hl" style="--w:85.3%"><div class="rk">3</div><div class="bname">中国建设银行 ★</div><div class="track"><div class="fill"></div></div><div class="bv">6,524.1</div></div>
+    <div class="bar hl" style="--w:71.7%"><div class="rk">4</div><div class="bname">中国银行 ★</div><div class="track"><div class="fill"></div></div><div class="bv">5,484.1</div></div>
+    <div class="bar" style="--w:57.9%"><div class="rk">5</div><div class="bname">摩根大通 JPMorgan Chase</div><div class="track"><div class="fill"></div></div><div class="bv">4,424.9</div></div>
+    <div class="bar" style="--w:44.6%"><div class="rk">6</div><div class="bname">美国银行 Bank of America</div><div class="track"><div class="fill"></div></div><div class="bv">3,411.7</div></div>
+    <div class="bar" style="--w:42.9%"><div class="rk">7</div><div class="bname">法国巴黎银行 BNP Paribas</div><div class="track"><div class="fill"></div></div><div class="bv">3,279.3</div></div>
+    <div class="bar" style="--w:42.0%"><div class="rk">8</div><div class="bname">汇丰控股 HSBC</div><div class="track"><div class="fill"></div></div><div class="bv">3,212.4</div></div>
+    <div class="bar" style="--w:41.2%"><div class="rk">9</div><div class="bname">法国农业信贷银行 Crédit Agricole</div><div class="track"><div class="fill"></div></div><div class="bv">3,148.9</div></div>
+    <div class="bar hl" style="--w:34.9%"><div class="rk">10</div><div class="bname">中国邮政储蓄银行 ★</div><div class="track"><div class="fill"></div></div><div class="bv">2,671.0</div></div>
+  </div>
+  <div class="legend">
+    <span><i style="background:linear-gradient(90deg,#2cb3a5,#0b7c72)"></i>中国国有控股银行（5 家）</span>
+    <span><i style="background:linear-gradient(90deg,#b3c6cc,#95b0b8)"></i>其他国际银行（5 家）</span>
+    <span>★ 前四名全部为中国国有大行，工行以约 7.65 万亿美元居首，领先第 5 名摩根大通约 72%</span>
+  </div>
+</section>
+
+<!-- ============ 关系网络图 ============ -->
+<section class="card">
+  <h2><i class="h2bar"></i>运作架构：决策链与高风险客户网络</h2>
+  <p class="sub">依据机密记录还原的委托—执行关系。左侧为指令来源，中间为伦敦执行支点，右侧为报道点名的客户与交易对手。</p>
+  <div class="netwrap">
+  <svg viewBox="0 0 880 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ICBC 决策链与客户关系网络图">
+    <defs>
+      <marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+        <path d="M0,0 L7,3 L0,6 z" fill="#8fa9b0"/>
+      </marker>
+      <marker id="art" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+        <path d="M0,0 L7,3 L0,6 z" fill="#0d9488"/>
+      </marker>
+    </defs>
+    <!-- 分区标题 -->
+    <text x="130" y="26" font-size="11" font-weight="800" fill="#7d969e" text-anchor="middle" letter-spacing="1">指令 / 控股方</text>
+    <text x="440" y="26" font-size="11" font-weight="800" fill="#0b7c72" text-anchor="middle" letter-spacing="1">执行支点 · 伦敦</text>
+    <text x="740" y="26" font-size="11" font-weight="800" fill="#7d969e" text-anchor="middle" letter-spacing="1">客户 / 交易对手</text>
+
+    <!-- 连线：左→中 -->
+    <g stroke="#0d9488" stroke-width="1.8" fill="none" marker-end="url(#art)" opacity=".7">
+      <line x1="252" y1="70" x2="338" y2="123"/>
+      <line x1="250" y1="175" x2="338" y2="150"/>
+      <line x1="242" y1="285" x2="338" y2="196"/>
+      <line x1="242" y1="390" x2="340" y2="215"/>
+    </g>
+    <!-- 连线：中→右 -->
+    <g stroke="#8fa9b0" stroke-width="1.5" fill="none" marker-end="url(#ar)">
+      <path d="M542,110 C610,90 640,82 652,80"/>
+      <path d="M542,135 C600,145 630,148 652,150"/>
+      <path d="M542,160 C600,205 620,218 652,220"/>
+      <path d="M542,185 C600,265 615,288 652,290"/>
+      <path d="M542,210 C600,325 615,358 652,360"/>
+      <path d="M542,235 C600,385 612,428 652,430"/>
+    </g>
+
+    <!-- 左列节点 -->
+    <g font-size="12.5" font-weight="700" text-anchor="middle">
+      <rect x="10" y="46" width="245" height="48" rx="11" fill="#e5f1f6" stroke="#bcd7e3"/>
+      <text x="132" y="66" fill="#155e75">中国政府</text>
+      <text x="132" y="83" font-size="10.5" font-weight="600" fill="#5f7f8a">财政部 · 控股股东 · 最终受益人</text>
+
+      <rect x="20" y="152" width="230" height="46" rx="11" fill="#f2f7f8" stroke="#dbe7ea"/>
+      <text x="135" y="171" fill="#0f2b34">工行北京总行</text>
+      <text x="135" y="188" font-size="10.5" font-weight="600" fill="#5f7f8a">政治与商业目标指令下达</text>
+
+      <rect x="0" y="262" width="245" height="46" rx="11" fill="#fdf1e0" stroke="#f0dcbf"/>
+      <text x="122" y="281" fill="#b8730a">党委（内部细胞）</text>
+      <text x="122" y="298" font-size="10.5" font-weight="600" fill="#a5762f">推动党务活动与政府政策落地</text>
+
+      <rect x="8" y="366" width="232" height="46" rx="11" fill="#f2f7f8" stroke="#dbe7ea"/>
+      <text x="124" y="385" fill="#0f2b34">国家战略</text>
+      <text x="124" y="402" font-size="10.5" font-weight="600" fill="#5f7f8a">一带一路 · 中国制造 2025 · 资源安全</text>
+    </g>
+
+    <!-- 中心节点 -->
+    <rect x="340" y="92" width="200" height="156" rx="16" fill="linear-gradient(#0d9488,#0b7c72)" stroke="#0b7c72"/>
+    <rect x="340" y="92" width="200" height="156" rx="16" fill="#0d9488"/>
+    <g text-anchor="middle" fill="#fff">
+      <text x="440" y="124" font-size="17" font-weight="800">ICBC 伦敦</text>
+      <text x="440" y="143" font-size="10.5" fill="#c6ece6">分行 + 独立子公司</text>
+      <text x="440" y="161" font-size="10" fill="#a9e2da">King William Street</text>
+      <text x="440" y="176" font-size="10" fill="#a9e2da">入英 30 年 · 资产数百亿美元</text>
+      <line x1="360" y1="190" x2="520" y2="190" stroke="#3fb5a8" stroke-width="1"/>
+      <text x="440" y="208" font-size="10" font-weight="700" fill="#d8f2ee">监管方</text>
+      <text x="440" y="224" font-size="11.5" font-weight="800">英国金融行为监管局 FCA</text>
+    </g>
+
+    <!-- 右列节点 -->
+    <g font-size="12" font-weight="700" text-anchor="start">
+      <rect x="652" y="56" width="224" height="46" rx="11" fill="#fbeaec" stroke="#f0ccd2"/>
+      <text x="668" y="75" fill="#c24b5e">Nornickel（俄）</text>
+      <text x="668" y="92" font-size="10.3" font-weight="600" fill="#b0606f">普京盟友控股 · 镍矿 · 贷款 $3.05 亿+</text>
+
+      <rect x="652" y="126" width="224" height="46" rx="11" fill="#fbeaec" stroke="#f0ccd2"/>
+      <text x="668" y="145" fill="#c24b5e">Pasha Bank / SOCAR（阿塞拜疆）</text>
+      <text x="668" y="162" font-size="10.3" font-weight="600" fill="#b0606f">Aliyev 家族 · 存 $2,400 万 / 贷 $9,000 万</text>
+
+      <rect x="652" y="196" width="224" height="46" rx="11" fill="#fbeaec" stroke="#f0ccd2"/>
+      <text x="668" y="215" fill="#c24b5e">Sonangol（安哥拉）</text>
+      <text x="668" y="232" font-size="10.3" font-weight="600" fill="#b0606f">独裁者亲信控制 · 贷款 &gt; $25 亿</text>
+
+      <rect x="652" y="266" width="224" height="46" rx="11" fill="#fdf1e0" stroke="#f0dcbf"/>
+      <text x="668" y="285" fill="#b8730a">Zoomlion 合资（白俄罗斯）</text>
+      <text x="668" y="302" font-size="10.3" font-weight="600" fill="#a5762f">MAZ 受美制裁 · 2021 汇出 &gt; $700 万</text>
+
+      <rect x="652" y="336" width="224" height="46" rx="11" fill="#fdf1e0" stroke="#f0dcbf"/>
+      <text x="668" y="355" fill="#b8730a">National Port Dev.（塞拉利昂）</text>
+      <text x="668" y="372" font-size="10.3" font-weight="600" fill="#a5762f">BVI 控股 · 承诺 $6.59 亿未放款</text>
+
+      <rect x="652" y="406" width="224" height="46" rx="11" fill="#fbeaec" stroke="#f0ccd2"/>
+      <text x="668" y="425" fill="#c24b5e">科威特谢赫（总理之子）</text>
+      <text x="668" y="442" font-size="10.3" font-weight="600" fill="#b0606f">1MDB 关联 · 购房款 $80 万+ 延迟报告</text>
+    </g>
+  </svg>
+  </div>
+  <p class="note">注：本图为报道叙述性关系的空间化呈现，非工行官方组织架构图。风险配色：玫红＝涉及制裁对象／刑事指控／洗钱疑点，琥珀＝高政治敏感度／合规例外。</p>
+</section>
+
+<!-- ============ 六大案例 ============ -->
+<section class="card">
+  <h2><i class="h2bar"></i>六大案例：被突破的合规边界</h2>
+  <p class="sub">每个案例均由机密邮件、备忘录或可疑交易报告支撑，呈现同一模式：<strong>识别风险 → 以战略价值论证例外 → 继续服务</strong>。</p>
+
+  <div class="case">
+    <h4>① 阿塞拜疆 · 独裁者的女儿们</h4>
+    <p class="cap">Pasha Bank 与 SOCAR —— 从"忽略"腐败证据到"客户太重要"</p>
+    <div class="chips">
+      <span class="chip c-rose">PEP 审查失效</span><span class="chip c-rose">资金来源污染</span><span class="chip c-teal">一带一路论证</span><span class="chip c-cyan">2016–2021</span>
+    </div>
+    <ul>
+      <li><strong>2016</strong>：Aliyeva 姐妹（阿塞拜疆总统 Ilham Aliyev 之女，时年 29、31 岁）申请为合营的 Pasha Bank 开户，申报财富来源为媒体行业。分析师<strong>早已知晓客户高风险</strong>，却"忽略"了多家媒体的腐败报道。</li>
+      <li>ICIJ「Secrecy for Sale」（2013）与「巴拿马文件」（2016）已揭示其离岸网络：数十亿建筑合同受益权、电信/建筑/采矿/油气权益，以及通过壳公司网络持有的数百万英镑伦敦房产。</li>
+      <li>内部备忘录直言：<em>"该实体及其实际控制人不太可能被调查"</em>——理由是阿塞拜疆司法与执法由<strong>她们的父亲领导</strong>。2017 年正式接纳为客户。</li>
+      <li><strong>2021</strong>（英国 NCA 调查一名 Aliyev 商业伙伴两年后）才表达关切：<em>"由于资金来源不明，不能排除存入 ICBC 伦敦的资金可能被犯罪收益污染。"</em></li>
+      <li>决定终止关系但<strong>拖延执行</strong>：高级管理者反对立即终止，坚持等到 Pasha Bank <strong>$2,400 万</strong>存款到期成熟后才处理。</li>
+      <li>同期保留另一 Aliyev 关联企业、阿塞拜疆国家石油公司 <strong>SOCAR</strong> 为客户，<strong>2021 年批准约 $9,000 万</strong>再融资贷款。银行<strong>驳回外部合规公司</strong>关于其不透明与腐败指控的警告，理由是："SOCAR 对 ICBC 具有战略重要性——支持中国 2013 年一带一路政策、连接欧亚国家基础设施。"</li>
+    </ul>
+    <p class="note">交换背景：阿塞拜疆自 1995 年以来获中国投资逾 $9 亿，阿方则在由中国与俄罗斯主导的地区安全伙伴关系、联合国立场及涉台主张上支持北京。</p>
+  </div>
+
+  <div class="case">
+    <h4>② 俄罗斯 · 救下 Nornickel</h4>
+    <p class="cap">"为向中国供应自然资源的俄企融资是工行的职责"</p>
+    <div class="chips">
+      <span class="chip c-rose">制裁对象关联</span><span class="chip c-rose">战时敞口扩张</span><span class="chip c-amber">规避制裁方案</span><span class="chip c-cyan">2017–2024</span>
+    </div>
+    <ul>
+      <li>工行是<strong>少数在 2022 年全面入侵乌克兰后仍扩大对俄敞口</strong>的外国银行：2022–2023 对俄毛收入翻倍以上，2024 年约 <strong>$3.7 亿</strong>（基辅经济学院分析）。</li>
+      <li>特殊客户<strong> Oleg Deripaska</strong>（俄铝大亨，曾数度亲赴北京办公室）：2017 年作为 $25 亿授信额度的一部分，北京经由伦敦向 Nornickel 提供 <strong>$1.05 亿</strong>贷款，Nornickel 由 Deripaska <strong>间接持股 13%</strong>。</li>
+      <li><strong>2018 年</strong>美国制裁 Deripaska、冻结其纽约与华盛顿资产。数月后伦敦反洗钱官发现此事，警告分行<strong>已违反自身制裁政策</strong>。银行决定为其开例外：理由是仅为小股东、不介入日常经营。</li>
+      <li>北京总行内部报告称 Nornickel 本身未被制裁、"工行与其有长期关系"，并写明伦敦<strong>不应质疑总部决定</strong>：<em>"与总部保持良好合作关系，有助于我们共同开展更多业务。"</em> 2020 年再承诺 <strong>$2 亿</strong>，由 21 家银行（含 3 家中国国有大行、摩根大通、裕信银行等）组成银团。</li>
+      <li>政策随后被改写：伦敦修改内部规则，允许接受<strong>被制裁实体持股低于 10%</strong> 的客户。</li>
+      <li><strong>2022–2023</strong>：乌克兰战争引发新一轮制裁与克里姆林资本管制，Nornickel 还款陷入约 6 个月僵局，须获莫斯科特别许可才能以外币偿付；其高管随即<strong>赴中国考察 12 家潜在新贷款方</strong>。工行视之为机会——2024 年内部备忘录称莫斯科、上海分行已提供"可观"服务，并考虑<strong>以人民币提供新授信</strong>，绕开美元融资。</li>
+      <li>更关键：伦敦官员<strong>赞赏</strong> Nornickel 在华建冶炼厂、把产品标注为中国制造以规避制裁的设想。反金融犯罪单位备忘录原文：<em>"这在中国制造的货物更难被制裁。"</em></li>
+    </ul>
+    <p class="note">Nornickel 的矿产对中国蓬勃发展的电动车与电池产业至关重要；该公司被普京树立为"抵抗西方制裁的象征"。在西方银行犹豫时，记录显示工行仍是可靠伙伴。</p>
+  </div>
+
+  <div class="case">
+    <h4>③ 白俄罗斯 · 无视制裁风险</h4>
+    <p class="cap">Zoomlion–MAZ 工业园：3.03% 持股 = "无制裁问题"</p>
+    <div class="chips">
+      <span class="chip c-amber">两用物项</span><span class="chip c-rose">规避方案</span><span class="chip c-teal">一带一路"地标"</span><span class="chip c-cyan">2018–2024</span>
+    </div>
+    <ul>
+      <li><strong>2018 年初</strong>，伦敦成为中国工程机械巨头<strong>中联重科</strong>的境外银行枢纽。其英国子公司 Zoomlion Powermole 是与白俄罗斯国有集团合资公司的控股股东，共同投资<strong>明斯克机场附近的工业园</strong>（自动化起重机与重型车辆生产基地）。该项目由时任国家副主席的习近平与卢卡申科共同推介为"一带一路地标"。</li>
+      <li><strong>2020 年夏</strong>：白俄当局逮捕 7,000 余名抗议者、酷刑对待数百人、第六届"当选"总统，西方随即制裁若干白俄实体。中国与其俄罗斯仍表态支持卢卡申科政权。</li>
+      <li>欧盟及其盟友扩大制裁，目标锁定合资方<strong>明斯克汽车厂 MAZ</strong>——被卢卡申科称为"国家最重要的工业企业之一"，并向俄占领军提供机械，包括配备反无人机技术的卡车。英国未列名 MAZ，但限制军民两用物项对白俄出口。</li>
+      <li><strong>2021 年</strong>，中联重科经该伦敦账户向白俄合资企业汇入<strong>逾 $700 万</strong>。官员在内部邮件中承认合资企业涉及可被视为<strong>两用技术</strong>的重型机械生产，却因 MAZ 仅持股 <strong>3.03%</strong> 而认定<strong>"无制裁问题"</strong>。</li>
+      <li>白俄罗斯调查中心文件显示，MAZ 于 <strong>2023 年被美国制裁</strong>（被认定为卢卡申科政权的"重要收入来源"）后退出合资，但与中联重科达成方案：通过<strong>未受制裁的第三方</strong>向中联供应卡车底盘。<strong>2024 年</strong>，中联白俄实体以<strong>单一来源方式</strong>中标向白俄军队供应 3 台 27 吨级卡车起重机。</li>
+    </ul>
+    <p class="note">中联重科回应称其只生产销售民用建筑设备、严格遵守经营地法律，并以"商业保密义务"为由拒绝评论具体交易与客户。规避方案是否实际执行不明。</p>
+  </div>
+
+  <div class="case">
+    <h4>④ 安哥拉 · 服务"窃国统治"</h4>
+    <p class="cap">Sonangol：不透明的国资油企，$25 亿以上贷款</p>
+    <div class="chips">
+      <span class="chip c-rose">腐败指控被驳回</span><span class="chip c-teal">债权杠杆</span><span class="chip c-cyan">2010–2021</span>
+    </div>
+    <ul>
+      <li>记录显示，只要符合北京需要，银行家们愿意服务<strong>对自身资金流不透明</strong>的国企——即便由一位工行 banker 口中"显然是<strong>窃国统治（kleptocracies）</strong>"的政府控制。</li>
+      <li>伦敦协助总行向安哥拉国家油气公司 <strong>Sonarogol</strong>（由长期独裁者 José Eduardo dos Santos 的亲信控制）发放<strong>逾 $25 亿</strong>贷款。</li>
+      <li><strong>2010 年</strong>贷款的内部备忘录显示中国作为安哥拉最大外国债权人的杠杆：要求 Sonangol <strong>既要把石油卖给中国，又要用贷款资金雇用中国建筑公司</strong>。</li>
+      <li><strong>2020 年</strong> ICIJ「Luanda Leaks」曝光 Sonangol 英国子公司（即伦敦的直接客户）向一家迪拜咨询公司支付约 <strong>$5,800 万</strong>——该公司由 2016–2017 年执掌 Sonangol 的总统之女 <strong>Isabel dos Santos</strong> 的友人控制。合作关系仍持续。</li>
+      <li><strong>2021 年</strong>内部备忘录显示分析师驳斥相关发现，称对总统之女的批评"部分出于<strong>沙文主义动机</strong>"。她随后<strong>被美国、英国制裁</strong>，并被安哥拉检方以任内造成国资损失约 <strong>$2.19 亿</strong>为由起诉，涉及 12 项罪名。</li>
+      <li>其中一份备忘录给出继续往来最简单的理由：<em>"安哥拉是中国的一带一路伙伴，是 ICBC 伦敦支持了十余年的新兴市场客户。"</em></li>
+    </ul>
+    <p class="note">Isabel dos Santos 多次否认不当行为；Sonangol 未回应置评请求。</p>
+  </div>
+
+  <div class="case">
+    <h4>⑤ 塞拉利昂 · 一个"例外"</h4>
+    <p class="cap">6.59 亿美元港口贷款：先承诺、后补件、悄悄撤销</p>
+    <div class="chips">
+      <span class="chip c-amber">先放款后尽调</span><span class="chip c-rose">行贿指控</span><span class="chip c-teal">外交关系考量</span><span class="chip c-cyan">2017–2018</span>
+    </div>
+    <ul>
+      <li><strong>2017 年末</strong>：工行与另一家中国国有银行批准 <strong>$6.59 亿</strong>，用于升级首都弗里敦的 Queen Elizabeth II 码头并扩建港口。北京视西非这一贸易伙伴为重要对象——尽管国际观察方认定其<strong>存在腐败</strong>。</li>
+      <li>互惠背景：中国在 2014–16 年埃博拉疫情期间援助塞拉利昂，并援建道路、桥梁、体育场与生物安全实验室；作为交换，中国进口该国<strong>大部分铁矿石</strong>——中国工业增长的关键矿产。</li>
+      <li><strong>应北京总部要求</strong>，银行在<strong>尚未取得全部必要文件</strong>的情况下即承诺贷款——尽管借款人 National Port Development (SL) Ltd 并非熟悉客户，且由<strong>英属维尔京群岛（保密辖区）实体控股</strong>、专为该项目设立。</li>
+      <li>时任总统 Koroma 与中国官员共同出席扩建启动仪式。中国驻塞大使吴鹏称：<em>"我们是好朋友、好伙伴、好兄弟。"</em></li>
+      <li>贷款签约<strong>一年多后</strong>银行才完成复核，发现针对两名股东的公开报道中存在<strong>"重大行贿与腐败指控"</strong>；ICIJ 查核的公司文件另显示一名董事为<strong>前中国外交官</strong>。</li>
+      <li>银行最终决定<strong>不予放款</strong>。但为避免中方国家盟友的反应，选择不正式撤销而是<strong>悄然搁置</strong>。一位银行家备忘录写道：<em>"如果总行取消它，将伤害与塞拉利昂政府的关系。"</em></li>
+    </ul>
+    <p class="note">Koroma 于 2018 年 4 月卸任，其继任者指控其任内腐败已将经济推向崩溃边缘。NPD 董事称指控"毫无根据"，表示项目经历了塞拉利昂政府与议会程序，并称从未收到因腐败指控而撤销授信的正式通知。</p>
+  </div>
+
+  <div class="case">
+    <h4>⑥ 科威特 · 谢赫的可疑支付</h4>
+    <p class="cap">1MDB 关联资金经伦敦→科威特→伦敦，用于购买英国房产</p>
+    <div class="chips">
+      <span class="chip c-rose">可疑交易迟报</span><span class="chip c-rose">PEP 未识别</span><span class="chip c-cyan">2018–2021</span>
+    </div>
+    <ul>
+      <li><strong>2018 年末</strong>：时任科威特总理之子 Sheikh Sabah Jaber al-Mubarak al-Sabah 分两笔支付<strong>逾 $80 万</strong>给两家英国律所，用于购买英国房产。资金路径为：工行伦敦单位 → 工行科威特分行 → 回到伦敦律所。</li>
+      <li>一名经办官员标记该交易<strong>异常</strong>，另一人却放行，内部日志写下：<em>"未见问题。"</em></li>
+      <li>约一年后，其父 Sheikh Jaber al-Mubarak al-Sabah 因<strong>挪用数百万美元军事援助款</strong>的指控辞去总理职务。数月后其子被科威特检方逮捕，被控与同伙洗钱<strong>逾 $10 亿</strong>，与马来西亚主权财富基金 1MDB 贪腐案相关。</li>
+      <li>迟至 <strong>2021 年初</strong>（逮捕数月后）提交的可疑活动报告承认：<em>"上述两笔付给英国律所的款项，疑似用于 laundering（清洗）谢赫涉及 1MDB 丑闻的收益，方式是投资英国房产。"</em> 科威特法院后来判处其<strong>10 年监禁</strong>。</li>
+      <li>反洗钱与制裁专家 Sarah Beth Felix 指出：谢赫<strong>本应被分类为政治公众人物（PEP）</strong>，那样大额交易早在提交可疑活动报告之前就该触发预警：<em>"如果他们正确识别了他，这些交易会触发某种警报。"</em></li>
+    </ul>
+    <p class="note">2016 年 FCA 检查伦敦业务时曾识别出<strong>十余项</strong>反洗钱风险评估与客户管理问题（后称已整改）；但北京总行审计在 <strong>2017–2023 年</strong>持续发现伦敦未能及时识别/处置可疑交易、尽调报告不准确等缺陷。</p>
+  </div>
+</section>
+
+<!-- ============ 时间线 ============ -->
+<section class="card">
+  <h2><i class="h2bar"></i>关键时间线（档案期 2005–2024）</h2>
+  <p class="sub">战略扩张与合规失守的同步节奏：业务高增长期恰与习近平两大经济政策周期重叠。</p>
+  <ul class="tl">
+    <li><span class="yr">1984</span><span>工行成立，承接中国人民银行的商业银行业务；如今在港、沪两地上市，控股股东为财政部及国有主体</span></li>
+    <li><span class="yr">1995</span><span>进入英国（本报告年恰逢在英 30 周年）；King William Street 大楼内同时运营<strong>分行</strong>与一家<strong>独立子公司</strong>，均受 FCA 监管</span></li>
+    <li class="on"><span class="yr">2013</span><span>「一带一路」倡议提出；此后「中国制造 2025」产业政策出台——工行伦敦十年高增长与之时间高度重合</span></li>
+    <li><span class="yr">2014</span><span>俄罗斯吞并克里米亚。记录显示此后伦敦曾努力遵守禁止为受制裁实体提供金融流动的规</span></li>
+    <li><span class="yr">2016</span><span>FCA 检查伦敦业务，识别<strong>十余项</strong>反洗钱与客户管理问题；同年 Aliyeva 姐妹申请开户，巴拿马文件曝光其离岸资产</span></li>
+    <li><span class="yr">2017</span><span>接纳 Pasha Bank 为客户；Nornickel 获 <strong>$1.05 亿</strong>；塞拉利昂 <strong>$6.59 亿</strong>在缺件情况下被承诺</span></li>
+    <li><span class="yr">2018</span><span>美国制裁 Deripaska，伦敦被查出违反自身制裁政策；科威特谢赫 <strong>$80 万+</strong> 支付被"未见问题"放行；中联白俄工业园启动</span></li>
+    <li><span class="yr">2019</span><span>反洗钱申报官内部备忘录：<em>"几乎没有退出高金融风险业务的意愿。"</em></span></li>
+    <li><span class="yr">2020</span><span>Nornickel 参与 <strong>22 家银行、$2 亿</strong>银团；白俄大选镇压后西方制裁出台；Luanda Leaks 曝光 Sonangol 付款</span></li>
+    <li><span class="yr">2021</span><span>中联向白俄汇 <strong>&gt;$700 万</strong>（判定无制裁问题）；Socar 获 <strong>$9,000 万</strong>；Pasha Bank 迟来关切与拖延退出；1MDB 关联可疑活动报告</span></li>
+    <li class="on"><span class="yr">2022</span><span>俄罗斯全面入侵乌克兰；新一轮西方制裁与克里姆林资本管制。工行对俄收入不降反升（2022–2023 翻倍）</span></li>
+    <li><span class="yr">2023</span><span>美国将 MAZ 列入制裁；Zoomlion–MAZ 谋划借第三方规避；Nornickel 还款僵局须莫斯科特许外币支付</span></li>
+    <li><span class="yr">2024</span><span>考虑以<strong>人民币</strong>为 Nornickel 提供授信、赞赏"在中国制造"避制裁方案；对俄收入约 <strong>$3.7 亿</strong>；夏季首席风险官制作<strong>红黄绿风险热力图</strong>，警示地缘政治风险高企</span></li>
+  </ul>
+</section>
+
+<!-- ============ 模式分析 ============ -->
+<section class="card">
+  <h2><i class="h2bar"></i>贯穿性模式：五类可复用的规避机制</h2>
+  <p class="sub">从六个案例中抽象的共性手法，可作为同类风险识别的分析框架。</p>
+  <div class="find">
+    <div class="f"><span class="idx">1</span><h5>战略价值凌驾合规规则</h5><p>"一带一路伙伴""新兴市场老客户""支持国家优先事项"被反复用作例外论证，把政治重要性写成风险豁免理由。信贷申请表中甚至出现 <strong>"China rationale"</strong>（中国理由）一栏，暴露了贷款的地缘政治属性。</p></div>
+    <div class="f"><span class="idx">2</span><h5>PEP 识别机制系统性失效</h5><p>对总统之女、总理之子、独裁者亲信等政治公众人物要么未分类，要么以"当地司法受其控制、不会被调查"为由主动降低审查强度——把<strong>被治腐败风险</strong>误当作<strong>低风险信号</strong>。</p></div>
+    <div class="f"><span class="idx">3</span><h5>持股比例阈值博弈</h5><p>以 3.03%（MAZ）、13%（Deripaska）等小比例为由判定"无制裁问题"，再进一步<strong>把行内政策改写为"被制裁方持股 &lt;10% 即可"</strong>——合规规则被向业务需求方向修订，而非相反。</p></div>
+    <div class="f"><span class="idx">4</span><h5>处置拖延与"静默撤销"</h5><p>发现风险后既不立即退出，也不公开取消：等存款到期成熟（Pasha Bank $2,400 万）、或<strong>不正式撤销贷款以免伤害与东道国政府关系</strong>（塞拉利昂）——规避政治成本优先于规避法律成本。</p></div>
+    <div class="f"><span class="idx">5</span><h5>货币与产地工程规避制裁</h5><p>用<strong>人民币授信</strong>绕开美元体系，用<strong>在华设厂、产品标注"中国制造"</strong>来降低被制裁可能性；配合借未受制裁第三方转供货物的方案，形成结构层面的规避路径。</p></div>
+    <div class="f" style="background:var(--rose-l);border-color:#f0ccd2"><span class="idx" style="background:var(--rose)">!</span><h5>治理层的反向激励</h5><p>部分管理者把<strong>防范金融犯罪的标准规则视为业务障碍</strong>；总行报告要求海外分支"不要质疑总部决定"，并强调与总部保持合作"有助于共同开展更多业务"。2024 年首席风险官以"一根分支、一个政策"（呼应"一带一路"）表述全行统一行动。</p></div>
+  </div>
+</section>
+
+<!-- ============ 各方回应 ============ -->
+<section class="card">
+  <h2><i class="h2bar"></i>各方回应与外部评价</h2>
+  <p class="sub">报道同时收录了官方否认、监管表态、专家分析与第三方澄清；工行本人未回应 ICIJ 多次置评请求。</p>
+  <div class="resp">
+    <div class="rbox r-official">
+      <h5>官方与当事方立场</h5>
+      <p><strong>中国政府</strong>（通过发言人）：拒绝任何关于"不透明贷款"的"虚假叙事"。</p>
+      <p><strong>中国驻赞比亚使馆</strong>：中国海外融资"严格"遵循市场规则与国际规范，"从不……寻求政治利益"。</p>
+      <p><strong>工商银行</strong>：对 ICIJ 的多次置评请求<strong>未作回应</strong>。</p>
+      <p><strong>FCA</strong>：不评论具体公司；"打击金融犯罪是 FCA 的优先事项，我们认真审视所有提交给我方的问题。"</p>
+      <p><strong>其他</strong>：Pasha Bank、Nornickel、Sonangol、MAZ 未回应；摩根大通未回应、裕信银行拒绝置评；中联重科称仅经营民用建筑设备并遵守当地法律。</p>
+    </div>
+    <div class="rbox r-expert">
+      <h5>专家与第三方分析</h5>
+      <p><strong>James Stent</strong>（曾任两家中国贷款机构董事会成员、前银行家）：工行必须<em>"讨好两个主人"</em>——党与股东；政府引导银行投向五年规划重点领域，同时用利润指标来考核管理层能力。</p>
+      <p><strong>Christopher Walker</strong>（欧洲政策分析中心副主任）：中国银行提供全世界都想要的资本，但对银行业标准、透明度与问责的关切更少；伴随的往往是审查、监控、腐败与秘密，以及精英俘获——<em>"威权资本，终究是一种腐蚀性资本。"</em></p>
+      <p><strong>Ben Cormier</strong>（斯特拉斯克莱德大学国际政治经济学高级讲师）：中国贷款方对腐败政府的吸引力在于北京不太在意透明与问责——<em>"缺乏问责本身就是一个卖点。"</em></p>
+      <p><strong>John Lough</strong>（新欧亚战略中心）：中俄关系"高度功能性"，战争强化了它——中国抓住机会确保自然资源准入，并视俄罗斯为"重塑国际体系、削弱以美国为首的西方国家影响力的盟友"。</p>
+    </div>
+  </div>
+  <div class="quote" style="margin-top:13px">
+    "几乎没有退出高金融犯罪风险业务的意愿。"
+    <cite>—— 反洗钱申报官内部备忘录，2019 年</cite>
+  </div>
+</section>
+
+<!-- ============ 结构性意义 ============ -->
+<section class="card">
+  <h2><i class="h2bar"></i>结构性意义：为什么这件事重要</h2>
+  <div class="find">
+    <div class="f"><h5>制裁体系的"泄压阀"</h5><p>当西方银行收缩时，一家资产 7.65 万亿美元、遍布 49 国、以人民币资产负债表为工具的全球第一大行选择留在场内——使针对俄、白俄的金融封锁在关键资源（镍、钾、矿产、重机）链条上被部分抵消。</p></div>
+    <div class="f"><h5>合规框架的深层张力</h5><p>问题不在个别客户经理失职，而在<strong>双重使命的制度设计</strong>：当"服务国家经济利益"与"符合当地监管规则"冲突时，档案显示内部指令链条倾向于前者。这是可预期结果，而非偶发事故。</p></div>
+    <div class="f"><h5>资源的战略采购</h5><p>安哥拉贷款同时绑定"油卖给中国＋工程给中国承包商"、塞拉利昂以铁矿石进口换取基建融资、Nornickel 服务中国电池与电动车产业链——"资源安全"作为经济安全的一部分被写入每笔交易的评估。</p></div>
+    <div class="f"><h5>监管可见性不足</h5><p>美国、加拿大、卢森堡监管机构已就反金融犯罪与制裁规避违规罚款其当地机构，但机密记录显示<strong>另有约十余个国家</strong>曾对工行海外实体的同类缺陷表达关切，且伦敦高管知晓合规失效——长期存在"已发现、未纠正"的灰区。</p></div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div class="foot">
+  <p><strong>方法与来源。</strong>本页内容全部整理自国际调查记者同盟（ICIJ）"China Capital"调查对工行伦敦档案的报道，原文见
+  <a href="https://www.icij.org/investigations/china-capital/china-banking-icbc-oligarchs-sanctions-london/" target="_blank" rel="noreferrer">icij.org/investigations/china-capital</a>；
+  银行资产数据引自 S&amp;P Global Market Intelligence（截至 2025-12-31）；对俄收入数据引自基辅经济学院分析。</p>
+  <p style="margin-top:9px"><strong>阅读须知。</strong>本报告为<strong>第三方调查报道的结构化摘要</strong>，不代表对任何个人或机构违法行为的事实认定。文中所有指控均出自 ICIJ 报道所依据的机密记录，各当事方多已公开否认相关不当行为；部分司法程序（如针对 Isabel dos Santos 的起诉、美国国会议员案）尚存变化或未最终定论。涉及金额、日期与持股比例均严格照录原文，未作外推。</p>
+  <p style="margin-top:9px">协作媒体：ICIJ、L'Espresso、Belarusian Investigative Center 等 23 家；参与记者 Denise Ajiri、Agustin Armendariz、Kathleen Cahill、Jelena Cosic、Jesús Escudero、Miguel Fiandor Gutiérrez、Micah Reddy、Delphine Reuter、Fergus Shiel、Dean Starkman、Angie Wu、Gloria Riva、Sviatlana Yatskova。</p>
+  <p style="margin-top:9px">可视化研究报告 · 生成于 2026-09-15 Asia/Shanghai · 仅用于新闻理解与风险研究参考</p>
+</div>
+
+</div>
+</body>
+</html>
