@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>勒索软件基础设施 · 威胁情报卷宗</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Special+Elite&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#e6d9b8; --paper2:#ddcca4; --panel:#efe6cd; --panel2:#e9dcc0;
+  --ink:#2b2620; --ink2:#4a4132; --ink3:#6d6047;
+  --rule:#b9a678; --rule2:#a58f5d;
+  --red:#8f1d18; --red2:#b23a2e;
+  --exfil:#a17022; --c2:#4f6475; --access:#5c7147; --tunnel:#946249; --anon:#6a4f70; --edge:#8a4536;
+  --serif:"Noto Serif SC",Georgia,"Songti SC","SimSun",serif;
+  --type:"Special Elite","Courier New",monospace;
+  --mono:"JetBrains Mono","SFMono-Regular",Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--serif); color:var(--ink); line-height:1.72; font-size:16px;
+  background-color:var(--paper);
+  background-image:
+    radial-gradient(120% 90% at 50% -10%, rgba(255,250,235,.55), rgba(0,0,0,0) 55%),
+    radial-gradient(130% 100% at 100% 120%, rgba(120,92,44,.28), rgba(0,0,0,0) 55%),
+    radial-gradient(90% 80% at -5% 105%, rgba(90,66,30,.22), rgba(0,0,0,0) 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
+  padding:0 0 60px;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+/* tabs / folder */
+.folder{display:flex;gap:6px;align-items:flex-end;max-width:1080px;margin:26px auto -6px;padding:0 22px;flex-wrap:wrap}
+.tab{font-family:var(--type);font-size:12px;letter-spacing:.5px;color:var(--ink3);
+  background:var(--paper2);border:1px solid var(--rule2);border-bottom:none;
+  padding:7px 13px;border-radius:6px 6px 0 0;box-shadow:0 -2px 0 rgba(0,0,0,.04) inset;transform:translateY(2px)}
+.tab.on{background:var(--panel);color:var(--red);border-color:var(--rule2);transform:translateY(0);z-index:2;font-weight:700}
+
+.card{background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,0));
+  border:1px solid var(--rule2);position:relative}
+.pad{padding:26px 28px}
+
+/* header */
+.head{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start;justify-content:space-between}
+.eyebrow{font-family:var(--type);font-size:12.5px;letter-spacing:3px;color:var(--red);text-transform:uppercase}
+h1{font-weight:900;font-size:34px;line-height:1.18;letter-spacing:-.3px;margin:8px 0 4px}
+.sub{font-size:16px;color:var(--ink2);max-width:60ch}
+.byline{font-family:var(--type);font-size:13px;color:var(--ink3);margin-top:12px;border-top:1px dashed var(--rule);padding-top:10px}
+.byline b{color:var(--ink)}
+.stamp{flex:none;width:150px;height:150px;display:grid;place-items:center;text-align:center;
+  color:var(--red);border:3px double var(--red);border-radius:8px;transform:rotate(-9deg);
+  font-family:var(--type);letter-spacing:2px;line-height:1.5;opacity:.9;box-shadow:2px 3px 0 rgba(143,29,24,.12)}
+.stamp small{font-size:10px;letter-spacing:4px}
+.stamp .big{font-size:19px;font-weight:700;margin:3px 0}
+.stamp .cn{font-family:var(--serif);font-weight:700;font-size:15px;letter-spacing:6px}
+
+/* meta chips */
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.mchip{font-family:var(--type);font-size:11.5px;letter-spacing:.4px;color:var(--ink2);
+  background:rgba(255,255,255,.35);border:1px solid var(--rule);padding:5px 10px;border-radius:2px}
+.mchip b{color:var(--red)}
+
+/* section framing */
+.sec{margin-top:40px}
+.sectitle{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:7px;margin-bottom:18px}
+.sectitle .no{font-family:var(--type);color:var(--red);font-size:13px;letter-spacing:1px}
+.sectitle h2{font-size:21px;font-weight:800;letter-spacing:.5px}
+.sectitle .en{font-family:var(--type);font-size:11px;letter-spacing:2px;color:var(--ink3);text-transform:uppercase;margin-left:auto}
+
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.kpi{background:var(--panel);border:1px solid var(--rule);padding:16px 14px;position:relative;overflow:hidden}
+.kpi:before{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:var(--red);opacity:.75}
+.kpi .v{font-family:var(--type);font-size:34px;font-weight:700;color:var(--red);line-height:1}
+.kpi .l{font-size:13px;font-weight:700;margin:7px 0 3px;color:var(--ink)}
+.kpi .s{font-size:11.5px;color:var(--ink3);line-height:1.45}
+
+/* narrative + judgments */
+.narr{font-size:16.5px;color:var(--ink);background:var(--panel);border-left:4px solid var(--red);padding:16px 20px;margin-bottom:20px}
+.narr::first-letter{font-family:var(--type);font-size:46px;font-weight:700;color:var(--red);float:left;line-height:.8;padding:6px 10px 0 0}
+.kj{display:flex;flex-direction:column;gap:12px}
+.kji{display:grid;grid-template-columns:118px 1fr;gap:14px;align-items:start;background:var(--panel2);
+  border:1px solid var(--rule);padding:13px 16px}
+.conf{font-family:var(--type);font-size:11.5px;font-weight:700;letter-spacing:1px;text-align:center;
+  padding:5px 0;color:#fff;border-radius:2px}
+.conf.High{background:#5c7147}.conf.Medium{background:#a17022}.conf.Low{background:#8a4536}
+.conf small{display:block;font-size:9px;opacity:.85;letter-spacing:.5px}
+.kji .txt{font-size:15px}
+.kji .basis{font-size:12.5px;color:var(--ink3);margin-top:6px;border-top:1px dotted var(--rule);padding-top:6px;font-style:italic}
+
+/* matrix heatmap */
+.mwrap{overflow-x:auto;border:1px solid var(--rule);background:var(--panel)}
+table.mx{border-collapse:collapse;width:100%;min-width:760px}
+table.mx th,table.mx td{border:1px solid rgba(120,96,52,.35);padding:0;text-align:center}
+table.mx thead th{background:var(--ink);color:var(--paper);font-family:var(--type);font-size:10.5px;font-weight:400;
+  letter-spacing:.3px;padding:8px 4px;writing-mode:vertical-rl;transform:rotate(180deg);height:112px;white-space:nowrap;vertical-align:bottom}
+table.mx thead th.corner{writing-mode:horizontal-tb;transform:none;text-align:left;background:transparent;color:var(--ink3);width:150px}
+.catband th{font-family:var(--serif);font-weight:700;font-size:11px;letter-spacing:1px;padding:4px;color:#fff}
+table.mx tbody th{text-align:left;font-weight:700;font-size:13.5px;padding:7px 12px;background:var(--panel2);white-space:nowrap;border-right:2px solid var(--ink)}
+table.mx td .cell{width:20px;height:20px;margin:0 auto;border-radius:2px;background:transparent}
+td.on .cell{box-shadow:0 0 0 1px rgba(0,0,0,.18) inset}
+.glegend{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-family:var(--type);font-size:11.5px;color:var(--ink2)}
+.glegend i{display:inline-block;width:13px;height:13px;border-radius:2px;margin-right:5px;vertical-align:-1px;box-shadow:0 0 0 1px rgba(0,0,0,.15) inset}
+
+/* actor cards */
+.actors{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.actor{background:var(--panel);border:1px solid var(--rule);position:relative}
+.actor .ahd{display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--ink);color:var(--paper);padding:10px 14px}
+.actor .ahd h3{font-size:17px;font-weight:800;letter-spacing:.4px}
+.actor .ahd .p{font-family:var(--type);font-size:10.5px;text-align:right;opacity:.85;line-height:1.35}
+.actor .body{padding:12px 14px}
+.actor .disc{font-size:12.5px;color:var(--red);border-bottom:1px dashed var(--rule);padding-bottom:8px;margin-bottom:8px;font-weight:600}
+.actor .disc:before{content:"◆ 特征 ";font-family:var(--type);font-size:10px;color:var(--ink3);letter-spacing:1px}
+.arow{display:grid;grid-template-columns:66px 1fr;gap:8px;font-size:12.5px;margin:5px 0;align-items:start}
+.arow .k{font-family:var(--type);font-size:10.5px;letter-spacing:.5px;color:var(--ink3);padding-top:2px;text-transform:uppercase}
+.actor .sum{font-size:12px;color:var(--ink2);margin-top:9px;border-top:1px dotted var(--rule);padding-top:8px;line-height:1.5}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.chip{font-size:11px;font-family:var(--mono);background:rgba(43,38,32,.06);border:1px solid var(--rule);padding:1px 6px;border-radius:2px;color:var(--ink2)}
+.chip.asn{border-color:var(--rule2);background:rgba(143,29,24,.06)}
+.chip.mit{border-color:#4f6475;color:#3c4c59;background:rgba(79,100,117,.08)}
+
+/* two-col panels */
+.two{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:start}
+.panel{background:var(--panel);border:1px solid var(--rule)}
+.panel h4{font-size:14px;font-weight:800;letter-spacing:.3px;background:var(--panel2);padding:9px 14px;border-bottom:1px solid var(--rule);color:var(--ink)}
+.panel h4 .en{font-family:var(--type);font-size:10px;color:var(--ink3);letter-spacing:1.5px;float:right}
+.plist{padding:12px 14px;display:flex;flex-direction:column;gap:11px}
+.tl-item{border-left:2px solid var(--rule2);padding-left:12px;position:relative}
+.tl-item:before{content:"";position:absolute;left:-6px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--red);box-shadow:0 0 0 2px var(--panel)}
+.tl-item .th{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.tl-item .g{font-weight:800;font-size:14px;color:var(--red)}
+.tl-item .m{font-family:var(--type);font-size:11px;color:var(--ink3)}
+.tl-item .d{font-size:12.5px;color:var(--ink2);margin:3px 0 5px}
+.tag{display:inline-block;font-size:10.5px;color:#fff;padding:1px 7px;border-radius:2px;margin:1px 2px 1px 0;font-family:var(--serif)}
+.tag.risknet{background:var(--edge)}.tag.socks{background:var(--anon)}.tag.anydesk{background:var(--access)}
+.tag .cn{font-size:13px;font-weight:700;font-family:var(--serif)}
+.tagdef{font-size:12px;color:var(--ink2)}
+
+/* timeline */
+.tl{position:relative;padding-left:26px;margin-left:8px;border-left:2px dashed var(--rule2)}
+.tli{position:relative;margin-bottom:12px;background:var(--panel);border:1px solid var(--rule);padding:9px 13px}
+.tli:before{content:"";position:absolute;left:-33px;top:14px;width:11px;height:11px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 3px var(--paper)}
+.tli .line{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline}
+.tli .mo{font-family:var(--type);font-size:12px;color:var(--red);min-width:86px;font-weight:700}
+.tli .gn{font-weight:800;font-size:14.5px}
+.tli .dt{font-size:12.5px;color:var(--ink2);width:100%;margin-top:2px}
+.tli .vec{display:flex;flex-wrap:wrap;gap:5px;width:100%;margin-top:5px}
+.vc{font-size:11px;font-family:var(--mono);padding:1px 7px;border-radius:12px;border:1px solid var(--rule);color:var(--ink2);background:rgba(255,255,255,.3)}
+.ac-RDP{border-color:var(--access);color:#43522f}.ac-SonicWall,.ac-Fortinet,.ac-Gladinet,.ac-MFT{border-color:var(--edge);color:#6e3529}
+.ac-Tor,.ac-VPN{border-color:var(--anon);color:#4d3952}.ac-AnyDesk,.ac-SimpleHelp,.ac-RMM{border-color:var(--access);color:#43522f}
+
+/* scout queries */
+.scout{display:flex;flex-direction:column;gap:8px}
+.sq{background:var(--panel);border:1px solid var(--rule);padding:10px 13px}
+.sq .t{font-weight:800;color:var(--red);font-size:14px;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.sq .t:after{content:"SCOUT";font-family:var(--type);font-size:9px;letter-spacing:1px;color:var(--ink3);border:1px solid var(--rule);padding:0 5px;border-radius:2px}
+.code{font-family:var(--mono);font-size:12.5px;background:#2b2620;color:#d9c9a3;padding:3px 8px;border-radius:2px;display:inline-block;margin:2px 4px 2px 0;position:relative}
+.code b{color:#e0a15a}
+.code i{color:#b26}
+
+/* recommendations */
+.recs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.rec{background:var(--panel);border:1px solid var(--rule);border-left:4px solid var(--access);padding:11px 14px;font-size:13px}
+.rec b{color:var(--red)}
+.rec .n{font-family:var(--type);font-size:11px;color:var(--ink3);letter-spacing:1px;display:block;margin-bottom:2px}
+
+/* discipline */
+.disc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.disc{background:var(--panel);border:1px solid var(--rule);padding:14px 16px}
+.disc h4{font-size:13px;font-weight:800;letter-spacing:.5px;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--rule)}
+.disc.lim h4{color:var(--edge)}.disc.gap h4{color:var(--anon)}.disc.conv h4{color:var(--access)}
+.disc ul{list-style:none;font-size:12.5px}
+.disc li{position:relative;padding-left:16px;margin-bottom:7px;color:var(--ink2);line-height:1.5}
+.disc li:before{content:"›";position:absolute;left:2px;top:-1px;color:var(--red);font-weight:700}
+
+/* asn ledger */
+.asnwrap{max-height:none;border:1px solid var(--rule);background:var(--panel);overflow:auto}
+table.asn{border-collapse:collapse;width:100%;font-size:12px}
+table.asn th{background:var(--panel2);text-align:left;font-family:var(--type);font-size:11px;letter-spacing:.5px;color:var(--ink2);padding:7px 10px;border-bottom:2px solid var(--ink);position:sticky;top:0}
+table.asn td{padding:6px 10px;border-bottom:1px solid rgba(120,96,52,.22);vertical-align:top}
+table.asn td.a{font-family:var(--mono);font-weight:600;color:var(--red);white-space:nowrap}
+table.asn td.g{font-weight:700;white-space:nowrap}
+table.asn tr.shared td.a{background:rgba(138,69,54,.1)}
+
+footer.foot{margin-top:44px;border-top:2px solid var(--ink);padding-top:14px;font-family:var(--type);font-size:11.5px;color:var(--ink3);letter-spacing:.4px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.foot a{color:var(--red);text-decoration:none;border-bottom:1px dotted var(--red)}
+.kw{color:var(--red);font-weight:700}
+
+@media(max-width:900px){
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .actors,.two,.recs,.disc-grid{grid-template-columns:1fr}
+  h1{font-size:27px}.stamp{width:112px;height:112px}
+}
+</style>
+</head>
+<body>
+<div class="folder" id="folder"></div>
+<div class="wrap">
+  <section class="card pad" id="head"></section>
+
+  <section class="sec"><div class="sectitle"><span class="no">§01</span><h2>卷宗概览与关键研判</h2><span class="en">Executive Summary · Key Judgments</span></div><div id="overview"></div></section>
+
+  <section class="sec"><div class="sectitle"><span class="no">§02</span><h2>团伙 × 工具 收敛矩阵</h2><span class="en">Gang-to-Tool Convergence</span></div><div id="matrix"></div></section>
+
+  <section class="sec"><div class="sectitle"><span class="no">§03</span><h2>威胁组织画像</h2><span class="en">Threat Actor Dossiers</span></div><div class="actors" id="actors"></div></section>
+
+  <section class="sec"><div class="sectitle"><span class="no">§04</span><h2>外泄工具链 与 Cymru IP 标签</h2><span class="en">Exfil Toolchain · Proprietary IP Tags</span></div><div class="two" id="exfil"></div></section>
+
+  <section class="sec"><div class="sectitle"><span class="no">§05</span><h2>事件基础设施时间线</h2><span class="en">Incident Timeline · Apr 2025 – Mar 2026</span></div><div class="tl" id="timeline"></div></section>
+
+  <section class="sec"><div class="sectitle"><span class="no">§06</span><h2>攻击者基础设施 ASN 台账</h2><span class="en">Attacker Hosting Footprint</span></div><div id="asn"></div></section>
+
+  <section class="sec"><div class="sectitle"><span class="no">§07</span><h2>Cymru Scout 检测查询</h2><span class="en">Detection Queries · Defensible Signals</span></div><div class="scout" id="scout"></div></section>
+
+  <section class="sec"><div class="sectitle"><span class="no">§08</span><h2>防御建议</h2><span class="en">Defensive Recommendations</span></div><div class="recs" id="recs"></div></section>
+
+  <section class="sec"><div class="sectitle"><span class="no">§09</span><h2>研判纪律：交叉汇聚 · 局限 · 情报缺口</h2><span class="en">Analytic Discipline</span></div><div class="disc-grid" id="disc"></div></section>
+
+  <footer class="foot" id="foot"></footer>
+</div>
+
+<script>
+const DATA = {"judgments":{"scope":{"source":"Team Cymru 研究简报《Ransomware Incident Response: Infrastructure Analysis》","author":"Will Thomas（Team Cymru 威胁检测团队）","date":"2026-09-15（发布，约 4 分钟阅读）","period":"2025年4月 – 2026年4月（一年）；Akira 子集为 2025年6月–12月","sample_size":"与一家 DFIR 伙伴合作 20+ 起勒索调查；正文逐笔披露 15 起事件（Akira 6、DragonForce 3、Clop 1、INC Ransom/LockBit3/Qilin/Lynx/MedusaLocker 各 1）；8 个具名团伙","geography":"以英国中小企业（SME）为主","methodology":"DFIR 伙伴在事件进行中持续共享由人工主机取证提取的实时 IOC；Team Cymru 将其与全球 NetFlow / 互联网遥测做关联，分析 IP 属性、AS 与托管模式、协议、服务、软件及专有 IP 标签（Risknet、Socks Proxy、AnyDesk）。为厂商撰写，IOC 未公开。"},"key_judgments":[{"judgment":"本样本中勒索软件的外泄与 C2 压倒性地依赖商品化 / 双用途工具——外泄用 Rclone、FileZilla，C2 用 Cobalt Strike，访问用 AnyDesk 与 RMM 工具——横向移动与 C2 均未见自研定制恶意软件。","confidence":"High","basis":"原文明确给出工具矩阵、逐事件工具（Rclone FTP/SFTP 节点、GOST、Chisel、SimpleHelp），结论直接写明“未见任何为横向移动或 C2 编写的定制恶意软件”“Cobalt Strike 是贯穿始终的共性”。15 起事件内部一致，就本样本而言评估可靠。"},{"judgment":"本 SME 样本的初始访问是网络型且大体可预测：暴露的 RDP（暴力破解或凭据猜测）、边界 VPN 设备（SonicWall SSL-VPN 利用、Fortinet FortiGate 凭据滥用），以及被大规模利用的托管文件传输（MFT）平台（Clop 攻击 Gladinet CentreStack）。","confidence":"High","basis":"原文逐事件陈述（DragonForce 的 AS57523 RDP 暴力破解；Akira 的 AS55286/AS16276 SonicWall 利用；Lynx 的 Fortinet；五源 IP 的 Clop MFT 利用），结论重复强调。分析师补充：钓鱼型入侵可能被低估，因为网络遥测对其“失明”——此判断描述观测到的基础设施行为，而非完整访问格局。"},{"judgment":"攻击者刻意把基础设施分散到大量低信誉 VPS 供应商，并叠加匿名层（SOCKS 代理链、含 Cloudflare WARP/PIA/1VPN 的商业 VPN、Tor、Cloudflare Worker 反代），以阻碍溯源、对抗基于 IP 的封锁——因此静态 ASN/IP 信誉封锁是弱控制。","confidence":"High","basis":"逐事件证据（Akira 的 AS14061 GOST SOCKS5 链；DragonForce 的 AS205100 RDP over Tor；MedusaLocker 的 AS62212 Chisel+Cloudflare Worker 反向 SOCKS；Lynx 的 1VPN），加之 Akira“分散于多样 AS”的手法说明；报告自身也给出防御含义（Clop 一节）。"},{"judgment":"Akira 的外泄技术种类最多，且与其它团伙 TTP 全面重叠，因此以 Akira 手法为核心的检测工程很可能对本群体其余团伙形成覆盖。","confidence":"Medium","basis":"原文明确“最高技术多样性、全面重叠”及厂商“盯 Akira 可获得优势”的主张。下调至中：因果解释（受害者体量 vs 多操作员各自偏好）是厂商未验证的假设一/假设二，且样本仅 n=6。"},{"judgment":"团伙层面的行为机会主义明显、且会在更强的初始访问失效时“降级”为低技术手法：DragonForce 2026年2月事件显示，操作员未取得有效的 infostealer 凭据，转而暴力猜测暴露的 3389 端口。","confidence":"Medium","basis":"原文以推断措辞呈现（“suggesting the affiliate failed to obtain valid credentials”）。观测事实（RDP 暴力破解 + 多 AS 成功登录）为陈述；对底层原因（infostealer 日志失效）的解读无法仅凭网络遥测证实。"},{"judgment":"Team Cymru 的专有 IP 标签（Risknet、Socks Proxy、AnyDesk）提供了既有覆盖：四团伙全部 10 个外泄 IP 在事件前即被标记为潜在关注对象，支撑以标签驱动的早期检测——但该价值为厂商自报。","confidence":"Medium","basis":"原文陈述“我们已用标签将其全部标为潜在关注”，结论建议跟踪这几类标签。下调至中：单一伙伴样本、未披露精确率/误报率，且此文同时营销其 Scout 产品与查询，存在商业利益。"},{"judgment":"合法的远程管理与边界平台是本群体正在放大的滥用面：SimpleHelp（LockBit3 泄露版事件）、AnyDesk、SonicWall/Fortinet 设备、MFT 软件与 Cloudflare Worker 都作为攻击者基础设施或入口出现。","confidence":"Medium","basis":"逐事件陈述。关于“正在加速”属分析师评估，倚仗报告自身的汇聚措辞（“对合法 RMM、商业 VPN 与 Cloudflare 服务的滥用增加”）与 12 个月窗口；单年 15 起事件无法确立趋势速率。"}],"convergences":["外泄工具：Rclone（FTP/SFTP 节点）与 FileZilla 在 Akira、INC Ransom、DragonForce 等团伙反复出现，厂商称之为最常见的外泄工具与跨团伙汇聚点。","远程访问向量：RDP（含暴力破解）与 SSH/SFTP 是 Akira、DragonForce、MedusaLocker、Qilin 的主要入侵/横向通道。","C2：Cobalt Strike 是共通的 C2 主线（Akira 事件1、DragonForce 事件1-2），未观测到自研 C2。","匿名与规避：跨多 AS 分散低信誉 VPS、SOCKS 代理链（GOST、Chisel+Cloudflare Worker 反向 SOCKS）、Tor 与商业 VPN（WARP、PIA、1VPN）层层叠加以隐藏操作员来源。","寄生于合法软件：双用途签名工具（AnyDesk、SimpleHelp RMM、Rclone、FileZilla）被数十个团伙滥用，而非定制恶意软件。","边界设备利用：SonicWall SSL-VPN、Fortinet FortiGate、Gladinet CentreStack MFT 作为网络型初始访问入口。","命名/信号趋同：Akira VPS 主机名 “kali”；不相关团伙反复出现同一 AS（如 Akira 与 Lynx 共用 AS16276、DragonForce 与 LockBit3 共用 AS9009），提示共享或相邻的托管生态。"],"recommendations":["收敛特权远程暴露面：限制对外 RDP（3389）与 SSH，凡必须可达之处一律强制 MFA，并对异常 RDP 认证（来自新 AS 的失败、经 Tor 出口节点的流量）告警（源自 DragonForce 发现与报告建议）。","加固并监控边界与文件传输设备：对 SonicWall SSL-VPN、Fortinet FortiGate 及 Gladinet CentreStack 等 MFT 平台积极打补丁并做凭据卫生；对 MFT 设备的异常出站数据流做威胁狩猎，而非依赖静态 ASN/IP 信誉（Clop 发现）。","检测双用途工具的出站：为业务主机的 Rclone/FileZilla/AnyDesk 流量、SSH/SFTP 外泄到低信誉 VPS ASN、以及 SimpleHelp 服务器 banner 建立基线并告警；把报告查询逻辑（x509 CN “kali”、socks/risknet/anydesk 标签、3389/22 端口）作为遥测规则模板。","在出站连接遥测中持续跟踪 Risknet 网段、Socks Proxy IP 与 AnyDesk 基础设施，以便在加密前预警（多数团伙在加密前先窃取数据）。","把 Cloudflare 前置的出站视为可检查对象：检测 Chisel + Cloudflare Worker 反向代理模式与企业端点异常的 Worker/WARP 使用（攻击者把恶意出站混入合法前置服务，见 MedusaLocker 事件）。","把 Akira 特征检测当作“力量倍增器”优先建设：因 Akira TTP 与其余团伙重叠，为其编写的规则（SonicWall 通信、kali 证书、Rclone 节点、AnyDesk C2）很可能连带命中相邻团伙（厂商结论；需以自有遥测验证）。","针对英国 SME 的资源优先级：把有限资源投到可预测的访问向量——暴露的 RDP/VPN 设备与未打补丁的 MFT——而非假想定制恶意软件；本样本攻击以网络型、工具商品化为主。"],"limitations":["这是一篇厂商博客而非同行评审研究：无原始数据、无统计严谨性，同时兼作 Team Cymru Scout 产品与专有标签的营销——每条判断的置信度都应据此折减。","IOC 来自单一 DFIR 伙伴关系且明确不公开（“具体 IOC 不对外发布”），因此底层证据不可被读者独立验证或直接落地。","抽样严重偏斜：以英国 SME 为主、单一 12 个月窗口、伙伴年处理量上限约 50 起——反映的是这一伙伴的客户构成与一个区域的威胁组合，非全球勒索格局。","逐团伙样本极薄：Clop、INC Ransom、LockBit3、Qilin、Lynx、MedusaLocker 各仅 1 起——团伙“模式”多为 n=1 轶事而非趋势。","具名归因反映 DFIR 伙伴的事件归属与联盟（affiliate）现实：共享工具会抹平团伙边界；团伙级归因是“有工具重叠支撑的假设”，非密码学或身份层面的证明。","遥测盲区：分析基于主机派生 IOC 的网络/NetFlow 可见性，故钓鱼、中介化访问、内部威胁等网络数据不可见的初始访问被系统性低估，使结论偏向网络型访问。","被引用的图表（每团伙 IP 数、外泄技术分布）在正文中未复现数值，故“最高多样性”等量化主张无法核验。","厂商的“既有标签覆盖”主张（10/10 预标记）未披露精确率、召回或误报背景，无法独立评估。"],"gaps":["逐团伙原始/聚合 IOC 计数（图1 数字）与真实外泄技术分布（图2）——缺此，“Akira 多样性最高”与相对活跃度只是不可验证的断言。","对照群体：Rclone/RDP/SonicWall 在良性流量中的基线率，能告诉我们所建议的检测（3389/22 端口、socks/risknet/anydesk 标签）是精确还是会产生难以承受的噪声。","跨伙伴/跨地域复现：英国 SME 之外（大型企业、其它地区）的事件，可验证“商品工具 + 网络访问”模式是否成立，抑或更大目标更多面对定制恶意软件与钓鱼主导的访问。","联盟级与纵向数据：报告无法判定 Akira 内部技术多样性是操作员数量还是操作员演化，也无法判定 RMM/Cloudflare 滥用是否真的上升，抑或只是一年快照的产物。","来自 Team Cymru 的标签性能指标（Risknet、Socks、AnyDesk 的精确率/误报）——“10/10 预标记”是报告最强的防御主张，也是最缺乏支撑的一项。","受害者侧细节缺失：加密时序、勒索金额、双重勒索转化率，以及 infostealer 市场凭据供给的任何作用（被用来解释 DragonForce 事件3，却从未给出证据）。","会改变结论的因素：公开 IOC 集合以支持独立验证；遥测显示钓鱼主导这些团伙的初始访问；证据表明 Akira 的多样性源自单一操作员的适应而非多操作员（将削弱“盯 Akira 覆盖全部”的建议）；或数据显示在更广群体中标签检测漏掉了大量未标记的外泄 IP。"]},"exfil":{"exfil_tools":[{"name":"Rclone","category":"exfil","gangs":["Akira","INC Ransom","Lynx"],"note":"与 FileZilla 并列被原文点名为“最常用”的外泄工具。Akira：FTP 外泄节点 AS19318（事件1）、SFTP 节点 AS213250/AS14315（事件3/4），并列为其核心工具。INC Ransom：AS208137 Rclone 外泄（多团伙事件1）。Lynx：AS16276 Rclone 外泄并配合 1VPN（多团伙事件4）。结论称之为数十团伙滥用的签名双用途工具。"},{"name":"FileZilla","category":"exfil","gangs":["Akira"],"note":"与 Rclone 同列“最常用”。正文逐事件仅明确 Akira 将其用于外泄暂存（AS64236 托管 FileZilla 配置，事件2）；跨团伙汇聚与结论又指出 FileZilla 被“多个团伙”滥用，但逐事件未点名其它团伙。"},{"name":"OpenSSH / SFTP","category":"exfil","gangs":["Akira","Qilin","MedusaLocker"],"note":"SSH 兼作访问、SFTP 作外泄传输。Akira：SSH 访问 AS62240（事件2）+ SFTP 外泄节点（AS213250、AS14315）。Qilin：AS14956 单节点同时托管 SFTP 外泄与 OpenSSH 活动（多团伙事件3）。MedusaLocker：AS50340 SSH/SFTP 外泄（多团伙事件5）。检测查询：Qilin comms.port=22；MedusaLocker comms.port=3389,22。"},{"name":"Cobalt Strike","category":"rat","gangs":["Akira","DragonForce"],"note":"C2 / beacon 框架。Akira 事件1：beacon 指向 AS42624。DragonForce 事件1：C2 走 AS209132（兼作 FTP 供工具 ingress）；事件2：载荷在 AS9009 暂存/投递。结论：“Cobalt Strike 是贯穿始终的共性”；未见为 C2/横移自研的定制恶意软件。"},{"name":"AnyDesk","category":"remote-access","gangs":["Akira"],"note":"专有远程桌面被滥用为 C2。Akira 事件1 经 AS63018 滥用 AnyDesk 做 C2；列入其核心工具、结论中列为数十团伙滥用的恒定双用途工具，并对应 Team Cymru 的 AnyDesk IP 标签。"},{"name":"SimpleHelp","category":"rmm","gangs":["LockBit"],"note":"合法 RMM 平台。泄露版 LockBit3（多团伙事件2，2025年12月）操作员经 AS9009 滥用 SimpleHelp。检测查询 LockBit3：openports.banner=\"*Server: SimpleHelp*\"。属对合法 RMM 滥用的跨团伙汇聚例证。"},{"name":"GOST（Go Simple Tunnel）","category":"proxy/tunnel","gangs":["Akira"],"note":"Akira 事件5（2025年12月）：AS14061 托管 GOST SOCKS5 代理链以隐藏出站；对应 Socks Proxy 标签与 Akira 的 tag=\"socks\" 查询。"},{"name":"Chisel + Cloudflare Worker","category":"proxy/tunnel","gangs":["MedusaLocker"],"note":"多团伙事件5（2026年3月）：AS62212 用 Chisel 植接入链 Cloudflare Worker 建立反向 SOCKS 代理——被点名为“相当精巧”的持久化/隧道手法，把恶意出站混入合法 Cloudflare 前置服务；对应 socks 标签与 MedusaLocker tag=\"socks\"。"},{"name":"商业 VPN / 匿名器（Cloudflare WARP、PIA、1VPN、Tor）","category":"proxy/tunnel","gangs":["Clop","Lynx","DragonForce"],"note":"用于隐藏操作员来源/出站，而非外泄传输本身。Clop：五源 IP 中两个属 Cloudflare WARP 与 Private Internet Access（PIA）。Lynx：用 1VPN 配合 Rclone 隐藏来源（tag=\"1-vpn\"）。DragonForce：一次 RDP 会话经 AS205100 走 Tor。结论：“VPN 节点与 Tor 节点在所料想之中”。"}],"ip_tags":[{"tag":"Risknet","definition":"归属于“关联到高水准可疑/恶意行为（扫描、利用、暴力破解、托管恶意软件）”之主机供应商的 IP 段。","usage":"用于外泄基础设施：四团伙 10 个外泄 IP 全部命中 Risknet 标签；Akira 的入侵/C2/外泄 VPS 分布于多样且常为低信誉的托管 AS。出现在 Akira 与 Qilin 的检测查询（tag=\"risknet\"），结论建议跟踪 Risknet 网段以支持早期检测。"},{"tag":"Socks Proxy","definition":"SOCKS 代理 IP，通过指定中继 IP 转发流量以隐藏来源；经验上常与可疑流量相关。","usage":"观测于 Akira（AS14061 GOST SOCKS5 代理链，事件5）与 MedusaLocker（AS62212 Chisel + Cloudflare Worker 反向 SOCKS 代理）；反映在 Akira 与 MedusaLocker 查询（tag=\"socks\"），供操作员隐藏真实来源。"},{"tag":"AnyDesk","definition":"提供跨平台远程访问的专有远程桌面应用。","usage":"被 Akira 滥用为 C2（事件1，经 AS63018），列入其工具手法；出现在 Akira 查询（tag=\"anydesk\"），并在结论中被强调为数十团伙滥用的签名双用途工具。"}]},"actors":{"actors":[{"name":"Akira","period":"2025年6月–12月（研究窗口内）","incidents":"6 起事件（逐一披露 5 起）","access_vectors":["SonicWall SSL-VPN 设备利用（初始访问，经 AS55286、AS16276）","VPS 上的 SSH 访问（AS62240）","跨多样低信誉 AS 的 VPS 入侵基础设施","AnyDesk 远程接入被滥用"],"c2_tooling":["Cobalt Strike（AS42624 beacon）","AnyDesk 作 C2（AS63018）","GOST SOCKS5 代理链（AS14061）"],"exfil_tooling":["Rclone over FTP（AS19318）","Rclone over SFTP（AS213250、AS14315）","FileZilla 配置托管（AS64236，外泄暂存）","加密前数据窃取以配合 Tor 泄露站勒索"],"anonymization":["跨多个常为低信誉的托管供应商分散基础设施以阻碍溯源与封锁","GOST SOCKS5 代理链（AS14061）","VPS 服务器统一主机名 “kali”","命中 Risknet / Socks Proxy / AnyDesk IP 标签"],"notable_asns":["AS42624 – Cobalt Strike beacon C2","AS63018 – AnyDesk 滥用为 C2","AS19318 – Rclone FTP 外泄节点","AS62240 – SSH 访问","AS64236 – FileZilla 配置托管（外泄暂存）","AS213250 – Rclone SFTP 外泄","AS14315 – Rclone SFTP 外泄节点","AS55286 – 经 SonicWall 利用的初始访问 VPS","AS16276 – 经 SonicWall 利用的初始访问 VPS","AS14061 – GOST SOCKS5 代理链"],"distinctive":"VPS 主机名 “kali”（x509.subject.cn=\"kali\"）+ 全样本最高的外泄技术多样性；核心工具恒为 Rclone、Cobalt Strike 与 AnyDesk。","summary":"Akira 稳定使用分散于多样 AS 的 VPS 承载入侵、C2 与外泄。访问经 SonicWall SSL-VPN 利用与 SSH；C2 以 Cobalt Strike 与被滥用的 AnyDesk 承载并叠加 GOST SOCKS5 代理链；外泄主要靠 Rclone（FTP/SFTP）与 FileZilla。手法签名是 “kali” 主机名及与其它团伙最广的技术重叠，被归因于受害者体量大及/或多操作员偏好。Cymru 经 kali 证书 CN 与 sonicwall/anydesk/risknet/socks 标签检测。","mitre":[{"id":"T1190","name":"利用面向公网应用 — SonicWall SSL-VPN 利用获取初始访问"},{"id":"T1021.004","name":"远程服务：SSH — 经攻击者 VPS 的 SSH 访问"},{"id":"T1219","name":"远程访问软件 — 滥用 AnyDesk 作 C2/远程接入"},{"id":"T1071","name":"应用层协议 — Cobalt Strike beacon C2"},{"id":"T1048","name":"经替代协议外泄 — Rclone FTP/SFTP 与 FileZilla 外泄"},{"id":"T1090","name":"连接代理 — GOST SOCKS5 代理链"}]},{"name":"DragonForce","period":"2025年4月–2026年2月","incidents":"3 起事件","access_vectors":["对暴露 3389 端口 RDP 暴力破解（AS57523）","多 AS 成功 RDP 访问（AS6661、AS58061）— 未取得 infostealer 凭据后转机会式口令猜测","RDP 访问节点（AS57509、AS33535、AS36352）","一次 RDP 会话经 Tor 路由（AS205100）","RDP 兼作初始访问与横向移动"],"c2_tooling":["Cobalt Strike 为首选 C2（AS209132，兼作工具 ingress 的 FTP 服务器；载荷在 AS9009 暂存/投递）"],"exfil_tooling":["逐事件未点名具体外泄工具（AS209132 的 FTP 用于工具 ingress/暂存而非外泄）；加密前窃取配合 Tor 泄露站勒索为团伙通用"],"anonymization":["专用代理节点隧道化操作员流量（AS59395）","经 Tor 路由的 RDP 会话（AS205100）","对 Tor 的采用增加，经 tor 标签与 3389 端口通信检测"],"notable_asns":["AS57509 – RDP 访问","AS209132 – Cobalt Strike C2 + FTP 工具 ingress","AS59395 – 专用代理/隧道节点","AS33535 – RDP 访问节点","AS36352 – RDP 访问节点","AS205100 – 经 Tor 路由的 RDP 会话","AS9009 – Cobalt Strike Beacon 载荷暂存/投递","AS57523 – RDP 暴力破解主机","AS6661 – 成功 RDP 访问来源","AS58061 – 成功 RDP 访问来源"],"distinctive":"以 RDP 为核心的入侵与横向移动 + 商品化手法（Cobalt Strike、3389 扫描/暴力破解）+ 日渐采用 Tor 匿名化操作员会话。","summary":"DragonForce 呈现以滥用 RDP 兼顾初始访问与横向移动的稳定模式，辅以商品化攻击工具。Cobalt Strike 为首选 C2，一台主机兼作 FTP 分发、另一台暂存 beacon 载荷。事件3 显示联盟未取得 infostealer 凭据，转而对暴露的 RDP 端点做机会式口令猜测。匿名化从专用代理节点升级到经 Tor 路由的 RDP。建议：限制对外 RDP、强制 MFA、监控异常 RDP 认证与 Tor 出口流量。","mitre":[{"id":"T1110.001","name":"暴力破解：口令猜测 — 对暴露 3389 端口的 RDP 爆破（AS57523）"},{"id":"T1021.001","name":"远程服务：RDP — RDP 作主要入侵与横向通道"},{"id":"T1078","name":"有效账户 — 口令猜测后的成功 RDP 登录（AS6661、AS58061）"},{"id":"T1071","name":"应用层协议 — Cobalt Strike C2 beacon（AS209132）"},{"id":"T1105","name":"工具 ingress 传输 — FTP 投递 Cobalt Strike 工具/载荷（AS209132、AS9009）"},{"id":"T1090.003","name":"连接代理：多跳代理 — RDP over Tor 与专用代理隧道"}]},{"name":"Clop","period":"2025年12月（事件）","incidents":"1 起数据窃取勒索事件","access_vectors":["对 Gladinet CentreStack 托管文件传输（MFT）设备的利用","五源 IP 的利用流量，其中两个走商业 VPN，三个可归属具体托管"],"c2_tooling":["该事件原文未指定 C2 工具"],"exfil_tooling":["数据窃取勒索事件（与 Tor 泄露站勒索一致），未点名具体外泄工具"],"anonymization":["商业 VPN 来源：Cloudflare WARP 消费级 VPN 与 Private Internet Access（PIA）","经 warp-vpn,pia 标签检测；报告强调静态 ASN/IP 信誉封锁不足"],"notable_asns":["AS396073 – 三台非 VPN 利用源 IP 之一","AS51852 – 三台非 VPN 利用源 IP 之一","AS50049 – 三台非 VPN 利用源 IP 之一"],"distinctive":"历史上大规模利用托管文件传输（MFT）平台；本次攻击 Gladinet CentreStack，VPN 前置与直接托管混合的利用源，凸显对 MFT 异常出站流量的狩猎价值。","summary":"Clop 素以大规模利用 MFT 平台闻名，2025年12月以一起数据窃取勒索事件攻陷一套 Gladinet CentreStack 文件传输服务。观测到五台利用源 IP：两台归属商业 VPN（Cloudflare WARP 与 PIA），三台托管于 AS396073、AS51852、AS50049。多 AS 多来源的组合凸显：应监控/狩猎 MFT 设备的异常出站数据流，并以健全补丁管理取代对静态 ASN/IP 信誉封锁的依赖。","mitre":[{"id":"T1190","name":"利用面向公网应用 — Gladinet CentreStack MFT 利用"},{"id":"T1090","name":"连接代理 — 经 Cloudflare WARP 与 PIA 商业 VPN 的操作员流量"}]},{"name":"INC Ransom","period":"2025年10月（研究窗口内）","incidents":"1 起事件（多团伙组，2025年10月–2026年3月）","access_vectors":["原文未详述该事件访问；总体处于“滥用合法远程管理工具 + 外泄工具 + 商用租用 VPS（跨多 AS）”的共享模式内"],"c2_tooling":["原文未指定 C2 工具"],"exfil_tooling":["经 AS208137 的 Rclone 数据外泄"],"anonymization":["原文未针对 INC Ransom 记录专门匿名化"],"notable_asns":["AS208137 – Rclone 数据外泄"],"distinctive":"单起观测事件，纯粹表现为跨团伙汇聚集合中的 VPS 托管 Rclone 外泄。","summary":"INC Ransom 联盟使用 AS208137 内一台商用租用 VPS 进行基于 Rclone 的数据外泄，契合“Rclone 是多团伙共享的双用途外泄工具”这一跨团伙汇聚结论。","mitre":[{"id":"T1048","name":"经替代协议外泄 — 经 AS208137 的 Rclone 数据外泄"}]},{"name":"LockBit3","period":"2025年12月（研究窗口内）","incidents":"1 起事件（多团伙组）","access_vectors":["滥用合法 RMM 平台 SimpleHelp 获取远程管理访问（经 AS9009 托管）"],"c2_tooling":["经 SimpleHelp RMM 承载远程操作，原文未另指 C2 工具"],"exfil_tooling":["原文未点名该事件的具体外泄工具"],"anonymization":["原文未特别记录（SimpleHelp 属合法平台滥用）"],"notable_asns":["AS9009 – SimpleHelp RMM 基础设施"],"distinctive":"在泄露版 LockBit3 入侵中滥用合法 RMM 平台 SimpleHelp。","summary":"一起使用泄露版 LockBit3 的入侵中，操作员滥用合法监控与管理（RMM）平台 SimpleHelp，基础设施托管于 AS9009，属对合法 RMM 滥用日益增多的跨团伙汇聚例证。检测查询 LockBit3：openports.banner=\"*Server: SimpleHelp*\"。","mitre":[{"id":"T1219","name":"远程访问软件 — 滥用合法 RMM 平台 SimpleHelp（AS9009）"}]},{"name":"Qilin","period":"2025年12月（研究窗口内）","incidents":"1 起事件（多团伙组）","access_vectors":["操作员节点的 OpenSSH 活动（用于后渗透）"],"c2_tooling":["未另指 C2 工具；OpenSSH 承担后渗透操作"],"exfil_tooling":["AS14956 托管的 SFTP 外泄基础设施"],"anonymization":["节点落于 Cymru “risknet”（高风险托管网段）标签范围；未记录 VPN/Tor"],"notable_asns":["AS14956 – SFTP 外泄基础设施 + OpenSSH 活动（单暂存节点）"],"distinctive":"单一多功能暂存节点同时承载 SFTP 外泄与 OpenSSH 活动，支撑多个后渗透目标。","summary":"一起归于 Qilin 的事件使用 AS14956 同时托管 SFTP 外泄基础设施与 OpenSSH 活动，以单个多功能暂存节点服务多个后渗透目标，契合“SSH/SFTP 是本群体主要远程访问与外泄向量”的结论。检测查询 Qilin：comms.port=22、tag=\"risknet\"。","mitre":[{"id":"T1048","name":"经替代协议外泄 — 基于 SFTP 的外泄"},{"id":"T1021.004","name":"远程服务：SSH — 暂存节点的 OpenSSH 活动"}]},{"name":"Lynx","period":"2026年2月（研究窗口内）","incidents":"1 起事件（多团伙组）","access_vectors":["经 Fortinet FortiGate 设备获取初始访问（网络边缘，与结论中“凭据盗用于访问 Fortinet”一致）"],"c2_tooling":["原文未指定 C2 工具"],"exfil_tooling":["由 AS16276 承载的基于 Rclone 外泄"],"anonymization":["1VPN 商业 VPN 服务隐藏操作员流量来源（经 1-vpn 标签与 fortinet 通信标签检测）"],"notable_asns":["AS16276 – 基于 Rclone 的外泄（另用 1VPN 服务，未给 1VPN 的 AS）"],"distinctive":"单起行动中把 FortiGate 边缘设备初始访问、Rclone 外泄与 1VPN 匿名化打包在一起。","summary":"2026年2月，Lynx 通过一台 Fortinet FortiGate 设备获取初始访问，用 AS16276 上的 Rclone 外泄数据，并借 1VPN 商业 VPN 隐藏操作员流量来源，集中体现本群体的网络型访问手法加商业 VPN 匿名化。检测查询 Lynx：tag=\"1-vpn\"、comms.tag=\"fortinet\"。","mitre":[{"id":"T1190","name":"利用面向公网应用 — Fortinet FortiGate 设备初始访问"},{"id":"T1048","name":"经替代协议外泄 — 经 AS16276 的基于 Rclone 外泄"},{"id":"T1090","name":"连接代理 — 1VPN 隐藏操作员流量来源"}]},{"name":"MedusaLocker","period":"2026年3月（研究窗口内）","incidents":"1 起事件（多团伙组）","access_vectors":["RDP 访问节点（AS56694、AS49505）— 暴露 3389 远程访问","SSH/SFTP 基础设施用于远程操作与外泄（AS50340）"],"c2_tooling":["Chisel 植入体（AS62212）链式 Cloudflare Worker 建立反向 SOCKS 代理，作为持久化/隧道化 C2 出站"],"exfil_tooling":["AS50340 内 SSH/SFTP 外泄基础设施"],"anonymization":["反向 SOCKS 代理经 Cloudflare Worker 前置，把出站混入合法 Cloudflare 前置服务","建议 socks 标签 + 监控 3389/22 端口"],"notable_asns":["AS56694 – RDP 访问节点","AS49505 – RDP 访问节点","AS50340 – SSH/SFTP 外泄基础设施","AS62212 – Chisel 植入体 + Cloudflare Worker 反向 SOCKS 代理"],"distinctive":"观测到最精巧的隧道化：Chisel 植入体链式 Cloudflare Worker 建立反向 SOCKS 代理，把恶意出站混入合法 Cloudflare 前置流量。","summary":"2026年3月，一起 MedusaLocker 联盟事件把作业分散到更大足迹：AS56694 与 AS49505 的 RDP 访问节点、AS50340 的 SSH/SFTP 外泄基础设施，以及——最精巧处——AS62212 上 Chisel 植入体链式 Cloudflare Worker 建立反向 SOCKS 代理，把出站伪装为合法 Cloudflare 前置流量。检测查询 MedusaLocker：tag=\"socks\"、comms.port=\"3389,22\"。","mitre":[{"id":"T1021.001","name":"远程服务：RDP — RDP 访问节点（AS56694、AS49505）"},{"id":"T1048","name":"经替代协议外泄 — SSH/SFTP 外泄基础设施（AS50340）"},{"id":"T1572","name":"协议隧道化 — Chisel 植入体隧道"},{"id":"T1090","name":"连接代理 — 由 Cloudflare Worker 前置的反向 SOCKS 代理（AS62212）"}]}]},"timeline":{"incidents":[{"month":"2025年6月","gang":"Akira","detail":"Akira 事件1：Cobalt Strike beacon 指向 AS42624；AnyDesk 经 AS63018 滥用为 C2；Rclone FTP 外泄节点落于 AS19318。注：报告标题称 Akira 共 6 起（2025年6月–12月），正文逐一披露的仅 5 起。","asns":["AS42624","AS63018","AS19318"],"vectors":["Cobalt Strike beacon","AnyDesk 作 C2","Rclone FTP 外泄","VPS 托管"]},{"month":"2025年7月","gang":"Akira","detail":"Akira 事件2：AS62240 用于 SSH 访问；AS64236 托管 FileZilla 配置（外泄暂存）。","asns":["AS62240","AS64236"],"vectors":["SSH 访问","FileZilla（外泄暂存）","VPS 托管"]},{"month":"2025年10月","gang":"Akira","detail":"Akira 事件3：AS213250 托管 Rclone SFTP 节点。","asns":["AS213250"],"vectors":["Rclone SFTP 外泄","VPS 托管"]},{"month":"2025年10月","gang":"Akira","detail":"Akira 事件4：AS14315 的 Rclone SFTP 节点，加之两台 VPS 供应商 AS55286 与 AS16276 经利用 SonicWall 设备获取初始访问（与全年 Akira 瞄准 SonicWall SSL VPN 的行业报道一致）。","asns":["AS14315","AS55286","AS16276"],"vectors":["SonicWall SSL-VPN 利用（初始访问）","Rclone SFTP 外泄","VPS 托管"]},{"month":"2025年12月","gang":"Akira","detail":"Akira 事件5：AS14061 托管 GOST SOCKS5 代理链。各事件中 Akira 均用主机名 “kali” 承载远程接入目标的 VPS。","asns":["AS14061"],"vectors":["GOST SOCKS5 代理链","VPS 托管","主机名手法：kali"]},{"month":"2025年4月","gang":"DragonForce","detail":"DragonForce 事件1：AS57509 RDP 访问；Cobalt Strike C2 走 AS209132（兼作工具 ingress 的 FTP 服务器）；AS59395 专用代理节点隧道化操作员流量。","asns":["AS57509","AS209132","AS59395"],"vectors":["RDP 初始访问","Cobalt Strike C2","FTP 工具 ingress","代理隧道"]},{"month":"2025年8月","gang":"DragonForce","detail":"DragonForce 事件2：AS33535 与 AS36352 多个 RDP 访问节点；一次 RDP 会话经 AS205100 走 Tor 路由；AS9009 主机暂存/投递 Cobalt Strike Beacon 载荷。","asns":["AS33535","AS36352","AS205100","AS9009"],"vectors":["多节点 RDP 访问","Tor 匿名化 RDP","Cobalt Strike 载荷暂存/投递"]},{"month":"2026年2月","gang":"DragonForce","detail":"DragonForce 事件3：AS57523 主机执行 RDP 暴力破解，加之 AS6661、AS58061 的成功 RDP 访问——提示联盟未取得有效 infostealer 凭据，转而对开放 3389 端口的暴露端点做机会式口令猜测。","asns":["AS57523","AS6661","AS58061"],"vectors":["RDP 暴力破解","成功 RDP 访问（口令猜测）","暴露的 3389 端口"]},{"month":"2025年12月","gang":"Clop","detail":"Clop 事件（数据窃取勒索）：攻陷一套 Gladinet CentreStack 文件传输服务。五源 IP 利用流量，两个归属商业 VPN（Cloudflare WARP 与 PIA），其余三台托管于 AS396073、AS51852、AS50049。多 AS 多来源凸显监控 MFT 异常出站数据流与健全补丁管理，胜过静态 ASN/IP 信誉封锁。","asns":["AS396073","AS51852","AS50049"],"vectors":["利用 MFT 平台 Gladinet CentreStack","经商业 VPN 的来源隐藏（WARP、PIA）"]},{"month":"2025年10月","gang":"INC Ransom","detail":"多团伙组事件1：INC Ransom 联盟使用 AS208137 进行 Rclone 数据外泄。","asns":["AS208137"],"vectors":["Rclone 数据外泄","商用租用 VPS"]},{"month":"2025年12月","gang":"LockBit","detail":"多团伙组事件2：泄露版 LockBit3；操作员滥用合法 RMM 平台 SimpleHelp，基础设施托管于 AS9009。","asns":["AS9009"],"vectors":["滥用合法 RMM 平台 SimpleHelp","泄露版 LockBit3"]},{"month":"2025年12月","gang":"Qilin","detail":"多团伙组事件3：归于 Qilin，AS14956 同时托管 SFTP 外泄基础设施与 OpenSSH 活动（单一多功能暂存节点服务多个后渗透目标）。","asns":["AS14956"],"vectors":["SFTP 数据外泄","OpenSSH 活动","单多功能暂存节点"]},{"month":"2026年2月","gang":"Lynx","detail":"多团伙组事件4：Lynx 经一台 Fortinet FortiGate 设备获取初始访问；AS16276 承载基于 Rclone 的外泄，并配合 1VPN 服务隐藏操作员流量来源。","asns":["AS16276"],"vectors":["Fortinet FortiGate 利用（初始访问）","基于 Rclone 的外泄","1VPN 隐藏操作员流量"]},{"month":"2026年3月","gang":"MedusaLocker","detail":"多团伙组事件5：MedusaLocker 联盟把作业分散到更大足迹——AS56694、AS49505 的 RDP 访问节点；AS50340 的 SSH/SFTP 外泄基础设施；AS62212 托管 Chisel 植入体并链式 Cloudflare Worker 建立反向 SOCKS 代理（相当精巧的持久化/隧道，把出站混入合法 Cloudflare 前置流量）。","asns":["AS56694","AS49505","AS50340","AS62212"],"vectors":["RDP 访问节点","SSH/SFTP 外泄","Chisel + Cloudflare Worker 反向 SOCKS 代理"]}],"scout_queries":[{"threat":"Akira","queries":["x509.subject.cn = \"kali\"","comms.tag = \"sonicwall\"","tag = \"anydesk\"","tag = \"sonicwall\"","tag = \"risknet\"","tag = \"socks\""]},{"threat":"Clop","queries":["tag = \"warp-vpn,pia\""]},{"threat":"LockBit3","queries":["openports.banner = \"*Server: SimpleHelp*\""]},{"threat":"DragonForce","queries":["tag = \"cobaltstrike\"","tag = \"tor\"","comms.port = \"3389\""]},{"threat":"MedusaLocker","queries":["tag = \"socks\"","comms.port = \"3389,22\""]},{"threat":"Lynx","queries":["tag = \"1-vpn\"","comms.tag = \"fortinet\""]},{"threat":"Qilin","queries":["tag = \"risknet\"","comms.port = \"22\""]}],"asn_footprint":[{"asn":"AS42624","gang":"Akira","role":"Cobalt Strike beacon（C2）基础设施（事件1，2025年6月）"},{"asn":"AS63018","gang":"Akira","role":"AnyDesk 滥用为 C2（事件1，2025年6月）"},{"asn":"AS19318","gang":"Akira","role":"Rclone FTP 外泄节点（事件1，2025年6月）"},{"asn":"AS62240","gang":"Akira","role":"基于 SSH 的访问（事件2，2025年7月）"},{"asn":"AS64236","gang":"Akira","role":"托管 FileZilla 配置，外泄暂存（事件2，2025年7月）"},{"asn":"AS213250","gang":"Akira","role":"托管 Rclone SFTP 节点（事件3，2025年10月）"},{"asn":"AS14315","gang":"Akira","role":"Rclone SFTP 节点（事件4，2025年10月）"},{"asn":"AS55286","gang":"Akira","role":"经利用 SonicWall 设备获取初始访问的 VPS 供应商（事件4，2025年10月）"},{"asn":"AS16276","gang":"Akira","role":"经利用 SonicWall 设备获取初始访问的 VPS 供应商（事件4，2025年10月）"},{"asn":"AS14061","gang":"Akira","role":"托管 GOST SOCKS5 代理链（事件5，2025年12月）"},{"asn":"AS57509","gang":"DragonForce","role":"RDP 访问节点（事件1，2025年4月）"},{"asn":"AS209132","gang":"DragonForce","role":"Cobalt Strike C2，兼作工具 ingress 的 FTP 服务器（事件1，2025年4月）"},{"asn":"AS59395","gang":"DragonForce","role":"隧道化操作员流量的专用代理节点（事件1，2025年4月）"},{"asn":"AS33535","gang":"DragonForce","role":"RDP 访问节点（事件2，2025年8月）"},{"asn":"AS36352","gang":"DragonForce","role":"RDP 访问节点（事件2，2025年8月）"},{"asn":"AS205100","gang":"DragonForce","role":"经 Tor 路由的 RDP 会话（事件2，2025年8月）"},{"asn":"AS9009","gang":"DragonForce","role":"暂存/投递 Cobalt Strike Beacon 载荷的主机（事件2，2025年8月）"},{"asn":"AS57523","gang":"DragonForce","role":"执行 RDP 暴力破解（事件3，2026年2月）"},{"asn":"AS6661","gang":"DragonForce","role":"成功 RDP 访问来源，疑似对暴露 3389 端口的机会式口令猜测（事件3，2026年2月）"},{"asn":"AS58061","gang":"DragonForce","role":"成功 RDP 访问来源，疑似机会式口令猜测（事件3，2026年2月）"},{"asn":"AS396073","gang":"Clop","role":"Gladinet CentreStack 攻击利用源 IP 托管（三台非 VPN 源之一，2025年12月）"},{"asn":"AS51852","gang":"Clop","role":"Gladinet CentreStack 攻击利用源 IP 托管（三台非 VPN 源之一，2025年12月）"},{"asn":"AS50049","gang":"Clop","role":"Gladinet CentreStack 攻击利用源 IP 托管（三台非 VPN 源之一，2025年12月）"},{"asn":"AS208137","gang":"INC Ransom","role":"Rclone 数据外泄（事件1，2025年10月）"},{"asn":"AS14956","gang":"Qilin","role":"单暂存节点，同时托管 SFTP 外泄基础设施与 OpenSSH 活动（事件3，2025年12月）"},{"asn":"AS16276","gang":"Lynx","role":"承载基于 Rclone 的外泄，配合 1VPN 隐藏操作员流量来源（事件4，2026年2月）"},{"asn":"AS56694","gang":"MedusaLocker","role":"RDP 访问节点（事件5，2026年3月）"},{"asn":"AS49505","gang":"MedusaLocker","role":"RDP 访问节点（事件5，2026年3月）"},{"asn":"AS50340","gang":"MedusaLocker","role":"基于 SSH/SFTP 的外泄基础设施（事件5，2026年3月）"},{"asn":"AS62212","gang":"MedusaLocker","role":"托管 Chisel 植入体并链式 Cloudflare Worker 建立反向 SOCKS 代理（事件5，2026年3月）"}]},"synth":{"headline_stats":[{"value":"8","label":"12 个月研究覆盖的勒索软件团伙","sub":"Akira、DragonForce、Clop、INC Ransom、LockBit3、Qilin、Lynx、MedusaLocker —— 研究窗口 2025年4月–2026年4月"},{"value":"15","label":"含基础设施明细的事件数","sub":"Akira 6、DragonForce 3、Clop 1、单事件团伙 5；源自与一家 DFIR 伙伴的 20+ 起调查，以英国 SME 为主"},{"value":"10/10","label":"事件发生前已被打标的外泄 IP","sub":"四团伙的外泄 IP 全部命中 Team Cymru 的 Risknet、Socks Proxy 或 AnyDesk 标签 —— 最强的（供应商自报）早期检测主张"},{"value":"29","label":"承载攻击者基础设施的独立 ASN","sub":"去重后的 30 条团伙-ASN 映射；刻意分散于低信誉 VPS，其中 AS16276、AS9009 各被两个团伙共用"},{"value":"0","label":"为 C2 或横向移动编写的定制恶意软件","sub":"全为商品化双用途工具：Rclone、FileZilla、Cobalt Strike、AnyDesk、SimpleHelp、Chisel、GOST"}],"narrative_overview":"在 20+ 起 DFIR 调查中（以英国 SME 为主，2025年4月–2026年4月），Team Cymru 发现八个勒索软件团伙共用一套商品化、双用途的技术栈而非定制恶意软件：加密前外泄用 Rclone 与 FileZilla，C2 用 Cobalt Strike，访问用 AnyDesk、SimpleHelp RMM、暴露的 RDP 与 SSH；初始入侵则经 SonicWall SSL-VPN 利用、Fortinet FortiGate 凭据滥用、Gladinet CentreStack MFT 利用与 RDP 暴力破解实现。攻击者刻意把基础设施铺到 29 个低信誉 ASN，并叠加匿名器——GOST 与 Chisel+Cloudflare-Worker 的 SOCKS 链、Tor、Cloudflare WARP、PIA 与 1VPN——使静态 ASN/IP 信誉封锁成为弱控制。Akira 的手法（“kali” 主机名加最宽的外泄技术种类）与其它每个团伙全面重叠，且全部 10 个外泄 IP 早已被 Risknet、Socks Proxy 与 AnyDesk 标签命中，故以标签驱动、以 Akira 为锚的检测工程很可能对本群体形成整体覆盖。","red_keywords":["Akira","DragonForce","Clop","INC Ransom","LockBit3","Qilin","Lynx","MedusaLocker","Rclone","FileZilla","Cobalt Strike","AnyDesk","SimpleHelp","Chisel","GOST","SonicWall","Fortinet","FortiGate","Gladinet CentreStack","Cloudflare Worker","Cloudflare WARP","WARP","Tor","RDP","SSH","SFTP","PIA","1VPN","Risknet","Socks Proxy","kali","双用途工具","定制恶意软件","SME"],"viz_recommendations":["(已实现) 团伙×工具收敛热力矩阵、事件基础设施时间线、Actor 档案卡、外泄工具链 + IP 标签、ASN 台账、Scout 检测查询条。"]}};
+const $=(s,e=document)=>e.querySelector(s);
+const esc=s=>(s==null?'':String(s)).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+// red-keyword highlighting
+const TOK=[...(DATA.synth&&DATA.synth.red_keywords||[])].map(t=>t.replace(/\s*\(.*?\)\s*/g,'').trim())
+  .concat(['Akira','DragonForce','Clop','INC Ransom','LockBit3','LockBit','Qilin','Lynx','MedusaLocker',
+  'Rclone','FileZilla','Cobalt Strike','AnyDesk','SimpleHelp','Chisel','GOST','SonicWall','Fortinet','FortiGate',
+  'Gladinet CentreStack','CentreStack','Gladinet','Cloudflare Worker','Cloudflare WARP','WARP','Tor','RDP','SSH','SFTP',
+  'PIA','1VPN','Risknet','kali','SOCKS','双用途','定制代码','双重勒索']);
+const TOKS=[...new Set(TOK.filter(Boolean))].sort((a,b)=>b.length-a.length);
+const re=new RegExp('(?<![A-Za-z0-9/])(' + TOKS.map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|') + ')(?![A-Za-z0-9])','g');
+function kw(s){return esc(s).replace(re,'<span class="kw">$1</span>');}
+
+/* ---------- folder tabs ---------- */
+$('#folder').innerHTML=['卷宗封面 / CASE FILE','威胁组织 / ACTORS','基础设施 / INFRASTRUCTURE','检测与防御 / DEFENSE']
+  .map((t,i)=>`<div class="tab ${i==0?'on':''}">${t}</div>`).join('');
+
+/* ---------- head ---------- */
+const S=DATA.judgments.scope;
+$('#head').innerHTML=`
+<div class="head">
+  <div style="flex:1;min-width:280px">
+    <div class="eyebrow">Threat Intelligence Dossier · 威胁情报卷宗</div>
+    <h1>勒索软件基础设施分析</h1>
+    <div class="sub">From the Disk to the Flows —— 一年期 DFIR 协作数据揭示 Akira、DragonForce 与 Clop 等团伙如何搭建勒索软件基础设施。</div>
+    <div class="byline">原件：<b>${esc(S.source)}</b> ｜ 作者 <b>${esc(S.author)}</b> ｜ 发布 <b>${esc(S.date)}</b></div>
+    <div class="meta">
+      <span class="mchip">研究窗口 <b>${esc(S.period)}</b></span>
+      <span class="mchip">样本 <b>${esc(S.sample_size)}</b></span>
+      <span class="mchip">地理 <b>${esc(S.geography)}</b></span>
+    </div>
+    <div class="meta" style="margin-top:8px"><span class="mchip" style="max-width:100%;white-space:normal">方法论：<b>${esc(S.methodology)}</b></span></div>
+  </div>
+  <div class="stamp"><div><small>CONFIDENTIAL</small><div class="big">CASE FILE</div><div class="cn">威胁卷宗</div><small>CTI · 2026</small></div></div>
+</div>`;
+
+/* ---------- KPIs + overview ---------- */
+$('#overview').innerHTML=`
+<div class="kpis">${DATA.synth.headline_stats.map(k=>`
+  <div class="kpi"><div class="v">${esc(k.value)}</div><div class="l">${esc(k.label)}</div><div class="s">${kw(k.sub)}</div></div>`).join('')}
+</div>
+<div class="narr" style="margin-top:18px">${kw(DATA.synth.narrative_overview)}</div>
+<div class="kj">${DATA.judgments.key_judgments.map(j=>`
+  <div class="kji">
+    <div class="conf ${j.confidence}">${j.confidence.toUpperCase()}<small>${j.confidence=='High'?'高置信':j.confidence=='Medium'?'中置信':'低置信'}</small></div>
+    <div><div class="txt">${kw(j.judgment)}</div><div class="basis">依据：${esc(j.basis)}</div></div>
+  </div>`).join('')}
+</div>`;
+
+/* ---------- matrix ---------- */
+const COLS=[
+ {k:'Rclone',c:'exfil',cat:'外泄'},{k:'FileZilla',c:'exfil',cat:'外泄'},{k:'SSH/SFTP',c:'exfil',cat:'外泄'},
+ {k:'Cobalt Strike',c:'c2',cat:'C2'},{k:'RDP',c:'access',cat:'访问'},{k:'AnyDesk',c:'access',cat:'访问'},
+ {k:'SimpleHelp',c:'access',cat:'访问'},{k:'GOST',c:'tunnel',cat:'隧道'},{k:'Chisel',c:'tunnel',cat:'隧道'},
+ {k:'CF Worker',c:'tunnel',cat:'隧道'},{k:'Tor',c:'anon',cat:'匿名'},{k:'VPN',c:'anon',cat:'匿名'},
+ {k:'SonicWall',c:'edge',cat:'边缘'},{k:'Fortinet',c:'edge',cat:'边缘'},{k:'Gladinet',c:'edge',cat:'边缘'}];
+const M={
+ 'Akira':['Rclone','FileZilla','SSH/SFTP','Cobalt Strike','AnyDesk','GOST','SonicWall'],
+ 'DragonForce':['RDP','Cobalt Strike','Tor'],
+ 'Clop':['VPN','Gladinet'],'INC Ransom':['Rclone'],'LockBit3':['SimpleHelp'],'LockBit':['SimpleHelp'],
+ 'Qilin':['SSH/SFTP'],'Lynx':['Rclone','Fortinet','VPN'],
+ 'MedusaLocker':['RDP','SSH/SFTP','Chisel','CF Worker']};
+const CCOL={exfil:'var(--exfil)',c2:'var(--c2)',access:'var(--access)',tunnel:'var(--tunnel)',anon:'var(--anon)',edge:'var(--edge)'};
+// group band (categories in column order)
+let bands=[],prev=null;COLS.forEach(c=>{if(c.cat!==prev){bands.push({cat:c.cat,n:1});prev=c.cat;}else bands[bands.length-1].n++;});
+const order=['Akira','DragonForce','Clop','INC Ransom','LockBit3','Qilin','Lynx','MedusaLocker'];
+let mx=`<div class="mwrap"><table class="mx"><thead><tr class="catband"><th class="corner" style="background:transparent;color:var(--ink3)"></th>`;
+bands.forEach(b=>mx+=`<th colspan="${b.n}" style="background:${CCOL[COLS[COLS.findIndex(c=>c.cat==b.cat)].c]}">${b.cat==='外泄'?'数据外泄':b.cat==='C2'?'命令控制':b.cat==='访问'?'远程访问':b.cat==='隧道'?'隧道代理':b.cat==='匿名'?'流量匿名':'边缘利用'}</th>`);
+mx+=`</tr><tr><th class="corner">团伙 \\ 工具</th>`+COLS.map(c=>`<th>${esc(c.k)}</th>`).join('')+`</tr></thead><tbody>`;
+order.forEach(g=>{const set=new Set(M[g]||[]);
+  mx+=`<tr><th>${esc(g)}</th>`+COLS.map(c=>set.has(c.k)?`<td class="on"><span class="cell" style="background:${CCOL[c.c]}"></span></td>`:`<td><span class="cell"></span></td>`).join('')+`</tr>`;});
+mx+=`</tbody></table></div><div class="glegend">${[['外泄','exfil'],['C2','c2'],['远程访问','access'],['隧道代理','tunnel'],['流量匿名','anon'],['边缘利用','edge']]
+  .map(([n,c])=>`<span><i style="background:${CCOL[c]}"></i>${n}</span>`).join('')}<span style="margin-left:auto;color:var(--ink3)">▪ 色块 = 该团伙在样本中被观测到的行为</span></div>`;
+$('#matrix').innerHTML=mx+`<div class="narr" style="margin-top:16px;border-left-color:var(--ink)">矩阵直观印证核心结论：整个样本<b>未发现任何为横向移动或 C2 自研的定制恶意软件</b>，攻击高度依赖<b>双用途 / 已签名的合法工具</b>。<b>Akira</b> 是最宽的一行——工具种类最多，且与其它团伙的 TTP 全面重叠，因此以 Akira 为锚点的检测工程可对外溢覆盖整个团伙群体。</div>`;
+
+/* ---------- actor cards ---------- */
+$('#actors').innerHTML=DATA.actors.actors.map(a=>{
+  const row=(k,v)=>v&&v.length?`<div class="arow"><div class="k">${k}</div><div class="chips">${v.map(x=>`<span class="chip">${kw(x)}</span>`).join('')}</div></div>`:'';
+  return `<div class="actor">
+  <div class="ahd"><h3>${esc(a.name)}</h3><div class="p">${esc(a.period)}<br>${esc(a.incidents)}</div></div>
+  <div class="body">
+    <div class="disc">${kw(a.distinctive)}</div>
+    ${row('访问',a.access_vectors)}${row('C2',a.c2_tooling)}${row('外泄',a.exfil_tooling)}${row('匿名',a.anonymization)}
+    <div class="arow"><div class="k">ASN</div><div class="chips">${(a.notable_asns||[]).map(x=>`<span class="chip asn">${esc(x)}</span>`).join('')}</div></div>
+    ${a.mitre&&a.mitre.length?`<div class="arow"><div class="k">ATT&CK</div><div class="chips">${a.mitre.map(m=>`<span class="chip mit" title="${esc(m.name)}">${esc(m.id)}</span>`).join('')}</div></div>`:''}
+    <div class="sum">${kw(a.summary)}</div>
+  </div></div>`;}).join('');
+
+/* ---------- exfil + tags ---------- */
+$('#exfil').innerHTML=`
+<div class="panel"><h4>外泄与双用途工具矩阵<span class="en">Dual-Use Toolchain</span></h4><div class="plist">
+${DATA.exfil.exfil_tools.map(t=>`<div class="tl-item"><div class="th"><span class="g" style="color:var(--ink)">${kw(t.name)}</span><span class="m">${esc(t.category).toUpperCase()}</span></div>
+<div class="vec">${t.gangs.map(g=>`<span class="vc">${esc(g)}</span>`).join('')}</div>
+<div class="d">${kw(t.note)}</div></div>`).join('')}
+</div></div>
+<div class="panel"><h4>Cymru 专有 IP 标签<span class="en">Risknet · Socks · AnyDesk</span></h4><div class="plist">
+${DATA.exfil.ip_tags.map(t=>`<div class="tl-item"><div class="th"><span class="tag ${t.tag.toLowerCase().replace(/[^a-z]/g,'')}"><span class="cn">${esc(t.tag)}</span></span></div>
+<div class="tagdef"><b style="color:var(--red)">定义：</b>${esc(t.definition)}</div>
+<div class="d" style="margin-top:5px"><b>观测：</b>${kw(t.usage)}</div></div>`).join('')}
+<div class="tl-item" style="border-color:var(--red)"><div class="th"><span class="g" style="color:var(--red)">10 / 10 命中</span></div>
+<div class="d">四个团伙用于数据外泄的 10 个 IP，事件发生前<b>已全部被 Cymru 标签标记为潜在关注对象</b>——支撑以标签驱动的早期检测（供应商自报，未披露精确率/误报率）。</div></div>
+</div></div>`;
+
+/* ---------- timeline ---------- */
+const vecClass=v=>/RDP|3389/.test(v)?'ac-RDP':/SonicWall/.test(v)?'ac-SonicWall':/Fortinet|FortiGate/.test(v)?'ac-Fortinet':/Gladinet|MFT|CentreStack/.test(v)?'ac-MFT':/Tor/.test(v)?'ac-Tor':/VPN|WARP|PIA/.test(v)?'ac-VPN':/AnyDesk/.test(v)?'ac-AnyDesk':/SimpleHelp|RMM/.test(v)?'ac-SimpleHelp':'';
+$('#timeline').innerHTML=DATA.timeline.incidents.map(i=>`
+<div class="tli"><div class="line"><span class="mo">${esc(i.month)}</span><span class="gn">${kw(i.gang)}</span>
+<span style="margin-left:auto;font-family:var(--type);font-size:10.5px;color:var(--ink3)">${(i.asns||[]).join(' · ')}</span></div>
+<div class="vec">${(i.vectors||[]).map(v=>`<span class="vc ${vecClass(v)}">${esc(v)}</span>`).join('')}</div>
+<div class="dt">${kw(i.detail)}</div></div>`).join('')
++`<div class="mchip" style="margin-top:6px;display:inline-block">注：报告称 Akira 共 6 起事件，正文仅逐一披露 5 起；此处时间线含 14 起有基础设施明细的事件。</div>`;
+
+/* ---------- asn ledger ---------- */
+const shared={};DATA.timeline.asn_footprint.forEach(x=>shared[x.asn]=(shared[x.asn]||0)+1);
+$('#asn').innerHTML=`<div class="asnwrap"><table class="asn"><thead><tr><th>ASN</th><th>团伙</th><th>基础设施角色</th></tr></thead><tbody>
+${DATA.timeline.asn_footprint.map(x=>`<tr class="${shared[x.asn]>1?'shared':''}"><td class="a">${esc(x.asn)}${shared[x.asn]>1?' ⚑':''}</td><td class="g">${esc(x.gang)}</td><td>${kw(x.role)}</td></tr>`).join('')}
+</tbody></table></div>
+<div class="mchip" style="margin-top:8px">⚑ <b>跨团伙共享 ASN</b>：AS16276（Akira 与 Lynx 均用于 Rclone 外泄 / SonicWall 初始访问）、AS9009（DragonForce 与 LockBit3 均用于载荷投递 / SimpleHelp）。共享托管说明不同"品牌"团伙可能落在相邻甚至相同的基础设施生态，进一步削弱按 ASN/IP 信誉静态封锁的价值。</div>`;
+
+/* ---------- scout ---------- */
+$('#scout').innerHTML=DATA.timeline.scout_queries.map(q=>{
+  const code=s=>kw(esc(s)).replace(/= /g,'=<b> </b>').replace(/"([^"]*)"/g,'"$1"');
+  return `<div class="sq"><div class="t">${kw(q.threat)}</div>
+  <div>${q.queries.map(s=>`<span class="code">${esc(s)}</span>`).join('')}</div></div>`;}).join('')
+  +`<div class="mchip" style="margin-top:6px;display:inline-block">以上为 Team Cymru 客户在其 Scout NetFlow 平台内检索匹配基础设施行为的可复用查询；结果可用于告警或威胁狩猎，永久封锁前仍需进一步研判。原文具体 IOC 未公开。</div>`;
+
+/* ---------- recommendations ---------- */
+$('#recs').innerHTML=DATA.judgments.recommendations.map((r,i)=>`<div class="rec"><span class="n">行动 ${String(i+1).padStart(2,'0')}</span>${kw(r)}</div>`).join('');
+
+/* ---------- discipline ---------- */
+const conv=DATA.judgments.convergences, lim=DATA.judgments.limitations, gap=DATA.judgments.gaps;
+$('#disc').innerHTML=`
+<div class="disc conv"><h4>跨团伙行为汇聚 · Convergences</h4><ul>${conv.map(x=>`<li>${kw(x)}</li>`).join('')}</ul></div>
+<div class="disc lim"><h4>证据局限 · Limitations</h4><ul>${lim.map(x=>`<li>${kw(x)}</li>`).join('')}</ul></div>
+<div class="disc gap"><h4>情报缺口 · Gaps / 会改变结论的因素</h4><ul>${gap.map(x=>`<li>${kw(x)}</li>`).join('')}</ul></div>`;
+
+/* ---------- footer ---------- */
+$('#foot').innerHTML=`<div>分析产物：可视化威胁情报卷宗 ｜ 方法：证据驱动 · Fact / Lead / Assessment 分离 · 置信度分级 · ATT&CK 仅在行为有据时映射</div>
+<div>原件来源：<a href="https://www.team-cymru.com/post/ransomware-infrastructure-analysis">Team Cymru — Ransomware Incident Response: Infrastructure Analysis</a></div>`;
+</script>
+</body>
+</html>
