@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Red Queen 威胁情报分析</title>
+<style>
+:root{
+  --paper:#e9dec0; --paper2:#ddceac; --panel:#f1e8d1; --card:#f4ecd9;
+  --ink:#2c2318; --ink2:#574633; --mut:#8a765a;
+  --line:#c1ab82; --line2:#a88f63; --deep:#4a3826;
+  --red:#a11c0f; --red2:#7c150b;
+  --serif:Georgia,"Times New Roman","Songti SC","STSong","Source Han Serif SC","Noto Serif SC",serif;
+  --mono:"Courier New",Consolas,"SFMono-Regular",Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{background:#c3b088}
+body{
+  margin:0;color:var(--ink);font-family:var(--serif);font-size:15px;line-height:1.72;
+  background:
+    radial-gradient(1300px 640px at 16% -8%, rgba(255,252,240,.5), transparent 60%),
+    radial-gradient(720px 420px at 90% 12%, rgba(150,105,50,.13), transparent 60%),
+    radial-gradient(620px 520px at 4% 92%, rgba(120,80,40,.15), transparent 60%),
+    var(--paper);
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.06;mix-blend-mode:multiply;
+  background-image:repeating-linear-gradient(90deg,rgba(74,56,38,.28) 0 1px,transparent 1px 3px),
+                   repeating-linear-gradient(0deg,rgba(74,56,38,.16) 0 1px,transparent 1px 4px);
+}
+.wrap{max-width:1140px;margin:30px auto 90px;padding:0 26px;position:relative;z-index:1}
+
+/* ---------- header / stamps ---------- */
+header{padding:20px 0 6px;position:relative;border-bottom:2px solid var(--deep);margin-bottom:8px}
+.classif{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);
+  border:1px solid var(--deep);background:rgba(74,56,38,.05);padding:5px 12px;letter-spacing:.18em}
+.classif .l{color:var(--red2);font-weight:700}
+.classif .r{color:var(--ink2)}
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(28px,5.2vw,48px);line-height:1.08;margin:22px 0 4px;
+  color:var(--deep);letter-spacing:.01em}
+h1 .en{display:block;font-family:var(--mono);font-size:.34em;letter-spacing:.3em;color:var(--mut);font-weight:400;margin-top:8px}
+.sub{font-family:var(--mono);color:var(--ink2);font-size:14px;margin:4px 0 24px}
+.stampbox{position:absolute;right:6px;top:64px;transform:rotate(-7deg);border:3px double var(--red);color:var(--red);
+  padding:7px 15px;font-family:var(--mono);font-weight:700;text-align:center;opacity:.82;letter-spacing:.1em;
+  box-shadow:inset 0 0 0 1px rgba(161,28,15,.3);line-height:1.35;background:rgba(233,222,192,.35)}
+.stampbox .big{font-size:17px}.stampbox .sm{font-size:9.5px;opacity:.85;letter-spacing:.2em}
+.stamp-ghost{position:fixed;left:50%;top:44%;transform:translate(-50%,-50%) rotate(-32deg);z-index:0;pointer-events:none;
+  font-family:var(--mono);font-weight:700;font-size:26vw;color:rgba(161,28,15,.05);letter-spacing:.1em;user-select:none}
+
+/* ---------- badges / stats ---------- */
+.badges{display:flex;flex-wrap:wrap;gap:12px;margin:6px 0 4px}
+.bdg{font-family:var(--mono);padding:10px 15px;border:1px solid var(--line2);background:var(--panel);position:relative;
+  box-shadow:2px 2px 0 rgba(74,56,38,.12)}
+.bdg b{color:var(--deep);font-size:20px;font-family:var(--serif)}
+.bdg.warn b{color:var(--red)}
+.bdg .t{display:block;color:var(--mut);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:2px}
+
+/* ---------- sections ---------- */
+section{margin:54px 0}
+.sec-h{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--deep);display:flex;align-items:baseline;gap:14px;
+  margin-bottom:4px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.sec-h .n{font-family:var(--mono);font-size:13px;color:var(--red);font-weight:700;letter-spacing:.05em}
+.sec-h::after{content:"";flex:1}
+.sec-note{color:var(--ink2);font-size:13px;margin:0 0 24px;font-family:var(--mono);letter-spacing:.02em}
+
+/* ---------- callout ---------- */
+.callout{border:1px solid var(--line2);border-left:4px solid var(--red);background:rgba(161,28,15,.045);
+  padding:18px 22px;position:relative;margin:26px 0}
+.callout::before{content:"// 脱敏规程 DEFANG PROTOCOL";position:absolute;top:-10px;left:16px;background:var(--paper);padding:0 10px;
+  font-family:var(--mono);font-size:11px;color:var(--red);letter-spacing:.12em;font-weight:700}
+.callout p{margin:3px 0;font-size:13.5px;color:var(--ink)}
+.callout .r{color:var(--red);font-weight:700;font-family:var(--mono)}
+
+/* ---------- categories ---------- */
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.cat{background:var(--card);border:1px solid var(--line);padding:20px;position:relative;box-shadow:3px 3px 0 rgba(74,56,38,.1)}
+.cat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--acc)}
+.cat .lab{font-family:var(--mono);font-weight:700;font-size:32px;color:var(--acc);position:absolute;right:16px;top:12px;opacity:.55}
+.cat h3{margin:2px 0 8px;font-size:16.5px;color:var(--deep)}
+.cat p{margin:0 0 12px;color:var(--ink2);font-size:13.5px}
+.cat .chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--mono);font-size:11px;padding:3px 8px;border:1px solid var(--line2);color:var(--ink2);background:rgba(255,255,255,.28)}
+.cat .vic{margin-top:12px;font-size:12.5px;color:var(--ink2);font-family:var(--mono)}
+.cat .vic b{color:var(--acc)}
+
+/* ---------- endpoint cards ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+.node{background:var(--card);border:1px solid var(--line);position:relative;overflow:hidden;box-shadow:3px 3px 0 rgba(74,56,38,.1)}
+.node::after{content:"";position:absolute;left:22px;top:0;bottom:0;width:1px;background:rgba(161,28,15,.14);pointer-events:none}
+.cA{--acc:#6a5334}.cB{--acc:#946d20}.cC{--acc:var(--red)}
+.nh{padding:14px 18px 12px 30px;border-bottom:1px double var(--line2);background:rgba(74,56,38,.045)}
+.nh .row1{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.ip{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--red);letter-spacing:.01em}
+.catpill{font-family:var(--mono);font-size:11px;font-weight:700;padding:3px 9px;border:1px solid var(--acc);color:var(--acc);white-space:nowrap}
+.cC .catpill{background:rgba(161,28,15,.08)}
+.role{color:var(--deep);font-size:14px;margin:6px 0 2px;font-weight:700;font-family:var(--serif)}
+.meta{display:flex;flex-wrap:wrap;gap:5px 14px;font-family:var(--mono);font-size:11px;color:var(--mut);margin-top:8px}
+.meta span b{color:var(--ink2);font-weight:600}
+.na{position:absolute;right:12px;top:12px;font-family:var(--mono);font-size:9px;color:var(--line2);border:1px solid var(--line);
+  padding:1px 5px;letter-spacing:.1em}
+.nb{padding:14px 18px 16px 30px}
+.nx-t{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--mut);text-transform:uppercase;margin:0 0 8px;font-weight:700}
+ul.keys{list-style:none;margin:0 0 14px;padding:0}
+ul.keys li{padding:6px 0 6px 18px;position:relative;font-size:13px;border-bottom:1px dotted var(--line);color:var(--ink)}
+ul.keys li:last-child{border-bottom:0}
+ul.keys li::before{content:"§";position:absolute;left:0;color:var(--red);font-size:13px;font-weight:700}
+.tools{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.tool{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border:1px solid var(--line2);color:var(--ink2);background:rgba(255,255,255,.25)}
+.tool.hot{color:var(--red2);border-color:rgba(161,28,15,.4);background:rgba(161,28,15,.05);font-weight:700}
+.warnflag{margin-top:12px;font-family:var(--mono);font-size:11px;color:var(--red);border:1px dashed rgba(161,28,15,.5);padding:6px 9px;background:rgba(161,28,15,.05)}
+.riskbar{display:flex;align-items:center;gap:10px;margin-top:14px}
+.riskbar .lab{font-family:var(--mono);font-size:10px;color:var(--mut);white-space:nowrap;letter-spacing:.1em}
+.riskbar .bar{flex:1;height:12px;background:rgba(74,56,38,.09);border:1px solid var(--line);position:relative}
+.riskbar .fill{position:absolute;left:0;top:0;bottom:0;width:0;transition:width 1.1s ease;
+  background:repeating-linear-gradient(45deg,var(--red) 0 7px,rgba(161,28,15,.55) 7px 14px)}
+
+/* ---------- matrix ---------- */
+.matrixwrap{overflow-x:auto;border:1px solid var(--line2);background:var(--card);padding:4px;box-shadow:3px 3px 0 rgba(74,56,38,.1)}
+table.mx{border-collapse:collapse;width:100%;min-width:900px;font-size:13px}
+table.mx th,table.mx td{border:1px solid var(--line);padding:8px 6px;text-align:center;vertical-align:middle}
+table.mx thead th{background:#e5d7b4;color:var(--deep);font-weight:700;font-size:11px;letter-spacing:.03em;padding:10px 5px;
+  vertical-align:bottom;line-height:1.4;font-family:var(--mono);border-bottom:2px solid var(--line2)}
+table.mx thead th small{display:block;color:var(--mut);font-size:9px;margin-top:4px;letter-spacing:.08em}
+table.mx th.row{text-align:left;color:var(--ink);background:#e6d9b8;white-space:nowrap;font-weight:700;padding-left:12px;font-family:var(--mono);font-size:12px}
+table.mx th.row .cc{display:inline-block;width:8px;height:8px;margin-right:8px;vertical-align:middle}
+td .cell{display:block;width:24px;height:24px;line-height:24px;margin:1px auto;border:1px solid transparent;font-weight:700;font-size:13px;font-family:var(--mono)}
+td .cell.l2{background:var(--red);color:#f4ecd9;border-color:var(--red2);box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+td .cell.l1{background:transparent;color:var(--deep);border:1px dashed var(--ink2)}
+td .cell.l0{color:var(--line2)}
+.cntcell{font-family:var(--mono);color:var(--red);font-weight:700}
+table.mx tfoot td{background:#e5d7b4;color:var(--red2);font-weight:700;font-size:12px;border-top:2px solid var(--line2);font-family:var(--mono)}
+table.mx tfoot th{color:var(--deep);font-size:10px;text-align:left;letter-spacing:.08em;text-transform:uppercase;background:#e5d7b4;font-family:var(--mono)}
+.mleg{display:flex;flex-wrap:wrap;gap:18px;margin-top:12px;font-family:var(--mono);font-size:11px;color:var(--ink2)}
+.mleg i{display:inline-block;width:15px;height:15px;margin-right:6px;vertical-align:-3px}
+
+/* ---------- chains (svg) ---------- */
+.chains{display:grid;gap:24px}
+.chain{border:1px solid var(--line);background:var(--card);padding:16px 16px 6px;box-shadow:3px 3px 0 rgba(74,56,38,.1)}
+.chain h4{margin:0 0 2px;font-family:var(--serif);font-size:15.5px;color:var(--deep)}
+.chain .cx{color:var(--ink2);font-size:12.5px;margin:0 0 12px;font-family:var(--mono)}
+.flow{overflow-x:auto;padding:4px 0 8px}
+.flow svg{display:block;min-width:760px}
+.sbox{fill:#e6d9b8;stroke:#a88f63;stroke-width:1.2}
+.sbox.bad{fill:#f0dcd7;stroke:#a11c0f}
+.sbox.good{fill:#e0e6cf;stroke:#4f6a3a}
+.sbox.warn{fill:#efe0c0;stroke:#946d20}
+.stx{fill:#2c2318;font-family:Georgia,"Songti SC",serif;font-size:13px}
+.stx.sm{font-size:10px;fill:#8a765a}
+.sarr{stroke:#7c6748;stroke-width:1.6;fill:none}
+.sarr.bad{stroke:#a11c0f}
+
+/* ---------- timeline ---------- */
+.tl{position:relative;margin-left:12px;padding-left:28px;border-left:2px solid var(--line2)}
+.tl .ev{position:relative;padding:8px 0 14px}
+.tl .ev::before{content:"";position:absolute;left:-36px;top:14px;width:12px;height:12px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--deep)}
+.tl .ev.bad::before{border-color:var(--red);background:var(--red)}
+.tl .ev.key::before{border-color:var(--red2)}
+.tl .d{font-family:var(--mono);font-size:12px;color:var(--red2);letter-spacing:.05em;font-weight:700}
+.tl .x{font-size:14px;color:var(--ink)}.tl .x b{color:var(--red)}
+
+/* ---------- threat bar ---------- */
+.tb{border:1px solid var(--line2);background:var(--card);padding:16px 20px;box-shadow:3px 3px 0 rgba(74,56,38,.1)}
+.tb .tbrow{display:grid;grid-template-columns:210px 1fr 48px;align-items:center;gap:12px;margin:9px 0;font-family:var(--mono);font-size:12.5px}
+.tb .tbrow .nm{color:var(--red);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700}
+.tb .trk{height:16px;background:rgba(74,56,38,.08);border:1px solid var(--line);position:relative}
+.tb .trk .fl{position:absolute;inset:0;width:0;transition:width 1.2s ease;
+  background:repeating-linear-gradient(45deg,var(--red) 0 8px,rgba(161,28,15,.5) 8px 16px)}
+.tb .num{color:var(--deep);font-weight:700;text-align:right;font-family:var(--serif);font-size:15px}
+
+/* ---------- ioc ---------- */
+.ioc{width:100%;border-collapse:collapse;font-size:13px;display:block;overflow-x:auto}
+.ioc td,.ioc th{border:1px solid var(--line);padding:8px 12px;text-align:left;vertical-align:top}
+.ioc th{background:#e5d7b4;color:var(--deep);letter-spacing:.06em;font-size:11px;text-transform:uppercase;font-family:var(--mono)}
+.ioc td.v{font-family:var(--mono);color:var(--red2)}.ioc td.t{font-family:var(--mono);color:var(--mut);white-space:nowrap}
+.ioc td .c{color:var(--ink2)}
+.tag{display:inline-block;padding:1px 6px;border:1px solid var(--line2);font-size:10px;color:var(--ink2);margin:0 0 3px 4px;font-family:var(--mono)}
+
+/* ---------- recs ---------- */
+.recs{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
+.rec{border:1px solid var(--line);padding:16px 20px;background:var(--card);box-shadow:3px 3px 0 rgba(74,56,38,.1)}
+.rec h4{margin:0 0 12px;font-family:var(--mono);font-size:13px;letter-spacing:.06em;border-bottom:1px solid var(--line);padding-bottom:8px}
+.rec.A h4{color:#6a5334}.rec.B h4{color:#946d20}.rec.C h4{color:var(--red)}.rec.G h4{color:var(--deep)}
+.rec ol{margin:0;padding-left:20px}.rec li{margin:6px 0;font-size:13px;color:var(--ink)}
+.rec code{font-family:var(--mono);font-size:12px;color:var(--red2);background:rgba(161,28,15,.06);padding:1px 4px}
+
+mark.kw{background:rgba(161,28,15,.13);color:var(--red2);font-weight:700;padding:0 3px;border-bottom:1px solid rgba(161,28,15,.4)}
+
+footer{margin-top:60px;padding-top:18px;border-top:2px solid var(--deep);font-family:var(--mono);font-size:11px;color:var(--mut);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;letter-spacing:.05em}
+footer .r{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="stamp-ghost">機密</div>
+<div class="wrap">
+
+<header>
+  <div class="classif">
+    <span class="l">■ 机密 CONFIDENTIAL</span>
+    <span class="r">档案编号 TI-2026-0514 / 卷宗 9-8 / 归档 2026-09-18</span>
+  </div>
+  <div class="stampbox"><div class="sm">CLASSIFIED · DOSSIER</div><div class="big">威 胁 卷 宗</div><div class="sm">9 文档 · 8 端点</div></div>
+  <h1>黑客基础设施泄露分析<span class="en">THREAT INFRASTRUCTURE LEAK ANALYSIS · CONSOLIDATED DOSSIER</span></h1>
+  <div class="sub">9 份分析报告 · 8 个独立暴露端点 · 黑客泄露专题</div>
+
+  <div class="badges" id="stats"></div>
+</header>
+
+<div class="callout">
+  <p>本卷宗所有情报均已按 <span class="r">[DEFC-2026]</span> 规范脱敏。<span class="r">禁止</span>在任何界面/文件中复述以下明文:</p>
+  <p>① 被盗信用卡 <span class="r">PAN / CVV / 过期日 / 持卡人姓名·地址·电话·邮箱</span>(193 端点 ~5,374 条 Fullz);</p>
+  <p>② 云凭据明文 <span class="r">Azure AI Search API Key</span>、IPQS <span class="r">295 个 Key</span>;</p>
+  <p>③ <span class="r">员工/承包商邮箱、账户 PIN、Admin JWT 载荷、ShopperId、ETH 私钥</span>。</p>
+</div>
+
+<section>
+  <div class="sec-h"><span class="n">01</span> 三类别分诊 · TRIAGE</div>
+  <p class="sec-note">同一根因,三种完全不同的受害者与处置路径 —— 混谈会导致响应错误。</p>
+  <div class="cats" id="cats"></div>
+</section>
+
+<section>
+  <div class="sec-h"><span class="n">02</span> 端点节点 · NODES</div>
+  <p class="sec-note">8 个独立端点 · 风险条为相对研判分(0-100),非厂商评分。</p>
+  <div class="grid" id="nodes"></div>
+</section>
+
+<section>
+  <div class="sec-h"><span class="n">03</span> 端点 × 特征收敛矩阵 · CONVERGENCE</div>
+  <p class="sec-note">实心红格 = 强信号(确证) / 虚线格 = 弱信号(间接) / 空白 = 未见。右侧与底部为命中统计。</p>
+  <div class="matrixwrap"><table class="mx" id="matrix"></table></div>
+  <div class="mleg">
+    <span><i style="background:var(--red)"></i>● 强信号 / 已确证</span>
+    <span><i style="border:1px dashed var(--ink2)"></i>○ 弱信号 / 间接</span>
+    <span><i style="border:1px solid var(--line)"></i>✕ 未见</span>
+  </div>
+</section>
+
+<section>
+  <div class="sec-h"><span class="n">04</span> 攻击链重建 · KILL CHAINS</div>
+  <div class="chains">
+    <div class="chain">
+      <h4>其一 · 白帽研究工作站泄露 → 武器化</h4>
+      <p class="cx">以 5.9.142.165:8082 为实证 —— 已有第三方完成下载清点,泄露 ≠ 纸面风险。</p>
+      <div class="flow"><svg viewBox="0 0 1120 130" width="1120" height="130">
+        <defs><marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#7c6748"/></marker>
+        <marker id="arwb" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#a11c0f"/></marker></defs>
+        <g>
+          <rect class="sbox" x="6" y="38" width="192" height="54" rx="2"/><text class="stx" x="18" y="60">未修补 0day</text><text class="stx sm" x="18" y="78">UAF · 内核 RCE · 证书元数据</text>
+          <rect class="sbox warn" x="236" y="38" width="192" height="54" rx="2"/><text class="stx" x="248" y="60">http.server 暴露</text><text class="stx sm" x="248" y="78">5,273 文件 · 无认证</text>
+          <rect class="sbox bad" x="466" y="38" width="192" height="54" rx="2"/><text class="stx" x="478" y="60">互联网扫描者</text><text class="stx sm" x="478" y="78">渗透 / 犯罪基础设施</text>
+          <rect class="sbox bad" x="696" y="38" width="192" height="54" rx="2"/><text class="stx" x="708" y="60">VRP · PoC 被下载</text><text class="stx sm" x="708" y="78">24,283 行 · 8MB exploit 包</text>
+          <rect class="sbox bad" x="926" y="38" width="188" height="54" rx="2"/><text class="stx" x="938" y="60">0day 武器化</text><text class="stx sm" x="938" y="78">沙箱逃逸 / RCE / MITM</text>
+        </g>
+        <line class="sarr" x1="198" y1="65" x2="234" y2="65" marker-end="url(#arw)"/>
+        <line class="sarr bad" x1="428" y1="65" x2="464" y2="65" marker-end="url(#arwb)"/>
+        <line class="sarr bad" x1="658" y1="65" x2="694" y2="65" marker-end="url(#arwb)"/>
+        <line class="sarr bad" x1="888" y1="65" x2="924" y2="65" marker-end="url(#arwb)"/>
+      </svg></div>
+    </div>
+
+    <div class="chain">
+      <h4>其二 · 147.93.133.220 — Lazarus 僵尸网络反制 · 窃密链</h4>
+      <p class="cx">清理 Lazarus 后接管受害机,回传凭证并守护加密货币钱包。</p>
+      <div class="flow"><svg viewBox="0 0 1140 150" width="1140" height="150">
+        <rect class="sbox bad" x="6" y="48" width="182" height="54" rx="2"/><text class="stx" x="18" y="70">Lazarus 感染</text><text class="stx sm" x="18" y="88">C2 [hxxp] 3333/8080/14444</text>
+        <rect class="sbox bad" x="226" y="48" width="182" height="54" rx="2"/><text class="stx" x="238" y="70">payload.sh 接管</text><text class="stx sm" x="238" y="88">清理挖矿+删后门</text>
+        <rect class="sbox bad" x="446" y="48" width="182" height="54" rx="2"/><text class="stx" x="458" y="70">intel 收集</text><text class="stx sm" x="458" y="88">AWS/GCP · SSH · 浏览器</text>
+        <rect class="sbox bad" x="666" y="48" width="182" height="54" rx="2"/><text class="stx" x="678" y="70">intel_receiver</text><text class="stx sm" x="678" y="88">:8080 画像入库</text>
+        <rect class="sbox bad" x="886" y="20" width="150" height="48" rx="2"/><text class="stx" x="898" y="40">mm_pack.sh</text><text class="stx sm" x="898" y="56">MetaMask 打包</text>
+        <rect class="sbox bad" x="886" y="84" width="150" height="48" rx="2"/><text class="stx" x="898" y="104">analyze_victim</text><text class="stx sm" x="898" y="120">高价值目标评分</text>
+        <line class="sarr bad" x1="188" y1="75" x2="224" y2="75" marker-end="url(#arwb)"/>
+        <line class="sarr bad" x1="408" y1="75" x2="444" y2="75" marker-end="url(#arwb)"/>
+        <line class="sarr bad" x1="628" y1="75" x2="664" y2="75" marker-end="url(#arwb)"/>
+        <line class="sarr bad" x1="848" y1="65" x2="884" y2="46" marker-end="url(#arwb)"/>
+        <line class="sarr bad" x1="848" y1="85" x2="884" y2="106" marker-end="url(#arwb)"/>
+      </svg></div>
+    </div>
+
+    <div class="chain">
+      <h4>其三 · 193.122.112.174 — 信用卡盗刷 (Carding) 变现链</h4>
+      <p class="cx">全中文操作 · Oracle 免费层 · 地理一致性绕过反欺诈风控。</p>
+      <div class="flow"><svg viewBox="0 0 1140 130" width="1140" height="130">
+        <rect class="sbox bad" x="6" y="38" width="160" height="54" rx="2"/><text class="stx" x="16" y="60">被盗 Fullz</text><text class="stx sm" x="16" y="78">5,374 条 [已脱敏]</text>
+        <rect class="sbox bad" x="204" y="38" width="160" height="54" rx="2"/><text class="stx" x="214" y="60">BIN 筛选</text><text class="stx sm" x="214" y="78">筛头.sh / No.py</text>
+        <rect class="sbox bad" x="402" y="38" width="160" height="54" rx="2"/><text class="stx" x="412" y="60">住宅代理</text><text class="stx sm" x="412" y="78">Clip/Kook/Cola</text>
+        <rect class="sbox bad" x="600" y="38" width="160" height="54" rx="2"/><text class="stx" x="610" y="60">IPQS 绕过</text><text class="stx sm" x="610" y="78">295 Key 轮换 · strict3</text>
+        <rect class="sbox bad" x="798" y="38" width="160" height="54" rx="2"/><text class="stx" x="808" y="60">地理州匹配</text><text class="stx sm" x="808" y="78">IP 州 = 持卡人州</text>
+        <rect class="sbox bad" x="996" y="38" width="140" height="54" rx="2"/><text class="stx" x="1006" y="60">cococheck</text><text class="stx sm" x="1006" y="78">验活→盗刷</text>
+        <line class="sarr bad" x1="166" y1="65" x2="202" y2="65" marker-end="url(#arwb)"/>
+        <line class="sarr bad" x1="364" y1="65" x2="400" y2="65" marker-end="url(#arwb)"/>
+        <line class="sarr bad" x1="562" y1="65" x2="598" y2="65" marker-end="url(#arwb)"/>
+        <line class="sarr bad" x1="760" y1="65" x2="796" y2="65" marker-end="url(#arwb)"/>
+        <line class="sarr bad" x1="958" y1="65" x2="994" y2="65" marker-end="url(#arwb)"/>
+      </svg></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-h"><span class="n">05</span> 泄露 → 武器化时间线 · 5.9.142.165</div>
+  <p class="sec-note">证据来自"深度分析报告"+"渗透测试报告"两份文档交叉比对。</p>
+  <div class="tl" id="timeline"></div>
+</section>
+
+<section>
+  <div class="sec-h"><span class="n">06</span> 威胁热度榜 · THREAT SCORE</div>
+  <div class="tb" id="threat"></div>
+</section>
+
+<section>
+  <div class="sec-h"><span class="n">07</span> 指标清单 · IOC(已脱敏)</div>
+  <div class="matrixwrap"><table class="ioc" id="ioc"></table></div>
+  <p class="sec-note" style="margin-top:12px">[hxxp]/[.] = 防误触达改写;凡标 <span style="color:var(--red);font-family:var(--mono)">REDACTED(已涂抹)</span> 者按政策不予复述。</p>
+</section>
+
+<section>
+  <div class="sec-h"><span class="n">08</span> 处置行动 · ACTION</div>
+  <div class="recs">
+    <div class="rec A"><h4>A · 白帽泄露 × 5</h4><ol>
+      <li>立即关停所有 <code>http.server</code> 暴露</li>
+      <li>轮换全部测试凭证 / token / PEM</li>
+      <li>未修补 0day 走负责任披露提交厂商</li>
+      <li>优先修补:GoDaddy F112/F1/F92/F13、Chrome UAF、FreeBSD 内核、EllieMae 233 账户</li>
+      <li>本人身份已暴露,警惕抢注与法律风险</li>
+    </ol></div>
+    <div class="rec B"><h4>B · 企业自泄 × 1</h4><ol>
+      <li>P0 立即吊销 / 轮换 <code>Azure AI Search Key</code></li>
+      <li>下线 <code>.env</code> 与目录列表,迁 Azure Key Vault</li>
+      <li>用 Uvicorn+Nginx 正确托管,禁用 listing</li>
+      <li>审计 Search/OpenAI/PG 访问日志查入侵痕迹</li>
+      <li>加密行业数据泄露,评估合规上报义务</li>
+    </ol></div>
+    <div class="rec C"><h4>C · 犯罪基础设施 × 2</h4><ol>
+      <li>作为在办犯罪基础设施取证入库</li>
+      <li>193:通知 IPQS + 三家住宅代理 + 卡组织/收单机构</li>
+      <li>受害持卡人 5,374 人 → 挂失换卡、监控盗刷</li>
+      <li>147:受害方立即转 MetaMask、轮换云密钥、重置 SSH</li>
+      <li>向 CERT / 执法机关上报跨国网络犯罪</li>
+    </ol></div>
+    <div class="rec G"><h4>通用防御</h4><ol>
+      <li>禁用任何带目录列表的临时 HTTP 服务</li>
+      <li>出站连接白名单,限制 egress</li>
+      <li>资产暴露面自扫常态化(本批即其正向样本)</li>
+      <li>研究/开发环境严禁 root 直连公网</li>
+      <li>建立泄露事件响应与凭证轮换 SOP</li>
+    </ol></div>
+  </div>
+</section>
+
+<footer>
+  <span>THREAT DOSSIER // 第 9 卷 · 生成于 2026-09-18</span>
+  <span class="r">FACT / LEAD / ASSESSMENT 分离 · 置信度标注 · 仅供防御研究 · 阅后即焚</span>
+</footer>
+
+</div>
+
+<script>
+const DATA = /*INJECT*/{
+  "stats":[
+    {"n":"8","t":"独立端点","c":""},
+    {"n":"9","t":"分析文档","c":""},
+    {"n":"40,000+","t":"泄露文件","c":""},
+    {"n":"3","t":"已确证内核级 RCE","c":"warn"},
+    {"n":"~5,374","t":"被盗卡 Fullz","c":"warn"},
+    {"n":"8/8","t":"python http.server","c":""}
+  ],
+  "cats":[
+    {"id":"A","acc":"#6a5334","name":"白帽研究 / 测试工作站误公开","desc":"安全研究员/赏金猎人把整台漏洞挖掘机裸奔公开,未修补 0day、PoC、方法论、测试凭证一并泄露。","nodes":["37.27.4.247","5.9.142.165","157.180.61.21","167.172.217.141","5.189.155.130"],"victim":"研究员本人 + 被研究厂商","color":"cA"},
+    {"id":"B","acc":"#946d20","name":"企业应用自身配置泄露","desc":"一家企业(疑似加密交易所 AI 客服 / RAG 系统)开发误用 SimpleHTTP 托管,生产源码+.env+K8s+云密钥全暴露。","nodes":["20.9.192.128"],"victim":"企业自身 + 其终端用户","color":"cB"},
+    {"id":"C","acc":"#a11c0f","name":"真实犯罪基础设施","desc":"攻击者自有服务器:Lazarus 僵尸网络接管修复 + 信用卡盗刷(carding)变现平台。","nodes":["147.93.133.220","193.122.112.174"],"victim":"被感染用户 · 加密开发者 · 持卡人","color":"cC"}
+  ],
+  "nodes":[
+    {"ip":"37.27.4.247:8080","cat":"A","color":"cA","role":"多厂商 Web 赏金猎人工作站","svc":"SimpleHTTP","region":"Hetzner(北欧)","files":"122+","tools":["OAST atko.herokuapp.com","手工为主","CRLF→COOP 链"],"key":["United Airlines Spring Boot heapdump→10 组 Keycloak Secret(已脱敏)","Stripe 582 服务拓扑 · AWS GameLift/WorkSpaces/Cognito","Grafana OSS CSRF 0day(csrf.go Origin 校验缺失)","Visa/Capital One/Plaid/OpenAM 等 20 目标"],"score":78},
+    {"ip":"5.9.142.165:8082","cat":"A","color":"cA","role":"Chrome 漏洞研究工作站(+配套渗透报告)","svc":"http.server","region":"Hetzner 德国 Falkenstein","files":"5,273","tools":["Caterwaul","Oxidize","D8 race","CDP campaign"],"key":["AudioWorklet UAF(不受 MiraclePtr 保护)","WebGPU DawnServiceSerializer UAF 悬垂指针","V8 Map descriptor race","40 份中间 CA 证书元数据(MITM 研究)"],"score":97,"note":"已被第三方实际渗透下载 → 已武器化确证"},
+    {"ip":"157.180.61.21:8888","cat":"A","color":"cA","role":"内存腐败专家工作站(camerononeal)","svc":"http.server","region":"Hetzner · CEST","files":"2,172+","tools":["AFL++","ASAN/TSAN","Ghidra","Claude Code","Codex"],"key":["FreeBSD pf SCTP 跨 Zone UAF → 类型混淆 → 内核 RCE(0xDEAD0000)","gpsd SkyTraq MID 0xDD 堆溢出 → vtable 劫持 → RCE(已确认)","stb_vorbis 堆溢出 RCE(CVE-PENDING)","jbig2dec 整数溢出 → 6 阶段 RCE 计划 · LIVE555 双漏洞 · VMware SVGA fuzzer(2,478 行)"],"score":95},
+    {"ip":"167.172.217.141:8888","cat":"A","color":"cA","role":"GoDaddy 自动化 Bug Bounty 平台","svc":"http.server","region":"DigitalOcean","files":"18,836","tools":["Claude Code(claude-0/)","QG 管线","dns-chain*.py"],"key":["F112 会话撤销绕过 → 完整 ATO(生产已确认)","F1/G3 postMessage XSS 子串绕过 → DNS 域名劫持链","F92 Kasada 委托绕过 · F13 JWT 不验签 · F42 AI 对话接管","112+ 发现(编号最高 F112),单目标 GoDaddy 全站资产映射"],"score":92},
+    {"ip":"5.189.155.130:8888","cat":"A","color":"cA","role":"Claude 自动化渗透测试工作站","svc":"SimpleHTTP/0.6","region":"Hetzner","files":"13,055","tools":["Nuclei","Subfinder","FFuf","httpx","Amass"],"key":["EllieMae 19.4MB CSV → 233 个 AWS 账户 ID + 765 AMI(邮箱已脱敏)","Halara/DoubleFS 无限上传 → SVG 存储型 XSS(halaracdn.com)","Sea Group 内部 API 未授权 + IDOR + 用户枚举","完整 Claude 自动化渗透管线 + workflow.json 泄露"],"score":84},
+    {"ip":"20.9.192.128:8088","cat":"B","color":"cB","role":"加密交易所 AI 客服应用源码 / 凭据泄露","svc":"SimpleHTTP/0.6","region":"Microsoft Azure","files":"完整源码树","tools":["FastAPI","PostgreSQL","Redis","Azure AI Search","AKS"],"key":["目录遍历 → .env → Azure AI Search API Key [已脱敏](CVSS 9.1)","k8s/deployment.yaml → ACR 镜像 · PG/Redis 主机名 · namespace csai","migrate_pg.sql 全库架构 + RLS 策略 + 596 篇 okx-faq 知识库","横向移动 6 路径:AI Search 可行性最高(测试方声明未利用)"],"score":88},
+    {"ip":"147.93.133.220:8000/8080","cat":"C","color":"cC","role":"Lazarus 僵尸网络反制 · 修复基础设施","svc":"Python SimpleHTTP/0.6","region":"被 206.221.176.60 反扫","files":"脚本+窃密数据盘","tools":["payload.sh","honeypot_intel_combined.sh","intel_receiver.py","analyze_victim.sh","deep_intel.sh","mm_pack.sh"],"key":["清理 Lazarus(挖矿 javae/kworker + SSH 后门 uc1)后接管受害机","POST /intel 回传 AWS/GCP 凭证 · SSH 私钥 · 浏览器 · ETH 地址(已脱敏)","按 MetaMask 扩展 ID 打包钱包目录收割助记词/私钥","画像评分 CRYPTO_DEVELOPER / C_LEVEL,多架构 4 受害者 2026-04-20 确认"],"score":94},
+    {"ip":"193.122.112.174:8888","cat":"C","color":"cC","role":"中文信用卡盗刷 (Carding) 操作平台","svc":"Python HTTP Server","region":"Oracle Cloud Infrastructure","files":"root 家目录暴露","tools":["筛头.sh / No.py / dedup.py","ClipProxy/Kookeey/IPCola","IPQS API ×295","cococheck.co"],"key":["~5,374 条被盗卡 Fullz(PAN/CVV/PII [全部脱敏])","IPQS strictness=3 反欺诈绕过,295 Key 轮换(值已脱敏)","住宅代理按州定向 → IP 地理与持卡人地址一致,伪装 Chrome/macOS UA","cococheck 验活(Code 00 成功 / 85 卡活);BIN 黑名单含 425300"],"score":90}
+  ],
+  "matrix":{
+    "features":[
+      {"s":"python","l":"python http.server","sub":"根因"},
+      {"s":"chain","l":"链式攻击","sub":"→ATO/RCE"},
+      {"s":"ai","l":"AI 辅助","sub":"Claude/Codex"},
+      {"s":"cred","l":"真实凭据泄露","sub":"密钥/PII"},
+      {"s":"oday","l":"未修补 0day","sub":"高危"},
+      {"s":"meth","l":"方法论/工具泄露","sub":"可复制"},
+      {"s":"wuap","l":"武器化确证","sub":"已被下载"},
+      {"s":"crim","l":"犯罪基础设施","sub":"主动作案"},
+      {"s":"iot","l":"内核/IoT/虚拟化","sub":"内存腐败"}
+    ],
+    "rows":[
+      {"ip":"37.27.4.247","color":"#6a5334","v":{"python":2,"chain":2,"ai":0,"cred":2,"oday":1,"meth":1,"wuap":0,"crim":0,"iot":0}},
+      {"ip":"5.9.142.165","color":"#6a5334","v":{"python":2,"chain":1,"ai":0,"cred":1,"oday":2,"meth":2,"wuap":2,"crim":0,"iot":2}},
+      {"ip":"157.180.61.21","color":"#6a5334","v":{"python":2,"chain":1,"ai":2,"cred":1,"oday":2,"meth":2,"wuap":1,"crim":0,"iot":2}},
+      {"ip":"167.172.217.141","color":"#6a5334","v":{"python":2,"chain":2,"ai":2,"cred":2,"oday":1,"meth":1,"wuap":1,"crim":0,"iot":0}},
+      {"ip":"5.189.155.130","color":"#6a5334","v":{"python":2,"chain":1,"ai":2,"cred":2,"oday":1,"meth":2,"wuap":0,"crim":0,"iot":0}},
+      {"ip":"20.9.192.128","color":"#946d20","v":{"python":2,"chain":1,"ai":0,"cred":2,"oday":0,"meth":1,"wuap":0,"crim":0,"iot":0}},
+      {"ip":"147.93.133.220","color":"#a11c0f","v":{"python":2,"chain":2,"ai":0,"cred":2,"oday":1,"meth":1,"wuap":2,"crim":2,"iot":0}},
+      {"ip":"193.122.112.174","color":"#a11c0f","v":{"python":2,"chain":2,"ai":0,"cred":2,"oday":0,"meth":1,"wuap":1,"crim":2,"iot":0}}
+    ]
+  },
+  "timeline":[
+    {"d":"2026-04-19","cls":"key","x":"研究员在本机 <b>确认 AudioWorklet / WebGPU UAF</b> PoC(asan_uaf_poc_*.log)"},
+    {"d":"2026-04 ~ 05","cls":"","x":"持续 <b>Caterwaul / Oxidize</b> 自动化模糊测试,153MB 线程同步跟踪数据落盘"},
+    {"d":"扫描前","cls":"bad","x":"以 root <b>运行 http.server 8082</b> 做临时文件传输,5,273 文件全网暴露"},
+    {"d":"2026-05-16","cls":"bad","x":"第三方渗透清点下载 <b>31 VRP 日志 + 3 PoC + 8MB exploit 包 + 框架源码</b>"},
+    {"d":"同一日","cls":"bad","x":"分析文档落盘 → 未修补 Chrome 0day 与证书伪造数据进入 <b>公开可用</b> 状态"}
+  ],
+  "threat":[
+    {"ip":"5.9.142.165:8082","s":97,"note":"已被渗透武器化"},
+    {"ip":"157.180.61.21:8888","s":95,"note":"FreeBSD 内核 RCE"},
+    {"ip":"147.93.133.220","s":94,"note":"犯罪基础设施"},
+    {"ip":"167.172.217.141:8888","s":92,"note":"GoDaddy 生产 ATO"},
+    {"ip":"193.122.112.174:8888","s":90,"note":"5,374 卡 Fullz"},
+    {"ip":"20.9.192.128:8088","s":88,"note":"可用云密钥"},
+    {"ip":"5.189.155.130:8888","s":84,"note":"233 AWS 账户"},
+    {"ip":"37.27.4.247:8080","s":78,"note":"多厂商 Web"}
+  ],
+  "ioc":[
+    {"t":"C2 网络","v":"[hxxp] 103.174.189.183:6379","c":"Lazarus 原始 C2 <span class='tag'>147</span>"},
+    {"t":"载荷分发","v":"s[.]na-cs.com/b2f628/b.sh","c":"Lazarus 载荷 <span class='tag'>147</span>"},
+    {"t":"窃密接收","v":"[hxxp] 147.93.133.220:8080/intel","c":"intel_receiver <span class='tag'>147</span>"},
+    {"t":"恶意进程","v":"javae · kworker · masscan · pnscan","c":"Lazarus 挖矿 <span class='tag'>147</span>"},
+    {"t":"SSH 后门","v":"authorized_keys 注释 'uc1'","c":"<span class='tag'>147</span>"},
+    {"t":"钱包标识","v":"MetaMask 扩展 ID nkbih...gknn(公开常量)","c":"窃取目标 <span class='tag'>147</span>"},
+    {"t":"被盗卡数据","v":"5,374 条 Fullz — PAN/CVV/PII 全部 REDACTED","c":"<span class='tag'>193</span>"},
+    {"t":"反欺诈滥用","v":"IPQS API Key × 295 — 值 REDACTED","c":"<span class='tag'>193</span>"},
+    {"t":"住宅代理","v":"ClipProxy · Kookeey · IPCola","c":"<span class='tag'>193</span>"},
+    {"t":"卡验活","v":"cococheck.co","c":"<span class='tag'>193</span>"},
+    {"t":"云凭据","v":"Azure AI Search API Key — REDACTED","c":"<span class='tag'>20.9</span>"},
+    {"t":"内部主机","v":"csai-prod-pg · csaiprodacr2026 · csaidemo-search","c":"Azure <span class='tag'>20.9</span>"},
+    {"t":"厂商泄露","v":"EllieMae 233 AWS 账户 ID + 765 AMI","c":"<span class='tag'>5.189</span>"},
+    {"t":"浏览器 0day","v":"AudioWorklet UAF / WebGPU Serializer UAF / V8 Map race","c":"CVE 待分配 <span class='tag'>5.9</span>"},
+    {"t":"内核 0day","v":"FreeBSD pf SCTP cross-zone → RCE · gpsd/LIVE555/jbig2dec/stb_vorbis RCE","c":"stb CVE-PENDING <span class='tag'>157</span>"},
+    {"t":"Web 高危链","v":"GoDaddy F112 / F1·G3 / F92 / F13 / F42","c":"生产确认 <span class='tag'>167</span>"},
+    {"t":"扫描源","v":"206.221.176.60","c":"反扫 147 <span class='tag'>147</span>"}
+  ]
+};
+
+(function(){
+  // stats
+  var st='';
+  DATA.stats.forEach(function(s){st+='<div class="bdg '+s.c+'"><span class="t">'+s.t+'</span><b>'+s.n+'</b></div>';});
+  document.getElementById('stats').innerHTML=st;
+
+  // cats
+  var ct='';
+  DATA.cats.forEach(function(c){
+    var chips=c.nodes.map(function(n){return '<span class="chip">'+n+'</span>';}).join('');
+    ct+='<div class="cat '+c.color+'" style="--acc:'+c.acc+'"><span class="lab">'+c.id+'</span>'+
+        '<h3>'+c.name+'</h3><p>'+c.desc+'</p><div class="chips">'+chips+'</div>'+
+        '<div class="vic">受害者 → <b>'+c.victim+'</b></div></div>';
+  });
+  document.getElementById('cats').innerHTML=ct;
+
+  // nodes
+  var nd='';
+  DATA.nodes.forEach(function(n,i){
+    var tools=n.tools.map(function(t){return '<span class="tool'+(/Claude|Codex|Oxidize|Caterwaul|Nuclei|FFuf|IPQS|cococheck|MetaMask|dns-chain/.test(t)?' hot':'')+'">'+t+'</span>';}).join('');
+    var keys=n.key.map(function(k){return '<li>'+k+'</li>';}).join('');
+    var note=n.warn?'<div class="warnflag">⚠ '+n.note+'</div>':'';
+    if(n.note)note='<div class="warnflag">⚠ '+n.note+'</div>';
+    nd+='<div class="node '+n.color+'"><span class="na">卷宗 NO.'+(i+1<10?'0':'')+(i+1)+'</span>'+
+      '<div class="nh"><div class="row1"><span class="ip">'+n.ip+'</span><span class="catpill">■ 类别 '+n.cat+'</span></div>'+
+      '<div class="role">'+n.role+'</div>'+
+      '<div class="meta"><span>协议 <b>'+n.svc+'</b></span><span>位置 <b>'+n.region+'</b></span><span>规模 <b>'+n.files+'</b></span></div></div>'+
+      '<div class="nb"><div class="nx-t">关 键 发 现</div><ul class="keys">'+keys+'</ul>'+
+      '<div class="nx-t" style="margin-top:8px">工 具 / 方 法</div><div class="tools">'+tools+'</div>'+note+
+      '<div class="riskbar"><span class="lab">风险研判</span><div class="bar"><i class="fill" data-w="'+n.score+'"></i></div><span class="lab">'+n.score+'/100</span></div>'+
+      '</div></div>';
+  });
+  document.getElementById('nodes').innerHTML=nd;
+
+  // matrix
+  var F=DATA.matrix.features,R=DATA.matrix.rows;
+  var colcount={}; F.forEach(function(f){colcount[f.s]=0;});
+  var grand=0;
+  var thead='<thead><tr><th class="row" style="text-align:left">端点 \\ 特征</th>';
+  F.forEach(function(f){thead+='<th>'+f.l+'<small>'+f.sub+'</small></th>';});
+  thead+='<th>命中<small>合计</small></th></tr></thead>';
+  var body='<tbody>';
+  R.forEach(function(r){
+    var cnt=0,cells='';
+    F.forEach(function(f){
+      var v=r.v[f.s]||0;
+      if(v>0){cnt++;colcount[f.s]++;}
+      var cls=v===2?'l2':v===1?'l1':'l0';
+      var mark=v===2?'●':v===1?'○':'✕';
+      cells+='<td><span class="cell '+cls+'">'+mark+'</span></td>';
+    });
+    grand+=cnt;
+    body+='<tr><th class="row"><span class="cc" style="background:'+r.color+'"></span>'+r.ip+'</th>'+cells+'<td class="cntcell">'+cnt+'</td></tr>';
+  });
+  body+='</tbody>';
+  var foot='<tfoot><tr><th class="row">特征覆盖数 →</th>';
+  F.forEach(function(f){foot+='<td>'+colcount[f.s]+'</td>';});
+  foot+='<td>'+grand+'</td></tr></tfoot>';
+  document.getElementById('matrix').innerHTML=thead+body+foot;
+
+  // timeline
+  var tl='';
+  DATA.timeline.forEach(function(e){tl+='<div class="ev '+e.cls+'"><div class="d">'+e.d+'</div><div class="x">'+e.x+'</div></div>';});
+  document.getElementById('timeline').innerHTML=tl;
+
+  // threat
+  var tb='';
+  DATA.threat.forEach(function(t){
+    tb+='<div class="tbrow"><span class="nm">'+t.ip+'</span><span class="trk"><i class="fl" data-w="'+t.s+'"></i></span><span class="num">'+t.s+'</span></div>'+
+        '<div style="margin:-2px 0 6px 222px;font-family:var(--mono);font-size:10.5px;color:var(--mut)">↳ '+t.note+'</div>';
+  });
+  document.getElementById('threat').innerHTML=tb;
+
+  // ioc
+  var ih='<thead><tr><th style="width:110px">类型</th><th style="width:360px">指标 (defanged)</th><th>说明 / 归属</th></tr></thead><tbody>';
+  DATA.ioc.forEach(function(x){ih+='<tr><td class="t">'+x.t+'</td><td class="v">'+x.v+'</td><td class="c">'+x.c+'</td></tr>';});
+  ih+='</tbody>';
+  document.getElementById('ioc').innerHTML=ih;
+
+  // animate bars
+  requestAnimationFrame(function(){
+    setTimeout(function(){
+      document.querySelectorAll('.fill,.fl').forEach(function(el){el.style.width=el.getAttribute('data-w')+'%';});
+    },120);
+  });
+
+  // ---- red-keyword highlighter (dossier style) ----
+  var KW=['已脱敏','脱敏','REDACTED','PAN','CVV','Fullz','0day','RCE','UAF','ATO','内核','Lazarus','MetaMask',
+          'Keycloak','JWT','Kasada','heapdump','CSRF','XSS','CORS','IPQS','cococheck','http.server',
+          'CVE-PENDING','DanglingUntriaged','MiraclePtr','FreeBSD','dns-chain','payload.sh'];
+  var re=new RegExp('('+KW.map(function(k){return k.replace(/[.*+?^${}()|[\]\\\/]/g,'\\$&');}).join('|')+')','g');
+  function walk(node){
+    if(node.nodeType===3){
+      var t=node.nodeValue; if(!t||!re.test(t)){re.lastIndex=0;return;} re.lastIndex=0;
+      var frag=document.createDocumentFragment(),last=0,m;
+      while((m=re.exec(t))!==null){
+        if(m.index>last)frag.appendChild(document.createTextNode(t.slice(last,m.index)));
+        var el=document.createElement('mark');el.className='kw';el.textContent=m[0];frag.appendChild(el);
+        last=m.index+m[0].length;
+        if(m.index===re.lastIndex)re.lastIndex++;
+      }
+      if(last<t.length)frag.appendChild(document.createTextNode(t.slice(last)));
+      node.parentNode.replaceChild(frag,node);
+    }else if(node.nodeType===1&&!/^(SCRIPT|STYLE|MARK)$/.test(node.nodeName)){
+      Array.prototype.slice.call(node.childNodes).forEach(walk);
+    }
+  }
+  walk(document.querySelector('.wrap'));
+})();
+</script>
+</body>
+</html>
