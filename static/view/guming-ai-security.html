@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>古茗以智能体重构 SOC 与攻防验证的实战</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f8f7f3;--ink:#141312;--mute:#6f6c66;--faint:#9a968e;--line:#e0ddd6;--hair:#eceae4;--red:#b4372a;--blue:#2f4d92;--hi:#f1efe3}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--paper);background-image:repeating-linear-gradient(0deg,transparent 0 39px,rgba(20,19,18,.028) 39px 40px);color:var(--ink);font-family:"Noto Sans SC",sans-serif;-webkit-font-smoothing:antialiased;padding:44px 24px 72px}
+.wrap{max-width:1040px;margin:0 auto}
+h1,h2,h3,.ser{font-family:"Noto Serif SC",serif}
+.mono{font-family:"JetBrains Mono",monospace}
+.lab{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.2em;color:var(--faint);text-transform:uppercase}
+@media print{body{background:#fff;padding:0}
+  @page{size:A4;margin:14mm}
+  section{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ═════ MASTHEAD ═════ -->
+<header>
+  <div class="mono" style="font-size:9.5px;letter-spacing:.2em;color:var(--faint);display:flex;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid var(--line);flex-wrap:wrap;gap:8px">
+    <span>SECURITY × AGENT</span>
+    <span>云栖大会 · 演讲实录图解</span>
+    <span>2026</span>
+  </div>
+
+  <div style="padding:34px 0 0">
+    <h1 style="font-size:clamp(38px,7.4vw,74px);font-weight:900;line-height:.96;letter-spacing:-.015em">当安全遇上 <span style="font-style:italic;font-weight:600">Agent</span></h1>
+    <p class="ser" style="font-size:clamp(15px,2.1vw,19px);margin-top:16px;color:var(--mute);max-width:34em;line-height:1.6">
+      古茗用一支没有扩编的安全团队，把 AI 撑开的缺口用 AI 补了回去。
+    </p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:0;margin-top:30px;border-top:2px solid var(--ink);border-bottom:1px solid var(--line)">
+    <div style="padding:16px 22px 16px 0;border-right:1px solid var(--line)">
+      <div class="lab">Presenter / 演讲人</div>
+      <div class="ser" style="font-size:30px;font-weight:900;margin-top:5px;letter-spacing:.04em">刘星光</div>
+      <div class="mono" style="font-size:11px;color:var(--mute);margin-top:5px">古茗咖啡 &nbsp;·&nbsp; 安全负责人</div>
+    </div>
+    <div style="padding:16px 0 16px 22px;display:flex;flex-direction:column;justify-content:center;gap:7px">
+      <div style="display:flex;align-items:baseline;gap:12px"><span class="mono" style="font-size:9px;color:var(--faint);letter-spacing:.12em;width:44px">代码</span><span class="ser" style="font-size:14px">AI 写</span></div>
+      <div style="display:flex;align-items:baseline;gap:12px"><span class="mono" style="font-size:9px;color:var(--faint);letter-spacing:.12em;width:44px">攻击</span><span class="ser" style="font-size:14px">AI 打</span></div>
+      <div style="display:flex;align-items:baseline;gap:12px"><span class="mono" style="font-size:9px;color:var(--faint);letter-spacing:.12em;width:44px">团队</span><span class="ser" style="font-size:14px;font-weight:700;color:var(--red)">人数未增</span></div>
+    </div>
+  </div>
+  <div class="mono" style="font-size:9.5px;color:var(--faint);letter-spacing:.1em;padding:9px 0 0">
+    依据 12 页演讲原稿逐页提取整理 · 文中数据与结论均为原稿口径
+  </div>
+</header>
+
+<!-- ═════ 01 ═════ -->
+<section style="margin-top:52px">
+  <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:22px">
+    <span class="mono" style="font-size:11px;color:var(--faint);letter-spacing:.1em;padding-top:6px">01</span>
+    <div>
+      <h2 class="ser" style="font-size:25px;font-weight:900;letter-spacing:-.01em">AI 撑开的裂口</h2>
+      <p class="mono" style="font-size:10.5px;color:var(--mute);margin-top:6px;letter-spacing:.06em">同一套技术，被攻防两侧同时接走</p>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div style="padding:20px 24px 20px 0;border-right:1px solid var(--line)">
+      <div class="lab" style="color:var(--blue)">研发侧 &nbsp;+/+</div>
+      <div style="display:flex;flex-direction:column;gap:11px;margin-top:14px">
+        <div><b class="ser" style="font-size:14.5px">产出翻倍</b><span style="font-size:12.5px;color:var(--mute);display:block;margin-top:2px;line-height:1.55">AI 编码提速，交付面与攻击面同步扩大</span></div>
+        <div><b class="ser" style="font-size:14.5px">代码性质变</b><span style="font-size:12.5px;color:var(--mute);display:block;margin-top:2px;line-height:1.55">机器写、人来审，风险更难判</span></div>
+        <div><b class="ser" style="font-size:14.5px">评审排队</b><span style="font-size:12.5px;color:var(--mute);display:block;margin-top:2px;line-height:1.55">等不过来，人工审批成了瓶颈</span></div>
+      </div>
+    </div>
+    <div style="padding:20px 0 20px 24px">
+      <div class="lab" style="color:var(--red)">攻击侧 &nbsp;+/−</div>
+      <div style="display:flex;flex-direction:column;gap:11px;margin-top:14px">
+        <div><b class="ser" style="font-size:14.5px">门槛塌了</b><span style="font-size:12.5px;color:var(--mute);display:block;margin-top:2px;line-height:1.55">不会写代码，也能让 AI 生成探测脚本</span></div>
+        <div><b class="ser" style="font-size:14.5px">侦察自动化</b><span style="font-size:12.5px;color:var(--mute);display:block;margin-top:2px;line-height:1.55">几分钟摸清域名、接口与暴露资产</span></div>
+        <div><b class="ser" style="font-size:14.5px">钓鱼更像人</b><span style="font-size:12.5px;color:var(--mute);display:block;margin-top:2px;line-height:1.55">按岗位定制话术，中文挑不出毛病</span></div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:12.5px;color:var(--mute);margin-top:12px;padding-left:14px;border-left:2px solid var(--line)">机器不睡觉、不请假，7×24 发起，把防守方的作息彻底打乱。</p>
+</section>
+
+<!-- ═════ METRICS TABLE ═════ -->
+<section style="margin-top:34px">
+  <div class="lab" style="margin-bottom:12px;border-bottom:2px solid var(--ink);padding-bottom:8px;display:flex;justify-content:space-between">
+    <span>威胁趋势 / THREAT METRICS</span><span style="color:var(--faint)">原稿数据</span>
+  </div>
+  <table style="width:100%;border-collapse:collapse;font-family:'JetBrains Mono',monospace">
+    <tbody>
+      <tr style="border-bottom:1px solid var(--hair)">
+        <td style="padding:12px 10px 12px 0;font-size:11px;color:var(--mute);width:32%;font-family:'Noto Sans SC'">六天披露漏洞量</td>
+        <td style="padding:12px 10px;font-size:20px;font-weight:700;text-align:right">25K <span style="color:var(--faint);font-size:13px">→</span> 60K+</td>
+        <td style="padding:12px 0 12px 14px;font-size:10px;color:var(--faint);text-align:right;width:26%">2022 → 2026</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--hair)">
+        <td style="padding:12px 10px 12px 0;font-size:11px;color:var(--mute);font-family:'Noto Sans SC'">AI 辅助攻击占比</td>
+        <td style="padding:12px 10px;font-size:20px;font-weight:700;text-align:right">&lt;5% <span style="color:var(--faint);font-size:13px">→</span> 60%</td>
+        <td style="padding:12px 0 12px 14px;font-size:10px;color:var(--faint);text-align:right">12 个月跃升</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--hair)">
+        <td style="padding:12px 10px 12px 0;font-size:11px;color:var(--mute);font-family:'Noto Sans SC'">攻击响应窗口</td>
+        <td style="padding:12px 10px;font-size:20px;font-weight:700;text-align:right;color:var(--red)">28 天 <span style="color:var(--faint);font-size:13px">→</span> &lt;24h</td>
+        <td style="padding:12px 0 12px 14px;font-size:10px;color:var(--faint);text-align:right">侦察到入口即得手</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--hair)">
+        <td style="padding:12px 10px 12px 0;font-size:11px;color:var(--mute);font-family:'Noto Sans SC'">暴露公网 API / Agent 入口</td>
+        <td style="padding:12px 10px;font-size:20px;font-weight:700;text-align:right">10×</td>
+        <td style="padding:12px 0 12px 14px;font-size:10px;color:var(--faint);text-align:right">AI 加速资产测绘</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--hair)">
+        <td style="padding:12px 10px 12px 0;font-size:11px;color:var(--mute);font-family:'Noto Sans SC'">AI 生成代码中的漏洞</td>
+        <td style="padding:12px 10px;font-size:20px;font-weight:700;text-align:right;color:var(--red)">+700%</td>
+        <td style="padding:12px 0 12px 14px;font-size:10px;color:var(--faint);text-align:right">同比</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--hair)">
+        <td style="padding:12px 10px 12px 0;font-size:11px;color:var(--mute);font-family:'Noto Sans SC'">重度依赖 AI 工具的组织</td>
+        <td style="padding:12px 10px;font-size:20px;font-weight:700;text-align:right">62%</td>
+        <td style="padding:12px 0 12px 14px;font-size:10px;color:var(--faint);text-align:right">含 Copilot 类编码助手</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 10px 12px 0;font-size:11px;color:var(--mute);font-family:'Noto Sans SC'">感到威胁显著上升的从业者</td>
+        <td style="padding:12px 10px;font-size:20px;font-weight:700;text-align:right">87%</td>
+        <td style="padding:12px 0 12px 14px;font-size:10px;color:var(--faint);text-align:right">Prompt 注入 / MCP 成新入口</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═════ 夹在中间的人 ═════ -->
+<section style="margin-top:44px;background:var(--hi);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:32px 30px 28px">
+  <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:26px">
+    <h2 class="ser" style="font-size:29px;font-weight:900">夹在中间的人</h2>
+    <span class="mono" style="font-size:10px;color:var(--mute);letter-spacing:.1em">// 整场演讲的原点 · 也是他吐槽安全部门的那一页</span>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:center">
+    <div style="text-align:center;padding:6px">
+      <div class="lab">要审的代码</div>
+      <div class="ser" style="font-size:38px;font-weight:900;margin:8px 0 6px">↑成倍</div>
+      <div style="font-size:11.5px;color:var(--mute);line-height:1.6">AI 写得越快<br>要审的越多</div>
+    </div>
+    <div class="mono" style="color:var(--faint);font-size:14px">▸</div>
+    <div style="text-align:center;padding:14px 6px;background:#fff;border:2px solid var(--red)">
+      <div class="lab" style="color:var(--mute)">安全团队</div>
+      <div class="ser" style="font-size:38px;font-weight:900;margin:8px 0 6px;color:var(--red)">没变</div>
+      <div style="font-size:11.5px;line-height:1.6"><b>招人贵</b>、周期长<br>经验没法速成</div>
+    </div>
+    <div class="mono" style="color:var(--faint);font-size:14px">◂</div>
+    <div style="text-align:center;padding:6px">
+      <div class="lab">要接的攻击</div>
+      <div class="ser" style="font-size:38px;font-weight:900;margin:8px 0 6px">不停</div>
+      <div style="font-size:11.5px;color:var(--mute);line-height:1.6">机器发起<br>不分昼夜节假日</div>
+    </div>
+  </div>
+
+  <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--line);display:grid;grid-template-columns:1.55fr 1fr;gap:26px">
+    <blockquote class="ser" style="font-size:17px;font-weight:600;line-height:1.72;position:relative;padding-left:20px">
+      <span style="position:absolute;left:0;top:2px;bottom:2px;width:3px;background:var(--ink)"></span>
+      缺口是 AI 撑开的，也只能用 AI 补上。<br>而且<span style="color:var(--red);font-weight:900">不只是防住</span>，还得让这几个人的产出跟着放大。
+    </blockquote>
+    <p style="font-size:12px;color:var(--mute);line-height:1.75">
+      他吐槽的不是薪资高本身，而是<b style="color:var(--ink)">「人少 + 人贵 + 经验养不出来」</b>这个死结 —— 于是唯一出路，是给这几个人配上 Agent。
+    </p>
+  </div>
+</section>
+
+<!-- ═════ 02 ═════ -->
+<section style="margin-top:44px">
+  <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:20px">
+    <span class="mono" style="font-size:11px;color:var(--faint);letter-spacing:.1em;padding-top:6px">02</span>
+    <div>
+      <h2 class="ser" style="font-size:25px;font-weight:900;letter-spacing:-.01em">答案：从加人到加 Agent</h2>
+      <p class="mono" style="font-size:10.5px;color:var(--mute);margin-top:6px;letter-spacing:.06em">机器对抗量 · 人做判断 · 产能加倍</p>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line)">
+    <div style="padding:20px 24px;border-right:1px solid var(--line)">
+      <div class="lab" style="color:var(--faint)">旧模式</div>
+      <div class="ser" style="font-size:19px;font-weight:700;margin-top:9px">机器对抗机器</div>
+      <div class="mono" style="font-size:11.5px;color:var(--mute);margin-top:8px">人是瓶颈<br>产能 = 人数 × 工时</div>
+    </div>
+    <div style="padding:20px 24px;background:var(--hi)">
+      <div class="lab" style="color:var(--ink)">新模式</div>
+      <div class="ser" style="font-size:19px;font-weight:700;margin-top:9px">机器做量 · 人做判断</div>
+      <div class="mono" style="font-size:11.5px;color:var(--mute);margin-top:8px">Agent 承担重复劳动<br>产能 = 人数 × <b style="color:var(--red)">放大倍数</b></div>
+    </div>
+  </div>
+
+  <div style="margin-top:14px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0">
+    <div class="lab" style="margin-bottom:12px">整体蓝图 / 两条线织一张网</div>
+    <div class="mono" style="font-size:11.5px;line-height:2;color:var(--ink)">
+      <span style="color:var(--faint);display:inline-block;width:88px">横轴 · 生命周期</span> 代码写出来 → 上线承接流量 → 持续运营<br>
+      <span style="color:var(--faint);display:inline-block;width:88px">纵轴 · 流量路径</span> 订单流量：公网 → 应用 → 数据<br>
+      <span style="color:var(--faint);display:inline-block;width:88px">布防 · 三类主体</span> 三类 Agent + WAF AI Bot，各守一段，彼此接力
+    </div>
+  </div>
+</section>
+
+<!-- ═════ 03 ═════ -->
+<section style="margin-top:44px">
+  <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:20px">
+    <span class="mono" style="font-size:11px;color:var(--faint);letter-spacing:.1em;padding-top:6px">03</span>
+    <div>
+      <h2 class="ser" style="font-size:25px;font-weight:900;letter-spacing:-.01em">实战一 &nbsp;攻防验证</h2>
+      <p class="mono" style="font-size:10.5px;color:var(--mute);margin-top:6px;letter-spacing:.06em">把漏洞摁死在出生前 · 把 Bot 判得准、看得懂、落得快</p>
+    </div>
+  </div>
+
+  <div style="border-top:2px solid var(--ink);padding:18px 0 6px">
+    <div class="lab" style="margin-bottom:14px">▸ Shift-Left 代码安全流水线 &nbsp;·&nbsp; 代码还没合并就介入</div>
+    <div style="display:flex;flex-direction:column">
+      <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--hair);padding:9px 0;gap:12px">
+        <span class="mono" style="font-size:9px;color:var(--faint);width:26px;padding-top:3px">01</span>
+        <div style="width:150px"><b class="ser" style="font-size:14px">AI 分析引擎</b></div>
+        <span style="font-size:12px;color:var(--mute);align-self:center">理解代码上下文与业务语义，研判可利用性并生成修复代码</span>
+      </div>
+      <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--hair);padding:9px 0;gap:12px">
+        <span class="mono" style="font-size:9px;color:var(--faint);width:26px;padding-top:3px">02</span>
+        <div style="width:150px"><b class="ser" style="font-size:14px">规则引擎</b></div>
+        <span style="font-size:12px;color:var(--mute);align-self:center">已知模式秒级命中，与 AI 引擎互为补充</span>
+      </div>
+      <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--hair);padding:9px 0;gap:12px">
+        <span class="mono" style="font-size:9px;color:var(--faint);width:26px;padding-top:3px">03</span>
+        <div style="width:150px"><b class="ser" style="font-size:14px">复核 Agent</b></div>
+        <span style="font-size:12px;color:var(--mute);align-self:center">验证漏洞是否真实可达、检查已有防御配置、排除弱链误报</span>
+      </div>
+      <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--hair);padding:9px 0;gap:12px">
+        <span class="mono" style="font-size:9px;color:var(--faint);width:26px;padding-top:3px">04</span>
+        <div style="width:150px"><b class="ser" style="font-size:14px">SAST / SCA</b></div>
+        <span style="font-size:12px;color:var(--mute);align-self:center">代码差异、上下文推理、跨文件追踪、多轮验证；依赖与组件风险分级</span>
+      </div>
+      <div style="display:flex;align-items:stretch;padding:9px 0;gap:12px">
+        <span class="mono" style="font-size:9px;color:var(--faint);width:26px;padding-top:3px">05</span>
+        <div style="width:150px"><b class="ser" style="font-size:14px;color:var(--red)">报告与闭环</b></div>
+        <span style="font-size:12px;color:var(--mute);align-self:center">调用链回溯、PoC 验证、风险分级，直接回吐给研发</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:14px;margin-top:20px">
+    <div style="border-top:2px solid var(--ink);padding:16px 0 0">
+      <div class="lab" style="margin-bottom:12px">▸ AI 加持下的 Bot 防护 &nbsp;·&nbsp; 实测效果</div>
+      <p style="font-size:12px;color:var(--mute);line-height:1.7;margin-bottom:14px">从「单条规则命中即拦」升级为 <b style="color:var(--ink);font-weight:700">行为规则 + AI 模型 + 人工复核</b> 的六层环。</p>
+      <table style="width:100%;border-collapse:collapse;font-family:'JetBrains Mono',monospace">
+        <tbody>
+          <tr style="border-bottom:1px solid var(--hair)"><td style="padding:9px 0;font-size:11px;color:var(--mute);font-family:'Noto Sans SC'">误判率</td><td style="text-align:right;font-size:16px;font-weight:700">1.5% → <span style="color:var(--red)">0.2%</span></td></tr>
+          <tr style="border-bottom:1px solid var(--hair)"><td style="padding:9px 0;font-size:11px;color:var(--mute);font-family:'Noto Sans SC'">感知准确率</td><td style="text-align:right;font-size:16px;font-weight:700">+42%</td></tr>
+          <tr style="border-bottom:1px solid var(--hair)"><td style="padding:9px 0;font-size:11px;color:var(--mute);font-family:'Noto Sans SC'">发现到处置</td><td style="text-align:right;font-size:16px;font-weight:700">3 天 → <span style="color:var(--red)">15 分钟</span></td></tr>
+          <tr><td style="padding:9px 0;font-size:11px;color:var(--mute);font-family:'Noto Sans SC'">人工复核量</td><td style="text-align:right;font-size:16px;font-weight:700">−65%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="border-top:2px solid var(--ink);padding:16px 0 0">
+      <div class="lab" style="margin-bottom:12px">▸ 踩过的坑 &nbsp;·&nbsp; 最值得抄的一页</div>
+      <p style="font-size:12px;color:var(--mute);line-height:1.7;margin-bottom:14px;border-left:2px solid var(--line);padding-left:12px">工具好用只是一半，能不能跑进研发的日常习惯，才决定它活不活得下来。</p>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;gap:10px;align-items:baseline"><b class="ser" style="font-size:14px;width:34px">误报</b><span style="font-size:12px;color:var(--mute);line-height:1.55">先清误报，建立信任 —— 误报堆高，研发就不看了</span></div>
+        <div style="display:flex;gap:10px;align-items:baseline"><b class="ser" style="font-size:14px;width:34px">协作</b><span style="font-size:12px;color:var(--mute);line-height:1.55">共建分工，减少摩擦 —— 让研发觉得这是在帮他</span></div>
+        <div style="display:flex;gap:10px;align-items:baseline"><b class="ser" style="font-size:14px;width:34px">可信</b><span style="font-size:12px;color:var(--mute);line-height:1.55">真能验才能被信 —— 别做只报不验的引擎</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ 04 ═════ -->
+<section style="margin-top:44px">
+  <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:20px">
+    <span class="mono" style="font-size:11px;color:var(--faint);letter-spacing:.1em;padding-top:6px">04</span>
+    <div>
+      <h2 class="ser" style="font-size:25px;font-weight:900;letter-spacing:-.01em">实战二 &nbsp;交给 Agent 去运营</h2>
+      <p class="mono" style="font-size:10.5px;color:var(--mute);margin-top:6px;letter-spacing:.06em">从告警进来到威胁被摁住，整条链路交给智能体，人只在需要拍板处介入</p>
+    </div>
+  </div>
+
+  <div style="border:1px solid var(--line);padding:20px 22px;background:#fff">
+    <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:16px">
+      <span class="lab">原则</span>
+      <span class="ser" style="font-size:24px;font-weight:900">「你管别人」</span>
+      <span style="font-size:12.5px;color:var(--mute)">—— Agent 处理量与模式，人只做判断</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0">
+      <div style="padding:0 16px 0 0;border-right:1px solid var(--hair)"><div class="ser" style="font-size:15px;font-weight:700">告警筛选</div><div style="font-size:11.5px;color:var(--mute);margin-top:6px;line-height:1.6">AI 降噪<br>把噪声挡在派单前</div></div>
+      <div style="padding:0 16px;border-right:1px solid var(--hair)"><div class="ser" style="font-size:15px;font-weight:700">事件调查</div><div style="font-size:11.5px;color:var(--mute);margin-top:6px;line-height:1.6">溯源、关联<br>自动拼出攻击路径</div></div>
+      <div style="padding:0 16px;border-right:1px solid var(--hair)"><div class="ser" style="font-size:15px;font-weight:700">规则管理</div><div style="font-size:11.5px;color:var(--mute);margin-top:6px;line-height:1.6">检测规则<br>自动反哺迭代</div></div>
+      <div style="padding:0 0 0 16px"><div class="ser" style="font-size:15px;font-weight:700">长效记忆</div><div style="font-size:11.5px;color:var(--mute);margin-top:6px;line-height:1.6">案例沉淀<br>越用越懂业务</div></div>
+    </div>
+    <div style="display:flex;gap:26px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)">
+      <div><div class="lab">CASE 01 &nbsp;告警关联 Agent</div><div class="mono" style="font-size:22px;font-weight:700;margin-top:4px">&lt; 2′30″ <span style="font-size:11px;color:var(--mute);font-family:'Noto Sans SC';font-weight:400">完成闭环</span></div></div>
+      <div><div class="lab">CASE 02 &nbsp;事件调查 Agent</div><div class="mono" style="font-size:22px;font-weight:700;margin-top:4px">87 秒 <span style="font-size:11px;color:var(--mute);font-family:'Noto Sans SC';font-weight:400">完成一次溯源</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ 05 RESULTS ═════ -->
+<section style="margin-top:44px">
+  <div class="lab" style="border-bottom:2px solid var(--ink);padding-bottom:10px;display:flex;justify-content:space-between">
+    <span>05 &nbsp;/&nbsp; 结果看板 · 攻防验证前后对比</span><span style="color:var(--faint)">同样这几个人</span>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr)">
+    <div style="padding:24px 18px 22px 0;border-right:1px solid var(--hair)">
+      <div class="mono" style="font-size:10px;color:var(--red)">▲</div>
+      <div class="ser" style="font-size:52px;font-weight:900;line-height:1;margin:6px 0 10px;letter-spacing:-.03em">90<span style="font-size:24px">%</span></div>
+      <div style="font-size:11.5px;color:var(--mute);line-height:1.6">漏洞在<b style="color:var(--ink)">上线前</b>被修复的比例</div>
+    </div>
+    <div style="padding:24px 18px 22px;border-right:1px solid var(--hair)">
+      <div class="mono" style="font-size:10px;color:var(--red)">▲</div>
+      <div class="ser" style="font-size:52px;font-weight:900;line-height:1;margin:6px 0 10px;letter-spacing:-.03em">5<span style="font-size:24px">倍</span></div>
+      <div style="font-size:11.5px;color:var(--mute);line-height:1.6">接口与资产<b style="color:var(--ink)">覆盖率</b></div>
+    </div>
+    <div style="padding:24px 18px 22px;border-right:1px solid var(--hair)">
+      <div class="mono" style="font-size:10px">▼</div>
+      <div class="ser" style="font-size:38px;font-weight:900;line-height:1.25;margin:13px 0 12px;letter-spacing:-.02em">周 → 时</div>
+      <div style="font-size:11.5px;color:var(--mute);line-height:1.6">单次渗透<b style="color:var(--ink)">验证周期</b></div>
+    </div>
+    <div style="padding:24px 0 22px 18px">
+      <div class="mono" style="font-size:10px">▼</div>
+      <div class="ser" style="font-size:52px;font-weight:900;line-height:1;margin:6px 0 10px;letter-spacing:-.03em">70<span style="font-size:24px">%</span></div>
+      <div style="font-size:11.5px;color:var(--mute);line-height:1.6">流入生产环境的<b style="color:var(--ink)">高危漏洞</b>减少</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ 06 ═════ -->
+<section style="margin-top:44px;border-top:2px solid var(--ink);padding-top:28px">
+  <div class="lab" style="margin-bottom:16px">06 &nbsp;/&nbsp; 人与 Agent</div>
+  <h2 class="ser" style="font-size:clamp(24px,4.2vw,38px);font-weight:900;line-height:1.25;letter-spacing:-.01em;max-width:20em">
+    人不会被取代，<br>而是<span style="color:var(--red)">被抬高</span>。
+  </h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);margin-top:26px;border-top:1px solid var(--line)">
+    <div style="padding:18px 22px 18px 0;border-right:1px solid var(--hair)">
+      <div class="ser" style="font-size:18px;font-weight:700"><span style="color:var(--faint)">执行</span> <span class="mono" style="font-size:13px">→</span> <span style="color:var(--red)">治理</span></div>
+      <p style="font-size:12px;color:var(--mute);margin-top:9px;line-height:1.75">不再手动写脚本、盯告警、清噪声；改成画策略、划边界、审风险 —— 从干活的变成定规则的。</p>
+    </div>
+    <div style="padding:18px 22px;border-right:1px solid var(--hair)">
+      <div class="ser" style="font-size:18px;font-weight:700"><span style="color:var(--faint)">被动</span> <span class="mono" style="font-size:13px">→</span> <span style="color:var(--red)">主动</span></div>
+      <p style="font-size:12px;color:var(--mute);margin-top:9px;line-height:1.75">用 Agent 反哺规则，主动预测下一步攻击往哪打 —— 从被打中才反应，到先把棋子落下。</p>
+    </div>
+    <div style="padding:18px 0 18px 22px">
+      <div class="ser" style="font-size:18px;font-weight:700"><span style="color:var(--faint)">救火</span> <span class="mono" style="font-size:13px">→</span> <span style="color:var(--red)">预防</span></div>
+      <p style="font-size:12px;color:var(--mute);margin-top:9px;line-height:1.75">把时间投在架构与安全治理的改良上，而非天天扑火 —— 从被动响应，转向系统设计。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ 下一步 ═════ -->
+<section style="margin-top:34px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;border:1px solid var(--line);padding:18px 22px;background:#fff">
+  <div>
+    <div class="lab">下一步</div>
+    <div class="ser" style="font-size:16px;font-weight:700;margin-top:5px">这条路我们才走了一年，方向是笃定的</div>
+  </div>
+  <div style="display:flex;gap:10px;margin-left:auto;flex-wrap:wrap">
+    <span class="mono" style="font-size:11px;padding:8px 14px;border:1px solid var(--ink);border-radius:20px">环境调整</span>
+    <span class="mono" style="font-size:11px;padding:8px 14px;border:1px solid var(--ink);border-radius:20px">反馈细节</span>
+    <span class="mono" style="font-size:11px;padding:8px 14px;border:1px solid var(--ink);border-radius:20px;background:var(--ink);color:#fff">共建基线</span>
+  </div>
+</section>
+
+<!-- ═════ TAKEAWAY ═════ -->
+<section style="margin-top:46px;padding-top:26px;border-top:2px solid var(--ink);border-bottom:1px solid var(--line);padding-bottom:26px">
+  <div class="lab" style="margin-bottom:14px">Takeaway &nbsp;/&nbsp; 一句话总结</div>
+  <p class="ser" style="font-size:clamp(17px,2.7vw,24px);font-weight:600;line-height:1.62;max-width:30em">
+    承认安全团队不可能扩编，就用 Agent 把<span style="border-bottom:3px solid var(--red)">三个人的产能放大成三十个</span>：前置到 CI 卡漏洞、下沉到运行时防 Bot，并且先用「清误报」换研发信任，再谈自动化。
+  </p>
+</section>
+
+<footer class="mono" style="font-size:9.5px;color:var(--faint);letter-spacing:.14em;padding-top:16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px">
+  <span>SOURCE · 刘星光《当安全遇上 Agent》云栖大会 2026</span>
+  <span>Red Queen出品</span>
+</footer>
+
+</div>
+</body>
+</html>
