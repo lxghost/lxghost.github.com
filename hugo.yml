@@ -28,7 +28,7 @@ outputs:
 
 services:
   googleAnalytics:
-    id: 
+    id: G-TJHZH273HM
 
 imaging:
   resampleFilter: CatmullRom # cSpell:disable-line
@@ -337,10 +337,10 @@ params:
     enable: true
     type: giscus
     giscus:
-      repo: pgsty/oink.pgsty.com
-      repoId: R_kgDOTzFZAg
+      repo: lxghost/lxghost.github.com
+      repoId: MDEwOlJlcG9zaXRvcnk0NDM3NzAy
       category: Announcements
-      categoryId: DIC_kwDOTzFZAs4DDCm-
+      categoryId: DIC_kwDOAEO2xs4DGEXJ
       mapping: pathname
       strict: 0
       reactionsEnabled: 1
