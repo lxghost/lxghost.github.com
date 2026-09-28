@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泄露邮件分析报告</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#e7d8b8; --panel:#efe4c9; --panel2:#f2e8d1;
+  --ink:#332c21; --muted:#6d6049; --faint:#8a7a5e;
+  --line:#c9b489; --line2:#b1935d; --edge:#d7c39a;
+  --red:#b02a1c; --stamp:#9d2417; --elev:#95621a; --med:#355a72; --ok:#4f6a37;
+  --serif:"Noto Serif SC","Songti SC",serif; --mono:"Courier Prime","IBM Plex Mono","Noto Serif SC",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background-color:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.62;
+  background-image:
+    radial-gradient(120% 90% at 50% -8%,rgba(255,250,235,.55),transparent 60%),
+    radial-gradient(140% 120% at 100% 100%,rgba(120,92,46,.16),transparent 55%),
+    radial-gradient(140% 120% at 0% 100%,rgba(120,92,46,.14),transparent 55%),
+    repeating-linear-gradient(0deg,rgba(150,120,70,.05) 0 1px,transparent 1px 4px),
+    repeating-linear-gradient(90deg,rgba(150,120,70,.035) 0 1px,transparent 1px 6px);
+  -webkit-font-smoothing:antialiased;}
+b{color:var(--red);font-weight:700}
+.wrap{max-width:1120px;margin:0 auto;padding:30px 20px 60px}
+.mono{font-family:var(--mono)}
+/* MASTHEAD */
+.mast{border:1px solid var(--line2);background:var(--panel);position:relative;overflow:hidden;padding:26px 26px 22px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.mast:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--red)}
+.kick{font-family:var(--mono);font-size:11px;letter-spacing:3px;color:var(--stamp);text-transform:uppercase}
+.mast h1{font-family:var(--serif);font-weight:700;font-size:34px;letter-spacing:2px;margin:8px 0 4px;color:var(--ink)}
+.mast .sub{color:var(--muted);font-size:14px;max-width:64ch}
+.stamp{position:absolute;top:20px;right:20px;transform:rotate(-11deg);border:3px double var(--stamp);color:var(--stamp);
+  font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:2px;padding:6px 12px;text-align:center;opacity:.8;mix-blend-mode:multiply;line-height:1.2}
+.stamp small{display:block;font-size:15px;letter-spacing:3px}
+.filebar{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:16px;padding-top:13px;border-top:1px dashed var(--line2);font-family:var(--mono);font-size:11.5px;color:var(--faint)}
+.filebar b{font-weight:700}
+.unver{margin-top:16px;display:flex;gap:10px;align-items:center;background:rgba(176,42,28,.07);border:1px solid rgba(157,36,23,.5);padding:11px 14px}
+.unver .tag{font-family:var(--mono);font-size:10px;letter-spacing:2px;color:#fff;background:var(--stamp);padding:4px 8px;white-space:nowrap}
+.unver p{font-size:13px;color:#5a3220}
+/* SECTION HEAD */
+.shead{display:flex;align-items:baseline;gap:12px;margin:40px 0 16px}
+.shead .num{font-family:var(--mono);font-size:12px;color:var(--red);font-weight:700}
+.shead h2{font-family:var(--serif);font-size:22px;font-weight:700;letter-spacing:2px;color:var(--ink)}
+.shead .rule{flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--line2) 0 6px,transparent 6px 12px)}
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:12px}
+.kpi{border:1px solid var(--line);background:var(--panel);padding:16px 16px 14px;position:relative}
+.kpi .v{font-family:var(--mono);font-weight:700;font-size:30px;letter-spacing:-1px;line-height:1;color:var(--ink)}
+.kpi .l{font-size:12px;color:var(--muted);margin-top:8px}
+.kpi .x{position:absolute;top:12px;right:13px;font-family:var(--mono);font-size:10px;color:var(--faint)}
+.kpi.hi .v{color:var(--red)} .kpi.warn .v{color:var(--elev)} .kpi.acc .v{color:var(--med)}
+/* donut row */
+.mixrow{display:grid;grid-template-columns:1.4fr 1fr;gap:12px;margin-top:12px}
+.panel{border:1px solid var(--line);background:var(--panel);padding:18px}
+.ptitle{font-family:var(--serif);letter-spacing:2px;color:var(--ink);font-size:17px;font-weight:700;margin-bottom:14px}
+.donutbox{display:flex;align-items:center;gap:22px}
+.donut{width:128px;height:128px;border-radius:50%;flex:none;
+  background:conic-gradient(var(--red) 0 72%, var(--edge) 72% 100%);position:relative;box-shadow:inset 0 0 0 1px var(--line)}
+.donut:after{content:"";position:absolute;inset:26px;border-radius:50%;background:var(--panel);border:1px solid var(--line)}
+.donut span{position:absolute;inset:0;display:grid;place-content:center;text-align:center;font-family:var(--mono);z-index:1}
+.donut span b{color:var(--ink);font-size:19px;display:block}
+.donut span i{font-style:normal;font-size:9.5px;color:var(--muted);letter-spacing:1px}
+.legend p{font-size:13px;color:var(--muted)}
+.legend .li{display:flex;gap:9px;align-items:flex-start;margin-top:9px;font-size:12.5px}
+.legend .dot{width:11px;height:11px;border-radius:2px;margin-top:4px;flex:none;border:1px solid rgba(0,0,0,.15)}
+/* TRIAGE */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.fbtn{font-family:var(--mono);font-size:11px;letter-spacing:1px;padding:6px 12px;border:1px solid var(--line2);background:var(--panel);color:var(--muted);cursor:pointer;text-transform:uppercase;transition:.15s}
+.fbtn:hover{color:var(--ink)} .fbtn.on{background:var(--stamp);color:var(--paper);border-color:var(--stamp);font-weight:700}
+.fbtn .c{opacity:.75;margin-left:4px}
+.board{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px}
+.card{border:1px solid var(--line);background:var(--panel);padding:15px 16px 14px;position:relative;transition:.15s}
+.card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px}
+.card.crit:before{background:var(--red)} .card.elev:before{background:var(--elev)} .card.med:before{background:var(--med)}
+.card:hover{transform:translateY(-1px);box-shadow:0 2px 0 rgba(120,92,46,.18)}
+.card.hide{display:none}
+.card .top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:9px}
+.card h3{font-family:var(--serif);font-size:16.5px;font-weight:700;letter-spacing:.5px;color:var(--ink)}
+.sev{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:1px;padding:3px 8px;white-space:nowrap}
+.sev.crit{background:var(--red);color:#fff} .sev.elev{background:var(--elev);color:#fff} .sev.med{background:var(--med);color:#fff}
+.card .ev{font-size:12.8px;color:#4a4132;margin-bottom:9px}
+.card .act{font-size:12px;color:var(--muted);border-top:1px dashed var(--line2);padding-top:9px;display:flex;gap:8px}
+.card .act .k{font-family:var(--mono);font-size:9.5px;color:var(--red);letter-spacing:1px;flex:none;padding-top:2px}
+/* TIMELINE */
+.tl{border:1px solid var(--line);background:var(--panel);padding:8px 18px}
+.ev-row{display:grid;grid-template-columns:112px 1fr;gap:16px;padding:11px 0;border-bottom:1px dashed var(--line)}
+.ev-row:last-child{border-bottom:0}
+.ev-row .tm{font-family:var(--mono);font-size:12px;color:var(--stamp);text-align:right;padding-top:2px;font-weight:700}
+.ev-row .bd{padding-left:20px;position:relative}
+.ev-row .bd:before{content:"";position:absolute;left:3px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--line2);border:2px solid var(--panel)}
+.ev-row.s-crit .bd:before{background:var(--red)} .ev-row.s-elev .bd:before{background:var(--elev)}
+.ev-row.s-med .bd:before{background:var(--med)} .ev-row.s-ok .bd:before{background:var(--ok)} .ev-row.s-biz .bd:before{background:var(--ok)}
+.ev-row h4{font-size:14px;font-weight:700;margin-bottom:2px;color:var(--ink)}
+.ev-row p{font-size:12.5px;color:var(--muted)}
+/* WORKFLOW */
+.wf{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.wf .col{border:1px solid var(--line);background:var(--panel);padding:16px}
+.wf .col .h{display:flex;align-items:center;gap:9px;margin-bottom:12px;padding-bottom:9px;border-bottom:1px dashed var(--line2)}
+.wf .col .h .ic{font-family:var(--mono);font-size:12px;color:var(--paper);background:var(--stamp);width:24px;height:24px;display:grid;place-content:center;font-weight:700}
+.wf .col .h h3{font-family:var(--serif);font-size:15px;letter-spacing:1px;color:var(--ink)}
+.wf .col ul{list-style:none;font-size:12.5px;color:var(--muted)}
+.wf .col li{padding:4px 0 4px 12px;position:relative}
+.wf .col li:before{content:"▪";position:absolute;left:0;color:var(--line2);font-size:9px}
+.wf .col li b{color:var(--red)}
+/* ACTION QUEUE */
+.queue{counter-reset:q;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:10px}
+.qi{counter-increment:q;border:1px solid var(--line);background:var(--panel);padding:14px 16px 14px 54px;position:relative}
+.qi:before{content:counter(q,decimal-leading-zero);position:absolute;left:14px;top:12px;font-family:var(--mono);font-size:17px;font-weight:700;color:var(--red)}
+.qi h4{font-size:13.5px;font-weight:700;margin-bottom:3px;color:var(--ink)}
+.qi p{font-size:12px;color:var(--muted)}
+/* PEOPLE */
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px}
+.pers{border:1px solid var(--line);background:var(--panel);padding:13px 15px}
+.pers .who{font-family:var(--mono);font-size:12.5px;color:var(--red);font-weight:700;margin-bottom:5px}
+.pers .role{font-size:12.3px;color:var(--muted)}
+.pers.c{border-color:rgba(157,36,23,.4)}
+.pers.c .who:before{content:"✖ ";color:var(--stamp)}
+/* FOOTER */
+.foot{margin-top:36px;border:1px solid var(--line2);background:var(--panel2);padding:18px 20px}
+.foot .h{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--stamp);text-transform:uppercase;margin-bottom:9px}
+.foot ol{margin-left:18px;font-size:12.5px;color:var(--muted)} .foot li{padding:2px 0}
+.foot .end{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line2);font-family:var(--mono);font-size:11px;color:var(--faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media(max-width:720px){.mixrow{grid-template-columns:1fr}.mast h1{font-size:26px}.stamp{font-size:10px;padding:5px 8px}.ev-row{grid-template-columns:78px 1fr}.ev-row .tm{font-size:10.5px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- MASTHEAD -->
+  <div class="mast">
+    <div class="stamp"><small>未核实</small>UNVERIFIED</div>
+    <div class="kick">EML卷宗 · Mailbox Forensics</div>
+    <h1>泄露邮件分析报告</h1>
+    <p class="sub">对 Epochtimes / NTD / 神韵 相关邮箱导出的一次性取证式梳理：以数据概况、风险研判、事件时间线与行动优先级还原 2026-04 邮件全貌。</p>
+    <div class="filebar">
+      <span>卷宗编号 FILE NO. <b>EML‑2026‑0422</b></span>
+      <span>SOURCE <b>1449 个 .eml</b></span>
+      <span>WINDOW <b>2026‑04‑21 → 22 (ET)</b></span>
+      <span>REPORT <b>9 章节 · 21 页</b></span>
+    </div>
+    <div class="unver">
+      <span class="tag">UNVERIFIED</span>
+      <p>本报告所有安全、勒索、数据泄露与人员安全内容<b>仅是邮件中的陈述</b>；导出文件本身无法证实事件属实，亦不构成已妥善处置的结案依据。</p>
+    </div>
+  </div>
+
+  <!-- 1. DATA OVERVIEW -->
+  <div class="shead"><span class="num">01</span><h2>邮件数据概况</h2><span class="rule"></span></div>
+  <div class="kpis">
+    <div class="kpi"><span class="x">.eml</span><div class="v">1,449</div><div class="l">原始邮件文件总数</div></div>
+    <div class="kpi acc"><span class="x">uniq</span><div class="v">1,199</div><div class="l">不重复非空 Message‑ID</div></div>
+    <div class="kpi hi"><span class="x">72%</span><div class="v">1,043</div><div class="l">“Welcome!” 邮箱开通通知</div></div>
+    <div class="kpi"><span class="x">subj</span><div class="v">124</div><div class="l">不同主题行</div></div>
+    <div class="kpi warn"><span class="x">gap</span><div class="v">9</div><div class="l">缺少 Message‑ID 文件</div></div>
+    <div class="kpi"><span class="x">body</span><div class="v">1,191</div><div class="l">不重复非空正文</div></div>
+  </div>
+  <div class="mixrow">
+    <div class="panel">
+      <div class="ptitle">信号 vs 噪声</div>
+      <div class="donutbox">
+        <div class="donut"><span><b>1,449</b><i>FILES</i></span></div>
+        <div class="legend">
+          <div class="li"><span class="dot" style="background:var(--red)"></span><span><b>≈72%</b> 为自动生成的 “Welcome!” 开通邮件 —— 量大但多为系统噪音，文件数远高于独立事件数，需作为异常批次核验。</span></div>
+          <div class="li"><span class="dot" style="background:var(--edge)"></span><span><b>≈28%</b> 为真正需研判的业务、IT 与安全往来 —— 报告核心即围绕这部分展开。</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <p style="font-size:12.5px;color:var(--muted)">同一收件人列表邮件按收件人分别保存，故文件数偏高。群发副本合并后：纽约地区两组推广各 <b>88</b> 份副本；理财/社区演出三主题各 <b>15</b> 份。</p>
+      <p style="margin-top:10px;font-size:12.5px;color:var(--muted)">告警侧集中出现：可疑访问邮件域 <b>5</b> 个、Barracuda 备份失败通知 <b>8</b> 封、路由器异常节点 <b>11</b> 台（John Huang 负责）。</p>
+    </div>
+  </div>
+
+  <!-- 2. RISK TRIAGE -->
+  <div class="shead"><span class="num">02</span><h2>重点事项与风险研判</h2><span class="rule"></span></div>
+  <div class="filters">
+    <button class="fbtn on" data-f="all">全部 <span class="c">8</span></button>
+    <button class="fbtn" data-f="crit">高 <span class="c">5</span></button>
+    <button class="fbtn" data-f="elev">中高 <span class="c">1</span></button>
+    <button class="fbtn" data-f="med">中 <span class="c">2</span></button>
+  </div>
+  <div class="board" id="board">
+    <div class="card crit" data-s="crit"><div class="top"><h3>人员安全报告</h3><span class="sev crit">高</span></div>
+      <p class="ev"><b>Cherie Yang→Katherine Lee</b>：称学生<b>林莉莉</b>前一日在宿舍被其他营员殴打受伤。<b>Kelly Q→Lorraine Bucog</b>：表达害怕、被迫滞留、无法承受并求助。导出中<b>未见任何后续处置</b>。</p>
+      <div class="act"><span class="k">NEXT</span><span>先独立核实相关人员当前是否安全，再查明事实与处置。</span></div></div>
+
+    <div class="card crit" data-s="crit"><div class="top"><h3>邮箱批量开通</h3><span class="sev crit">高</span></div>
+      <p class="ev">约 <b>03:49–04:16 UTC</b> 集中生成 <b>1,043</b> 封 “Welcome!”，内容均为 @epochtimes.com 新邮箱开通。数量突出，但<b>无名单审批/工单/变更</b>可交叉验证。</p>
+      <div class="act"><span class="k">NEXT</span><span>与授权开通/迁移名单按账号逐项核对创建时间。</span></div></div>
+
+    <div class="card crit" data-s="crit"><div class="top"><h3>勒索 / 资料泄露说法</h3><span class="sev crit">高</span></div>
+      <p class="ev"><b>Michael Hwang</b> 4/20 被引用邮件称支付 <b>10 BTC</b>、攻击者未继续披露、已加密卡与个人信息；<b>Diana M.</b> 4/22 回复“不用担心”。<b>无事件报告、支付凭证、影响范围或修复确认。</b></p>
+      <div class="act"><span class="k">NEXT</span><span>安全/法务按事件记录核实，勿以该回复结案。</span></div></div>
+
+    <div class="card crit" data-s="crit"><div class="top"><h3>邮件域可疑访问</h3><span class="sev crit">高</span></div>
+      <p class="ev"><b>John Huang</b> 4/22 收到 SY‑Mails、Simvia‑Mails、4New‑Mails、TheWisdom‑Mails、FOFG‑Mails <b>五域告警</b>，列出可疑 IP；部分称无有效登录，部分记录对不存在账户的 IMAP 访问。</p>
+      <div class="act"><span class="k">NEXT</span><span>查报告链接/日志、登录成功状态与账户过滤器变更。</span></div></div>
+
+    <div class="card crit" data-s="crit"><div class="top"><h3>邮件网关备份</h3><span class="sev crit">高</span></div>
+      <p class="ev"><b>Barracuda</b> 于 01:01–03:01 反复报告配置、用户/别名、Bayesian 数据备份失败，共 <b>8</b> 封；根因为 <b>portal 账户授权失败</b>。未见恢复成功通知。</p>
+      <div class="act"><span class="k">NEXT</span><span>确认后续备份恢复成功，评估故障期恢复能力。</span></div></div>
+
+    <div class="card elev" data-s="elev"><div class="top"><h3>可疑付款通知</h3><span class="sev elev">中高</span></div>
+      <p class="ev"><b>Renee Gong</b> 转发一封外部 QuickBooks 邮件，称已向 <b>GREBER MACHINE TOOL INC</b> 支付 <b>$383</b>；发件人被标注异常，收据链接<b>非 QuickBooks 域</b>。</p>
+      <div class="act"><span class="k">NEXT</span><span>勿作付款凭证；经银行/内部 AP/已知供应商电话核实。</span></div></div>
+
+    <div class="card med" data-s="med"><div class="top"><h3>未结邮箱故障</h3><span class="sev med">中</span></div>
+      <p class="ev"><b>Jack Bradley</b> 报告 NYC 邮箱异常，后称被锁在 @epochtimes.nyc 外，<b>无解决记录</b>；<b>Rose Geddes</b> 按 2FA 指引后于 4/22 确认已能登录。</p>
+      <div class="act"><span class="k">NEXT</span><span>跟进 Jack 未结工单；Rose 可视为链内已结。</span></div></div>
+
+    <div class="card med" data-s="med"><div class="top"><h3>广告投放待交付</h3><span class="sev med">中</span></div>
+      <p class="ev">多个 <b>4/23–4/25</b> 投放仍收到创意/预览通知；<b>Alex Liu</b> 就 4/24 Morning Brief 横幅追问合同编号。CRM 显示仍有未完成环节。</p>
+      <div class="act"><span class="k">NEXT</span><span>以 CRM 当前状态逐项确认补件、审批与排期。</span></div></div>
+  </div>
+
+  <!-- 3. TIMELINE -->
+  <div class="shead"><span class="num">03</span><h2>2026‑04‑22 事件时间线</h2><span class="rule"></span></div>
+  <div class="tl">
+    <div class="ev-row s-biz"><div class="tm">00:38</div><div class="bd"><h4>邮件系统测试</h4><p>Daisy Beckenbach 收到主题 “e2e”、正文仅 “helo” 的测试邮件。</p></div></div>
+    <div class="ev-row s-crit"><div class="tm">01:01–03:01</div><div class="bd"><h4>邮件网关备份失败 ×8</h4><p><b>Barracuda</b> 配置/用户/Bayesian 备份连续失败，原因 portal 账户无法授权。</p></div></div>
+    <div class="ev-row s-crit"><div class="tm">~02:01 ET</div><div class="bd"><h4>员工求助 / 安全关切</h4><p><b>Kelly Q→Lorraine Bucog</b>：表达受困、害怕、无法承受并求助；导出无答复或转介。</p></div></div>
+    <div class="ev-row s-crit"><div class="tm">~02:48</div><div class="bd"><h4>神韵宿舍疑似伤人报告</h4><p><b>Cherie Yang→Katherine Lee</b> “紧急事件”：称<b>林莉莉</b>在宿舍被殴打、伤势严重并内部治疗。</p></div></div>
+    <div class="ev-row s-elev"><div class="tm">02:28–03:27</div><div class="bd"><h4>路由器 / 节点巡检</h4><p>自动报告发给 Samuel、John Huang 等；John 本地支持汇总称负责节点中 <b>11 台异常</b>，部分离线多日。</p></div></div>
+    <div class="ev-row s-crit"><div class="tm">02:59–03:59</div><div class="bd"><h4>五个邮件域可疑访问告警</h4><p>SY / Simvia / 4New / TheWisdom / FOFG‑Mails；含可疑 IP 与对不存在账户的 IMAP 尝试。</p></div></div>
+    <div class="ev-row s-crit"><div class="tm">~03:49 UTC起</div><div class="bd"><h4>大批邮箱开通通知</h4><p>集中生成 <b>1,043</b> 封 @epochtimes.com “Welcome!”，需对照批准名单核实是否授权批量。</p></div></div>
+    <div class="ev-row s-crit"><div class="tm">05:11 ET</div><div class="bd"><h4>黑客事件说法回复</h4><p><b>Diana M.</b> 就 4/20 “付 10 BTC / 已加密” 邮件回复“不用担心”——经外部核实的处置说法。</p></div></div>
+    <div class="ev-row s-biz"><div class="tm">05:47–15:00</div><div class="bd"><h4>Fidelis Care 合同与发票</h4><p>Renee Gong 的 X2640062 <b>($580)</b> 获批；CRM 要求 Lin Shi 开 5/8 到期发票。</p></div></div>
+    <div class="ev-row s-biz"><div class="tm">08:12</div><div class="bd"><h4>CoreSite 数据中心账单</h4><p>Justin Yao 请批 West DC 5 月月账单；William Cheung 回复 “I approve”。</p></div></div>
+    <div class="ev-row s-biz"><div class="tm">11:01–17:24</div><div class="bd"><h4>多项广告合同审批</h4><p>Gray‑Parker、Jazz Pharmaceuticals、Strand Media、招聘广告 #11116 等先后进入待审/获批。</p></div></div>
+    <div class="ev-row s-crit"><div class="tm">13:33</div><div class="bd"><h4>可疑 QuickBooks $383 付款</h4><p>Renee Gong 转发外部邮件，发件人异常、链接非 QuickBooks 域；不能认定付款真实。</p></div></div>
+    <div class="ev-row s-med"><div class="tm">13:04–14:41</div><div class="bd"><h4>邮箱访问故障</h4><p>Jack Bradley 被锁 @epochtimes.nyc 外，导出无解决；Rose Geddes 2FA 后确认已解决。</p></div></div>
+    <div class="ev-row s-crit"><div class="tm">23:04 UTC</div><div class="bd"><h4>Google 安全提醒</h4><p>发给 <b>Ying Lu</b> 针对 @epochtimes.nyc 账号的安全提醒；需核实事件类型与登录设备。</p></div></div>
+  </div>
+
+  <!-- 4. WORKFLOWS -->
+  <div class="shead"><span class="num">04</span><h2>按工作流归纳</h2><span class="rule"></span></div>
+  <div class="wf">
+    <div class="col"><div class="h"><span class="ic">1</span><h3>IT 与信息安全</h3></div><ul>
+      <li><b>账号</b>：1,043 Welcome；Yang Hong Chu 创建、Grace Xiao 保留、Shangjing Liu 迁移缺失</li><li><b>登录</b>：Rose 已 2FA 结案；Jack 未结</li><li><b>安全</b>：五域可疑访问集中于同一监控窗口</li><li><b>备份</b>：Barracuda 授权失败连续告警</li><li><b>节点</b>：多台离线；与邮件失陷是否相关无证据</li></ul></div>
+    <div class="col"><div class="h"><span class="ic">2</span><h3>广告销售·合同·交付</h3></div><ul>
+      <li><b>Fidelis Care</b> X2640062 $580 已批/5‑8 开票</li><li><b>Gray‑Parker</b> #11113 $7,500、<b>TeloYouth</b> #11114 $300、<b>Jazz Pharma</b> 提交/获批</li><li><b>Strand Media</b> N2630035 变更后批准</li><li><b>Mode Mobile</b> 排期确认、M2640066 待开票</li><li>多笔 4/23–25 投放待素材/预览；Roku 更正无需 RAMS tag</li></ul></div>
+    <div class="col"><div class="h"><span class="ic">3</span><h3>财务·供应商·物业</h3></div><ul>
+      <li><b>CoreSite</b> West DC 5 月账单获批</li><li><b>发票</b>：4 月须 4/24 前提交；Air Partner/Buttonville 结果未显示</li><li><b>付款</b>：IBC/Customers Bank 当日审批反复</li><li><b>28 街押金</b>：5 楼缺记录、6/7 楼账面 $384,635</li><li><b>消防局账单</b> 待 JR 确认；Wen Du 合同因出差未签</li></ul></div>
+    <div class="col"><div class="h"><span class="ic">4</span><h3>社区及节目安排</h3></div><ul>
+      <li><b>神韵</b>推广：New Brunswick 售票 61%、NJPAC 均值 57%</li><li><b>4/25 游行</b>：路线/集合/队列/着装，游行后集会至约 15:00</li><li><b>5/13 特别节目</b> 10:30–13:00，Jim Feng 批准</li><li><b>5/9、5/13</b> 鼓队活动通知</li><li><b>4/23 理财讲座</b>、<b>4/26 舞蹈演出</b> 社区推广</li></ul></div>
+  </div>
+
+  <!-- 5. ACTION QUEUE -->
+  <div class="shead"><span class="num">05</span><h2>建议行动顺序</h2><span class="rule"></span></div>
+  <div class="queue">
+    <div class="qi"><h4>人员安全优先</h4><p>由适当负责人直接核实林莉莉与 Kelly Q 现状并记录，勿只依赖邮件描述。</p></div>
+    <div class="qi"><h4>安全事件核验</h4><p>查 5 域访问报告原文与认证日志，确认是否有成功登录；核对 Google 提醒账户活动。</p></div>
+    <div class="qi"><h4>账号批次核对</h4><p>1,043 Welcome 按账号汇出，与 HR/迁移工单、审批名单、创建时间交叉核对。</p></div>
+    <div class="qi"><h4>修复备份</h4><p>查 Barracuda portal 授权，确认各对象有新的成功备份并可恢复。</p></div>
+    <div class="qi"><h4>核查数据泄露说法</h4><p>安全+法务确认是否存在事件/付款/影响范围/报告义务；“已安全”说法不单独作为关闭依据。</p></div>
+    <div class="qi"><h4>核实付款与账单</h4><p>经银行/内部 AP 核 $383；请 JR 回复消防局账单；跟进 28 街押金凭证。</p></div>
+    <div class="qi"><h4>清理行政待办</h4><p>跟进 Jack 邮箱锁定、3 月报销及未显示结果的发票/付款审批。</p></div>
+    <div class="qi"><h4>广告交付</h4><p>CRM 按 4/23–25 逐项确认素材/合同/预览/tracking；确认 Roku 更正被采纳。</p></div>
+  </div>
+
+  <!-- 6. PEOPLE -->
+  <div class="shead"><span class="num">06</span><h2>主要人物与职责脉络</h2><span class="rule"></span></div>
+  <div class="people">
+    <div class="pers c"><div class="who">Cherie Yang · Katherine Lee · 林莉莉</div><div class="role">宿舍疑似伤人报告的发/收件人与被指学生；无处置记录，需独立核实。</div></div>
+    <div class="pers c"><div class="who">Kelly Q · Lorraine Bucog</div><div class="role">个人安全/受困求助邮件；无回复记录。</div></div>
+    <div class="pers c"><div class="who">Michael Hwang · Diana M.</div><div class="role">勒索/资料泄露处置说法的邮件往来参与者；内容重大但未获证实。</div></div>
+    <div class="pers c"><div class="who">John Huang</div><div class="role">五域可疑访问告警 + 多台路由器节点的本地支持联系人。</div></div>
+    <div class="pers"><div class="who">HR · Michelle Hsu · HelpNTD</div><div class="role">邮箱创建、密码重置、保留账号等行政/技术流程。</div></div>
+    <div class="pers"><div class="who">William Cheung · Xiangqi Mu · Justin Yao</div><div class="role">CoreSite 账单、日常银行付款审批与会计往来。</div></div>
+    <div class="pers"><div class="who">Linda Li · Haitao Wang · Renee Gong · Victoria Zhang · Alex Liu · Jo Yang · Liz Gao</div><div class="role">广告排期、素材/预览、效果报告与 CRM 合同/发票主要参与者。</div></div>
+    <div class="pers"><div class="who">Victor Lin · Jim Feng · Cheng Wang · Cathy Wang</div><div class="role">节目申请/批准、4/25 游行安排与鼓队活动通知。</div></div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <div class="h">阅读说明 · 证据边界</div>
+    <ol>
+      <li>时间以<b>邮件头发送时间</b>为准，除特别注明外为美国东部时间 (ET)；北京时间事件已换算标注。</li>
+      <li>回复/转发中引用的<b>旧邮件按原始日期</b>标出，不计为 4/22 当天新发生的事件（如 2025‑12‑01 押金、4/20 黑客说法）。</li>
+      <li>涉及安全、数据泄露或勒索的内容<b>只是邮件中的说法</b>，导出文件本身<b>不能证实事件属实</b>，也不代表已妥善处置。</li>
+    </ol>
+    <div class="end"><span>REPORT · EML 邮件完整分析 · 21 页 · 9 章节</span><span>卷宗存档 · GENERATED BY AGENT · 结论须以权威日志/记录为准</span></div>
+  </div>
+
+</div>
+<script>
+(function(){
+  var btns=document.querySelectorAll('.fbtn'),cards=document.querySelectorAll('#board .card');
+  btns.forEach(function(b){b.addEventListener('click',function(){
+    btns.forEach(function(x){x.classList.remove('on')});b.classList.add('on');
+    var f=b.getAttribute('data-f');
+    cards.forEach(function(c){c.classList.toggle('hide',f!=='all'&&c.getAttribute('data-s')!==f)});
+  })});
+})();
+</script>
+</body>
+</html>
