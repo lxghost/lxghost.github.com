@@ -18,7 +18,15 @@
     const siteTheme = document.documentElement.getAttribute('data-bs-theme');
     const colorMode = siteTheme === 'light' || siteTheme === 'dark'
       ? siteTheme
-      : colorScheme.matches ? 'dark' : 'light';
+      : document.documentElement.getAttribute('data-td-preset') ? 'light'
+        : colorScheme.matches ? 'dark' : 'light';
+    try {
+      const presets = JSON.parse(section.dataset.tdPresetThemes || '{}');
+      const palette = presets[document.documentElement.getAttribute('data-td-preset')];
+      if (palette && palette[colorMode]) return resolveTheme(palette[colorMode]);
+    } catch (_) {
+      // Older/custom markup can keep the original light/dark pair.
+    }
     return colorMode === 'dark'
       ? resolveTheme(section.dataset.tdThemeDark)
       : resolveTheme(section.dataset.tdThemeLight);
@@ -108,7 +116,7 @@
 
   new MutationObserver(() => sections.forEach(setTheme)).observe(document.documentElement, {
     attributes: true,
-    attributeFilter: ['data-bs-theme'],
+    attributeFilter: ['data-bs-theme', 'data-td-preset'],
   });
   const handleColorScheme = () => sections.forEach(setTheme);
   if (colorScheme.addEventListener) {

@@ -71,7 +71,6 @@
         : doc.keywords || '';
       return {
         title: (doc.title || '').toLowerCase(),
-        keywordText: keywordText,
         keywords: keywordText.toLowerCase(),
         headings: (doc.headings || '').toLowerCase(),
         description: (doc.description || '').toLowerCase(),
@@ -99,7 +98,6 @@
       docs.forEach(function (doc, docIndex) {
         var fields = folded[docIndex];
         var titleAt = fields.title.indexOf(needle);
-        var keywordText = fields.keywordText;
         var keywordAt = fields.keywords.indexOf(needle);
         var headingAt = fields.headings.indexOf(needle);
         var descAt = fields.description.indexOf(needle);
@@ -121,7 +119,7 @@
         } else if (descAt >= 0) {
           excerpt = doc.description;
         } else if (keywordAt >= 0) {
-          excerpt = keywordText;
+          excerpt = doc.description || doc.excerpt || '';
         }
         hits.push({
           doc: doc,
@@ -395,6 +393,24 @@
   // palette to commands. "/" opens the full search surface.
   var COMMAND_PREFIX = '>';
   var TYPING_TAGS = { INPUT: true, TEXTAREA: true, SELECT: true };
+  var extensions = new Map();
+  var extensionsChanged = function () {};
+  var SAFE_ID = /^[a-zA-Z0-9][a-zA-Z0-9_-]*$/;
+
+  function registerSearchTail(extension) {
+    if (!extension || typeof extension.id !== 'string' || !SAFE_ID.test(extension.id) ||
+        typeof extension.rows !== 'function' || typeof extension.activate !== 'function')
+      throw new TypeError('Invalid search-tail extension');
+    if (extensions.has(extension.id)) throw new Error('Duplicate search-tail extension: ' + extension.id);
+    var entry = { id: extension.id, rows: extension.rows, activate: extension.activate };
+    extensions.set(entry.id, entry);
+    extensionsChanged();
+    return function () {
+      if (extensions.get(entry.id) !== entry) return;
+      extensions.delete(entry.id);
+      extensionsChanged(entry);
+    };
+  }
 
   // A bare single-character shortcut must yield to anything the reader could be
   // typing into, including author-supplied editable regions.
@@ -408,20 +424,20 @@
 
   function isRendered(element) {
     if (!element) return false;
-    if (typeof element.closest === 'function' && element.closest('[hidden]'))
+    if (typeof element.closest === 'function' && element.closest('[hidden], [inert], [aria-hidden="true"]'))
       return false;
     if (global.getComputedStyle) {
       var style = global.getComputedStyle(element);
       if (style.display === 'none' || style.visibility === 'hidden') return false;
     }
-    return element.offsetParent !== null;
+    return element.getClientRects().length > 0;
   }
 
-  function hasOpenDialog() {
+  function hasOpenDialog(except) {
     if (document.querySelector('dialog[open]')) return true;
     return Array.prototype.some.call(
       document.querySelectorAll('[role="dialog"]'),
-      isRendered,
+      function (dialog) { return dialog !== except && isRendered(dialog); },
     );
   }
 
@@ -450,7 +466,7 @@
       if (event.shiftKey && (active === first || !container.contains(active))) {
         event.preventDefault();
         last.focus();
-      } else if (!event.shiftKey && active === last) {
+      } else if (!event.shiftKey && (active === last || !container.contains(active))) {
         event.preventDefault();
         first.focus();
       }
@@ -483,6 +499,9 @@
     var composing = false;
     var pendingKey = '';
     var pendingActivation = 0;
+    var pendingExtension = null;
+    var extensionRenderQueued = false;
+    var queryFailed = false;
     var activationSerial = 0;
     var session = 0;
     var delayedClose = false;
@@ -535,6 +554,24 @@
       syncBusy();
     }
 
+    function cancelExtension() {
+      if (!pendingExtension) return;
+      var previous = pendingExtension;
+      pendingExtension = null;
+      previous.controller.abort();
+      clearPending(previous.activation);
+    }
+
+    extensionsChanged = function (removed) {
+      if (removed && pendingExtension && pendingExtension.owner === removed) cancelExtension();
+      if (!isOpen() || extensionRenderQueued) return;
+      extensionRenderQueued = true;
+      Promise.resolve().then(function () {
+        extensionRenderQueued = false;
+        if (isOpen()) render(input.value, false);
+      });
+    };
+
     function message(text) {
       clearRows();
       var el = document.createElement('div');
@@ -575,6 +612,7 @@
     // `seed` pre-fills the query. Passing the command prefix opens straight
     // into command mode; it is undefined when `open` is used as a listener.
     function open(event, seed) {
+      cancelExtension();
       session += 1;
       var openSession = session;
       logicalOpen = true;
@@ -646,12 +684,20 @@
       input.setAttribute('aria-expanded', 'false');
       input.removeAttribute('aria-activedescendant');
       choiceState = null;
-      if (!preservePending) clearPending();
-      if (
-        restoreFocus !== false && lastOpener &&
-        typeof lastOpener.focus === 'function' &&
-        root.contains(document.activeElement)
-      ) lastOpener.focus();
+      if (!preservePending) {
+        cancelExtension();
+        clearPending();
+      }
+      if (restoreFocus !== false && root.contains(document.activeElement)) {
+        var focusTarget = lastOpener;
+        // A desktop hover panel may have closed while search owned focus.
+        if (focusTarget && !isRendered(focusTarget)) {
+          focusTarget = Array.prototype.find.call(document.querySelectorAll(
+            '.td-shell-float [data-td-shell-sidebar-toggle], [data-td-shell-drawer-open]',
+          ), isRendered) || document.getElementById('td-main-content');
+        }
+        if (focusTarget && typeof focusTarget.focus === 'function') focusTarget.focus();
+      }
       var reducedMotion = global.matchMedia &&
         global.matchMedia('(prefers-reduced-motion: reduce)').matches;
       hideTimer = global.setTimeout(function () {
@@ -733,6 +779,7 @@
     }
 
     function groupsFor(value) {
+      queryFailed = false;
       if (choiceState)
         return model.choiceGroup(choiceState.action, choiceState.command, labels);
       var raw = String(value || '').trim();
@@ -742,12 +789,59 @@
 
       var groups = [];
       if (engine) {
-        try { groups = pageGroups(engine.query(raw)); } catch (_) { groups = []; }
+        try { groups = pageGroups(engine.query(raw)); } catch (_) { groups = []; queryFailed = true; }
       }
       var actions = model.actionRows(registry, raw);
       if (actions.length)
         groups.push({ key: 'actions', label: labels.actions, rows: actions });
       return groups;
+    }
+
+    function appendSearchTail(groups, query) {
+      var pageCount = groups.reduce(function (count, group) {
+        return count + group.rows.filter(function (row) { return row.type === 'page'; }).length;
+      }, 0);
+      var context = Object.freeze({ query: query, locale: html.lang || 'en',
+        phase: loadFailed || queryFailed ? 'error' : pageCount ? 'results' : 'empty',
+        pageResultCount: pageCount });
+      var tail = [];
+      Array.from(extensions.values()).forEach(function (owner) {
+        try {
+          var descriptors = owner.rows(context);
+          if (!Array.isArray(descriptors)) {
+            if (descriptors && typeof descriptors.then === 'function')
+              Promise.resolve(descriptors).catch(function () {});
+            throw new TypeError('rows must return an array');
+          }
+          var seen = new Set();
+          var accepted = descriptors.map(function (descriptor) {
+            if (!descriptor || typeof descriptor !== 'object' ||
+                typeof descriptor.id !== 'string' || !SAFE_ID.test(descriptor.id) || seen.has(descriptor.id) ||
+                typeof descriptor.title !== 'string' || !descriptor.title.trim())
+              throw new TypeError('Invalid search-tail row');
+            seen.add(descriptor.id);
+            ['description', 'icon', 'disabledReason'].forEach(function (key) {
+              if (descriptor[key] !== undefined && typeof descriptor[key] !== 'string')
+                throw new TypeError('Invalid search-tail field');
+            });
+            if (descriptor.available !== undefined && typeof descriptor.available !== 'boolean')
+              throw new TypeError('Invalid availability');
+            var copy = Object.freeze({ id: descriptor.id, title: descriptor.title,
+              description: descriptor.description || '', icon: descriptor.icon || '',
+              available: descriptor.available !== false, disabledReason: descriptor.disabledReason || '' });
+            return Object.assign({}, copy, { id: 'extension:' + owner.id + ':' + copy.id,
+              type: 'extension', owner: owner, descriptor: copy, context: context });
+          });
+          if (extensions.get(owner.id) === owner) tail = tail.concat(accepted);
+        } catch (_) { /* One invalid provider cannot break native search. */ }
+      });
+      if (!tail.length) return false;
+      var actions = groups.find(function (group) {
+        return group.key === 'actions' && group.rows.every(function (row) { return row.type !== 'page'; });
+      });
+      if (actions) actions.rows = actions.rows.concat(tail);
+      else groups.push({ key: 'actions', label: labels.actions, rows: tail });
+      return true;
     }
 
     function appendIcon(container, icon) {
@@ -831,6 +925,7 @@
     function render(value, retryIndex) {
       if (retryIndex === undefined) retryIndex = true;
       var raw = String(value || '').trim();
+      if (pendingExtension && pendingExtension.query !== raw) cancelExtension();
       var commandOnly = raw.charAt(0) === COMMAND_PREFIX;
       var groups = groupsFor(value);
       var actionCount = groups.reduce(function (total, group) {
@@ -838,6 +933,22 @@
       }, 0);
 
       if (!raw || choiceState || commandOnly || engine || (loadFailed && !retryIndex)) {
+        if (raw && !choiceState && !commandOnly && extensions.size && appendSearchTail(groups, raw)) {
+          var note = !actionCount
+            ? (loadFailed && !retryIndex
+              ? (root.dataset.tdTIndexUnavailable || root.dataset.tdTEmpty || 'Page index unavailable')
+              : (root.dataset.tdTEmpty || 'No results'))
+            : loadFailed && !retryIndex ? root.dataset.tdTIndexUnavailable : '';
+          renderGroups(groups, raw);
+          if (note) {
+            var nativeMessage = document.createElement('div');
+            nativeMessage.className = 'td-shell-search__empty';
+            nativeMessage.textContent = note;
+            list.insertBefore(nativeMessage, list.firstChild);
+            announce(note + '. ' + resultMessage(rows.length));
+          }
+          return;
+        }
         if (!actionCount) {
           message(loadFailed && !retryIndex && !commandOnly
             ? (root.dataset.tdTIndexUnavailable || root.dataset.tdTEmpty || 'Page index unavailable')
@@ -859,6 +970,19 @@
     }
 
     function runRow(row) {
+      if (row.type === 'extension') {
+        if (extensions.get(row.owner.id) !== row.owner) throw new Error('Extension removed');
+        var token = pendingExtension;
+        return row.owner.activate(row.descriptor, Object.freeze(Object.assign({}, row.context, {
+          signal: token.controller.signal,
+          handoff: function () {
+            if (pendingExtension !== token || token.controller.signal.aborted) return false;
+            token.handedOff = true;
+            close(false, true);
+            return true;
+          },
+        })));
+      }
       if (row.type === 'page' || row.type === 'quick') {
         var destination = row.ref || row.url;
         destination = registry.safeUrl ? registry.safeUrl(destination) : null;
@@ -884,6 +1008,7 @@
     function activate(index) {
       var row = rows[index];
       if (!row) return;
+      if (pendingKey) return;
       if (!row.available) {
         announce(row.disabledReason || root.dataset.tdTActionFailed || 'Unavailable');
         return;
@@ -902,18 +1027,30 @@
         announce(root.dataset.tdTChoice || 'Choose an option');
         return;
       }
-      if (pendingKey) return;
       var activationSession = session;
       var activation = ++activationSerial;
       pendingKey = row.id;
       pendingActivation = activation;
+      var extensionActivation = row.type === 'extension' ? {
+        owner: row.owner, query: row.context.query, activation: activation,
+        controller: new AbortController(), handedOff: false,
+      } : null;
+      if (extensionActivation) pendingExtension = extensionActivation;
       syncBusy();
       var isPrint = row.sourceId === 'print' ||
         (row.command && row.command.action === 'print') ||
         (row.action && row.action.id === 'print');
       if (isPrint) close(true, true);
-      runRow(row).then(function (result) {
+      var operation;
+      try { operation = runRow(row); } catch (error) { operation = Promise.reject(error); }
+      Promise.resolve(operation).then(function (result) {
+        if (extensionActivation) {
+          if (pendingExtension !== extensionActivation) return;
+          pendingExtension = null;
+          result = undefined;
+        }
         clearPending(activation);
+        if (extensionActivation && extensionActivation.handedOff) return;
         if (activationSession !== session && !isPrint) return;
         if (result && result.requiresChoice) {
           choiceState = { action: result.action, command: result.command || null };
@@ -934,10 +1071,14 @@
           close(true);
         }
       }).catch(function (error) {
+        if (extensionActivation) {
+          if (pendingExtension !== extensionActivation) return;
+          pendingExtension = null;
+        }
         clearPending(activation);
         if (activationSession !== session) return;
         announce(
-          (error && error.message) ||
+          (extensionActivation ? root.dataset.tdTActionFailed : error && error.message) ||
           row.disabledReason || root.dataset.tdTActionFailed || 'Action failed',
         );
       });
@@ -980,6 +1121,7 @@
     document.addEventListener('keydown', function (event) {
       if (event.isComposing || composing || event.keyCode === 229) return;
       if ((event.metaKey || event.ctrlKey) && String(event.key).toLowerCase() === 'k') {
+        if (!isOpen() && hasOpenDialog(root)) return;
         event.preventDefault();
         if (isOpen()) close();
         else open();
@@ -1027,6 +1169,7 @@
   // Let keyboard-nav.js reuse this instance without duplicating dialog logic.
   global.OinkCommandPalette = {
     init: initSearch,
+    registerSearchTail: registerSearchTail,
     commandPrefix: COMMAND_PREFIX,
   };
   if (typeof module === 'object' && module.exports)

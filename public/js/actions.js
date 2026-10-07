@@ -3,19 +3,47 @@
   'use strict';
 
   function fallbackCopy(text, doc) {
+    var previous = doc.activeElement;
+    var fieldSelection = previous && typeof previous.selectionStart === 'number'
+      ? [previous.selectionStart, previous.selectionEnd, previous.selectionDirection]
+      : null;
+    var selection = doc.getSelection ? doc.getSelection() : null;
+    var ranges = [];
+    if (selection) {
+      for (var i = 0; i < selection.rangeCount; i += 1)
+        ranges.push(selection.getRangeAt(i).cloneRange());
+    }
+    var backwardSelection = ranges.length === 1 && !ranges[0].collapsed &&
+      selection.anchorNode === ranges[0].endContainer && selection.anchorOffset === ranges[0].endOffset;
     var textarea = doc.createElement('textarea');
     textarea.value = text;
     textarea.setAttribute('readonly', '');
     textarea.style.position = 'fixed';
     textarea.style.inset = '-9999px auto auto -9999px';
     doc.body.appendChild(textarea);
-    textarea.select();
-    if (textarea.setSelectionRange) textarea.setSelectionRange(0, text.length);
     var copied = false;
     try {
+      textarea.select();
+      if (textarea.setSelectionRange) textarea.setSelectionRange(0, text.length);
       copied = doc.execCommand('copy');
     } finally {
+      var active = doc.activeElement;
+      var restore = active === textarea || active === doc.body || active === doc.documentElement;
       textarea.remove();
+      // A copy handler may deliberately focus another control. Restore only
+      // focus that the temporary textarea took, never that newer focus.
+      if (restore && previous && previous.isConnected && typeof previous.focus === 'function') {
+        previous.focus({ preventScroll: true });
+        if (fieldSelection && previous.setSelectionRange)
+          previous.setSelectionRange.apply(previous, fieldSelection);
+        else if (selection && ranges.length) {
+          selection.removeAllRanges();
+          ranges.forEach(function (range) { selection.addRange(range); });
+          if (backwardSelection && selection.setBaseAndExtent)
+            selection.setBaseAndExtent(ranges[0].endContainer, ranges[0].endOffset,
+              ranges[0].startContainer, ranges[0].startOffset);
+        }
+      }
     }
     if (!copied) throw new Error('clipboard fallback was rejected');
   }
@@ -122,6 +150,7 @@
     'create_project_issue',
     'print_section',
     'print',
+    'switch_preset',
     'switch_theme',
     'switch_language',
     'switch_version',

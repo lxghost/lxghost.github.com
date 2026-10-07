@@ -39,6 +39,11 @@
     value.startOnLoad = false;
     if (document.documentElement.getAttribute('data-bs-theme') === 'dark') {
       value.theme = 'dark';
+      // Mermaid's default #ccc on #585858 edge labels reach only 4.43:1.
+      // Keep the palette mode-only and preserve any authored label background.
+      value.themeVariables = Object.assign(
+        { edgeLabelBackground: '#404040' }, value.themeVariables || {},
+      );
     }
     return value;
   }

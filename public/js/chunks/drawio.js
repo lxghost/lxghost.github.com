@@ -27,8 +27,11 @@
 
     var wrapper = document.createElement('div');
     wrapper.classList.add('drawio');
-    img.parentNode.insertBefore(wrapper, img);
-    wrapper.appendChild(img);
+    // Zoom may already own a button around the image. Wrap that whole control
+    // so Edit stays its sibling, never an interactive child of another button.
+    var imageControl = img.closest('.td-image-zoom__trigger') || img;
+    imageControl.parentNode.insertBefore(wrapper, imageControl);
+    wrapper.appendChild(imageControl);
 
     var btn = document.createElement('button');
     btn.type = 'button';

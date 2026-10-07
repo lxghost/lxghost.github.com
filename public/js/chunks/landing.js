@@ -16,6 +16,7 @@
 
   function revealAll(elements) {
     elements.forEach(function (element) {
+      element.removeAttribute('data-td-reveal-pending');
       element.classList.add('td-is-revealed');
       element.setAttribute('data-td-revealed', '');
     });
@@ -35,7 +36,11 @@
         observer.unobserve(entry.target);
       });
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-    elements.forEach(function (element) { observer.observe(element); });
+    elements.forEach(function (element) {
+      // Static content stays visible until its observer is successfully wired.
+      observer.observe(element);
+      element.setAttribute('data-td-reveal-pending', '');
+    });
     return elements.length;
   }
 
@@ -46,7 +51,8 @@
     var decimals = Number(element.getAttribute('data-td-count-decimals') || (String(raw).split('.')[1] || '').length);
     var prefix = element.getAttribute('data-td-count-prefix') || '';
     var suffix = element.getAttribute('data-td-count-suffix') || '';
-    element.textContent = prefix + target.toLocaleString(undefined, {
+    var display = element.getAttribute('data-td-count-display');
+    element.textContent = display !== null ? display : prefix + target.toLocaleString(undefined, {
       minimumFractionDigits: decimals,
       maximumFractionDigits: decimals,
     }) + suffix;

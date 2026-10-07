@@ -6344,6 +6344,45 @@ limitations under the License.
         update();
     }
 
+    // Reading containers can acquire focus from a click. A later unrelated
+    // key must not turn that click into an article-sized focus decoration.
+    // Tab and a new programmatic focus keep their normal keyboard indication.
+    function initReadingFocus() {
+        const selector = '#td-main-content, .td-table-scroll[tabindex], pre[tabindex]';
+        let pointerTarget = null;
+        function isContainer(el) {
+            return el && typeof el.matches === 'function' && el.matches(selector);
+        }
+        document.addEventListener('pointerdown', function(event) {
+            pointerTarget = event.target;
+            const active = document.activeElement;
+            if (isContainer(active) && active.contains(pointerTarget)) {
+                active.setAttribute('data-td-pointer-focus', '');
+            }
+        }, true);
+        document.addEventListener('pointerup', function() {
+            pointerTarget = null;
+        }, true);
+        document.addEventListener('pointercancel', function() { pointerTarget = null; }, true);
+        document.addEventListener('focusin', function(event) {
+            if (isContainer(event.target)) {
+                if (pointerTarget && event.target.contains(pointerTarget)) {
+                    event.target.setAttribute('data-td-pointer-focus', '');
+                } else event.target.removeAttribute('data-td-pointer-focus');
+            }
+            pointerTarget = null;
+        }, true);
+        document.addEventListener('focusout', function(event) {
+            if (isContainer(event.target)) event.target.removeAttribute('data-td-pointer-focus');
+        }, true);
+        document.addEventListener('keydown', function(event) {
+            pointerTarget = null;
+            if (event.key === 'Tab' && isContainer(document.activeElement)) {
+                document.activeElement.removeAttribute('data-td-pointer-focus');
+            }
+        }, true);
+    }
+
     function initLanguageMenus() {
         document.querySelectorAll('.td-language-selector--menu').forEach(function(menu, index) {
             const trigger = menu.querySelector('.td-language-selector__trigger');
@@ -6459,9 +6498,10 @@ limitations under the License.
         });
     }
 
-    // Hover popovers (theme, version): hover or focus reveals the options
-    // while the trigger keeps its own click action (dark-mode.js binds the
-    // theme toggle; the version trigger toggles the popover for touch).
+    // Hover popovers (version, keyboard help, and any site markup that still
+    // uses the pattern): hover or focus reveals the options while the trigger
+    // keeps its own click action. The Appearance menu is a click disclosure
+    // owned by appearance.js instead.
     function initThemeMenus() {
         document.querySelectorAll('[data-td-nav-hover]').forEach(function(menu, index) {
             const trigger = menu.querySelector('[data-td-nav-hover-trigger], .td-nav-util');
@@ -6523,6 +6563,7 @@ limitations under the License.
     }
 
     initHeaderScroll();
+    initReadingFocus();
     initLanguageMenus();
     initVersionMenus();
     initThemeMenus();
@@ -6665,7 +6706,74 @@ limitations under the License.
 })();
 
 ;
-// Hydrate the active path of a cached sidebar without fetching page fragments.
+/** One committed state for OINK's tree and movable aside disclosures. */
+(function () {
+  'use strict';
+  if (window.OinkSidebar) return;
+
+  var records = new Map();
+  var resolveReady;
+  var ready = new Promise(function (resolve) { resolveReady = resolve; });
+
+  function commit(id, expanded, options) {
+    var record = records.get(id);
+    if (!record || typeof expanded !== 'boolean') return false;
+    var source = options && options.source;
+    if (['user', 'active-path', 'responsive', 'api'].indexOf(source) < 0) source = 'api';
+    // A persisted preference must not hide the reader's current location.
+    var item = record.button.closest('.td-shell-tree__item');
+    if (source === 'api' && item && item.classList.contains('td-active-path')) expanded = true;
+    var changed = record.expanded !== expanded;
+    if (!expanded && record.target.contains(document.activeElement)) record.button.focus();
+    record.button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    record.target.classList.toggle('td-is-open', expanded);
+    record.target.inert = !expanded;
+    var label = expanded ? record.button.dataset.tdLabelCollapse : record.button.dataset.tdLabelExpand;
+    if (label) record.button.setAttribute('aria-label', label);
+    record.expanded = expanded;
+    if (changed) document.dispatchEvent(new CustomEvent('oink:sidebar-disclosure', {
+      detail: { id: id, expanded: expanded, source: source },
+    }));
+    return true;
+  }
+
+  var api = window.OinkSidebar = {
+    ready: ready,
+    isReady: false,
+    setExpanded: commit,
+    getState: function (id) {
+      var record = records.get(id);
+      return record ? { id: id, expanded: record.expanded } : null;
+    },
+  };
+
+  document.querySelectorAll('[data-td-shell-tree-toggle]').forEach(function (button) {
+    var owner = button.closest('#td-shell-sidebar, [data-td-shell-aside]');
+    var id = button.getAttribute('aria-controls');
+    var target = id && document.getElementById(id);
+    if (!owner || !target || !owner.contains(target) || records.has(id)) return;
+    records.set(id, { button: button, target: target, expanded: button.getAttribute('aria-expanded') === 'true' });
+    commit(id, records.get(id).expanded, { source: 'responsive' });
+    button.addEventListener('click', function () {
+      commit(id, !records.get(id).expanded, { source: 'user' });
+    });
+  });
+
+  function finish() {
+    // A task boundary also waits for later DOMContentLoaded listeners;
+    // microtasks can run between those listeners before hydration finishes.
+    setTimeout(function () {
+      api.isReady = true;
+      resolveReady(api);
+      document.dispatchEvent(new CustomEvent('oink:sidebar-ready'));
+    }, 0);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', finish, { once: true });
+  else finish();
+})();
+
+;
+// Hydrate the active path of a visible cached sidebar without fetching fragments.
 (function () {
   'use strict';
 
@@ -6680,7 +6788,7 @@ limitations under the License.
 
   function init() {
     var menu = document.getElementById('td-sidebar-menu');
-    if (!menu || !menu.classList.contains('d-none')) return;
+    if (!menu || !menu.hasAttribute('data-td-sidebar-hydrate-active')) return;
 
     var canonical = document.querySelector('link[rel="canonical"]');
     var current = pathOf(canonical ? canonical.href : window.location.href);
@@ -6713,22 +6821,21 @@ limitations under the License.
       item = item.parentElement && item.parentElement.closest('li')
     ) {
       item.classList.add('td-active-path');
+      item.classList.remove('td-shell-tree__item--hidden');
       var toggle = item.querySelector(
         ':scope > .td-shell-tree__row [data-td-shell-tree-toggle]',
       );
-      if (toggle) {
-        toggle.setAttribute('aria-expanded', 'true');
-        if (toggle.dataset.tdLabelCollapse) {
-          toggle.setAttribute('aria-label', toggle.dataset.tdLabelCollapse);
-        }
-        var target = document.getElementById(
-          toggle.getAttribute('aria-controls'),
-        );
-        if (target) target.classList.add('td-is-open');
+      if (toggle && window.OinkSidebar) {
+        window.OinkSidebar.setExpanded(toggle.getAttribute('aria-controls'), true, {
+          source: 'active-path',
+        });
       }
     }
 
-    menu.classList.remove('d-none');
+    // Resolve the marker-scoped transition suppression before restoring the
+    // ordinary disclosure motion used after hydration.
+    menu.getBoundingClientRect();
+    menu.removeAttribute('data-td-sidebar-hydrate-active');
   }
 
   if (document.readyState === 'loading') {

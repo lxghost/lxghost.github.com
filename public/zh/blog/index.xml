@@ -9,7 +9,7 @@
     
     
     
-      <lastBuildDate>Fri, 28 Aug 2026 00:08:16 +0800</lastBuildDate>
+      <lastBuildDate>Tue, 08 Sep 2026 00:40:17 +0800</lastBuildDate>
     
     
       <atom:link href="http://localhost:1313/zh/blog/index.xml" rel="self" type="application/rss+xml" />
@@ -112,11 +112,11 @@
       </item>
     <item>
         <title></title>
-        <link>http://localhost:1313/zh/blog/threat/packagist-themes-ios-spyware/</link>
+        <link>http://localhost:1313/zh/blog/threat/packagist-themes-ios-spyware/packagist-themes-ios-spyware/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/zh/blog/threat/packagist-themes-ios-spyware/</guid>
-        <description>&lt;h2 id=&#34;执行摘要&#34;&gt;执行摘要&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Socket 发布的研究报告披露了一起针对 &lt;strong&gt;Packagist / Composer 软件供应链&lt;/strong&gt;的恶意软件投递活动。&lt;/p&gt;&#xA;&lt;p&gt;攻击者在多个 PHP Composer 主题包中植入恶意 JavaScript。这些主题主要用于基于 &lt;strong&gt;OphimCMS&lt;/strong&gt; 和 &lt;strong&gt;KKPhim&lt;/strong&gt; 的电影、漫画流媒体网站。网站管理员安装受污染的主题后，恶意 JavaScript 会被部署到生产网站，并自动提供给访问网站的终端用户。&lt;/p&gt;</description>
+        <guid>http://localhost:1313/zh/blog/threat/packagist-themes-ios-spyware/packagist-themes-ios-spyware/</guid>
+        <description>&lt;h1 id=&#34;ai驱动的情报系统&#34;&gt;AI驱动的情报系统&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://localhost:1313/static/view/packagist-themes-ios-spyware.html&#34;&gt;可视化报告&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;执行摘要&#34;&gt;执行摘要&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Socket 发布的研究报告披露了一起针对 &lt;strong&gt;Packagist / Composer 软件供应链&lt;/strong&gt;的恶意软件投递活动。&lt;/p&gt;</description>
       </item>
     
   </channel>

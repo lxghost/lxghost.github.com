@@ -28,6 +28,19 @@
                 href="http://localhost:1313/zh/docs/design/research/goldmark-attributes/"
                 />
   </url><url>
+    <loc>http://localhost:1313/zh/blog/threat/packagist-themes-ios-spyware/</loc>
+    <lastmod>2026-09-08T00:40:17+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/blog/threat/packagist-themes-ios-spyware/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/threat/packagist-themes-ios-spyware/"
+                />
+  </url><url>
     <loc>http://localhost:1313/zh/docs/admin/preview/</loc>
     <lastmod>2026-08-28T00:08:16+08:00</lastmod>
     <xhtml:link
@@ -1368,7 +1381,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/zh/authors/</loc>
-    <lastmod>2026-08-28T00:08:16+08:00</lastmod>
+    <lastmod>2026-09-08T00:40:17+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
@@ -1459,7 +1472,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/zh/tags/</loc>
-    <lastmod>2026-08-28T00:08:16+08:00</lastmod>
+    <lastmod>2026-09-08T00:40:17+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
@@ -1680,16 +1693,30 @@
     <loc>http://localhost:1313/zh/tags/%E7%9B%AE%E5%BD%95/</loc>
     <lastmod>2026-08-28T00:08:16+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/zh/blog/threat/packagist-themes-ios-spyware/</loc>
+    <loc>http://localhost:1313/zh/blog/threat/packagist-themes-ios-spyware/packagist-themes-ios-spyware/</loc>
+    <lastmod>2026-09-08T00:40:17+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/blog/threat/packagist-themes-ios-spyware/"
+                href="http://localhost:1313/blog/threat/packagist-themes-ios-spyware/packagist-themes-ios-spyware/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="http://localhost:1313/zh/blog/threat/packagist-themes-ios-spyware/"
+                href="http://localhost:1313/zh/blog/threat/packagist-themes-ios-spyware/packagist-themes-ios-spyware/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/authors/lxghost/</loc>
+    <lastmod>2026-09-08T00:40:17+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/authors/lxghost/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/authors/lxghost/"
                 />
   </url><url>
     <loc>http://localhost:1313/zh/</loc>
@@ -1742,6 +1769,32 @@
                 rel="alternate"
                 hreflang="zh-CN"
                 href="http://localhost:1313/zh/search/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/spyware/</loc>
+    <lastmod>2026-09-08T00:40:17+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/tags/spyware/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/tags/spyware/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/threat/</loc>
+    <lastmod>2026-09-08T00:40:17+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/tags/threat/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/tags/threat/"
                 />
   </url><url>
     <loc>http://localhost:1313/zh/authors/vonng/</loc>
