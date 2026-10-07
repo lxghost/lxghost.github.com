@@ -22,6 +22,25 @@ This is the clearer starting point for a single-title tutorial or translated
 book: keep the site architecture narrow, then add numbering and indexes only as
 the manuscript needs them.
 
+## Limit the site to the reading model it needs {#implementation}
+
+The site's [`hugo.yaml`](https://github.com/Vonng/tpme/blob/bb49bef8ea3c66f8b27231b6a80f4bb4d6c98597/hugo.yaml)
+sets the relevant options under `params.ui`:
+
+```yaml
+params:
+  ui:
+    typography: system
+    shell_types: [book]
+    docs_section: ''
+```
+
+This keeps the shared shell focused on a book and uses system fonts. It does
+not convert arbitrary pages into chapters: the site still owns its manuscript,
+language configuration, and Book front matter. Start from the
+[Book root pattern](/docs/write/book/) and add another shell type only when a
+separate documentation or publishing section needs it.
+
 → [Writing a book](/docs/write/book/) · [DDIA case](/case/ddia/)
 
 ---

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>十分钟上手 on OINK</title>
+    <title>快速上手 on OINK</title>
     <link>http://localhost:1313/zh/docs/start/</link>
-    <description>Recent content in 十分钟上手 on OINK</description>
+    <description>Recent content in 快速上手 on OINK</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
     
@@ -15,12 +15,20 @@
       <atom:link href="http://localhost:1313/zh/docs/start/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-        <title>仓库导览</title>
+        <title>使用 OINK Starter</title>
+        <link>http://localhost:1313/zh/docs/start/starter/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/start/starter/</guid>
+        <description>&lt;p&gt;&lt;a href=&#34;https://github.com/pgsty/oink-starter&#34;&gt;&lt;code&gt;pgsty/oink-starter&lt;/code&gt;&lt;/a&gt; 是新建 OINK&#xA;站点的正式起点。它刻意小于 &lt;code&gt;oink.pgsty.com&lt;/code&gt;：不会把主题文档、分析账号、评论仓库、&#xA;浏览器回归套件或 PGSTY 品牌复制进你的项目。&lt;/p&gt;&#xA;&lt;p&gt;截至 2026-09-20，模板固定 OINK v1.0.0、Go 1.27 与 Hugo Extended 0.165.0。&#xA;默认三语、仅英文、英中双语三个 profile 都已经在这个版本上完成 warning 即失败的&#xA;严格构建。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Starter 仓库导览</title>
         <link>http://localhost:1313/zh/docs/start/anatomy/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/zh/docs/start/anatomy/</guid>
-        <description>&lt;p&gt;本页逐项说明 &lt;code&gt;pgsty/oink.pgsty.com&lt;/code&gt; 克隆下来的每个文件与目录：哪些必须保留、哪些替换为你自己的信息、哪些是文档站自用可以整棵删除，并给出一个安全的删除顺序。&lt;/p&gt;&#xA;&lt;p&gt;主题代码不在这个仓库里：它是 &lt;code&gt;go.mod&lt;/code&gt; 固定的一个 Hugo Module，存放在 Go 的模块缓存中。这个仓库只有内容、配置与站点自己的少量覆盖。&lt;/p&gt;</description>
+        <description>&lt;p&gt;本页说明从 &lt;a href=&#34;https://github.com/pgsty/oink-starter&#34;&gt;&lt;code&gt;pgsty/oink-starter&lt;/code&gt;&lt;/a&gt;&#xA;创建的仓库，不再介绍大得多的 &lt;code&gt;oink.pgsty.com&lt;/code&gt; 文档与回归测试仓库。主题源码不会&#xA;复制进任何一个站点：&lt;code&gt;go.mod&lt;/code&gt; 以 Hugo Module 形式固定版本，Hugo 把解析结果存进&#xA;Go 模块缓存。&lt;/p&gt;</description>
       </item>
     <item>
         <title>从零建站与其它安装方式</title>
@@ -28,7 +36,23 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/zh/docs/start/from-scratch/</guid>
-        <description>&lt;p&gt;本页从空目录搭建一个最小 OINK 站点：十几行 &lt;code&gt;hugo.yml&lt;/code&gt; 加一条 &lt;code&gt;hugo mod get&lt;/code&gt;，得到一个可预览的单语站点。代价是首页、示例内容与可参照的组件用法都要自己写。&lt;/p&gt;&#xA;&lt;p&gt;已有 Hugo 站点时不需要脚手架：装上主题模块，再补三项 goldmark 前置配置（见&lt;a href=&#34;http://localhost:1313/zh/docs/start/from-scratch/#config&#34;&gt;写 &lt;code&gt;hugo.yml&lt;/code&gt;&lt;/a&gt;），正文不用重写。已有 Docsy 站点见&lt;a href=&#34;http://localhost:1313/zh/docs/admin/upgrade/&#34;&gt;版本升级&lt;/a&gt;。&lt;/p&gt;</description>
+        <description>&lt;p&gt;这是推荐路径 &lt;a href=&#34;http://localhost:1313/zh/docs/start/starter/&#34;&gt;OINK Starter&lt;/a&gt; 的手工替代方案。本页从空目录&#xA;搭建一个最小 OINK 站点：一份精简 &lt;code&gt;hugo.yml&lt;/code&gt; 加一条 &lt;code&gt;hugo mod get&lt;/code&gt;，得到一个可预览&#xA;的单语站点。代价是首页、示例内容、部署 workflow 与每种组件用法都要自己组装。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>OINK CLI 功能与后续方向</title>
+        <link>http://localhost:1313/zh/docs/start/cli-overview/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/start/cli-overview/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;首期历史快照&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本页保留 2026-09-30 的命令清单与证据。六个命令、平台状态及 CI 建议描述的是&#xA;当时情况。当前维护行为归&lt;a href=&#34;http://localhost:1313/zh/docs/design/decisions/cli/&#34;&gt;CLI 契约&lt;/a&gt;与&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/start/cli/&#34;&gt;使用指南&lt;/a&gt;所有；&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/&#34;&gt;维护记录&lt;/a&gt;&#xA;保留其指定源码与二进制的历史验收。&#xA;本地验收不代表公开 CLI 发布或部署。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>使用 OINK CLI</title>
+        <link>http://localhost:1313/zh/docs/start/cli/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/start/cli/</guid>
+        <description>&lt;p&gt;&lt;code&gt;oink&lt;/code&gt; 是 Hugo 的可选 Go 命令行工具。当前本地 &lt;code&gt;0.1.0-dev&lt;/code&gt; 候选专注于诊断、&#xA;真实产物检查、初始化、构建、主题升级与有保护的维护计划。Hugo 继续负责渲染，&#xA;站点可以使用普通 Hugo 构建。&lt;/p&gt;</description>
       </item>
     
   </channel>

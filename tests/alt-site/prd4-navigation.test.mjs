@@ -8,10 +8,6 @@ import { JSDOM } from 'jsdom';
 
 const siteDir = fileURLToPath(new URL('../../', import.meta.url));
 const fixtureDir = join(siteDir, 'tests', 'fixtures', 'prd4-navigation');
-const localWorkspace = join(siteDir, 'go.work');
-const moduleWorkspace =
-  process.env.HUGO_MODULE_WORKSPACE ||
-  (existsSync(localWorkspace) ? localWorkspace : undefined);
 
 function build(name, { baseURL, fixture } = {}) {
   const outDir = join(siteDir, 'tmp', `prd4-navigation-${name}`);
@@ -36,10 +32,6 @@ function build(name, { baseURL, fixture } = {}) {
   const result = spawnSync('npm', args, {
     cwd: siteDir,
     encoding: 'utf8',
-    env: {
-      ...process.env,
-      ...(moduleWorkspace ? { HUGO_MODULE_WORKSPACE: moduleWorkspace } : {}),
-    },
   });
   const output = `${result.stdout ?? ''}${result.stderr ?? ''}`;
   assert.equal(result.status, 0, `Build failed:\n${output}`);
@@ -81,17 +73,19 @@ for (const [deployment, baseURL, prefix] of [
       '/book',
       '/case',
       '/blog',
+      '/docs/cli',
       '/zh/docs',
       '/zh/book',
       '/zh/case',
       '/zh/blog',
+      '/zh/docs/cli',
     ]) {
       documentAt(outDir, route);
     }
 
     for (const [languagePath, labels, panelCount] of [
-      ['', ['Docs', 'Get started', 'Book', 'Case', 'Blog'], 2],
-      ['/zh', ['文档', '快速上手', '教程', '案例', '博客'], 2],
+      ['', ['Docs', 'Get started', 'Book', 'Case', 'Blog', 'CLI'], 2],
+      ['/zh', ['文档', '快速上手', '教程', '案例', '博客', 'CLI'], 2],
     ]) {
       const home = documentAt(outDir, languagePath || '/');
       const desktop = navbarEntries(home);
@@ -146,6 +140,9 @@ for (const [deployment, baseURL, prefix] of [
 
       const tutorial = desktop.find((entry) => entry.label === labels[1]);
       assert.equal(tutorial.level, 1);
+      const cli = desktop.find((entry) => entry.label === 'CLI');
+      assert.equal(cli.level, 1);
+      assert.equal(cli.href, `${prefix}${languagePath}/docs/cli/`);
       // Menu descriptions are configuration data only; panels render rows of
       // one icon and one title.
       assert.equal(tutorial.description, '');

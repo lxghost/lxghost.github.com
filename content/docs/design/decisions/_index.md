@@ -28,6 +28,8 @@ bilingual, versioned site as the contracts it supports.
 | [Configuration model](/docs/design/decisions/configuration/)       | Where configuration belongs, how pages override it, and why OINK has no parallel configuration namespace |
 | [Markdown-first authoring](/docs/design/decisions/authoring/)      | Why native Markdown is preferred and Docs, Blog, Book, and Landing extend shared systems                 |
 | [Generated configuration schema](/docs/design/decisions/config-schema/) | Why the editor schemas are a generated projection, and how the drift gate keeps a third configuration authority from appearing |
+| [Optional CLI and result contract](/docs/design/decisions/cli/) | Independent Go executable, versioned diagnostics, coverage, and explicit write boundaries for the local CLI candidate |
+| [Visual presets](/docs/design/decisions/visual-presets/) | Paper default, Slate compatibility, opt-in Appearance menu, independent mode and font boundaries |
 
 ## Record format {#record-format}
 

@@ -69,7 +69,7 @@
   <meta itemprop="name" content="组件总览">
   <meta itemprop="description" content="写文档时可用的全部组件，一个组件一页，例子由浅入深，参数表在页尾。">
   <meta itemprop="dateModified" content="2026-08-28T00:08:16+08:00">
-  <meta itemprop="wordCount" content="1599">
+  <meta itemprop="wordCount" content="1629">
   <meta itemprop="keywords" content="组件">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="组件总览">
@@ -293,13 +293,15 @@
 <ul>
 <li>所有 shortcode 都写 <code>{{&lt;/* 名字 */&gt;}}</code>，只有 <code>{{%/* steps */%}}</code> 用 <code>%</code> 分隔符，因为它的正文是页面级 Markdown。</li>
 <li>嵌套名字（<code>tab</code>、<code>card</code>、<code>field</code>）只在各自的父 shortcode 里有效。</li>
-<li>参数写错不会静悄悄降级，构建失败，报错带文件名与行号。</li>
+<li>作者参数写错不会静悄悄降级。普通预览会发出带源码位置的警告，并采用文档规定的
+回退或略去不安全部分；发布构建带 <code>--panicOnWarning</code> 时，那条警告会让门禁失败。</li>
 <li>公开字符串参数（图注、标签、标题）一律是纯文本，不解析 Markdown。只有正文是 Markdown：<code>tab</code>、<code>card</code>、<code>field</code> 的正文，<code>include</code> 引入的文件，以及 Book 的 <code>fig</code>、<code>tbl</code>、<code>eg</code> 正文。</li>
-<li>页面没用到的组件不下发运行时。脚本按这一页实际用到的组件拼成一个包，打印、Markdown 与 RSS 输出不加载任何脚本。</li>
+<li>页面没用到的组件不下发运行时。HTML 只引用这一页真正需要的稳定能力分片，打印、
+Markdown 与 RSS 不加载交互运行时。</li>
 </ul>
 <h2 id="pg-c50558ab6404b4b77061606f2aa00d70--prerequisites">站点前置配置
 </h2>
-<p>组件依赖三项 Goldmark 设置。克隆本站起步时它们已经配好，从零建站照抄以下片段：</p>
+<p>组件依赖三项 Goldmark 设置。OINK Starter 已经配好；从零建站时照抄以下片段：</p>
 <div class="td-code td-code--titled" id="td-code-fc97c7cc-fence-0" data-td-code data-td-code-auto-id
      data-td-language="yaml" data-td-line-count="8" role="group" aria-labelledby="td-code-fc97c7cc-fence-0-title">
   <div class="td-code__header">
@@ -403,7 +405,7 @@
       <td>KaTeX 行内与块级公式</td>
       <td><code>$$ … $$</code></td>
       <td>原生</td>
-      <td>按页加载</td>
+      <td>无</td>
     </tr>
     <tr>
       <td><a href="/zh/docs/components/mermaid/">Mermaid</a></td>
@@ -641,7 +643,7 @@
   </div>
   <div class="td-code__viewport" id="td-code-fbc6f550-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">[!TIP] 三条命令启动预览
 </span></span></span><span class="line"><span class="cl"><span class="k">&gt;
-</span></span></span><span class="line"><span class="cl"><span class="ge">&gt; 1. 克隆：`git clone https://github.com/pgsty/oink.pgsty.com my-docs`
+</span></span></span><span class="line"><span class="cl"><span class="ge">&gt; 1. 克隆：`git clone https://github.com/pgsty/oink-starter my-docs`
 </span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">2. 进入目录并预览：
 </span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">   ```bash
 </span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">   cd my-docs &amp;&amp; hugo server
@@ -656,7 +658,7 @@
   <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-lightbulb" aria-hidden="true"></i><span class="td-callout__label">三条命令启动预览</span></div>
   <div class="td-callout__body">
 <ol>
-<li>克隆：<code>git clone https://github.com/pgsty/oink.pgsty.com my-docs</code></li>
+<li>克隆：<code>git clone https://github.com/pgsty/oink-starter my-docs</code></li>
 <li>进入目录并预览：
 <div class="td-code td-code--untitled" id="td-code-fbc6f550-fence-4" data-td-code data-td-code-auto-id
      data-td-language="bash" data-td-line-count="1">
@@ -716,7 +718,7 @@
   </div>
   <div class="td-code__viewport" id="td-code-fbc6f550-fence-6-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">[!DETAILS] 完整的 `hugo version` 输出
 </span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">```text
-</span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">hugo v0.164.0+extended+withdeploy darwin/arm64 BuildDate=2026-07-06T16:39:30Z VendorInfo=Homebrew
+</span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">hugo v0.165.0+extended+withdeploy darwin/arm64
 </span></span></span><span class="line"><span class="cl">&gt; ```</span></span></code></pre></div></div>
 </div>
 <div class="td-callout td-callout--details td-callout--collapsible" role="note" data-td-callout-collapsible>
@@ -724,7 +726,7 @@
   <div class="td-callout__body">
 <div class="td-code td-code--untitled" id="td-code-fbc6f550-fence-7" data-td-code data-td-code-auto-id
      data-td-language="text" data-td-line-count="1">
-  <div class="td-code__viewport" id="td-code-fbc6f550-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">hugo v0.164.0+extended+withdeploy darwin/arm64 BuildDate=2026-07-06T16:39:30Z VendorInfo=Homebrew</span></span></code></pre></div></div>
+  <div class="td-code__viewport" id="td-code-fbc6f550-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">hugo v0.165.0+extended+withdeploy darwin/arm64</span></span></code></pre></div></div>
 </div>
   </div>
 </div><h2 id="pg-10c9c17e937cca1b1a5096f210286cc8--icon">自定义图标
@@ -787,7 +789,8 @@
 <ul>
 <li>正文与标题合并：经过 Prettier 等格式化工具的文件，在标题行下保留一个空的 <code>&gt;</code> 行，否则工具会把标题并入正文。</li>
 <li>属性行被格式化工具移动：把 <code>{icon=…}</code> 这类标记行放在 <code>&lt;!-- prettier-ignore-start --&gt;</code> / <code>&lt;!-- prettier-ignore-end --&gt;</code> 之间。</li>
-<li><code>style</code>、<code>onclick</code> 等属性导致构建失败：属性行只接受 <code>icon</code> 与 <code>class</code>（见下表）。</li>
+<li><code>style</code>、<code>onclick</code> 与不支持的属性会告警并忽略：属性行只接受 <code>icon</code> 与 <code>class</code>；
+严格发布构建拒绝这条警告（见下表）。</li>
 </ul>
 <h2 id="pg-10c9c17e937cca1b1a5096f210286cc8--outputs">输出形态
 </h2>
@@ -870,7 +873,7 @@
 </dl>
 </div>
 
-<p><code>style</code>、<code>on*</code> 与其它任何键都会让构建失败。</p>
+<p><code>style</code>、<code>on*</code> 与其它键会告警并忽略；严格发布构建拒绝这条警告。</p>
 <h2 id="pg-10c9c17e937cca1b1a5096f210286cc8--limits">限制与常见问题
 </h2>
 <ul>
@@ -932,6 +935,11 @@
       <td>只有这一页用的截图；随页面一起移动、翻译共用</td>
     </tr>
     <tr>
+      <td>当前分区的页面包（<code>_index.md</code> 及其资源）</td>
+      <td><code>![…](post/image.png)</code></td>
+      <td>分区内的图片；路径相对于该分区的资源目录</td>
+    </tr>
+    <tr>
       <td>全局资源 <code>assets/images/…</code></td>
       <td><code>![…](images/logo/oink.webp)</code></td>
       <td>多页共用、还要做处理（缩放 / 裁切）的图</td>
@@ -950,7 +958,12 @@
 </table>
 </div>
 
-<p>相对路径先按页面资源、再按全局资源查找，都找不到时按静态路径原样输出；主题不检查静态路径与远程 URL 是否存在。只有要求处理（<code>command=</code>）的图找不到资源时才构建失败。</p>
+<p>相对路径依次按页面资源、当前分区资源、全局资源查找，都找不到时按静态路径输出；主题不检查
+静态路径与远程 URL 是否存在。要求处理（<code>command=</code>）却解析不到可处理资源时，普通
+预览告警并保留未处理图片；严格发布构建拒绝这条警告。</p>
+<p>Markdown 中的替代文字优先于资源 metadata，包括明确表示装饰图的空 alt。资源的
+<code>params.alt</code> 必须是字符串；无效 metadata 会告警并被忽略，保留正文中编写的 alt。
+严格发布构建拒绝这条警告。</p>
 <h2 id="pg-e13886e03425b2bcd8334b00d32738d1--inline-vs-block">行内与块级
 </h2>
 <p>位于文字中间的是行内图片，渲染为一个 <code>&lt;img&gt;</code>，不能带属性；独立成段的是块级图片，可以带属性行。</p>
@@ -980,10 +993,10 @@
     <span class="td-code__filename" id="td-code-641d719e-fence-2-title" title="源码">源码</span>
   </div>
   <div class="td-code__viewport" id="td-code-641d719e-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">![<span class="nt">发布卡片：版本号、发布日期与资产按钮</span>](<span class="na">release-note.webp</span>)
-</span></span><span class="line"><span class="cl">{caption=&#34;发布卡片由 data/download 与页面的 release 记录生成&#34;}</span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl">{caption=&#34;发布卡片使用页面的 release_url 与 date&#34;}</span></span></code></pre></div></div>
 </div>
 <figure class="td-figure">
-  <img src="/docs/components/image/release-note.webp" alt="发布卡片：版本号、发布日期与资产按钮" width="732" height="142" loading="lazy" decoding="async"><figcaption> <span class="td-fig-caption">发布卡片由 data/download 与页面的 release 记录生成</span></figcaption>
+  <img src="/docs/components/image/release-note.webp" alt="发布卡片：版本号、发布日期与资产按钮" width="732" height="142" loading="lazy" decoding="async"><figcaption> <span class="td-fig-caption">发布卡片使用页面的 release_url 与 date</span></figcaption>
 </figure><p>Markdown 里的 <code>&quot;标题&quot;</code> 保持原义（悬停提示），不会成为图注。</p>
 <h2 id="pg-e13886e03425b2bcd8334b00d32738d1--size">尺寸
 </h2>
@@ -1016,7 +1029,9 @@
   <img src="/docs/components/image/oink-shell_hu_5c3680512123b8e0.webp" alt="文档外壳缩略图" width="233" height="150" loading="lazy" decoding="async"><figcaption> <span class="td-fig-caption">Fit 300x150：按比例装进 300×150 的框</span></figcaption>
 </figure><figure class="td-figure">
   <img src="/docs/components/image/oink-shell_hu_8f65dac06eb4d872.webp" alt="文档外壳左半边" width="300" height="150" loading="lazy" decoding="async"><figcaption> <span class="td-fig-caption">Fill 300x150 Left：填满框，从左侧裁</span></figcaption>
-</figure><p>静态路径、远程 URL 与 SVG 不能处理，对它们写 <code>command</code> 会构建失败。选项语法（锚点、质量、格式转换，如 <code>300x150 webp q80</code>）见 <a href="https://gohugo.io/content-management/image-processing/">Hugo 图片处理</a>。</p>
+</figure><p>静态路径、远程 URL 与 SVG 不能处理。对它们写 <code>command</code> 时告警并保留未处理图片；
+严格发布构建拒绝这条警告。选项语法（锚点、质量、格式转换，如
+<code>300x150 webp q80</code>）见 <a href="https://gohugo.io/content-management/image-processing/">Hugo 图片处理</a>。</p>
 <h2 id="pg-e13886e03425b2bcd8334b00d32738d1--link">链接图片
 </h2>
 <p>两种写法，用途不同：</p>
@@ -1037,7 +1052,8 @@
 <p><a href="/zh/docs/about/features/"><img class="td-image" src="/docs/components/image/oink-shell.webp" alt="点击进入亮点特性页" width="1200" height="771" loading="lazy" decoding="async"></a></p>
 <figure class="td-figure">
   <a class="td-figure__link" href="/zh/docs/write/releases/"><img src="/docs/components/image/release-note.webp" alt="发布卡片" width="732" height="142" loading="lazy" decoding="async"></a><figcaption> <span class="td-fig-caption">点击图片查看发布与下载页的说明</span></figcaption>
-</figure><p>带链接的图不参与缩放。没有图注只写 <code>link=</code> 会构建失败，报错中提示改用 <code>[![…](…)](…)</code>。</p>
+</figure><p>带链接的图不参与缩放。没有图注只写 <code>link=</code> 时告警并丢弃链接，消息提示改用
+<code>[![…](…)](…)</code>；严格发布构建拒绝这条警告。</p>
 <h2 id="pg-e13886e03425b2bcd8334b00d32738d1--numbered">编号图
 </h2>
 <p>编号图用于书籍与长篇手册：属性行加 <code>num</code>，可选 <code>#id</code>。编号是作者书写的字符串（<code>2-1</code>、<code>3.4</code>），主题不自动计数；图注前加本地化的「图 2-1」前缀，<code>#id</code> 缺省为 <code>fig-&lt;num&gt;</code>。正文用普通链接 <code>[图 2-1](#fig-2-1)</code> 或 <code>xref</code> shortcode 引用；全书图目录见<a href="/zh/docs/write/book/">书籍出版</a>。</p>
@@ -1058,6 +1074,9 @@
 <h2 id="pg-e13886e03425b2bcd8334b00d32738d1--zoom">缩放
 </h2>
 <p>图片缩放默认关闭。站点开启后，块级图片、figure、画廊中带 alt 的图成为可点击的按钮，在原生 <code>&lt;dialog&gt;</code> 中查看大图（Esc 关闭，焦点回到原处）。本页在 front matter 中开启了它，上面的图都可以点击。</p>
+<p>自 OINK 1.1 起，预览操作和图片描述保留在按钮的无障碍名称中，不会给复制的
+文章增加辅助文字；复制得到的富文本 HTML 保留图片和作者写的图注。v1.0.0 的隐藏预览
+标签可能在粘贴后出现。升级之前，可设置 <code>image_zoom: false</code> 并重新构建来避免这个标签。</p>
 <div class="td-code td-code--titled" id="td-code-641d719e-fence-7" data-td-code data-td-code-auto-id
      data-td-language="yaml" data-td-line-count="3" role="group" aria-labelledby="td-code-641d719e-fence-7-title">
   <div class="td-code__header">
@@ -1091,10 +1110,10 @@
   <div class="td-code__header">
     <span class="td-code__filename" id="td-code-641d719e-fence-10-title" title="源码">源码</span>
   </div>
-  <div class="td-code__viewport" id="td-code-641d719e-fence-10-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">![<span class="nt">侧栏（浅色）</span>](<span class="na">oink-shell.webp</span>)
+  <div class="td-code__viewport" id="td-code-641d719e-fence-10-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">![<span class="nt">侧栏（浅色）</span>](<span class="na">sidebar-light.webp</span>)
 </span></span><span class="line"><span class="cl">{class=&#34;only-light&#34;}
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">![<span class="nt">侧栏（深色）</span>](<span class="na">oink-shell.webp</span>)
+</span></span><span class="line"><span class="cl">![<span class="nt">侧栏（深色）</span>](<span class="na">sidebar-dark.webp</span>)
 </span></span><span class="line"><span class="cl">{class=&#34;only-dark&#34;}</span></span></code></pre></div></div>
 </div>
 <div class="td-code td-code--titled" id="td-code-641d719e-fence-11" data-td-code data-td-code-auto-id
@@ -1102,10 +1121,10 @@
   <div class="td-code__header">
     <span class="td-code__filename" id="td-code-641d719e-fence-11-title" title="assets/scss/_styles_project.scss">assets/scss/_styles_project.scss</span>
   </div>
-  <div class="td-code__viewport" id="td-code-641d719e-fence-11-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="o">[</span><span class="nt">data-bs-theme</span><span class="o">=</span><span class="s2">&#34;dark&#34;</span><span class="o">]</span> <span class="nc">.only-light</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl"><span class="nd">:not</span><span class="o">([</span><span class="nt">data-bs-theme</span><span class="o">=</span><span class="s2">&#34;dark&#34;</span><span class="o">])</span> <span class="nc">.only-dark</span> <span class="p">{</span> <span class="na">display</span><span class="o">:</span> <span class="ni">none</span><span class="p">;</span> <span class="p">}</span></span></span></code></pre></div></div>
+  <div class="td-code__viewport" id="td-code-641d719e-fence-11-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="nt">html</span><span class="o">[</span><span class="nt">data-bs-theme</span><span class="o">=</span><span class="s2">&#34;dark&#34;</span><span class="o">]</span> <span class="nc">.only-light</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="nt">html</span><span class="nd">:not</span><span class="o">([</span><span class="nt">data-bs-theme</span><span class="o">=</span><span class="s2">&#34;dark&#34;</span><span class="o">])</span> <span class="nc">.only-dark</span> <span class="p">{</span> <span class="na">display</span><span class="o">:</span> <span class="ni">none</span><span class="p">;</span> <span class="p">}</span></span></span></code></pre></div></div>
 </div>
-<p><code>class</code> 由主题原样透传，供站点 CSS 使用。</p>
+<p>把 <code>sidebar-light.webp</code> 与 <code>sidebar-dark.webp</code> 换成自己的浅色、深色图片。主题把 <code>data-bs-theme</code> 设在 <code>html</code> 上，上面的选择器让对应图片单独显示；<code>class</code> 由主题原样透传给站点 CSS。</p>
 <h2 id="pg-e13886e03425b2bcd8334b00d32738d1--outputs">输出形态
 </h2>
 <div class="td-table-scroll td-table-scroll--static">
@@ -1208,7 +1227,8 @@
 </dl>
 </div>
 
-<p><code>style</code>、<code>on*</code>、<code>alt</code>、<code>title</code>、<code>src</code> 与其它任何键出现在属性行都会构建失败（alt、title、src 属于 Markdown 图片本身）。</p>
+<p><code>style</code>、<code>on*</code>、<code>alt</code>、<code>title</code>、<code>src</code> 与不支持的键出现在属性行时告警并忽略；
+严格发布构建拒绝这条警告。alt、title、src 属于 Markdown 图片本身。</p>
 <h2 id="pg-e13886e03425b2bcd8334b00d32738d1--limits">限制与常见问题
 </h2>
 <ul>
@@ -1317,7 +1337,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">renderer</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">unsafe</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span></span></span></code></pre></div></div>
 </div>
-<p><code>filename</code> 是 <code>title</code> 的历史别名，两个一起写会构建失败。</p>
+<p><code>filename</code> 是 <code>title</code> 的历史别名，两个一起写时告警并使用 <code>filename</code>；严格发布构建
+拒绝这条警告。</p>
 <h2 id="pg-ef97c47290db77d27203f7e7e2c0a3cf--line-numbers">行号、起始行与高亮
 </h2>
 <p><code>lineNos</code> 取 <code>inline</code>（行号与代码同一列）或 <code>table</code>（行号独立成列，可单独选中不被复制）。<code>lineNoStart</code> 改显示的起始编号。<code>hl_lines</code> 标记要强调的行，计数按围栏内的源码行，从 1 开始，与 <code>lineNoStart</code> 无关。</p>
@@ -1397,7 +1418,9 @@
   <div class="td-code__viewport" id="td-code-40930295-fence-11-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">ARTIFACT_URL=https://repo.pigsty.io/pkg/infra/v3.6.0/infra-pkg-v3.6.0.el9.x86_64.tgz
 </span></span><span class="line"><span class="cl">CHECKSUM=sha256:6d3dce4f7acb18f586469adcb80ab35f3e859f9837786e151cfbc2b3c0f587b2</span></span></code></pre></div></div>
 </div>
-<p><code>wrap=true</code> 与表格行号不能共存：行号列与代码列是两个表格单元格，换行后会错位。写在一起构建失败，报错提示改用 <code>lineNos=&quot;inline&quot;</code> 或去掉换行。</p>
+<p><code>wrap=true</code> 与表格行号不能共存：行号列与代码列是两个表格单元格，换行后会错位。
+写在一起时告警并关闭换行，提示改用 <code>lineNos=&quot;inline&quot;</code> 或去掉换行；严格发布构建
+拒绝这条警告。</p>
 <h2 id="pg-ef97c47290db77d27203f7e7e2c0a3cf--collapse">折叠长代码
 </h2>
 <p><code>collapse=N</code> 让块初始只显示 N 行，底部给一个「显示全部 N 行」按钮。服务器输出完整代码，折叠是浏览器量出第 N 行位置后的视觉裁切：没有 JavaScript 时、读屏器中、打印时代码都是完整的。</p>
@@ -1469,7 +1492,10 @@
 </span></span><span class="line"><span class="cl"><span class="go">INFO installing pg_duckdb
 </span></span></span></code></pre></div></div>
 </div>
-<p>要连提示符与输出一起复制就写 <code>copy=&quot;all&quot;</code>。把 <code>copy=&quot;command&quot;</code> 用在 <code>bash</code>、<code>sh</code> 之类普通 lexer 上会构建失败，因为它们分不出提示符、命令与输出。多行命令请在续行里写出续行提示符（通常是 <code>&gt;</code>），否则那一行会被当成输出而排除。</p>
+<p>要连提示符与输出一起复制就写 <code>copy=&quot;all&quot;</code>。把 <code>copy=&quot;command&quot;</code> 用在 <code>bash</code>、<code>sh</code>
+之类普通 lexer 上时告警并使用 <code>copy=&quot;all&quot;</code>，因为它们分不出提示符、命令与输出；
+严格发布构建拒绝这条警告。多行命令请在续行里写出续行提示符（通常是 <code>&gt;</code>），否则
+那一行会被当成输出而排除。</p>
 <p>会话 lexer 的块里一行提示符都没有时，复制按钮报失败：图标转为错误状态，控制台留一条错误，剪贴板不变。它不会退化成复制全文。</p>
 <p><code>copy=false</code> 关掉这一块的复制按钮，用于不应被抄走的反例片段：</p>
 <div class="td-code td-code--titled" id="td-code-40930295-fence-16" data-td-code data-td-code-auto-id
@@ -1477,22 +1503,22 @@
   <div class="td-code__header">
     <span class="td-code__filename" id="td-code-40930295-fence-16-title" title="源码">源码</span>
   </div>
-  <div class="td-code__viewport" id="td-code-40930295-fence-16-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">``<span class="sb">`yaml {title=&#34;反例：属性行离开了它的块&#34; copy=false}
+  <div class="td-code__viewport" id="td-code-40930295-fence-16-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">``<span class="sb">`yaml {title=&#34;反例：无效的布尔值&#34; copy=false}
 </span></span></span><span class="line"><span class="cl"><span class="sb">params:
 </span></span></span><span class="line"><span class="cl"><span class="sb">  ui:
-</span></span></span><span class="line"><span class="cl"><span class="sb">    image_zoom: true   # 错：image_zoom 是一张表，不是布尔值
+</span></span></span><span class="line"><span class="cl"><span class="sb">    image_zoom: sometimes   # 错：应使用 true 或 false
 </span></span></span><span class="line"><span class="cl"><span class="sb">`</span>``</span></span></code></pre></div></div>
 </div>
 <div class="td-code td-code--titled" id="td-code-40930295-fence-17" data-td-code data-td-code-auto-id
      data-td-language="yaml" data-td-line-count="3" role="group" aria-labelledby="td-code-40930295-fence-17-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-40930295-fence-17-title" title="反例：属性行离开了它的块">反例：属性行离开了它的块</span>
+    <span class="td-code__filename" id="td-code-40930295-fence-17-title" title="反例：无效的布尔值">反例：无效的布尔值</span>
   </div>
   <div class="td-code__viewport" id="td-code-40930295-fence-17-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ui</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image_zoom</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">   </span><span class="c"># 错：image_zoom 是一张表，不是布尔值</span></span></span></code></pre></div></div>
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image_zoom</span><span class="p">:</span><span class="w"> </span><span class="l">sometimes  </span><span class="w"> </span><span class="c"># 错：应使用 true 或 false</span></span></span></code></pre></div></div>
 </div>
-<p>整站关掉复制用 <code>params.ui.code_copy: false</code>，它优先于每个块自己写的 <code>copy</code>（见<a href="/zh/docs/customize/config/">配置总览</a>）。复制按钮只有图标，成功与失败会换图标并播报本地化状态；复制内容保留缩进、空行与 Unicode，去掉行号，末尾只留一个换行。</p>
+<p>用 <code>params.ui.code_copy: false</code> 默认关闭复制，围栏显式写出的 <code>copy</code> 会覆盖这个默认值（见<a href="/zh/docs/customize/config/">配置总览</a>）。复制按钮只有图标，成功与失败会换图标并播报本地化状态；复制内容保留缩进、空行与 Unicode，去掉行号，末尾只留一个换行。</p>
 <h2 id="pg-ef97c47290db77d27203f7e7e2c0a3cf--line-links">行链接与稳定 ID
 </h2>
 <p>把「看第 3 行」做成链接需要两步：给围栏一个明确的 <code>id</code>，再打开 <code>anchorLineNos=true</code>。行号随即变成锚点链接，锚点是 <code>#&lt;id&gt;-&lt;行号&gt;</code>。</p>
@@ -1534,7 +1560,10 @@
 </div></div>
 </div>
 <p>跳到 <a href="/zh/docs/components/code/#ex-explain-4">第 4 行</a>。</p>
-<p>不写 <code>id</code> 时主题也会生成一个页面内唯一的 ID，但它依赖围栏在页面里的顺序，前面插入一个新围栏就会变。只有作者书写的 <code>id</code> 才是永久链接。ID 不能含空白与控制字符，也不能与页面上其它块的 viewport、标签、面板、标题、行锚点 ID 重复，重复即构建失败。</p>
+<p>不写 <code>id</code> 时主题也会生成一个页面内唯一的 ID，但它依赖围栏在页面里的顺序，前面
+插入一个新围栏就会变。只有作者书写的 <code>id</code> 才是永久链接。ID 不能含空白与控制字符，
+也不能与页面上其它块的 viewport、标签、面板、标题、行锚点 ID 重复；无效或重复 ID
+会告警，严格发布构建拒绝这条警告。</p>
 <h2 id="pg-ef97c47290db77d27203f7e7e2c0a3cf--numbered">编号例
 </h2>
 <p>写书或长手册时给代码片段编号：<code>num</code> 加 <code>caption</code>，这个围栏就成了一条 Book「示例」目标，可以被 <code>xref</code> 引用，也会进入全书的示例目录。编号由作者书写，主题不自动计数；<code>id</code> 默认是 <code>eg-&lt;num&gt;</code>。</p>
@@ -1561,7 +1590,9 @@
 </div>
 
 </figure><p>参见 <a class="td-book-xref td-book-xref--eg" href="#eg-bloat" data-td-book-kind="eg" data-td-book-num="4-1">示例 4-1</a>。</p>
-<p><code>num</code> 与 <code>caption</code> 必须成对出现，只写一个会构建失败；<code>num</code> 与标签页属性 <code>tab</code> 互斥。图、表、公式的编号写法与索引见<a href="/zh/docs/write/book/">书籍出版</a>。</p>
+<p><code>num</code> 与 <code>caption</code> 必须成对出现。只写 caption 时忽略它，只写编号时丢弃编号并告警；
+严格发布构建拒绝这条警告。<code>num</code> 与标签页属性 <code>tab</code> 互斥。图、表、公式的编号写法与
+索引见<a href="/zh/docs/write/book/">书籍出版</a>。</p>
 <h2 id="pg-ef97c47290db77d27203f7e7e2c0a3cf--tabs">一组围栏做成标签页
 </h2>
 <p>连续几个带 <code>tab</code> 的围栏会在浏览器里合成一个标签页集，第一个围栏上的 <code>group</code> 让它可分享、可同步、可记住选择。</p>
@@ -1600,7 +1631,8 @@
 <li>在文档里展示 shortcode：围栏不阻止 Hugo 解析，写在代码块里的 <code>{{&lt; tabs &gt;}}</code> 仍会执行。要让它原样显示，在两侧定界符的内侧各加一对注释符号，写成 <code>{{&lt;/* tabs */&gt;}}</code>，百分号形式对应 <code>{{%/* steps */%}}</code>。本页每一处展示 shortcode 的地方都是这么写的。</li>
 <li>围栏里套围栏：外层用四个反引号、内层三个，本页每一段「源码」都是这么写的；内层还有围栏时外层再加一个。</li>
 <li>属性写在信息行上：围栏的属性跟在开栏那一行的语言后面，表格与图片的属性才写在块的下一行。写到下一行会变成正文里一段可见的花括号。</li>
-<li>未知属性会失败，不会被忽略，错误信息里列出允许的名字。<code>style</code>、<code>srcdoc</code> 与 <code>on*</code> 被拒绝；<code>data-td-code*</code> 前缀以及 <code>data-language</code>、<code>data-line-count</code>、<code>data-collapse-lines</code> 是主题的保留名，写上去同样构建失败。</li>
+<li>未知、不安全与主题保留属性在普通预览中告警并忽略，消息列出允许的名字；严格
+发布构建拒绝每条此类警告。</li>
 <li>列表项里的围栏：缩进要与列表项内容对齐（<code>1.</code> 之后恒定三个空格），否则围栏会脱离列表。</li>
 </ul>
 <h2 id="pg-ef97c47290db77d27203f7e7e2c0a3cf--outputs">输出形态
@@ -1652,7 +1684,7 @@
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>非空字符串</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>无</code></span></span>
 </dt>
-<dd class="td-field__description"><code>title</code> 的历史别名；两者同时出现构建失败</dd>
+<dd class="td-field__description"><code>title</code> 的历史别名；两者同时出现时告警并使用 <code>filename</code></dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">copy</code>
@@ -1741,7 +1773,9 @@
 </dl>
 </div>
 
-<p><code>title</code>、<code>filename</code> 与 <code>label</code> 已经为块生成了无障碍名称与 <code>role=&quot;group&quot;</code>。它们中的任意一个与 <code>aria-label</code>、<code>aria-labelledby</code> 或 <code>role</code> 同时出现都会构建失败；这三个属性只在块没有标题也没有 <code>label</code> 时可以透传。</p>
+<p><code>title</code>、<code>filename</code> 与 <code>label</code> 已经为块生成了无障碍名称与 <code>role=&quot;group&quot;</code>。它们中的
+任意一个与 <code>aria-label</code>、<code>aria-labelledby</code> 或 <code>role</code> 同时出现时告警并忽略冲突属性；
+严格发布构建拒绝这条警告。这三个属性只在块没有标题也没有 <code>label</code> 时可以透传。</p>
 <p>同一行还能写 Chroma 选项，主题原样转交 Hugo：</p>
 <div class="td-fields">
 <dl class="td-fields__list">
@@ -1787,7 +1821,7 @@
 </h2>
 <ul>
 <li>不换高亮器：没有 Shiki、Twoslash、浏览器端高亮，也没有可执行的代码演练场。补丁用 <code>diff</code> 围栏，Chroma 的 <code>.gi</code>/<code>.gd</code> 就是增删行的样式。</li>
-<li><code>copy=&quot;command&quot;</code> 只认会话 lexer：写在别的语言上是构建错误，不会退化成复制全部。</li>
+<li><code>copy=&quot;command&quot;</code> 只认会话 lexer：用于其他语言时，普通预览告警并回退到 <code>copy=&quot;all&quot;</code>；严格发布构建拒绝这条警告。</li>
 <li>自动生成的 ID 不是永久链接：要发链接就写 <code>id</code>。</li>
 <li><code>mermaid</code>、<code>math</code>、<code>chem</code>、<code>markmap</code>、<code>plantuml</code>、<code>echarts</code>、<code>infographic</code>、<code>checksums</code>、<code>filetree</code>、<code>gallery</code> 不是代码块：它们有各自的渲染钩子，不套这层外壳，也没有复制按钮。</li>
 </ul>
@@ -2218,8 +2252,10 @@
 <h2 id="pg-12b1d8be1e257573d7ab45b54d495d6e--limits">限制与常见问题
 </h2>
 <ul>
-<li>构建失败的写法：属性形态里 <code>value</code> 缺 <code>group</code>、<code>group</code> 或 <code>value</code> 缺 <code>tab</code>、<code>tab</code> 与编号属性 <code>num</code> 同时出现；shortcode 形态里一组内 <code>value</code> 重复、<code>tabs</code> 没有 <code>tab</code> 子项、子项之间夹着正文、<code>default</code> 不匹配任何子项的 <code>value</code>。</li>
-<li>属性形态的分组错误不中断构建，只在浏览器控制台留警告：分组内漏写 <code>value</code> 时整组丢掉 <code>group</code>，退化成只在本地切换的标签页，hash、同步与持久化都没有；<code>value</code> 重复时整组跳过，那几个块保持为各自带标题的块。</li>
+<li>无效分组与组合会在 Hugo 构建中告警并采用安全回退：丢弃不可用的
+group/value/default、忽略夹杂正文、保留后出现的重复项，或不渲染空集合。严格发布
+构建拒绝每条警告，消息带源码位置。</li>
+<li>属性形态没有可用 <code>value</code> 时失去同步能力，只保留本地标签页；分组不会静默编造身份。</li>
 <li>围栏与表格不会混成一组，正文与代码混排请用 shortcode 形态。</li>
 <li>标签页不是折叠块。只想收起长输出用 <code>&gt; [!DETAILS]</code>（见<a href="/zh/docs/components/callout/">提示块</a>）。</li>
 <li>同名 <code>group</code> 是全站共享的：读者在 A 页选了 pnpm，B 页同组的标签页也会是 pnpm。这是它的用途，也意味着 <code>group</code> 名要按含义取，不用 <code>tabs1</code> 这种。</li>
@@ -2355,7 +2391,7 @@
   </div>
   <div class="td-code__viewport" id="td-code-53546a4f-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">| 条目 | 取值 |
 </span></span><span class="line"><span class="cl">| --- | --- |
-</span></span><span class="line"><span class="cl">| 主题版本 | v0.8.0 |
+</span></span><span class="line"><span class="cl">| 主题版本 | v0.8.1 |
 </span></span><span class="line"><span class="cl">| Hugo 下限 | 0.160.1 Extended |
 </span></span><span class="line"><span class="cl">| 许可证 | Apache-2.0 |
 </span></span><span class="line"><span class="cl">{caption=&#34;本站当前使用的主题事实&#34;}</span></span></code></pre></div></div>
@@ -2372,7 +2408,7 @@
   <tbody>
     <tr>
       <td>主题版本</td>
-      <td>v0.8.0</td>
+      <td>v0.8.1</td>
     </tr>
     <tr>
       <td>Hugo 下限</td>
@@ -2765,7 +2801,7 @@
 </dl>
 </div>
 
-<p><code>style</code>、<code>on*</code> 与任何其它键都会让构建失败。</p>
+<p><code>style</code>、<code>on*</code> 与其它键会告警并忽略；严格发布构建拒绝这条警告。</p>
 <h2 id="pg-ecc4cacfa561c7ce1cec9c921cdf6624--limits">限制与常见问题
 </h2>
 <ul>
@@ -2814,7 +2850,7 @@
 </span></span><span class="line"><span class="cl">| --- | --- | --- | --- |
 </span></span><span class="line"><span class="cl">| <span class="sb">`offline_search`</span> | boolean | <span class="sb">`false`</span> | 构建本地搜索索引并启用命令面板 |
 </span></span><span class="line"><span class="cl">| <span class="sb">`offline_search_max_results`</span> | integer | <span class="sb">`10`</span> | 搜索结果条数上限 |
-</span></span><span class="line"><span class="cl">| <span class="sb">`page_width`</span> | string | <span class="sb">`normal`</span> | 正文栏宽度，可选 <span class="sb">`narrow`</span> <span class="sb">`normal`</span> <span class="sb">`wide`</span> |
+</span></span><span class="line"><span class="cl">| <span class="sb">`page_width`</span> | string | <span class="sb">`normal`</span> | 正文栏宽度，可选 <span class="sb">`normal`</span> <span class="sb">`wide`</span> <span class="sb">`full`</span> |
 </span></span><span class="line"><span class="cl">{.fields}</span></span></code></pre></div></div>
 </div>
 <div class="td-fields">
@@ -2838,15 +2874,15 @@
 <span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">类型</span><span class="td-field__meta-value">string</span></span>
 <span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">默认值</span><span class="td-field__meta-value"><code>normal</code></span></span>
 </dt>
-<dd class="td-field__description">正文栏宽度，可选 <code>narrow</code> <code>normal</code> <code>wide</code></dd>
+<dd class="td-field__description">正文栏宽度，可选 <code>normal</code> <code>wide</code> <code>full</code></dd>
 </div>
 </dl>
 </div>
 
-<p>这里的元数据显示成「表头: 值」。主题不推断表头的含义，<code>类型</code> 只是一个标签；要让它变成标准芯片见下一节。单元格接受行内 Markdown（代码、强调、链接），空的中间单元格省略。</p>
+<p>这里的元数据显示成「表头: 值」。主题不推断表头的含义，<code>类型</code> 只是一个标签；要让它变成标准标签见下一节。单元格接受行内 Markdown（代码、强调、链接），空的中间单元格省略。</p>
 <h2 id="pg-bd9eef38749fca20aa1bfb17d2b16f29--meta">语义列 <code>meta=</code>
 </h2>
-<p><code>meta</code> 按顺序说明每一个中间列扮演什么角色：<code>type</code>（类型）、<code>required</code>（必填）、<code>default</code>（默认值），或者 <code>-</code>（保留表头当标签）。有了它，表格形态渲染出的芯片与 shortcode 形态一致。</p>
+<p><code>meta</code> 按顺序说明每一个中间列扮演什么角色：<code>type</code>（类型）、<code>required</code>（必填）、<code>default</code>（默认值），或者 <code>-</code>（保留表头当标签）。有了它，表格形态渲染出的标签与 shortcode 形态一致。</p>
 <div class="td-code td-code--titled" id="td-code-5033bbf5-fence-1" data-td-code data-td-code-auto-id
      data-td-language="markdown" data-td-line-count="6" role="group" aria-labelledby="td-code-5033bbf5-fence-1-title">
   <div class="td-code__header">
@@ -2887,10 +2923,11 @@
 
 <p>规则：</p>
 <ul>
-<li><code>meta</code> 必须为每一个中间列写一个角色，个数等于总列数减二；写多写少都构建失败。</li>
-<li><code>required</code> 列是「非空即真」：单元格里写「是」「yes」「✔」都一样，渲染出来的是不翻译的 <code>required</code> 芯片；留空就不显示。</li>
+<li><code>meta</code> 应为每一个中间列写一个角色，个数等于总列数减二；写多写少时告警并忽略
+<code>meta</code>，严格发布构建拒绝这条警告。</li>
+<li><code>required</code> 列是「非空即真」：单元格里写「是」「yes」「✔」都一样，渲染出来的是不翻译的 <code>required</code> 标签；可选项留空就不显示，写「否」或 <code>no</code> 同样会被视为必填。</li>
 <li><code>type</code> 与 <code>default</code> 单元格如果本身没有行内标记，会自动套上代码格式，与 shortcode 形态对齐。</li>
-<li>三种语义芯片按 <code>type</code>、<code>required</code>、<code>default</code> 的顺序显示，与列的顺序无关；<code>-</code> 列跟在后面，按列顺序排。</li>
+<li>三种语义标签按 <code>type</code>、<code>required</code>、<code>default</code> 的顺序显示，与列的顺序无关；<code>-</code> 列跟在后面，按列顺序排。</li>
 </ul>
 <p><code>-</code> 可以和语义角色混用，用来保留一列自定义标签：</p>
 <div class="td-code td-code--titled" id="td-code-5033bbf5-fence-2" data-td-code data-td-code-auto-id
@@ -2901,7 +2938,7 @@
   <div class="td-code__viewport" id="td-code-5033bbf5-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">| 环境变量 | 类型 | 作用域 | 说明 |
 </span></span><span class="line"><span class="cl">| --- | --- | --- | --- |
 </span></span><span class="line"><span class="cl">| <span class="sb">`HUGO_MODULE_WORKSPACE`</span> | string | 构建 | 指向 <span class="sb">`go.work`</span>，让主题从本地 checkout 解析 |
-</span></span><span class="line"><span class="cl">| <span class="sb">`HUGO_ENV`</span> | string | 构建 | 设为 <span class="sb">`production`</span> 时启用压缩与指纹 |
+</span></span><span class="line"><span class="cl">| <span class="sb">`HUGO_ENV`</span> | string | 构建 | 选择生产模式，OINK 为 CSS/JS 资源生成指纹；HTML 压缩使用 <span class="sb">`--minify`</span> |
 </span></span><span class="line"><span class="cl">{.fields meta=&#34;type -&#34;}</span></span></code></pre></div></div>
 </div>
 <div class="td-fields">
@@ -2918,7 +2955,7 @@
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>string</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">作用域</span><span class="td-field__meta-value">构建</span></span>
 </dt>
-<dd class="td-field__description">设为 <code>production</code> 时启用压缩与指纹</dd>
+<dd class="td-field__description">选择生产模式，OINK 为 CSS/JS 资源生成指纹；HTML 压缩使用 <code>--minify</code></dd>
 </div>
 </dl>
 </div>
@@ -2933,26 +2970,26 @@
   </div>
   <div class="td-code__viewport" id="td-code-5033bbf5-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">| 参数 | 类型 | 默认值 | 说明 |
 </span></span><span class="line"><span class="cl">| --- | --- | --- | --- |
-</span></span><span class="line"><span class="cl">| <span class="sb">`enable`</span> | boolean | <span class="sb">`false`</span> | 打开图片缩放 |
-</span></span><span class="line"><span class="cl">| <span class="sb">`selector`</span> | string | <span class="sb">`.td-content`</span> | 扫描候选图片的根选择器 |
-</span></span><span class="line"><span class="cl">{.fields caption=&#34;params.ui.image_zoom&#34; id=&#34;zoom-params&#34; meta=&#34;type default&#34;}</span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl">| <span class="sb">`image_zoom`</span> | boolean | <span class="sb">`false`</span> | 打开图片缩放 |
+</span></span><span class="line"><span class="cl">| <span class="sb">`featured_image`</span> | string | <span class="sb">`none`</span> | 文章题图模式：<span class="sb">`none`</span>、<span class="sb">`banner`</span>、<span class="sb">`wash`</span> 或 <span class="sb">`hero`</span> |
+</span></span><span class="line"><span class="cl">{.fields caption=&#34;params.ui&#34; id=&#34;zoom-params&#34; meta=&#34;type default&#34;}</span></span></code></pre></div></div>
 </div>
 <div class="td-fields" id="zoom-params">
-<p class="td-fields__label" id="td-fields-5033bbf510e7beadbf38f66cc92fa5ef-t3-label">params.ui.image_zoom</p>
+<p class="td-fields__label" id="td-fields-5033bbf510e7beadbf38f66cc92fa5ef-t3-label">params.ui</p>
 <dl class="td-fields__list" aria-labelledby="td-fields-5033bbf510e7beadbf38f66cc92fa5ef-t3-label">
 <div class="td-field">
-<dt class="td-field__term"><code class="td-field__name">enable</code>
+<dt class="td-field__term"><code class="td-field__name">image_zoom</code>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>boolean</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>false</code></span></span>
 </dt>
 <dd class="td-field__description">打开图片缩放</dd>
 </div>
 <div class="td-field">
-<dt class="td-field__term"><code class="td-field__name">selector</code>
+<dt class="td-field__term"><code class="td-field__name">featured_image</code>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>string</code></span></span>
-<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>.td-content</code></span></span>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>none</code></span></span>
 </dt>
-<dd class="td-field__description">扫描候选图片的根选择器</dd>
+<dd class="td-field__description">文章题图模式：<code>none</code>、<code>banner</code>、<code>wash</code> 或 <code>hero</code></dd>
 </div>
 </dl>
 </div>
@@ -3152,21 +3189,18 @@
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">label</code>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>非空字符串</code></span></span>
-<span class="visually-hidden">, </span><span class="td-field__required">required</span>
 </dt>
 <dd class="td-field__description">可见标签，作用同表格的 <code>caption</code></dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">id</code>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>标识符</code></span></span>
-<span class="visually-hidden">, </span><span class="td-field__required">required</span>
 </dt>
 <dd class="td-field__description">外层容器 ID；不能含空白、引号、<code>&lt;</code>、<code>&gt;</code>、<code>&amp;</code></dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">class</code> / <code>data-*</code> / <code>aria-*</code>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>字符串</code></span></span>
-<span class="visually-hidden">, </span><span class="td-field__required">required</span>
 </dt>
 <dd class="td-field__description">与表格属性行同一套策略</dd>
 </div>
@@ -3186,21 +3220,18 @@
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">type</code>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>非空字符串</code></span></span>
-<span class="visually-hidden">, </span><span class="td-field__required">required</span>
 </dt>
 <dd class="td-field__description">类型标签，如 <code>boolean</code> <code>string[]</code> <code>duration</code></dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">required</code>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>布尔</code></span></span>
-<span class="visually-hidden">, </span><span class="td-field__required">required</span>
 </dt>
-<dd class="td-field__description"><code>true</code> 时显示不翻译的 <code>required</code> 芯片，默认 <code>false</code></dd>
+<dd class="td-field__description"><code>true</code> 时显示不翻译的 <code>required</code> 标签，默认 <code>false</code></dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">default</code>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>标量</code></span></span>
-<span class="visually-hidden">, </span><span class="td-field__required">required</span>
 </dt>
 <dd class="td-field__description">字符串 / 布尔 / 整数 / 浮点；<code>false</code>、<code>0</code>、<code>&quot;&quot;</code> 都会显示</dd>
 </div>
@@ -3210,7 +3241,8 @@
 <h2 id="pg-bd9eef38749fca20aa1bfb17d2b16f29--limits">限制与常见问题
 </h2>
 <ul>
-<li>第一列必须非空，且在同一张表内唯一：重名或空名构建失败。</li>
+<li>第一列必须非空，且在同一张表内唯一：重名或空名时告警并跳过该行，严格发布构建
+拒绝这条警告。</li>
 <li><code>.fields</code> 不能与 <code>.matrix</code>、<code>.full-width</code>、<code>num</code> 组合，<code>meta</code> 不能用在没有 <code>.fields</code> 的表上。</li>
 <li>表格单元格里放不下块内容：需要段落、列表、围栏就换 shortcode 形态。</li>
 <li><code>required</code> 与 <code>default</code> 是不翻译的 API 词汇，在所有语言下都显示英文，它们是契约词，不是界面文案。</li>
@@ -3252,13 +3284,13 @@
     <span class="td-code__filename" id="td-code-4cc9b397-fence-0-title" title="源码">源码</span>
   </div>
   <div class="td-code__viewport" id="td-code-4cc9b397-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">1.</span> 安装 Hugo Extended
-</span></span><span class="line"><span class="cl"><span class="k">1.</span> 克隆文档站
+</span></span><span class="line"><span class="cl"><span class="k">1.</span> 克隆 OINK Starter
 </span></span><span class="line"><span class="cl"><span class="k">1.</span> 启动本地预览
 </span></span><span class="line"><span class="cl">{.steps}</span></span></code></pre></div></div>
 </div>
 <ol class="steps">
 <li>安装 Hugo Extended</li>
-<li>克隆文档站</li>
+<li>克隆 OINK Starter</li>
 <li>启动本地预览</li>
 </ol>
 <p><code>{.steps}</code> 必须紧贴列表最后一行，中间空一行它就会变成正文里一段可见的花括号。</p>
@@ -3270,10 +3302,10 @@
   <div class="td-code__header">
     <span class="td-code__filename" id="td-code-4cc9b397-fence-1-title" title="源码">源码</span>
   </div>
-  <div class="td-code__viewport" id="td-code-4cc9b397-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">1.</span> 克隆文档站，它本身就是主题的完整示例。
+  <div class="td-code__viewport" id="td-code-4cc9b397-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">1.</span> 克隆 OINK Starter，它是面向项目的精简模板。
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">   ``<span class="sb">`bash
-</span></span></span><span class="line"><span class="cl"><span class="sb">   git clone https://github.com/pgsty/oink.pgsty.com my-docs
+</span></span></span><span class="line"><span class="cl"><span class="sb">   git clone https://github.com/pgsty/oink-starter my-docs
 </span></span></span><span class="line"><span class="cl"><span class="sb">   cd my-docs
 </span></span></span><span class="line"><span class="cl"><span class="sb">   `</span>`<span class="sb">`
 </span></span></span><span class="line"><span class="cl"><span class="sb">
@@ -3297,10 +3329,10 @@
 </div>
 <ol class="steps">
 <li>
-<p>克隆文档站，它本身就是主题的完整示例。</p>
+<p>克隆 OINK Starter，它是面向项目的精简模板。</p>
 <div class="td-code td-code--untitled" id="td-code-4cc9b397-fence-2" data-td-code data-td-code-auto-id
      data-td-language="bash" data-td-line-count="2">
-  <div class="td-code__viewport" id="td-code-4cc9b397-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/pgsty/oink.pgsty.com my-docs
+  <div class="td-code__viewport" id="td-code-4cc9b397-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/pgsty/oink-starter my-docs
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> my-docs</span></span></code></pre></div></div>
 </div>
 </li>
@@ -3604,13 +3636,13 @@
   <div class="td-code__header">
     <span class="td-code__filename" id="td-code-86d83231-fence-0-title" title="源码">源码</span>
   </div>
-  <div class="td-code__viewport" id="td-code-86d83231-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">-</span> [<span class="nt">快速上手</span>](<span class="na">/zh/docs/start/</span>) — 克隆这个文档站，删掉不需要的页面，替换为你的站点信息。
+  <div class="td-code__viewport" id="td-code-86d83231-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">-</span> [<span class="nt">快速上手</span>](<span class="na">/zh/docs/start/</span>) — 从 OINK Starter 开始，先在本地预览，再替换为自己的站点信息。
 </span></span><span class="line"><span class="cl"><span class="k">-</span> [<span class="nt">创作内容</span>](<span class="na">/zh/docs/write/</span>) — 页面怎么组织、front matter 有哪些键。
 </span></span><span class="line"><span class="cl"><span class="k">-</span> [<span class="nt">定制站点</span>](<span class="na">/zh/docs/customize/</span>) — 导航、搜索、品牌、多语言。
 </span></span><span class="line"><span class="cl">{.cards}</span></span></code></pre></div></div>
 </div>
 <ul class="cards">
-<li><a href="/zh/docs/start/">快速上手</a> — 克隆这个文档站，删掉不需要的页面，替换为你的站点信息。</li>
+<li><a href="/zh/docs/start/">快速上手</a> — 从 OINK Starter 开始，先在本地预览，再替换为自己的站点信息。</li>
 <li><a href="/zh/docs/write/">创作内容</a> — 页面怎么组织、front matter 有哪些键。</li>
 <li><a href="/zh/docs/customize/">定制站点</a> — 导航、搜索、品牌、多语言。</li>
 </ul>
@@ -3672,10 +3704,10 @@
   </div>
   <div class="td-code__viewport" id="td-code-86d83231-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">{{&lt; cards &gt;}}
 </span></span><span class="line"><span class="cl">{{&lt; card title=&#34;快速上手&#34; link=&#34;/zh/docs/start/&#34; icon=&#34;fa-solid fa-rocket&#34; badge=&#34;从这里开始&#34; &gt;}}
-</span></span><span class="line"><span class="cl">Fork 文档站本身，十分钟内完成本地预览。
+</span></span><span class="line"><span class="cl">使用 OINK Starter，在定制前建立本地预览基线。
 </span></span><span class="line"><span class="cl">{{&lt; /card &gt;}}
 </span></span><span class="line"><span class="cl">{{&lt; card title=&#34;发布与下载页&#34; link=&#34;/zh/docs/write/releases/&#34; icon=&#34;fa-solid fa-box-open&#34; badge=&#34;v0.5&#34; &gt;}}
-</span></span><span class="line"><span class="cl"><span class="sb">`release`</span> 事实记录 + 资产表 + 校验和，全部本地生成。
+</span></span><span class="line"><span class="cl">用 <span class="sb">`release_url`</span> 与 <span class="sb">`date`</span> 生成发布卡片，再用 <span class="sb">`checksums`</span> 块列出下载资产。
 </span></span><span class="line"><span class="cl">{{&lt; /card &gt;}}
 </span></span><span class="line"><span class="cl">{{&lt; card title=&#34;键盘导航&#34; link=&#34;/zh/docs/customize/keyboard/&#34; icon=&#34;fa-solid fa-keyboard&#34; &gt;}}
 </span></span><span class="line"><span class="cl">全站快捷键与焦点顺序。
@@ -3687,14 +3719,14 @@
 <article id="td-card-86d83231-cards-0-0" class="td-content-card">
 <div class="td-content-card__body">
 <div class="td-content-card__head"><i class="fa-solid fa-rocket td-content-card__icon" aria-hidden="true"></i><a class="td-content-card__title" href="/zh/docs/start/">快速上手</a><span class="td-content-card__badge">从这里开始</span></div>
-<div class="td-content-card__description"><p>Fork 文档站本身，十分钟内完成本地预览。</p>
+<div class="td-content-card__description"><p>使用 OINK Starter，在定制前建立本地预览基线。</p>
 </div>
 </div>
 </article>
 <article id="td-card-86d83231-cards-0-1" class="td-content-card">
 <div class="td-content-card__body">
 <div class="td-content-card__head"><i class="fa-solid fa-box-open td-content-card__icon" aria-hidden="true"></i><a class="td-content-card__title" href="/zh/docs/write/releases/">发布与下载页</a><span class="td-content-card__badge">v0.5</span></div>
-<div class="td-content-card__description"><p><code>release</code> 事实记录 + 资产表 + 校验和，全部本地生成。</p>
+<div class="td-content-card__description"><p>用 <code>release_url</code> 与 <code>date</code> 生成发布卡片，再用 <code>checksums</code> 块列出下载资产。</p>
 </div>
 </div>
 </article>
@@ -3707,7 +3739,8 @@
 </article>
 
 </div>
-<p>图标格式不符（不是 <code>fa-solid fa-xxx</code> 这样的一对 class）时构建失败，不会静默丢弃。</p>
+<p>图标不是一对有效的 Font Awesome class 时，普通预览告警并丢弃图标；严格发布构建
+拒绝这条警告。</p>
 <h2 id="pg-02ae29dffaf891239bfb47b8e42b7aae--markdown-body">Markdown 正文
 </h2>
 <p><code>card</code> 的正文按页面级 Markdown 渲染：行内代码、强调、链接、列表都可以。<code>title</code>、<code>badge</code> 这些参数是纯文本，不解析 Markdown。</p>
@@ -3753,8 +3786,10 @@
 <p>不写 <code>link</code> 的卡片渲染成加粗标题，不生成链接。</p>
 <h2 id="pg-02ae29dffaf891239bfb47b8e42b7aae--image">带图片的卡片
 </h2>
-<p><code>image</code> 与 <code>![alt](src)</code> 的解析顺序一致：页面资源 → 全局资源 <code>assets/</code> → 静态路径 <code>/images/…</code> → 远程 URL。本地资源带上固有尺寸，避免加载跳版。</p>
-<p><code>image</code> 必须配一个替代文字来源：<code>image_alt=&quot;…&quot;</code>（有信息的图）或 <code>decorative=true</code>（纯装饰）。两个都写、两个都不写都会构建失败。</p>
+<p><code>image</code> 与 <code>![alt](src)</code> 的解析顺序一致：页面资源 → 当前分区资源 → 全局资源 <code>assets/</code> → 静态路径 <code>/images/…</code> → 远程 URL。本地资源带上固有尺寸，避免加载跳版。</p>
+<p><code>image</code> 需要一个替代文字来源：<code>image_alt=&quot;…&quot;</code>（有信息的图）或
+<code>decorative=true</code>（纯装饰）。两个都写时告警并保留 alt；两个都不写时告警并按装饰图
+渲染。严格发布构建会拒绝任一警告。</p>
 <div class="td-code td-code--titled" id="td-code-86d83231-fence-5" data-td-code data-td-code-auto-id
      data-td-language="markdown" data-td-line-count="8" role="group" aria-labelledby="td-code-86d83231-fence-5-title">
   <div class="td-code__header">
@@ -3929,7 +3964,7 @@
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>Font Awesome class 对</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>—</code></span></span>
 </dt>
-<dd class="td-field__description">例如 <code>fa-solid fa-rocket</code>；格式不符构建失败</dd>
+<dd class="td-field__description">例如 <code>fa-solid fa-rocket</code>；格式不符时告警并丢弃</dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">badge</code>
@@ -3969,13 +4004,15 @@
 </dl>
 </div>
 
-<p>没有 <code>cols</code>、<code>columns</code>、<code>accent</code>、<code>desc</code>、<code>color</code> 参数；未知参数一律构建失败。</p>
+<p>没有 <code>cols</code>、<code>columns</code>、<code>accent</code>、<code>desc</code>、<code>color</code> 参数。未知参数在普通预览中告警
+并忽略；严格发布构建拒绝这条警告。</p>
 <h2 id="pg-02ae29dffaf891239bfb47b8e42b7aae--limits">限制与常见问题
 </h2>
 <ul>
 <li><code>{.cards}</code> 只认无序列表：有序列表加了这个标记不会变成卡片。</li>
 <li><code>{.cards}</code> 必须紧贴列表：中间空一行、或缩进进列表项，标记被静默丢弃，构建不报错，列表仍是列表。渲染结果不是卡片时先检查这一行。</li>
-<li><code>card</code> 只能待在 <code>cards</code> 里：单独使用、或放进别的 shortcode，构建失败并指出位置。</li>
+<li><code>card</code> 只能待在 <code>cards</code> 里：单独使用、或放进别的 shortcode 时告警并跳过；严格
+发布构建拒绝这条警告。</li>
 <li>列数不可配：网格按容器宽度自适应，只有栏目首页的自动卡片能用 <code>params.ui.section_index_columns</code> 指定列数。</li>
 <li>卡片不放长文：描述超过两行时改用正文段落或<a href="/zh/docs/components/callout/">提示块</a>。</li>
 </ul>
@@ -4096,7 +4133,8 @@
 </span></span><span class="line"><span class="cl">3 directories, 5 files
 </span></span><span class="line"><span class="cl"><span class="s">```</span></span></span></code></pre></div></div>
 </div>
-<div class="td-filetree td-filetree--static td-filetree--plain" style="--td-filetree-name-col:24.0ch"><div class="td-filetree__body"><ul class="td-filetree__list td-filetree__list--root"><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:0"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="content/docs">content/docs</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="about">about</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="_index.zh.md">_index.zh.md</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="features.zh.md">features.zh.md</span></span></span></li></ul></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="components">components</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="filetree.zh.md">filetree.zh.md</span></span></span></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="image">image</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:3"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="index.zh.md">index.zh.md</span></span></span></li></ul></li></ul></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="_index.zh.md">_index.zh.md</span></span></span></li></ul></li></ul></div></div><p>退回到未打开过的缩进层级时构建失败，报错里带围栏内的行号。</p>
+<div class="td-filetree td-filetree--static td-filetree--plain" style="--td-filetree-name-col:24.0ch"><div class="td-filetree__body"><ul class="td-filetree__list td-filetree__list--root"><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:0"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="content/docs">content/docs</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="about">about</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="_index.zh.md">_index.zh.md</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="features.zh.md">features.zh.md</span></span></span></li></ul></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="components">components</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="filetree.zh.md">filetree.zh.md</span></span></span></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="image">image</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:3"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="index.zh.md">index.zh.md</span></span></span></li></ul></li></ul></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="_index.zh.md">_index.zh.md</span></span></span></li></ul></li></ul></div></div><p>退回到未打开过的缩进层级时告警并跳过该行；消息带围栏内的行号，严格发布构建
+拒绝这条警告。</p>
 <h2 id="pg-2f7dd30ff59a12c15c61dcbf9dfe6e1a--dir-file">折叠与显式类型
 </h2>
 <p>有子项的目录默认展开，<code>{open=false}</code> 使其初始收起。目录用原生 <code>&lt;details&gt;</code> 渲染，键盘可操作，不需要 JavaScript。<code>open</code> 只能写在目录上。没有子项、名字也不以 <code>/</code> 结尾的条目按文件处理，<code>{type=dir}</code> 覆盖这个判断，<code>{type=file}</code> 同理。</p>
@@ -4258,7 +4296,7 @@
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>Font Awesome class 对</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>按名字 / 扩展名匹配</code></span></span>
 </dt>
-<dd class="td-field__description">例如 <code>fa-solid fa-lock</code>；格式不符构建失败</dd>
+<dd class="td-field__description">例如 <code>fa-solid fa-lock</code>；格式不符时告警并使用默认图标</dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">tone</code>
@@ -4320,7 +4358,9 @@
 </dl>
 </div>
 
-<p>未知属性、未知取值、写在文件上的 <code>open</code>、格式错误的 <code>{…}</code>、退回到未打开过的缩进层级，都会构建失败，并给出围栏内的行号。</p>
+<p>未知属性、未知取值、写在文件上的 <code>open</code>、格式错误的 <code>{…}</code>、退回到未打开过的
+缩进层级，都会告警并采用安全回退或跳过坏行，消息给出围栏内行号；严格发布构建
+拒绝这些警告。</p>
 <h2 id="pg-2f7dd30ff59a12c15c61dcbf9dfe6e1a--limits">限制与常见问题
 </h2>
 <ul>
@@ -4356,26 +4396,49 @@
 	<h1 id="pg-63f4e3ef513735833cce7b083ab28fdf">10 - 公式</h1>
     <div class="lead">用 KaTeX 写行内与块级数学公式，构建期渲染完毕，读者不下载任何脚本。</div>
 	<p>公式由 KaTeX 在构建期渲染成 HTML + MathML，页面只额外加载一份本地 KaTeX 样式表，没有 JavaScript，也不请求远程数学服务。行内公式写 <code>\(…\)</code>，块级公式写 <code>$$…$$</code>、<code>\[…\]</code>，另有 <code>math</code> 与 <code>chem</code> 两种围栏。需要 TikZ 绘图或 KaTeX 不支持的宏包时，改用预渲染的<a href="/zh/docs/components/image/">图片</a>。</p>
+<p>1.2.0 工作实现将 Hugo 0.160.1 生成的 KaTeX 类名适配到内置样式表，保留 TeX
+与 MathML；无需浏览器数学运行时或额外的站点开关。</p>
+<h2 id="pg-63f4e3ef513735833cce7b083ab28fdf--config">站点前置配置
+</h2>
+<p><code>math</code> 与 <code>chem</code> 围栏无需配置。<code>$$</code>、<code>\[…\]</code>、<code>\(…\)</code> 这些分隔符依赖 Goldmark 的 passthrough 扩展。Hugo 不合并主题的 <code>markup</code> 配置，这段必须写在站点自己的配置文件里。本站使用下面这份：</p>
+<div class="td-code td-code--titled" id="td-code-08be7da2-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="11" role="group" aria-labelledby="td-code-08be7da2-fence-0-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-08be7da2-fence-0-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-08be7da2-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">markup</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">goldmark</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">parser</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">attribute</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">block</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 编号公式的属性行需要它</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">extensions</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">passthrough</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">delimiters</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">block</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s1">&#39;\[&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;\]&#39;</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;$$&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;$$&#39;</span><span class="p">]]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">inline</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s1">&#39;\(&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;\)&#39;</span><span class="p">]]</span></span></span></code></pre></div></div>
+</div>
+<p>各键的完整定义见<a href="/zh/docs/customize/config/">配置总览</a>。分隔符不能与站点正文冲突：单个 <code>$</code> 没有配进去，避免「$5」这样的价格被当成公式。</p>
 <h2 id="pg-63f4e3ef513735833cce7b083ab28fdf--minimal">最简例子
 </h2>
 <p>行内公式写在句子中，前后的空格与标点留在分隔符外面。</p>
-<div class="td-code td-code--titled" id="td-code-08be7da2-fence-0" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="1" role="group" aria-labelledby="td-code-08be7da2-fence-0-title">
+<div class="td-code td-code--titled" id="td-code-08be7da2-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="1" role="group" aria-labelledby="td-code-08be7da2-fence-1-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-08be7da2-fence-0-title" title="源码">源码</span>
+    <span class="td-code__filename" id="td-code-08be7da2-fence-1-title" title="源码">源码</span>
   </div>
-  <div class="td-code__viewport" id="td-code-08be7da2-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">共享缓冲区命中率是 \(\mathrm{hit} = \frac{H}{H + R}\)，其中 \(H\) 是 <span class="sb">`blks_hit`</span>，\(R\) 是 <span class="sb">`blks_read`</span>。</span></span></code></pre></div></div>
+  <div class="td-code__viewport" id="td-code-08be7da2-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">共享缓冲区命中率是 \(\mathrm{hit} = \frac{H}{H + R}\)，其中 \(H\) 是 <span class="sb">`blks_hit`</span>，\(R\) 是 <span class="sb">`blks_read`</span>。</span></span></code></pre></div></div>
 </div>
 <p>共享缓冲区命中率是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">h</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi></mrow><mo>=</mo><mfrac><mi>H</mi><mrow><mi>H</mi><mo>+</mo><mi>R</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\mathrm{hit} = \frac{H}{H + R}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord"><span class="mord mathrm">hit</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.2757em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.08125em;">H</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.08125em;">H</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>，其中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi></mrow><annotation encoding="application/x-tex">H</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span></span></span></span> 是 <code>blks_hit</code>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> 是 <code>blks_read</code>。</p>
 <h2 id="pg-63f4e3ef513735833cce7b083ab28fdf--display">块级公式
 </h2>
 <p>独占一段的公式用 <code>$$</code> 包起来，居中显示，字号更大。<code>\[…\]</code> 是等价写法。</p>
-<div class="td-code td-code--titled" id="td-code-08be7da2-fence-1" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="5" role="group" aria-labelledby="td-code-08be7da2-fence-1-title">
+<div class="td-code td-code--titled" id="td-code-08be7da2-fence-2" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="5" role="group" aria-labelledby="td-code-08be7da2-fence-2-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-08be7da2-fence-1-title" title="源码">源码</span>
+    <span class="td-code__filename" id="td-code-08be7da2-fence-2-title" title="源码">源码</span>
   </div>
-  <div class="td-code__viewport" id="td-code-08be7da2-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">一棵扇出为 \(f\)、共 \(N\) 个键的 B 树，其高度为：
+  <div class="td-code__viewport" id="td-code-08be7da2-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">一棵扇出为 \(f\)、共 \(N\) 个键的 B 树，其高度为：
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">$$
 </span></span><span class="line"><span class="cl">h = \left\lceil \log_{f} N \right\rceil
@@ -4388,12 +4451,12 @@ h = \left\lceil \log_{f} N \right\rceil
 <h2 id="pg-63f4e3ef513735833cce7b083ab28fdf--math-fence"><code>math</code> 围栏
 </h2>
 <p><code>math</code> 围栏是块级公式的另一种写法，不依赖站点的 passthrough 配置。源码在 GitHub 上是一个普通代码块。</p>
-<div class="td-code td-code--titled" id="td-code-08be7da2-fence-2" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="3" role="group" aria-labelledby="td-code-08be7da2-fence-2-title">
+<div class="td-code td-code--titled" id="td-code-08be7da2-fence-3" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="3" role="group" aria-labelledby="td-code-08be7da2-fence-3-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-08be7da2-fence-2-title" title="源码">源码</span>
+    <span class="td-code__filename" id="td-code-08be7da2-fence-3-title" title="源码">源码</span>
   </div>
-  <div class="td-code__viewport" id="td-code-08be7da2-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```math
+  <div class="td-code__viewport" id="td-code-08be7da2-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```math
 </span></span></span><span class="line"><span class="cl">N_{\text{conn}} = \lambda \cdot \bar{t}_{\text{resp}}
 </span></span><span class="line"><span class="cl"><span class="s">```</span></span></span></code></pre></div></div>
 </div>
@@ -4401,12 +4464,12 @@ h = \left\lceil \log_{f} N \right\rceil
 <h2 id="pg-63f4e3ef513735833cce7b083ab28fdf--chem">化学式与单位
 </h2>
 <p><code>chem</code> 围栏使用 KaTeX 的 mhchem 扩展，正文写 <code>\ce{…}</code>。同一个扩展也能排物理单位。</p>
-<div class="td-code td-code--titled" id="td-code-08be7da2-fence-4" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="3" role="group" aria-labelledby="td-code-08be7da2-fence-4-title">
+<div class="td-code td-code--titled" id="td-code-08be7da2-fence-5" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="3" role="group" aria-labelledby="td-code-08be7da2-fence-5-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-08be7da2-fence-4-title" title="源码">源码</span>
+    <span class="td-code__filename" id="td-code-08be7da2-fence-5-title" title="源码">源码</span>
   </div>
-  <div class="td-code__viewport" id="td-code-08be7da2-fence-4-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```chem
+  <div class="td-code__viewport" id="td-code-08be7da2-fence-5-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```chem
 </span></span></span><span class="line"><span class="cl">\ce{CO2 + H2O &lt;=&gt; H2CO3 &lt;=&gt; H+ + HCO3^-}
 </span></span><span class="line"><span class="cl"><span class="s">```</span></span></span></code></pre></div></div>
 </div>
@@ -4426,12 +4489,12 @@ m0 0v40h399900v-40z m100 194v40h399900v-40zm0 0v40h399900v-40z"/></svg></span></
 <h2 id="pg-63f4e3ef513735833cce7b083ab28fdf--numbered">编号公式
 </h2>
 <p>块级公式下面跟一行属性即成为编号公式。<code>num</code> 是作者书写的字符串（<code>3-1</code>、<code>5.3</code>），主题不自动计数；<code>#id</code> 不写时默认为 <code>eq-&lt;num&gt;</code>。编号显示在公式右侧，前缀「公式」按站点语言本地化。</p>
-<div class="td-code td-code--titled" id="td-code-08be7da2-fence-6" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="6" role="group" aria-labelledby="td-code-08be7da2-fence-6-title">
+<div class="td-code td-code--titled" id="td-code-08be7da2-fence-7" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="6" role="group" aria-labelledby="td-code-08be7da2-fence-7-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-08be7da2-fence-6-title" title="源码">源码</span>
+    <span class="td-code__filename" id="td-code-08be7da2-fence-7-title" title="源码">源码</span>
   </div>
-  <div class="td-code__viewport" id="td-code-08be7da2-fence-6-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">$$
+  <div class="td-code__viewport" id="td-code-08be7da2-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">$$
 </span></span><span class="line"><span class="cl">\text{WAL}_{\text{day}} \approx \text{TPS} \times \bar{s}_{\text{record}} \times 86400
 </span></span><span class="line"><span class="cl">$$
 </span></span><span class="line"><span class="cl">{<span class="ni">#eq</span>-wal num=&#34;3-1&#34; caption=&#34;每日 WAL 产量的估算&#34;}
@@ -4444,28 +4507,30 @@ m0 0v40h399900v-40z m100 194v40h399900v-40zm0 0v40h399900v-40z"/></svg></span></
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord text"><span class="mord">WAL</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">day</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord">TPS</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord katex-accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">s</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">record</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">86400</span></span></span></span></span></div>
   <figcaption><span class="td-eq-label">公式 3-1</span> <span class="td-eq-caption">每日 WAL 产量的估算</span></figcaption>
 </figure><p>见<a href="/zh/docs/components/math/#eq-wal">公式 3-1</a>：乘上保留天数就是归档盘容量的下限。</p>
-<p><code>caption</code>（纯文本）可以省略。<code>#id</code> 与 <code>caption</code> 必须与 <code>num</code> 同时出现，不存在「半编号」的公式。同一页里重复的 ID、或同一编号指向两个 ID，都会构建失败。</p>
+<p><code>caption</code>（纯文本）可以省略。<code>#id</code> 与 <code>caption</code> 必须与 <code>num</code> 同时出现，不存在
+「半编号」的公式。不完整或重复目标会告警，并丢弃不可用部分或保留第一项；严格
+发布构建拒绝这条警告。窄屏中的长公式标题在阅读列内换行，不会撑宽整页。</p>
 <h2 id="pg-63f4e3ef513735833cce7b083ab28fdf--xref">交叉引用
 </h2>
 <p>正文可以用普通链接引用编号公式，上一节即是这种写法。跨页引用、或需要自动带上「公式 N」标签时用 <code>xref</code>：</p>
-<div class="td-code td-code--titled" id="td-code-08be7da2-fence-7" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="1" role="group" aria-labelledby="td-code-08be7da2-fence-7-title">
+<div class="td-code td-code--titled" id="td-code-08be7da2-fence-8" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="1" role="group" aria-labelledby="td-code-08be7da2-fence-8-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-08be7da2-fence-7-title" title="源码">源码</span>
+    <span class="td-code__filename" id="td-code-08be7da2-fence-8-title" title="源码">源码</span>
   </div>
-  <div class="td-code__viewport" id="td-code-08be7da2-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">容量规划从 {{&lt; xref eq=&#34;3-1&#34; anchor=&#34;eq-wal&#34; /&gt;}} 开始。</span></span></code></pre></div></div>
+  <div class="td-code__viewport" id="td-code-08be7da2-fence-8-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">容量规划从 {{&lt; xref eq=&#34;3-1&#34; anchor=&#34;eq-wal&#34; /&gt;}} 开始。</span></span></code></pre></div></div>
 </div>
 <p>容量规划从 <a class="td-book-xref td-book-xref--eq" href="#eq-wal" data-td-book-kind="eq" data-td-book-num="3-1">公式 3-1</a> 开始。</p>
 <p><code>xref</code> 可以写在目标之前，前向引用合法。整本书的公式目录、<code>book-equations</code> 索引见<a href="/zh/docs/write/book/">书籍出版</a>。</p>
 <h2 id="pg-63f4e3ef513735833cce7b083ab28fdf--eq-shortcode"><code>eq</code> shortcode
 </h2>
 <p><code>eq</code> 供无法开启 passthrough 的站点使用，正文交给同一个 KaTeX 渲染器。不带参数时是一个不注册编号的块级公式；带 <code>num</code> 时与上一节的属性行形态等价。</p>
-<div class="td-code td-code--titled" id="td-code-08be7da2-fence-8" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="5" role="group" aria-labelledby="td-code-08be7da2-fence-8-title">
+<div class="td-code td-code--titled" id="td-code-08be7da2-fence-9" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="5" role="group" aria-labelledby="td-code-08be7da2-fence-9-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-08be7da2-fence-8-title" title="源码">源码</span>
+    <span class="td-code__filename" id="td-code-08be7da2-fence-9-title" title="源码">源码</span>
   </div>
-  <div class="td-code__viewport" id="td-code-08be7da2-fence-8-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">{{&lt; eq &gt;}}\sigma_{\text{idx}} = \frac{\text{rows}_{\text{matched}}}{\text{rows}_{\text{total}}}{{&lt; /eq &gt;}}
+  <div class="td-code__viewport" id="td-code-08be7da2-fence-9-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">{{&lt; eq &gt;}}\sigma_{\text{idx}} = \frac{\text{rows}_{\text{matched}}}{\text{rows}_{\text{total}}}{{&lt; /eq &gt;}}
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">{{&lt; eq num=&#34;3-2&#34; caption=&#34;顺序扫描与索引扫描的代价平衡点&#34; &gt;}}
 </span></span><span class="line"><span class="cl">c_{\text{seq}} \cdot P = c_{\text{rand}} \cdot \sigma \cdot T
@@ -4477,27 +4542,6 @@ m0 0v40h399900v-40z m100 194v40h399900v-40zm0 0v40h399900v-40z"/></svg></span></
   <figcaption><span class="td-eq-label">公式 3-2</span> <span class="td-eq-caption">顺序扫描与索引扫描的代价平衡点</span></figcaption>
 </figure>
 <p>本站已开启 passthrough，日常写作用 <code>$$</code>。<code>eq</code> 用于迁移来的书稿与不能修改 <code>hugo.yml</code> 的场合。</p>
-<h2 id="pg-63f4e3ef513735833cce7b083ab28fdf--config">站点前置配置
-</h2>
-<p><code>math</code> 与 <code>chem</code> 围栏无需配置。<code>$$</code>、<code>\[…\]</code>、<code>\(…\)</code> 这些分隔符依赖 Goldmark 的 passthrough 扩展。Hugo 不合并主题的 <code>markup</code> 配置，这段必须写在站点自己的配置文件里。本站使用下面这份：</p>
-<div class="td-code td-code--titled" id="td-code-08be7da2-fence-9" data-td-code data-td-code-auto-id
-     data-td-language="yaml" data-td-line-count="11" role="group" aria-labelledby="td-code-08be7da2-fence-9-title">
-  <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-08be7da2-fence-9-title" title="hugo.yml">hugo.yml</span>
-  </div>
-  <div class="td-code__viewport" id="td-code-08be7da2-fence-9-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">markup</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">goldmark</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">parser</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">attribute</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">block</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 编号公式的属性行需要它</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">extensions</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">passthrough</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">delimiters</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">block</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s1">&#39;\[&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;\]&#39;</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;$$&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;$$&#39;</span><span class="p">]]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">inline</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s1">&#39;\(&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;\)&#39;</span><span class="p">]]</span></span></span></code></pre></div></div>
-</div>
-<p>各键的完整定义见<a href="/zh/docs/customize/config/">配置总览</a>。分隔符不能与站点正文冲突：单个 <code>$</code> 没有配进去，避免「$5」这样的价格被当成公式。</p>
 <h2 id="pg-63f4e3ef513735833cce7b083ab28fdf--outputs">输出形态
 </h2>
 <div class="td-table-scroll td-table-scroll--static">
@@ -4630,7 +4674,8 @@ m0 0v40h399900v-40z m100 194v40h399900v-40zm0 0v40h399900v-40z"/></svg></span></
 </dl>
 </div>
 
-<p>TeX 写错（未知命令、括号不配对）会构建失败，报错里带 KaTeX 的信息与源码位置。</p>
+<p>TeX 写错时普通预览告警并保留原表达式。消息带 KaTeX 详情与源码位置；严格发布构建
+拒绝这条警告。</p>
 <h2 id="pg-63f4e3ef513735833cce7b083ab28fdf--limits">限制与常见问题
 </h2>
 <ul>
@@ -4898,7 +4943,6 @@ flowchart TD
   判断 --&gt;|都没用| B[只有基础包]</code></pre><h2 id="pg-dcfcfe11bb0c900772c82cc25483fa08--dark-mode">深浅色
 </h2>
 <p>页面初始化时主题读取当前配色模式：深色模式下用 Mermaid 的 <code>dark</code> 主题，浅色模式下用站点配置的主题。读者切换配色时图会就地重绘，页面不会重载；重绘期间每张图保持原有高度，页面不会在读者眼皮底下跳动。</p>
-<p>因此不要把 Mermaid 图放进需要保留输入状态的页面，例如带表单的页面。</p>
 <p>站点级默认写在 <code>hugo.yml</code> 里，键名小写，主题按 Mermaid 的默认配置匹配回正确的大小写：</p>
 <div class="td-code td-code--titled" id="td-code-b305bd1b-fence-14" data-td-code data-td-code-auto-id
      data-td-language="yaml" data-td-line-count="5" role="group" aria-labelledby="td-code-b305bd1b-fence-14-title">
@@ -5045,7 +5089,11 @@ flowchart TD
     
 	<h1 id="pg-19b2c5d148ba19ed571b469450bde5ad">12 - PlantUML</h1>
     <div class="lead">用 <code>plantuml</code> 围栏写时序图、类图、组件图、活动图与用例图；渲染必须由你自己配置一个 PlantUML 服务。</div>
-	<p><code>plantuml</code> 围栏里写 PlantUML 源码，浏览器把源码压缩编码后拼在一个 PlantUML 服务的 URL 后面，换回一张 SVG。适合需要完整 UML 表达力的时序图、类图、组件图、活动图与用例图。渲染依赖一个渲染服务：主题不提供默认端点，<code>enable: true</code> 却没给 <code>svg_image_url</code> 会让构建失败；没有可用服务时改用 <a href="/zh/docs/components/mermaid/">Mermaid</a>。</p>
+	<p><code>plantuml</code> 围栏里写 PlantUML 源码，浏览器把源码压缩编码后拼在一个 PlantUML 服务的
+URL 后面，换回一张 SVG。适合需要完整 UML 表达力的时序图、类图、组件图、活动图与
+用例图。渲染依赖一个服务：主题不提供默认端点；<code>enable: true</code> 却没给
+<code>svg_image_url</code> 时，普通预览告警并保持关闭，严格发布构建拒绝这条警告。没有可用
+服务时改用 <a href="/zh/docs/components/mermaid/">Mermaid</a>。</p>
 <div class="td-callout td-callout--warning" role="note">
   <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="td-callout__label">本页只给源码，不放渲染结果</span></div>
   <div class="td-callout__body">
@@ -5233,9 +5281,14 @@ flowchart TD
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">svg</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span></span></span></code></pre></div></div>
 </div>
 <ul>
-<li><code>enable: true</code> 却没写 <code>svg_image_url</code> → 构建报错 <code>params.plantuml.enable requires an explicit params.plantuml.svg_image_url</code>。主题不代替站点选择公共服务。</li>
+<li><code>enable: true</code> 却没写 <code>svg_image_url</code> 时告警并保持关闭，诊断为
+<code>params.plantuml.enable requires an explicit params.plantuml.svg_image_url</code>。
+严格发布构建拒绝这条警告。主题不代替站点选择公共服务。</li>
 <li>自建可以用官方镜像 <a href="https://github.com/plantuml/plantuml-server"><code>plantuml/plantuml-server</code></a>，<code>svg_image_url</code> 指向它的 <code>/svg/</code> 路径，<strong>结尾的斜杠不能省略</strong>，编码后的源码拼在它后面。</li>
-<li>端点的跨域策略、站点 CSP 的 <code>img-src</code>（<code>svg: true</code> 时还有 <code>connect-src</code>）都要放行；子路径部署时写绝对 URL。</li>
+<li>地址使用 HTTP(S) URL 或本地路径；本地路径遵循 <code>baseURL</code> 中的部署子路径。
+空白、控制字符、原始反斜杠、协议相对 URL（<code>//host/</code>）与其他 scheme 会告警，
+保留可见的源码块且不加载 PlantUML 运行时；严格发布构建拒绝这条警告。</li>
+<li>端点的跨域策略、站点 CSP 的 <code>img-src</code>（<code>svg: true</code> 时还有 <code>connect-src</code>）都要放行。</li>
 </ul>
 <p>这几个键的完整定义在<a href="/zh/docs/customize/config/">配置总览</a>。</p>
 <h2 id="pg-19b2c5d148ba19ed571b469450bde5ad--outputs">输出形态
@@ -5288,7 +5341,7 @@ flowchart TD
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>string</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>无</code></span></span>
 </dt>
-<dd class="td-field__description">渲染端点，编码后的源码直接拼在它后面；<code>enable: true</code> 时必填，否则构建失败</dd>
+<dd class="td-field__description">渲染端点，编码后的源码直接拼在它后面；<code>enable: true</code> 时必填，否则告警并保持关闭</dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">params.plantuml.svg</code>
@@ -5338,12 +5391,22 @@ flowchart TD
 	<p><code>markmap</code> 围栏的正文是一段普通的 Markdown 大纲：标题与列表决定层级，浏览器把它画成一棵可展开、可折叠的树。适合把「这一节讲了什么」的层级一次呈现。节点之间有方向、有条件的流程用 <a href="/zh/docs/components/mermaid/">Mermaid</a>。</p>
 <h2 id="pg-7f030c04244bbac9794147584078fcf0--minimal">最简例子
 </h2>
+<p>先在站点配置中启用 Markmap，默认关闭；未启用时，围栏保留为可读的代码块。</p>
 <div class="td-code td-code--titled" id="td-code-6c9f9778-fence-0" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="14" role="group" aria-labelledby="td-code-6c9f9778-fence-0-title">
+     data-td-language="yaml" data-td-line-count="2" role="group" aria-labelledby="td-code-6c9f9778-fence-0-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-6c9f9778-fence-0-title" title="源码">源码</span>
+    <span class="td-code__filename" id="td-code-6c9f9778-fence-0-title" title="hugo.yml">hugo.yml</span>
   </div>
-  <div class="td-code__viewport" id="td-code-6c9f9778-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```markmap
+  <div class="td-code__viewport" id="td-code-6c9f9778-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">markmap</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span></span></span></code></pre></div></div>
+</div>
+<p>再把大纲写进 <code>markmap</code> 围栏：</p>
+<div class="td-code td-code--titled" id="td-code-6c9f9778-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="14" role="group" aria-labelledby="td-code-6c9f9778-fence-1-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-6c9f9778-fence-1-title" title="源码">源码</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-6c9f9778-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```markmap
 </span></span></span><span class="line"><span class="cl"># OINK
 </span></span><span class="line"><span class="cl">## 本地优先
 </span></span><span class="line"><span class="cl">- 运行时全部随主题分发
@@ -5374,21 +5437,22 @@ flowchart TD
 <h2 id="pg-7f030c04244bbac9794147584078fcf0--depth">多层级
 </h2>
 <p>层级越深字号越小，画布自动排布。下面是本站文档的六个栏目与它们的页数。</p>
-<div class="td-code td-code--titled" id="td-code-6c9f9778-fence-2" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="30" role="group" aria-labelledby="td-code-6c9f9778-fence-2-title">
+<div class="td-code td-code--titled" id="td-code-6c9f9778-fence-3" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="31" role="group" aria-labelledby="td-code-6c9f9778-fence-3-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-6c9f9778-fence-2-title" title="源码">源码</span>
+    <span class="td-code__filename" id="td-code-6c9f9778-fence-3-title" title="源码">源码</span>
   </div>
-  <div class="td-code__viewport" id="td-code-6c9f9778-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```markmap
+  <div class="td-code__viewport" id="td-code-6c9f9778-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```markmap
 </span></span></span><span class="line"><span class="cl"># OINK 文档
 </span></span><span class="line"><span class="cl">## 简介（4 页）
 </span></span><span class="line"><span class="cl">### 它是什么
 </span></span><span class="line"><span class="cl">### 功能一览
 </span></span><span class="line"><span class="cl">### 案例
 </span></span><span class="line"><span class="cl">### 许可
-</span></span><span class="line"><span class="cl">## 快速上手（3 页）
-</span></span><span class="line"><span class="cl">### Fork 本站
-</span></span><span class="line"><span class="cl">### 目录结构
+</span></span><span class="line"><span class="cl">## 快速上手（4 页）
+</span></span><span class="line"><span class="cl">### 选择起点
+</span></span><span class="line"><span class="cl">### OINK Starter
+</span></span><span class="line"><span class="cl">### 仓库导览
 </span></span><span class="line"><span class="cl">### 从零开始
 </span></span><span class="line"><span class="cl">## 创作内容（8 页）
 </span></span><span class="line"><span class="cl">### 组织内容
@@ -5416,9 +5480,10 @@ flowchart TD
 ### 功能一览
 ### 案例
 ### 许可
-## 快速上手（3 页）
-### Fork 本站
-### 目录结构
+## 快速上手（4 页）
+### 选择起点
+### OINK Starter
+### 仓库导览
 ### 从零开始
 ## 创作内容（8 页）
 ### 组织内容
@@ -5441,12 +5506,12 @@ flowchart TD
 <h2 id="pg-7f030c04244bbac9794147584078fcf0--inline-markdown">链接、代码与强调
 </h2>
 <p>节点里可以写行内 Markdown：链接可点击，行内代码用等宽字体，粗体与斜体照常生效。</p>
-<div class="td-code td-code--titled" id="td-code-6c9f9778-fence-4" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="13" role="group" aria-labelledby="td-code-6c9f9778-fence-4-title">
+<div class="td-code td-code--titled" id="td-code-6c9f9778-fence-5" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="13" role="group" aria-labelledby="td-code-6c9f9778-fence-5-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-6c9f9778-fence-4-title" title="源码">源码</span>
+    <span class="td-code__filename" id="td-code-6c9f9778-fence-5-title" title="源码">源码</span>
   </div>
-  <div class="td-code__viewport" id="td-code-6c9f9778-fence-4-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```markmap
+  <div class="td-code__viewport" id="td-code-6c9f9778-fence-5-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```markmap
 </span></span></span><span class="line"><span class="cl"># 日常命令
 </span></span><span class="line"><span class="cl">## 预览
 </span></span><span class="line"><span class="cl">- `hugo server` — 打开 [localhost:1313](http://localhost:1313/)
@@ -5474,12 +5539,12 @@ flowchart TD
 <h2 id="pg-7f030c04244bbac9794147584078fcf0--math">节点里的公式
 </h2>
 <p>Markmap 运行时带了一份本地 KaTeX，节点里的 <code>$…$</code> 会被渲染成公式。</p>
-<div class="td-code td-code--titled" id="td-code-6c9f9778-fence-6" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="10" role="group" aria-labelledby="td-code-6c9f9778-fence-6-title">
+<div class="td-code td-code--titled" id="td-code-6c9f9778-fence-7" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="10" role="group" aria-labelledby="td-code-6c9f9778-fence-7-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-6c9f9778-fence-6-title" title="源码">源码</span>
+    <span class="td-code__filename" id="td-code-6c9f9778-fence-7-title" title="源码">源码</span>
   </div>
-  <div class="td-code__viewport" id="td-code-6c9f9778-fence-6-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```markmap
+  <div class="td-code__viewport" id="td-code-6c9f9778-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```markmap
 </span></span></span><span class="line"><span class="cl"># 常看的几个 PostgreSQL 指标
 </span></span><span class="line"><span class="cl">## 缓存命中率
 </span></span><span class="line"><span class="cl">- $\frac{blks\_hit}{blks\_hit + blks\_read}$
@@ -5501,12 +5566,12 @@ flowchart TD
 <h2 id="pg-7f030c04244bbac9794147584078fcf0--options">控制初始展开层数
 </h2>
 <p>围栏正文最前面可以写一段 Markmap 自己的 YAML 头，它不是 Hugo front matter。<code>initialExpandLevel</code> 只展开前几层，其余分支由读者点开。<code>colorFreezeLevel</code> 指定从第几层起同一分支使用同一种颜色。</p>
-<div class="td-code td-code--titled" id="td-code-6c9f9778-fence-8" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="21" role="group" aria-labelledby="td-code-6c9f9778-fence-8-title">
+<div class="td-code td-code--titled" id="td-code-6c9f9778-fence-9" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="21" role="group" aria-labelledby="td-code-6c9f9778-fence-9-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-6c9f9778-fence-8-title" title="源码">源码</span>
+    <span class="td-code__filename" id="td-code-6c9f9778-fence-9-title" title="源码">源码</span>
   </div>
-  <div class="td-code__viewport" id="td-code-6c9f9778-fence-8-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```markmap
+  <div class="td-code__viewport" id="td-code-6c9f9778-fence-9-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```markmap
 </span></span></span><span class="line"><span class="cl">---
 </span></span><span class="line"><span class="cl">markmap:
 </span></span><span class="line"><span class="cl">  initialExpandLevel: 2
@@ -5550,12 +5615,12 @@ markmap:
 <h2 id="pg-7f030c04244bbac9794147584078fcf0--in-details">折进折叠块
 </h2>
 <p>每张导图固定 300 像素高，正文里连着放三张会占掉大量版面。把全景图折进 <code>&gt; [!DETAILS]</code>，由读者自己展开。折叠块里的每一行都要以 <code>&gt;</code> 开头，围栏也不例外。</p>
-<div class="td-code td-code--titled" id="td-code-6c9f9778-fence-10" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="17" role="group" aria-labelledby="td-code-6c9f9778-fence-10-title">
+<div class="td-code td-code--titled" id="td-code-6c9f9778-fence-11" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="17" role="group" aria-labelledby="td-code-6c9f9778-fence-11-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-6c9f9778-fence-10-title" title="源码">源码</span>
+    <span class="td-code__filename" id="td-code-6c9f9778-fence-11-title" title="源码">源码</span>
   </div>
-  <div class="td-code__viewport" id="td-code-6c9f9778-fence-10-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">[!DETAILS] 主题仓库长什么样
+  <div class="td-code__viewport" id="td-code-6c9f9778-fence-11-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">[!DETAILS] 主题仓库长什么样
 </span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">```markmap
 </span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge"># pgsty/oink
 </span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">## layouts/
@@ -5673,10 +5738,11 @@ markmap:
 <div class="td-content" style="page-break-before: always">
     
 	<h1 id="pg-65ea031c50abb9859cc4ac7a7f040f7e">14 - Draw.io</h1>
-    <div class="lead">把带着可编辑副本的 <code>.drawio.svg</code> 当普通图片放进页面，读者鼠标移上去就能点开 Draw.io 编辑器改图。</div>
+    <div class="lead">把带着可编辑副本的 <code>.drawio.svg</code> 当普通图片放进页面，读者通过编辑按钮打开 Draw.io 编辑器改图。</div>
 	<p>Draw.io 集成没有围栏也没有 shortcode，用的是普通 Markdown 图片。Draw.io 导出时勾上「Include a copy of my diagram」，SVG 或 PNG 里会带一份 <code>mxfile</code> 源码；主题的运行时识别这份副本后，给图片加一个编辑按钮。适合需要读者取走修改的图；只用于展示的图按普通<a href="/zh/docs/components/image/">图片</a>处理。</p>
 <h2 id="pg-65ea031c50abb9859cc4ac7a7f040f7e--minimal">最简例子
 </h2>
+<p>要显示编辑按钮，先设置 <code>params.drawio.enable: true</code>，并按<a href="#pg-65ea031c50abb9859cc4ac7a7f040f7e--server">编辑器地址</a>一节配置 <code>params.drawio.drawio_server</code>。未配置时，图仍按普通图片显示，不提供编辑功能。</p>
 <p>写法与普通图片相同，文件名不受限制，<code>.drawio.svg</code> 只是惯例。</p>
 <div class="td-code td-code--titled" id="td-code-b0fb7c3f-fence-0" data-td-code data-td-code-auto-id
      data-td-language="markdown" data-td-line-count="2" role="group" aria-labelledby="td-code-b0fb7c3f-fence-0-title">
@@ -5686,7 +5752,10 @@ markmap:
   <div class="td-code__viewport" id="td-code-b0fb7c3f-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">![<span class="nt">Hugo 构建流水线：content 目录经 Hugo 产出 public 目录</span>](<span class="na">pipeline.drawio.svg</span>)
 </span></span><span class="line"><span class="cl">{width=&#34;620&#34; height=&#34;140&#34;}</span></span></code></pre></div></div>
 </div>
-<img class="td-image" src="/docs/components/drawio/pipeline.drawio.svg" alt="Hugo 构建流水线：content 目录经 Hugo 产出 public 目录" width="620" height="140" loading="lazy" decoding="async"><p>这张图嵌着一份 <code>mxfile</code> 副本，因此被包进了 <code>.drawio</code> 容器。鼠标移到图上时，右下角出现一个铅笔按钮；点击后在当前页面盖一层全屏 iframe，加载站点配置的编辑器。</p>
+<img class="td-image" src="/docs/components/drawio/pipeline.drawio.svg" alt="Hugo 构建流水线：content 目录经 Hugo 产出 public 目录" width="620" height="140" loading="lazy" decoding="async"><p>这张图嵌着一份 <code>mxfile</code> 副本，因此被包进了 <code>.drawio</code> 容器。鼠标悬停或键盘聚焦时，
+右下角显示铅笔按钮；在触摸设备和强制颜色模式下，按钮始终可见。激活按钮后，
+在当前页面盖一层全屏 iframe，加载站点配置的编辑器。启用图片缩放时，编辑与缩放
+是同级的独立按钮，激活编辑不会同时打开缩放对话框。</p>
 <h2 id="pg-65ea031c50abb9859cc4ac7a7f040f7e--detection">副本检测
 </h2>
 <p>运行时的判断依据只有一条：文件内容里有没有 <code>mxfile</code> 字样，与文件名无关。下面这张同样是 SVG、同样是块级图片，但它是手写的，没有副本，也就没有按钮。</p>
@@ -5766,6 +5835,9 @@ markmap:
 </div>
 <ul>
 <li><code>enable: true</code> 却没写 <code>drawio_server</code> 时会告警并关闭编辑；严格构建会因该告警失败。主题不代替站点选择公共服务。</li>
+<li>地址必须是 HTTP(S) URL 或本地路径；本地路径遵循 <code>baseURL</code> 中的部署子路径。
+空白、控制字符、原始反斜杠、协议相对 URL（<code>//host/</code>）与其他 scheme 会告警并
+关闭编辑；严格构建拒绝这条警告。</li>
 <li>编辑过程必须留在组织内部时，部署一份<a href="https://github.com/jgraph/docker-drawio">自托管编辑器</a>，把地址指向它。</li>
 <li>公共端点 <code>https://embed.diagrams.net/</code> 可用，读者的图会进入第三方页面。</li>
 </ul>
@@ -5787,7 +5859,7 @@ markmap:
     </tr>
     <tr>
       <td>打印</td>
-      <td>图片照常打印；按钮默认隐藏（只在悬停时出现），打印上不会有它</td>
+      <td>图片照常打印；该输出不加载 Draw.io 运行时，也不创建编辑按钮</td>
     </tr>
     <tr>
       <td>Markdown</td>
@@ -5831,7 +5903,6 @@ markmap:
 <li>运行时只在渲染内容含 <code>.svg</code> 或 <code>.png</code> 候选图的页面加载；同一 URL 的图片合并检查，只读取一次以查找 <code>mxfile</code>。</li>
 <li>导出时忘了勾「Include a copy of my diagram」，图就只是一张图，没有按钮。</li>
 <li>编辑依赖编辑器，且不写回仓库：离线环境里图片正常显示，按钮点了没有反应；编辑器保存等于浏览器下载，替换文件与提交都要手动做。</li>
-<li>按钮只在悬停时出现：触屏设备上没有 hover，读者不容易发现它，不要把可编辑当成关键功能来讲。</li>
 <li>配色不跟随深浅色：导出的 SVG 颜色是固定的；把填充设成 <code>none</code>、线条与文字用中性灰，两种模式下都能看（本页这两张图就是这么做的）。</li>
 </ul>
 <h2 id="pg-65ea031c50abb9859cc4ac7a7f040f7e--related">相关
@@ -5859,7 +5930,12 @@ markmap:
     
 	<h1 id="pg-4c8efe48d1b8611882462a0cea856b6b">15 - ECharts</h1>
     <div class="lead">在 <code>echarts</code> 围栏里用 YAML 或 JSON 写图表选项，Hugo 构建期校验，浏览器用本地 ECharts 画出跟随深浅色的统计图。</div>
-	<p><code>echarts</code> 围栏的正文是一段 YAML 或 JSON 的 ECharts 选项对象，不是代码。适用于需要坐标轴、序列与图例的定量图表；只表达关系与流程时用 <a href="/zh/docs/components/mermaid/">Mermaid</a>，只表达顺序与层级时用 <a href="/zh/docs/components/infographic/">Infographic</a>。Hugo 在构建期解析选项，解析失败则构建失败；浏览器用随主题分发的 ECharts 绘图，只有用到它的页面加载运行时。</p>
+	<p><code>echarts</code> 围栏的正文是一段 YAML 或 JSON 的 ECharts 选项对象，不是代码。适用于需要
+坐标轴、序列与图例的定量图表；只表达关系与流程时用
+<a href="/zh/docs/components/mermaid/">Mermaid</a>，只表达顺序与层级时用
+<a href="/zh/docs/components/infographic/">Infographic</a>。Hugo 在构建期解析选项；无效输入在
+普通预览中告警并保留可读源码，严格发布构建拒绝这条警告。浏览器用随主题分发的
+ECharts 绘图，只有用到它的页面加载运行时。</p>
 <h2 id="pg-4c8efe48d1b8611882462a0cea856b6b--minimal">最简例子
 </h2>
 <p>一个柱状图只需要三段：<code>xAxis</code>、<code>yAxis</code>、<code>series</code>。下面是本站文档六个栏目各有多少页。</p>
@@ -5880,7 +5956,7 @@ markmap:
 </span></span></span><span class="line"><span class="cl"><span class="sb">series:
 </span></span></span><span class="line"><span class="cl"><span class="sb">  - name: 页数
 </span></span></span><span class="line"><span class="cl"><span class="sb">    type: bar
-</span></span></span><span class="line"><span class="cl"><span class="sb">    data: [4, 3, 8, 22, 15, 7]
+</span></span></span><span class="line"><span class="cl"><span class="sb">    data: [4, 4, 8, 22, 15, 7]
 </span></span></span><span class="line"><span class="cl"><span class="sb">`</span>``</span></span></code></pre></div></div>
 </div>
 <pre class="td-echarts-source"><code class="language-echarts">tooltip:
@@ -5894,7 +5970,7 @@ yAxis:
 series:
   - name: 页数
     type: bar
-    data: [4, 3, 8, 22, 15, 7]</code></pre><p>两种格式都接受，YAML 不需要引号与逗号，写起来更短。缩进写错、正文解析成数组而不是映射，构建在这一行失败，不会输出一张空白图。</p>
+    data: [4, 4, 8, 22, 15, 7]</code></pre><p>两种格式都接受，YAML 不需要引号与逗号，写起来更短。缩进写错、正文解析成数组而不是映射时，普通预览告警并保留源码，不输出空白图；严格发布构建拒绝这条警告。</p>
 <h2 id="pg-4c8efe48d1b8611882462a0cea856b6b--line">多序列折线
 </h2>
 <p><code>series</code> 是数组，多一项就是多一条线；<code>legend</code> 让读者单独隐藏其中一条。下面是 PostgreSQL 各大版本的发布年份，以及按社区五年支持策略推算的终止年份。</p>
@@ -6051,7 +6127,7 @@ yAxis:
   name: 脚本数
 series:
   - type: bar
-    data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</code></pre><p>无效的高度（<code>360</code>、<code>36pt</code>）会让构建失败，不会退回默认值。</p>
+    data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</code></pre><p>无效高度（<code>360</code>、<code>36pt</code>）在普通预览中告警并使用默认值；严格发布构建拒绝这条警告。</p>
 <h2 id="pg-4c8efe48d1b8611882462a0cea856b6b--theme">深浅色
 </h2>
 <p>不写 <code>theme</code> 时，图按读者当前的配色模式初始化；切换配色时图原地重绘，不刷新页面。容器尺寸变化时自动 resize。把本页切到深色，上面每张图的底色与文字随之改变。</p>
@@ -6092,7 +6168,7 @@ series:
 </span></span><span class="line"><span class="cl">  window.OinkEchartsFunctions = window.OinkEchartsFunctions || {};
 </span></span><span class="line"><span class="cl">  window.OinkEchartsFunctions.pageShare = function (params) {
 </span></span><span class="line"><span class="cl">    var p = params[0];
-</span></span><span class="line"><span class="cl">    return p.name + &#39;：&#39; + p.value + &#39; 页，占全站 &#39; + Math.round((p.value / 59) * 100) + &#39;%&#39;;
+</span></span><span class="line"><span class="cl">    return p.name + &#39;：&#39; + p.value + &#39; 页，占全站 &#39; + Math.round((p.value / 60) * 100) + &#39;%&#39;;
 </span></span><span class="line"><span class="cl">  };
 </span></span><span class="line"><span class="cl">&lt;/script&gt;
 </span></span><span class="line"><span class="cl">
@@ -6107,14 +6183,14 @@ series:
 </span></span></span><span class="line"><span class="cl"><span class="sb">  type: value
 </span></span></span><span class="line"><span class="cl"><span class="sb">series:
 </span></span></span><span class="line"><span class="cl"><span class="sb">  - type: bar
-</span></span></span><span class="line"><span class="cl"><span class="sb">    data: [4, 3, 8, 22, 15, 7]
+</span></span></span><span class="line"><span class="cl"><span class="sb">    data: [4, 4, 8, 22, 15, 7]
 </span></span></span><span class="line"><span class="cl"><span class="sb">`</span>``</span></span></code></pre></div></div>
 </div>
 <script>
   window.OinkEchartsFunctions = window.OinkEchartsFunctions || {};
   window.OinkEchartsFunctions.pageShare = function (params) {
     var p = params[0];
-    return p.name + '：' + p.value + ' 页，占全站 ' + Math.round((p.value / 59) * 100) + '%';
+    return p.name + '：' + p.value + ' 页，占全站 ' + Math.round((p.value / 60) * 100) + '%';
   };
 </script>
 <pre class="td-echarts-source"><code class="language-echarts">tooltip:
@@ -6127,7 +6203,7 @@ yAxis:
   type: value
 series:
   - type: bar
-    data: [4, 3, 8, 22, 15, 7]</code></pre><p>鼠标悬停在任意一根柱子上，提示框里是该函数拼出的句子。名字未注册时该选项解析为 <code>undefined</code>，图按未设置该项绘制，构建与运行都不报错。脚本与围栏放在同一页的相邻位置，便于一起改动。</p>
+    data: [4, 4, 8, 22, 15, 7]</code></pre><p>鼠标悬停在任意一根柱子上，提示框里是该函数拼出的句子。名字未注册时该选项解析为 <code>undefined</code>，图按未设置该项绘制，构建与运行都不报错。脚本与围栏放在同一页的相邻位置，便于一起改动。</p>
 <p>这段脚本属于站点代码，按代码审查对待。字符串模板（<code>{b}</code> <code>{c}</code> <code>{d}</code>）能表达的格式不写成函数。</p>
 <h2 id="pg-4c8efe48d1b8611882462a0cea856b6b--data">数据位置
 </h2>
@@ -6175,7 +6251,7 @@ series:
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>CSS 长度</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>400px</code></span></span>
 </dt>
-<dd class="td-field__description">只接受非负数字加 <code>px</code> <code>rem</code> <code>em</code> <code>vh</code> <code>vw</code> <code>%</code>；其它写法构建失败</dd>
+<dd class="td-field__description">只接受非负数字加 <code>px</code> <code>rem</code> <code>em</code> <code>vh</code> <code>vw</code> <code>%</code>；其它写法告警并使用默认值</dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">theme</code>
@@ -6201,7 +6277,9 @@ series:
 </dl>
 </div>
 
-<p><code>style</code>、<code>on*</code> 与其它未知属性都会让构建失败。围栏正文必须能解析成一个 YAML/JSON 映射，解析失败或解析成数组同样失败。选项键本身是 ECharts 的，以<a href="https://echarts.apache.org/zh/option.html">官方选项手册</a>为准。</p>
+<p><code>style</code>、<code>on*</code> 与未知属性会告警并忽略。围栏正文不能解析成 YAML/JSON 映射时告警
+并渲染为源码；严格发布构建拒绝所有这些警告。选项键本身是 ECharts 的，以
+<a href="https://echarts.apache.org/zh/option.html">官方选项手册</a>为准。</p>
 <p>没有站点级参数：ECharts 不需要在 <code>hugo.yml</code> 里开关，用到时才加载。</p>
 <h2 id="pg-4c8efe48d1b8611882462a0cea856b6b--limits">限制与常见问题
 </h2>
@@ -6577,7 +6655,7 @@ data
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>auto</code> 或 CSS 长度</span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>auto</code></span></span>
 </dt>
-<dd class="td-field__description">非负数字加 <code>px</code> <code>rem</code> <code>em</code> <code>vh</code> <code>vw</code> <code>%</code>；其它写法构建失败</dd>
+<dd class="td-field__description">非负数字加 <code>px</code> <code>rem</code> <code>em</code> <code>vh</code> <code>vw</code> <code>%</code>；其它写法告警并使用 <code>auto</code></dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">full</code>
@@ -6596,7 +6674,8 @@ data
 </dl>
 </div>
 
-<p><code>style</code>、<code>on*</code> 与未知属性让构建失败；空的 DSL 正文也让构建失败。</p>
+<p><code>style</code>、<code>on*</code> 与未知属性会告警并忽略；空 DSL 正文告警并不渲染。严格发布构建拒绝
+所有这些警告。</p>
 <p>DSL 的顶层键（属于 AntV，不是主题）：</p>
 <div class="td-fields">
 <dl class="td-fields__list">
@@ -6689,10 +6768,10 @@ data
   <div class="td-code__viewport" id="td-code-98602f47-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```gallery
 </span></span></span><span class="line"><span class="cl">![OINK 文档页面的三栏布局](/images/oink.webp) # 默认外壳：侧栏、正文、目录
 </span></span><span class="line"><span class="cl">![Docsy 的经典文档布局](/images/docsy.webp) # OINK 的上游 Docsy，内容模型一脉相承
-</span></span><span class="line"><span class="cl">![发布说明页面](/images/releasenote.webp) # 发布页由 data/download 里的事实生成，不联网
+</span></span><span class="line"><span class="cl">![发布说明页面](/images/releasenote.webp) # 发布卡片使用 release_url 与 date，checksums 块列出下载资产
 </span></span><span class="line"><span class="cl"><span class="s">```</span></span></span></code></pre></div></div>
 </div>
-<ul class="td-gallery td-gallery--static td-gallery--described"><li class="td-gallery__item"><img class="td-gallery__image" src="/images/oink.webp" alt="OINK 文档页面的三栏布局" loading="lazy" decoding="async"><p class="td-gallery__description">默认外壳：侧栏、正文、目录</p></li><li class="td-gallery__item"><img class="td-gallery__image" src="/images/docsy.webp" alt="Docsy 的经典文档布局" loading="lazy" decoding="async"><p class="td-gallery__description">OINK 的上游 Docsy，内容模型一脉相承</p></li><li class="td-gallery__item"><img class="td-gallery__image" src="/images/releasenote.webp" alt="发布说明页面" loading="lazy" decoding="async"><p class="td-gallery__description">发布页由 data/download 里的事实生成，不联网</p></li></ul><p>说明长短可以不一致：网格按最高的一项对齐，说明换行不影响相邻的图。图片先被解析，替代文字与路径里的 <code>#</code> 不需要转义。</p>
+<ul class="td-gallery td-gallery--static td-gallery--described"><li class="td-gallery__item"><img class="td-gallery__image" src="/images/oink.webp" alt="OINK 文档页面的三栏布局" loading="lazy" decoding="async"><p class="td-gallery__description">默认外壳：侧栏、正文、目录</p></li><li class="td-gallery__item"><img class="td-gallery__image" src="/images/docsy.webp" alt="Docsy 的经典文档布局" loading="lazy" decoding="async"><p class="td-gallery__description">OINK 的上游 Docsy，内容模型一脉相承</p></li><li class="td-gallery__item"><img class="td-gallery__image" src="/images/releasenote.webp" alt="发布说明页面" loading="lazy" decoding="async"><p class="td-gallery__description">发布卡片使用 release_url 与 date，checksums 块列出下载资产</p></li></ul><p>说明长短可以不一致：网格按最高的一项对齐，说明换行不影响相邻的图。图片先被解析，替代文字与路径里的 <code>#</code> 不需要转义。</p>
 <h2 id="pg-e655c6bb2c11dd07ca18ac24e97083a0--link">每项一个链接
 </h2>
 <p>行尾的 <code>{link=…}</code> 让这一项成为链接，站内路径、相对路径、<code>http(s):</code> 都可以。</p>
@@ -6720,7 +6799,8 @@ data
 </span></span><span class="line"><span class="cl">![浅色首页（静态路径）](/images/hero-light.webp) # static/images/… 下的图，原样发布
 </span></span><span class="line"><span class="cl"><span class="s">```</span></span></span></code></pre></div></div>
 </div>
-<ul class="td-gallery td-gallery--static td-gallery--described"><li class="td-gallery__item"><img class="td-gallery__image" src="/images/content-primitives/oink.webp" alt="OINK 文档总览（全局资源）" width="600" height="300" loading="lazy" decoding="async"><p class="td-gallery__description">assets/images/… 下的图，可以做构建期处理</p></li><li class="td-gallery__item"><img class="td-gallery__image" src="/images/hero-light.webp" alt="浅色首页（静态路径）" loading="lazy" decoding="async"><p class="td-gallery__description">static/images/… 下的图，原样发布</p></li></ul><p>页面资源与全局资源找不到时构建失败；静态路径与远程 URL 不检查存在性。</p>
+<ul class="td-gallery td-gallery--static td-gallery--described"><li class="td-gallery__item"><img class="td-gallery__image" src="/images/content-primitives/oink.webp" alt="OINK 文档总览（全局资源）" width="600" height="300" loading="lazy" decoding="async"><p class="td-gallery__description">assets/images/… 下的图，可以做构建期处理</p></li><li class="td-gallery__item"><img class="td-gallery__image" src="/images/hero-light.webp" alt="浅色首页（静态路径）" loading="lazy" decoding="async"><p class="td-gallery__description">static/images/… 下的图，原样发布</p></li></ul><p>页面 / 全局资源无法解析时按静态路径保留，与显式静态路径相同；主题不检查静态路径
+与远程 URL 是否存在。</p>
 <h2 id="pg-e655c6bb2c11dd07ca18ac24e97083a0--zoom">装饰图与缩放
 </h2>
 <p>替代文字留空表示这是装饰性图片：没有标题，读屏器跳过，也不参与缩放。</p>
@@ -6863,7 +6943,8 @@ data
 </dl>
 </div>
 
-<p>没有 <code>columns</code>、<code>caption</code>、<code>title</code> 属性。行首不是图片、<code>#</code> 之外的尾随文字、空说明、未知属性、格式错误的 <code>{…}</code> 都会让构建失败，报错给出围栏内的行号。</p>
+<p>没有 <code>columns</code>、<code>caption</code>、<code>title</code> 属性。坏行或坏属性会告警，只丢弃无效部分或该行，
+并给出围栏内行号；严格发布构建拒绝这条警告。</p>
 <h2 id="pg-e655c6bb2c11dd07ca18ac24e97083a0--limits">限制与常见问题
 </h2>
 <ul>
@@ -6929,7 +7010,8 @@ data
 <span class="td-badge td-badge--success">已支持</span>
 <span class="td-badge td-badge--warning">实验性</span>
 <span class="td-badge td-badge--danger">已弃用</span></p>
-<p>不写 <code>tone</code> 时使用 <code>neutral</code>。其它取值让构建失败，报错给出源文件位置。</p>
+<p>不写 <code>tone</code> 时使用 <code>neutral</code>。其它取值在普通预览中告警并使用 <code>neutral</code>；警告带
+源码位置，严格发布构建会失败。</p>
 <h2 id="pg-3a19d8ca430bb867db5dc490f399dc9c--inline">夹在句子里
 </h2>
 <p>徽章是行内元素，跟在名字后面，不占单独一行。</p>
@@ -6940,12 +7022,12 @@ data
   </div>
   <div class="td-code__viewport" id="td-code-d600c5c4-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="sb">`params.ui.image_zoom`</span> {{&lt; badge text=&#34;默认关闭&#34; tone=&#34;neutral&#34; &gt;}} 打开后，
 </span></span><span class="line"><span class="cl">有替代文字的块级图片可以点开看大图。PlantUML {{&lt; badge text=&#34;需自建服务&#34; tone=&#34;warning&#34; &gt;}}
-</span></span><span class="line"><span class="cl">与 Draw.io {{&lt; badge text=&#34;需自建服务&#34; tone=&#34;warning&#34; &gt;}} 没有配置服务端点时会让构建失败，
+</span></span><span class="line"><span class="cl">与 Draw.io {{&lt; badge text=&#34;需自建服务&#34; tone=&#34;warning&#34; &gt;}} 没有配置服务端点时告警并保持关闭，
 </span></span><span class="line"><span class="cl">而不是连接公共服务。</span></span></code></pre></div></div>
 </div>
 <p><code>params.ui.image_zoom</code> <span class="td-badge td-badge--neutral">默认关闭</span> 打开后，
 有替代文字的块级图片可以点开看大图。PlantUML <span class="td-badge td-badge--warning">需自建服务</span>
-与 Draw.io <span class="td-badge td-badge--warning">需自建服务</span> 没有配置服务端点时会让构建失败，
+与 Draw.io <span class="td-badge td-badge--warning">需自建服务</span> 没有配置服务端点时告警并保持关闭，
 而不是连接公共服务。</p>
 <h2 id="pg-3a19d8ca430bb867db5dc490f399dc9c--in-headings">标题旁边
 </h2>
@@ -7022,13 +7104,13 @@ Hugo 的内部占位符文本。把状态写进标题下面的第一段：</p>
     <span class="td-code__filename" id="td-code-d600c5c4-fence-5-title" title="源码">源码</span>
   </div>
   <div class="td-code__viewport" id="td-code-d600c5c4-fence-5-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">1.</span> 安装 Hugo Extended {{&lt; badge text=&#34;≥ 0.160.1&#34; tone=&#34;info&#34; &gt;}}
-</span></span><span class="line"><span class="cl"><span class="k">1.</span> 克隆文档站，修改 <span class="sb">`hugo.yml`</span> 里的 <span class="sb">`baseURL`</span>
+</span></span><span class="line"><span class="cl"><span class="k">1.</span> 从 OINK Starter 创建站点，修改 <span class="sb">`hugo.yaml`</span> 里的 <span class="sb">`baseURL`</span>
 </span></span><span class="line"><span class="cl"><span class="k">1.</span> <span class="sb">`hugo server`</span> 预览 {{&lt; badge text=&#34;1313 端口&#34; tone=&#34;neutral&#34; &gt;}}
 </span></span><span class="line"><span class="cl">{.steps}</span></span></code></pre></div></div>
 </div>
 <ol class="steps">
 <li>安装 Hugo Extended <span class="td-badge td-badge--info">≥ 0.160.1</span></li>
-<li>克隆文档站，修改 <code>hugo.yml</code> 里的 <code>baseURL</code></li>
+<li>从 OINK Starter 创建站点，修改 <code>hugo.yaml</code> 里的 <code>baseURL</code></li>
 <li><code>hugo server</code> 预览 <span class="td-badge td-badge--neutral">1313 端口</span></li>
 </ol>
 <h2 id="pg-3a19d8ca430bb867db5dc490f399dc9c--in-cards">卡片里
@@ -7079,7 +7161,7 @@ Hugo 的内部占位符文本。把状态写进标题下面的第一段：</p>
 </div>
 <p>当前版本 <a class="td-badge td-badge--info" href="/zh/blog/">v0.5</a>，
 升级步骤见 <a class="td-badge td-badge--neutral" href="/zh/docs/admin/upgrade/">版本升级</a>。</p>
-<p>链接非法（协议不在白名单里）会让构建失败。</p>
+<p>链接非法时普通预览告警并丢弃链接，保留普通徽章；严格发布构建拒绝这条警告。</p>
 <h2 id="pg-3a19d8ca430bb867db5dc490f399dc9c--outputs">输出形态
 </h2>
 <div class="td-table-scroll td-table-scroll--static">
@@ -7140,7 +7222,9 @@ Hugo 的内部占位符文本。把状态写进标题下面的第一段：</p>
 </dl>
 </div>
 
-<p>只接受命名参数。没有 <code>icon</code>、<code>class</code>、<code>color</code>、<code>outline</code>、<code>size</code> 参数；写了未知参数、空 <code>text</code>、非法 <code>tone</code> 或非法链接都会让构建失败。</p>
+<p>只接受命名参数。没有 <code>icon</code>、<code>class</code>、<code>color</code>、<code>outline</code>、<code>size</code> 参数。无效输入
+会告警并采用安全结果：未知参数忽略，空 <code>text</code> 不渲染，非法 <code>tone</code> 回退
+<code>neutral</code>，不安全链接被丢弃。严格发布构建会拒绝每条此类警告。</p>
 <h2 id="pg-3a19d8ca430bb867db5dc490f399dc9c--limits">限制与常见问题
 </h2>
 <ul>
@@ -7186,7 +7270,8 @@ Hugo 的内部占位符文本。把状态写进标题下面的第一段：</p>
   <div class="td-code__viewport" id="td-code-fe945695-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">按 {{&lt; kbd &#34;Ctrl&#34; &#34;K&#34; &gt;}} 打开命令面板。</span></span></code></pre></div></div>
 </div>
 <p>按 <span class="td-kbd-sequence"><kbd>Ctrl</kbd><span class="td-kbd-sequence__separator" aria-hidden="true">+</span><span class="visually-hidden"> 加 </span><kbd>K</kbd></span> 打开命令面板。</p>
-<p>参数必须加引号，一个按键一个参数。少于一个按键、空字符串、命名参数都会让构建失败。</p>
+<p>参数必须加引号，一个按键一个位置参数。缺少、空白或命名参数会告警，普通预览不渲染
+无效按键；严格发布构建拒绝这条警告。</p>
 <h2 id="pg-94f69694963236009651612c70c8cd68--single">单个按键
 </h2>
 <p>一个参数对应一个键，符号键按原样写。</p>
@@ -7472,7 +7557,8 @@ Hugo 的内部占位符文本。把状态写进标题下面的第一段：</p>
 </table>
 </div>
 
-<p>三处都找不到时构建失败，不输出占位内容。路径里含 <code>..</code> 也让构建失败：引用只能在 <code>content/</code> 与 <code>assets/</code> 中取文件。</p>
+<p>三处都找不到，或路径里含 <code>..</code> 时，引用会告警并不输出。严格发布构建拒绝这条警告：
+引用只能在 <code>content/</code> 与 <code>assets/</code> 中取文件。</p>
 <p>引 Markdown 片段时写文件在磁盘上的真名。有一个陷阱只属于第 1 步：Hugo 把带语言后缀的页面资源（如 <code>notice.zh.md</code>）按去掉后缀的名字挂在页面上，向页面包索取 <code>notice.md</code> 拿到的是已渲染的 HTML 而不是源码，Markdown 输出里会出现 <code>&lt;div class=&quot;td-code&quot;&gt;</code>。<code>assets/</code> 与 <code>content/</code> 下写什么名字就取什么文件，没有这层转换。非 Markdown 文件（<code>.yaml</code>、<code>.sh</code>、<code>.txt</code>）也没有这个区别。</p>
 <p>本页两种语言各引一份自己的片段：中文引 <code>assets/parts/install-oink.zh.md</code>，英文引 <code>assets/parts/install-oink.md</code>。片段放在 <code>assets/</code> 下而不是页面包里，两种语言就都按写下的名字取到源码。</p>
 <h2 id="pg-f93beebeba3197d4a42a2e29878e5be1--code">引入代码文件
@@ -7498,7 +7584,7 @@ Hugo 的内部占位符文本。把状态写进标题下面的第一段：</p>
 <p>代码块与围栏走同一条渲染管线：高亮、行号、复制按钮都有。围栏属性（<code>title=</code>、<code>collapse</code>、<code>hl_lines=</code>）传不进来，需要它们时把文件内容写成普通<a href="/zh/docs/components/code/">代码块</a>。</p>
 <h2 id="pg-f93beebeba3197d4a42a2e29878e5be1--snippet-content">片段内容
 </h2>
-<p>片段是页面级 Markdown，在当前页面的上下文里渲染：提示块、表格、列表、图片、步骤与 shortcode 都可以用。上面那段片段结尾的「当前发布版本是 v0.8.0」，是片段里的 <code>{{&lt; param version &gt;}}</code> 在本页展开的结果。</p>
+<p>片段是页面级 Markdown，在当前页面的上下文里渲染：提示块、表格、列表、图片、步骤与 shortcode 都可以用。上面那段片段结尾的「当前发布版本是 v0.8.1」，是片段里的 <code>{{&lt; param version &gt;}}</code> 在本页展开的结果。</p>
 <p>一个片段被两页引用时，两页各自渲染一遍，各自生成标题锚点与代码块 ID，互不冲突。</p>
 <div class="td-callout td-callout--tip" role="note">
   <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-lightbulb" aria-hidden="true"></i><span class="td-callout__label">适合做成片段的内容</span></div>
@@ -7518,7 +7604,8 @@ Hugo 的内部占位符文本。把状态写进标题下面的第一段：</p>
 </div>
 <p>本站发布版本 v0.8.0，版权起始年 2026，
 本页 front matter 里写了 <code>pigsty_pg_major: 18</code>，这里取到 18。</p>
-<p>嵌套键用 <code>.</code> 连接，<code>copyright.from_year</code> 取的是 <code>params.copyright.from_year</code>。参数不存在、或者值是 map 与列表而不是标量时构建失败，不会留下空白。</p>
+<p>嵌套键用 <code>.</code> 连接，<code>copyright.from_year</code> 取的是 <code>params.copyright.from_year</code>。参数不存在，
+或者值是 map / 列表而不是标量时，告警并不输出；严格发布构建拒绝这条警告。</p>
 <h2 id="pg-f93beebeba3197d4a42a2e29878e5be1--param-in-place">在命令、表格与链接里插参数
 </h2>
 <p><code>param</code> 的输出是转义后的纯文本，可以放进代码围栏、表格单元格与链接地址。安装命令里的版本号适合这么写：</p>
@@ -7643,26 +7730,26 @@ Hugo 的内部占位符文本。把状态写进标题下面的第一段：</p>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>路径（必填）</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>—</code></span></span>
 </dt>
-<dd class="td-field__description">解析顺序见<a href="#pg-f93beebeba3197d4a42a2e29878e5be1--sources">文件放在哪</a>；含 <code>..</code>、文件缺失、空值都构建失败</dd>
+<dd class="td-field__description">解析顺序见<a href="#pg-f93beebeba3197d4a42a2e29878e5be1--sources">文件放在哪</a>；含 <code>..</code>、文件缺失、空值时告警并不输出</dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">code</code>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>布尔</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>false</code></span></span>
 </dt>
-<dd class="td-field__description"><code>true</code> 时按代码块渲染；必须写成 <code>code=true</code>，带引号的 <code>code=&quot;true&quot;</code> 是字符串，构建失败</dd>
+<dd class="td-field__description"><code>true</code> 时按代码块渲染；带引号的 <code>code=&quot;true&quot;</code> 会告警并按普通内容引入</dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">lang</code>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>字符串</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>—</code></span></span>
 </dt>
-<dd class="td-field__description">代码语言；只能与 <code>code=true</code> 同用，单独出现构建失败</dd>
+<dd class="td-field__description">代码语言；没有 <code>code=true</code> 时告警并忽略</dd>
 </div>
 </dl>
 </div>
 
-<p>其它任何参数名都会构建失败，报错里带文件名与行号。</p>
+<p>其它参数名会告警并忽略，消息带文件名与行号；严格发布构建拒绝这条警告。</p>
 <p><code>param</code>（一个位置参数）：</p>
 <div class="td-fields">
 <dl class="td-fields__list">
@@ -7671,7 +7758,7 @@ Hugo 的内部占位符文本。把状态写进标题下面的第一段：</p>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>字符串（必填）</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>—</code></span></span>
 </dt>
-<dd class="td-field__description">嵌套键用 <code>.</code> 连接；先页面 front matter 后站点 <code>params</code>；缺失或非标量（map / 列表）构建失败</dd>
+<dd class="td-field__description">嵌套键用 <code>.</code> 连接；先页面 front matter 后站点 <code>params</code>；缺失或非标量时告警并不输出</dd>
 </div>
 </dl>
 </div>
@@ -7711,7 +7798,7 @@ Hugo 的内部占位符文本。把状态写进标题下面的第一段：</p>
     
 	<h1 id="pg-1ec2c752be0d7d48319ce6f7f6728f55">21 - Asciinema</h1>
     <div class="lead">把 .cast 终端录像放进页面：文字仍然是可选中的文字，播放器随主题分发，不连 CDN。</div>
-	<p><code>asciinema</code> 把一段 <code>.cast</code> 录像渲染成页面里的终端播放器。适用于命令行流程的演示：终端里的文字仍然是文字，可以选中复制，一段六分多钟的安装过程约 190 KB。图形界面的操作用截图或视频，本组件只播放终端录像。播放器与样式随主题分发，构建期不下载、运行期不连 CDN，只有用到它的页面、且只在 HTML 输出里加载这套运行时。</p>
+	<p><code>asciinema</code> 把一段 <code>.cast</code> 录像渲染成页面里的终端播放器。适用于命令行流程的演示：终端里的文字仍然是文字，可以选中复制，本页六分多钟的安装录像约 196 KB。图形界面的操作用截图或视频，本组件只播放终端录像。播放器与样式随主题分发，构建期不下载、运行期不连 CDN，只有用到它的页面、且只在 HTML 输出里加载这套运行时。</p>
 <h2 id="pg-1ec2c752be0d7d48319ce6f7f6728f55--minimal">最简例子
 </h2>
 <p>只有 <code>file</code> 是必填的：</p>
@@ -7723,7 +7810,7 @@ Hugo 的内部占位符文本。把状态写进标题下面的第一段：</p>
   <div class="td-code__viewport" id="td-code-85965b5d-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">{{&lt; asciinema file=&#34;images/install.cast&#34; &gt;}}</span></span></code></pre></div></div>
 </div>
 <p class="td-asciinema-print">images/install.cast — <a href="/images/install.cast">/images/install.cast</a></p>
-<p>这段录像是 Pigsty 在一台 Debian 机器上的单机安装，120×36 的终端，约 6 分 40 秒。文件在本站的 <code>static/images/install.cast</code>，路径写站点根路径。放在 <code>assets/</code> 下也写相对路径：主题先在资源里查找，找不到再当成站点根路径。不写 <code>title</code> 时，窗口标题显示 <code>file</code> 的值。</p>
+<p>这段录像是 Pigsty 在一台 Debian 机器上的单机安装，120×36 的终端，约 6 分 42 秒。下载<a href="/images/install.cast">示例录像</a>，保存为自己站点的 <code>static/images/install.cast</code>，引用时写站点根路径。放在 <code>assets/</code> 下也写相对路径：主题先在资源里查找，找不到再当成站点根路径。不写 <code>title</code> 时，窗口标题显示 <code>file</code> 的值。</p>
 <h2 id="pg-1ec2c752be0d7d48319ce6f7f6728f55--title-theme">窗口标题与主题
 </h2>
 <p><code>title</code> 设置窗口标题，<code>theme</code> 设置配色：</p>
@@ -7790,7 +7877,7 @@ Hugo 的内部占位符文本。把状态写进标题下面的第一段：</p>
 </span></span></span><span class="line"><span class="cl"><span class="sb">   curl -fsSL https://repo.pigsty.io/get | bash
 </span></span></span><span class="line"><span class="cl"><span class="sb">   `</span>`<span class="sb">`
 </span></span></span><span class="line"><span class="cl"><span class="sb">
-</span></span></span><span class="line"><span class="cl"><span class="sb">2. 执行安装，全程约六分钟：
+</span></span></span><span class="line"><span class="cl"><span class="sb">2. 执行安装，录像以四倍速播放安装过程：
 </span></span></span><span class="line"><span class="cl"><span class="sb">
 </span></span></span><span class="line"><span class="cl"><span class="sb">   {{&lt; asciinema file=&#34;images/install.cast&#34; title=&#34;pig install&#34; speed=&#34;4&#34; &gt;}}
 </span></span></span><span class="line"><span class="cl"><span class="sb">
@@ -7806,7 +7893,7 @@ Hugo 的内部占位符文本。把状态写进标题下面的第一段：</p>
 </div>
 </li>
 <li>
-<p>执行安装，全程约六分钟：</p>
+<p>执行安装，录像以四倍速播放安装过程：</p>
 <p class="td-asciinema-print">pig install — <a href="/images/install.cast">/images/install.cast</a></p>
 </li>
 <li>
@@ -7820,7 +7907,7 @@ Hugo 的内部占位符文本。把状态写进标题下面的第一段：</p>
 <ul>
 <li>终端宽度控制在 100 列以内，窄屏上仍可读；录制前先 <code>clear</code>。</li>
 <li>录制前清理密钥：<code>.cast</code> 是纯文本，录像里的每个字符都能 <code>grep</code> 到，提交前检查一遍。</li>
-<li>文件放进 <code>static/images/</code> 或页面包并提交进仓库，不引用外站的 <code>.cast</code> URL。</li>
+<li>文件放在 <code>static/images/install.cast</code>，用 <code>file=&quot;images/install.cast&quot;</code> 引用；放在 <code>assets/images/install.cast</code> 时写法相同。主题不解析页面包资源。把录像提交进仓库，不引用外站的 <code>.cast</code> URL。</li>
 </ul>
 <h2 id="pg-1ec2c752be0d7d48319ce6f7f6728f55--outputs">输出形态
 </h2>
@@ -7990,7 +8077,7 @@ Hugo 的内部占位符文本。把状态写进标题下面的第一段：</p>
 
       </main>
     </div>
-    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"复制 Markdown 文本","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["复制 Markdown 文本","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"复制 Markdown 文本","url":"/zh/docs/components/index.md"},{"available":true,"description":"复制链接","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["复制链接","分享","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"复制链接","url":"http://localhost:1313/zh/docs/components/"},{"available":true,"description":"在 ChatGPT 中打开","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["在 ChatGPT 中打开","就本页提问","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 ChatGPT 中打开","url":"https://chatgpt.com/?hints=search\u0026prompt=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fdocs%2Fcomponents%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":true,"description":"在 Claude 中打开","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["在 Claude 中打开","就本页提问","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 Claude 中打开","url":"https://claude.ai/new?q=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fdocs%2Fcomponents%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":true,"description":"查阅 Markdown 源码","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["查阅 Markdown 源码","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅 Markdown 源码","url":"/zh/docs/components/index.md"},{"available":true,"description":"查阅编辑历史","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["查阅编辑历史","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅编辑历史","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/components/_index.zh.md"},{"available":true,"description":"编辑当前页面","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["编辑当前页面","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"编辑当前页面","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/components/_index.zh.md"},{"available":true,"description":"添加子页面","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["添加子页面","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"添加子页面","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/components?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"提交文档议题","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["提交文档议题","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交文档议题","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=%E7%BB%84%E4%BB%B6%E6%80%BB%E8%A7%88"},{"available":true,"description":"提交项目议题","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["提交项目议题","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交项目议题","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"打印完整章节","disabledReason":"打印完整章节: 暂不可用","icon":"fa-solid fa-print","id":"print_section","keywords":["打印完整章节","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"打印完整章节","url":""},{"available":true,"description":"打印此页面","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["打印此页面","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"打印此页面","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL 必填","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"切换语言","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["切换语言","language"],"kind":"choice","options":[{"active":false,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/components/"},{"active":true,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/components/"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换语言","url":""},{"available":false,"description":"外观","disabledReason":"暂不可用","icon":"fa-solid fa-palette","id":"switch_preset","keywords":["preset","style","Paper","Slate","风格"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"paper","title":"Paper","value":"paper"}],"placements":{"page":false,"palette":true},"target":"self","title":"风格","url":""},{"available":true,"description":"切换配色","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["切换配色","亮色","暗色"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"跟随系统","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"亮色","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"暗色","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换配色","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"报告或查看主题与文档问题","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["缺陷","支持","路线图"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK 问题反馈","url":"https://github.com/pgsty/oink/issues"}],"language":"zh","quickLinks":[{"available":true,"description":"OINK 是一款只需 Hugo Extended 的技术文档主题：组件写在 Markdown 里，资源随主题分发，双语开箱可用，一份内容产出四种输出。","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["文档","docs"],"kind":"url","target":"self","title":"文档","url":"/zh/docs/"},{"available":true,"description":"OINK 工程实践、沉浸式阅读指南与发布注记","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["博客","blog"],"kind":"url","target":"self","title":"博客","url":"/zh/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"复制 Markdown 文本","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["复制 Markdown 文本","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"复制 Markdown 文本","url":"/zh/docs/components/index.md"},{"available":true,"description":"复制链接","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["复制链接","分享","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"复制链接","url":"http://localhost:1313/zh/docs/components/"},{"available":true,"description":"在 ChatGPT 中打开","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["在 ChatGPT 中打开","就本页提问","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 ChatGPT 中打开","url":"https://chatgpt.com/?hints=search\u0026prompt=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fdocs%2Fcomponents%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":true,"description":"在 Claude 中打开","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["在 Claude 中打开","就本页提问","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 Claude 中打开","url":"https://claude.ai/new?q=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fdocs%2Fcomponents%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":true,"description":"查阅 Markdown 源码","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["查阅 Markdown 源码","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅 Markdown 源码","url":"/zh/docs/components/index.md"},{"available":true,"description":"查阅编辑历史","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["查阅编辑历史","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅编辑历史","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/components/_index.zh.md"},{"available":true,"description":"编辑当前页面","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["编辑当前页面","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"编辑当前页面","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/components/_index.zh.md"},{"available":true,"description":"添加子页面","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["添加子页面","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"添加子页面","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/components?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"提交文档议题","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["提交文档议题","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交文档议题","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=%E7%BB%84%E4%BB%B6%E6%80%BB%E8%A7%88"},{"available":true,"description":"提交项目议题","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["提交项目议题","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交项目议题","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"打印完整章节","disabledReason":"打印完整章节: 暂不可用","icon":"fa-solid fa-print","id":"print_section","keywords":["打印完整章节","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"打印完整章节","url":""},{"available":true,"description":"打印此页面","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["打印此页面","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"打印此页面","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL 必填","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"切换语言","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["切换语言","language"],"kind":"choice","options":[{"active":false,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/components/"},{"active":true,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/components/"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换语言","url":""},{"available":false,"description":"外观","disabledReason":"暂不可用","icon":"fa-solid fa-palette","id":"switch_preset","keywords":["preset","style","Paper","Slate","风格"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"paper","title":"Paper","value":"paper"}],"placements":{"page":false,"palette":true},"target":"self","title":"风格","url":""},{"available":true,"description":"切换配色","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["切换配色","亮色","暗色"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"跟随系统","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"亮色","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"暗色","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换配色","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"报告或查看主题与文档问题","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["缺陷","支持","路线图"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK 问题反馈","url":"https://github.com/pgsty/oink/issues"}],"language":"zh","quickLinks":[{"available":true,"description":"为文档、博客、书籍与 API 参考建立统一的技术内容站点，共用导航、多语言与搜索。","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["文档","docs"],"kind":"url","target":"self","title":"文档","url":"/zh/docs/"},{"available":true,"description":"OINK 工程实践、沉浸式阅读指南与发布注记","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["博客","blog"],"kind":"url","target":"self","title":"博客","url":"/zh/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
 
 <script src="/js/actions.js"></script>
 

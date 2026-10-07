@@ -1,6 +1,6 @@
 # OINK Documentation
 
-> OINK is a documentation theme that needs nothing but Hugo Extended — components are written in Markdown, assets ship with the theme, both languages work out of the box, and one source produces four outputs.
+> Build a technical content site with shared navigation, multilingual support and search for documentation, blogs, books and API references.
 
 ---
 
@@ -8,17 +8,20 @@ LLMS index: [llms.txt](/llms.txt)
 
 ---
 
-OINK is a Hugo theme for technical documentation. Components are part of the
-Markdown syntax rather than a second template language; the fonts, icons,
-search and diagram runtimes the browser needs ship with the theme; the only
-build dependency is one Hugo Extended binary, with no Node.js and no CDN
-request. The current release is v0.8.0.
+New to OINK? [Start with the Starter](/docs/start/) to preview a working site,
+then replace its sample content. Write in Markdown and build with Hugo Extended;
+Hugo Modules also require Go to resolve the theme. Bundled theme assets need no
+CDN or npm build step.
+
+The current release is v1.2.0. See the
+[1.2 release notes](/blog/release/1.2.0/) or the
+[upgrade guide](/docs/admin/upgrade/#preparing-1-2) for an existing site.
 
 ## Five ways in {#five-entries}
 
-- [Quick start](/docs/start/) — install Hugo, clone this site, replace the site details, deploy.
+- [Get started](/docs/start/) — create an OINK Starter repository, establish a local baseline, customize it in layers, deploy.
 - [Components](/docs/components/) — one page per component, source first and rendered result after it.
-- [Write Beautiful Docs](/book/) — a hands-on tutorial from first preview to a maintained publication.
+- [Write Beautiful Docs](/book/) — a tutorial in progress; the first three chapters cover preview, structure and page composition.
 - [Case studies](/case/) — production sites explained as reusable design and migration patterns.
 - [Design and development](/docs/design/) — contracts, accepted decisions, research evidence, and active proposals for OINK maintainers.
   {.cards}
@@ -28,14 +31,14 @@ request. The current release is v0.8.0.
 | What you want to do                                   | Where to go                                    |
 | ----------------------------------------------------- | ---------------------------------------------- |
 | Decide whether it fits                                | [What is OINK](/docs/about/)                   |
-| Install and preview                                   | [Quick start](/docs/start/)                    |
+| Install and preview                                   | [Get started](/docs/start/)                    |
 | Write a documentation page                            | [Writing pages](/docs/write/pages/)            |
 | Turn a directory tree into a sidebar                  | [Organizing content](/docs/write/organize/)    |
 | Look up a component's syntax                          | [Components](/docs/components/)                |
 | Change the name, logo, colours and fonts              | [Brand and appearance](/docs/customize/brand/) |
 | Look up a configuration key's default                 | [Configuration](/docs/customize/config/)       |
 | Run a bilingual or multilingual site                  | [Languages](/docs/customize/i18n/)             |
-| Learn OINK end to end                                 | [Write Beautiful Docs](/book/)                 |
+| Practice building and writing                                 | [Write Beautiful Docs](/book/)                 |
 | Study a production implementation                     | [Case studies](/case/)                         |
 | Deploy                                                | [Deploy](/docs/admin/deploy/)                  |
 | Upgrade, or migrate from Docsy                        | [Upgrade](/docs/admin/upgrade/)                |
@@ -49,10 +52,11 @@ or maintain the contracts and design records behind it.
 
 Section pages:
 
-- [What is OINK](/docs/about/): A documentation theme that needs nothing but Hugo Extended. Evolved from Docsy, its components are written in Markdown, its assets ship with the theme, and fourteen production sites run on it.
-- [Quick start](/docs/start/): Clone the OINK documentation site, preview it locally, replace the site details, and deploy to GitHub Pages.
+- [What is OINK](/docs/about/): A local-first Hugo documentation framework evolved from Docsy. Its components stay readable in Markdown, its assets ship with the theme, and fifteen production sites exercise it.
+- [Get started](/docs/start/): Start from the official OINK Starter, establish a working local baseline, then customize content, language, brand, integrations, and deployment in that order.
 - [Authoring](/docs/write/): Writing documentation pages, blog posts, books, release pages and API references — what a page looks like, and how content is organized.
 - [Components](/docs/components/): Every component available for writing, one page each, examples from the simplest upwards, with the parameter table at the end.
 - [Customization](/docs/customize/): Site-level configuration — brand, navigation, layout, search, languages, versions, print and agent output.
 - [Operations](/docs/admin/): Running the site from a laptop to production — local preview, deployment, comments, analytics and SEO, upgrades and troubleshooting.
 - [Design and development](/docs/design/): OINK maintainer contracts, accepted decisions, dated research, and proposals in one canonical bilingual section.
+- [OINK CLI](/docs/cli/): A draft introduction to the optional OINK command-line companion for Hugo sites.

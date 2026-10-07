@@ -15,6 +15,37 @@ formulas are `$$…$$` or `\[…\]`, and there are `math` and `chem` fences. For
 TikZ drawings or macro packages KaTeX does not support, use a pre-rendered
 [image](/docs/components/image/).
 
+The 1.2.0 working implementation adapts Hugo 0.160.1's generated KaTeX class
+names to the bundled stylesheet. TeX and MathML stay intact; no browser math
+runtime or additional site switch is needed.
+
+## Site prerequisites {#config}
+
+The `math` and `chem` fences need no configuration. The `$$`, `\[…\]` and
+`\(…\)` delimiters depend on Goldmark's passthrough extension. Hugo does not
+merge a theme's `markup` configuration, so this block has to live in the site's
+own configuration file. This site uses:
+
+```yaml {title="hugo.yml"}
+markup:
+  goldmark:
+    parser:
+      attribute:
+        block: true # numbered equations need the attribute line
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block: [['\[', '\]'], ['$$', '$$']]
+          inline: [['\(', '\)']]
+```
+
+Every key is defined in
+[Configuration](/docs/customize/config/). Delimiters must
+not collide with the prose: a single `$` is deliberately not configured, so a
+price like "$5" is never read as mathematics.
+
+
 ## Shortest form {#minimal}
 
 An inline formula sits inside a sentence, with the surrounding spaces and
@@ -110,8 +141,10 @@ See [Equation 3-1](#eq-wal): multiply by the retention period for the floor on
 archive disk size.
 
 `caption` (plain text) is optional. `#id` and `caption` must appear with `num` —
-there is no half-numbered equation. A duplicate ID on one page, or one number
-pointing at two IDs, fails the build.
+there is no half-numbered equation. Incomplete or duplicate targets warn and
+drop the unusable part or keep the first; strict publishing rejects the warning.
+On narrow screens, long equation captions wrap within the reading column
+without widening the page.
 
 ## Cross references {#xref}
 
@@ -156,32 +189,6 @@ $$
 This site has passthrough on, so day-to-day writing uses `$$`. `eq` is for
 migrated manuscripts and for sites that cannot change `hugo.yml`.
 
-## Site prerequisites {#config}
-
-The `math` and `chem` fences need no configuration. The `$$`, `\[…\]` and
-`\(…\)` delimiters depend on Goldmark's passthrough extension. Hugo does not
-merge a theme's `markup` configuration, so this block has to live in the site's
-own configuration file. This site uses:
-
-```yaml {title="hugo.yml"}
-markup:
-  goldmark:
-    parser:
-      attribute:
-        block: true # numbered equations need the attribute line
-    extensions:
-      passthrough:
-        enable: true
-        delimiters:
-          block: [['\[', '\]'], ['$$', '$$']]
-          inline: [['\(', '\)']]
-```
-
-Every key is defined in
-[Configuration](/docs/customize/config/). Delimiters must
-not collide with the prose: a single `$` is deliberately not configured, so a
-price like "$5" is never read as mathematics.
-
 ## Output {#outputs}
 
 | Output | Shape |
@@ -225,8 +232,9 @@ The `eq` shortcode:
 | Body | TeX | — | Required, non-empty |
 {.fields meta="type default"}
 
-Broken TeX — an unknown command, unbalanced braces — fails the build, and the
-error carries KaTeX's message and the source position.
+Broken TeX warns and leaves the expression as written in ordinary preview. The
+message carries KaTeX's detail and the source position; strict publishing
+rejects the warning.
 
 ## Limits {#limits}
 

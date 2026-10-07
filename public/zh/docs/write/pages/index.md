@@ -137,9 +137,9 @@ draft: true
    ```bash
    brew install hugo
    ```
-1. 克隆文档站并预览：
+1. 克隆 OINK Starter 并预览：
    ```bash
-   git clone https://github.com/pgsty/oink.pgsty.com my-docs
+   git clone https://github.com/pgsty/oink-starter my-docs
    cd my-docs && hugo server
    ```
    > [!TIP]
@@ -151,9 +151,9 @@ draft: true
    ```bash
    brew install hugo
    ```
-1. 克隆文档站并预览：
+1. 克隆 OINK Starter 并预览：
    ```bash
-   git clone https://github.com/pgsty/oink.pgsty.com my-docs
+   git clone https://github.com/pgsty/oink-starter my-docs
    cd my-docs && hugo server
    ```
    > [!TIP]
@@ -209,6 +209,7 @@ hugo --printPathWarnings --panicOnWarning
 - [多语言](/zh/docs/customize/i18n/)
 - [快速上手](/zh/docs/start/)
 - [从零建站](/zh/docs/start/from-scratch/)
+- [OINK Starter](/zh/docs/start/starter/)
 - [创作内容](/zh/docs/write/)
 - [博客与文章](/zh/docs/write/blog/)
 - [页面参数](/zh/docs/write/frontmatter/)

@@ -26,6 +26,8 @@ bilingual, versioned site as the contracts it supports.
 | [Configuration model](/docs/design/decisions/configuration/)       | Where configuration belongs, how pages override it, and why OINK has no parallel configuration namespace |
 | [Markdown-first authoring](/docs/design/decisions/authoring/)      | Why native Markdown is preferred and Docs, Blog, Book, and Landing extend shared systems                 |
 | [Generated configuration schema](/docs/design/decisions/config-schema/) | Why the editor schemas are a generated projection, and how the drift gate keeps a third configuration authority from appearing |
+| [Optional CLI and result contract](/docs/design/decisions/cli/) | Independent Go executable, versioned diagnostics, coverage, and explicit write boundaries for the local CLI candidate |
+| [Visual presets](/docs/design/decisions/visual-presets/) | Paper default, Slate compatibility, opt-in Appearance menu, independent mode and font boundaries |
 
 ## Record format {#record-format}
 
@@ -53,6 +55,8 @@ Section pages:
 - [Configuration model](/docs/design/decisions/configuration/): OINK extends Hugo and Docsy-compatible configuration without creating a second namespace or a parallel global resolver.
 - [Markdown-first authoring](/docs/design/decisions/authoring/): Native Markdown carries common semantics; shortcodes fill real capability gaps, and content models extend shared shells instead of forking them.
 - [Generated configuration schema](/docs/design/decisions/config-schema/): The editor schemas are projected from the existing configuration authorities; a CI drift gate keeps them from ever becoming a third one.
+- [Optional CLI and result contract](/docs/design/decisions/cli/): The independent Go executable boundary, versioned diagnostics, isolated validation, and guarded maintenance plans for the current local CLI candidate.
+- [Paper and Slate visual presets](/docs/design/decisions/visual-presets/): Accepted phase-one visual identity and appearance controls, with separate reader style and mode state.
 
 ---
 

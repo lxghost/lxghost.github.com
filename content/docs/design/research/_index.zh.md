@@ -1,10 +1,12 @@
 ---
 title: 设计研究
 linkTitle: 研究
-description: 用于形成 OINK 设计决策的定期实验与消费站证据，不具备规范效力。
+description: 用于形成 OINK 设计决策的带日期的实验与消费站证据，不具备规范效力。
 weight: 70
 icon: fa-solid fa-flask
 no_list: true
+cascade:
+  search_boost: 0.35
 search_keywords: [设计研究, 证据, 实验, 消费站盘点, Hugo]
 design_kind: research-index
 design_status: active
@@ -23,6 +25,12 @@ design_status: active
 | [Goldmark 块属性](/zh/docs/design/research/goldmark-attributes/)            | 支持的 Hugo 下限版本上，渲染钩子能看到什么，以及 CommonMark 容器的边界 |
 | [消费站与迁移证据](/zh/docs/design/research/consumer-evidence/)             | 带日期的语料盘点与确定性 Book 迁移结果                                 |
 | [2026-08-26 全面审查](/zh/docs/design/research/2026-08-26-comprehensive-review/) | 实现、配置、输出、安全、测试、性能与文档审查                           |
+| [2026-09-19 社区 Issue 与 PR 调研](/zh/docs/design/research/2026-09-19-upstream-review/) | 侧栏、焦点与搜索反馈的复现、PR 接收建议和解决方案 |
+| [2026-09-20 OINK 1.1 发布审查](/zh/docs/design/research/2026-09-20-release-review/) | 五项运行时修复、文档准备、验证证据与发布边界 |
+| [2026-09-29 CLI 验收快照](/zh/docs/design/research/2026-09-29-cli-acceptance/) | 已执行的 Starter、真实站点、离线、升级及可复现归档检查；最终本地验收与公开发布分别记录 |
+| [视觉预设验收，2026-10-05](/zh/docs/design/research/2026-10-05-visual-presets-acceptance/) | Paper/Slate 本地实现、真实输出与有范围说明的浏览器证据 |
+| [Ink 与 Terminal 实验，2026-10-05](/zh/docs/design/research/2026-10-05-ink-terminal-experiment/) | 显式实验预设、设计取舍与真实站点验证 |
+| [OINK 1.2 发布前审查，2026-10-05](/zh/docs/design/research/2026-10-05-v1-2-release-review/) | 本地候选版本最终检查、清理、本地资源、兼容性与发布边界 |
 
 ## 发布规则 {#publication-rules}
 

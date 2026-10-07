@@ -8,9 +8,9 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 
 ---
 
-> [!IMPORTANT] OINK 0.8.0 契约
-> 这是随 OINK 0.8.0 正式发布的落地页契约。本页是权威中文源文件，与英文版本
-> 一同维护在 `content/docs/design/`。
+> [!NOTE] OINK 1.2.0 契约
+> 本契约描述 v1.2.0 的正式行为。唯一的中英文契约源文件位于
+> `content/docs/design/`。
 
 共享规则见[架构契约](/zh/docs/design/architecture/)与
 [组件契约](/zh/docs/design/components/)；迁移行为属于
@@ -65,7 +65,9 @@ i18n。
 
 交互式 HTML 设置 `hasLanding`，从而只按需添加 `landing.js`。运行时复用
 `OinkSurfaceCoordinator`，负责出现动画、数字递增、复制、紧凑菜单与主题图片
-增强。没有 JavaScript 时，服务端输出仍然完整。
+增强。没有 JavaScript 或 Landing 脚本加载失败时，服务端输出仍然完整可见。
+出现动画的候选元素默认可见，只有成功安装观察器后才标记为等待动画。数字指标
+由服务端按配置输出完整的数字格式、前缀和后缀，递增动画的最后一帧使用同一显示文本。
 
 跑马灯只用 CSS 复制；副本带 `aria-hidden` 与 `inert`，本地化复选框无需
 JavaScript 也能持久保存暂停状态。减少动画会停用动画，强制颜色保留控件，主题
@@ -88,8 +90,19 @@ JavaScript 也能持久保存暂停状态。减少动画会停用动画，强制
 周期切换、远程事实 API、热点编辑器、可视化构建器或第二套注册表。既有首页数据
 与显式自定义区块 partial 继续有效。
 
+## 视觉预设 {#visual-presets}
+
+Paper 去掉首屏网格与光晕，使用暖色阴影、Plex Sans 展示标题和链接色主按钮。
+Slate 保留技术网格、光晕、Chakra Petch 标题与原有主按钮颜色。两者共用分区结构，
+不改变密度。手机抽屉包含共用外观表单，参见[外壳契约](/zh/docs/design/shell/#appearance-control)。
+
+显式开启的 Ink/Terminal 实验也去掉网格、光晕与阴影。Ink 使用高字重 Inter 标题、
+直角卡片与红色主按钮；Terminal 使用等宽标题、2 px 圆角、琥珀主按钮与静态光标形
+装饰。两者都不新增动画，不改变分区列结构。
+
 ---
 
 反链：
 
 - [设计](/zh/docs/design/)
+- [视觉预设](/zh/docs/design/proposals/visual-presets/)

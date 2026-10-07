@@ -69,7 +69,7 @@
   <meta itemprop="name" content="Components">
   <meta itemprop="description" content="Every component available for writing, one page each, examples from the simplest upwards, with the parameter table at the end.">
   <meta itemprop="dateModified" content="2026-08-28T00:08:16+08:00">
-  <meta itemprop="wordCount" content="822">
+  <meta itemprop="wordCount" content="835">
   <meta itemprop="keywords" content="Components">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Components">
@@ -302,19 +302,20 @@ terminal recordings. Five rules cover them:</p>
 <li>Every shortcode is written <code>{{&lt;/* name */&gt;}}</code>. Only <code>{{%/* steps */%}}</code> uses
 the <code>%</code> delimiter, because its body is page-level Markdown.</li>
 <li>Nested names (<code>tab</code>, <code>card</code>, <code>field</code>) are valid only inside their parent.</li>
-<li>A bad parameter never degrades silently. The build fails, and the error names
-the file and the line.</li>
+<li>A bad author parameter never degrades silently. An ordinary preview warns,
+names the source position, and uses the documented fallback or omits the
+unsafe part; a publishing build with <code>--panicOnWarning</code> fails on that warning.</li>
 <li>Public string parameters (captions, labels, titles) are plain text and are
 not parsed as Markdown. Only bodies are Markdown: <code>tab</code>, <code>card</code> and <code>field</code>
 bodies, files pulled in by <code>include</code>, and the Book <code>fig</code> / <code>tbl</code> / <code>eg</code>
 bodies.</li>
-<li>A component the page never used ships no runtime. The scripts are
-concatenated from what this page actually used; print, Markdown and RSS
-output load nothing at all.</li>
+<li>A component the page never used ships no runtime. HTML references only the
+stable capability chunks the page actually needs; print, Markdown and RSS
+load no interactive runtime.</li>
 </ul>
 <h2 id="pg-cc384b22fa40feda6068c9b9bef374a6--prerequisites">Site prerequisites
 </h2>
-<p>Components depend on three Goldmark settings. Cloning this site gives you them
+<p>Components depend on three Goldmark settings. OINK Starter provides them
 already configured; copy the snippet when starting from scratch:</p>
 <div class="td-code td-code--titled" id="td-code-c2991d9c-fence-0" data-td-code data-td-code-auto-id
      data-td-language="yaml" data-td-line-count="8" role="group" aria-labelledby="td-code-c2991d9c-fence-0-title">
@@ -428,7 +429,7 @@ fence = a fenced block with a language tag; shortcode = <code>{{&lt;/* … */&gt
       <td>KaTeX inline and display formulas</td>
       <td><code>$$ … $$</code></td>
       <td>native</td>
-      <td>per page</td>
+      <td>none</td>
     </tr>
     <tr>
       <td><a href="/docs/components/mermaid/">Mermaid</a></td>
@@ -682,7 +683,7 @@ callouts. Every line starts with <code>&gt;</code>, fences included.</p>
   </div>
   <div class="td-code__viewport" id="td-code-31213a44-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">[!TIP] Three commands to a live preview
 </span></span></span><span class="line"><span class="cl"><span class="k">&gt;
-</span></span></span><span class="line"><span class="cl"><span class="ge">&gt; 1. Clone: `git clone https://github.com/pgsty/oink.pgsty.com my-docs`
+</span></span></span><span class="line"><span class="cl"><span class="ge">&gt; 1. Clone: `git clone https://github.com/pgsty/oink-starter my-docs`
 </span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">2. Enter the directory and preview:
 </span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">   ```bash
 </span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">   cd my-docs &amp;&amp; hugo server
@@ -697,7 +698,7 @@ callouts. Every line starts with <code>&gt;</code>, fences included.</p>
   <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-lightbulb" aria-hidden="true"></i><span class="td-callout__label">Three commands to a live preview</span></div>
   <div class="td-callout__body">
 <ol>
-<li>Clone: <code>git clone https://github.com/pgsty/oink.pgsty.com my-docs</code></li>
+<li>Clone: <code>git clone https://github.com/pgsty/oink-starter my-docs</code></li>
 <li>Enter the directory and preview:
 <div class="td-code td-code--untitled" id="td-code-31213a44-fence-4" data-td-code data-td-code-auto-id
      data-td-language="bash" data-td-line-count="1">
@@ -764,7 +765,7 @@ that has to be foldable.</p>
   </div>
   <div class="td-code__viewport" id="td-code-31213a44-fence-6-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">[!DETAILS] Full `hugo version` output
 </span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">```text
-</span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">hugo v0.164.0+extended+withdeploy darwin/arm64 BuildDate=2026-07-06T16:39:30Z VendorInfo=Homebrew
+</span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">hugo v0.165.0+extended+withdeploy darwin/arm64
 </span></span></span><span class="line"><span class="cl">&gt; ```</span></span></code></pre></div></div>
 </div>
 <div class="td-callout td-callout--details td-callout--collapsible" role="note" data-td-callout-collapsible>
@@ -772,7 +773,7 @@ that has to be foldable.</p>
   <div class="td-callout__body">
 <div class="td-code td-code--untitled" id="td-code-31213a44-fence-7" data-td-code data-td-code-auto-id
      data-td-language="text" data-td-line-count="1">
-  <div class="td-code__viewport" id="td-code-31213a44-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">hugo v0.164.0+extended+withdeploy darwin/arm64 BuildDate=2026-07-06T16:39:30Z VendorInfo=Homebrew</span></span></code></pre></div></div>
+  <div class="td-code__viewport" id="td-code-31213a44-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">hugo v0.165.0+extended+withdeploy darwin/arm64</span></span></code></pre></div></div>
 </div>
   </div>
 </div><h2 id="pg-79874cee14b3cee18a7cecbeff2d4642--icon">Custom icon
@@ -842,8 +843,9 @@ keep an empty <code>&gt;</code> line under the title line, or the formatter fold
 into the body.</li>
 <li>Attribute line moved by a formatter. Wrap marker lines such as <code>{icon=…}</code> in
 <code>&lt;!-- prettier-ignore-start --&gt;</code> / <code>&lt;!-- prettier-ignore-end --&gt;</code>.</li>
-<li><code>style</code>, <code>onclick</code> and friends fail the build: the attribute line accepts
-<code>icon</code> and <code>class</code> only (see the table below).</li>
+<li><code>style</code>, <code>onclick</code>, and unsupported attributes warn and are ignored: the
+attribute line accepts <code>icon</code> and <code>class</code> only. Strict publishing rejects the
+warning (see the table below).</li>
 </ul>
 <h2 id="pg-79874cee14b3cee18a7cecbeff2d4642--outputs">Output
 </h2>
@@ -926,7 +928,8 @@ into the body.</li>
 </dl>
 </div>
 
-<p><code>style</code>, <code>on*</code> and any other key fail the build.</p>
+<p><code>style</code>, <code>on*</code>, and other keys warn and are ignored; strict publishing rejects
+the warning.</p>
 <h2 id="pg-79874cee14b3cee18a7cecbeff2d4642--limits">Limits
 </h2>
 <ul>
@@ -998,6 +1001,11 @@ decorative image, which zoom skips.</p>
       <td>A screenshot only this page uses; it travels with the page and is shared by translations</td>
     </tr>
     <tr>
+      <td>Current section bundle (<code>_index.md</code> and its resources)</td>
+      <td><code>![…](post/image.png)</code></td>
+      <td>Images belonging to a section; use the resource path relative to that section</td>
+    </tr>
+    <tr>
       <td>Global resource <code>assets/images/…</code></td>
       <td><code>![…](images/logo/oink.webp)</code></td>
       <td>Images several pages share, especially ones needing processing (resize / crop)</td>
@@ -1016,10 +1024,15 @@ decorative image, which zoom skips.</p>
 </table>
 </div>
 
-<p>A relative path is looked up first as a page resource and then as a global
-resource; failing both, it is emitted as a static path. The theme does not check
-whether a static path or a remote URL exists. Only an image that asks for
-processing (<code>command=</code>) fails the build when its resource cannot be found.</p>
+<p>A relative path is looked up as a page resource, a resource of the current
+section, and then a global resource; if none matches, it is emitted as a static
+path. The theme does not check whether a static path or a remote URL exists. When processing cannot resolve a
+processable resource, ordinary preview warns and leaves the image unprocessed;
+strict publishing rejects the warning.</p>
+<p>Markdown alternative text takes precedence over resource metadata, including an
+explicitly empty alt for a decorative image. Resource <code>params.alt</code> must be a
+string; invalid metadata warns and is ignored, preserving the authored alt.
+Strict publishing rejects that warning.</p>
 <h2 id="pg-7c74be94ed268367cf9127b079105daa--inline-vs-block">Inline versus block
 </h2>
 <p>An image inside a line of text is an inline image, rendered as one <code>&lt;img&gt;</code> and
@@ -1057,10 +1070,10 @@ wraps a standalone image in <code>&lt;p&gt;</code> and the attribute line is tre
     <span class="td-code__filename" id="td-code-30676200-fence-2-title" title="Source">Source</span>
   </div>
   <div class="td-code__viewport" id="td-code-30676200-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">![<span class="nt">Release card: version, publication date and asset buttons</span>](<span class="na">release-note.webp</span>)
-</span></span><span class="line"><span class="cl">{caption=&#34;The release card is generated from data/download and the page&#39;s release record&#34;}</span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl">{caption=&#34;The release card uses the page&#39;s release_url and date&#34;}</span></span></code></pre></div></div>
 </div>
 <figure class="td-figure">
-  <img src="/docs/components/image/release-note.webp" alt="Release card: version, publication date and asset buttons" width="732" height="142" loading="lazy" decoding="async"><figcaption> <span class="td-fig-caption">The release card is generated from data/download and the page&#39;s release record</span></figcaption>
+  <img src="/docs/components/image/release-note.webp" alt="Release card: version, publication date and asset buttons" width="732" height="142" loading="lazy" decoding="async"><figcaption> <span class="td-fig-caption">The release card uses the page&#39;s release_url and date</span></figcaption>
 </figure><p>A Markdown <code>&quot;title&quot;</code> keeps its own meaning (a hover tooltip) and never becomes
 the caption.</p>
 <h2 id="pg-7c74be94ed268367cf9127b079105daa--size">Size
@@ -1100,8 +1113,9 @@ original.</p>
   <img src="/docs/components/image/oink-shell_hu_5c3680512123b8e0.webp" alt="shell thumbnail" width="233" height="150" loading="lazy" decoding="async"><figcaption> <span class="td-fig-caption">Fit 300x150: scaled to fit inside a 300×150 box</span></figcaption>
 </figure><figure class="td-figure">
   <img src="/docs/components/image/oink-shell_hu_8f65dac06eb4d872.webp" alt="the left half of the shell" width="300" height="150" loading="lazy" decoding="async"><figcaption> <span class="td-fig-caption">Fill 300x150 Left: fills the box, cropped from the left</span></figcaption>
-</figure><p>Static paths, remote URLs and SVG cannot be processed, and writing <code>command</code> for
-one fails the build. The options syntax (anchors, quality, format conversion, as
+</figure><p>Static paths, remote URLs and SVG cannot be processed. Writing <code>command</code> for
+one warns and leaves it unprocessed; strict publishing rejects the warning. The
+options syntax (anchors, quality, format conversion, as
 in <code>300x150 webp q80</code>) is in
 <a href="https://gohugo.io/content-management/image-processing/">Hugo image processing</a>.</p>
 <h2 id="pg-7c74be94ed268367cf9127b079105daa--link">Linked images
@@ -1124,8 +1138,8 @@ in <code>300x150 webp q80</code>) is in
 <p><a href="/docs/about/features/"><img class="td-image" src="/docs/components/image/oink-shell.webp" alt="Go to the highlights page" width="1200" height="771" loading="lazy" decoding="async"></a></p>
 <figure class="td-figure">
   <a class="td-figure__link" href="/docs/write/releases/"><img src="/docs/components/image/release-note.webp" alt="Release card" width="732" height="142" loading="lazy" decoding="async"></a><figcaption> <span class="td-fig-caption">Click the image for the releases and downloads guide</span></figcaption>
-</figure><p>A linked image never zooms. Writing <code>link=</code> with no caption fails the build, and
-the error points at <code>[![…](…)](…)</code> instead.</p>
+</figure><p>A linked image never zooms. Writing <code>link=</code> with no caption warns and drops the
+link, pointing at <code>[![…](…)](…)</code> instead; strict publishing rejects the warning.</p>
 <h2 id="pg-7c74be94ed268367cf9127b079105daa--numbered">Numbered figures
 </h2>
 <p>Numbered figures are for books and long manuals: add <code>num</code> to the attribute
@@ -1155,6 +1169,11 @@ whole-book list of figures is in <a href="/docs/write/book/">Books</a>.</p>
 and gallery images that have alt text become clickable buttons that open the
 full image in a native <code>&lt;dialog&gt;</code> (Esc closes it, focus returns where it was).
 This page turns it on in its front matter, so every image above is clickable.</p>
+<p>Since OINK 1.1, the preview action is kept in the button&rsquo;s
+accessible name, alongside the image description. It adds no helper text to
+copied articles; the copied HTML retains images and authored captions for
+rich-text editors. In v1.0.0, a hidden preview label can appear after pasting.
+Until upgrading, setting <code>image_zoom: false</code> and rebuilding avoids that label.</p>
 <div class="td-code td-code--titled" id="td-code-30676200-fence-7" data-td-code data-td-code-auto-id
      data-td-language="yaml" data-td-line-count="3" role="group" aria-labelledby="td-code-30676200-fence-7-title">
   <div class="td-code__header">
@@ -1192,10 +1211,10 @@ images are needed, give each a <code>class</code> and show one per scheme with
   <div class="td-code__header">
     <span class="td-code__filename" id="td-code-30676200-fence-10-title" title="Source">Source</span>
   </div>
-  <div class="td-code__viewport" id="td-code-30676200-fence-10-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">![<span class="nt">Sidebar (light)</span>](<span class="na">oink-shell.webp</span>)
+  <div class="td-code__viewport" id="td-code-30676200-fence-10-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">![<span class="nt">Sidebar (light)</span>](<span class="na">sidebar-light.webp</span>)
 </span></span><span class="line"><span class="cl">{class=&#34;only-light&#34;}
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">![<span class="nt">Sidebar (dark)</span>](<span class="na">oink-shell.webp</span>)
+</span></span><span class="line"><span class="cl">![<span class="nt">Sidebar (dark)</span>](<span class="na">sidebar-dark.webp</span>)
 </span></span><span class="line"><span class="cl">{class=&#34;only-dark&#34;}</span></span></code></pre></div></div>
 </div>
 <div class="td-code td-code--titled" id="td-code-30676200-fence-11" data-td-code data-td-code-auto-id
@@ -1203,10 +1222,12 @@ images are needed, give each a <code>class</code> and show one per scheme with
   <div class="td-code__header">
     <span class="td-code__filename" id="td-code-30676200-fence-11-title" title="assets/scss/_styles_project.scss">assets/scss/_styles_project.scss</span>
   </div>
-  <div class="td-code__viewport" id="td-code-30676200-fence-11-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="o">[</span><span class="nt">data-bs-theme</span><span class="o">=</span><span class="s2">&#34;dark&#34;</span><span class="o">]</span> <span class="nc">.only-light</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl"><span class="nd">:not</span><span class="o">([</span><span class="nt">data-bs-theme</span><span class="o">=</span><span class="s2">&#34;dark&#34;</span><span class="o">])</span> <span class="nc">.only-dark</span> <span class="p">{</span> <span class="na">display</span><span class="o">:</span> <span class="ni">none</span><span class="p">;</span> <span class="p">}</span></span></span></code></pre></div></div>
+  <div class="td-code__viewport" id="td-code-30676200-fence-11-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="nt">html</span><span class="o">[</span><span class="nt">data-bs-theme</span><span class="o">=</span><span class="s2">&#34;dark&#34;</span><span class="o">]</span> <span class="nc">.only-light</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="nt">html</span><span class="nd">:not</span><span class="o">([</span><span class="nt">data-bs-theme</span><span class="o">=</span><span class="s2">&#34;dark&#34;</span><span class="o">])</span> <span class="nc">.only-dark</span> <span class="p">{</span> <span class="na">display</span><span class="o">:</span> <span class="ni">none</span><span class="p">;</span> <span class="p">}</span></span></span></code></pre></div></div>
 </div>
-<p><code>class</code> is passed through by the theme untouched, for the site&rsquo;s CSS to use.</p>
+<p>Replace <code>sidebar-light.webp</code> and <code>sidebar-dark.webp</code> with your own light and
+dark images. The theme sets <code>data-bs-theme</code> on <code>html</code>; the selectors above
+show only the matching image. <code>class</code> is passed through for the site&rsquo;s CSS.</p>
 <h2 id="pg-7c74be94ed268367cf9127b079105daa--outputs">Output
 </h2>
 <div class="td-table-scroll td-table-scroll--static">
@@ -1309,8 +1330,9 @@ images are needed, give each a <code>class</code> and show one per scheme with
 </dl>
 </div>
 
-<p><code>style</code>, <code>on*</code>, <code>alt</code>, <code>title</code>, <code>src</code> and any other key on the attribute line
-fail the build (alt, title and src belong to the Markdown image itself).</p>
+<p><code>style</code>, <code>on*</code>, <code>alt</code>, <code>title</code>, <code>src</code>, and unsupported keys on the attribute
+line warn and are ignored; strict publishing rejects the warning. Alt, title,
+and src belong to the Markdown image itself.</p>
 <h2 id="pg-7c74be94ed268367cf9127b079105daa--limits">Limits
 </h2>
 <ul>
@@ -1430,7 +1452,8 @@ also becomes the block&rsquo;s accessible name.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">renderer</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">unsafe</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span></span></span></code></pre></div></div>
 </div>
-<p><code>filename</code> is a historical alias of <code>title</code>; writing both fails the build.</p>
+<p><code>filename</code> is a historical alias of <code>title</code>; writing both warns and uses
+<code>filename</code>. Strict publishing rejects the warning.</p>
 <h2 id="pg-c4c24477c3de14c9cad6f69a847c9cc9--line-numbers">Line numbers, start line and highlighting
 </h2>
 <p><code>lineNos</code> takes <code>inline</code> (numbers in the same column as the code) or <code>table</code>
@@ -1521,8 +1544,8 @@ copy. Without it, long lines scroll horizontally.</p>
 </div>
 <p><code>wrap=true</code> cannot coexist with table line numbers: the number column and the
 code column are two table cells, and wrapping puts them out of step. Writing
-both fails the build, and the error suggests <code>lineNos=&quot;inline&quot;</code> or dropping the
-wrap.</p>
+both warns and disables wrapping, suggesting <code>lineNos=&quot;inline&quot;</code> or dropping the
+wrap. Strict publishing rejects the warning.</p>
 <h2 id="pg-c4c24477c3de14c9cad6f69a847c9cc9--collapse">Folding long code
 </h2>
 <p><code>collapse=N</code> shows the first N lines with a &ldquo;show all N lines&rdquo; button at the
@@ -1603,8 +1626,9 @@ gives two commands, with no <code>$</code> and no output.</p>
 </span></span></span></code></pre></div></div>
 </div>
 <p>To copy prompts and output too, write <code>copy=&quot;all&quot;</code>. Using <code>copy=&quot;command&quot;</code> on an
-ordinary lexer such as <code>bash</code> or <code>sh</code> fails the build, because those cannot tell
-prompt, command and output apart. For multi-line commands, write the
+ordinary lexer such as <code>bash</code> or <code>sh</code> warns and uses <code>copy=&quot;all&quot;</code>, because those
+cannot tell prompt, command and output apart. Strict publishing rejects the
+warning. For multi-line commands, write the
 continuation prompt (usually <code>&gt;</code>) on the continuation lines, or they are treated
 as output and excluded.</p>
 <p>When a session-lexer block contains no prompt at all, the copy button reports
@@ -1617,23 +1641,23 @@ counter-example nobody should paste:</p>
   <div class="td-code__header">
     <span class="td-code__filename" id="td-code-a777fd1e-fence-16-title" title="Source">Source</span>
   </div>
-  <div class="td-code__viewport" id="td-code-a777fd1e-fence-16-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">``<span class="sb">`yaml {title=&#34;counter-example: the attribute line left its block&#34; copy=false}
+  <div class="td-code__viewport" id="td-code-a777fd1e-fence-16-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">``<span class="sb">`yaml {title=&#34;counter-example: an invalid boolean&#34; copy=false}
 </span></span></span><span class="line"><span class="cl"><span class="sb">params:
 </span></span></span><span class="line"><span class="cl"><span class="sb">  ui:
-</span></span></span><span class="line"><span class="cl"><span class="sb">    image_zoom: true   # wrong: image_zoom is a table, not a boolean
+</span></span></span><span class="line"><span class="cl"><span class="sb">    image_zoom: sometimes   # wrong: use true or false
 </span></span></span><span class="line"><span class="cl"><span class="sb">`</span>``</span></span></code></pre></div></div>
 </div>
 <div class="td-code td-code--titled" id="td-code-a777fd1e-fence-17" data-td-code data-td-code-auto-id
      data-td-language="yaml" data-td-line-count="3" role="group" aria-labelledby="td-code-a777fd1e-fence-17-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-a777fd1e-fence-17-title" title="counter-example: the attribute line left its block">counter-example: the attribute line left its block</span>
+    <span class="td-code__filename" id="td-code-a777fd1e-fence-17-title" title="counter-example: an invalid boolean">counter-example: an invalid boolean</span>
   </div>
   <div class="td-code__viewport" id="td-code-a777fd1e-fence-17-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ui</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image_zoom: true   # wrong</span><span class="p">:</span><span class="w"> </span><span class="l">image_zoom is a table, not a boolean</span></span></span></code></pre></div></div>
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image_zoom: sometimes   # wrong</span><span class="p">:</span><span class="w"> </span><span class="l">use true or false</span></span></span></code></pre></div></div>
 </div>
-<p>To turn copying off site-wide use <code>params.ui.code_copy: false</code>, which overrides
-whatever a block writes in <code>copy</code> (see
+<p>To turn copying off by default, use <code>params.ui.code_copy: false</code>. An explicit
+<code>copy</code> attribute on a fence overrides that default (see
 <a href="/docs/customize/config/">Configuration</a>). The copy button
 is icon-only; success and failure swap the icon and announce a localized status.
 What is copied keeps indentation, blank lines and Unicode, drops line numbers,
@@ -1685,8 +1709,8 @@ the form <code>#&lt;id&gt;-&lt;line&gt;</code>.</p>
 depends on where the fence sits in the page — insert another fence above it and
 the ID changes. Only an author-written <code>id</code> is a permanent link. IDs must not
 contain whitespace or control characters, and must not collide with any other
-viewport, tab, panel, title or line-anchor ID on the page; a collision fails the
-build.</p>
+viewport, tab, panel, title or line-anchor ID on the page. Invalid or duplicate
+IDs warn, and strict publishing rejects the warning.</p>
 <h2 id="pg-c4c24477c3de14c9cad6f69a847c9cc9--numbered">Numbered examples
 </h2>
 <p>In a book or a long manual, number the snippets: <code>num</code> plus <code>caption</code> turns the
@@ -1716,7 +1740,8 @@ never counts — and <code>id</code> defaults to <code>eg-&lt;num&gt;</code>.</p
 </div>
 
 </figure><p>See <a class="td-book-xref td-book-xref--eg" href="#eg-bloat" data-td-book-kind="eg" data-td-book-num="4-1">Example 4-1</a>.</p>
-<p><code>num</code> and <code>caption</code> must appear together; one without the other fails the build.
+<p><code>num</code> and <code>caption</code> must appear together. A lone caption is ignored and a lone
+number is dropped with a warning; strict publishing rejects the warning.
 <code>num</code> is mutually exclusive with the tab attribute <code>tab</code>. For numbering and
 indexing figures, tables and equations, see
 <a href="/docs/write/book/">publishing books</a>.</p>
@@ -1770,10 +1795,9 @@ fences of its own.</li>
 <li>Attributes go on the info line: a fence&rsquo;s attributes follow the language on
 the opening line. Only tables and images take their attributes on the line
 below. Put them on the next line and you get a visible line of braces.</li>
-<li>Unknown attributes fail rather than being ignored, and the error lists the
-allowed names. <code>style</code>, <code>srcdoc</code> and <code>on*</code> are rejected; the <code>data-td-code*</code>
-prefix plus <code>data-language</code>, <code>data-line-count</code> and <code>data-collapse-lines</code> are
-reserved by the theme and fail the build too.</li>
+<li>Unknown, unsafe, and theme-reserved attributes warn and are ignored in
+ordinary preview; the message lists the allowed names. Strict publishing
+rejects every such warning.</li>
 <li>Fences in list items: indent them to line up with the item&rsquo;s content (three
 spaces after <code>1.</code>), or the fence leaves the list.</li>
 </ul>
@@ -1827,7 +1851,7 @@ and RSS never load it.</p>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>non-empty string</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>none</code></span></span>
 </dt>
-<dd class="td-field__description">Historical alias of <code>title</code>; both together fail the build</dd>
+<dd class="td-field__description">Historical alias of <code>title</code>; both together warn and use <code>filename</code></dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">copy</code>
@@ -1918,8 +1942,9 @@ and RSS never load it.</p>
 
 <p><code>title</code>, <code>filename</code> and <code>label</code> already give the block an accessible name and
 <code>role=&quot;group&quot;</code>. Any of them together with <code>aria-label</code>, <code>aria-labelledby</code> or
-<code>role</code> fails the build; those three attributes pass through only when the block
-has neither a title nor a <code>label</code>.</p>
+<code>role</code> warns and ignores the conflicting attribute; strict publishing rejects
+the warning. Those three attributes pass through only when the block has
+neither a title nor a <code>label</code>.</p>
 <p>The same line also takes Chroma options, which the theme hands to Hugo unchanged:</p>
 <div class="td-fields">
 <dl class="td-fields__list">
@@ -1967,8 +1992,9 @@ has neither a title nor a <code>label</code>.</p>
 <li>No swapping the highlighter: there is no Shiki, no Twoslash, no
 browser-side highlighting and no runnable playground. For patches use a <code>diff</code>
 fence — Chroma&rsquo;s <code>.gi</code>/<code>.gd</code> are the added / removed line styles.</li>
-<li><code>copy=&quot;command&quot;</code> recognizes session lexers only: on any other language it is a
-build error, never a silent fallback to copying everything.</li>
+<li><code>copy=&quot;command&quot;</code> recognizes session lexers only: on any other language it
+warns and falls back to copying everything; strict publishing rejects the
+warning.</li>
 <li>A generated ID is not a permanent link: write <code>id</code> when you intend to share
 one.</li>
 <li><code>mermaid</code>, <code>math</code>, <code>chem</code>, <code>markmap</code>, <code>plantuml</code>, <code>echarts</code>, <code>infographic</code>,
@@ -2441,15 +2467,12 @@ activate, and focus stays on the tab.</p>
 <h2 id="pg-889655181ae23daa516982e2e4e0cd9a--limits">Limits
 </h2>
 <ul>
-<li>Build failures: in the attribute form, <code>value</code> without <code>group</code>, <code>group</code> or
-<code>value</code> without <code>tab</code>, <code>tab</code> together with the numbering attribute <code>num</code>; in
-the shortcode form, a duplicate <code>value</code> in one set, a <code>tabs</code> with no <code>tab</code>
-child, running text between children, or a <code>default</code> that matches no child.</li>
-<li>Grouping mistakes in the attribute form do not stop the build; they leave a
-warning in the browser console. A missing <code>value</code> drops <code>group</code> from the whole
-set, which degrades to a locally switching tab set with no hash, sync or
-persistence. A duplicate <code>value</code> skips the set entirely and those blocks stay
-titled blocks.</li>
+<li>Invalid grouping and composition warn during the Hugo build and take a safe
+fallback: drop an unusable group/value/default, ignore stray content, keep
+the later duplicate, or render no empty set. Strict publishing rejects every
+warning, and the message names the source position.</li>
+<li>In the attribute form, a run missing a usable <code>value</code> loses synchronization
+and remains a set of local tabs; grouping never silently invents an identity.</li>
 <li>Fences and tables never merge into one set. To mix prose with code, use the
 shortcode form.</li>
 <li>Tabs are not a disclosure. To fold away long output use <code>&gt; [!DETAILS]</code> (see
@@ -2597,7 +2620,7 @@ number the table.</p>
   </div>
   <div class="td-code__viewport" id="td-code-f86f8ded-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">| Item | Value |
 </span></span><span class="line"><span class="cl">| --- | --- |
-</span></span><span class="line"><span class="cl">| Theme version | v0.8.0 |
+</span></span><span class="line"><span class="cl">| Theme version | v0.8.1 |
 </span></span><span class="line"><span class="cl">| Hugo floor | 0.160.1 Extended |
 </span></span><span class="line"><span class="cl">| Licence | Apache-2.0 |
 </span></span><span class="line"><span class="cl">{caption=&#34;Theme facts this site currently builds against&#34;}</span></span></code></pre></div></div>
@@ -2614,7 +2637,7 @@ number the table.</p>
   <tbody>
     <tr>
       <td>Theme version</td>
-      <td>v0.8.0</td>
+      <td>v0.8.1</td>
     </tr>
     <tr>
       <td>Hugo floor</td>
@@ -3022,7 +3045,8 @@ and every table after it needs <code>value</code>. The complete rules are on the
 </dl>
 </div>
 
-<p><code>style</code>, <code>on*</code> and any other key fail the build.</p>
+<p><code>style</code>, <code>on*</code>, and other keys warn and are ignored; strict publishing rejects
+the warning.</p>
 <h2 id="pg-4975fee17748787a06e99b3259d78e9f--limits">Limits
 </h2>
 <ul>
@@ -3088,7 +3112,7 @@ between is metadata labelled with its own header text.</p>
 </span></span><span class="line"><span class="cl">| --- | --- | --- | --- |
 </span></span><span class="line"><span class="cl">| <span class="sb">`offline_search`</span> | boolean | <span class="sb">`false`</span> | Build the local search index and enable the command palette |
 </span></span><span class="line"><span class="cl">| <span class="sb">`offline_search_max_results`</span> | integer | <span class="sb">`10`</span> | Maximum number of search results |
-</span></span><span class="line"><span class="cl">| <span class="sb">`page_width`</span> | string | <span class="sb">`normal`</span> | Reading column width: <span class="sb">`narrow`</span> <span class="sb">`normal`</span> <span class="sb">`wide`</span> |
+</span></span><span class="line"><span class="cl">| <span class="sb">`page_width`</span> | string | <span class="sb">`normal`</span> | Reading column width: <span class="sb">`normal`</span> <span class="sb">`wide`</span> <span class="sb">`full`</span> |
 </span></span><span class="line"><span class="cl">{.fields}</span></span></code></pre></div></div>
 </div>
 <div class="td-fields">
@@ -3112,7 +3136,7 @@ between is metadata labelled with its own header text.</p>
 <span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">Type</span><span class="td-field__meta-value">string</span></span>
 <span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">Default</span><span class="td-field__meta-value"><code>normal</code></span></span>
 </dt>
-<dd class="td-field__description">Reading column width: <code>narrow</code> <code>normal</code> <code>wide</code></dd>
+<dd class="td-field__description">Reading column width: <code>normal</code> <code>wide</code> <code>full</code></dd>
 </div>
 </dl>
 </div>
@@ -3166,11 +3190,12 @@ renders the same chips as the shortcode form.</p>
 
 <p>The rules:</p>
 <ul>
-<li><code>meta</code> must name a role for every middle column — exactly the column count
-minus two. Too many or too few fails the build.</li>
+<li><code>meta</code> should name a role for every middle column — exactly the column count
+minus two. Too many or too few warns and ignores <code>meta</code>; strict publishing
+rejects the warning.</li>
 <li>A <code>required</code> column is &ldquo;non-empty means true&rdquo;: &ldquo;yes&rdquo;, &ldquo;是&rdquo; or &ldquo;✔&rdquo; all read the
 same, and the rendered chip is the untranslated <code>required</code>. An empty cell
-shows nothing.</li>
+shows nothing. Leave optional fields empty: <code>no</code> and <code>否</code> are non-empty too.</li>
 <li><code>type</code> and <code>default</code> cells with no inline markup of their own are wrapped in
 code formatting, matching the shortcode form.</li>
 <li>The three semantic chips always display in the order <code>type</code>, <code>required</code>,
@@ -3186,7 +3211,7 @@ order.</li>
   <div class="td-code__viewport" id="td-code-a30c6d68-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">| Environment variable | Type | Scope | Description |
 </span></span><span class="line"><span class="cl">| --- | --- | --- | --- |
 </span></span><span class="line"><span class="cl">| <span class="sb">`HUGO_MODULE_WORKSPACE`</span> | string | build | Points at <span class="sb">`go.work`</span> so the theme resolves from a local checkout |
-</span></span><span class="line"><span class="cl">| <span class="sb">`HUGO_ENV`</span> | string | build | Set to <span class="sb">`production`</span> to enable minification and fingerprinting |
+</span></span><span class="line"><span class="cl">| <span class="sb">`HUGO_ENV`</span> | string | build | Selects production mode; OINK fingerprints CSS/JS assets. Use <span class="sb">`--minify`</span> to minify HTML |
 </span></span><span class="line"><span class="cl">{.fields meta=&#34;type -&#34;}</span></span></code></pre></div></div>
 </div>
 <div class="td-fields">
@@ -3203,7 +3228,7 @@ order.</li>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>string</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">Scope</span><span class="td-field__meta-value">build</span></span>
 </dt>
-<dd class="td-field__description">Set to <code>production</code> to enable minification and fingerprinting</dd>
+<dd class="td-field__description">Selects production mode; OINK fingerprints CSS/JS assets. Use <code>--minify</code> to minify HTML</dd>
 </div>
 </dl>
 </div>
@@ -3219,26 +3244,26 @@ name; <code>id</code> names the outer container so it can be linked to or styled
   </div>
   <div class="td-code__viewport" id="td-code-a30c6d68-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">| Parameter | Type | Default | Description |
 </span></span><span class="line"><span class="cl">| --- | --- | --- | --- |
-</span></span><span class="line"><span class="cl">| <span class="sb">`enable`</span> | boolean | <span class="sb">`false`</span> | Turn image zoom on |
-</span></span><span class="line"><span class="cl">| <span class="sb">`selector`</span> | string | <span class="sb">`.td-content`</span> | Root selector scanned for candidate images |
-</span></span><span class="line"><span class="cl">{.fields caption=&#34;params.ui.image_zoom&#34; id=&#34;zoom-params&#34; meta=&#34;type default&#34;}</span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl">| <span class="sb">`image_zoom`</span> | boolean | <span class="sb">`false`</span> | Turn image zoom on |
+</span></span><span class="line"><span class="cl">| <span class="sb">`featured_image`</span> | string | <span class="sb">`none`</span> | Article image mode: <span class="sb">`none`</span>, <span class="sb">`banner`</span>, <span class="sb">`wash`</span> or <span class="sb">`hero`</span> |
+</span></span><span class="line"><span class="cl">{.fields caption=&#34;params.ui&#34; id=&#34;zoom-params&#34; meta=&#34;type default&#34;}</span></span></code></pre></div></div>
 </div>
 <div class="td-fields" id="zoom-params">
-<p class="td-fields__label" id="td-fields-a30c6d6869246523544b0a546507c69d-t3-label">params.ui.image_zoom</p>
+<p class="td-fields__label" id="td-fields-a30c6d6869246523544b0a546507c69d-t3-label">params.ui</p>
 <dl class="td-fields__list" aria-labelledby="td-fields-a30c6d6869246523544b0a546507c69d-t3-label">
 <div class="td-field">
-<dt class="td-field__term"><code class="td-field__name">enable</code>
+<dt class="td-field__term"><code class="td-field__name">image_zoom</code>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>boolean</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>false</code></span></span>
 </dt>
 <dd class="td-field__description">Turn image zoom on</dd>
 </div>
 <div class="td-field">
-<dt class="td-field__term"><code class="td-field__name">selector</code>
+<dt class="td-field__term"><code class="td-field__name">featured_image</code>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>string</code></span></span>
-<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>.td-content</code></span></span>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>none</code></span></span>
 </dt>
-<dd class="td-field__description">Root selector scanned for candidate images</dd>
+<dd class="td-field__description">Article image mode: <code>none</code>, <code>banner</code>, <code>wash</code> or <code>hero</code></dd>
 </div>
 </dl>
 </div>
@@ -3450,21 +3475,18 @@ keeps it as a table. That is why it is the default.</p>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">label</code>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>non-empty string</code></span></span>
-<span class="visually-hidden">, </span><span class="td-field__required">required</span>
 </dt>
 <dd class="td-field__description">Visible label; the same thing the table&rsquo;s <code>caption</code> does</dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">id</code>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>identifier</code></span></span>
-<span class="visually-hidden">, </span><span class="td-field__required">required</span>
 </dt>
 <dd class="td-field__description">Container ID; no whitespace, quotes, <code>&lt;</code>, <code>&gt;</code> or <code>&amp;</code></dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">class</code> / <code>data-*</code> / <code>aria-*</code>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>string</code></span></span>
-<span class="visually-hidden">, </span><span class="td-field__required">required</span>
 </dt>
 <dd class="td-field__description">The same policy as the table attribute line</dd>
 </div>
@@ -3484,21 +3506,18 @@ keeps it as a table. That is why it is the default.</p>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">type</code>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>non-empty string</code></span></span>
-<span class="visually-hidden">, </span><span class="td-field__required">required</span>
 </dt>
 <dd class="td-field__description">Type label such as <code>boolean</code>, <code>string[]</code>, <code>duration</code></dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">required</code>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>boolean</code></span></span>
-<span class="visually-hidden">, </span><span class="td-field__required">required</span>
 </dt>
 <dd class="td-field__description"><code>true</code> shows the untranslated <code>required</code> chip; defaults to <code>false</code></dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">default</code>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>scalar</code></span></span>
-<span class="visually-hidden">, </span><span class="td-field__required">required</span>
 </dt>
 <dd class="td-field__description">String / boolean / integer / float; <code>false</code>, <code>0</code> and <code>&quot;&quot;</code> all display</dd>
 </div>
@@ -3509,7 +3528,7 @@ keeps it as a table. That is why it is the default.</p>
 </h2>
 <ul>
 <li>The first column must be non-empty and unique within one table; a duplicate or
-an empty name fails the build.</li>
+empty name warns and skips that row, and strict publishing rejects the warning.</li>
 <li><code>.fields</code> cannot combine with <code>.matrix</code>, <code>.full-width</code> or <code>num</code>, and <code>meta</code>
 cannot appear on a table without <code>.fields</code>.</li>
 <li>Block content does not fit in a table cell: paragraphs, lists and fences need
@@ -3562,13 +3581,13 @@ three spaces.</p>
     <span class="td-code__filename" id="td-code-eb050d30-fence-0-title" title="Source">Source</span>
   </div>
   <div class="td-code__viewport" id="td-code-eb050d30-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">1.</span> Install Hugo Extended
-</span></span><span class="line"><span class="cl"><span class="k">1.</span> Clone the documentation site
+</span></span><span class="line"><span class="cl"><span class="k">1.</span> Clone OINK Starter
 </span></span><span class="line"><span class="cl"><span class="k">1.</span> Start the local preview
 </span></span><span class="line"><span class="cl">{.steps}</span></span></code></pre></div></div>
 </div>
 <ol class="steps">
 <li>Install Hugo Extended</li>
-<li>Clone the documentation site</li>
+<li>Clone OINK Starter</li>
 <li>Start the local preview</li>
 </ol>
 <p><code>{.steps}</code> must touch the last line of the list; leave a blank line and it turns
@@ -3582,10 +3601,10 @@ nested lists, images. Indent it to the item&rsquo;s content column — three spa
   <div class="td-code__header">
     <span class="td-code__filename" id="td-code-eb050d30-fence-1-title" title="Source">Source</span>
   </div>
-  <div class="td-code__viewport" id="td-code-eb050d30-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">1.</span> Clone the documentation site; it is itself a complete example of the theme.
+  <div class="td-code__viewport" id="td-code-eb050d30-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">1.</span> Clone OINK Starter; it is the small project template for the theme.
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">   ``<span class="sb">`bash
-</span></span></span><span class="line"><span class="cl"><span class="sb">   git clone https://github.com/pgsty/oink.pgsty.com my-docs
+</span></span></span><span class="line"><span class="cl"><span class="sb">   git clone https://github.com/pgsty/oink-starter my-docs
 </span></span></span><span class="line"><span class="cl"><span class="sb">   cd my-docs
 </span></span></span><span class="line"><span class="cl"><span class="sb">   `</span>`<span class="sb">`
 </span></span></span><span class="line"><span class="cl"><span class="sb">
@@ -3610,10 +3629,10 @@ nested lists, images. Indent it to the item&rsquo;s content column — three spa
 </div>
 <ol class="steps">
 <li>
-<p>Clone the documentation site; it is itself a complete example of the theme.</p>
+<p>Clone OINK Starter; it is the small project template for the theme.</p>
 <div class="td-code td-code--untitled" id="td-code-eb050d30-fence-2" data-td-code data-td-code-auto-id
      data-td-language="bash" data-td-line-count="2">
-  <div class="td-code__viewport" id="td-code-eb050d30-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/pgsty/oink.pgsty.com my-docs
+  <div class="td-code__viewport" id="td-code-eb050d30-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/pgsty/oink-starter my-docs
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> my-docs</span></span></code></pre></div></div>
 </div>
 </li>
@@ -3941,13 +3960,13 @@ follows <code>—</code> is the description.</p>
   <div class="td-code__header">
     <span class="td-code__filename" id="td-code-97dabeb1-fence-0-title" title="Source">Source</span>
   </div>
-  <div class="td-code__viewport" id="td-code-97dabeb1-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">-</span> [<span class="nt">Get started</span>](<span class="na">/docs/start/</span>) — Clone this documentation site, delete what you do not need, replace the site details with your own.
+  <div class="td-code__viewport" id="td-code-97dabeb1-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">-</span> [<span class="nt">Get started</span>](<span class="na">/docs/start/</span>) — Start with OINK Starter, preview locally, then replace the site details with your own.
 </span></span><span class="line"><span class="cl"><span class="k">-</span> [<span class="nt">Authoring</span>](<span class="na">/docs/write/</span>) — How pages are organized and which front matter keys exist.
 </span></span><span class="line"><span class="cl"><span class="k">-</span> [<span class="nt">Customization</span>](<span class="na">/docs/customize/</span>) — Navigation, search, branding, languages.
 </span></span><span class="line"><span class="cl">{.cards}</span></span></code></pre></div></div>
 </div>
 <ul class="cards">
-<li><a href="/docs/start/">Get started</a> — Clone this documentation site, delete what you do not need, replace the site details with your own.</li>
+<li><a href="/docs/start/">Get started</a> — Start with OINK Starter, preview locally, then replace the site details with your own.</li>
 <li><a href="/docs/write/">Authoring</a> — How pages are organized and which front matter keys exist.</li>
 <li><a href="/docs/customize/">Customization</a> — Navigation, search, branding, languages.</li>
 </ul>
@@ -4020,10 +4039,10 @@ pair and <code>badge</code> is plain text.</p>
   </div>
   <div class="td-code__viewport" id="td-code-97dabeb1-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">{{&lt; cards &gt;}}
 </span></span><span class="line"><span class="cl">{{&lt; card title=&#34;Get started&#34; link=&#34;/docs/start/&#34; icon=&#34;fa-solid fa-rocket&#34; badge=&#34;start here&#34; &gt;}}
-</span></span><span class="line"><span class="cl">Fork the documentation site itself and get a local preview in ten minutes.
+</span></span><span class="line"><span class="cl">Use OINK Starter and establish a local preview before customizing.
 </span></span><span class="line"><span class="cl">{{&lt; /card &gt;}}
 </span></span><span class="line"><span class="cl">{{&lt; card title=&#34;Release and download pages&#34; link=&#34;/docs/write/releases/&#34; icon=&#34;fa-solid fa-box-open&#34; badge=&#34;v0.5&#34; &gt;}}
-</span></span><span class="line"><span class="cl">A <span class="sb">`release`</span> fact record, an asset table and checksums — all generated locally.
+</span></span><span class="line"><span class="cl">A release card from <span class="sb">`release_url`</span> and <span class="sb">`date`</span>, plus a <span class="sb">`checksums`</span> block for download assets.
 </span></span><span class="line"><span class="cl">{{&lt; /card &gt;}}
 </span></span><span class="line"><span class="cl">{{&lt; card title=&#34;Keyboard navigation&#34; link=&#34;/docs/customize/keyboard/&#34; icon=&#34;fa-solid fa-keyboard&#34; &gt;}}
 </span></span><span class="line"><span class="cl">Site-wide shortcuts and focus order.
@@ -4035,14 +4054,14 @@ pair and <code>badge</code> is plain text.</p>
 <article id="td-card-97dabeb1-cards-0-0" class="td-content-card">
 <div class="td-content-card__body">
 <div class="td-content-card__head"><i class="fa-solid fa-rocket td-content-card__icon" aria-hidden="true"></i><a class="td-content-card__title" href="/docs/start/">Get started</a><span class="td-content-card__badge">start here</span></div>
-<div class="td-content-card__description"><p>Fork the documentation site itself and get a local preview in ten minutes.</p>
+<div class="td-content-card__description"><p>Use OINK Starter and establish a local preview before customizing.</p>
 </div>
 </div>
 </article>
 <article id="td-card-97dabeb1-cards-0-1" class="td-content-card">
 <div class="td-content-card__body">
 <div class="td-content-card__head"><i class="fa-solid fa-box-open td-content-card__icon" aria-hidden="true"></i><a class="td-content-card__title" href="/docs/write/releases/">Release and download pages</a><span class="td-content-card__badge">v0.5</span></div>
-<div class="td-content-card__description"><p>A <code>release</code> fact record, an asset table and checksums — all generated locally.</p>
+<div class="td-content-card__description"><p>A release card from <code>release_url</code> and <code>date</code>, plus a <code>checksums</code> block for download assets.</p>
 </div>
 </div>
 </article>
@@ -4055,8 +4074,8 @@ pair and <code>badge</code> is plain text.</p>
 </article>
 
 </div>
-<p>An icon that is not a <code>fa-solid fa-xxx</code> style class pair fails the build rather
-than being dropped silently.</p>
+<p>An icon that is not one valid Font Awesome class pair warns and is dropped in
+ordinary preview; strict publishing rejects the warning.</p>
 <h2 id="pg-f0b2530ecd252094c687fc499897499d--markdown-body">Markdown bodies
 </h2>
 <p>A <code>card</code> body renders as page-level Markdown: inline code, emphasis, links,
@@ -4106,12 +4125,13 @@ version line.</p>
 <p>A card without <code>link</code> renders as a bold title and produces no link.</p>
 <h2 id="pg-f0b2530ecd252094c687fc499897499d--image">Cards with images
 </h2>
-<p><code>image</code> resolves in the same order as <code>![alt](src)</code>: page resource → global
-resource in <code>assets/</code> → static path <code>/images/…</code> → remote URL. Local resources
+<p><code>image</code> resolves in the same order as <code>![alt](src)</code>: page resource → current
+section resource → global resource in <code>assets/</code> → static path <code>/images/…</code> → remote URL. Local resources
 carry their intrinsic size so nothing shifts while loading.</p>
-<p><code>image</code> must be paired with a source of alternative text: <code>image_alt=&quot;…&quot;</code> for an
-informative image, or <code>decorative=true</code> for a purely decorative one. Writing
-both, or neither, fails the build.</p>
+<p><code>image</code> needs one source of alternative text: <code>image_alt=&quot;…&quot;</code> for an informative
+image or <code>decorative=true</code> for a decorative one. Writing both warns and keeps
+the alt text; writing neither warns and renders the image decorative. Strict
+publishing rejects either warning.</p>
 <div class="td-code td-code--titled" id="td-code-97dabeb1-fence-5" data-td-code data-td-code-auto-id
      data-td-language="markdown" data-td-line-count="8" role="group" aria-labelledby="td-code-97dabeb1-fence-5-title">
   <div class="td-code__header">
@@ -4296,7 +4316,7 @@ form whenever it is enough.</p>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>Font Awesome class pair</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>—</code></span></span>
 </dt>
-<dd class="td-field__description">For example <code>fa-solid fa-rocket</code>; a malformed value fails the build</dd>
+<dd class="td-field__description">For example <code>fa-solid fa-rocket</code>; a malformed value warns and is dropped</dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">badge</code>
@@ -4336,8 +4356,9 @@ form whenever it is enough.</p>
 </dl>
 </div>
 
-<p>There is no <code>cols</code>, <code>columns</code>, <code>accent</code>, <code>desc</code> or <code>color</code> parameter, and any
-unknown parameter fails the build.</p>
+<p>There is no <code>cols</code>, <code>columns</code>, <code>accent</code>, <code>desc</code> or <code>color</code> parameter. Unknown
+parameters warn and are ignored in ordinary preview; strict publishing rejects
+the warning.</p>
 <h2 id="pg-f0b2530ecd252094c687fc499897499d--limits">Limits
 </h2>
 <ul>
@@ -4347,7 +4368,7 @@ nothing.</li>
 a list item, drops the marker silently — the build succeeds and the list stays
 a list. Check that line first when the output is not a card grid.</li>
 <li>A <code>card</code> lives only inside <code>cards</code>: alone, or inside another shortcode, it
-fails the build and the error names the location.</li>
+warns and is skipped; strict publishing rejects the warning.</li>
 <li>The column count is not configurable: the grid adapts to the container. Only
 automatic section cards take a count, through
 <code>params.ui.section_index_columns</code>.</li>
@@ -4490,8 +4511,9 @@ be pasted whole, root line and summary line included — the summary is dropped.
 </span></span><span class="line"><span class="cl">3 directories, 5 files
 </span></span><span class="line"><span class="cl"><span class="s">```</span></span></span></code></pre></div></div>
 </div>
-<div class="td-filetree td-filetree--static td-filetree--plain" style="--td-filetree-name-col:21.0ch"><div class="td-filetree__body"><ul class="td-filetree__list td-filetree__list--root"><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:0"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="content/docs">content/docs</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="about">about</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="_index.md">_index.md</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="features.md">features.md</span></span></span></li></ul></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="components">components</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="filetree.md">filetree.md</span></span></span></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="image">image</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:3"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="index.md">index.md</span></span></span></li></ul></li></ul></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="_index.md">_index.md</span></span></span></li></ul></li></ul></div></div><p>Returning to an indentation level that was never opened fails the build, and the
-error carries the line number inside the fence.</p>
+<div class="td-filetree td-filetree--static td-filetree--plain" style="--td-filetree-name-col:21.0ch"><div class="td-filetree__body"><ul class="td-filetree__list td-filetree__list--root"><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:0"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="content/docs">content/docs</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="about">about</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="_index.md">_index.md</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="features.md">features.md</span></span></span></li></ul></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="components">components</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="filetree.md">filetree.md</span></span></span></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="image">image</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:3"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="index.md">index.md</span></span></span></li></ul></li></ul></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="_index.md">_index.md</span></span></span></li></ul></li></ul></div></div><p>Returning to an indentation level that was never opened warns and skips that
+line; the message carries the line number inside the fence, and strict
+publishing rejects it.</p>
 <h2 id="pg-b9bf90c41b9a07bca5ae3b6bce96ec5b--dir-file">Folding and explicit types
 </h2>
 <p>A directory with children is open by default; <code>{open=false}</code> starts it closed.
@@ -4668,7 +4690,7 @@ comments is single-column and loads no script at all.</p>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>Font Awesome class pair</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>matched by name / extension</code></span></span>
 </dt>
-<dd class="td-field__description">For example <code>fa-solid fa-lock</code>; a malformed value fails the build</dd>
+<dd class="td-field__description">For example <code>fa-solid fa-lock</code>; a malformed value warns and uses the default icon</dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">tone</code>
@@ -4730,9 +4752,9 @@ comments is single-column and loads no script at all.</p>
 </dl>
 </div>
 
-<p>Unknown attributes, unknown values, <code>open</code> on a file, a malformed <code>{…}</code>, and
-returning to an indentation level that was never opened all fail the build with
-the line number inside the fence.</p>
+<p>Unknown attributes and values, <code>open</code> on a file, malformed <code>{…}</code>, and a dedent
+to an unopened level all warn and take a safe fallback or skip the bad line.
+The message names the line; strict publishing rejects the warning.</p>
 <h2 id="pg-b9bf90c41b9a07bca5ae3b6bce96ec5b--limits">Limits
 </h2>
 <ul>
@@ -4778,28 +4800,58 @@ request to a remote maths service. Inline formulas are <code>\(…\)</code>, dis
 formulas are <code>$$…$$</code> or <code>\[…\]</code>, and there are <code>math</code> and <code>chem</code> fences. For
 TikZ drawings or macro packages KaTeX does not support, use a pre-rendered
 <a href="/docs/components/image/">image</a>.</p>
+<p>The 1.2.0 working implementation adapts Hugo 0.160.1&rsquo;s generated KaTeX class
+names to the bundled stylesheet. TeX and MathML stay intact; no browser math
+runtime or additional site switch is needed.</p>
+<h2 id="pg-1761b5deb35ff2fbf615ff37f3fc951f--config">Site prerequisites
+</h2>
+<p>The <code>math</code> and <code>chem</code> fences need no configuration. The <code>$$</code>, <code>\[…\]</code> and
+<code>\(…\)</code> delimiters depend on Goldmark&rsquo;s passthrough extension. Hugo does not
+merge a theme&rsquo;s <code>markup</code> configuration, so this block has to live in the site&rsquo;s
+own configuration file. This site uses:</p>
+<div class="td-code td-code--titled" id="td-code-8e446ae3-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="11" role="group" aria-labelledby="td-code-8e446ae3-fence-0-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-8e446ae3-fence-0-title" title="hugo.yml">hugo.yml</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-8e446ae3-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">markup</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">goldmark</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">parser</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">attribute</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">block</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># numbered equations need the attribute line</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">extensions</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">passthrough</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">delimiters</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">block</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s1">&#39;\[&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;\]&#39;</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;$$&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;$$&#39;</span><span class="p">]]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">inline</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s1">&#39;\(&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;\)&#39;</span><span class="p">]]</span></span></span></code></pre></div></div>
+</div>
+<p>Every key is defined in
+<a href="/docs/customize/config/">Configuration</a>. Delimiters must
+not collide with the prose: a single <code>$</code> is deliberately not configured, so a
+price like &ldquo;$5&rdquo; is never read as mathematics.</p>
 <h2 id="pg-1761b5deb35ff2fbf615ff37f3fc951f--minimal">Shortest form
 </h2>
 <p>An inline formula sits inside a sentence, with the surrounding spaces and
 punctuation outside the delimiters.</p>
-<div class="td-code td-code--titled" id="td-code-8e446ae3-fence-0" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="1" role="group" aria-labelledby="td-code-8e446ae3-fence-0-title">
+<div class="td-code td-code--titled" id="td-code-8e446ae3-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="1" role="group" aria-labelledby="td-code-8e446ae3-fence-1-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-8e446ae3-fence-0-title" title="Source">Source</span>
+    <span class="td-code__filename" id="td-code-8e446ae3-fence-1-title" title="Source">Source</span>
   </div>
-  <div class="td-code__viewport" id="td-code-8e446ae3-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">The shared buffer hit ratio is \(\mathrm{hit} = \frac{H}{H + R}\), where \(H\) is <span class="sb">`blks_hit`</span> and \(R\) is <span class="sb">`blks_read`</span>.</span></span></code></pre></div></div>
+  <div class="td-code__viewport" id="td-code-8e446ae3-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">The shared buffer hit ratio is \(\mathrm{hit} = \frac{H}{H + R}\), where \(H\) is <span class="sb">`blks_hit`</span> and \(R\) is <span class="sb">`blks_read`</span>.</span></span></code></pre></div></div>
 </div>
 <p>The shared buffer hit ratio is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">h</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi></mrow><mo>=</mo><mfrac><mi>H</mi><mrow><mi>H</mi><mo>+</mo><mi>R</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\mathrm{hit} = \frac{H}{H + R}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord"><span class="mord mathrm">hit</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.2757em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.08125em;">H</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.08125em;">H</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>, where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi></mrow><annotation encoding="application/x-tex">H</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span></span></span></span> is <code>blks_hit</code> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> is <code>blks_read</code>.</p>
 <h2 id="pg-1761b5deb35ff2fbf615ff37f3fc951f--display">Display formulas
 </h2>
 <p>A formula in its own paragraph goes between <code>$$</code>, centred and set larger.
 <code>\[…\]</code> is equivalent.</p>
-<div class="td-code td-code--titled" id="td-code-8e446ae3-fence-1" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="5" role="group" aria-labelledby="td-code-8e446ae3-fence-1-title">
+<div class="td-code td-code--titled" id="td-code-8e446ae3-fence-2" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="5" role="group" aria-labelledby="td-code-8e446ae3-fence-2-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-8e446ae3-fence-1-title" title="Source">Source</span>
+    <span class="td-code__filename" id="td-code-8e446ae3-fence-2-title" title="Source">Source</span>
   </div>
-  <div class="td-code__viewport" id="td-code-8e446ae3-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">A B-tree with fan-out \(f\) over \(N\) keys has height:
+  <div class="td-code__viewport" id="td-code-8e446ae3-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">A B-tree with fan-out \(f\) over \(N\) keys has height:
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">$$
 </span></span><span class="line"><span class="cl">h = \left\lceil \log_{f} N \right\rceil
@@ -4815,12 +4867,12 @@ rather than widening the layout; in print it stays static.</p>
 <p>The <code>math</code> fence is another way to write a display formula, and it does not
 depend on the site&rsquo;s passthrough configuration. On GitHub the source is an
 ordinary code block.</p>
-<div class="td-code td-code--titled" id="td-code-8e446ae3-fence-2" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="3" role="group" aria-labelledby="td-code-8e446ae3-fence-2-title">
+<div class="td-code td-code--titled" id="td-code-8e446ae3-fence-3" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="3" role="group" aria-labelledby="td-code-8e446ae3-fence-3-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-8e446ae3-fence-2-title" title="Source">Source</span>
+    <span class="td-code__filename" id="td-code-8e446ae3-fence-3-title" title="Source">Source</span>
   </div>
-  <div class="td-code__viewport" id="td-code-8e446ae3-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```math
+  <div class="td-code__viewport" id="td-code-8e446ae3-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```math
 </span></span></span><span class="line"><span class="cl">N_{\text{conn}} = \lambda \cdot \bar{t}_{\text{resp}}
 </span></span><span class="line"><span class="cl"><span class="s">```</span></span></span></code></pre></div></div>
 </div>
@@ -4831,12 +4883,12 @@ usually far smaller than the number of clients.</p>
 </h2>
 <p>The <code>chem</code> fence uses KaTeX&rsquo;s mhchem extension, and its body is written
 <code>\ce{…}</code>. The same extension typesets physical units.</p>
-<div class="td-code td-code--titled" id="td-code-8e446ae3-fence-4" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="3" role="group" aria-labelledby="td-code-8e446ae3-fence-4-title">
+<div class="td-code td-code--titled" id="td-code-8e446ae3-fence-5" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="3" role="group" aria-labelledby="td-code-8e446ae3-fence-5-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-8e446ae3-fence-4-title" title="Source">Source</span>
+    <span class="td-code__filename" id="td-code-8e446ae3-fence-5-title" title="Source">Source</span>
   </div>
-  <div class="td-code__viewport" id="td-code-8e446ae3-fence-4-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```chem
+  <div class="td-code__viewport" id="td-code-8e446ae3-fence-5-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```chem
 </span></span></span><span class="line"><span class="cl">\ce{CO2 + H2O &lt;=&gt; H2CO3 &lt;=&gt; H+ + HCO3^-}
 </span></span><span class="line"><span class="cl"><span class="s">```</span></span></span></code></pre></div></div>
 </div>
@@ -4859,12 +4911,12 @@ m0 0v40h399900v-40z m100 194v40h399900v-40zm0 0v40h399900v-40z"/></svg></span></
 a string the author writes (<code>3-1</code>, <code>5.3</code>) — the theme never counts — and <code>#id</code>
 defaults to <code>eq-&lt;num&gt;</code>. The number shows to the right of the formula with a
 localized &ldquo;Equation&rdquo; prefix.</p>
-<div class="td-code td-code--titled" id="td-code-8e446ae3-fence-6" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="6" role="group" aria-labelledby="td-code-8e446ae3-fence-6-title">
+<div class="td-code td-code--titled" id="td-code-8e446ae3-fence-7" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="6" role="group" aria-labelledby="td-code-8e446ae3-fence-7-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-8e446ae3-fence-6-title" title="Source">Source</span>
+    <span class="td-code__filename" id="td-code-8e446ae3-fence-7-title" title="Source">Source</span>
   </div>
-  <div class="td-code__viewport" id="td-code-8e446ae3-fence-6-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">$$
+  <div class="td-code__viewport" id="td-code-8e446ae3-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">$$
 </span></span><span class="line"><span class="cl">\text{WAL}_{\text{day}} \approx \text{TPS} \times \bar{s}_{\text{record}} \times 86400
 </span></span><span class="line"><span class="cl">$$
 </span></span><span class="line"><span class="cl">{<span class="ni">#eq</span>-wal num=&#34;3-1&#34; caption=&#34;Estimating daily WAL volume&#34;}
@@ -4879,19 +4931,21 @@ localized &ldquo;Equation&rdquo; prefix.</p>
 </figure><p>See <a href="/docs/components/math/#eq-wal">Equation 3-1</a>: multiply by the retention period for the floor on
 archive disk size.</p>
 <p><code>caption</code> (plain text) is optional. <code>#id</code> and <code>caption</code> must appear with <code>num</code> —
-there is no half-numbered equation. A duplicate ID on one page, or one number
-pointing at two IDs, fails the build.</p>
+there is no half-numbered equation. Incomplete or duplicate targets warn and
+drop the unusable part or keep the first; strict publishing rejects the warning.
+On narrow screens, long equation captions wrap within the reading column
+without widening the page.</p>
 <h2 id="pg-1761b5deb35ff2fbf615ff37f3fc951f--xref">Cross references
 </h2>
 <p>The prose can reference a numbered equation with an ordinary link, as the
 previous section does. For a cross-page reference, or when the &ldquo;Equation N&rdquo;
 label should be filled in automatically, use <code>xref</code>:</p>
-<div class="td-code td-code--titled" id="td-code-8e446ae3-fence-7" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="1" role="group" aria-labelledby="td-code-8e446ae3-fence-7-title">
+<div class="td-code td-code--titled" id="td-code-8e446ae3-fence-8" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="1" role="group" aria-labelledby="td-code-8e446ae3-fence-8-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-8e446ae3-fence-7-title" title="Source">Source</span>
+    <span class="td-code__filename" id="td-code-8e446ae3-fence-8-title" title="Source">Source</span>
   </div>
-  <div class="td-code__viewport" id="td-code-8e446ae3-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">Capacity planning starts from {{&lt; xref eq=&#34;3-1&#34; anchor=&#34;eq-wal&#34; /&gt;}}.</span></span></code></pre></div></div>
+  <div class="td-code__viewport" id="td-code-8e446ae3-fence-8-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">Capacity planning starts from {{&lt; xref eq=&#34;3-1&#34; anchor=&#34;eq-wal&#34; /&gt;}}.</span></span></code></pre></div></div>
 </div>
 <p>Capacity planning starts from <a class="td-book-xref td-book-xref--eq" href="#eq-wal" data-td-book-kind="eq" data-td-book-num="3-1">Equation 3-1</a>.</p>
 <p><code>xref</code> may appear before its target; forward references are legal. For a
@@ -4902,12 +4956,12 @@ book-wide list of equations and the <code>book-equations</code> index, see
 <p><code>eq</code> exists for sites that cannot enable passthrough; its body goes to the same
 KaTeX renderer. Without parameters it is a display formula that registers no
 number; with <code>num</code> it is equivalent to the attribute-line form above.</p>
-<div class="td-code td-code--titled" id="td-code-8e446ae3-fence-8" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="5" role="group" aria-labelledby="td-code-8e446ae3-fence-8-title">
+<div class="td-code td-code--titled" id="td-code-8e446ae3-fence-9" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="5" role="group" aria-labelledby="td-code-8e446ae3-fence-9-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-8e446ae3-fence-8-title" title="Source">Source</span>
+    <span class="td-code__filename" id="td-code-8e446ae3-fence-9-title" title="Source">Source</span>
   </div>
-  <div class="td-code__viewport" id="td-code-8e446ae3-fence-8-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">{{&lt; eq &gt;}}\sigma_{\text{idx}} = \frac{\text{rows}_{\text{matched}}}{\text{rows}_{\text{total}}}{{&lt; /eq &gt;}}
+  <div class="td-code__viewport" id="td-code-8e446ae3-fence-9-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">{{&lt; eq &gt;}}\sigma_{\text{idx}} = \frac{\text{rows}_{\text{matched}}}{\text{rows}_{\text{total}}}{{&lt; /eq &gt;}}
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">{{&lt; eq num=&#34;3-2&#34; caption=&#34;Where a sequential scan and an index scan cost the same&#34; &gt;}}
 </span></span><span class="line"><span class="cl">c_{\text{seq}} \cdot P = c_{\text{rand}} \cdot \sigma \cdot T
@@ -4920,33 +4974,6 @@ number; with <code>num</code> it is equivalent to the attribute-line form above.
 </figure>
 <p>This site has passthrough on, so day-to-day writing uses <code>$$</code>. <code>eq</code> is for
 migrated manuscripts and for sites that cannot change <code>hugo.yml</code>.</p>
-<h2 id="pg-1761b5deb35ff2fbf615ff37f3fc951f--config">Site prerequisites
-</h2>
-<p>The <code>math</code> and <code>chem</code> fences need no configuration. The <code>$$</code>, <code>\[…\]</code> and
-<code>\(…\)</code> delimiters depend on Goldmark&rsquo;s passthrough extension. Hugo does not
-merge a theme&rsquo;s <code>markup</code> configuration, so this block has to live in the site&rsquo;s
-own configuration file. This site uses:</p>
-<div class="td-code td-code--titled" id="td-code-8e446ae3-fence-9" data-td-code data-td-code-auto-id
-     data-td-language="yaml" data-td-line-count="11" role="group" aria-labelledby="td-code-8e446ae3-fence-9-title">
-  <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-8e446ae3-fence-9-title" title="hugo.yml">hugo.yml</span>
-  </div>
-  <div class="td-code__viewport" id="td-code-8e446ae3-fence-9-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">markup</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">goldmark</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">parser</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">attribute</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">block</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># numbered equations need the attribute line</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">extensions</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">passthrough</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">delimiters</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">block</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s1">&#39;\[&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;\]&#39;</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;$$&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;$$&#39;</span><span class="p">]]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">inline</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s1">&#39;\(&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;\)&#39;</span><span class="p">]]</span></span></span></code></pre></div></div>
-</div>
-<p>Every key is defined in
-<a href="/docs/customize/config/">Configuration</a>. Delimiters must
-not collide with the prose: a single <code>$</code> is deliberately not configured, so a
-price like &ldquo;$5&rdquo; is never read as mathematics.</p>
 <h2 id="pg-1761b5deb35ff2fbf615ff37f3fc951f--outputs">Output
 </h2>
 <div class="td-table-scroll td-table-scroll--static">
@@ -5079,8 +5106,9 @@ price like &ldquo;$5&rdquo; is never read as mathematics.</p>
 </dl>
 </div>
 
-<p>Broken TeX — an unknown command, unbalanced braces — fails the build, and the
-error carries KaTeX&rsquo;s message and the source position.</p>
+<p>Broken TeX warns and leaves the expression as written in ordinary preview. The
+message carries KaTeX&rsquo;s detail and the source position; strict publishing
+rejects the warning.</p>
 <h2 id="pg-1761b5deb35ff2fbf615ff37f3fc951f--limits">Limits
 </h2>
 <ul>
@@ -5549,8 +5577,9 @@ in the prose, not only in the diagram.</li>
 appends it to the URL of a PlantUML server, and gets an SVG back. It suits
 sequence, class, component, activity and use-case diagrams that need the full
 expressiveness of UML. Rendering depends on that server: the theme ships no
-default endpoint, and <code>enable: true</code> without <code>svg_image_url</code> fails the build.
-With no server available, use <a href="/docs/components/mermaid/">Mermaid</a> instead.</p>
+default endpoint. <code>enable: true</code> without <code>svg_image_url</code> warns and leaves
+PlantUML off in ordinary preview; strict publishing rejects the warning. With
+no server available, use <a href="/docs/components/mermaid/">Mermaid</a> instead.</p>
 <div class="td-callout td-callout--warning" role="note">
   <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="td-callout__label">This page shows source only, not rendered diagrams</span></div>
   <div class="td-callout__body">
@@ -5761,16 +5790,19 @@ configuration:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">svg</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span></span></span></code></pre></div></div>
 </div>
 <ul>
-<li><code>enable: true</code> without <code>svg_image_url</code> fails the build with
+<li><code>enable: true</code> without <code>svg_image_url</code> warns and stays off with
 <code>params.plantuml.enable requires an explicit params.plantuml.svg_image_url</code>.
-The theme does not pick a public service for the site.</li>
+Strict publishing rejects the warning. The theme never picks a public service.</li>
 <li>To self-host, the official image
 <a href="https://github.com/plantuml/plantuml-server"><code>plantuml/plantuml-server</code></a>
 works; point <code>svg_image_url</code> at its <code>/svg/</code> path and <strong>keep the trailing
 slash</strong> — the encoded source is appended to it.</li>
+<li>Use an HTTP(S) URL or a local path. Local paths honor the deployment subpath
+in <code>baseURL</code>. Whitespace, control characters, raw backslashes, protocol-relative
+URLs (<code>//host/</code>), and other schemes warn and leave the source block visible
+without loading the PlantUML runtime; strict publishing rejects the warning.</li>
 <li>The endpoint&rsquo;s CORS policy and the site&rsquo;s CSP <code>img-src</code> (plus <code>connect-src</code>
-when <code>svg: true</code>) must both allow it; use an absolute URL on a subpath
-deployment.</li>
+when <code>svg: true</code>) must both allow it.</li>
 </ul>
 <p>These keys are defined in
 <a href="/docs/customize/config/">Configuration</a>.</p>
@@ -5827,7 +5859,7 @@ options from <a href="/docs/components/code/">Code blocks</a> have no effect her
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>string</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>none</code></span></span>
 </dt>
-<dd class="td-field__description">The rendering endpoint; the encoded source is appended to it. Required when <code>enable: true</code>, otherwise the build fails</dd>
+<dd class="td-field__description">The rendering endpoint; the encoded source is appended to it. Required when <code>enable: true</code>, otherwise PlantUML warns and stays off</dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">params.plantuml.svg</code>
@@ -5890,12 +5922,23 @@ collapse. It suits showing &ldquo;what this section covers&rdquo; at one glance.
 with direction and conditions, use <a href="/docs/components/mermaid/">Mermaid</a>.</p>
 <h2 id="pg-f1f7012c4f329d590a38881db4ccd722--minimal">Shortest form
 </h2>
+<p>First enable Markmap in the site configuration; it is off by default. Without
+this setting, the fence remains a readable code block.</p>
 <div class="td-code td-code--titled" id="td-code-68b37749-fence-0" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="14" role="group" aria-labelledby="td-code-68b37749-fence-0-title">
+     data-td-language="yaml" data-td-line-count="2" role="group" aria-labelledby="td-code-68b37749-fence-0-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-68b37749-fence-0-title" title="Source">Source</span>
+    <span class="td-code__filename" id="td-code-68b37749-fence-0-title" title="hugo.yml">hugo.yml</span>
   </div>
-  <div class="td-code__viewport" id="td-code-68b37749-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```markmap
+  <div class="td-code__viewport" id="td-code-68b37749-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">markmap</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span></span></span></code></pre></div></div>
+</div>
+<p>Then put the outline in a <code>markmap</code> fence:</p>
+<div class="td-code td-code--titled" id="td-code-68b37749-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="14" role="group" aria-labelledby="td-code-68b37749-fence-1-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-68b37749-fence-1-title" title="Source">Source</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-68b37749-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```markmap
 </span></span></span><span class="line"><span class="cl"># OINK
 </span></span><span class="line"><span class="cl">## Local-first
 </span></span><span class="line"><span class="cl">- every runtime ships with the theme
@@ -5930,21 +5973,22 @@ and download-as-SVG.</p>
 </h2>
 <p>Deeper levels are set smaller and the canvas lays itself out. Below are the six
 sections of this theme&rsquo;s documentation site and their page counts.</p>
-<div class="td-code td-code--titled" id="td-code-68b37749-fence-2" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="30" role="group" aria-labelledby="td-code-68b37749-fence-2-title">
+<div class="td-code td-code--titled" id="td-code-68b37749-fence-3" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="31" role="group" aria-labelledby="td-code-68b37749-fence-3-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-68b37749-fence-2-title" title="Source">Source</span>
+    <span class="td-code__filename" id="td-code-68b37749-fence-3-title" title="Source">Source</span>
   </div>
-  <div class="td-code__viewport" id="td-code-68b37749-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```markmap
+  <div class="td-code__viewport" id="td-code-68b37749-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```markmap
 </span></span></span><span class="line"><span class="cl"># OINK documentation
 </span></span><span class="line"><span class="cl">## Introduction (4 pages)
 </span></span><span class="line"><span class="cl">### What it is
 </span></span><span class="line"><span class="cl">### Feature tour
 </span></span><span class="line"><span class="cl">### Showcase
 </span></span><span class="line"><span class="cl">### Licences
-</span></span><span class="line"><span class="cl">## Get started (3 pages)
-</span></span><span class="line"><span class="cl">### Fork this site
-</span></span><span class="line"><span class="cl">### Directory layout
+</span></span><span class="line"><span class="cl">## Get started (4 pages)
+</span></span><span class="line"><span class="cl">### Choose a path
+</span></span><span class="line"><span class="cl">### OINK Starter
+</span></span><span class="line"><span class="cl">### Repository tour
 </span></span><span class="line"><span class="cl">### From scratch
 </span></span><span class="line"><span class="cl">## Authoring (8 pages)
 </span></span><span class="line"><span class="cl">### Organizing content
@@ -5972,9 +6016,10 @@ sections of this theme&rsquo;s documentation site and their page counts.</p>
 ### Feature tour
 ### Showcase
 ### Licences
-## Get started (3 pages)
-### Fork this site
-### Directory layout
+## Get started (4 pages)
+### Choose a path
+### OINK Starter
+### Repository tour
 ### From scratch
 ## Authoring (8 pages)
 ### Organizing content
@@ -5998,12 +6043,12 @@ sections of this theme&rsquo;s documentation site and their page counts.</p>
 </h2>
 <p>Nodes take inline Markdown: links are clickable, inline code is monospaced, bold
 and italic behave as usual.</p>
-<div class="td-code td-code--titled" id="td-code-68b37749-fence-4" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="13" role="group" aria-labelledby="td-code-68b37749-fence-4-title">
+<div class="td-code td-code--titled" id="td-code-68b37749-fence-5" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="13" role="group" aria-labelledby="td-code-68b37749-fence-5-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-68b37749-fence-4-title" title="Source">Source</span>
+    <span class="td-code__filename" id="td-code-68b37749-fence-5-title" title="Source">Source</span>
   </div>
-  <div class="td-code__viewport" id="td-code-68b37749-fence-4-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```markmap
+  <div class="td-code__viewport" id="td-code-68b37749-fence-5-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```markmap
 </span></span></span><span class="line"><span class="cl"># Everyday commands
 </span></span><span class="line"><span class="cl">## Preview
 </span></span><span class="line"><span class="cl">- `hugo server` — open [localhost:1313](http://localhost:1313/)
@@ -6032,12 +6077,12 @@ and italic behave as usual.</p>
 </h2>
 <p>The Markmap runtime carries a local KaTeX, so <code>$…$</code> inside a node renders as a
 formula.</p>
-<div class="td-code td-code--titled" id="td-code-68b37749-fence-6" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="10" role="group" aria-labelledby="td-code-68b37749-fence-6-title">
+<div class="td-code td-code--titled" id="td-code-68b37749-fence-7" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="10" role="group" aria-labelledby="td-code-68b37749-fence-7-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-68b37749-fence-6-title" title="Source">Source</span>
+    <span class="td-code__filename" id="td-code-68b37749-fence-7-title" title="Source">Source</span>
   </div>
-  <div class="td-code__viewport" id="td-code-68b37749-fence-6-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```markmap
+  <div class="td-code__viewport" id="td-code-68b37749-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```markmap
 </span></span></span><span class="line"><span class="cl"># PostgreSQL metrics worth watching
 </span></span><span class="line"><span class="cl">## Cache hit ratio
 </span></span><span class="line"><span class="cl">- $\frac{blks\_hit}{blks\_hit + blks\_read}$
@@ -6062,12 +6107,12 @@ formula.</p>
 matter. <code>initialExpandLevel</code> expands only the first few levels and leaves the
 rest for the reader; <code>colorFreezeLevel</code> says from which level a branch keeps one
 colour.</p>
-<div class="td-code td-code--titled" id="td-code-68b37749-fence-8" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="21" role="group" aria-labelledby="td-code-68b37749-fence-8-title">
+<div class="td-code td-code--titled" id="td-code-68b37749-fence-9" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="21" role="group" aria-labelledby="td-code-68b37749-fence-9-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-68b37749-fence-8-title" title="Source">Source</span>
+    <span class="td-code__filename" id="td-code-68b37749-fence-9-title" title="Source">Source</span>
   </div>
-  <div class="td-code__viewport" id="td-code-68b37749-fence-8-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```markmap
+  <div class="td-code__viewport" id="td-code-68b37749-fence-9-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```markmap
 </span></span></span><span class="line"><span class="cl">---
 </span></span><span class="line"><span class="cl">markmap:
 </span></span><span class="line"><span class="cl">  initialExpandLevel: 2
@@ -6113,12 +6158,12 @@ markmap:
 <p>Every map is a fixed 300 pixels tall, so three in a row eat a lot of page. Fold
 a panoramic one into <code>&gt; [!DETAILS]</code> and let the reader open it. Every line
 inside the disclosure starts with <code>&gt;</code>, fences included.</p>
-<div class="td-code td-code--titled" id="td-code-68b37749-fence-10" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="17" role="group" aria-labelledby="td-code-68b37749-fence-10-title">
+<div class="td-code td-code--titled" id="td-code-68b37749-fence-11" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="17" role="group" aria-labelledby="td-code-68b37749-fence-11-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-68b37749-fence-10-title" title="Source">Source</span>
+    <span class="td-code__filename" id="td-code-68b37749-fence-11-title" title="Source">Source</span>
   </div>
-  <div class="td-code__viewport" id="td-code-68b37749-fence-10-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">[!DETAILS] What the theme repository looks like
+  <div class="td-code__viewport" id="td-code-68b37749-fence-11-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">[!DETAILS] What the theme repository looks like
 </span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">```markmap
 </span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge"># pgsty/oink
 </span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">## layouts/
@@ -6252,7 +6297,7 @@ double-escapes them and nodes show literal <code>&amp;gt;</code> or <code>&amp;#
 <div class="td-content" style="page-break-before: always">
     
 	<h1 id="pg-a3a82b28fdc999a6b22d65d136cc9e41">14 - Draw.io</h1>
-    <div class="lead">Put a <code>.drawio.svg</code> that carries an editable copy on the page as an ordinary image; hovering gives the reader a button that opens the Draw.io editor.</div>
+    <div class="lead">Put a <code>.drawio.svg</code> that carries an editable copy on the page as an ordinary image; an edit button opens the Draw.io editor.</div>
 	<p>The Draw.io integration has neither a fence nor a shortcode — it uses plain
 Markdown images. Tick &ldquo;Include a copy of my diagram&rdquo; when exporting from
 Draw.io and the SVG or PNG carries an <code>mxfile</code> copy inside it; the theme&rsquo;s
@@ -6261,6 +6306,9 @@ readers are meant to take away and change. A diagram that is only there to be
 looked at is an ordinary <a href="/docs/components/image/">image</a>.</p>
 <h2 id="pg-a3a82b28fdc999a6b22d65d136cc9e41--minimal">Shortest form
 </h2>
+<p>To show the edit button, first set <code>params.drawio.enable: true</code> and configure
+<code>params.drawio.drawio_server</code> as shown under <a href="#pg-a3a82b28fdc999a6b22d65d136cc9e41--server">The editor address</a>.
+Without this setup, the diagram remains an ordinary image without editing.</p>
 <p>The syntax is the plain image syntax. The filename does not matter;
 <code>.drawio.svg</code> is only a convention.</p>
 <div class="td-code td-code--titled" id="td-code-6555d203-fence-0" data-td-code data-td-code-auto-id
@@ -6272,8 +6320,11 @@ looked at is an ordinary <a href="/docs/components/image/">image</a>.</p>
 </span></span><span class="line"><span class="cl">{width=&#34;620&#34; height=&#34;140&#34;}</span></span></code></pre></div></div>
 </div>
 <img class="td-image" src="/docs/components/drawio/pipeline.drawio.svg" alt="The Hugo build pipeline: content goes through Hugo and out as public" width="620" height="140" loading="lazy" decoding="async"><p>An export that carries an <code>mxfile</code> copy is wrapped in a <code>.drawio</code> container.
-Hover it and a pencil button appears at the bottom right; clicking lays a
-full-screen iframe over the page and loads the editor the site configured.</p>
+A pencil button appears at the bottom right on hover or keyboard focus, and
+stays visible on touch devices and in forced-colors mode. Activating it lays a
+full-screen iframe over the page and loads the editor the site configured.
+When image zoom is enabled, Edit and Zoom are separate sibling buttons;
+activating Edit does not open the zoom dialog.</p>
 <h2 id="pg-a3a82b28fdc999a6b22d65d136cc9e41--detection">How the copy is detected
 </h2>
 <p>The runtime looks at one thing: whether the file&rsquo;s contents contain <code>mxfile</code>.
@@ -6374,6 +6425,10 @@ is not online editing of the site.</p>
 <ul>
 <li><code>enable: true</code> without <code>drawio_server</code> warns and disables editing; strict
 builds fail on that warning. The theme does not pick a public service.</li>
+<li>The address must be an HTTP(S) URL or a local path. Local paths honor the
+deployment subpath in <code>baseURL</code>. Whitespace, control characters, raw
+backslashes, protocol-relative URLs (<code>//host/</code>), and other schemes warn and
+disable editing; strict builds reject the warning.</li>
 <li>When editing has to stay inside the organization, deploy a
 <a href="https://github.com/jgraph/docker-drawio">self-hosted editor</a> and point at it.</li>
 <li>The public endpoint <code>https://embed.diagrams.net/</code> works, and the reader&rsquo;s
@@ -6398,7 +6453,7 @@ diagram then travels to a third-party page.</li>
     </tr>
     <tr>
       <td>Print</td>
-      <td>The image prints as usual; the button is hidden except on hover, so it never reaches paper</td>
+      <td>The image prints as usual; this output loads no Draw.io runtime and creates no edit button</td>
     </tr>
     <tr>
       <td>Markdown</td>
@@ -6450,8 +6505,6 @@ an image, with no button.</li>
 <li>Editing needs the editor and never writes back: offline, the images display
 fine and the button does nothing; saving is a browser download, and replacing
 the file and committing it are manual.</li>
-<li>The button appears on hover only: touch devices have no hover, so readers may
-not find it. Do not present editability as a headline feature.</li>
 <li>Colours do not follow the colour scheme: an exported SVG has fixed colours.
 Set fills to <code>none</code> and use neutral greys for lines and text and it reads in
 both modes.</li>
@@ -6485,7 +6538,8 @@ both modes.</li>
 code. Use it for quantitative charts that need axes, series and a legend. For
 relationships and flows use <a href="/docs/components/mermaid/">Mermaid</a>; for order and
 hierarchy use <a href="/docs/components/infographic/">Infographic</a>. Hugo parses the
-options at build time and fails the build if they do not parse; the browser
+options at build time; invalid input warns and leaves its source readable in an
+ordinary preview, while strict publishing rejects the warning. The browser
 draws with the ECharts copy the theme ships, and only a page that uses it loads
 the runtime.</p>
 <h2 id="pg-d9e2c9dfdc4b42e803e790ed55b5b70c--minimal">Shortest form
@@ -6509,7 +6563,7 @@ pages each of the six documentation sections has.</p>
 </span></span></span><span class="line"><span class="cl"><span class="sb">series:
 </span></span></span><span class="line"><span class="cl"><span class="sb">  - name: pages
 </span></span></span><span class="line"><span class="cl"><span class="sb">    type: bar
-</span></span></span><span class="line"><span class="cl"><span class="sb">    data: [4, 3, 8, 22, 15, 7]
+</span></span></span><span class="line"><span class="cl"><span class="sb">    data: [4, 4, 8, 22, 15, 7]
 </span></span></span><span class="line"><span class="cl"><span class="sb">`</span>``</span></span></code></pre></div></div>
 </div>
 <pre class="td-echarts-source"><code class="language-echarts">tooltip:
@@ -6523,9 +6577,10 @@ yAxis:
 series:
   - name: pages
     type: bar
-    data: [4, 3, 8, 22, 15, 7]</code></pre><p>Both formats are accepted; YAML needs no quotes or commas and is shorter to
+    data: [4, 4, 8, 22, 15, 7]</code></pre><p>Both formats are accepted; YAML needs no quotes or commas and is shorter to
 write. Broken indentation, or a body that parses to an array instead of a map,
-fails the build on that line rather than emitting a blank chart.</p>
+warns on that line and renders the source instead of a blank chart. Strict
+publishing rejects the warning.</p>
 <h2 id="pg-d9e2c9dfdc4b42e803e790ed55b5b70c--line">Multiple line series
 </h2>
 <p><code>series</code> is an array, so another entry is another line, and <code>legend</code> lets the
@@ -6689,8 +6744,8 @@ yAxis:
   name: scripts
 series:
   - type: bar
-    data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</code></pre><p>An invalid height (<code>360</code>, <code>36pt</code>) fails the build rather than falling back to
-the default.</p>
+    data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</code></pre><p>An invalid height (<code>360</code>, <code>36pt</code>) warns and uses the default in ordinary
+preview; strict publishing rejects the warning.</p>
 <h2 id="pg-d9e2c9dfdc4b42e803e790ed55b5b70c--theme">Light and dark
 </h2>
 <p>Without <code>theme</code>, a chart initializes in the reader&rsquo;s current colour scheme and
@@ -6739,7 +6794,7 @@ options and register that name on <code>window.OinkEchartsFunctions</code>:</p>
 </span></span><span class="line"><span class="cl">  window.OinkEchartsFunctions = window.OinkEchartsFunctions || {};
 </span></span><span class="line"><span class="cl">  window.OinkEchartsFunctions.pageShare = function (params) {
 </span></span><span class="line"><span class="cl">    var p = params[0];
-</span></span><span class="line"><span class="cl">    return p.name + &#39;: &#39; + p.value + &#39; pages, &#39; + Math.round((p.value / 59) * 100) + &#39;% of the site&#39;;
+</span></span><span class="line"><span class="cl">    return p.name + &#39;: &#39; + p.value + &#39; pages, &#39; + Math.round((p.value / 60) * 100) + &#39;% of the site&#39;;
 </span></span><span class="line"><span class="cl">  };
 </span></span><span class="line"><span class="cl">&lt;/script&gt;
 </span></span><span class="line"><span class="cl">
@@ -6754,14 +6809,14 @@ options and register that name on <code>window.OinkEchartsFunctions</code>:</p>
 </span></span></span><span class="line"><span class="cl"><span class="sb">  type: value
 </span></span></span><span class="line"><span class="cl"><span class="sb">series:
 </span></span></span><span class="line"><span class="cl"><span class="sb">  - type: bar
-</span></span></span><span class="line"><span class="cl"><span class="sb">    data: [4, 3, 8, 22, 15, 7]
+</span></span></span><span class="line"><span class="cl"><span class="sb">    data: [4, 4, 8, 22, 15, 7]
 </span></span></span><span class="line"><span class="cl"><span class="sb">`</span>``</span></span></code></pre></div></div>
 </div>
 <script>
   window.OinkEchartsFunctions = window.OinkEchartsFunctions || {};
   window.OinkEchartsFunctions.pageShare = function (params) {
     var p = params[0];
-    return p.name + ': ' + p.value + ' pages, ' + Math.round((p.value / 59) * 100) + '% of the site';
+    return p.name + ': ' + p.value + ' pages, ' + Math.round((p.value / 60) * 100) + '% of the site';
   };
 </script>
 <pre class="td-echarts-source"><code class="language-echarts">tooltip:
@@ -6774,7 +6829,7 @@ yAxis:
   type: value
 series:
   - type: bar
-    data: [4, 3, 8, 22, 15, 7]</code></pre><p>Hover any bar and the tooltip is the sentence that function builds. An
+    data: [4, 4, 8, 22, 15, 7]</code></pre><p>Hover any bar and the tooltip is the sentence that function builds. An
 unregistered name resolves to <code>undefined</code>, the chart is drawn as if the option
 were not set, and neither the build nor the runtime complains. Keep the script
 next to the fence so they change together.</p>
@@ -6831,7 +6886,7 @@ its data go into Git together and a diff shows which number moved.</p>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>CSS length</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>400px</code></span></span>
 </dt>
-<dd class="td-field__description">A non-negative number plus <code>px</code> <code>rem</code> <code>em</code> <code>vh</code> <code>vw</code> <code>%</code>; anything else fails the build</dd>
+<dd class="td-field__description">A non-negative number plus <code>px</code> <code>rem</code> <code>em</code> <code>vh</code> <code>vw</code> <code>%</code>; anything else warns and uses the default</dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">theme</code>
@@ -6857,9 +6912,9 @@ its data go into Git together and a diff shows which number moved.</p>
 </dl>
 </div>
 
-<p><code>style</code>, <code>on*</code> and any other unknown attribute fail the build. The fence body
-must parse to a YAML/JSON map; failing to parse, or parsing to an array, fails
-too. The option keys themselves are ECharts&rsquo;, documented in the
+<p><code>style</code>, <code>on*</code>, and unknown attributes warn and are ignored. A fence body that
+does not parse to a YAML/JSON map warns and renders as source. Strict publishing
+rejects all these warnings. The option keys themselves are ECharts&rsquo;, documented in the
 <a href="https://echarts.apache.org/en/option.html">official option manual</a>.</p>
 <p>There is no site-level parameter: ECharts needs no switch in <code>hugo.yml</code> and
 loads only where it is used.</p>
@@ -7260,7 +7315,7 @@ and nothing else.</p>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>auto</code> or a CSS length</span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>auto</code></span></span>
 </dt>
-<dd class="td-field__description">A non-negative number plus <code>px</code> <code>rem</code> <code>em</code> <code>vh</code> <code>vw</code> <code>%</code>; anything else fails the build</dd>
+<dd class="td-field__description">A non-negative number plus <code>px</code> <code>rem</code> <code>em</code> <code>vh</code> <code>vw</code> <code>%</code>; anything else warns and uses <code>auto</code></dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">full</code>
@@ -7279,8 +7334,8 @@ and nothing else.</p>
 </dl>
 </div>
 
-<p><code>style</code>, <code>on*</code> and unknown attributes fail the build, and so does an empty DSL
-body.</p>
+<p><code>style</code>, <code>on*</code>, and unknown attributes warn and are ignored. An empty DSL body
+warns and renders nothing. Strict publishing rejects all these warnings.</p>
 <p>The DSL&rsquo;s top-level keys (AntV&rsquo;s, not the theme&rsquo;s):</p>
 <div class="td-fields">
 <dl class="td-fields__list">
@@ -7393,10 +7448,10 @@ literal hash write <code>\#</code>.</p>
   <div class="td-code__viewport" id="td-code-c7d36151-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="s">```gallery
 </span></span></span><span class="line"><span class="cl">![The three-column layout of an OINK page](/images/oink.webp) # The default shell: sidebar, article, table of contents
 </span></span><span class="line"><span class="cl">![The classic Docsy documentation layout](/images/docsy.webp) # Docsy upstream — the content model is the same lineage
-</span></span><span class="line"><span class="cl">![A release notes page](/images/releasenote.webp) # Release pages are generated from facts in data/download, offline
+</span></span><span class="line"><span class="cl">![A release notes page](/images/releasenote.webp) # Release cards use release_url and date; checksums blocks list download assets
 </span></span><span class="line"><span class="cl"><span class="s">```</span></span></span></code></pre></div></div>
 </div>
-<ul class="td-gallery td-gallery--static td-gallery--described"><li class="td-gallery__item"><img class="td-gallery__image" src="/images/oink.webp" alt="The three-column layout of an OINK page" loading="lazy" decoding="async"><p class="td-gallery__description">The default shell: sidebar, article, table of contents</p></li><li class="td-gallery__item"><img class="td-gallery__image" src="/images/docsy.webp" alt="The classic Docsy documentation layout" loading="lazy" decoding="async"><p class="td-gallery__description">Docsy upstream — the content model is the same lineage</p></li><li class="td-gallery__item"><img class="td-gallery__image" src="/images/releasenote.webp" alt="A release notes page" loading="lazy" decoding="async"><p class="td-gallery__description">Release pages are generated from facts in data/download, offline</p></li></ul><p>Descriptions need not be the same length: the grid aligns to the tallest item
+<ul class="td-gallery td-gallery--static td-gallery--described"><li class="td-gallery__item"><img class="td-gallery__image" src="/images/oink.webp" alt="The three-column layout of an OINK page" loading="lazy" decoding="async"><p class="td-gallery__description">The default shell: sidebar, article, table of contents</p></li><li class="td-gallery__item"><img class="td-gallery__image" src="/images/docsy.webp" alt="The classic Docsy documentation layout" loading="lazy" decoding="async"><p class="td-gallery__description">Docsy upstream — the content model is the same lineage</p></li><li class="td-gallery__item"><img class="td-gallery__image" src="/images/releasenote.webp" alt="A release notes page" loading="lazy" decoding="async"><p class="td-gallery__description">Release cards use release_url and date; checksums blocks list download assets</p></li></ul><p>Descriptions need not be the same length: the grid aligns to the tallest item
 and a wrapped description does not disturb its neighbours. The image is parsed
 first, so a <code>#</code> inside the alt text or the path needs no escaping.</p>
 <h2 id="pg-f8ebaeb508fc47e3042b49b76ddec1e2--link">A link per item
@@ -7433,8 +7488,8 @@ measured.</p>
 </span></span><span class="line"><span class="cl">![The light home page (static path)](/images/hero-light.webp) # Under static/images/…, published as is
 </span></span><span class="line"><span class="cl"><span class="s">```</span></span></span></code></pre></div></div>
 </div>
-<ul class="td-gallery td-gallery--static td-gallery--described"><li class="td-gallery__item"><img class="td-gallery__image" src="/images/content-primitives/oink.webp" alt="OINK documentation overview (global resource)" width="600" height="300" loading="lazy" decoding="async"><p class="td-gallery__description">Under assets/images/…, eligible for build-time processing</p></li><li class="td-gallery__item"><img class="td-gallery__image" src="/images/hero-light.webp" alt="The light home page (static path)" loading="lazy" decoding="async"><p class="td-gallery__description">Under static/images/…, published as is</p></li></ul><p>A missing page or global resource fails the build; static paths and remote URLs
-are not checked.</p>
+<ul class="td-gallery td-gallery--static td-gallery--described"><li class="td-gallery__item"><img class="td-gallery__image" src="/images/content-primitives/oink.webp" alt="OINK documentation overview (global resource)" width="600" height="300" loading="lazy" decoding="async"><p class="td-gallery__description">Under assets/images/…, eligible for build-time processing</p></li><li class="td-gallery__item"><img class="td-gallery__image" src="/images/hero-light.webp" alt="The light home page (static path)" loading="lazy" decoding="async"><p class="td-gallery__description">Under static/images/…, published as is</p></li></ul><p>An unresolved page/global resource is retained as a static path, just like an
+explicit static path; the theme does not check static or remote existence.</p>
 <h2 id="pg-f8ebaeb508fc47e3042b49b76ddec1e2--zoom">Decorative images and zoom
 </h2>
 <p>Empty alternative text marks a decorative image: no title, skipped by screen
@@ -7585,10 +7640,9 @@ CSS. A fence carrying <code>tab=</code> (with <code>group=</code> / <code>value=
 </dl>
 </div>
 
-<p>There is no <code>columns</code>, <code>caption</code> or <code>title</code> attribute. A line that does not
-start with an image, trailing text outside a <code>#</code>, an empty description, an
-unknown attribute and a malformed <code>{…}</code> all fail the build with the line number
-inside the fence.</p>
+<p>There is no <code>columns</code>, <code>caption</code> or <code>title</code> attribute. A malformed line or
+attribute warns, drops only the invalid part or line, and names the line number
+inside the fence. Strict publishing rejects the warning.</p>
 <h2 id="pg-f8ebaeb508fc47e3042b49b76ddec1e2--limits">Limits
 </h2>
 <ul>
@@ -7665,8 +7719,9 @@ or a deadline, use prose or a <a href="/docs/components/callout/">callout</a>.</
 <span class="td-badge td-badge--success">Supported</span>
 <span class="td-badge td-badge--warning">Experimental</span>
 <span class="td-badge td-badge--danger">Deprecated</span></p>
-<p>Without <code>tone</code> the badge is <code>neutral</code>. Any other value fails the build, and the
-error names the source location.</p>
+<p>Without <code>tone</code> the badge is <code>neutral</code>. Any other value warns and uses <code>neutral</code>
+in ordinary preview; the warning names the source location and fails a strict
+publishing build.</p>
 <h2 id="pg-f8de39e940d1c718ea72de1507d12fed--inline">Inside a sentence
 </h2>
 <p>A badge is an inline element that follows a name; it never takes its own line.</p>
@@ -7677,13 +7732,13 @@ error names the source location.</p>
   </div>
   <div class="td-code__viewport" id="td-code-0421c838-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">With <span class="sb">`params.ui.image_zoom`</span> {{&lt; badge text=&#34;off by default&#34; tone=&#34;neutral&#34; &gt;}} enabled,
 </span></span><span class="line"><span class="cl">block images that have alt text open full size. PlantUML {{&lt; badge text=&#34;needs a server&#34; tone=&#34;warning&#34; &gt;}}
-</span></span><span class="line"><span class="cl">and Draw.io {{&lt; badge text=&#34;needs a server&#34; tone=&#34;warning&#34; &gt;}} fail the build when no endpoint is
-</span></span><span class="line"><span class="cl">configured, rather than reaching for a public service.</span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl">and Draw.io {{&lt; badge text=&#34;needs a server&#34; tone=&#34;warning&#34; &gt;}} warn and remain off when no
+</span></span><span class="line"><span class="cl">endpoint is configured, rather than reaching for a public service.</span></span></code></pre></div></div>
 </div>
 <p>With <code>params.ui.image_zoom</code> <span class="td-badge td-badge--neutral">off by default</span> enabled,
 block images that have alt text open full size. PlantUML <span class="td-badge td-badge--warning">needs a server</span>
-and Draw.io <span class="td-badge td-badge--warning">needs a server</span> fail the build when no endpoint is
-configured, rather than reaching for a public service.</p>
+and Draw.io <span class="td-badge td-badge--warning">needs a server</span> warn and remain off when no
+endpoint is configured, rather than reaching for a public service.</p>
 <h2 id="pg-f8de39e940d1c718ea72de1507d12fed--in-headings">Next to a heading
 </h2>
 <p><strong>Never put a shortcode in a heading.</strong> Hugo builds the table of contents before
@@ -7761,13 +7816,13 @@ drag the badge text along.</p>
     <span class="td-code__filename" id="td-code-0421c838-fence-5-title" title="Source">Source</span>
   </div>
   <div class="td-code__viewport" id="td-code-0421c838-fence-5-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">1.</span> Install Hugo Extended {{&lt; badge text=&#34;≥ 0.160.1&#34; tone=&#34;info&#34; &gt;}}
-</span></span><span class="line"><span class="cl"><span class="k">1.</span> Clone the documentation site and change <span class="sb">`baseURL`</span> in <span class="sb">`hugo.yml`</span>
+</span></span><span class="line"><span class="cl"><span class="k">1.</span> Create a site from OINK Starter and change <span class="sb">`baseURL`</span> in <span class="sb">`hugo.yaml`</span>
 </span></span><span class="line"><span class="cl"><span class="k">1.</span> <span class="sb">`hugo server`</span> to preview {{&lt; badge text=&#34;port 1313&#34; tone=&#34;neutral&#34; &gt;}}
 </span></span><span class="line"><span class="cl">{.steps}</span></span></code></pre></div></div>
 </div>
 <ol class="steps">
 <li>Install Hugo Extended <span class="td-badge td-badge--info">≥ 0.160.1</span></li>
-<li>Clone the documentation site and change <code>baseURL</code> in <code>hugo.yml</code></li>
+<li>Create a site from OINK Starter and change <code>baseURL</code> in <code>hugo.yaml</code></li>
 <li><code>hugo server</code> to preview <span class="td-badge td-badge--neutral">port 1313</span></li>
 </ol>
 <h2 id="pg-f8de39e940d1c718ea72de1507d12fed--in-cards">On cards
@@ -7820,7 +7875,8 @@ and <code>mailto:</code> all work.</p>
 </div>
 <p>Current version <a class="td-badge td-badge--info" href="/blog/">v0.5</a>;
 for the upgrade steps see <a class="td-badge td-badge--neutral" href="/docs/admin/upgrade/">Upgrading</a>.</p>
-<p>An illegal link — a scheme outside the allowlist — fails the build.</p>
+<p>An illegal link warns and is dropped, leaving a plain badge in ordinary
+preview; strict publishing rejects the warning.</p>
 <h2 id="pg-f8de39e940d1c718ea72de1507d12fed--outputs">Output
 </h2>
 <div class="td-table-scroll td-table-scroll--static">
@@ -7883,8 +7939,9 @@ anything to a screen reader.</p>
 </div>
 
 <p>Named parameters only. There is no <code>icon</code>, <code>class</code>, <code>color</code>, <code>outline</code> or <code>size</code>
-parameter; an unknown parameter, an empty <code>text</code>, an invalid <code>tone</code> and an
-illegal link all fail the build.</p>
+parameter. Invalid input warns and takes the safe result: unknown parameters
+are ignored, empty <code>text</code> renders nothing, bad <code>tone</code> becomes <code>neutral</code>, and an
+unsafe link is dropped. Strict publishing rejects every such warning.</p>
 <h2 id="pg-f8de39e940d1c718ea72de1507d12fed--limits">Limits
 </h2>
 <ul>
@@ -7938,8 +7995,9 @@ flags and text to type are inline code — they are not physical keys.</p>
   <div class="td-code__viewport" id="td-code-16335da9-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">Press {{&lt; kbd &#34;Ctrl&#34; &#34;K&#34; &gt;}} to open the command palette.</span></span></code></pre></div></div>
 </div>
 <p>Press <span class="td-kbd-sequence"><kbd>Ctrl</kbd><span class="td-kbd-sequence__separator" aria-hidden="true">+</span><span class="visually-hidden"> with </span><kbd>K</kbd></span> to open the command palette.</p>
-<p>Parameters must be quoted, one key per parameter. Fewer than one key, an empty
-string, or a named parameter all fail the build.</p>
+<p>Parameters must be quoted, one key per positional parameter. Missing, empty, or
+named parameters warn and render no invalid key in ordinary preview; strict
+publishing rejects the warning.</p>
 <h2 id="pg-f5817109afe4b05a16d9e14851e106af--single">A single key
 </h2>
 <p>One parameter is one key, and symbol keys are written as they are.</p>
@@ -8247,8 +8305,8 @@ sidebar, it takes no part in translation pairing, and it has no URL.</p>
 </table>
 </div>
 
-<p>Missing in all three, the build fails; nothing is emitted as a placeholder. A
-<code>..</code> in the path fails the build too: include reads from <code>content/</code> and
+<p>Missing in all three, or containing <code>..</code>, the include warns and emits nothing.
+Strict publishing rejects the warning: include reads from <code>content/</code> and
 <code>assets/</code> and nowhere else.</p>
 <p>A Markdown fragment is read as source, so write the file&rsquo;s real name on disk.
 One trap belongs to step 1 alone: Hugo attaches a language-suffixed page
@@ -8291,7 +8349,7 @@ cannot be passed through; when you need them, write the content as an ordinary
 </h2>
 <p>A fragment is page-level Markdown rendered in the current page&rsquo;s context:
 callouts, tables, lists, images, steps and shortcodes all work. The last line of
-the fragment above — &ldquo;The current release is v0.8.0&rdquo; — is its
+the fragment above — &ldquo;The current release is v0.8.1&rdquo; — is its
 <code>{{&lt; param version &gt;}}</code> expanded on this page.</p>
 <p>When two pages include one fragment, each renders it separately and each
 generates its own heading anchors and code-block IDs. They do not collide.</p>
@@ -8318,7 +8376,8 @@ configuration — Hugo&rsquo;s <code>.Param</code> rule.</p>
 and this page&rsquo;s front matter says <code>pigsty_pg_major: 18</code>, which reads back as 18.</p>
 <p>Nested keys join with <code>.</code>, so <code>copyright.from_year</code> reads
 <code>params.copyright.from_year</code>. A parameter that does not exist, or whose value is
-a map or a list rather than a scalar, fails the build instead of leaving a gap.</p>
+a map or list rather than a scalar, warns and prints nothing; strict publishing
+rejects the warning.</p>
 <h2 id="pg-2e0f1a2c988667a38863ab14068f9c1e--param-in-place">Parameters inside commands, tables and links
 </h2>
 <p><code>param</code> emits escaped plain text, so it can sit in a code fence, a table cell or
@@ -8452,26 +8511,27 @@ a script.</p>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>path (required)</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>—</code></span></span>
 </dt>
-<dd class="td-field__description">Resolution order in <a href="#pg-2e0f1a2c988667a38863ab14068f9c1e--sources">Where the file comes from</a>; a <code>..</code>, a missing file and an empty value all fail the build</dd>
+<dd class="td-field__description">Resolution order in <a href="#pg-2e0f1a2c988667a38863ab14068f9c1e--sources">Where the file comes from</a>; a <code>..</code>, missing file, or empty value warns and emits nothing</dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">code</code>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>boolean</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>false</code></span></span>
 </dt>
-<dd class="td-field__description"><code>true</code> renders as a code block; it must be <code>code=true</code> — a quoted <code>code=&quot;true&quot;</code> is a string and fails</dd>
+<dd class="td-field__description"><code>true</code> renders as a code block; quoted <code>code=&quot;true&quot;</code> warns and includes ordinary content</dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">lang</code>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>string</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>—</code></span></span>
 </dt>
-<dd class="td-field__description">Code language; valid only with <code>code=true</code>, and fails on its own</dd>
+<dd class="td-field__description">Code language; without <code>code=true</code> it warns and is ignored</dd>
 </div>
 </dl>
 </div>
 
-<p>Any other parameter name fails the build, with the file and line in the error.</p>
+<p>Any other parameter name warns and is ignored, with the file and line in the
+message; strict publishing rejects the warning.</p>
 <p><code>param</code> (one positional parameter):</p>
 <div class="td-fields">
 <dl class="td-fields__list">
@@ -8480,7 +8540,7 @@ a script.</p>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>string (required)</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>—</code></span></span>
 </dt>
-<dd class="td-field__description">Nested keys join with <code>.</code>; page front matter first, then site <code>params</code>; missing or non-scalar (map / list) fails the build</dd>
+<dd class="td-field__description">Nested keys join with <code>.</code>; page front matter first, then site <code>params</code>; missing or non-scalar values warn and print nothing</dd>
 </div>
 </dl>
 </div>
@@ -8532,8 +8592,8 @@ fragments is a page where the reader wanted ten links.</li>
     <div class="lead">Put a .cast terminal recording on the page — the text stays selectable text, and the player ships with the theme rather than coming from a CDN.</div>
 	<p><code>asciinema</code> renders a <code>.cast</code> recording as a terminal player on the page. It
 suits command-line walkthroughs: the text in the terminal is still text, it can
-be selected and copied, and the near-two-minute install excerpt on this page is
-about 110 KB. Graphical interfaces belong in screenshots or video — this
+be selected and copied, and the six-minute install recording on this page is
+about 196 KB. Graphical interfaces belong in screenshots or video — this
 component plays terminal recordings only. The player and its styles ship with
 the theme, nothing is downloaded at build time, no CDN is contacted at runtime,
 and the runtime loads only on a page that uses it, and only in its HTML
@@ -8550,9 +8610,9 @@ output.</p>
 </div>
 <p class="td-asciinema-print">images/install.cast — <a href="/images/install.cast">/images/install.cast</a></p>
 <p>The recording is a single-node Pigsty install on a Debian machine in a 120×36
-terminal, trimmed to the first minute and 54 seconds. The file lives at
-<code>static/images/install.cast</code> on this site, so the path is written from the site
-root. A file under <code>assets/</code> is written as a relative path: the theme looks in
+terminal, lasting about 6 minutes and 42 seconds. Download the
+<a href="/images/install.cast">sample recording</a> to <code>static/images/install.cast</code> in your
+site and write its path from the site root. A file under <code>assets/</code> is written as a relative path: the theme looks in
 resources first and falls back to treating the value as a site-root path.
 Without <code>title</code>, the window title shows the value of <code>file</code>.</p>
 <h2 id="pg-79d3fa477066c2fb5a1bef0799f76c9f--title-theme">Window title and theme
@@ -8645,7 +8705,7 @@ shows what it looks like.</p>
 </span></span></span><span class="line"><span class="cl"><span class="sb">   curl -fsSL https://repo.pigsty.io/get | bash
 </span></span></span><span class="line"><span class="cl"><span class="sb">   `</span>`<span class="sb">`
 </span></span></span><span class="line"><span class="cl"><span class="sb">
-</span></span></span><span class="line"><span class="cl"><span class="sb">2. Run the install; here are the first two minutes:
+</span></span></span><span class="line"><span class="cl"><span class="sb">2. Run the install; the recording plays the process at four times speed:
 </span></span></span><span class="line"><span class="cl"><span class="sb">
 </span></span></span><span class="line"><span class="cl"><span class="sb">   {{&lt; asciinema file=&#34;images/install.cast&#34; title=&#34;pig install&#34; speed=&#34;4&#34; &gt;}}
 </span></span></span><span class="line"><span class="cl"><span class="sb">
@@ -8661,7 +8721,7 @@ shows what it looks like.</p>
 </div>
 </li>
 <li>
-<p>Run the install; here are the first two minutes:</p>
+<p>Run the install; the recording plays the process at four times speed:</p>
 <p class="td-asciinema-print">pig install — <a href="/images/install.cast">/images/install.cast</a></p>
 </li>
 <li>
@@ -8680,8 +8740,10 @@ check it locally with <code>asciinema play install.cast</code>.</p>
 and <code>clear</code> before you start.</li>
 <li>Clear secrets first: a <code>.cast</code> is plain text and every character in the
 recording is greppable. Check before committing.</li>
-<li>Put the file in <code>static/images/</code> or in the page bundle and commit it. Do not
-reference a <code>.cast</code> URL on someone else&rsquo;s site.</li>
+<li>Put the file at <code>static/images/install.cast</code> and use
+<code>file=&quot;images/install.cast&quot;</code>. <code>assets/images/install.cast</code> works with the same
+value; page-bundle resources are not resolved. Commit the recording rather
+than referencing a <code>.cast</code> URL on someone else&rsquo;s site.</li>
 </ul>
 <h2 id="pg-79d3fa477066c2fb5a1bef0799f76c9f--outputs">Output
 </h2>
@@ -8870,7 +8932,7 @@ text.</li>
 
       </main>
     </div>
-    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"Copy Markdown","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["Copy Markdown","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Copy Markdown","url":"/docs/components/index.md"},{"available":true,"description":"Copy link","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["Copy link","Share","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"Copy link","url":"http://localhost:1313/docs/components/"},{"available":true,"description":"Open in ChatGPT","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["Open in ChatGPT","Ask about this page","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in ChatGPT","url":"https://chatgpt.com/?hints=search\u0026prompt=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fcomponents%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"Open in Claude","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["Open in Claude","Ask about this page","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in Claude","url":"https://claude.ai/new?q=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fcomponents%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"View markdown","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["View markdown","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View markdown","url":"/docs/components/index.md"},{"available":true,"description":"View edit history","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["View edit history","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View edit history","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/components/_index.md"},{"available":true,"description":"Edit this page","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["Edit this page","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Edit this page","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/components/_index.md"},{"available":true,"description":"Create child page","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["Create child page","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create child page","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/components?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"Create docs issue","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["Create docs issue","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create docs issue","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=Components"},{"available":true,"description":"Create project issue","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["Create project issue","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create project issue","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"Print entire section","disabledReason":"Print entire section: unavailable","icon":"fa-solid fa-print","id":"print_section","keywords":["Print entire section","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Print entire section","url":""},{"available":true,"description":"Print this page","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["Print this page","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"Print this page","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL required","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"Switch language","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["Switch language","language"],"kind":"choice","options":[{"active":true,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/components/"},{"active":false,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/components/"}],"placements":{"page":false,"palette":true},"target":"self","title":"Switch language","url":""},{"available":false,"description":"Appearance","disabledReason":"unavailable","icon":"fa-solid fa-palette","id":"switch_preset","keywords":["preset","style","Paper","Slate","Style"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"paper","title":"Paper","value":"paper"}],"placements":{"page":false,"palette":true},"target":"self","title":"Style","url":""},{"available":true,"description":"Toggle color theme","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["Toggle color theme","Light","Dark"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"System","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"Light","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"Dark","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"Toggle color theme","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"Report or review theme and documentation issues","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["bug","support","roadmap"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK issues","url":"https://github.com/pgsty/oink/issues"}],"language":"en","quickLinks":[{"available":true,"description":"OINK is a documentation theme that needs nothing but Hugo Extended — components are written in Markdown, assets ship with the theme, both languages work out of the box, and one source produces four outputs.","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["Docs","docs"],"kind":"url","target":"self","title":"Docs","url":"/docs/"},{"available":true,"description":"OINK engineering stories, immersive guides, and release notes","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["Blog","blog"],"kind":"url","target":"self","title":"Blog","url":"/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"Copy Markdown","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["Copy Markdown","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Copy Markdown","url":"/docs/components/index.md"},{"available":true,"description":"Copy link","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["Copy link","Share","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"Copy link","url":"http://localhost:1313/docs/components/"},{"available":true,"description":"Open in ChatGPT","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["Open in ChatGPT","Ask about this page","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in ChatGPT","url":"https://chatgpt.com/?hints=search\u0026prompt=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fcomponents%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"Open in Claude","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["Open in Claude","Ask about this page","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in Claude","url":"https://claude.ai/new?q=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fcomponents%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"View markdown","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["View markdown","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View markdown","url":"/docs/components/index.md"},{"available":true,"description":"View edit history","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["View edit history","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View edit history","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/components/_index.md"},{"available":true,"description":"Edit this page","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["Edit this page","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Edit this page","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/components/_index.md"},{"available":true,"description":"Create child page","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["Create child page","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create child page","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/components?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"Create docs issue","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["Create docs issue","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create docs issue","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=Components"},{"available":true,"description":"Create project issue","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["Create project issue","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create project issue","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"Print entire section","disabledReason":"Print entire section: unavailable","icon":"fa-solid fa-print","id":"print_section","keywords":["Print entire section","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Print entire section","url":""},{"available":true,"description":"Print this page","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["Print this page","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"Print this page","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL required","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"Switch language","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["Switch language","language"],"kind":"choice","options":[{"active":true,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/components/"},{"active":false,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/components/"}],"placements":{"page":false,"palette":true},"target":"self","title":"Switch language","url":""},{"available":false,"description":"Appearance","disabledReason":"unavailable","icon":"fa-solid fa-palette","id":"switch_preset","keywords":["preset","style","Paper","Slate","Style"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"paper","title":"Paper","value":"paper"}],"placements":{"page":false,"palette":true},"target":"self","title":"Style","url":""},{"available":true,"description":"Toggle color theme","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["Toggle color theme","Light","Dark"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"System","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"Light","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"Dark","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"Toggle color theme","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"Report or review theme and documentation issues","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["bug","support","roadmap"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK issues","url":"https://github.com/pgsty/oink/issues"}],"language":"en","quickLinks":[{"available":true,"description":"Build a technical content site with shared navigation, multilingual support and search for documentation, blogs, books and API references.","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["Docs","docs"],"kind":"url","target":"self","title":"Docs","url":"/docs/"},{"available":true,"description":"OINK engineering stories, immersive guides, and release notes","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["Blog","blog"],"kind":"url","target":"self","title":"Blog","url":"/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
 
 <script src="/js/actions.js"></script>
 

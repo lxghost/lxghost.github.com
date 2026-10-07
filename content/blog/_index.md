@@ -6,9 +6,12 @@ type: blog
 icon: fa-solid fa-blog
 sidebar_root_for: self
 sidebar_root_link_self: true
-footer_style: slim
+footer_style: fat
 comments: true
 blog_index: cards
+# The section root is a feed index, not a destination: backlinks belong on
+# the posts it lists, so it opts out of the site-wide default.
+backlinks: false
 # The Book/Blog reading shells keep the title bar pinned: long-form reading
 # should not make the navbar appear and disappear under the pointer.
 navbar_autohide: false
@@ -21,7 +24,7 @@ cascade:
   type: blog
   navbar_autohide: false
   images: [/images/oink.webp]
-  footer_style: slim
+  footer_style: fat
   comments: true
   reading_time: true
   # The page-end share bar, scoped to the blog. Every entry is a plain intent

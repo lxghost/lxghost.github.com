@@ -70,7 +70,7 @@ precedence first:
 3. Site `params`.
 
 **Drop the `ui.` prefix when writing it in front matter.** The site's
-`params.ui.scroll_spy` is simply `scroll_spy` on a page. A `ui:` block in front
+`params.ui.reading_time` is simply `reading_time` on a page. A `ui:` block in front
 matter is read by nobody and reported by nobody, so a setting that seems to have
 no effect is worth checking against
 [Page parameters](/docs/write/frontmatter/) first.
@@ -81,7 +81,7 @@ title: Wide reference
 page_width: wide
 navbar_enabled: false
 footer_style: slim
-scroll_spy: true
+reading_time: false
 ---
 ```
 
@@ -198,9 +198,9 @@ matter or a `cascade` on the blog root.
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
 | `params.ui.featured_image` | enum | none | How an article renders its own featured image: `none` renders nothing, `banner` frames it above the title in a 16:9 figure, `wash` lays it behind the article header at a tenth of its opacity, `hero` paints it as the shell's own full-bleed backdrop and moves the opening down — on single pages and section indexes alike. The image is whichever one the page already shares in its card and `og:image`, so the two cannot disagree. An article with no image renders nothing in any mode |
-| `params.ui.blog_index` | enum | list | The blog section's list page: `list` is the row list, `cards` a grid of content cards with a 16:9 lead image, the date and section line, and a three-line summary, `table` one compact row per post — the whole section at once, with no year groups and no pagination. Year grouping, pagination and `manual_link` behave the same in `list` and `cards` |
+| `params.ui.blog_index` | enum | list | Blog index form: `list` shows rows, `cards` shows image cards with dates and summaries, and `table` shows compact rows. All sort by date, newest first, without year groups. Only a standalone `table` with `blog_index_toggle: false` shows the whole section without pagination |
 | `params.ui.blog_index_columns` | integer | 3 | Column count when `blog_index: cards`; two between the md and xl breakpoints, one below md, whatever this says |
-| `params.ui.blog_index_size` | integer | 12 | Posts per page on a `list` or `cards` index; the `table` form always shows everything. Twelve divides by two, three and four, so no card row is left short |
+| `params.ui.blog_index_size` | integer | 12 | Posts per page for `list`, `cards`, and all three views when the toggle is enabled. A standalone `table` ignores it |
 | `params.ui.blog_index_toggle` | boolean | false | Lets a reader cycle the index through list, cards and table from the index toolbar. Off by default, because it puts all three forms in the document — the hidden ones load no images, but their markup is real |
 | `params.ui.toc_style` | enum | fixed | The right rail's presentation: `fixed` is a panel pinned to the viewport, `flow` a wider panel in the content flow that starts where the article starts and pins only on scroll |
 | `params.ui.toc_taxonomies` | boolean | true | Taxonomy term clouds on the right rail. A rail left with neither a table of contents nor clouds renders nothing at all |
@@ -237,7 +237,7 @@ than from a parameter — see
 | `params.ui.sidebar_menu_compact` | boolean | true | Expands only the current branch and its neighbours |
 | `params.ui.sidebar_menu_foldable` | boolean | true | Lets the reader expand and collapse sections |
 | `params.ui.sidebar_menu_truncate` | integer | 2000 | Maximum entries rendered in one section; the rest are truncated |
-| `params.ui.sidebar_cache_limit` | integer | 500 | Above this page count the site reuses shared navigation markup, and the browser restores the active state |
+| `params.ui.sidebar_cache_limit` | integer | 500 | At this page count, reuse visible neutral navigation markup for matching language/root/effective settings; the browser adds active state |
 | `params.ui.sidebar_width_min` | integer | 220 | Lower bound in pixels for drag-resizing on the desktop |
 | `params.ui.sidebar_width_max` | integer | 480 | Upper bound in pixels for drag-resizing |
 | `params.ui.sidebar_item_overflow` | enum | ellipsis | `ellipsis` truncates a long title, `wrap` wraps it |
@@ -262,7 +262,7 @@ the tracking behaviour:
 | --- | --- | --- | --- |
 | `markup.tableOfContents.startLevel` | integer | 2 | Hugo's own: the highest heading level collected |
 | `markup.tableOfContents.endLevel` | integer | 3 | Hugo's own: the lowest heading level collected |
-| `params.ui.scroll_spy` | boolean | false | Scroll position tracking; `true` highlights the active entry |
+| `params.ui.scroll_spy` | boolean | false | Quiet 1.x compatibility no-op; the normal shell runtime always tracks the active outline heading and this key emits no asset |
 {.fields meta="type default"}
 
 Hide the outline on one page with the front matter `notoc: true` — see
@@ -328,12 +328,17 @@ Which images become zoom candidates is in [Images](/docs/components/image/).
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `params.ui.typography` | enum | technical | `technical` uses the bundled Inter / Chakra Petch / IBM Plex Mono; `system` uses the platform stack only and requests no brand font. An invalid value warns and falls back |
+| `params.ui.preset` | enum | paper | Site-wide visual preset: `paper`, `slate`, or the explicit experiments `ink`, `terminal`. Available in 1.2.0; choose `slate` to retain the previous appearance |
+| `params.ui.preset_menu` | boolean or list | false | `true` offers Paper, Slate and the site default; a list explicitly opts into experiments and must include the site default. Independent of `dark_mode` |
+| `params.ui.typography` | enum | technical | `technical` uses the selected preset’s local fonts (Paper: Plex Sans; Slate: Inter); `system` uses the platform stack only and requests no brand font. An invalid value warns and falls back |
+| `params.ui.fonts` | map | | Font-family names for the `ui`, `body`, `heading`, `code`, `display`, `meta`, `brand`, and `print` roles. The theme validates names but never loads font files. End each list with a generic family |
 | `params.page_width` | enum | normal | Overall shell width: `normal`, `wide`, `full`; overridable per page |
 | `params.reading_width` | enum | normal | Reading measure of a Book page's body: `slim`, `normal`, `wide`; it does not affect the shell |
 {.fields meta="type default"}
 
-Custom fonts and colours go through the SCSS entry points rather than YAML — see
+Use `params.ui.fonts` when the faces already exist on the reader's system or the
+site has declared them with `@font-face`. Bundling font files and changing
+lower-level typography still use the SCSS/CSS entry points — see
 [Brand and appearance](/docs/customize/brand/#fonts).
 
 ## Comments and feedback {#comments-feedback}
@@ -363,8 +368,9 @@ Custom fonts and colours go through the SCSS entry points rather than YAML — s
 | `params.ui.feedback.reasons` | boolean | true | Expands four optional reasons after "no" |
 {.fields meta="type default"}
 
-Missing any one of the four required giscus values leaves the comment section
-unrendered: no error, and nothing appears.
+Missing any required giscus value produces a warning and skips the comment
+section. Ordinary previews continue; builds with `--panicOnWarning` fail.
+See [Comments](/docs/admin/comments/#enable) for the required fields.
 
 ## Repository links and page information {#repository}
 
@@ -374,10 +380,12 @@ unrendered: no error, and nothing appears.
 | `params.github_project_repo` | string | github_repo | The product repository URL, for "open a project issue" and the navbar GitHub entry |
 | `params.github_branch` | string | main | The branch edit links point at |
 | `params.github_subdir` | string | | The content site's subdirectory inside a monorepo |
-| `params.path_base_for_github_subdir` | string or map | | Source path rewriting; the map form takes `from` and `to` |
+| `params.path_base_for_github_subdir` | string or map | | Rewrite normalized `/` source paths; the map takes `from` and `to`. External mounts need an explicit mapping to a repository-relative result; see [repository links](/docs/customize/repository/#imported-content). |
 | `params.github_url` | — | — | Removed; write `params.github_repo`. The migration registry that used to name the replacement is gone, so an old key is now simply an unread key |
 | `params.ui.lastmod_commit` | enum | subject | What follows "last modified": `subject` the commit subject, `hash` the short hash, `none` nothing. An invalid value warns and falls back |
 | `params.images` | string array | — | The site-level social card: fills `og:image` when a page has no image of its own. Metadata only; never rendered as a list thumbnail |
+| `params.upstream_source` | string | — | Default `data/upstreams` record name for pages that declare `upstream_link`; page front matter can override it |
+| `params.upstream_modified` | boolean | `false` | Site default for whether attributed material is adapted; a page can override it, and no attribution renders without `upstream_link` |
 | `params.default_featured` | — | — | Removed; write `params.images`, or a section `cascade` carrying `images`. As above, an old key is now simply an unread key |
 {.fields meta="type default"}
 
@@ -406,12 +414,13 @@ Mathematics needs no parameter, only the
 
 ## Output formats {#outputs}
 
-The theme declares two custom output formats and **does not enable them for a
-site**: request what you want under `outputs`.
+The theme declares its custom output formats but **does not enable them for a
+site**: request what you want under `outputs`. Expensive aggregate and
+machine-readable outputs remain explicit opt-ins.
 
 ```yaml {title="hugo.yml"}
 outputs:
-  home: [HTML, markdown, LLMS]
+  home: [HTML, markdown, LLMS, NAVJSON]
   page: [HTML, markdown]
   section: [HTML, RSS, print, markdown]
 ```
@@ -421,8 +430,16 @@ outputs:
 | `HTML` | `index.html` | The interactive form; required |
 | `markdown` | `index.md` | Each page's plain Markdown twin, which "copy Markdown" and "view source" depend on — see [AI-agent support](/docs/customize/agents/) |
 | `LLMS` | `llms.txt` | A plain-text format the theme declares, usually attached to `home` only |
+| `LLMSFULL` | `llms-full.txt` | A top-level section opt-in: the same per-page Markdown concatenated in sidebar reading order, one bundle per language |
+| `NAVJSON` | `navigation.json` | A home opt-in: the sidebar/pager navigation authority serialized once per language, validated by `schema/nav.v1.schema.json` |
 | `print` | `_print/index.html` | The whole-section print page the theme declares — see [Print](/docs/customize/print/) |
+| `BookManifest` | `book.json` | A Book-root opt-in JSON handoff for the EPUB/PDF packaging tools; it is not itself an ebook |
 | `RSS` | `index.xml` | Hugo's own; attach it to `section` so every section has a feed |
+
+`LLMSFULL` and `BookManifest` are enabled in the relevant top-level section's
+front matter rather than globally. `NAVJSON` belongs on `outputs.home`. The
+complete examples and constraints are in [AI-agent support](/docs/customize/agents/)
+and [Books](/docs/write/book/).
 
 Two parameters for print output:
 
@@ -444,7 +461,7 @@ reads the translation relationships it establishes:
 | `languages.<lang>.locale` | string | | The full locale, used for `<html lang>` and SEO |
 | `languages.<lang>.weight` | integer | | Language order, and the cycle order when clicking the language icon |
 | `languages.<lang>.title` | string | | The site name in that language |
-| `languages.<lang>.languageDirection` | string | ltr | Set `rtl` for a right-to-left language |
+| `languages.<lang>.direction` | string | ltr | Set `rtl` for a right-to-left language |
 {.fields meta="type default"}
 
 Paired files, anchor alignment and fallback for untranslated pages are in
@@ -482,20 +499,24 @@ The theme ships two generated JSON Schemas under its `schema/` directory:
 `front-matter.schema.json` for page front matter. They are projections of the
 theme's own `hugo.yaml` defaults (with the comment documentation as hover
 text) and its parameter-scan registry; the theme's CI regenerates them and
-fails on drift, so they can never disagree with the theme you have pinned.
+fails on drift. Use the schema from the same release tag as your theme pin.
 
-With the VS Code YAML extension, map the site schema in your settings:
+With the VS Code YAML extension, map the site schema in your settings. This
+example matches OINK v1.2.0; replace that tag with the one in your `go.mod`.
+Both common YAML configuration filenames are covered:
 
 ```json {title=".vscode/settings.json"}
 {
   "yaml.schemas": {
-    "https://raw.githubusercontent.com/pgsty/oink/main/schema/site-params.schema.json": "hugo.yaml"
+    "https://raw.githubusercontent.com/pgsty/oink/v1.2.0/schema/site-params.schema.json": ["hugo.yml", "hugo.yaml"]
   }
 }
 ```
 
-Pin the URL to your release tag instead of `main` to match your `go.mod` pin.
-Front matter completion depends on your Markdown tooling; point it at
+To check the association, temporarily give a known boolean such as
+`params.offline_search` a string value: the editor should flag the type mismatch.
+Restore the valid value afterward. Front matter completion depends on your
+Markdown tooling; point it at
 `front-matter.schema.json` the same way. The front-matter schema deliberately
 omits type constraints, because keys like `share` and `theme_color` accept a
 bare-boolean opt-out beside their ordinary type.
@@ -532,19 +553,19 @@ A configuration change also needs at least three checks: one page in each
 language, a page with no translation to see the fallback, and the links under
 the production `baseURL` (easy to miss on a subpath deployment).
 
-The theme's declared Hugo floor is `0.160.1`, and the currently verified version
-is `0.164.0`. Building against both after a configuration change catches
-anything that only works on the newer one:
+The theme's declared Hugo floor is `0.160.1`. OINK's continuous test toolchain
+is pinned to Hugo Extended `0.165.0`; configuration changes are tested once
+with that pinned version instead of against a version matrix:
 
 ```bash
-# the floor binary
-/path/to/hugo-0.160.1 --printPathWarnings --panicOnWarning
-# the currently verified version
+# require v0.165.0+extended in this output
+hugo version
 hugo --printPathWarnings --panicOnWarning
 ```
 
 The floor is declared in the theme's `hugo.yaml` and `theme.toml`, and a site's
-own `module.hugoVersion.min` should agree with it.
+own `module.hugoVersion.min` should agree with it. It remains a consumer
+compatibility declaration, not a second routine CI test leg.
 
 ## Related {#related}
 
@@ -595,9 +616,9 @@ Backlinks:
 - [Config schema](/docs/design/decisions/config-schema/)
 - [Configuration](/docs/design/decisions/configuration/)
 - [Proposals](/docs/design/proposals/)
-- [Get started](/docs/start/)
 - [Repository tour](/docs/start/anatomy/)
 - [From scratch](/docs/start/from-scratch/)
+- [OINK Starter](/docs/start/starter/)
 - [Books](/docs/write/book/)
 - [Page parameters](/docs/write/frontmatter/)
 - [Organizing content](/docs/write/organize/)

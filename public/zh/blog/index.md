@@ -13,9 +13,3 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 - [packagist themes ios spyware](/zh/blog/threat/packagist-themes-ios-spyware/): ios间谍软件分析报告
 - [Oink 发布注记](/zh/blog/release/): OINK 的版本发布注记、升级指南与兼容性说明
 - [Oink 博客](/zh/blog/oink/): OINK 公告、工程实践与实现笔记
-
----
-
-反链：
-
-- [版本升级](/zh/docs/admin/upgrade/)

@@ -28,6 +28,18 @@
                 href="http://localhost:1313/zh/docs/design/research/goldmark-attributes/"
                 />
   </url><url>
+    <loc>http://localhost:1313/zh/docs/start/starter/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/docs/start/starter/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/docs/start/starter/"
+                />
+  </url><url>
     <loc>http://localhost:1313/zh/blog/threat/packagist-themes-ios-spyware/</loc>
     <lastmod>2026-09-08T00:40:17+08:00</lastmod>
     <xhtml:link
@@ -65,19 +77,6 @@
                 rel="alternate"
                 hreflang="zh-CN"
                 href="http://localhost:1313/zh/docs/write/pages/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/zh/docs/start/anatomy/</loc>
-    <lastmod>2026-08-28T00:08:16+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="http://localhost:1313/docs/start/anatomy/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="http://localhost:1313/zh/docs/start/anatomy/"
                 />
   </url><url>
     <loc>http://localhost:1313/zh/blog/release/</loc>
@@ -197,6 +196,42 @@
                 href="http://localhost:1313/zh/docs/design/proposals/knowledge-graph/"
                 />
   </url><url>
+    <loc>http://localhost:1313/zh/docs/design/research/2026-10-05-ink-terminal-experiment/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/docs/design/research/2026-10-05-ink-terminal-experiment/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/docs/design/research/2026-10-05-ink-terminal-experiment/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/docs/design/research/2026-10-05-v1-2-release-review/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/docs/design/research/2026-10-05-v1-2-release-review/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/docs/design/research/2026-10-05-v1-2-release-review/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/docs/design/research/2026-10-05-visual-presets-acceptance/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/docs/design/research/2026-10-05-visual-presets-acceptance/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/docs/design/research/2026-10-05-visual-presets-acceptance/"
+                />
+  </url><url>
     <loc>http://localhost:1313/zh/case/pigsty-cc/</loc>
     <lastmod>2026-08-28T00:08:16+08:00</lastmod>
     <xhtml:link
@@ -236,17 +271,17 @@
                 href="http://localhost:1313/zh/docs/about/showcase/"
                 />
   </url><url>
-    <loc>http://localhost:1313/zh/docs/start/from-scratch/</loc>
+    <loc>http://localhost:1313/zh/docs/start/anatomy/</loc>
     <lastmod>2026-08-28T00:08:16+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/docs/start/from-scratch/"
+                href="http://localhost:1313/docs/start/anatomy/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="http://localhost:1313/zh/docs/start/from-scratch/"
+                href="http://localhost:1313/zh/docs/start/anatomy/"
                 />
   </url><url>
     <loc>http://localhost:1313/zh/docs/admin/deploy/</loc>
@@ -418,6 +453,18 @@
                 href="http://localhost:1313/zh/docs/design/proposals/agent-indexes/"
                 />
   </url><url>
+    <loc>http://localhost:1313/zh/docs/design/proposals/oink-cli-roadmap/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/docs/design/proposals/oink-cli-roadmap/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/docs/design/proposals/oink-cli-roadmap/"
+                />
+  </url><url>
     <loc>http://localhost:1313/zh/docs/design/decisions/authoring/</loc>
     <lastmod>2026-08-28T00:08:16+08:00</lastmod>
     <xhtml:link
@@ -442,6 +489,19 @@
                 rel="alternate"
                 hreflang="zh-CN"
                 href="http://localhost:1313/zh/docs/write/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/docs/start/from-scratch/</loc>
+    <lastmod>2026-08-28T00:08:16+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/docs/start/from-scratch/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/docs/start/from-scratch/"
                 />
   </url><url>
     <loc>http://localhost:1313/zh/docs/components/code/</loc>
@@ -548,6 +608,30 @@
                 href="http://localhost:1313/zh/book/03-compose/"
                 />
   </url><url>
+    <loc>http://localhost:1313/zh/docs/start/cli-overview/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/docs/start/cli-overview/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/docs/start/cli-overview/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/docs/design/proposals/oink-cli-maintenance-roadmap/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/docs/design/proposals/oink-cli-maintenance-roadmap/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/docs/design/proposals/oink-cli-maintenance-roadmap/"
+                />
+  </url><url>
     <loc>http://localhost:1313/zh/case/silo/</loc>
     <lastmod>2026-08-28T00:08:16+08:00</lastmod>
     <xhtml:link
@@ -561,6 +645,18 @@
                 href="http://localhost:1313/zh/case/silo/"
                 />
   </url><url>
+    <loc>http://localhost:1313/zh/docs/design/research/2026-09-19-upstream-review/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/docs/design/research/2026-09-19-upstream-review/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/docs/design/research/2026-09-19-upstream-review/"
+                />
+  </url><url>
     <loc>http://localhost:1313/zh/docs/design/proposals/book-publication/</loc>
     <lastmod>2026-08-28T00:08:16+08:00</lastmod>
     <xhtml:link
@@ -572,6 +668,18 @@
                 rel="alternate"
                 hreflang="zh-CN"
                 href="http://localhost:1313/zh/docs/design/proposals/book-publication/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/docs/start/cli/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/docs/start/cli/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/docs/start/cli/"
                 />
   </url><url>
     <loc>http://localhost:1313/zh/case/</loc>
@@ -665,6 +773,18 @@
                 href="http://localhost:1313/zh/docs/design/decisions/config-schema/"
                 />
   </url><url>
+    <loc>http://localhost:1313/zh/docs/design/proposals/visual-presets/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/docs/design/proposals/visual-presets/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/docs/design/proposals/visual-presets/"
+                />
+  </url><url>
     <loc>http://localhost:1313/zh/book/04-design/</loc>
     <lastmod>2026-08-28T00:08:16+08:00</lastmod>
     <xhtml:link
@@ -702,6 +822,30 @@
                 rel="alternate"
                 hreflang="zh-CN"
                 href="http://localhost:1313/zh/case/oink/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/docs/design/research/2026-09-20-release-review/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/docs/design/research/2026-09-20-release-review/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/docs/design/research/2026-09-20-release-review/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/docs/design/decisions/cli/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/docs/design/decisions/cli/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/docs/design/decisions/cli/"
                 />
   </url><url>
     <loc>http://localhost:1313/zh/docs/admin/upgrade/</loc>
@@ -769,6 +913,18 @@
                 href="http://localhost:1313/zh/docs/design/migration/"
                 />
   </url><url>
+    <loc>http://localhost:1313/zh/docs/design/decisions/visual-presets/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/docs/design/decisions/visual-presets/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/docs/design/decisions/visual-presets/"
+                />
+  </url><url>
     <loc>http://localhost:1313/zh/docs/write/book/</loc>
     <lastmod>2026-08-28T00:08:16+08:00</lastmod>
     <xhtml:link
@@ -795,6 +951,18 @@
                 href="http://localhost:1313/zh/book/05-publishing/"
                 />
   </url><url>
+    <loc>http://localhost:1313/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/docs/design/research/2026-10-03-cli-maintenance-acceptance/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/"
+                />
+  </url><url>
     <loc>http://localhost:1313/zh/case/capslock/</loc>
     <lastmod>2026-08-28T00:08:16+08:00</lastmod>
     <xhtml:link
@@ -806,6 +974,18 @@
                 rel="alternate"
                 hreflang="zh-CN"
                 href="http://localhost:1313/zh/case/capslock/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/docs/design/research/2026-09-29-cli-acceptance/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/docs/design/research/2026-09-29-cli-acceptance/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/docs/design/research/2026-09-29-cli-acceptance/"
                 />
   </url><url>
     <loc>http://localhost:1313/zh/docs/components/fields/</loc>
@@ -1001,6 +1181,18 @@
                 rel="alternate"
                 hreflang="zh-CN"
                 href="http://localhost:1313/zh/case/sow/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/docs/cli/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/docs/cli/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/docs/cli/"
                 />
   </url><url>
     <loc>http://localhost:1313/zh/docs/customize/keyboard/</loc>
@@ -1381,7 +1573,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/zh/authors/</loc>
-    <lastmod>2026-09-08T00:40:17+08:00</lastmod>
+    <lastmod>2026-10-05T00:00:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
@@ -1394,7 +1586,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/zh/categories/</loc>
-    <lastmod>2026-08-28T00:08:16+08:00</lastmod>
+    <lastmod>2026-10-05T00:00:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
@@ -1407,7 +1599,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/zh/tags/oink/</loc>
-    <lastmod>2026-08-28T00:08:16+08:00</lastmod>
+    <lastmod>2026-10-05T00:00:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
@@ -1417,6 +1609,123 @@
                 rel="alternate"
                 hreflang="zh-CN"
                 href="http://localhost:1313/zh/tags/oink/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/blog/release/1.2.0/</loc>
+    <lastmod>2026-10-05T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/blog/release/1.2.0/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/release/1.2.0/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/categories/release/</loc>
+    <lastmod>2026-10-05T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/categories/release/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/categories/release/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/release/</loc>
+    <lastmod>2026-10-05T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/tags/release/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/tags/release/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/series/</loc>
+    <lastmod>2026-10-05T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/series/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/series/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/</loc>
+    <lastmod>2026-10-05T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/tags/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/blog/release/1.1.0/</loc>
+    <lastmod>2026-09-20T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/blog/release/1.1.0/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/release/1.1.0/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/blog/release/1.0.0/</loc>
+    <lastmod>2026-08-29T23:30:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/blog/release/1.0.0/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/release/1.0.0/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/blog/release/0.8.2/</loc>
+    <lastmod>2026-08-29T21:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/blog/release/0.8.2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/release/0.8.2/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/blog/release/0.8.1/</loc>
+    <lastmod>2026-08-29T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="http://localhost:1313/blog/release/0.8.1/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="http://localhost:1313/zh/blog/release/0.8.1/"
                 />
   </url><url>
     <loc>http://localhost:1313/zh/blog/release/0.8.0/</loc>
@@ -1430,58 +1739,6 @@
                 rel="alternate"
                 hreflang="zh-CN"
                 href="http://localhost:1313/zh/blog/release/0.8.0/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/zh/categories/release/</loc>
-    <lastmod>2026-08-28T00:08:16+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="http://localhost:1313/categories/release/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="http://localhost:1313/zh/categories/release/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/zh/tags/release/</loc>
-    <lastmod>2026-08-28T00:08:16+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="http://localhost:1313/tags/release/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="http://localhost:1313/zh/tags/release/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/zh/series/</loc>
-    <lastmod>2026-08-28T00:08:16+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="http://localhost:1313/series/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="http://localhost:1313/zh/series/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/zh/tags/</loc>
-    <lastmod>2026-09-08T00:40:17+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="http://localhost:1313/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="http://localhost:1313/zh/tags/"
                 />
   </url><url>
     <loc>http://localhost:1313/zh/blog/release/0.7.1/</loc>
@@ -1830,9 +2087,6 @@
     <lastmod>2026-08-28T00:08:16+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/zh/categories/%E7%AE%80%E4%BB%8B/</loc>
-    <lastmod>2026-08-28T00:08:16+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/zh/categories/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/</loc>
     <lastmod>2026-08-28T00:08:16+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/zh/categories/%E8%AE%BE%E8%AE%A1%E5%A5%91%E7%BA%A6/</loc>

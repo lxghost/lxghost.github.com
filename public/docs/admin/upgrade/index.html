@@ -54,7 +54,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
 <title>Upgrade | OINK</title>
-<meta name="description" content="Move to a new theme version, convert 0.4 shortcodes to v5 syntax with the migration toolkit, migrate from Docsy, and roll back when something goes wrong.">
+<meta name="description" content="Pin a published theme version, adopt the 1.2.0 changes, migrate legacy content or a Docsy site, and roll back safely.">
 <link rel="canonical" href="http://localhost:1313/docs/admin/upgrade/">
 <link rel="alternate" hreflang="en-US" href="http://localhost:1313/docs/admin/upgrade/">
 <link rel="alternate" hreflang="zh-CN" href="http://localhost:1313/zh/docs/admin/upgrade/">
@@ -62,20 +62,20 @@
 <meta property="og:url" content="http://localhost:1313/docs/admin/upgrade/">
   <meta property="og:site_name" content="OINK">
   <meta property="og:title" content="Upgrade">
-  <meta property="og:description" content="Move to a new theme version, convert 0.4 shortcodes to v5 syntax with the migration toolkit, migrate from Docsy, and roll back when something goes wrong.">
+  <meta property="og:description" content="Pin a published theme version, adopt the 1.2.0 changes, migrate legacy content or a Docsy site, and roll back safely.">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
     <meta property="article:modified_time" content="2026-08-28T00:08:16+08:00">
 
   <meta itemprop="name" content="Upgrade">
-  <meta itemprop="description" content="Move to a new theme version, convert 0.4 shortcodes to v5 syntax with the migration toolkit, migrate from Docsy, and roll back when something goes wrong.">
+  <meta itemprop="description" content="Pin a published theme version, adopt the 1.2.0 changes, migrate legacy content or a Docsy site, and roll back safely.">
   <meta itemprop="dateModified" content="2026-08-28T00:08:16+08:00">
-  <meta itemprop="wordCount" content="2189">
+  <meta itemprop="wordCount" content="3032">
   <meta itemprop="keywords" content="Operations">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Upgrade">
-  <meta name="twitter:description" content="Move to a new theme version, convert 0.4 shortcodes to v5 syntax with the migration toolkit, migrate from Docsy, and roll back when something goes wrong.">
+  <meta name="twitter:description" content="Pin a published theme version, adopt the 1.2.0 changes, migrate legacy content or a Docsy site, and roll back safely.">
 <link href="/scss/fontawesome.css" rel="stylesheet">
 <link href="/scss/main.css" rel="stylesheet">
 <style>:root,[data-bs-theme=light]{--td-accent:#245f94;--td-accent-rgb:36,95,148;--td-accent-hover:#3e72a1}[data-bs-theme=dark]{--td-accent:#5da2dd;--td-accent-rgb:93,162,221;--td-accent-hover:#81b6e4}</style>
@@ -349,7 +349,7 @@
       <span class="td-shell-root__icon"><i class="fa-solid fa-book" aria-hidden="true"></i></span>
       <span class="td-shell-root__meta">
         <span class="td-shell-root__item-title">Docs</span>
-        <span class="td-shell-root__item-desc">OINK is a documentation theme that needs nothing but Hugo Extended — components are written in Markdown, assets ship with the theme, both languages work out of the box, and one source produces four outputs.</span>
+        <span class="td-shell-root__item-desc">Build a technical content site with shared navigation, multilingual support and search for documentation, blogs, books and API references.</span>
       </span>
       <span class="td-shell-root__check"><i class="td-shell-icon td-shell-icon--check fa-solid fa-check" aria-hidden="true"></i></span>
     </a>
@@ -413,7 +413,7 @@
   </li><li class="td-shell-tree__item td-has-child"
       id="m-docsstart-li">
     <div class="td-shell-tree__row">
-      <a href="/docs/start/" title="Quick start"
+      <a href="/docs/start/" title="Get started"
         class="td-shell-tree__link"
         id="m-docsstart"><i class="fa-solid fa-rocket" aria-hidden="true"></i><span>Get started</span></a>
       <button type="button" class="td-shell-tree__chevron" data-td-shell-tree-toggle
@@ -424,9 +424,17 @@
     </div><div id="m-docsstart-children" class="td-shell-tree__children">
         <div class="td-shell-tree__children-inner">
           <ul class="td-shell-tree__list td-shell-tree__list--2"><li class="td-shell-tree__item td-leaf"
+      id="m-docsstartstarter-li">
+    <div class="td-shell-tree__row">
+      <a href="/docs/start/starter/" title="Use OINK Starter"
+        class="td-shell-tree__link"
+        id="m-docsstartstarter"><span>OINK Starter</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
       id="m-docsstartanatomy-li">
     <div class="td-shell-tree__row">
-      <a href="/docs/start/anatomy/" title="Repository tour"
+      <a href="/docs/start/anatomy/" title="Starter repository tour"
         class="td-shell-tree__link"
         id="m-docsstartanatomy"><span>Repository tour</span></a>
       
@@ -437,6 +445,22 @@
       <a href="/docs/start/from-scratch/" title="From scratch and other install methods"
         class="td-shell-tree__link"
         id="m-docsstartfrom-scratch"><span>From scratch</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-docsstartcli-overview-li">
+    <div class="td-shell-tree__row">
+      <a href="/docs/start/cli-overview/" title="OINK CLI capabilities and next steps"
+        class="td-shell-tree__link"
+        id="m-docsstartcli-overview"><span>CLI overview</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-docsstartcli-li">
+    <div class="td-shell-tree__row">
+      <a href="/docs/start/cli/" title="Use the OINK CLI"
+        class="td-shell-tree__link"
+        id="m-docsstartcli"><span>OINK CLI</span></a>
       
     </div>
   </li></ul>
@@ -988,6 +1012,22 @@
         id="m-docsdesigndecisionsconfig-schema"><span>Config schema</span></a>
       
     </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-docsdesigndecisionscli-li">
+    <div class="td-shell-tree__row">
+      <a href="/docs/design/decisions/cli/" title="Optional CLI and result contract"
+        class="td-shell-tree__link"
+        id="m-docsdesigndecisionscli"><span>CLI contract</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-docsdesigndecisionsvisual-presets-li">
+    <div class="td-shell-tree__row">
+      <a href="/docs/design/decisions/visual-presets/" title="Paper and Slate visual presets"
+        class="td-shell-tree__link"
+        id="m-docsdesigndecisionsvisual-presets"><span>Visual presets</span></a>
+      
+    </div>
   </li></ul>
         </div>
       </div>
@@ -1013,6 +1053,30 @@
       
     </div>
   </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-docsdesignresearch2026-10-05-ink-terminal-experiment-li">
+    <div class="td-shell-tree__row">
+      <a href="/docs/design/research/2026-10-05-ink-terminal-experiment/" title="Ink and Terminal experiment, 2026-10-05"
+        class="td-shell-tree__link"
+        id="m-docsdesignresearch2026-10-05-ink-terminal-experiment"><span>Ink / Terminal experiment</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-docsdesignresearch2026-10-05-v1-2-release-review-li">
+    <div class="td-shell-tree__row">
+      <a href="/docs/design/research/2026-10-05-v1-2-release-review/" title="OINK 1.2 pre-release review, 2026-10-05"
+        class="td-shell-tree__link"
+        id="m-docsdesignresearch2026-10-05-v1-2-release-review"><span>OINK 1.2 pre-release review</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-docsdesignresearch2026-10-05-visual-presets-acceptance-li">
+    <div class="td-shell-tree__row">
+      <a href="/docs/design/research/2026-10-05-visual-presets-acceptance/" title="Visual preset acceptance, 2026-10-05"
+        class="td-shell-tree__link"
+        id="m-docsdesignresearch2026-10-05-visual-presets-acceptance"><span>Preset acceptance</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
       id="m-docsdesignresearchconsumer-evidence-li">
     <div class="td-shell-tree__row">
       <a href="/docs/design/research/consumer-evidence/" title="Consumer and migration evidence"
@@ -1026,6 +1090,38 @@
       <a href="/docs/design/research/2026-08-26-comprehensive-review/" title="OINK comprehensive review, 2026-08-26"
         class="td-shell-tree__link"
         id="m-docsdesignresearch2026-08-26-comprehensive-review"><span>2026-08-26 review</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-docsdesignresearch2026-09-19-upstream-review-li">
+    <div class="td-shell-tree__row">
+      <a href="/docs/design/research/2026-09-19-upstream-review/" title="Community issue and PR review, 2026-09-19"
+        class="td-shell-tree__link"
+        id="m-docsdesignresearch2026-09-19-upstream-review"><span>2026-09-19 community review</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-docsdesignresearch2026-09-20-release-review-li">
+    <div class="td-shell-tree__row">
+      <a href="/docs/design/research/2026-09-20-release-review/" title="OINK 1.1 release review, 2026-09-20"
+        class="td-shell-tree__link"
+        id="m-docsdesignresearch2026-09-20-release-review"><span>2026-09-20 release review</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-docsdesignresearch2026-10-03-cli-maintenance-acceptance-li">
+    <div class="td-shell-tree__row">
+      <a href="/docs/design/research/2026-10-03-cli-maintenance-acceptance/" title="CLI maintenance acceptance on 2026-10-03"
+        class="td-shell-tree__link"
+        id="m-docsdesignresearch2026-10-03-cli-maintenance-acceptance"><span>2026-10-03 CLI maintenance</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-docsdesignresearch2026-09-29-cli-acceptance-li">
+    <div class="td-shell-tree__row">
+      <a href="/docs/design/research/2026-09-29-cli-acceptance/" title="CLI acceptance snapshot, 2026-09-29"
+        class="td-shell-tree__link"
+        id="m-docsdesignresearch2026-09-29-cli-acceptance"><span>2026-09-29 CLI acceptance</span></a>
       
     </div>
   </li></ul>
@@ -1069,11 +1165,27 @@
       
     </div>
   </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-docsdesignproposalsoink-cli-roadmap-li">
+    <div class="td-shell-tree__row">
+      <a href="/docs/design/proposals/oink-cli-roadmap/" title="OINK CLI and the next product stage"
+        class="td-shell-tree__link"
+        id="m-docsdesignproposalsoink-cli-roadmap"><span>CLI and roadmap</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
       id="m-docsdesignproposalsbook-publication-li">
     <div class="td-shell-tree__row">
       <a href="/docs/design/proposals/book-publication/" title="Book publication pipeline"
         class="td-shell-tree__link"
         id="m-docsdesignproposalsbook-publication"><span>Book publication</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-docsdesignproposalsvisual-presets-li">
+    <div class="td-shell-tree__row">
+      <a href="/docs/design/proposals/visual-presets/" title="Visual presets and appearance switching"
+        class="td-shell-tree__link"
+        id="m-docsdesignproposalsvisual-presets"><span>Visual presets</span></a>
       
     </div>
   </li></ul>
@@ -1082,6 +1194,14 @@
   </li></ul>
         </div>
       </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-docscli-li">
+    <div class="td-shell-tree__row">
+      <a href="/docs/cli/" title="OINK CLI"
+        class="td-shell-tree__link"
+        id="m-docscli"><span>CLI</span></a>
+      
+    </div>
   </li></ul>
         </div>
       </div>
@@ -1175,7 +1295,7 @@
   <h1>Upgrade</h1>
 </div>
 
-	<div class="lead">Move to a new theme version, convert 0.4 shortcodes to v5 syntax with the migration toolkit, migrate from Docsy, and roll back when something goes wrong.</div>
+	<div class="lead">Pin a published theme version, adopt the 1.2.0 changes, migrate legacy content or a Docsy site, and roll back safely.</div>
 	<header class="td-article-meta">
 		<div class="taxonomy td-taxonomy-terms-article taxo-categories" role="group" aria-label="Categories">
   <ul class="td-taxonomy-terms">
@@ -1186,7 +1306,7 @@
 </header>
 	<p>Upgrading OINK is changing one pinned module version and confirming the site
 still builds warning-free. Most content needs no change; where it does — 0.4
-shortcodes becoming v5&rsquo;s native Markdown forms — a dry-run-first migration tool
+shortcodes becoming the current native Markdown forms — a dry-run-first migration tool
 does it, so hundreds of files need not be edited by hand.</p>
 <p>An upgrade changes rendered output. Create an upgrade branch before starting,
 and the cost of backing out is discarding a branch.</p>
@@ -1203,8 +1323,10 @@ removed, and whether a default behaviour moved. Skipping this step means
 guessing afterwards why a page looks different.</p>
 <h2 id="hugo-module">Upgrading the Hugo Module<a class="td-heading-self-link" href="#hugo-module" aria-label="Link to this heading"></a>
 </h2>
-<p>A production site pins a release tag or an immutable commit, follows no branch,
-and does not use <code>@latest</code>:</p>
+<p>A production site pins a published release tag or a deliberately selected
+immutable commit, follows no branch, and does not use <code>@latest</code>. The example
+below upgrades to the published <code>v1.2.0</code> tag. For a later release, verify its
+publication and module resolution before selecting that tag:</p>
 <div class="td-code td-code--titled" id="td-code-dc3394bf-fence-0" data-td-code data-td-code-auto-id
      data-td-language="bash" data-td-line-count="3" role="group" aria-labelledby="td-code-dc3394bf-fence-0-title">
   <div class="td-code__header">
@@ -1219,14 +1341,16 @@ and does not use <code>@latest</code>:</p>
   </button>
 </div>
   </div>
-  <div class="td-code__viewport" id="td-code-dc3394bf-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo mod get github.com/pgsty/oink@v0.8.0   <span class="c1"># the tag from the release notes</span>
+  <div class="td-code__viewport" id="td-code-dc3394bf-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo mod get github.com/pgsty/oink@v1.2.0   <span class="c1"># the published release tag</span>
 </span></span><span class="line"><span class="cl">hugo mod tidy
 </span></span><span class="line"><span class="cl">hugo mod graph <span class="p">|</span> grep github.com/pgsty/oink</span></span></code></pre></div></div>
   <span class="visually-hidden" role="status" aria-live="polite" data-td-code-status></span>
 </div>
-<p>The last command must show that tag itself resolving, not a pseudo-version
-(<code>v0.0.0-2026...-abcdef</code>) or <code>main</code>. The pinned version lands in <code>go.mod</code> and is
-committed with the code:</p>
+<p>When selecting a tag, confirm that the module graph shows that exact version.
+A deliberately selected immutable commit is normally recorded as a Go
+pseudo-version; that is valid if it resolves to the intended commit, but it is
+not evidence of a named release. Commit the resulting <code>go.mod</code> and <code>go.sum</code>.
+For the published tag in this example, <code>go.mod</code> contains:</p>
 <div class="td-code td-code--titled" id="td-code-dc3394bf-fence-1" data-td-code data-td-code-auto-id
      data-td-language="go" data-td-line-count="5" role="group" aria-labelledby="td-code-dc3394bf-fence-1-title">
   <div class="td-code__header">
@@ -1243,9 +1367,9 @@ committed with the code:</p>
   </div>
   <div class="td-code__viewport" id="td-code-dc3394bf-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">module</span><span class="w"> </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">pgsty</span><span class="o">/</span><span class="nx">oink</span><span class="p">.</span><span class="nx">pgsty</span><span class="p">.</span><span class="nx">com</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="k">go</span><span class="w"> </span><span class="mf">1.26.6</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">go</span><span class="w"> </span><span class="mf">1.27.0</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="nx">require</span><span class="w"> </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">pgsty</span><span class="o">/</span><span class="nx">oink</span><span class="w"> </span><span class="nx">v0</span><span class="mf">.8.0</span></span></span></code></pre></div></div>
+</span></span></span><span class="line"><span class="cl"><span class="nx">require</span><span class="w"> </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">pgsty</span><span class="o">/</span><span class="nx">oink</span><span class="w"> </span><span class="nx">v1</span><span class="mf">.2.0</span></span></span></code></pre></div></div>
   <span class="visually-hidden" role="status" aria-live="polite" data-td-code-status></span>
 </div>
 <div class="td-callout td-callout--danger" role="note">
@@ -1253,19 +1377,15 @@ committed with the code:</p>
   <div class="td-callout__body">
 <p><code>make dev</code> and <code>make check</code> set <code>HUGO_MODULE_REPLACEMENTS</code> for that command
 only, using the sibling theme checkout. To judge whether a release tag works,
-use <code>make build</code> without a replacement; otherwise what is verified is the
-local copy.</p>
+remove that environment replacement and disable both <code>GOWORK</code> and
+<code>HUGO_MODULE_WORKSPACE</code>. Inspect persistent replacements and <code>_vendor/</code> too;
+<code>make build</code> by itself does not prove which theme was resolved. See the
+<a href="/docs/admin/preview/#theme-workspace">preview guide</a>.</p>
   </div>
-</div><p>One line for each other install method. Git submodule: fetch the new ref with
-<code>git submodule update --remote themes/oink</code> and commit the submodule pointer.
-Offline archive and clone: replace <code>themes/oink/</code> wholesale with the new
-version&rsquo;s unpacked tree, and confirm <code>theme:</code> still matches the directory name.
-Weighing the three is in
-<a href="/docs/start/from-scratch/">From scratch and other install methods</a>.</p>
-<h2 id="after-upgrade">What to do after upgrading<a class="td-heading-self-link" href="#after-upgrade" aria-label="Link to this heading"></a>
-</h2>
+</div><p>For a Git submodule, check that it has no local edits, fetch the tags, and
+check out the exact published version rather than following its remote branch:</p>
 <div class="td-code td-code--titled" id="td-code-dc3394bf-fence-2" data-td-code data-td-code-auto-id
-     data-td-language="bash" data-td-line-count="2" role="group" aria-labelledby="td-code-dc3394bf-fence-2-title">
+     data-td-language="bash" data-td-line-count="3" role="group" aria-labelledby="td-code-dc3394bf-fence-2-title">
   <div class="td-code__header">
     <span class="td-code__filename" id="td-code-dc3394bf-fence-2-title" title="Terminal">Terminal</span><div class="td-code__utilities">
   <button class="td-code__copy" type="button" hidden data-td-code-copy
@@ -1278,25 +1398,20 @@ Weighing the three is in
   </button>
 </div>
   </div>
-  <div class="td-code__viewport" id="td-code-dc3394bf-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm -rf public resources/_gen
-</span></span><span class="line"><span class="cl">hugo --gc --minify --printPathWarnings --panicOnWarning --logLevel info</span></span></code></pre></div></div>
+  <div class="td-code__viewport" id="td-code-dc3394bf-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git -C themes/oink fetch origin --tags
+</span></span><span class="line"><span class="cl">git -C themes/oink checkout --detach v1.2.0
+</span></span><span class="line"><span class="cl">git add themes/oink</span></span></code></pre></div></div>
   <span class="visually-hidden" role="status" aria-live="polite" data-td-code-status></span>
 </div>
-<p>That does three things at once: clears possibly stale caches, rebuilds with the
-new version, and turns any warning into a failure.</p>
-<p><code>--logLevel info</code> is there to surface Hugo&rsquo;s deprecation notices. Hugo
-deprecates in two stages: first a <code>WARN</code> (still usable), then an <code>ERROR</code> in the
-next version (the build fails). Carrying <code>--panicOnWarning</code> finds them a version
-early and leaves you the time to fix them.</p>
-<p>Once the build passes, look with your own eyes: the home page, a documentation
-page, a blog page, the 404, both languages, both colour schemes, the print view,
-and anywhere the site customized something.</p>
-<h2 id="migration-toolkit">The content migration toolkit<a class="td-heading-self-link" href="#migration-toolkit" aria-label="Link to this heading"></a>
+<p>Commit the updated submodule pointer after validation. For an offline archive
+or clone, replace <code>themes/oink/</code> with the selected version&rsquo;s complete tree and
+confirm that <code>theme:</code> still matches the directory name. The install-method
+tradeoffs are in
+<a href="/docs/start/from-scratch/">From scratch and other install methods</a>.</p>
+<h2 id="after-upgrade">What to do after upgrading<a class="td-heading-self-link" href="#after-upgrade" aria-label="Link to this heading"></a>
 </h2>
-<p>A batch of 0.4 shortcodes became native Markdown forms in v5. The theme
-repository ships a tool for that, depending only on the Python standard library:</p>
 <div class="td-code td-code--titled" id="td-code-dc3394bf-fence-3" data-td-code data-td-code-auto-id
-     data-td-language="bash" data-td-line-count="14" role="group" aria-labelledby="td-code-dc3394bf-fence-3-title">
+     data-td-language="bash" data-td-line-count="3" role="group" aria-labelledby="td-code-dc3394bf-fence-3-title">
   <div class="td-code__header">
     <span class="td-code__filename" id="td-code-dc3394bf-fence-3-title" title="Terminal">Terminal</span><div class="td-code__utilities">
   <button class="td-code__copy" type="button" hidden data-td-code-copy
@@ -1309,7 +1424,171 @@ repository ships a tool for that, depending only on the Python standard library:
   </button>
 </div>
   </div>
-  <div class="td-code__viewport" id="td-code-dc3394bf-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/pgsty/oink
+  <div class="td-code__viewport" id="td-code-dc3394bf-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm -rf public resources/_gen
+</span></span><span class="line"><span class="cl">env -u HUGO_MODULE_REPLACEMENTS <span class="nv">GOWORK</span><span class="o">=</span>off <span class="nv">HUGO_MODULE_WORKSPACE</span><span class="o">=</span>off <span class="se">\
+</span></span></span><span class="line"><span class="cl">  hugo --gc --minify --printPathWarnings --panicOnWarning --logLevel info</span></span></code></pre></div></div>
+  <span class="visually-hidden" role="status" aria-live="polite" data-td-code-status></span>
+</div>
+<p>That does three things at once: clears possibly stale caches, rebuilds with the
+new version, and turns any warning into a failure.</p>
+<p><code>--logLevel info</code> includes informational diagnostics, while
+<code>--panicOnWarning</code> treats warnings as failures. Review the deprecation messages
+emitted by the pinned Hugo version before upgrading it; the severity and
+removal schedule depend on the deprecated feature.</p>
+<p>Once the build passes, look with your own eyes: the home page, a documentation
+page, a blog page, the 404, both languages, both colour schemes, the print view,
+and anywhere the site customized something.</p>
+<h2 id="from-1-0">Upgrading from 1.0 to 1.1<a class="td-heading-self-link" href="#from-1-0" aria-label="Link to this heading"></a>
+</h2>
+<div class="td-callout td-callout--important" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-exclamation" aria-hidden="true"></i><span class="td-callout__label">OINK 1.1.0 upgrade checklist</span></div>
+  <div class="td-callout__body">
+<p>This checklist covers the published v1.1.0 release. Each consumer still needs
+to update its dependency pin, rebuild and deploy; theme publication does not
+upgrade an existing site automatically.</p>
+  </div>
+</div><p>No source migration is required from 1.0.0. Hugo Extended 0.160.1 remains the
+floor; CI uses the pinned 0.165.0 toolchain. The module&rsquo;s Go 1.27.0 directive is
+unchanged from 1.0.0. On Hugo 0.160.x, a non-default generic <code>zh</code> language
+alongside the regional Chinese catalogs needs <code>locale: zh-CN</code>.</p>
+<p>Review the affected surfaces before choosing the new pin:</p>
+<div class="td-fields">
+<dl class="td-fields__list">
+<div class="td-field" id="field-languages">
+<dt class="td-field__term"><code class="td-field__name">Languages</code><a class="td-heading-self-link td-field__self-link" href="#field-languages" aria-label="Link to this field"></a>
+</dt>
+<dd class="td-field__description">All 32 interface catalogs have the same native-message schema. Check the site&rsquo;s language labels, plural counts, and RTL direction; authored translations remain the site&rsquo;s responsibility.</dd>
+</div>
+<div class="td-field" id="field-taxonomies">
+<dt class="td-field__term"><code class="td-field__name">Taxonomies</code><a class="td-heading-self-link td-field__self-link" href="#field-taxonomies" aria-label="Link to this field"></a>
+</dt>
+<dd class="td-field__description">Root pages become term-card directories with a taxonomy switcher. Review any taxonomy-template or CSS overrides, author portraits, and localized breadcrumbs.</dd>
+</div>
+<div class="td-field" id="field-sidebars">
+<dt class="td-field__term"><code class="td-field__name">Sidebars</code><a class="td-heading-self-link td-field__self-link" href="#field-sidebars" aria-label="Link to this field"></a>
+</dt>
+<dd class="td-field__description">Cached trees preserve effective page settings and remain usable without JavaScript. Exercise collapse, hover restore, mobile drawer, and keyboard focus; hidden content must leave the focus order.</dd>
+</div>
+<div class="td-field" id="field-groups">
+<dt class="td-field__term"><code class="td-field__name">Groups</code><a class="td-heading-self-link td-field__self-link" href="#field-groups" aria-label="Link to this field"></a>
+</dt>
+<dd class="td-field__description"><code>sidebar_divider: true</code> retains a section&rsquo;s children. Add <code>build.render: never</code> only when that group&rsquo;s own outputs are intentionally omitted; verify child navigation, breadcrumbs, paging, Print, and Book contents.</dd>
+</div>
+<div class="td-field" id="field-root-menus">
+<dt class="td-field__term"><code class="td-field__name">Root menus</code><a class="td-heading-self-link td-field__self-link" href="#field-root-menus" aria-label="Link to this field"></a>
+</dt>
+<dd class="td-field__description">Explicit <code>sidebar_root_menu: false</code> now applies to self-root sections too. The current linkable root remains a location marker.</dd>
+</div>
+<div class="td-field" id="field-custom-scripts">
+<dt class="td-field__term"><code class="td-field__name">Custom scripts</code><a class="td-heading-self-link td-field__self-link" href="#field-custom-scripts" aria-label="Link to this field"></a>
+</dt>
+<dd class="td-field__description">Feature-detect <code>OinkSidebar</code> and <code>OinkCommandPalette.registerSearchTail</code> if an integration must also support 1.0.0. Restore branch state through the API rather than changing classes or ARIA attributes directly.</dd>
+</div>
+<div class="td-field" id="field-copying-articles">
+<dt class="td-field__term"><code class="td-field__name">Copying articles</code><a class="td-heading-self-link td-field__self-link" href="#field-copying-articles" aria-label="Link to this field"></a>
+</dt>
+<dd class="td-field__description">With image zoom enabled, copy an image and its caption as plain text and rich HTML. Preview instructions must not enter the copied article; zoom and its keyboard controls must still work.</dd>
+</div>
+<div class="td-field" id="field-print-and-redoc">
+<dt class="td-field__term"><code class="td-field__name">Print and Redoc</code><a class="td-heading-self-link td-field__self-link" href="#field-print-and-redoc" aria-label="Link to this field"></a>
+</dt>
+<dd class="td-field__description">Check page and Book aggregate Print, heading and tab links, and local Redoc specifications under the real deployment prefix. Local specification paths are rooted under <code>static/</code>.</dd>
+</div>
+</dl>
+</div>
+
+<p><code>params.ui.image_zoom</code> and <code>params.offline_search</code> remain off by default. The
+new search hook does not enable a remote provider or add query telemetry.
+<code>params.ui.scroll_spy</code> and page-level <code>scroll_spy</code> remain accepted no-ops in
+1.x; removing the obsolete patch does not disable normal outline tracking.</p>
+<p>Update or remove affected site-level copies of theme code after comparing
+them with the new implementation. A copied old image-zoom script or sidebar
+partial will otherwise continue to hide the upstream fix.</p>
+<p>To test local theme changes with the documentation site, use its sibling theme
+checkout without committing a filesystem replacement:</p>
+<div class="td-code td-code--titled" id="td-code-dc3394bf-fence-4" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="3" role="group" aria-labelledby="td-code-dc3394bf-fence-4-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-dc3394bf-fence-4-title" title="Terminal — from oink.pgsty.com">Terminal — from oink.pgsty.com</span><div class="td-code__utilities">
+  <button class="td-code__copy" type="button" hidden data-td-code-copy
+          data-td-code-target="td-code-dc3394bf-fence-4" data-td-copy-mode="all"
+          data-td-label-copy="Copy code"
+          data-td-label-copied="Copied"
+          data-td-label-error="Copy failed"
+          aria-label="Copy code" title="Copy code">
+    <i class="fa-regular fa-copy" aria-hidden="true"></i>
+  </button>
+</div>
+  </div>
+  <div class="td-code__viewport" id="td-code-dc3394bf-fence-4-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">make check
+</span></span><span class="line"><span class="cl">make browser
+</span></span><span class="line"><span class="cl">make dev</span></span></code></pre></div></div>
+  <span class="visually-hidden" role="status" aria-live="polite" data-td-code-status></span>
+</div>
+<p>These commands validate the local checkout. For release acceptance, pin the
+published version, build without a module replacement, then validate the deployed pages.
+The authoring and API details live in <a href="/docs/write/organize/#group-only">content groups</a>,
+the <a href="/docs/design/shell/#sidebar-runtime">sidebar contract</a>,
+<a href="/docs/customize/panel/#search-tail">search actions</a>, and
+<a href="/docs/components/image/#zoom">image zoom</a>.</p>
+<h2 id="preparing-1-2">Upgrading from 1.1 to 1.2<a class="td-heading-self-link" href="#preparing-1-2" aria-label="Link to this heading"></a>
+</h2>
+<div class="td-callout td-callout--important" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-exclamation" aria-hidden="true"></i><span class="td-callout__label">Default appearance change</span></div>
+  <div class="td-callout__body">
+<p>Paper is the default in OINK 1.2.0. Set <code>params.ui.preset: slate</code> before
+adopting this change if the site must retain its existing appearance.
+<code>preset_menu: true</code> enables reader choice; its default remains false.
+Ink and Terminal require an explicit preset or menu list. Their buttons do
+not carry experiment badges; the configuration opt-in remains unchanged.
+Review custom dark brand selectors as described in <a href="/docs/customize/brand/#visual-presets">Brand</a>.</p>
+  </div>
+</div><p>OINK 1.2.0 is available as a published tag. Apart from the default appearance
+change above, no content migration is required. Hugo Extended 0.160.1 remains
+the compatibility floor. Update the module, then verify the site:</p>
+<ul>
+<li>Check the chosen preset, light/dark icons, keyboard and mobile menus, saved
+preferences, and custom font/accent overrides. Sun means light; moon means
+dark. Switching styles must not change the saved light/dark preference.</li>
+<li>Recheck explicit navigation, hidden subtrees, page links, Blog pagination
+canonicals, and SEO alternates for pages without translations.</li>
+<li>Check CJK keyword-only search summaries and outline links with literal
+percent signs. Compare source-derived Edit, History, and Create child links
+on Windows or mounted content; mappings must yield repository-relative paths.</li>
+<li>Check Landing content with JavaScript disabled or blocked, preserved metric
+formatting, dialogs and keyboard shortcuts, copy fallback, Draw.io controls,
+and numbered equations at narrow widths.</li>
+<li>Run a warning-fatal build for diagram endpoints and resource alt metadata;
+malformed values now produce a warning and use a safe fallback. To disable
+a PlantUML or Draw.io endpoint intentionally, use <code>false</code> or an empty string.</li>
+<li>Use the revised PDF and migration tools when testing publication or content
+conversion. Review PDF remote-resource opt-ins and migration diffs, including
+code examples nested in lists. The consumer-upgrade helper ships with
+1.2.0 for inventory, module updates and exact-version validation.</li>
+</ul>
+<p>The <a href="/docs/design/architecture/">Architecture</a>,
+<a href="/docs/design/components/">Components</a>, <a href="/docs/design/shell/">Shell</a>, and
+<a href="/docs/design/migration/">Migration</a> contracts describe the published 1.2.0
+behavior.</p>
+<h2 id="migration-toolkit">The content migration toolkit<a class="td-heading-self-link" href="#migration-toolkit" aria-label="Link to this heading"></a>
+</h2>
+<p>A batch of 0.4 shortcodes became the current native Markdown forms. The theme
+repository ships a tool for that, depending only on the Python standard library:</p>
+<div class="td-code td-code--titled" id="td-code-dc3394bf-fence-5" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="14" role="group" aria-labelledby="td-code-dc3394bf-fence-5-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-dc3394bf-fence-5-title" title="Terminal">Terminal</span><div class="td-code__utilities">
+  <button class="td-code__copy" type="button" hidden data-td-code-copy
+          data-td-code-target="td-code-dc3394bf-fence-5" data-td-copy-mode="all"
+          data-td-label-copy="Copy code"
+          data-td-label-copied="Copied"
+          data-td-label-error="Copy failed"
+          aria-label="Copy code" title="Copy code">
+    <i class="fa-regular fa-copy" aria-hidden="true"></i>
+  </button>
+</div>
+  </div>
+  <div class="td-code__viewport" id="td-code-dc3394bf-fence-5-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/pgsty/oink
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> oink
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 1. read-only inventory: what several sites would change, exportable as Markdown / JSON</span>
@@ -1334,12 +1613,12 @@ repository ships a tool for that, depending only on the Python standard library:
 </ul>
 <p>To convert one class first, use <code>--only</code> with the keys in the table&rsquo;s last
 column:</p>
-<div class="td-code td-code--titled" id="td-code-dc3394bf-fence-4" data-td-code data-td-code-auto-id
-     data-td-language="bash" data-td-line-count="1" role="group" aria-labelledby="td-code-dc3394bf-fence-4-title">
+<div class="td-code td-code--titled" id="td-code-dc3394bf-fence-6" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="1" role="group" aria-labelledby="td-code-dc3394bf-fence-6-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-dc3394bf-fence-4-title" title="Terminal">Terminal</span><div class="td-code__utilities">
+    <span class="td-code__filename" id="td-code-dc3394bf-fence-6-title" title="Terminal">Terminal</span><div class="td-code__utilities">
   <button class="td-code__copy" type="button" hidden data-td-code-copy
-          data-td-code-target="td-code-dc3394bf-fence-4" data-td-copy-mode="all"
+          data-td-code-target="td-code-dc3394bf-fence-6" data-td-copy-mode="all"
           data-td-label-copy="Copy code"
           data-td-label-copied="Copied"
           data-td-label-error="Copy failed"
@@ -1348,84 +1627,84 @@ column:</p>
   </button>
 </div>
   </div>
-  <div class="td-code__viewport" id="td-code-dc3394bf-fence-4-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 bin/migrations/oink06.py migrate --site ~/www/ddia --only callout,tabs --write</span></span></code></pre></div></div>
+  <div class="td-code__viewport" id="td-code-dc3394bf-fence-6-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 bin/migrations/oink06.py migrate --site ~/www/ddia --only callout,tabs --write</span></span></code></pre></div></div>
   <span class="visually-hidden" role="status" aria-live="polite" data-td-code-status></span>
 </div>
 <p>Rebuild afterwards (with <code>--panicOnWarning</code>) and look at the rendered pages: the
 tool guarantees correct syntax, not that the meaning is what you intended.</p>
-<h2 id="syntax-map">The 0.4 → v5 syntax map<a class="td-heading-self-link" href="#syntax-map" aria-label="Link to this heading"></a>
+<h2 id="syntax-map">The 0.4 → current syntax map<a class="td-heading-self-link" href="#syntax-map" aria-label="Link to this heading"></a>
 </h2>
 <div class="td-fields">
 <dl class="td-fields__list">
 <div class="td-field" id="field-alert-color-title-details-pageinfo-hand-written-lt-details-gt-lt-summary-gt">
 <dt class="td-field__term"><code class="td-field__name">{{% alert color= title= %}}</code>, <code>{{% details %}}</code>, <code>{{% pageinfo %}}</code>, hand-written <code>&lt;details&gt;&lt;summary&gt;</code>
-<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The v5 form</span><span class="td-field__meta-value"><code>&gt; [!TYPE] Title</code> / <code>&gt; [!DETAILS]-</code></span></span><a class="td-heading-self-link td-field__self-link" href="#field-alert-color-title-details-pageinfo-hand-written-lt-details-gt-lt-summary-gt" aria-label="Link to this field"></a>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The current form</span><span class="td-field__meta-value"><code>&gt; [!TYPE] Title</code> / <code>&gt; [!DETAILS]-</code></span></span><a class="td-heading-self-link td-field__self-link" href="#field-alert-color-title-details-pageinfo-hand-written-lt-details-gt-lt-summary-gt" aria-label="Link to this field"></a>
 </dt>
 <dd class="td-field__description"><code>callout</code></dd>
 </div>
 <div class="td-field" id="field-lt-tabpane-gt-tab-header-lt-code-group-gt-lt-code-tab-gt">
 <dt class="td-field__term"><code class="td-field__name">{{&lt; tabpane &gt;}}</code> + <code>{{% tab header= %}}</code>, <code>{{&lt; code-group &gt;}}</code> + <code>{{&lt; code-tab &gt;}}</code>
-<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The v5 form</span><span class="td-field__meta-value">Adjacent fences with <code>{tab= group= value=}</code>; tabs in running text use <code>{{&lt; tabs &gt;}}</code> + <code>{{&lt; tab &gt;}}</code></span></span><a class="td-heading-self-link td-field__self-link" href="#field-lt-tabpane-gt-tab-header-lt-code-group-gt-lt-code-tab-gt" aria-label="Link to this field"></a>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The current form</span><span class="td-field__meta-value">Adjacent fences with <code>{tab= group= value=}</code>; tabs in running text use <code>{{&lt; tabs &gt;}}</code> + <code>{{&lt; tab &gt;}}</code></span></span><a class="td-heading-self-link td-field__self-link" href="#field-lt-tabpane-gt-tab-header-lt-code-group-gt-lt-code-tab-gt" aria-label="Link to this field"></a>
 </dt>
 <dd class="td-field__description"><code>tabs</code></dd>
 </div>
 <div class="td-field" id="field-lt-filetree-gt-with-filetree-folder-and-filetree-file">
 <dt class="td-field__term"><code class="td-field__name">{{&lt; filetree &gt;}}</code> with <code>filetree/folder</code> and <code>filetree/file</code>
-<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The v5 form</span><span class="td-field__meta-value">The <code>filetree</code> data fence</span></span><a class="td-heading-self-link td-field__self-link" href="#field-lt-filetree-gt-with-filetree-folder-and-filetree-file" aria-label="Link to this field"></a>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The current form</span><span class="td-field__meta-value">The <code>filetree</code> data fence</span></span><a class="td-heading-self-link td-field__self-link" href="#field-lt-filetree-gt-with-filetree-folder-and-filetree-file" aria-label="Link to this field"></a>
 </dt>
 <dd class="td-field__description"><code>filetree</code></dd>
 </div>
 <div class="td-field" id="field-lt-gallery-gt-with-gallery-image">
 <dt class="td-field__term"><code class="td-field__name">{{&lt; gallery &gt;}}</code> with <code>gallery/image</code>
-<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The v5 form</span><span class="td-field__meta-value">The <code>gallery</code> data fence</span></span><a class="td-heading-self-link td-field__self-link" href="#field-lt-gallery-gt-with-gallery-image" aria-label="Link to this field"></a>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The current form</span><span class="td-field__meta-value">The <code>gallery</code> data fence</span></span><a class="td-heading-self-link td-field__self-link" href="#field-lt-gallery-gt-with-gallery-image" aria-label="Link to this field"></a>
 </dt>
 <dd class="td-field__description"><code>gallery</code></dd>
 </div>
 <div class="td-field" id="field-lt-echarts-gt-lt-infographic-gt">
 <dt class="td-field__term"><code class="td-field__name">{{&lt; echarts &gt;}}</code>, <code>{{&lt; infographic &gt;}}</code>
-<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The v5 form</span><span class="td-field__meta-value">Data fences of the same name (<code>$fn:</code> is unchanged; a <code>js</code> subfence moves to <code>window.OinkEchartsFunctions</code>)</span></span><a class="td-heading-self-link td-field__self-link" href="#field-lt-echarts-gt-lt-infographic-gt" aria-label="Link to this field"></a>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The current form</span><span class="td-field__meta-value">Data fences of the same name (<code>$fn:</code> is unchanged; a <code>js</code> subfence moves to <code>window.OinkEchartsFunctions</code>)</span></span><a class="td-heading-self-link td-field__self-link" href="#field-lt-echarts-gt-lt-infographic-gt" aria-label="Link to this field"></a>
 </dt>
 <dd class="td-field__description"><code>datafence</code></dd>
 </div>
 <div class="td-field" id="field-doc-cards-doc-card-nav-cards-nav-card-card-cardpane-doc-carousel">
 <dt class="td-field__term"><code class="td-field__name">doc-cards</code> / <code>doc-card</code>, <code>nav-cards</code> / <code>nav-card</code>, <code>card</code> / <code>cardpane</code>, <code>doc-carousel</code>
-<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The v5 form</span><span class="td-field__meta-value"><code>{{&lt; cards &gt;}}</code> + <code>{{&lt; card &gt;}}</code>, or a link list with <code>{.cards}</code></span></span><a class="td-heading-self-link td-field__self-link" href="#field-doc-cards-doc-card-nav-cards-nav-card-card-cardpane-doc-carousel" aria-label="Link to this field"></a>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The current form</span><span class="td-field__meta-value"><code>{{&lt; cards &gt;}}</code> + <code>{{&lt; card &gt;}}</code>, or a link list with <code>{.cards}</code></span></span><a class="td-heading-self-link td-field__self-link" href="#field-doc-cards-doc-card-nav-cards-nav-card-card-cardpane-doc-carousel" aria-label="Link to this field"></a>
 </dt>
 <dd class="td-field__description"><code>cards</code></dd>
 </div>
 <div class="td-field" id="field-lt-imgproc-gt-lt-image-gt">
 <dt class="td-field__term"><code class="td-field__name">{{&lt; imgproc &gt;}}</code>, <code>{{&lt; image &gt;}}</code>
-<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The v5 form</span><span class="td-field__meta-value"><code>![alt](src)</code> with the attribute line <code>{command= options= caption=}</code></span></span><a class="td-heading-self-link td-field__self-link" href="#field-lt-imgproc-gt-lt-image-gt" aria-label="Link to this field"></a>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The current form</span><span class="td-field__meta-value"><code>![alt](src)</code> with the attribute line <code>{command= options= caption=}</code></span></span><a class="td-heading-self-link td-field__self-link" href="#field-lt-imgproc-gt-lt-image-gt" aria-label="Link to this field"></a>
 </dt>
 <dd class="td-field__description"><code>image</code></dd>
 </div>
 <div class="td-field" id="field-lt-readfile-file-gt">
 <dt class="td-field__term"><code class="td-field__name">{{&lt; readfile file= &gt;}}</code>
-<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The v5 form</span><span class="td-field__meta-value"><code>{{&lt; include file= &gt;}}</code></span></span><a class="td-heading-self-link td-field__self-link" href="#field-lt-readfile-file-gt" aria-label="Link to this field"></a>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The current form</span><span class="td-field__meta-value"><code>{{&lt; include file= &gt;}}</code></span></span><a class="td-heading-self-link td-field__self-link" href="#field-lt-readfile-file-gt" aria-label="Link to this field"></a>
 </dt>
 <dd class="td-field__description"><code>include</code></dd>
 </div>
 <div class="td-field" id="field-the-fence-attribute-filename-quot-x-quot">
 <dt class="td-field__term"><code class="td-field__name">The fence attribute <code>{filename=&quot;x&quot;}</code></code>
-<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The v5 form</span><span class="td-field__meta-value"><code>{title=&quot;x&quot;}</code></span></span><a class="td-heading-self-link td-field__self-link" href="#field-the-fence-attribute-filename-quot-x-quot" aria-label="Link to this field"></a>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The current form</span><span class="td-field__meta-value"><code>{title=&quot;x&quot;}</code></span></span><a class="td-heading-self-link td-field__self-link" href="#field-the-fence-attribute-filename-quot-x-quot" aria-label="Link to this field"></a>
 </dt>
 <dd class="td-field__description"><code>fencetitle</code></dd>
 </div>
 <div class="td-field" id="field-lt-badge-outline-gt">
 <dt class="td-field__term"><code class="td-field__name">{{&lt; badge outline= &gt;}}</code>
-<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The v5 form</span><span class="td-field__meta-value">Drop the <code>outline</code> parameter</span></span><a class="td-heading-self-link td-field__self-link" href="#field-lt-badge-outline-gt" aria-label="Link to this field"></a>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The current form</span><span class="td-field__meta-value">Drop the <code>outline</code> parameter</span></span><a class="td-heading-self-link td-field__self-link" href="#field-lt-badge-outline-gt" aria-label="Link to this field"></a>
 </dt>
 <dd class="td-field__description"><code>badge</code></dd>
 </div>
 <div class="td-field" id="field-lt-example-gt-a-fence-lt-book-figures-kind-quot-tbl-quot-gt">
 <dt class="td-field__term"><code class="td-field__name">{{&lt; example &gt;}}</code> + a fence, <code>{{&lt; book-figures kind=&quot;tbl&quot; &gt;}}</code>
-<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The v5 form</span><span class="td-field__meta-value"><code>{{&lt; eg &gt;}}…{{&lt; /eg &gt;}}</code>, <code>{{&lt; book-tables &gt;}}</code></span></span><a class="td-heading-self-link td-field__self-link" href="#field-lt-example-gt-a-fence-lt-book-figures-kind-quot-tbl-quot-gt" aria-label="Link to this field"></a>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The current form</span><span class="td-field__meta-value"><code>{{&lt; eg &gt;}}…{{&lt; /eg &gt;}}</code>, <code>{{&lt; book-tables &gt;}}</code></span></span><a class="td-heading-self-link td-field__self-link" href="#field-lt-example-gt-a-fence-lt-book-figures-kind-quot-tbl-quot-gt" aria-label="Link to this field"></a>
 </dt>
 <dd class="td-field__description"><code>eg</code></dd>
 </div>
 <div class="td-field" id="field-_param-x-iframe-conditional-text-blocks-netlify-a-kindless-xref">
 <dt class="td-field__term"><code class="td-field__name">{{% _param x %}}</code>, <code>iframe</code>, <code>conditional-text</code>, <code>blocks/*</code>, <code>netlify</code>, a kindless <code>xref</code>
-<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The v5 form</span><span class="td-field__meta-value">Reported only; handle by hand</span></span><a class="td-heading-self-link td-field__self-link" href="#field-_param-x-iframe-conditional-text-blocks-netlify-a-kindless-xref" aria-label="Link to this field"></a>
+<span class="visually-hidden">, </span><span class="td-field__meta"><span class="td-field__meta-label">The current form</span><span class="td-field__meta-value">Reported only; handle by hand</span></span><a class="td-heading-self-link td-field__self-link" href="#field-_param-x-iframe-conditional-text-blocks-netlify-a-kindless-xref" aria-label="Link to this field"></a>
 </dt>
 <dd class="td-field__description"><code>reportonly</code></dd>
 </div>
@@ -1449,12 +1728,12 @@ implementation take over — not rewriting the prose.</p>
 </li>
 <li>
 <p>Move the configuration. <code>title</code>, <code>languages.*</code>, <code>github_repo</code>, <code>github_branch</code>, <code>page_width</code> and <code>params.ui.*</code> all stay in their existing semantic positions; OINK opens no namespace of its own. Search and the logo are just keys to turn on:</p>
-<div class="td-code td-code--titled" id="td-code-dc3394bf-fence-5" data-td-code data-td-code-auto-id
-     data-td-language="yaml" data-td-line-count="3" role="group" aria-labelledby="td-code-dc3394bf-fence-5-title">
+<div class="td-code td-code--titled" id="td-code-dc3394bf-fence-7" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="3" role="group" aria-labelledby="td-code-dc3394bf-fence-7-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-dc3394bf-fence-5-title" title="hugo.yml">hugo.yml</span><div class="td-code__utilities">
+    <span class="td-code__filename" id="td-code-dc3394bf-fence-7-title" title="hugo.yml">hugo.yml</span><div class="td-code__utilities">
   <button class="td-code__copy" type="button" hidden data-td-code-copy
-          data-td-code-target="td-code-dc3394bf-fence-5" data-td-copy-mode="all"
+          data-td-code-target="td-code-dc3394bf-fence-7" data-td-copy-mode="all"
           data-td-label-copy="Copy code"
           data-td-label-copied="Copied"
           data-td-label-error="Copy failed"
@@ -1463,7 +1742,7 @@ implementation take over — not rewriting the prose.</p>
   </button>
 </div>
   </div>
-  <div class="td-code__viewport" id="td-code-dc3394bf-fence-5-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+  <div class="td-code__viewport" id="td-code-dc3394bf-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">logo</span><span class="p">:</span><span class="w"> </span><span class="l">img/product.svg</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">offline_search</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span></span></span></code></pre></div></div>
   <span class="visually-hidden" role="status" aria-live="polite" data-td-code-status></span>
@@ -1479,7 +1758,7 @@ reads, and search stays off with no message at all.</p>
 <p>Fonts and styling compatibility. The Docsy Sass variables in the site&rsquo;s <code>assets/scss/_variables_project.scss</code> still work as the seed values for the font roles, and need not be deleted to upgrade: <code>$td-fonts-serif</code>, <code>$font-family-sans-serif</code>, <code>$headings-font-family</code> and <code>$font-family-code</code> each feed their role. Docsy&rsquo;s Google Fonts switches <code>$td-enable-google-fonts</code>, <code>$td-google-font-name</code> and <code>$td-web-font-path</code> are no longer read by the theme; leaving them breaks nothing and does nothing, because OINK ships Inter, Chakra Petch and IBM Plex Mono and neither preset requests anything from Google Fonts. To change fonts, go through the token layer — see <a href="/docs/customize/brand/">Brand and appearance</a>.</p>
 </li>
 <li>
-<p>Convert the shortcodes. Docsy&rsquo;s <code>alert</code>, <code>pageinfo</code>, <code>tabpane</code> and <code>card</code> families all have a v5 counterpart; convert them in bulk with the <a href="/docs/admin/upgrade/#migration-toolkit">migration toolkit</a> above, one <code>--only</code> class at a time.</p>
+<p>Convert the shortcodes. Docsy&rsquo;s <code>alert</code>, <code>pageinfo</code>, <code>tabpane</code> and <code>card</code> families all have a current counterpart; convert them in bulk with the <a href="/docs/admin/upgrade/#migration-toolkit">migration toolkit</a> above, one <code>--only</code> class at a time.</p>
 </li>
 <li>
 <p>Delete one group at a time, building after each. Rehearse on a scratch copy, recording the theme commit, the Hugo version, which files were removed and how many HTML files came out; only after confirming equivalence, repeat it on the production branch.</p>
@@ -1498,12 +1777,12 @@ reads, and search stays off with no message at all.</p>
 <p>A site&rsquo;s own script reports <code>$ is not defined</code>: the theme does not bundle
 jQuery, which Docsy used to load in every page&rsquo;s <code>&lt;head&gt;</code>. Nothing in the theme
 needs it, and a site that still does loads it itself:</p>
-<div class="td-code td-code--titled" id="td-code-dc3394bf-fence-6" data-td-code data-td-code-auto-id
-     data-td-language="html" data-td-line-count="1" role="group" aria-labelledby="td-code-dc3394bf-fence-6-title">
+<div class="td-code td-code--titled" id="td-code-dc3394bf-fence-8" data-td-code data-td-code-auto-id
+     data-td-language="html" data-td-line-count="1" role="group" aria-labelledby="td-code-dc3394bf-fence-8-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-dc3394bf-fence-6-title" title="layouts/_partials/hooks/head-end.html">layouts/_partials/hooks/head-end.html</span><div class="td-code__utilities">
+    <span class="td-code__filename" id="td-code-dc3394bf-fence-8-title" title="layouts/_partials/hooks/head-end.html">layouts/_partials/hooks/head-end.html</span><div class="td-code__utilities">
   <button class="td-code__copy" type="button" hidden data-td-code-copy
-          data-td-code-target="td-code-dc3394bf-fence-6" data-td-copy-mode="all"
+          data-td-code-target="td-code-dc3394bf-fence-8" data-td-copy-mode="all"
           data-td-label-copy="Copy code"
           data-td-label-copied="Copied"
           data-td-label-error="Copy failed"
@@ -1512,10 +1791,10 @@ needs it, and a site that still does loads it itself:</p>
   </button>
 </div>
   </div>
-  <div class="td-code__viewport" id="td-code-dc3394bf-fence-6-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ (resources.Get &#34;</span><span class="na">js</span><span class="err">/</span><span class="na">jquery</span><span class="err">.</span><span class="na">min</span><span class="err">.</span><span class="na">js</span><span class="err">&#34;).</span><span class="na">RelPermalink</span> <span class="err">}}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+  <div class="td-code__viewport" id="td-code-dc3394bf-fence-8-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ (resources.Get &#34;</span><span class="na">js</span><span class="err">/</span><span class="na">jquery</span><span class="err">.</span><span class="na">min</span><span class="err">.</span><span class="na">js</span><span class="err">&#34;).</span><span class="na">RelPermalink</span> <span class="err">}}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></span></span></code></pre></div></div>
   <span class="visually-hidden" role="status" aria-live="polite" data-td-code-status></span>
 </div>
-<p>A home page built from Docsy&rsquo;s <code>blocks/*</code> fails the v5 build with
+<p>A home page built from Docsy&rsquo;s <code>blocks/*</code> fails an OINK build with
 <code>template for shortcode &quot;blocks/cover&quot; not found</code>: the theme has no such
 shortcode family. Switch to home page sections in
 <code>data/home/&lt;language&gt;.yaml</code>, or give the page <code>layout: landing</code> — see
@@ -1532,7 +1811,7 @@ upgrade, check these first:</p>
 <p>The navbar shows on every layout. Its compact state is one row of icon navigation, with no second mobile accordion menu, so local scripts and tests that depend on the old mobile menu have to go. A whole section without a navbar uses <code>navbar_enabled: false</code> in a cascade.</p>
 </li>
 <li>
-<p>The footer defaults to <code>fat</code> site-wide. Only <code>fat</code> / <code>slim</code> / <code>none</code> are accepted, and footer data must live in <code>data/footer/&lt;language&gt;.yaml</code> (or <code>data/footer.yaml</code> on a single-language site); a leftover <code>footer</code> key in <code>data/home</code> fails the build with the new location.</p>
+<p>The footer defaults to <code>fat</code> site-wide. Only <code>fat</code> / <code>slim</code> / <code>none</code> are accepted, and footer data must live in <code>data/footer/&lt;language&gt;.yaml</code> (or <code>data/footer.yaml</code> on a single-language site); a leftover <code>footer</code> key in <code>data/home</code> warns with the new location, and strict publishing rejects it.</p>
 </li>
 <li>
 <p>Single-key navigation is on by default: <code>/</code> opens full search and <code>\</code> command-only mode. Training material describing the old behaviour needs updating. Page actions have also moved to a split button beside the breadcrumbs.</p>
@@ -1542,12 +1821,12 @@ upgrade, check these first:</p>
 </li>
 <li>
 <p>Two ICP footer parameters were removed: <code>footer_icp</code> and <code>footer_icp_url</code> became one string accepting inline Markdown.</p>
-<div class="td-code td-code--titled" id="td-code-dc3394bf-fence-7" data-td-code data-td-code-auto-id
-     data-td-language="yaml" data-td-line-count="2" role="group" aria-labelledby="td-code-dc3394bf-fence-7-title">
+<div class="td-code td-code--titled" id="td-code-dc3394bf-fence-9" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="2" role="group" aria-labelledby="td-code-dc3394bf-fence-9-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-dc3394bf-fence-7-title" title="hugo.yml">hugo.yml</span><div class="td-code__utilities">
+    <span class="td-code__filename" id="td-code-dc3394bf-fence-9-title" title="hugo.yml">hugo.yml</span><div class="td-code__utilities">
   <button class="td-code__copy" type="button" hidden data-td-code-copy
-          data-td-code-target="td-code-dc3394bf-fence-7" data-td-copy-mode="all"
+          data-td-code-target="td-code-dc3394bf-fence-9" data-td-copy-mode="all"
           data-td-label-copy="Copy code"
           data-td-label-copied="Copied"
           data-td-label-error="Copy failed"
@@ -1556,7 +1835,7 @@ upgrade, check these first:</p>
   </button>
 </div>
   </div>
-  <div class="td-code__viewport" id="td-code-dc3394bf-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+  <div class="td-code__viewport" id="td-code-dc3394bf-fence-9-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">footer_center_info</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;[京ICP备00000000号](https://beian.miit.gov.cn/)&#39;</span></span></span></code></pre></div></div>
   <span class="visually-hidden" role="status" aria-live="polite" data-td-code-status></span>
 </div>
@@ -1612,12 +1891,12 @@ upgrade, check these first:</p>
 </div>
 
 <p>This site&rsquo;s full gate is:</p>
-<div class="td-code td-code--titled" id="td-code-dc3394bf-fence-8" data-td-code data-td-code-auto-id
-     data-td-language="bash" data-td-line-count="2" role="group" aria-labelledby="td-code-dc3394bf-fence-8-title">
+<div class="td-code td-code--titled" id="td-code-dc3394bf-fence-10" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="3" role="group" aria-labelledby="td-code-dc3394bf-fence-10-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-dc3394bf-fence-8-title" title="Terminal">Terminal</span><div class="td-code__utilities">
+    <span class="td-code__filename" id="td-code-dc3394bf-fence-10-title" title="Terminal">Terminal</span><div class="td-code__utilities">
   <button class="td-code__copy" type="button" hidden data-td-code-copy
-          data-td-code-target="td-code-dc3394bf-fence-8" data-td-copy-mode="all"
+          data-td-code-target="td-code-dc3394bf-fence-10" data-td-copy-mode="all"
           data-td-label-copy="Copy code"
           data-td-label-copied="Copied"
           data-td-label-error="Copy failed"
@@ -1626,8 +1905,9 @@ upgrade, check these first:</p>
   </button>
 </div>
   </div>
-  <div class="td-code__viewport" id="td-code-dc3394bf-fence-8-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm <span class="nb">test</span>           <span class="c1"># build assertions, Markdown and favicon goldens, translation parity, rendered links</span>
-</span></span><span class="line"><span class="cl">npm run test:browser   <span class="c1"># Playwright: accessibility, responsive shell, keyboard navigation, content components, code blocks, scenario components</span></span></span></code></pre></div></div>
+  <div class="td-code__viewport" id="td-code-dc3394bf-fence-10-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">make check     <span class="c1"># local sibling theme: build, outputs, translations, and rendered links</span>
+</span></span><span class="line"><span class="cl">make browser   <span class="c1"># local sibling theme: accessibility, responsive and interactive behavior</span>
+</span></span><span class="line"><span class="cl">make build     <span class="c1"># published theme pinned in go.mod, without a local replacement</span></span></span></code></pre></div></div>
   <span class="visually-hidden" role="status" aria-live="polite" data-td-code-status></span>
 </div>
 <p>Another site runs the equivalent build, link, output and browser checks; the
@@ -1636,9 +1916,9 @@ details are in
 <div class="td-callout td-callout--important" role="note">
   <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-exclamation" aria-hidden="true"></i><span class="td-callout__label">A successful local build is not a completed release</span></div>
   <div class="td-callout__body">
-<p>The source building, the tag being signed and resolvable through the Go proxy,
-the site pinning that tag, and production being deployed are four things, each
-recorded separately. Do not let one green local build stand in for them.</p>
+<p>A validated source commit, a published tag that resolves through the module
+proxy, a consumer pin with its checksum, and a verified production deployment
+are separate states. One green local build does not prove the others.</p>
   </div>
 </div><p>The last step happens in the real environment: deploy a preview, verify the
 pages and the browser&rsquo;s network requests on the real URL, merge once reviewed,
@@ -1646,12 +1926,12 @@ and smoke-test production afterwards.</p>
 <h2 id="rollback">Rollback<a class="td-heading-self-link" href="#rollback" aria-label="Link to this heading"></a>
 </h2>
 <p>What rolls back is the version pin, not the working tree:</p>
-<div class="td-code td-code--titled" id="td-code-dc3394bf-fence-9" data-td-code data-td-code-auto-id
-     data-td-language="bash" data-td-line-count="4" role="group" aria-labelledby="td-code-dc3394bf-fence-9-title">
+<div class="td-code td-code--titled" id="td-code-dc3394bf-fence-11" data-td-code data-td-code-auto-id
+     data-td-language="bash" data-td-line-count="4" role="group" aria-labelledby="td-code-dc3394bf-fence-11-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-dc3394bf-fence-9-title" title="Terminal">Terminal</span><div class="td-code__utilities">
+    <span class="td-code__filename" id="td-code-dc3394bf-fence-11-title" title="Terminal">Terminal</span><div class="td-code__utilities">
   <button class="td-code__copy" type="button" hidden data-td-code-copy
-          data-td-code-target="td-code-dc3394bf-fence-9" data-td-copy-mode="all"
+          data-td-code-target="td-code-dc3394bf-fence-11" data-td-copy-mode="all"
           data-td-label-copy="Copy code"
           data-td-label-copied="Copied"
           data-td-label-error="Copy failed"
@@ -1660,7 +1940,7 @@ and smoke-test production afterwards.</p>
   </button>
 </div>
   </div>
-  <div class="td-code__viewport" id="td-code-dc3394bf-fence-9-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo mod get github.com/pgsty/oink@v0.4.0   <span class="c1"># the last known-good tag</span>
+  <div class="td-code__viewport" id="td-code-dc3394bf-fence-11-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo mod get github.com/pgsty/oink@v1.0.0   <span class="c1"># example: the site&#39;s last known-good tag</span>
 </span></span><span class="line"><span class="cl">hugo mod tidy
 </span></span><span class="line"><span class="cl">rm -rf public resources/_gen
 </span></span><span class="line"><span class="cl">hugo --gc --minify --panicOnWarning</span></span></code></pre></div></div>
@@ -1681,7 +1961,7 @@ is in <a href="/docs/admin/deploy/#rollback">Deploy</a>.</p>
 <li><a href="/docs/admin/troubleshooting/">Troubleshooting</a> — reading a build error after an upgrade</li>
 <li><a href="/docs/admin/preview/">Local preview</a> — clearing caches and the <code>go.work</code> workspace</li>
 <li><a href="/docs/start/from-scratch/">From scratch and other install methods</a> — weighing the four install methods</li>
-<li><a href="/docs/components/">Components</a> — each component&rsquo;s v5 form</li>
+<li><a href="/docs/components/">Components</a> — each component&rsquo;s current form</li>
 </ul>
 
 	<div class="td-page-end">
@@ -1772,8 +2052,10 @@ is in <a href="/docs/admin/deploy/#rollback">Deploy</a>.</p>
     <li><a href="#release-notes">Read the release notes first</a></li>
     <li><a href="#hugo-module">Upgrading the Hugo Module</a></li>
     <li><a href="#after-upgrade">What to do after upgrading</a></li>
+    <li><a href="#from-1-0">Upgrading from 1.0 to 1.1</a></li>
+    <li><a href="#preparing-1-2">Upgrading from 1.1 to 1.2</a></li>
     <li><a href="#migration-toolkit">The content migration toolkit</a></li>
-    <li><a href="#syntax-map">The 0.4 → v5 syntax map</a></li>
+    <li><a href="#syntax-map">The 0.4 → current syntax map</a></li>
     <li><a href="#from-docsy">Migrating from Docsy</a></li>
     <li><a href="#from-0-4">Upgrading from 0.4</a></li>
     <li><a href="#verify">Verify</a></li>
@@ -1801,15 +2083,23 @@ is in <a href="/docs/admin/deploy/#rollback">Deploy</a>.</p>
   <div id="td-shell-backlinks-children" class="td-shell-tree__children td-is-open">
     <div class="td-shell-tree__children-inner">
       <ul class="td-shell-backlinks__list">
-        <li class="td-shell-backlinks__item"><a href="/docs/" title="OINK is a documentation theme that needs nothing but Hugo Extended — components are written in Markdown, assets ship with the theme, both languages work out of the box, and one source produces four outputs.">Docs</a></li>
+        <li class="td-shell-backlinks__item"><a href="/blog/release/1.1.0/" title="OINK 1.1.0 brings 32 native interface catalogs, taxonomy directories, reliable sidebar state, site-owned search actions, and fixes for printing, keyboard focus, and copying images.">OINK v1.1.0</a></li>
+        <li class="td-shell-backlinks__item"><a href="/blog/release/1.2.0/" title="OINK 1.2.0 introduces Paper, Slate, Ink and Terminal, independent style and light/dark controls, local fonts, clearer search, consistent navigation, and safer book publishing and site maintenance.">OINK v1.2.0</a></li>
+        <li class="td-shell-backlinks__item"><a href="/docs/" title="Build a technical content site with shared navigation, multilingual support and search for documentation, blogs, books and API references.">Docs</a></li>
         <li class="td-shell-backlinks__item"><a href="/docs/admin/" title="Running the site from a laptop to production — local preview, deployment, comments, analytics and SEO, upgrades and troubleshooting.">Operations</a></li>
         <li class="td-shell-backlinks__item"><a href="/docs/admin/deploy/" title="Publish public/ to GitHub Pages, Cloudflare Pages or any static host — matching baseURL, Content Security Policy, the acceptance checklist and rollback.">Deploy</a></li>
         <li class="td-shell-backlinks__item"><a href="/docs/admin/troubleshooting/" title="Symptom → cause → fix for the four fault classes — build, language, search, platform — plus the checks a site can run for itself.">Troubleshooting</a></li>
-        <li class="td-shell-backlinks__item"><a href="/docs/design/migration/" title="The supported source, configuration, and validation boundaries for migration from OINK 0.4 through OINK 0.8.0.">Migration boundary</a></li>
-        <li class="td-shell-backlinks__item"><a href="/docs/start/anatomy/" title="What every cloned directory is — what must stay, what to replace with your own details, and what belongs to the documentation site and can go entirely.">Repository tour</a></li>
-        <li class="td-shell-backlinks__item"><a href="/docs/start/from-scratch/" title="Build a minimal OINK site in an empty directory, and weigh the four install methods — Module, submodule, offline archive, pinned clone.">From scratch</a></li>
-        <li class="td-shell-backlinks__item"><a href="/docs/write/releases/" title="Record versions, tags, archive links, checksums and install commands as local facts, then let release cards, asset tables, download blocks and index pages derive from that one record.">Releases and downloads</a></li>
+        <li class="td-shell-backlinks__item"><a href="/docs/design/migration/" title="Supported source, configuration, and validation boundaries for OINK migration, including the 1.2.0 changes.">Migration boundary</a></li>
+        <li class="td-shell-backlinks__item"><a href="/docs/start/" title="Start from the official OINK Starter, establish a working local baseline, then customize content, language, brand, integrations, and deployment in that order.">Get started</a></li>
       </ul>
+      <details class="td-shell-backlinks__more">
+        <summary>Show 3 more</summary>
+        <ul class="td-shell-backlinks__list">
+          <li class="td-shell-backlinks__item"><a href="/docs/start/from-scratch/" title="Build a minimal OINK site in an empty directory, and weigh the four install methods — Module, submodule, offline archive, pinned source copy.">From scratch</a></li>
+          <li class="td-shell-backlinks__item"><a href="/docs/start/starter/" title="Turn the official starter into your project site, one controlled layer at a time — languages, identity, home page, content, navigation, brand, integrations, and deployment.">OINK Starter</a></li>
+          <li class="td-shell-backlinks__item"><a href="/docs/write/releases/" title="Record versions, tags, archive links, checksums and install commands as local facts, then let release cards, asset tables, download blocks and index pages derive from that one record.">Releases and downloads</a></li>
+        </ul>
+      </details>
     </div>
   </div>
 </div>
@@ -1826,11 +2116,11 @@ is in <a href="/docs/admin/deploy/#rollback">Deploy</a>.</p>
   <div id="td-shell-taxonomy-categories-docs-children" class="td-shell-tree__children td-is-open">
     <div class="td-shell-tree__children-inner">
       <div class="td-shell-tags-cloud__chips">
+        <a class="td-shell-tag" href="/categories/design/">
+          <span>Design</span><span class="td-shell-tag__count">32</span>
+        </a>
         <a class="td-shell-tag" href="/categories/components/">
           <span>Components</span><span class="td-shell-tag__count">22</span>
-        </a>
-        <a class="td-shell-tag" href="/categories/design/">
-          <span>Design</span><span class="td-shell-tag__count">20</span>
         </a>
         <a class="td-shell-tag" href="/categories/customization/">
           <span>Customization</span><span class="td-shell-tag__count">15</span>
@@ -1844,9 +2134,6 @@ is in <a href="/docs/admin/deploy/#rollback">Deploy</a>.</p>
         <a class="td-shell-tag" href="/categories/introduction/">
           <span>Introduction</span><span class="td-shell-tag__count">4</span>
         </a>
-        <a class="td-shell-tag" href="/categories/get-started/">
-          <span>Get Started</span><span class="td-shell-tag__count">3</span>
-        </a>
       </div>
     </div>
   </div>
@@ -1859,7 +2146,59 @@ is in <a href="/docs/admin/deploy/#rollback">Deploy</a>.</p>
     title="Show table of contents" aria-label="Show table of contents"><i class="td-shell-icon td-shell-icon--menu fa-solid fa-bars" aria-hidden="true"></i></button>
 </div>
       </div>
-      <footer class="td-shell-footline d-print-none" data-td-shell-footer>
+      <footer class="d-print-none" data-td-shell-footer>
+  <div class="td-site-footer" id="td-site-footer">
+    <div class="td-site-footer__container">
+      <div class="td-site-footer__inner">
+        <div class="td-site-footer__brand"><a class="td-site-footer__logo" href="/" aria-label="PGSTY OINK">
+            <img src="/icons/logo.svg" alt="" width="28" height="28">
+            <span>PGSTY OINK</span>
+          </a><div class="td-site-footer__tagline"><strong>O</strong>pen <strong>I</strong>ndexed，<strong>N</strong>avigable <strong>K</strong>nowledge</div><div class="td-site-footer__slogan">A local-first, Hugo theme for engineering documentation</div>
+        </div>
+        <div class="td-site-footer__grid" style="--td-footer-cols: 4">
+          <nav class="td-site-footer__column" aria-label="Product">
+            <h2>Product</h2>
+            <ul>
+              <li><a href="/docs/about/">What is OINK</a></li>
+              <li><a href="/docs/about/features/">Highlights</a></li>
+              <li><a href="/docs/about/showcase/">Showcase</a></li>
+              <li><a href="/docs/about/license/">License &amp; credits</a></li>
+            </ul>
+          </nav>
+          <nav class="td-site-footer__column" aria-label="Documentation">
+            <h2>Documentation</h2>
+            <ul>
+              <li><a href="/docs/start/">Get started</a></li>
+              <li><a href="/docs/write/">Authoring</a></li>
+              <li><a href="/docs/components/">Components</a></li>
+              <li><a href="/docs/customize/">Customization</a></li>
+            </ul>
+          </nav>
+          <nav class="td-site-footer__column" aria-label="Operations">
+            <h2>Operations</h2>
+            <ul>
+              <li><a href="/docs/admin/preview/">Local preview</a></li>
+              <li><a href="/docs/admin/deploy/">Deploy</a></li>
+              <li><a href="/docs/admin/upgrade/">Upgrade</a></li>
+              <li><a href="/docs/customize/config/">Configuration</a></li>
+            </ul>
+          </nav>
+          <nav class="td-site-footer__column" aria-label="Community &amp; knowledge">
+            <h2>Community &amp; knowledge</h2>
+            <ul>
+              <li><a href="/blog/">Blog</a></li>
+              <li><a href="/blog/release/">Releases</a></li>
+              <li><a href="https://github.com/pgsty/oink" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+              <li><a href="https://github.com/google/docsy/discussions" target="_blank" rel="noopener noreferrer">Docsy discussions</a></li>
+              <li><a href="https://pg.center/docs/reference/" target="_blank" rel="noopener noreferrer">PG Center</a></li>
+              <li><a href="https://pgsql.cc/docs/" target="_blank" rel="noopener noreferrer">PGSQL.CC</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="td-shell-footline d-print-none">
   <div class="td-shell-footline__copy"><span class="td-footer__copyright">&copy; 2026
     <span class="td-footer__authors"><a href="https://vonng.com/en">Ruohang Feng</a> (<a href="https://github.com/Vonng">@Vonng</a>) @ <a href="https://pgsty.com/">PGSTY</a>, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a></span>
   </span><span class="td-footer__all_rights_reserved">All Rights Reserved</span></div>
@@ -1994,10 +2333,16 @@ is in <a href="/docs/admin/deploy/#rollback">Deploy</a>.</p>
     </section>
   </div>
 </div>
+    <button type="button" class="td-shell-footline__toggle" data-td-footer-toggle
+      aria-expanded="true" aria-controls="td-site-footer"
+      title="Hide footer links" aria-label="Hide footer links"
+      data-td-label-collapse="Hide footer links"
+      data-td-label-expand="Show footer links"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></button>
   </div>
+</div>
 </footer>
     </div>
-    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"Copy Markdown","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["Copy Markdown","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Copy Markdown","url":"/docs/admin/upgrade/index.md"},{"available":true,"description":"Copy link","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["Copy link","Share","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"Copy link","url":"http://localhost:1313/docs/admin/upgrade/"},{"available":true,"description":"Open in ChatGPT","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["Open in ChatGPT","Ask about this page","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in ChatGPT","url":"https://chatgpt.com/?hints=search\u0026prompt=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fadmin%2Fupgrade%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"Open in Claude","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["Open in Claude","Ask about this page","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in Claude","url":"https://claude.ai/new?q=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fadmin%2Fupgrade%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"View markdown","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["View markdown","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View markdown","url":"/docs/admin/upgrade/index.md"},{"available":true,"description":"View edit history","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["View edit history","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View edit history","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/admin/upgrade.md"},{"available":true,"description":"Edit this page","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["Edit this page","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Edit this page","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/admin/upgrade.md"},{"available":true,"description":"Create child page","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["Create child page","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create child page","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/admin?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"Create docs issue","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["Create docs issue","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create docs issue","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=Upgrade"},{"available":true,"description":"Create project issue","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["Create project issue","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create project issue","url":"https://github.com/pgsty/oink/issues/new"},{"available":true,"description":"Print entire section","disabledReason":"","icon":"fa-solid fa-print","id":"print_section","keywords":["Print entire section","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Print entire section","url":"/_print/docs/admin/"},{"available":true,"description":"Print this page","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["Print this page","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"Print this page","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL required","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"Switch language","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["Switch language","language"],"kind":"choice","options":[{"active":true,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/admin/upgrade/"},{"active":false,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/admin/upgrade/"}],"placements":{"page":false,"palette":true},"target":"self","title":"Switch language","url":""},{"available":false,"description":"Appearance","disabledReason":"unavailable","icon":"fa-solid fa-palette","id":"switch_preset","keywords":["preset","style","Paper","Slate","Style"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"paper","title":"Paper","value":"paper"}],"placements":{"page":false,"palette":true},"target":"self","title":"Style","url":""},{"available":true,"description":"Toggle color theme","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["Toggle color theme","Light","Dark"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"System","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"Light","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"Dark","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"Toggle color theme","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"Report or review theme and documentation issues","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["bug","support","roadmap"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK issues","url":"https://github.com/pgsty/oink/issues"}],"language":"en","quickLinks":[{"available":true,"description":"OINK is a documentation theme that needs nothing but Hugo Extended — components are written in Markdown, assets ship with the theme, both languages work out of the box, and one source produces four outputs.","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["Docs","docs"],"kind":"url","target":"self","title":"Docs","url":"/docs/"},{"available":true,"description":"OINK engineering stories, immersive guides, and release notes","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["Blog","blog"],"kind":"url","target":"self","title":"Blog","url":"/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"Copy Markdown","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["Copy Markdown","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Copy Markdown","url":"/docs/admin/upgrade/index.md"},{"available":true,"description":"Copy link","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["Copy link","Share","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"Copy link","url":"http://localhost:1313/docs/admin/upgrade/"},{"available":true,"description":"Open in ChatGPT","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["Open in ChatGPT","Ask about this page","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in ChatGPT","url":"https://chatgpt.com/?hints=search\u0026prompt=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fadmin%2Fupgrade%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"Open in Claude","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["Open in Claude","Ask about this page","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in Claude","url":"https://claude.ai/new?q=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fadmin%2Fupgrade%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"View markdown","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["View markdown","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View markdown","url":"/docs/admin/upgrade/index.md"},{"available":true,"description":"View edit history","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["View edit history","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View edit history","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/admin/upgrade.md"},{"available":true,"description":"Edit this page","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["Edit this page","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Edit this page","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/admin/upgrade.md"},{"available":true,"description":"Create child page","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["Create child page","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create child page","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/admin?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"Create docs issue","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["Create docs issue","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create docs issue","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=Upgrade"},{"available":true,"description":"Create project issue","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["Create project issue","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create project issue","url":"https://github.com/pgsty/oink/issues/new"},{"available":true,"description":"Print entire section","disabledReason":"","icon":"fa-solid fa-print","id":"print_section","keywords":["Print entire section","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Print entire section","url":"/_print/docs/admin/"},{"available":true,"description":"Print this page","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["Print this page","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"Print this page","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL required","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"Switch language","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["Switch language","language"],"kind":"choice","options":[{"active":true,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/admin/upgrade/"},{"active":false,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/admin/upgrade/"}],"placements":{"page":false,"palette":true},"target":"self","title":"Switch language","url":""},{"available":false,"description":"Appearance","disabledReason":"unavailable","icon":"fa-solid fa-palette","id":"switch_preset","keywords":["preset","style","Paper","Slate","Style"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"paper","title":"Paper","value":"paper"}],"placements":{"page":false,"palette":true},"target":"self","title":"Style","url":""},{"available":true,"description":"Toggle color theme","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["Toggle color theme","Light","Dark"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"System","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"Light","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"Dark","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"Toggle color theme","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"Report or review theme and documentation issues","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["bug","support","roadmap"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK issues","url":"https://github.com/pgsty/oink/issues"}],"language":"en","quickLinks":[{"available":true,"description":"Build a technical content site with shared navigation, multilingual support and search for documentation, blogs, books and API references.","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["Docs","docs"],"kind":"url","target":"self","title":"Docs","url":"/docs/"},{"available":true,"description":"OINK engineering stories, immersive guides, and release notes","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["Blog","blog"],"kind":"url","target":"self","title":"Blog","url":"/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
 
 <script src="/js/actions.js"></script>
 <script src="/js/core.js"></script>
@@ -2041,6 +2386,6 @@ is in <a href="/docs/admin/deploy/#rollback">Deploy</a>.</p>
       <span><kbd>esc</kbd> Close</span>
     </div>
   </div>
-</div><script src="/js/chunks/shell.js"></script><script src="/js/chunks/keyboard.js"></script><script src="/js/chunks/local-search.js"></script><script src="/js/chunks/dark-mode.js"></script><script src="/js/chunks/appearance.js"></script><script src="/js/chunks/giscus.js"></script><script src="/js/chunks/code-block.js"></script>
+</div><script src="/js/chunks/shell.js"></script><script src="/js/chunks/keyboard.js"></script><script src="/js/chunks/footer-collapse.js"></script><script src="/js/chunks/local-search.js"></script><script src="/js/chunks/dark-mode.js"></script><script src="/js/chunks/appearance.js"></script><script src="/js/chunks/giscus.js"></script><script src="/js/chunks/code-block.js"></script>
   </body>
 </html>

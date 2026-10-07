@@ -39,12 +39,36 @@
         <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;已实现，随 OINK 0.8.0 发布&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;2026-08-27 决议全部待决问题后接受本提案。两类输出——按顶层 section 分包的&#xA;&lt;code&gt;LLMSFULL&lt;/code&gt; 与语言根下的 &lt;code&gt;NAVJSON&lt;/code&gt; 导航树——都已在主题 &lt;code&gt;main&lt;/code&gt; 分支实现，随 OINK&#xA;0.8.0 发布，之后本提案退役；发布后的行为由&lt;a href=&#34;http://localhost:1313/zh/docs/design/architecture/#outputs-and-runtime&#34;&gt;架构契约&lt;/a&gt;&#xA;承担。OINK 已经支持每页 Markdown、语言内 &lt;code&gt;llms.txt&lt;/code&gt;、HTML discovery link 与&#xA;Copy Markdown；本页只覆盖新增的两类。&lt;/p&gt;</description>
       </item>
     <item>
+        <title>OINK CLI 与下一阶段产品路线</title>
+        <link>http://localhost:1313/zh/docs/design/proposals/oink-cli-roadmap/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/proposals/oink-cli-roadmap/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--warning&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-triangle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;首期为本地候选，后续路线仍是草案&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;用户于 2026-09-29 授权独立 Go 仓库 &lt;code&gt;pgsty/oink-cli&lt;/code&gt; 及首期开发。六个命令已有本地 &lt;code&gt;0.1.0-dev&lt;/code&gt; 实现，最终本地验收单独记录。当前行为归属 &lt;a href=&#34;http://localhost:1313/zh/docs/design/decisions/cli/&#34;&gt;CLI 决策与结果契约&lt;/a&gt;及&lt;a href=&#34;http://localhost:1313/zh/docs/start/cli/&#34;&gt;使用指南&lt;/a&gt;。这不代表 CLI 已公开发布或已有独立用户采用。主题 1.2、工具能力描述、Docsy 迁移、版本生命周期、OpenAPI、MCP 与 Studio 保持提案状态。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>OINK CLI 文档维护路线图</title>
+        <link>http://localhost:1313/zh/docs/design/proposals/oink-cli-maintenance-roadmap/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/proposals/oink-cli-maintenance-roadmap/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;已实现需求记录&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;有限 R1–R8 受支持本地实现与 A18 运行时/归档范围对验收增补记录的历史源码和&#xA;二进制通过；当前精简 CLI 需要独立验证。本记录保留原 URL&#xA;与锚点，保留历史排期文本和失败试验；稳定行为归属&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/decisions/cli/&#34;&gt;CLI 契约&lt;/a&gt;与&lt;a href=&#34;http://localhost:1313/zh/docs/start/cli/&#34;&gt;指南&lt;/a&gt;，历史证据归属&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/#a18&#34;&gt;2026-10-04 增补&lt;/a&gt;。&#xA;记录退出活动导航，未启动 E1–E4 是独立非活动范围。渲染导航/URL 验证需要这些准确晋升字节的独立收据。&lt;/p&gt;</description>
+      </item>
+    <item>
         <title>Book 出版链路</title>
         <link>http://localhost:1313/zh/docs/design/proposals/book-publication/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/zh/docs/design/proposals/book-publication/</guid>
         <description>&lt;div class=&#34;td-callout td-callout--warning&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-triangle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;已实现出版工具的提案草案&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;选择启用的 &lt;code&gt;BookManifest&lt;/code&gt;、通用 EPUB/PDF runner 与产物校验都已随版本发布，&#xA;其规范性描述在&lt;a href=&#34;http://localhost:1313/zh/docs/design/architecture/&#34;&gt;架构&lt;/a&gt;。没有任何一次构建会自己产出这两种文件。&#xA;本提案仍然未决、且只在本提案未决的，是消费站迁移。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>视觉预设与外观切换</title>
+        <link>http://localhost:1313/zh/docs/design/proposals/visual-presets/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/proposals/visual-presets/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;第一阶段随 1.2.0 发布，Ink/Terminal 可显式启用&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;Paper、Slate 与外观菜单已随 OINK 1.2.0 发布。当前行为与证据由&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/architecture/#visual-presets&#34;&gt;架构契约&lt;/a&gt;、&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/decisions/visual-presets/&#34;&gt;已接受决策&lt;/a&gt;和&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/research/2026-10-05-visual-presets-acceptance/&#34;&gt;验收记录&lt;/a&gt;管理。&#xA;随后的 &lt;a href=&#34;http://localhost:1313/zh/docs/design/research/2026-10-05-ink-terminal-experiment/&#34;&gt;Ink/Terminal 实验&lt;/a&gt;提供真实可切换输出；本提案继续承载两者的设计定稿。10 月 4 日注入样式生成的截图仍是研究原型，&#xA;与 10 月 5 日真实主题输出截图分开看待。&lt;/p&gt;</description>
       </item>
     
   </channel>

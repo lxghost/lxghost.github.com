@@ -52,7 +52,7 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/zh/docs/admin/upgrade/</guid>
-        <description>&lt;p&gt;升级 OINK 是换一个固定的模块版本，再确认站点仍能零告警构建。内容多数不用改；需要改的场景（0.4 的 shortcode 换成 v5 的 Markdown 原生形态）有一个可以干跑的迁移工具，不必手改几百个文件。&lt;/p&gt;</description>
+        <description>&lt;p&gt;升级 OINK 是换一个固定的模块版本，再确认站点仍能零告警构建。内容多数不用改；&#xA;0.4 shortcode 改成当前 Markdown 原生形态时，有一套默认干跑的迁移工具，不必手改&#xA;几百个文件。&lt;/p&gt;</description>
       </item>
     <item>
         <title>排错与检查</title>

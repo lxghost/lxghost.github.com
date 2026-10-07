@@ -17,7 +17,7 @@ blog_index_columns: 3
 blog_index_size: 24
 featured_image: hero
 toc_taxonomies: false
-footer_style: slim
+footer_style: fat
 comments: false
 share: [copy]
 # Section identity: Cases read in a neutral dark grey.
@@ -29,7 +29,7 @@ cascade:
   featured_image: hero
   toc_style: flow
   toc_taxonomies: false
-  footer_style: slim
+  footer_style: fat
   comments: false
   reading_time: false
   share: [copy]
@@ -39,5 +39,7 @@ cascade:
   sidebar_expand_levels: 3
 ---
 
-Fifteen production sites, from a two-page utility to a multilingual
-documentation estate and three books. Every card opens the live site.
+Fifteen site projects, from a two-page utility to a multilingual
+documentation estate and three books. Open a card to read the case, then follow
+its site or source link. Use the [Case Guide](/docs/about/showcase/) to compare
+examples by the kind of site you want to build.

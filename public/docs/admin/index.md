@@ -35,7 +35,7 @@ Section pages:
 - [Deploy](/docs/admin/deploy/): Publish public/ to GitHub Pages, Cloudflare Pages or any static host — matching baseURL, Content Security Policy, the acceptance checklist and rollback.
 - [Comments](/docs/admin/comments/): Wire GitHub Discussions into a comment section at the bottom of a page with giscus — on site-wide, off per page, following light and dark.
 - [Analytics and SEO](/docs/admin/analytics/): Connect an analytics service (or none), and pair up the canonical, hreflang, social cards, sitemap and robots the theme already generates.
-- [Upgrade](/docs/admin/upgrade/): Move to a new theme version, convert 0.4 shortcodes to v5 syntax with the migration toolkit, migrate from Docsy, and roll back when something goes wrong.
+- [Upgrade](/docs/admin/upgrade/): Pin a published theme version, adopt the 1.2.0 changes, migrate legacy content or a Docsy site, and roll back safely.
 - [Troubleshooting](/docs/admin/troubleshooting/): Symptom → cause → fix for the four fault classes — build, language, search, platform — plus the checks a site can run for itself.
 
 ---

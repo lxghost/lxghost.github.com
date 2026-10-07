@@ -44,7 +44,7 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/docs/admin/analytics/</guid>
-        <description>&lt;p&gt;The theme loads no analytics, form or advertising script by default, and makes&#xA;no outbound request until configured. Connecting one takes explicit&#xA;configuration, and that external data boundary belongs in the site&amp;rsquo;s privacy&#xA;statement. SEO is the opposite: canonical, hreflang, the &lt;code&gt;robots&lt;/code&gt; meta, Open&#xA;Graph and Twitter cards are generated per page by the theme, and what you have&#xA;to get right is &lt;code&gt;baseURL&lt;/code&gt; and each page&amp;rsquo;s &lt;code&gt;description&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;google-analytics&#34;&gt;Connecting Google Analytics&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Use Hugo&amp;rsquo;s built-in service configuration with a GA4 measurement ID:&lt;/p&gt;</description>
+        <description>&lt;p&gt;The theme loads no analytics, form or advertising script by default, and makes&#xA;no outbound request until configured. Connecting one takes explicit&#xA;configuration, and that external data boundary belongs in the site&amp;rsquo;s privacy&#xA;statement. SEO is the opposite: canonical, hreflang, the &lt;code&gt;robots&lt;/code&gt; meta, Open&#xA;Graph and Twitter cards are generated per page by the theme, and what you have&#xA;to get right is &lt;code&gt;baseURL&lt;/code&gt; and each page&amp;rsquo;s &lt;code&gt;description&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;google-analytics&#34;&gt;Connecting Google Analytics&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Use Hugo&amp;rsquo;s built-in service configuration. Replace &lt;code&gt;G-YOUR_MEASUREMENT_ID&lt;/code&gt;&#xA;with your own GA4 measurement ID before enabling this block:&lt;/p&gt;</description>
       </item>
     <item>
         <title>Upgrade</title>
@@ -52,7 +52,7 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/docs/admin/upgrade/</guid>
-        <description>&lt;p&gt;Upgrading OINK is changing one pinned module version and confirming the site&#xA;still builds warning-free. Most content needs no change; where it does — 0.4&#xA;shortcodes becoming v5&amp;rsquo;s native Markdown forms — a dry-run-first migration tool&#xA;does it, so hundreds of files need not be edited by hand.&lt;/p&gt;&#xA;&lt;p&gt;An upgrade changes rendered output. Create an upgrade branch before starting,&#xA;and the cost of backing out is discarding a branch.&lt;/p&gt;&#xA;&lt;h2 id=&#34;release-notes&#34;&gt;Read the release notes first&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Every version&amp;rsquo;s changes, breaking changes and upgrade notes are in its release&#xA;notes; read the target version&amp;rsquo;s before upgrading:&lt;/p&gt;</description>
+        <description>&lt;p&gt;Upgrading OINK is changing one pinned module version and confirming the site&#xA;still builds warning-free. Most content needs no change; where it does — 0.4&#xA;shortcodes becoming the current native Markdown forms — a dry-run-first migration tool&#xA;does it, so hundreds of files need not be edited by hand.&lt;/p&gt;&#xA;&lt;p&gt;An upgrade changes rendered output. Create an upgrade branch before starting,&#xA;and the cost of backing out is discarding a branch.&lt;/p&gt;</description>
       </item>
     <item>
         <title>Operations</title>

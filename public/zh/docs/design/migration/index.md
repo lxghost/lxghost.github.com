@@ -1,6 +1,6 @@
 # OINK 迁移边界
 
-> 从 OINK 0.4 到 OINK 0.8.0 所支持的源码、配置与验证迁移边界。
+> OINK 迁移所支持的源码、配置与验证边界，包含 1.2.0 变化。
 
 ---
 
@@ -8,9 +8,9 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 
 ---
 
-> [!IMPORTANT] OINK 0.8.0 契约
-> 这是随 OINK 0.8.0 正式发布的迁移契约。本页是权威中文源文件，与英文版本
-> 一同维护在 `content/docs/design/`。
+> [!NOTE] OINK 1.2.0 契约
+> 本契约描述 v1.2.0 的正式行为。唯一的中英文契约源文件位于
+> `content/docs/design/`。
 
 这是源码与配置指南，不是版本发布流水账。本地源码、提交、标签、推送、消费站点
 固定版本、部署与生产一致仍是彼此独立的状态。面向读者的升级流程见
@@ -32,8 +32,46 @@ python3 bin/migrations/oink06.py migrate --site <dir> --write
 python3 bin/migrations/oink06.py check --site <dir>
 ```
 
-代码围栏不会改写。`book_figures.py` 保留范围明确的 TPME、DDIA v1/v2 与
+代码围栏的内容不会改写，包括与有序或无序列表标记处于同一行、可带引用前缀的围栏。
+代码示例里额外的字面引用前缀不会结束该围栏。
+`book_figures.py` 保留范围明确的 TPME、DDIA v1/v2 与
 pg-internal profile；它不是通用解析器。
+
+隔离验证工具 `bin/measure-baseline.py` 和 `bin/sites/build-all.py` 会在清理已有
+输出前，拒绝与任一输入站点、运行工具的 checkout、选中的主题 checkout 或其他
+快照交叠的快照目录，包括通过符号链接别名指向这些位置的 `--keep` 目标，以及
+通过 `--theme` 选择其他主题 checkout 的情况。
+
+## 更新消费站点仓库 {#updating-consumers}
+
+主题发布后，应清点维护中的消费站点 checkout，并升级它们固定的版本。
+主题的 `bin/update-consumers.py` 扫描指定根目录下的直属项目目录，不递归进入
+归档、生成站点、缓存或主题测试夹具。
+
+此工具随 OINK 1.2.0 发布。在主题 checkout 中执行，先清点，再升级到正式标签。
+
+```sh
+python3 bin/update-consumers.py v1.2.0 --roots ~/www ~/pgsty
+python3 bin/update-consumers.py v1.2.0 --roots ~/www ~/pgsty --write --check
+```
+
+第一条命令只报告版本采用情况。第二条更新 `go.mod` 和 `go.sum` 中的 OINK
+条目，核对精确的模块解析图，并对每个选中站点运行将警告视为失败的构建。
+执行时禁用 `GOWORK`、Hugo 模块 workspace 和环境变量中的模块替换。日志与
+原始模块文件保存在临时报告目录，也可通过 `--report-dir` 指定目录。
+更新失败会恢复模块文件；构建失败则保留新版本以便排查，并返回失败状态。
+扫描根目录无法读取或消费站模块格式错误时，会记录失败条目，继续清点其余站点，
+并以非零状态退出。显式选择的目录不存在或不是 OINK 消费站时，也会明确报告失败。
+
+工具跳过链接 worktree、隐藏副本和非默认分支。应检查所有跳过与阻塞条目：
+通过 `--sites <path>...` 显式选择已核对的 checkout，包括已有模块改动的目录。
+`go.mod` 中的 OINK 替换需要手工处理。vendor 主题需先独立核对，再使用
+`--refresh-vendor` 备份并重新生成 `_vendor/`；只改模块版本不会更新 vendor
+中的主题。
+
+保留无关改动，同步站点 README 和配置中的当前主题版本说明，并运行站点自身的
+检查与视觉验收。工具不改写正文、不提交、不推送、不部署。这些完成状态必须
+分别记录，已使用目标标签的站点也要纳入清点。
 
 ## 从 0.4 内容迁移到当前形态 {#content-to-current-forms}
 
@@ -67,7 +105,7 @@ pg-internal profile；它不是通用解析器。
 | `github_url` | `github_repo` |
 | `ui.no_left_sidebar` | `ui.sidebar_enabled`，取反 |
 | breadcrumb 别名 | `ui.breadcrumb` |
-| `ui.scrollSpy` | `ui.scroll_spy`，取反 |
+| `ui.scrollSpy` | 无行为替代；`ui.scroll_spy` 仅作为 1.x 静默兼容 no-op 保留 |
 | `ui.showLightDarkModeMenu` | `ui.dark_mode.show_menu` |
 | `ui.readingtime` | `ui.reading_time` |
 | `ui.ul_show` | `ui.sidebar_expand_levels` |
@@ -103,17 +141,20 @@ front matter `ui` map 会连同替代项一起报告。
 独立块图片。要使用 `\(...\)`、`\[...\]` 或 `$$...$$`，需要显式启用 passthrough；
 Hugo 不会合并主题的 markup 配置。
 
-针对改动的契约运行范围最小的源码与输出检查，覆盖两个受支持的 Hugo 版本；运行时
-变化时执行 JavaScript 测试，并严格构建根路径与子路径。对于维护范围内的站点，
-在桌面与窄视口检查有代表性的 EN/ZH Docs 与 Blog 路由，再分别记录固定版本、部署
-与线上一致状态。
+针对改动的契约，使用固定的 Hugo Extended 0.165.0 工具链运行范围最小的源码与输出
+检查；运行时变化时执行 JavaScript 测试，并严格构建根路径与子路径。对于维护范围
+内的站点，在桌面与窄视口检查有代表性的 EN/ZH Docs 与 Blog 路由，再分别记录固定
+版本、部署与线上一致状态。
 
 ---
 
 反链：
 
+- [OINK v1.2.0](/zh/blog/release/1.2.0/)
+- [版本升级](/zh/docs/admin/upgrade/)
 - [设计](/zh/docs/design/)
 - [组件](/zh/docs/design/components/)
 - [落地页](/zh/docs/design/landing/)
+- [CLI 与路线图](/zh/docs/design/proposals/oink-cli-roadmap/)
 - [消费站证据](/zh/docs/design/research/consumer-evidence/)
 - [页面参数](/zh/docs/write/frontmatter/)

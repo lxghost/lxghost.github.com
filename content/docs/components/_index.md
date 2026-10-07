@@ -28,19 +28,20 @@ terminal recordings. Five rules cover them:
 - Every shortcode is written `{{</* name */>}}`. Only `{{%/* steps */%}}` uses
   the `%` delimiter, because its body is page-level Markdown.
 - Nested names (`tab`, `card`, `field`) are valid only inside their parent.
-- A bad parameter never degrades silently. The build fails, and the error names
-  the file and the line.
+- A bad author parameter never degrades silently. An ordinary preview warns,
+  names the source position, and uses the documented fallback or omits the
+  unsafe part; a publishing build with `--panicOnWarning` fails on that warning.
 - Public string parameters (captions, labels, titles) are plain text and are
   not parsed as Markdown. Only bodies are Markdown: `tab`, `card` and `field`
   bodies, files pulled in by `include`, and the Book `fig` / `tbl` / `eg`
   bodies.
-- A component the page never used ships no runtime. The scripts are
-  concatenated from what this page actually used; print, Markdown and RSS
-  output load nothing at all.
+- A component the page never used ships no runtime. HTML references only the
+  stable capability chunks the page actually needs; print, Markdown and RSS
+  load no interactive runtime.
 
 ## Site prerequisites {#prerequisites}
 
-Components depend on three Goldmark settings. Cloning this site gives you them
+Components depend on three Goldmark settings. OINK Starter provides them
 already configured; copy the snippet when starting from scratch:
 
 ```yaml {title="hugo.yml"}
@@ -84,7 +85,7 @@ fence = a fenced block with a language tag; shortcode = `{{</* … */>}}`. The
 | [Steps](/docs/components/steps/) | A procedure with an order | `{.steps}` | native + shortcode | none |
 | [Cards](/docs/components/cards/) | A set of parallel destinations | `{.cards}` | native + shortcode | none |
 | [FileTree](/docs/components/filetree/) | Directory structure with an aligned comment column | ```` ```filetree ```` | fence | per page |
-| [Math](/docs/components/math/) | KaTeX inline and display formulas | `$$ … $$` | native | per page |
+| [Math](/docs/components/math/) | KaTeX inline and display formulas | `$$ … $$` | native | none |
 | [Mermaid](/docs/components/mermaid/) | Flowcharts, sequence diagrams, Gantt charts | ```` ```mermaid ```` | fence | per page |
 | [PlantUML](/docs/components/plantuml/) | UML diagrams; needs a rendering server | ```` ```plantuml ```` | fence | site switch |
 | [Markmap](/docs/components/markmap/) | A Markdown outline becomes a mind map | ```` ```markmap ```` | fence | site switch |

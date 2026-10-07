@@ -1,6 +1,6 @@
 # 架构契约
 
-> 仓库装配、配置、诊断、输出、性能、安全、CSS、无障碍与发布状态的边界。
+> 仓库装配、配置、诊断、本地化、输出、性能、安全、CSS、无障碍与发布状态的边界。
 
 ---
 
@@ -8,9 +8,9 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 
 ---
 
-> [!IMPORTANT] OINK 0.8.0 契约
-> 这是随 OINK 0.8.0 正式发布的架构契约。本页是权威中文源文件，与英文版本
-> 一同维护在 `content/docs/design/`。
+> [!NOTE] OINK 1.2.0 契约
+> 本契约描述 v1.2.0 的正式行为。唯一的中英文契约源文件位于
+> `content/docs/design/`。
 
 ## 仓库与装配 {#repository-and-assembly}
 
@@ -62,6 +62,47 @@ OINK 没有通用的键名重命名注册表。仍需给出迁移诊断的过渡
 `appId`、`apiKey` 与 `indexName`；配置不完整时发出警告，而且不产生网络请求。
 Draw.io 只在渲染内容含 PNG 或 SVG 候选图片时加载，并且每个不同的图片 URL
 只检查一次。
+图表端点必须是字符串，内容为带主机的 HTTP(S) URL 或同站路径。不支持的协议、
+省略协议的 URL、反斜杠、空白字符及缺少路径的同站引用都会告警，并在选择运行时前关闭该集成。
+
+## 界面本地化 {#interface-localization}
+
+> [!NOTE] 自 OINK 1.1 起提供
+> OINK 1.1.0 将原生界面语言包扩展到下方列出的完整语言集合；消费站点编写的正文
+> 仍需自行翻译。
+
+OINK 为
+[`google/docsy@64f51c5`](https://github.com/google/docsy/tree/64f51c5bde2abd2e8a001cb31b32656f5800ca56/theme/i18n)
+中现有的 31 个 locale 文件名提供原生界面文本，并额外保留通用 `zh` 作为简体中文
+默认值：
+
+```text
+ar az bg bn de en es et fa fi fr he hi hu it ja ko nl no oc pl pt-br ro ru
+sr-cyrl sr-latn sv tr uk zh-cn zh-tw
+```
+
+这是一项兼容范围，不代表运行时依赖 Docsy，也不声称消费站点编写的正文已经翻译。
+Docsy 以后增加的 locale 不会自动成为 OINK 支持项；它必须先补齐完整的 OINK
+词条，并接受与现有语言相同的审校。
+
+`i18n/en.yaml` 管理 194 条消息的 schema。OINK 的 32 份语言包都必须拥有完全相同
+的消息集与原生界面文本；只有经过审查的产品名、标点、通行缩写或目标语言真实
+同形词可以与英文保持相同，不再生成整段英文 fallback。`zh` 与 `zh-cn` 使用简体中文，
+`zh-tw` 使用繁体中文。
+
+在兼容下限 Hugo 0.160.x 上，如果同时存在地区化的中文语言包，作为非默认语言的
+通用 `zh` 语言键必须显式设置具体的 `locale: zh-CN`；从 Hugo 0.161 起，该配置也能
+解析裸 `locale: zh`。这项约束只影响语言配置，不改变语言包文件名 `i18n/zh.yaml`。
+
+`%s`、`{count}`、`{{ .Count }}` 等运行时占位符可以移到符合目标语言语法的位置，
+但字节内容必须保持不变。取值可以是字符串或 Hugo 复数消息映射。复数映射使用该
+语言支持的类别（`zero`、`one`、`two`、`few`、`many`、`other`），必须包含 `other`，
+每种形式都是包含相同占位符的字符串。语言包不得包含隐藏的双向文本控制符；
+阿拉伯语、波斯语和希伯来语的方向仍由消费站点的语言设置（`direction: rtl`）
+决定，不得把方向字符塞进译文。
+`bin/check-i18n.py` 会检查 locale 集合、schema、取值类型、占位符、方向控制符，
+以及少量已审查的英文本地同形词。因此增加可见字符串时，必须在同一变更中为每份
+语言包提供译文，不能再运行 fallback 生成器。
 
 ## 特色图片 {#featured-images}
 
@@ -78,7 +119,10 @@ Hugo 的 `images` 是唯一的创作 API；`params.images` 只作为全站社交
 资源仍然有效，只是不能执行 Hugo 图片操作。
 
 `featured-image-resolve.html` 统一决定来源优先级与相对、绝对 URL。页面自己的
-包资源优先于继承的 cascade 图片。列表缩略图、Open Graph/Twitter/schema
+显式 `images` 优先于页面包资源，页面包资源优先于继承的 cascade 图片；显式值与
+继承值恰好相同时也遵守此顺序。有源文件的页面通过原始 front matter 判断是否显式
+声明，由 Hugo 解析 YAML、TOML 或 JSON；没有源文件的生成页面将解析后的 `images`
+视为显式值。列表缩略图、Open Graph/Twitter/schema
 帮助模板、作者头像、Pinterest 图片与博客展示都消费同一个决定。
 
 `params.ui.featured_image` 只用于博客，默认值为 `none`；页面或 cascade 可用
@@ -99,6 +143,11 @@ front matter 覆盖。`banner` 在单页标题上方渲染图片，`wash` 用图
 | RSS | 安全的静态摘要，或明确省略 |
 | NAVJSON | 按站点选择启用：每种语言一份 `navigation.json`，序列化侧栏与 pager 已经在读的导航权威 |
 | BookManifest | 选择启用、供出版打包器消费的有序 JSON 交接；绝不冒充 EPUB 或 PDF |
+
+各输出格式按既定顺序执行；可变格式状态并不存在跨格式竞态。但在 Print 内，Hugo
+可能并行渲染同一 Book 页面与相互重叠的聚合。因此每页由一个缓存 coordinator 按
+固定顺序生成普通与整书两种变体，各调用方只选择自己需要的形态。普通 Print 保留
+页面局部标题与带路由的 xref URL；Book 聚合保留带命名空间的标题与文档内 xref。
 
 站点自行选择是否启用自定义输出；OINK 不会强制生成昂贵的整书聚合。HTML 加载
 共享操作层、核心层，以及由页面 flag 选择的稳定第一方能力分片。需要模板化的能力
@@ -132,6 +181,10 @@ Chrome/Chromium 二进制，输出带 CSS 页码的 A4 页面。两种工具都�
 调用者的工作目录。普通 Hugo 构建不会执行出版工作；PDF 仍从 Print 派生，而不是另一种
 模板输出。
 
+PDF 服务还会应用 CSP sandbox、拒绝 meta refresh 导航，并拒绝指向构建树以外的
+符号链接。没有网络 opt-in 时，图片与媒体请求仅限回环同源地址和 data URL，
+CSS 或 SVG 发起的请求也受此限制。
+
 性能规则如下：
 
 - 若站点级资源或 `partialCached` 结果可以承担工作，不要为每一页遍历
@@ -145,7 +198,7 @@ Chrome/Chromium 二进制，输出带 CSS 页码的 A4 页面。两种工具都�
 - 校验确实可达的作者输入，不校验假想的内部状态。
 
 `bin/measure-baseline.py` 测量构建时间、输出体积、bundle 数量与 shortcode
-密度。`bin/sites/build-all.py` 在隔离快照中构建维护范围内的消费站点。
+密度。
 
 ## 信任边界、CSS 与无障碍 {#trust-css-and-accessibility}
 
@@ -160,7 +213,12 @@ Chrome/Chromium 二进制，输出带 CSS 页码的 A4 页面。两种工具都�
 减少动画、超长 token 与窄视口。主题拥有的装饰图标带 `aria-hidden`；只有包含
 任务列表或原始 Font Awesome 元素的页面才加载作者内容无障碍修复。
 
-字体角色为 `ui`、`body`、`heading`、`code`、`display`、`meta` 与 `print`，
+阅读容器区分指针聚焦与键盘导航。由指针聚焦的 main 区域、表格滚动区或代码 `pre`
+不会仅因读者随后按键而出现边框；Tab、失焦或新的非指针聚焦会清除这项豁免。普通控件
+保留自己的焦点样式，滚动容器保留 `tabindex`，跳过导航的目标在标题附近显示局部边框，
+不再包围整篇文章。强制颜色模式保留键盘提示，不使用全局焦点边框重置。
+
+字体角色为 `ui`、`body`、`heading`、`code`、`display`、`meta`、`brand` 与 `print`，
 通过 `--td-*-font-family` 暴露。`ui` 是主字体：`body` 经它解析，`heading` 又经
 `body` 解析，因此赋一次值即同时移动界面、正文与标题。`params.ui.typography`
 可取 `technical` 或 `system`；两者编译到同一份样式表，不加载运行时。旧
@@ -175,7 +233,7 @@ Bootstrap/Docsy Sass 变量继续为这些角色提供初值。
 技术字体。
 
 强调色按角色拆开。**强调文字**（链接、外链、行内代码）跟随 Bootstrap 链接
-族与 `--bs-code-color`，主题色永不重声明它们；行内代码是固定的胭脂红明暗对，
+族与 `--bs-code-color`，主题色永不重声明它们；行内代码随视觉预设变化：Slate 保留胭脂红明暗对，Paper 使用墨色文字与淡底，
 使一页密集的标识符读成「代码与正文」而非「代码与链接」。**强调底**（选中行、
 指针划过导航行时那层更灰的底、hover 淡铺、目录药丸与轨道光点、徽章 hover、
 卡片 hover 时的外边、分享按钮 hover 时的实心底、文本选中、焦点环）跟随
@@ -192,6 +250,39 @@ Bootstrap/Docsy Sass 变量继续为这些角色提供初值。
 都由解析出的整数通道格式化，绝不来自作者文本。同一个解析器同时回答 head 注入块
 与侧栏根切换器的「这一页是什么颜色」。
 
+## 视觉预设 {#visual-presets}
+
+OINK 1.2.0 默认使用 Paper。`params.ui.preset` 接受 `paper`、`slate`，以及显式
+选择的实验预设 `ink`、`terminal`；非法值与保留名称（`folio`、`canvas`）告警并回退到
+`paper`。`params.ui.preset_menu` 默认 `false`；`true` 提供 Paper、Slate 与站点默认值，
+列表指定可选项并可显式开启实验。列表必须包含站点默认值，缺失时告警并补入。不支持页面级预设。
+
+Hugo 为所有文档根元素输出 `data-td-preset` 与 `data-td-site-preset`，包括 404
+和打印输出。开启读者选择时，head 内联脚本在 CSS 加载前校验 `td-preset`。选择
+带默认标记的预设会删除该存储键。非法存储值被清除；存储被禁用时，控件仍可在当前
+页面使用，并显示无法持久化的提示。`storage` 事件同步标签页，`td-preset-change`
+携带 `{preset, previous, stored}`。明暗状态独立使用 `data-bs-theme`、
+`td-color-theme` 与 `td-theme-change`。浏览器栏颜色跟随实际明暗和预设。禁用
+JavaScript 时显示站点默认的浅色预设；外观控件需要 JavaScript。
+
+四套预设编入同一个样式表。Slate 保留 v1.1.0 的基础色板选择器与值。Paper 调整
+配色和少量组件规则，不改变外壳列宽、断点或全局间距。Paper 深色块重声明浅色块的
+每个色板 token，并覆盖嵌套深色区域。字体角色保持同等选择器优先级，顺序为预设、
+`typography: system`、head 输出的 `params.ui.fonts`；站点的
+`_styles_project.scss` 仍在最后。`brand` 单独控制字标。Paper 使用本地 IBM Plex Sans，
+Slate 保留 Inter；两者的字标保留 Chakra Petch，代码保留 IBM Plex Mono。
+系统排版模式不请求内置文字字体，除非站点显式覆盖角色。没有新增外部字体请求。
+Ink 统一使用 Inter，配合红色标记、正文链接下划线、直角与无阴影。Terminal 使用
+等宽界面和标题、Plex Sans 正文、青色链接、琥珀强调、2 px 圆角与无阴影；仅压紧
+桌面导航，保留正文行长与手机触控目标。CSS 标题标记使用空的无障碍替代文字，
+不支持的浏览器省略标记。显式 `fonts.ui` 仍控制主字体，除非设置了有效的
+`fonts.body`。参见[实验记录](/zh/docs/design/research/2026-10-05-ink-terminal-experiment/)。
+
+Giscus 自动色板同时跟随风格与明暗；显式主题或浅深色样式表配置仍优先。打印使用
+当前预设的浅色配色与白纸背景，即使屏幕为深色。Mermaid 与 ECharts 继续只跟随
+明暗，API 组件保留供应商色板。参见[已接受决策](/zh/docs/design/decisions/visual-presets/)
+与[本地验收记录](/zh/docs/design/research/2026-10-05-visual-presets-acceptance/)。
+
 ## 发布状态 {#release-states}
 
 源码完成、本地验证、提交、打标签、推送、消费站点固定版本、部署与生产一致是彼此
@@ -201,10 +292,17 @@ Bootstrap/Docsy Sass 变量继续为这些角色提供初值。
 
 反链：
 
+- [版本升级](/zh/docs/admin/upgrade/)
+- [多语言](/zh/docs/customize/i18n/)
 - [设计](/zh/docs/design/)
 - [组件](/zh/docs/design/components/)
+- [CLI 契约](/zh/docs/design/decisions/cli/)
 - [诊断策略](/zh/docs/design/decisions/diagnostics/)
+- [视觉预设](/zh/docs/design/decisions/visual-presets/)
 - [落地页](/zh/docs/design/landing/)
 - [提案](/zh/docs/design/proposals/)
 - [Agent 索引](/zh/docs/design/proposals/agent-indexes/)
 - [Book 出版](/zh/docs/design/proposals/book-publication/)
+- [CLI 与路线图](/zh/docs/design/proposals/oink-cli-roadmap/)
+- [视觉预设](/zh/docs/design/proposals/visual-presets/)
+- [2026-09-19 社区反馈调研](/zh/docs/design/research/2026-09-19-upstream-review/)

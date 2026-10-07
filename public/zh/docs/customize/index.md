@@ -46,7 +46,7 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 - [键盘导航](/zh/docs/customize/keyboard/): 全部单键快捷键、它们何时让行给输入，以及按站点或按页面关闭的方法。
 - [多语言](/zh/docs/customize/i18n/): 增加一种语言、并排放置译文、按语言配置菜单与界面文案，并对齐中英标题锚点。
 - [多版本](/zh/docs/customize/versions/): 配置版本切换菜单与归档横幅，并选择多个版本在域名上的部署布局。
-- [分类体系](/zh/docs/customize/taxonomy/): 用 tags / categories 给页面加一条横跨目录的索引：术语页、筛选芯片、右栏分类云与顶栏分类面板都是自动的。
+- [分类体系](/zh/docs/customize/taxonomy/): 用 tags / categories 给页面加一条横跨目录的索引：术语页、术语卡片、右栏分类云与顶栏分类面板都是自动的。
 - [仓库与页面信息](/zh/docs/customize/repository/): 把「编辑当前页面」「提交文档议题」「查阅编辑历史」接到你的仓库，并在页尾显示最后修改时间、贡献者与反馈组件。
 - [打印支持](/zh/docs/customize/print/): 单页交给浏览器的 Cmd/Ctrl+P，整个栏目用 print 输出格式合成一份连续文档。
 - [Agent 支持](/zh/docs/customize/agents/): 每一页多产出一份 .md，站点根目录多一份 llms.txt，读者可以把当前页交给 ChatGPT 或 Claude。

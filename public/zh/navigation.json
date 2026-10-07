@@ -6,7 +6,7 @@
       {
         "children": [
           {
-            "description": "安装唯一必需的工具，启动本地预览，在调整设计前先建立可见的基线。",
+            "description": "安装前置工具，启动本地预览，在调整设计前先建立可见的基线。",
             "id": "/book/01-start/",
             "kind": "section",
             "markdown": "http://localhost:1313/zh/book/01-start/index.md",
@@ -22,7 +22,7 @@
             "url": "http://localhost:1313/zh/book/02-structure/"
           },
           {
-            "description": "把散文、提示块、代码、媒体、表格与数学公式组合在一起，而不把页面变成组件目录。",
+            "description": "把正文、提示块、代码、媒体、表格与数学公式组合在一起，而不把页面变成组件目录。",
             "id": "/book/03-compose/",
             "kind": "section",
             "markdown": "http://localhost:1313/zh/book/03-compose/index.md",
@@ -42,7 +42,7 @@
             "id": "/book/05-publishing/",
             "kind": "section",
             "markdown": "http://localhost:1313/zh/book/05-publishing/index.md",
-            "title": "选择发布界面",
+            "title": "选择内容类型",
             "url": "http://localhost:1313/zh/book/05-publishing/"
           },
           {
@@ -72,79 +72,124 @@
       {
         "children": [
           {
-            "kind": "external",
+            "description": "PGSTY 是 Pigsty 背后的公司。这个小型双语公司站主要将 OINK 用作数据驱动的落地页系统。",
+            "id": "/case/pgsty-com/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/zh/case/pgsty-com/index.md",
             "title": "pgsty.com",
-            "url": "https://pgsty.com/"
+            "url": "http://localhost:1313/zh/case/pgsty-com/"
           },
           {
-            "kind": "external",
+            "description": "开源 PostgreSQL 发行版 Pigsty 的中文主站。独立部署的单语站让大规模中文语料按自己的节奏持续演进。",
+            "id": "/case/pigsty-cc/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/zh/case/pigsty-cc/index.md",
             "title": "pigsty.cc",
-            "url": "https://pigsty.cc/"
+            "url": "http://localhost:1313/zh/case/pigsty-cc/"
           },
           {
-            "kind": "external",
+            "description": "开源 PostgreSQL 发行版 Pigsty 的英文主站，将大型发行版手册、博客、扩展目录与价格落地页集中在一起。",
+            "id": "/case/pigsty-io/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/zh/case/pigsty-io/index.md",
             "title": "pigsty.io",
-            "url": "https://pigsty.io/"
+            "url": "http://localhost:1313/zh/case/pigsty-io/"
           },
           {
-            "kind": "external",
+            "description": "SILO 是社区维护的 MinIO 分支，提供兼容 S3 的对象存储。这个大型双语迁移案例从经过检查的清单生成文档导航。",
+            "id": "/case/silo/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/zh/case/silo/index.md",
             "title": "silo.pgsty.com",
-            "url": "https://silo.pgsty.com/"
+            "url": "http://localhost:1313/zh/case/silo/"
           },
           {
-            "kind": "external",
+            "description": "OINK 是本案例库各站点采用的 Hugo 主题。本站将公开手册、设计参考、组件示例与回归测试集中在同一仓库。",
+            "id": "/case/oink/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/zh/case/oink/index.md",
             "title": "OINK 文档",
-            "url": "https://oink.pgsty.com/"
+            "url": "http://localhost:1313/zh/case/oink/"
           },
           {
-            "kind": "external",
+            "description": "Capslock 把 Caps Lock 变成第五个修饰键。这个每种语言仅两页的小站，将项目介绍与数据驱动的交互配置器放在一起。",
+            "id": "/case/capslock/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/zh/case/capslock/index.md",
             "title": "caps.vonng.com",
-            "url": "https://caps.vonng.com/"
+            "url": "http://localhost:1313/zh/case/capslock/"
           },
           {
-            "kind": "external",
+            "description": "PIG 是 PostgreSQL 扩展包管理器。这个案例将精简的双语产品手册与数据驱动首页、持续更新的博客配合使用。",
+            "id": "/case/pig/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/zh/case/pig/index.md",
             "title": "pig.pgsty.com",
-            "url": "https://pig.pgsty.com/"
+            "url": "http://localhost:1313/zh/case/pig/"
           },
           {
-            "kind": "external",
+            "description": "SOW 用于构建与镜像 APT、YUM 软件仓库。双语运维手册与下载页共享结构化发布元数据。",
+            "id": "/case/sow/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/zh/case/sow/index.md",
             "title": "sow.pgsty.com",
-            "url": "https://sow.pgsty.com/"
+            "url": "http://localhost:1313/zh/case/sow/"
           },
           {
-            "kind": "external",
+            "description": "PG Exporter 是面向 PostgreSQL 与 PgBouncer 的 Prometheus 指标采集器。这个双语手册结合了生成导航、结构化指标目录与系统字体。",
+            "id": "/case/pg-exporter/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/zh/case/pg-exporter/index.md",
             "title": "exp.pgsty.com",
-            "url": "https://exp.pgsty.com/"
+            "url": "http://localhost:1313/zh/case/pg-exporter/"
           },
           {
-            "kind": "external",
+            "description": "《设计数据密集型应用》的多语言书籍站，也是 OINK 图表编号、交叉引用与索引的重要应用案例。",
+            "id": "/case/ddia/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/zh/case/ddia/index.md",
             "title": "DDIA",
-            "url": "https://ddia.vonng.com/"
+            "url": "http://localhost:1313/zh/case/ddia/"
           },
           {
-            "kind": "external",
+            "description": "《The Product-Minded Engineer》的双语书籍站，以精简的 OINK Book 外壳组织长篇阅读。",
+            "id": "/case/tpme/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/zh/case/tpme/index.md",
             "title": "TPME",
-            "url": "https://tpme.vonng.com/"
+            "url": "http://localhost:1313/zh/case/tpme/"
           },
           {
-            "kind": "external",
+            "description": "《PG 技术内幕》的中文译本站。它只使用 Book 阅读外壳，没有另建文档树。",
+            "id": "/case/pg-internal/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/zh/case/pg-internal/index.md",
             "title": "pgint.vonng.com",
-            "url": "https://pgint.vonng.com/"
+            "url": "http://localhost:1313/zh/case/pg-internal/"
           },
           {
-            "kind": "external",
-            "title": "pgsql.cc",
-            "url": "https://pgsql.cc/"
+            "description": "PostgreSQL 组件运维文库：让多个上游手册与完成度不一的翻译树共享搜索和视觉体系。",
+            "id": "/case/pgsql-cc/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/zh/case/pgsql-cc/index.md",
+            "title": "PostgreSQL 组件文库",
+            "url": "http://localhost:1313/zh/case/pgsql-cc/"
           },
           {
-            "kind": "external",
+            "description": "PIGSTY PRO 是 Pigsty 的企业版。双语文档与版本档案围绕可复用的结构化发布记录组织。",
+            "id": "/case/pgsty-pro/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/zh/case/pgsty-pro/index.md",
             "title": "pgsty.pro",
-            "url": "https://pgsty.pro/"
+            "url": "http://localhost:1313/zh/case/pgsty-pro/"
           },
           {
-            "kind": "external",
+            "description": "PostgreSQL 扩展目录。案例快照收录 2,241 个扩展，其中 576 个已打包，可按 16 个 Linux 平台与 5 个 PostgreSQL 大版本查询。",
+            "id": "/case/pgext-cloud/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/zh/case/pgext-cloud/index.md",
             "title": "ext.pgsty.com",
-            "url": "https://ext.pgsty.com/"
+            "url": "http://localhost:1313/zh/case/pgext-cloud/"
           }
         ],
         "description": "十五个真实站点展示 OINK 如何覆盖两页小工具、多语言文档群与三本书籍。",
@@ -164,6 +209,46 @@
         "children": [
           {
             "children": [
+              {
+                "description": "OINK 1.2.0 带来 Paper、Slate、Ink、Terminal 四套风格，独立的风格与明暗切换、 本地字体、更清晰的搜索、一致的导航，以及更安全的书籍出版和站点维护工具。",
+                "id": "/blog/release/1.2.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/blog/release/1.2.0/index.md",
+                "title": "OINK v1.2.0",
+                "url": "http://localhost:1313/zh/blog/release/1.2.0/"
+              },
+              {
+                "description": "OINK 1.1.0 带来 32 份原生界面目录、分类法目录、可靠的侧栏状态、站点自定义 搜索动作，以及打印、键盘焦点和图片复制修复。",
+                "id": "/blog/release/1.1.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/blog/release/1.1.0/index.md",
+                "title": "OINK v1.1.0",
+                "url": "http://localhost:1313/zh/blog/release/1.1.0/"
+              },
+              {
+                "description": "OINK 1.0.0 将现有知识发布契约定为稳定表面，并汇总 0.8.0 之后的全部主题修改： Print 与 Book 正确性、固定的 Go 1.27 与 Hugo 0.165.0 发布工具链、正式支持的 Starter，以及进入更广泛 Hugo 生态所需的公开元数据与展示素材。",
+                "id": "/blog/release/1.0.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/blog/release/1.0.0/index.md",
+                "title": "OINK v1.0.0",
+                "url": "http://localhost:1313/zh/blog/release/1.0.0/"
+              },
+              {
+                "description": "OINK 0.8.2 把 Hugo Module 的 Go directive 从 1.27 降到 1.26，使包括 Hugo 官方主题流水线在内、使用 GOTOOLCHAIN=local 的构建器无需改变 Hugo 兼容下限或渲染行为就能导入主题。",
+                "id": "/blog/release/0.8.2/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/blog/release/0.8.2/index.md",
+                "title": "OINK v0.8.2",
+                "url": "http://localhost:1313/zh/blog/release/0.8.2/"
+              },
+              {
+                "description": "OINK 0.8.1 是一次范围明确的维护版本：单页 Print 与普通 HTML 保持相同的标题与脚注锚点，过长的 Book 标题不再挤压侧栏编号，项目公开入口也改为从 OINK Starter 引导新站点。",
+                "id": "/blog/release/0.8.1/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/blog/release/0.8.1/index.md",
+                "title": "OINK v0.8.1",
+                "url": "http://localhost:1313/zh/blog/release/0.8.1/"
+              },
               {
                 "description": "Oink 0.8.0 为「以程序身份来读」的访客加了两种可选输出格式：把整个栏目装进一个文件的 全文包，以及以 JSON 发布的导航树；再加上静态反向链接，在右栏列出链接到本页的页面。 三者都默认关闭，不点名就不会出现。",
                 "id": "/blog/release/0.8.0/",
@@ -332,7 +417,7 @@
                 "url": "http://localhost:1313/zh/docs/about/license/"
               }
             ],
-            "description": "一款只需 Hugo Extended 的技术文档主题，从 Docsy 演化而来，组件写在 Markdown 里，资源随主题分发，十四个生产站点在用。",
+            "description": "一套从 Docsy 演化而来的本地优先 Hugo 文档框架：组件在 Markdown 中仍然可读，资源随主题分发，十五个生产站点持续验证它。",
             "id": "/docs/about/",
             "kind": "section",
             "markdown": "http://localhost:1313/zh/docs/about/index.md",
@@ -342,7 +427,15 @@
           {
             "children": [
               {
-                "description": "克隆下来的每个目录是什么：哪些必须保留、哪些替换为你的信息、哪些是文档站自用可以整个删除。",
+                "description": "按语言、身份、首页、内容、导航、品牌、集成、部署的顺序，把官方 Starter 逐层变成你的项目站点。",
+                "id": "/docs/start/starter/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/start/starter/index.md",
+                "title": "OINK Starter",
+                "url": "http://localhost:1313/zh/docs/start/starter/"
+              },
+              {
+                "description": "oink-starter 的文件级地图：身份、语言、首页、内容、导航、品牌、部署与固定主题分别由哪里管理。",
                 "id": "/docs/start/anatomy/",
                 "kind": "page",
                 "markdown": "http://localhost:1313/zh/docs/start/anatomy/index.md",
@@ -350,15 +443,31 @@
                 "url": "http://localhost:1313/zh/docs/start/anatomy/"
               },
               {
-                "description": "从空目录搭一个最小 OINK 站点，以及 Module / submodule / 离线归档 / 克隆四种安装方式的取舍。",
+                "description": "从空目录搭一个最小 OINK 站点，以及 Module / submodule / 离线归档 / 固定版本源码副本四种安装方式的取舍。",
                 "id": "/docs/start/from-scratch/",
                 "kind": "page",
                 "markdown": "http://localhost:1313/zh/docs/start/from-scratch/index.md",
                 "title": "从零建站",
                 "url": "http://localhost:1313/zh/docs/start/from-scratch/"
+              },
+              {
+                "description": "2026-09-30 的六命令 CLI 快照、安全与自动化能力，以及当时提出的后续研发方向。",
+                "id": "/docs/start/cli-overview/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/start/cli-overview/index.md",
+                "title": "CLI 功能概览",
+                "url": "http://localhost:1313/zh/docs/start/cli-overview/"
+              },
+              {
+                "description": "在本地构建可选的 Go 命令行工具，初始化固定 Starter、检查既有站点，并在写入前验证单站点主题升级。",
+                "id": "/docs/start/cli/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/zh/docs/start/cli/index.md",
+                "title": "OINK CLI",
+                "url": "http://localhost:1313/zh/docs/start/cli/"
               }
             ],
-            "description": "克隆 OINK 文档站，本地预览，替换站点信息，部署到 GitHub Pages。",
+            "description": "从官方 OINK Starter 建立可运行的本地基线，再依次定制内容、语言、品牌、集成与部署。",
             "id": "/docs/start/",
             "kind": "section",
             "markdown": "http://localhost:1313/zh/docs/start/index.md",
@@ -384,7 +493,7 @@
                 "url": "http://localhost:1313/zh/docs/write/organize/"
               },
               {
-                "description": "front matter 全表：主题真正读取的每一个页面键，按侧栏、外壳、搜索、输出、页尾、Book、Landing、发布页分组。",
+                "description": "front matter 全表：主题读取的页面键与 1.x 兼容 no-op，按侧栏、外壳、搜索、输出、页尾、Book、Landing、发布页分组。",
                 "id": "/docs/write/frontmatter/",
                 "kind": "page",
                 "markdown": "http://localhost:1313/zh/docs/write/frontmatter/index.md",
@@ -392,7 +501,7 @@
                 "url": "http://localhost:1313/zh/docs/write/frontmatter/"
               },
               {
-                "description": "开一个博客栏目：目录约定、文章的 front matter、封面图、按年份分组的列表页与 RSS。",
+                "description": "开一个博客栏目：目录约定、文章的 front matter、封面图、按日期排序的列表页与 RSS。",
                 "id": "/docs/write/blog/",
                 "kind": "page",
                 "markdown": "http://localhost:1313/zh/docs/write/blog/index.md",
@@ -538,7 +647,7 @@
                 "url": "http://localhost:1313/zh/docs/components/markmap/"
               },
               {
-                "description": "把带着可编辑副本的 `.drawio.svg` 当普通图片放进页面，读者鼠标移上去就能点开 Draw.io 编辑器改图。",
+                "description": "把带着可编辑副本的 `.drawio.svg` 当普通图片放进页面，读者通过编辑按钮打开 Draw.io 编辑器改图。",
                 "id": "/docs/components/drawio/",
                 "kind": "page",
                 "markdown": "http://localhost:1313/zh/docs/components/drawio/index.md",
@@ -692,7 +801,7 @@
                 "url": "http://localhost:1313/zh/docs/customize/versions/"
               },
               {
-                "description": "用 tags / categories 给页面加一条横跨目录的索引：术语页、筛选芯片、右栏分类云与顶栏分类面板都是自动的。",
+                "description": "用 tags / categories 给页面加一条横跨目录的索引：术语页、术语卡片、右栏分类云与顶栏分类面板都是自动的。",
                 "id": "/docs/customize/taxonomy/",
                 "kind": "page",
                 "markdown": "http://localhost:1313/zh/docs/customize/taxonomy/index.md",
@@ -766,7 +875,7 @@
                 "url": "http://localhost:1313/zh/docs/admin/analytics/"
               },
               {
-                "description": "升到新版主题、用迁移工具把 0.4 的 shortcode 改成 v5 语法、从 Docsy 迁过来，以及出问题怎么退回去。",
+                "description": "固定已发布的主题版本、验证 1.2.0 变化、迁移旧内容或 Docsy 站点，并在出问题时安全回滚。",
                 "id": "/docs/admin/upgrade/",
                 "kind": "page",
                 "markdown": "http://localhost:1313/zh/docs/admin/upgrade/index.md",
@@ -792,7 +901,7 @@
           {
             "children": [
               {
-                "description": "仓库装配、配置、诊断、输出、性能、安全、CSS、无障碍与发布状态的边界。",
+                "description": "仓库装配、配置、诊断、本地化、输出、性能、安全、CSS、无障碍与发布状态的边界。",
                 "id": "/docs/design/architecture/",
                 "kind": "page",
                 "markdown": "http://localhost:1313/zh/docs/design/architecture/index.md",
@@ -824,7 +933,7 @@
                 "url": "http://localhost:1313/zh/docs/design/landing/"
               },
               {
-                "description": "从 OINK 0.4 到 OINK 0.8.0 所支持的源码、配置与验证迁移边界。",
+                "description": "OINK 迁移所支持的源码、配置与验证边界，包含 1.2.0 变化。",
                 "id": "/docs/design/migration/",
                 "kind": "page",
                 "markdown": "http://localhost:1313/zh/docs/design/migration/index.md",
@@ -864,6 +973,22 @@
                     "markdown": "http://localhost:1313/zh/docs/design/decisions/config-schema/index.md",
                     "title": "配置 Schema",
                     "url": "http://localhost:1313/zh/docs/design/decisions/config-schema/"
+                  },
+                  {
+                    "description": "当前本地 CLI 候选的独立 Go 可执行文件边界、版本化诊断、隔离验证与有保护的维护计划。",
+                    "id": "/docs/design/decisions/cli/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/decisions/cli/index.md",
+                    "title": "CLI 契约",
+                    "url": "http://localhost:1313/zh/docs/design/decisions/cli/"
+                  },
+                  {
+                    "description": "第一阶段已接受的视觉身份与外观控件，分别维护读者的风格和明暗状态。",
+                    "id": "/docs/design/decisions/visual-presets/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/decisions/visual-presets/index.md",
+                    "title": "视觉预设",
+                    "url": "http://localhost:1313/zh/docs/design/decisions/visual-presets/"
                   }
                 ],
                 "description": "解释 OINK 现行公开契约与实现为何采用当前形态的已接受选择。",
@@ -884,6 +1009,30 @@
                     "url": "http://localhost:1313/zh/docs/design/research/goldmark-attributes/"
                   },
                   {
+                    "description": "真实主题输出中的显式实验预设、设计取舍、检查与后续工作。",
+                    "id": "/docs/design/research/2026-10-05-ink-terminal-experiment/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/research/2026-10-05-ink-terminal-experiment/index.md",
+                    "title": "Ink / Terminal 实验",
+                    "url": "http://localhost:1313/zh/docs/design/research/2026-10-05-ink-terminal-experiment/"
+                  },
+                  {
+                    "description": "本地 1.2.0 候选版本的审查、清理、兼容性、资源来源与出版验证，以及发布边界。",
+                    "id": "/docs/design/research/2026-10-05-v1-2-release-review/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/research/2026-10-05-v1-2-release-review/index.md",
+                    "title": "OINK 1.2 发布前审查",
+                    "url": "http://localhost:1313/zh/docs/design/research/2026-10-05-v1-2-release-review/"
+                  },
+                  {
+                    "description": "Paper 与 Slate 的本地验证、真实主题输出，以及注明范围的浏览器证据。",
+                    "id": "/docs/design/research/2026-10-05-visual-presets-acceptance/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/research/2026-10-05-visual-presets-acceptance/index.md",
+                    "title": "预设验收",
+                    "url": "http://localhost:1313/zh/docs/design/research/2026-10-05-visual-presets-acceptance/"
+                  },
+                  {
                     "description": "塑造 OINK 外壳、创作原语与确定性 Book 迁移策略的定期语料快照。",
                     "id": "/docs/design/research/consumer-evidence/",
                     "kind": "page",
@@ -898,9 +1047,41 @@
                     "markdown": "http://localhost:1313/zh/docs/design/research/2026-08-26-comprehensive-review/index.md",
                     "title": "2026-08-26 全面审查",
                     "url": "http://localhost:1313/zh/docs/design/research/2026-08-26-comprehensive-review/"
+                  },
+                  {
+                    "description": "对社区 Issue 40、41、42、44 与 PR 43 的证据核查、接收建议和具体解决方案。",
+                    "id": "/docs/design/research/2026-09-19-upstream-review/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/research/2026-09-19-upstream-review/index.md",
+                    "title": "2026-09-19 社区反馈调研",
+                    "url": "http://localhost:1313/zh/docs/design/research/2026-09-19-upstream-review/"
+                  },
+                  {
+                    "description": "OINK 1.1 的五项已复现运行时缺陷、文档修订、验证证据与发布后续。",
+                    "id": "/docs/design/research/2026-09-20-release-review/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/research/2026-09-20-release-review/index.md",
+                    "title": "2026-09-20 发布审查",
+                    "url": "http://localhost:1313/zh/docs/design/research/2026-09-20-release-review/"
+                  },
+                  {
+                    "description": "R1–R8/A18 本地实施的带日期源码与二进制证据，保留初始审计、失败试验与最终受支持验收范围。",
+                    "id": "/docs/design/research/2026-10-03-cli-maintenance-acceptance/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/index.md",
+                    "title": "2026-10-03 CLI 维护",
+                    "url": "http://localhost:1313/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/"
+                  },
+                  {
+                    "description": "本地 CLI 候选已执行的 Starter、真实站点、离线、升级与可复现归档检查，以及独立记录的最终验收和发布状态。",
+                    "id": "/docs/design/research/2026-09-29-cli-acceptance/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/research/2026-09-29-cli-acceptance/index.md",
+                    "title": "2026-09-29 CLI 验收",
+                    "url": "http://localhost:1313/zh/docs/design/research/2026-09-29-cli-acceptance/"
                   }
                 ],
-                "description": "用于形成 OINK 设计决策的定期实验与消费站证据，不具备规范效力。",
+                "description": "用于形成 OINK 设计决策的带日期的实验与消费站证据，不具备规范效力。",
                 "id": "/docs/design/research/",
                 "kind": "section",
                 "markdown": "http://localhost:1313/zh/docs/design/research/index.md",
@@ -934,12 +1115,28 @@
                     "url": "http://localhost:1313/zh/docs/design/proposals/agent-indexes/"
                   },
                   {
+                    "description": "已接受的独立 CLI 边界与首期本地候选，并明确保留后续采用、主题、迁移及内容模型提案。",
+                    "id": "/docs/design/proposals/oink-cli-roadmap/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/proposals/oink-cli-roadmap/index.md",
+                    "title": "CLI 与路线图",
+                    "url": "http://localhost:1313/zh/docs/design/proposals/oink-cli-roadmap/"
+                  },
+                  {
                     "description": "把 Book 语义降级与通用 EPUB/PDF 打包收回 OINK，同时让出版事实继续属于消费站。",
                     "id": "/docs/design/proposals/book-publication/",
                     "kind": "page",
                     "markdown": "http://localhost:1313/zh/docs/design/proposals/book-publication/index.md",
                     "title": "Book 出版",
                     "url": "http://localhost:1313/zh/docs/design/proposals/book-publication/"
+                  },
+                  {
+                    "description": "Paper 与 Slate 已在本地实现；Ink 与 Terminal 提供显式开启的实验，等待视觉定稿。",
+                    "id": "/docs/design/proposals/visual-presets/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/zh/docs/design/proposals/visual-presets/index.md",
+                    "title": "视觉预设",
+                    "url": "http://localhost:1313/zh/docs/design/proposals/visual-presets/"
                   }
                 ],
                 "description": "仍在评估中的 OINK PRD 与设计草案的唯一双语归档位置。",
@@ -950,15 +1147,23 @@
                 "url": "http://localhost:1313/zh/docs/design/proposals/"
               }
             ],
-            "description": "在唯一的双语专栏中管理 OINK 维护者契约、已接受决策、定期研究与候选提案。",
+            "description": "在唯一的双语专栏中管理 OINK 维护者契约、已接受决策、带日期的研究记录与候选提案。",
             "id": "/docs/design/",
             "kind": "section",
             "markdown": "http://localhost:1313/zh/docs/design/index.md",
             "title": "设计",
             "url": "http://localhost:1313/zh/docs/design/"
+          },
+          {
+            "description": "面向 Hugo 站点的可选 OINK 命令行工具草案介绍。",
+            "id": "/docs/cli/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/zh/docs/cli/index.md",
+            "title": "CLI",
+            "url": "http://localhost:1313/zh/docs/cli/"
           }
         ],
-        "description": "OINK 是一款只需 Hugo Extended 的技术文档主题：组件写在 Markdown 里，资源随主题分发，双语开箱可用，一份内容产出四种输出。",
+        "description": "为文档、博客、书籍与 API 参考建立统一的技术内容站点，共用导航、多语言与搜索。",
         "id": "/docs/",
         "kind": "section",
         "markdown": "http://localhost:1313/zh/docs/index.md",
@@ -966,7 +1171,7 @@
         "url": "http://localhost:1313/zh/docs/"
       }
     ],
-    "description": "本地优先、仅依赖 Hugo 的技术文档主题",
+    "description": "本地优先的 Hugo 技术文档主题",
     "id": "/",
     "kind": "home",
     "markdown": "http://localhost:1313/zh/index.md",

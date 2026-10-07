@@ -1,6 +1,6 @@
 # oink.pgsty.com
 
-> OINK: the Hugo theme every site in this library is built with. Public manual, design reference, component gallery and regression fixture in one repository.
+> OINK 是本案例库各站点采用的 Hugo 主题。本站将公开手册、设计参考、组件示例与回归测试集中在同一仓库。
 
 ---
 

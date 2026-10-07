@@ -62,7 +62,8 @@ params:
     docs_sidebar_root: home # home | section
 ```
 
-取值只有这两个，其它值构建失败。
+取值只有这两个。其它值在普通预览中告警并使用 `section`，严格发布构建通过
+`--panicOnWarning` 拒绝这条警告。
 
 ### 文档挂在站点根 {#docs-at-root}
 
@@ -142,6 +143,11 @@ params:
 - `sidebar_width_min` / `sidebar_width_max` 是桌面端拖拽调宽的上下限（像素）。读者调整后的宽度存在浏览器本地，双击分隔条恢复默认。
 - `sidebar_item_overflow` 默认 `ellipsis`（长标题省略），中文长标题多的站点可以改 `wrap` 换行。
 
+达到 `sidebar_cache_limit` 后，有相同有效设置的页面可以共享一份中性渲染树。没有
+JavaScript 时它仍然可见且可导航；外壳运行时只补当前路径并展开其祖先。页面或
+cascade 覆盖会选择对应的缓存变体；启用 `sidebar_headings` 的 Book 页面仍使用自己
+的页面专属树。
+
 折叠状态、宽度与滚动位置保存在读者本地，按语言隔离。小于 `md` 时侧栏变成带遮罩的抽屉。
 
 单页去掉侧栏用 front matter：
@@ -178,9 +184,15 @@ sidebar_enabled: false
 }
 ```
 
-URL 在比较前去掉语言前缀，一份文件服务所有语言。
+这些路径不带语言前缀，也不带 `baseURL` 中的部署子路径。自 OINK 1.1 起，主题在比较前
+去掉两种前缀，同一个 `/docs/start/` 键可用于 `/zh/docs/start/` 和
+`/handbook/zh/docs/start/`；渲染出来的链接保留实际的语言与部署前缀。
 
-这棵树同时决定翻页顺序，侧栏与上一页 / 下一页不会出现两种排序。`sections` 为空数组时构建失败（`data/docs_nav.json does not define any Docs navigation sections`），`page` 指向不存在的页面同样失败（`Docs navigation page not found`）。带 `manual_link` 的占位节点与 `sidebar_divider` 分隔行留在侧栏里，但不会成为翻页目标。
+这棵树同时决定翻页顺序，侧栏与上一页 / 下一页不会出现两种排序。`sections` 为空数组
+时告警并回退到内容树；`page` 指向不存在的页面时告警并跳过该项。严格发布构建拒绝
+任一警告。带 `manual_link` 的占位节点与 `sidebar_divider` 分隔行留在侧栏里，但不会
+成为翻页目标。1.1 的显式树也保留分隔分区的子页，使用与内容树相同的
+[只分组、不发布页面的 front matter](/zh/docs/write/organize/#group-only) 即可。
 
 适用场景是导航顺序由外部工具生成的站点，例如从 Sphinx toctree 迁移过来、需要冻结既有章节顺序的手册。顺序由 `content/` 的 `weight` 维护时不需要这个文件。
 
@@ -212,7 +224,9 @@ params:
     sidebar_headings: 3 # false | true | 2 | 3 | 4
 ```
 
-整数指定展开到第几级（2–4），`true` 等于 2（只展开 h2），`false` 关闭。取值超出范围构建失败。只对 `type: book` 的页面生效，且只在侧栏当前行下展开。
+整数指定展开到第几级（2–4），`true` 等于 2（只展开 h2），`false` 关闭。取值超出
+范围时普通预览告警并关闭标题分支，严格发布构建拒绝这条警告。只对 `type: book`
+的页面生效，且只在侧栏当前行下展开。
 
 ## 目录 TOC {#toc}
 
@@ -226,15 +240,16 @@ markup:
     ordered: false
 ```
 
-主题只管跟踪行为：
+普通外壳运行时始终跟踪当前标题，无需额外开关。大纲绘制连续轨道、高亮当前区段
+并标出位置。读者可以整体折叠右栏，状态存在本地。小于 `xl` 时右栏隐藏，大纲内容
+移进侧栏抽屉。
 
-```yaml {title="hugo.yml"}
-params:
-  ui:
-    scroll_spy: false
-```
+1.2.0 工作实现跟踪标题时会解码合法 URL 片段；非法百分号序列回退到字面的
+标题 ID，跟随页尾标题链接时也遵循同一规则。
 
-默认 **关闭** 滚动跟踪。设为 `true` 开启后，大纲绘制连续轨道、高亮当前区段并标出位置。读者可以整体折叠右栏，状态存在本地。小于 `xl` 时右栏隐藏，大纲内容移进侧栏抽屉。
+旧的站点键 `params.ui.scroll_spy` 与页面键 `scroll_spy` 在整个 1.x 期间仍作为静默
+兼容 no-op 接受。两个布尔值生成相同的大纲，也不加载额外运行时；只有未来的破坏性
+版本才会删除这两个键。
 
 单页隐藏大纲用 front matter `notoc: true`。
 
@@ -254,7 +269,8 @@ params:
 - `list`（默认）：每个子页一个标题 + 描述段落；
 - `cards`：网格卡片，读子页的 `title`（或 `linkTitle`）、`description` 与 `icon`。
 
-可以按分区覆盖，非法取值构建失败：
+可以按分区覆盖。非法取值在普通预览中告警并回退，发布门禁带
+`--panicOnWarning` 时拒绝这条警告：
 
 ```yaml {title="content/docs/components/_index.md"}
 ---
@@ -282,7 +298,8 @@ page_width: wide
 ---
 ```
 
-Book 页另有一个 `reading_width`（`slim` / `normal` / `wide`），改的是正文本身的阅读行宽，不动外壳。两个键取值非法都让构建失败。
+Book 页另有一个 `reading_width`（`slim` / `normal` / `wide`），改的是正文本身的
+阅读行宽，不动外壳。两个键取值非法都会在普通预览中告警并回退，严格发布时失败。
 
 ## 顶栏与页脚开关 {#chrome}
 

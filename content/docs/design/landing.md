@@ -5,13 +5,12 @@ description: The maintainer contract for landing data, the built-in section regi
 weight: 40
 icon: fa-solid fa-panorama
 search_keywords: [OINK landing contract, landing sections, homepage data, progressive enhancement, landing outputs]
-contract_status: released-v0.8.0
+contract_status: v1.2.0
 ---
 
-> [!IMPORTANT] OINK 0.8.0 contract
-> This is the landing-page contract released with OINK 0.8.0. This page is the
-> canonical English source; its Chinese peer is maintained beside it in
-> `content/docs/design/`.
+> [!NOTE] OINK 1.2.0 contract
+> This contract describes the v1.2.0 release. Its canonical bilingual sources
+> are in `content/docs/design/`.
 
 Shared rules live in the [architecture](/docs/design/architecture/) and
 [component](/docs/design/components/) contracts; migration belongs in the
@@ -71,7 +70,10 @@ site data; only theme controls use OINK i18n.
 Interactive HTML sets `hasLanding`, which conditionally adds only `landing.js`.
 The runtime reuses `OinkSurfaceCoordinator` and owns reveal, count-up, copy,
 compact-menu, and theme-image enhancement. Server output remains complete
-without JavaScript.
+without JavaScript or when the Landing script fails to load. Reveal candidates
+are visible by default; only an installed observer may mark one pending its
+entrance animation. Metrics render their configured number formatting, prefix, and
+suffix on the server, and the count-up's final frame uses that same display.
 
 Marquee duplication is CSS-only; the duplicate is `aria-hidden` and `inert`,
 and a localized checkbox persists pause without JS. Reduced motion disables
@@ -96,3 +98,16 @@ Removed 0.4 component forms belong to the migration toolkit, not parallel
 Landing implementations. OINK adds no pricing-period toggle, remote-fact API,
 hotspot editor, visual builder, or second registry. Existing homepage data and
 explicit custom section partials remain valid.
+
+## Visual presets {#visual-presets}
+
+Paper removes the hero grid and glow, uses warm shadows, Plex Sans display
+headings, and a link-colored primary action. Slate retains its technical grid,
+glow, Chakra Petch headings, and original primary-action colors. Shared section
+geometry and density remain unchanged. The mobile drawer includes the shared
+Appearance sheet; see the [shell contract](/docs/design/shell/#appearance-control).
+
+The explicit Ink/Terminal experiments also remove the grid, glow and shadows.
+Ink uses heavy Inter headings, square cards and a red primary action. Terminal
+uses mono headings, 2 px corners and an amber primary action with a static
+cursor-shaped decoration. Neither adds animation or changes section columns.

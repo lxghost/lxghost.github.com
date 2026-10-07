@@ -28,7 +28,7 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/zh/docs/customize/brand/</guid>
-        <description>&lt;p&gt;本页覆盖站点外观：站名与 Logo 写在 &lt;code&gt;hugo.yml&lt;/code&gt;，配色与字体走 SCSS 入口，页宽与页脚形态是参数。前提是站点已能构建（&lt;a href=&#34;http://localhost:1313/zh/docs/start/&#34;&gt;十分钟上手&lt;/a&gt;）。&lt;/p&gt;&#xA;&lt;p&gt;需要改动的文件有四个：&lt;code&gt;hugo.yml&lt;/code&gt;、&lt;code&gt;static/&lt;/code&gt; 下的图标、&lt;code&gt;assets/scss/_variables_project.scss&lt;/code&gt;、&lt;code&gt;assets/scss/_styles_project.scss&lt;/code&gt;。&lt;strong&gt;不要改主题目录里的文件&lt;/strong&gt;：主题是 Hugo Module，升级时整个目录会被替换。&lt;/p&gt;</description>
+        <description>&lt;p&gt;本页的前提是站点已能构建（&lt;a href=&#34;http://localhost:1313/zh/docs/start/&#34;&gt;十分钟上手&lt;/a&gt;）。站名、Logo、页宽和页脚&#xA;先在 &lt;code&gt;hugo.yml&lt;/code&gt; 中设置。选择系统已有或站点已加载的字体，用&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/customize/brand/#fonts-in-config&#34;&gt;&lt;code&gt;params.ui.fonts&lt;/code&gt;&lt;/a&gt; 即可；&lt;a href=&#34;http://localhost:1313/zh/docs/customize/brand/#theme-color&#34;&gt;分区强调色&lt;/a&gt;也有对应配置键。&lt;/p&gt;&#xA;&lt;p&gt;图标放在 &lt;code&gt;static/&lt;/code&gt; 下。需要修改 SCSS 变量时再使用&#xA;&lt;code&gt;assets/scss/_variables_project.scss&lt;/code&gt;；自定义样式或新增 &lt;code&gt;@font-face&lt;/code&gt; 声明放在&#xA;&lt;code&gt;assets/scss/_styles_project.scss&lt;/code&gt;。&lt;strong&gt;不要改主题目录里的文件&lt;/strong&gt;：升级会替换它们。&lt;/p&gt;</description>
       </item>
     <item>
         <title>首页与落地页</title>
@@ -44,7 +44,7 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/zh/docs/customize/navigation/</guid>
-        <description>&lt;p&gt;本页覆盖读者在页面之间移动的入口：顶栏菜单、栏目切换器、面包屑、页面操作、上一页 / 下一页与页脚。侧栏树与目录属于&lt;a href=&#34;http://localhost:1313/zh/docs/customize/layout/&#34;&gt;布局与页面类型&lt;/a&gt;。&lt;/p&gt;&#xA;&lt;p&gt;导航没有第二套信息架构：顶栏来自 Hugo 的 &lt;code&gt;menus.main&lt;/code&gt;，侧栏来自 &lt;code&gt;content/&lt;/code&gt; 的目录结构。主题不读 &lt;code&gt;docs.json&lt;/code&gt;、&lt;code&gt;navigation.yaml&lt;/code&gt; 一类的并行导航树。&lt;/p&gt;</description>
+        <description>&lt;p&gt;本页覆盖读者在页面之间移动的入口：顶栏菜单、栏目切换器、面包屑、页面操作、上一页 / 下一页与页脚。侧栏树与目录属于&lt;a href=&#34;http://localhost:1313/zh/docs/customize/layout/&#34;&gt;布局与页面类型&lt;/a&gt;。&lt;/p&gt;&#xA;&lt;p&gt;顶栏来自 Hugo 的 &lt;code&gt;menus.main&lt;/code&gt;。Docs 与 Book 默认按 &lt;code&gt;content/&lt;/code&gt; 的目录结构组织；&#xA;导入既有阅读顺序时，也可使用 &lt;a href=&#34;http://localhost:1313/zh/docs/customize/layout/#sidebar&#34;&gt;&lt;code&gt;data/docs_nav.json&lt;/code&gt;&lt;/a&gt;。&#xA;侧栏、翻页器与分区索引共享选定的顺序。&lt;/p&gt;</description>
       </item>
     <item>
         <title>布局与页面类型</title>
@@ -100,7 +100,7 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/zh/docs/customize/taxonomy/</guid>
-        <description>&lt;p&gt;目录树只有一条路径，分类体系（taxonomy）给页面加第二条：同一篇 PostgreSQL 备份文档既在「运维」目录下，又能从「备份」标签页找到。启用它只需要 Hugo 的 &lt;code&gt;taxonomies:&lt;/code&gt; 配置，术语页、筛选芯片、右栏分类云与顶栏分类面板都由主题自动生成，无需编写模板。&lt;/p&gt;</description>
+        <description>&lt;p&gt;目录树只有一条路径，分类体系（taxonomy）给页面加第二条：同一篇 PostgreSQL 备份文档既在「运维」目录下，又能从「备份」标签页找到。启用它只需要 Hugo 的 &lt;code&gt;taxonomies:&lt;/code&gt; 配置，术语页、术语卡片、右栏分类云与顶栏分类面板都由主题自动生成，无需编写模板。&lt;/p&gt;</description>
       </item>
     <item>
         <title>仓库与页面信息</title>

@@ -20,7 +20,7 @@
         <pubDate>Sat, 01 Aug 2026 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/zh/case/pgext-cloud/</guid>
-        <description>&lt;p&gt;&lt;a href=&#34;https://ext.pgsty.com/&#34;&gt;ext.pgsty.com&lt;/a&gt; 是 PostgreSQL 扩展目录：可以按扩展、&#xA;包family、依赖，以及每个扩展可用的 PostgreSQL 与操作系统组合进行检索。目录收录&#xA;2,241 个扩展，其中 576 个已打包，覆盖 16 个 Linux 平台与 5 个 PG 大版本。&lt;/p&gt;</description>
+        <description>&lt;p&gt;&lt;a href=&#34;https://ext.pgsty.com/&#34;&gt;ext.pgsty.com&lt;/a&gt; 是 PostgreSQL 扩展目录：可以按扩展、&#xA;软件包系列、依赖，以及每个扩展可用的 PostgreSQL 与操作系统组合进行检索。目录收录&#xA;2,241 个扩展，其中 576 个已打包，覆盖 16 个 Linux 平台与 5 个 PG 大版本。&lt;/p&gt;</description>
       </item>
     
   </channel>

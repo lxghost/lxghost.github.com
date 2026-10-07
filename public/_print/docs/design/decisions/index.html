@@ -69,7 +69,7 @@
   <meta itemprop="name" content="Design decisions">
   <meta itemprop="description" content="Accepted choices that explain why OINK&#39;s public contracts and implementation have their present shape.">
   <meta itemprop="dateModified" content="2026-08-28T00:08:16+08:00">
-  <meta itemprop="wordCount" content="259">
+  <meta itemprop="wordCount" content="293">
   <meta itemprop="keywords" content="Design">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Design decisions">
@@ -146,6 +146,22 @@ This is the multi-page printable view of this section.
 
     </li>
   
+    
+    
+    <li>
+5: <a href="#pg-00c712f95095272da7efd7dff2203436">Optional CLI and result contract</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+6: <a href="#pg-f116aea3f411ec32ea7164585cda622b">Paper and Slate visual presets</a>
+
+
+    </li>
+  
 
     </ul>
 <div class="content">
@@ -186,6 +202,14 @@ bilingual, versioned site as the contracts it supports.</p>
     <tr>
       <td><a href="/docs/design/decisions/config-schema/">Generated configuration schema</a></td>
       <td>Why the editor schemas are a generated projection, and how the drift gate keeps a third configuration authority from appearing</td>
+    </tr>
+    <tr>
+      <td><a href="/docs/design/decisions/cli/">Optional CLI and result contract</a></td>
+      <td>Independent Go executable, versioned diagnostics, coverage, and explicit write boundaries for the local CLI candidate</td>
+    </tr>
+    <tr>
+      <td><a href="/docs/design/decisions/visual-presets/">Visual presets</a></td>
+      <td>Paper default, Slate compatibility, opt-in Appearance menu, independent mode and font boundaries</td>
     </tr>
   </tbody>
 </table>
@@ -629,6 +653,1046 @@ something they can understand, or CI fails outright.</p>
 fails when <code>schema/</code> is stale or missing; the theme&rsquo;s CI runs it beside the
 parameter contract checker. Editor wiring and the behaviour itself are
 documented normatively in <a href="/docs/customize/config/#editor-schema">Configuration</a>.</p>
+<p>Visual preset enum values are also derived from <code>preset-config.html</code>. The
+<code>preset_menu</code> union accepts a boolean or a list of those resolver-owned values;
+the schema does not maintain its own list.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-00c712f95095272da7efd7dff2203436">5 - Optional CLI and result contract</h1>
+    <div class="lead">The independent Go executable boundary, versioned diagnostics, isolated validation, and guarded maintenance plans for the current local CLI candidate.</div>
+	<div class="td-callout td-callout--important" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-exclamation" aria-hidden="true"></i><span class="td-callout__label">Current scope; local candidate</span></div>
+  <div class="td-callout__body">
+<p>This contract describes the reduced local <code>0.1.0-dev</code> command surface on
+2026-10-04. Keep site diagnosis, real Hugo checks, initialization, builds,
+upgrades, and guarded maintenance plans. Cobra provides command help;
+colored English text is the default, with JSON/YAML results available.
+Studio, general editing, context, snippets, editor setup, and CI generation
+are retired. Historical R1–R8 acceptance applies only to its recorded source
+and binaries; it does not replace validation of the current implementation.
+No public CLI release, Homebrew distribution, or deployment is established.</p>
+  </div>
+</div><h2 id="pg-00c712f95095272da7efd7dff2203436--ownership">Context and ownership
+</h2>
+<p>The theme is a Hugo module; consumer tooling is an optional executable with a
+different installation and release lifecycle. <code>pgsty/oink-cli</code> owns that
+executable, named <code>oink</code>, and its Go tests. It invokes an external Hugo binary
+without importing Hugo&rsquo;s private runtime or depending on a sibling checkout,
+Python, Node.js, or unpublished theme scripts at runtime.</p>
+<p>Hugo owns configuration resolution, rendering, routes, and anchors. The CLI
+inspects Hugo&rsquo;s effective configuration, module graph, mounts, and rendered
+files. It does not create a second route resolver, navigation authority, or
+configuration namespace. Theme-only regression scripts remain maintainer tools.
+Configuration preprocessing relocates workspace, replacement, and cache paths
+only in the temporary copy. Hugo still owns defaults, configuration merging,
+language selection, validation, and rendering semantics.
+The public <a href="/docs/design/architecture/">architecture contract</a> continues to own
+theme behavior; this page owns the initial CLI boundary and result envelope.</p>
+<p>The <a href="/docs/start/cli/">usage guide</a> contains installation and command examples.
+The <a href="/docs/design/research/2026-09-29-cli-acceptance/">dated acceptance record</a>
+separates executed checks from open limitations and release states. The
+<a href="/docs/design/research/2026-10-03-cli-maintenance-acceptance/">maintenance acceptance record</a>
+preserves the earlier R1–R8 program and its source-bound evidence. The
+<a href="/docs/design/proposals/oink-cli-roadmap/">roadmap</a> retains future proposals and
+adoption hypotheses rather than duplicating the current command reference.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--commands">Command and mutation boundary
+</h2>
+<p>Help groups commands by daily, maintenance, and release work. Run
+<code>oink COMMAND --help</code> for the exact options.</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Command</th>
+      <th scope="col">Behavior and mutation boundary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>doctor</code></td>
+      <td>Read-only toolchain, configuration, module source, workspace/replacement/vendor diagnosis</td>
+    </tr>
+    <tr>
+      <td><code>check [links|translations|style]</code></td>
+      <td>Actual Hugo output and declared source/translation policy in isolated copies</td>
+    </tr>
+    <tr>
+      <td><code>init DIRECTORY</code></td>
+      <td>Validate the fixed Starter before creating a new or empty site</td>
+    </tr>
+    <tr>
+      <td><code>dev</code>, <code>build</code></td>
+      <td>Ordinary Hugo processes; Hugo owns normal output/cache writes</td>
+    </tr>
+    <tr>
+      <td><code>upgrade --to TAG</code></td>
+      <td>Preview by default; only <code>--write</code> applies verified module changes</td>
+    </tr>
+    <tr>
+      <td><code>translations status</code>, <code>translations diff PAGE</code></td>
+      <td>Read-only relationships, hash-review states, and differences</td>
+    </tr>
+    <tr>
+      <td><code>translations review SOURCE TARGET</code>, <code>baseline capture</code></td>
+      <td>Explicit reviewer/reason; preview with optional new <code>--plan</code></td>
+    </tr>
+    <tr>
+      <td><code>new BUNDLE --title TEXT</code>, <code>move SOURCE TARGET</code></td>
+      <td>Validate a candidate and preview its full diff; optional new <code>--plan</code></td>
+    </tr>
+    <tr>
+      <td><code>plans apply FILE</code></td>
+      <td>Revalidate supported saved plans; write only selected files in the selected site</td>
+    </tr>
+    <tr>
+      <td><code>inspect PAGE</code>, <code>impact --since REF</code></td>
+      <td>Read-only actual page and historical/current impact facts</td>
+    </tr>
+    <tr>
+      <td><code>workspace list</code>, <code>workspace check [GROUP]</code></td>
+      <td>Select only explicitly registered sites</td>
+    </tr>
+    <tr>
+      <td><code>build --check</code></td>
+      <td>Check, seal, and export the same isolated production render</td>
+    </tr>
+    <tr>
+      <td><code>artifacts verify</code></td>
+      <td>Compare local artifacts with a manifest offline</td>
+    </tr>
+    <tr>
+      <td><code>verify</code></td>
+      <td>Compare deployed HTTP responses with a manifest after explicit <code>--network</code></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Network access is off by default. All commands are non-interactive. Only
+<code>dev</code> and <code>build</code> accept Hugo arguments after <code>--</code>. Removed commands and their
+old plans cannot apply. Supported plan kinds are <code>authoring.new</code>,
+<code>translations.review</code>, <code>baseline.capture</code>, and <code>content.move</code>.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--result">Versioned result envelope
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Option</th>
+      <th scope="col">Output</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Default</td>
+      <td>Concise colored English text</td>
+    </tr>
+    <tr>
+      <td><code>--json</code>, <code>-J</code></td>
+      <td>One JSON <code>oink.result/v1</code> object</td>
+    </tr>
+    <tr>
+      <td><code>--yaml</code>, <code>-Y</code></td>
+      <td>One YAML document with the same result fields and types</td>
+    </tr>
+    <tr>
+      <td><code>--verbose</code>, <code>-v</code></td>
+      <td>All findings, coverage details, and tool logs</td>
+    </tr>
+    <tr>
+      <td><code>--no-color</code></td>
+      <td>Plain English text</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Choose one structured format. Nonempty <code>NO_COLOR</code> or <code>TERM=dumb</code> also disables
+text colors. Structured output adds no terminal colors. Tool logs go to
+stderr. <code>--format json|yaml</code> and <code>--non-interactive</code> remain hidden compatibility
+options. Every command is non-interactive.</p>
+<p>Default text shows status, counts, up to eight active findings, and explicit
+coverage omissions. Detailed facts and reviewed findings remain available in
+structured results. Plan and upgrade previews retain their complete diffs.
+Cobra owns command dispatch and focused help. CLI messages use short, active
+English sentences inspired by ASD-STE100; this does not assert certification.
+User content and external tool evidence retain their original language.</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Field</th>
+      <th scope="col">Type and meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>schema_version</code></td>
+      <td>String; <code>oink.result/v1</code> for this contract</td>
+    </tr>
+    <tr>
+      <td><code>version</code></td>
+      <td>String; CLI build version, including a development suffix when applicable</td>
+    </tr>
+    <tr>
+      <td><code>command</code></td>
+      <td>String; requested command, or <code>help</code> / <code>version</code></td>
+    </tr>
+    <tr>
+      <td><code>site</code></td>
+      <td>Optional string; selected source or generated target directory when available</td>
+    </tr>
+    <tr>
+      <td><code>exit_code</code></td>
+      <td>Integer; the CLI result code defined below</td>
+    </tr>
+    <tr>
+      <td><code>diagnostics</code></td>
+      <td>Array of findings; an empty array means no recorded findings</td>
+    </tr>
+    <tr>
+      <td><code>coverage</code></td>
+      <td>Array of scoped coverage statements; callers must inspect these alongside findings</td>
+    </tr>
+    <tr>
+      <td><code>evidence</code></td>
+      <td>Array of subprocess records; empty when no subprocess ran</td>
+    </tr>
+    <tr>
+      <td><code>data</code></td>
+      <td>Optional command-specific JSON value; current commands return objects such as inspected facts, initialization provenance, or an upgrade plan</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>The <a href="/schema/cli-result.v1.schema.json">JSON Schema</a> describes this envelope.</p>
+<p>The first version permits additive fields and new rule IDs. Consumers should
+ignore unknown fields and treat IDs as opaque strings, not parse their spelling.
+A change to the meaning or type of an existing envelope field requires a new
+schema version. Command-specific facts and raw tool output are evidence, not
+an SDK for importing internal Go packages.</p>
+<p>The machine-readable schema is shipped in the CLI repository as
+<code>schema/result.v1.schema.json</code>. Its identifier is not evidence that a schema
+endpoint or public CLI release has been deployed.</p>
+<p>Each evidence record has <code>command</code> (an argument array), optional <code>directory</code>,
+<code>stdout</code>, <code>stderr</code>, and the subprocess&rsquo;s <code>exit_code</code>. Captured inspection and
+build output remains available in the result. Directly streamed <code>dev</code>/<code>build</code>
+output is sent to the logging stream rather than buffered again in evidence.
+The subprocess status remains distinct from the CLI&rsquo;s <code>0</code>/<code>1</code>/<code>2</code> result; a
+negative subprocess status can indicate that no normal exit code was obtained.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--diagnostics">Findings, severity, and locations
+</h2>
+<p>Every diagnostic has <code>rule_id</code>, <code>severity</code>, <code>message</code>, and <code>action</code>, plus an
+optional <code>location</code>. Stable rule IDs identify the condition. Raw Hugo wording,
+translated messages, paths, and build-specific details are not stable IDs.
+Existing IDs must not be reassigned to a different condition.</p>
+<p>The optional <code>incomplete: true</code> identifies a required-work failure that policy
+cannot downgrade. Reviewed exclusions and baseline acknowledgements retain the
+finding in <code>diagnostics</code> with <code>disposition: &quot;excluded&quot;</code> or <code>&quot;baseline&quot;</code> and
+<code>review</code> containing <code>reason</code>,
+<code>reviewed_by</code>, and RFC 3339 <code>reviewed_at</code>. An excluded finding remains visible
+with its recorded severity; it does not block the completed policy check.
+Any uncompleted required coverage, including <code>not_checked</code>, determines exit
+<code>2</code>; only <code>complete</code> or <code>not_applicable</code> satisfies required coverage.</p>
+<p>The severity vocabulary is <code>info</code>, <code>warning</code>, and <code>error</code>. <code>error</code> is blocking.
+<code>info</code> and <code>warning</code> are advisory unless the underlying required Hugo
+build fails under <code>--panicOnWarning</code>, in which case required work is incomplete.
+Informational completion and scope explanations belong in coverage details.
+Automation must use the result exit code and coverage, not only count severities.</p>
+<p>When present, <code>location</code> contains <code>file</code>, with optional <code>kind</code>, <code>line</code>, and
+<code>pointer</code>. <code>kind</code> distinguishes <code>source</code> from <code>output</code>. A rendered finding
+points to the actual artifact and may include an element, attribute, or JSON
+location hint in <code>pointer</code>; that field does not universally claim RFC 6901
+syntax. A line number is included only when known. A rendered link failure
+does not justify inventing a Markdown source line.</p>
+<p>The CLI does not reject unknown valid front matter merely because a generated
+editor schema omits it. Configuration validity continues to follow Hugo and
+the owning theme resolver/checker; see the
+<a href="/docs/design/decisions/config-schema/">generated schema decision</a>.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--coverage">Coverage and exit semantics
+</h2>
+<p>Each coverage entry contains <code>id</code>, <code>status</code>, <code>required</code> (boolean), and <code>detail</code>.
+Entries describe the scope that actually ran. A report may contain several
+statements about the same broad area; inspect all of them.</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Status</th>
+      <th scope="col">Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>complete</code></td>
+      <td>The stated operation, inspection, or artifact-check scope completed</td>
+    </tr>
+    <tr>
+      <td><code>not_checked</code></td>
+      <td>This run did not inspect the stated scope</td>
+    </tr>
+    <tr>
+      <td><code>not_applicable</code></td>
+      <td>The stated check is unnecessary for these inputs</td>
+    </tr>
+    <tr>
+      <td><code>unsupported</code></td>
+      <td>The stated contract or required input shape is unsupported</td>
+    </tr>
+    <tr>
+      <td><code>incomplete</code></td>
+      <td>The stated work was required but could not finish</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">CLI exit code</th>
+      <th scope="col">Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>0</code></td>
+      <td>Requested required work completed without blocking findings</td>
+    </tr>
+    <tr>
+      <td><code>1</code></td>
+      <td>Completed checks identified a policy violation, such as a broken local link or an unsafe requested write</td>
+    </tr>
+    <tr>
+      <td><code>2</code></td>
+      <td>Required work is incomplete, including argument, tool, build, I/O, cancellation, or required unsupported-contract failures</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Incomplete work takes precedence over policy findings. Required coverage that
+has not completed cannot produce success; only <code>complete</code> or <code>not_applicable</code>
+can satisfy it. Hugo build failure preserves the
+raw evidence and stops output acceptance; the CLI does not report stale or
+partial output as a passing check. Disabled optional machine outputs do not
+become missing-output errors.</p>
+<p>The rendered-reference scope includes supported HTML URLs and anchors and
+supported emitted machine contracts. Coverage explicitly excludes browser
+interaction, accessibility, visual presentation, external URL availability,
+hosting redirects, and production deployment. It also identifies uninspected
+dynamic resources and content semantics. Static output evidence does not prove
+undeclared translation coverage, semantic translation equivalence or browser execution.</p>
+<p>Hugo&rsquo;s public <code>Page.OutputFormats</code> supplies expected artifact names and URLs
+per page and per enabled language. The isolated copy adds an unlisted probe
+with a unique per-run identifier; each enabled language must emit its own
+verified manifest. Identified probe files are removed before artifact checks.
+Existing authored pages retain their output selections. Static content hidden
+from ordinary page lists is resolved through Hugo&rsquo;s <code>GetPage</code>, without
+deriving its route or output filename from source syntax. Effective per-language
+base URLs and local-search settings accompany that enumeration. Enabled
+supported machine artifacts are checked against these exact expectations;
+optional disabled outputs remain optional.</p>
+<p>The same Hugo probe supplies <code>data.pages</code> through public <code>Page.Path</code>,
+<code>Page.File</code>, <code>Page.Translations</code>, <code>Page.Aliases</code>, and <code>Page.OutputFormats</code>.
+Facts retain language, actual URLs, publication settings, translation
+relationships and declared outputs. <code>sourceKnown: false</code> and
+<code>sourceScope: &quot;unknown&quot;</code> identify pages without proven source provenance;
+generated sections do not receive invented source files. Site-owned known
+paths are relative to the selected site. Known copied dependency inputs have
+explicit dependency scope. These facts describe the production view; a separate
+internal analysis view can include drafts, future and expired pages without
+changing production artifacts or claiming they are published.</p>
+<p><code>data.references</code> records observed HTML and machine-output references, their
+actual resolved URL, output file/pointer, local target when present, and anchor
+status when checked. It does not infer a Markdown source line. Page and
+reference data remain additive command evidence, not a public Go SDK.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--project-policy">Project check policy
+</h2>
+<p>An optional regular <code>oink.yaml</code> at the selected site&rsquo;s root uses
+<code>schema_version: oink.policy/v1</code>. It owns check selection, severity overrides,
+reviewed finding exclusions, reviewed external URL scopes, translation scopes,
+protected prose declarations and the optional baseline file path. Hugo inputs
+continue to own languages, titles, URLs, menus and configuration; module files
+own dependency versions. A symlink, unknown key/group, unsupported version,
+invalid review metadata or multiple YAML documents is required input failure
+(exit <code>2</code>). Diagnosis and checks only read this policy.</p>
+<p>Without a policy, links, translations and style are enabled and required.
+<code>check links</code>, <code>check translations</code>, or <code>check style</code> explicitly selects one
+required group, regardless of its policy selection. Unselected or disabled
+optional groups report <code>not_checked</code>. Every check invocation retains the
+required strict Hugo build and output-enumeration prerequisites. Standalone
+translation/source checks also use an explicit nonpublishable draft/future/expired
+analysis view; it never replaces production artifacts. Managed <code>build --check</code>
+renders only the production view and returns <code>2</code> for unknown required scope identities.</p>
+<p>The <code>rules</code> mapping assigns <code>error</code>, <code>warning</code> or <code>info</code> to exact opaque rule
+IDs. A reviewed <code>exclusions</code> entry requires <code>rule_id</code>, a clean relative <code>file</code>
+glob, <code>reason</code>, <code>reviewed_by</code> and RFC 3339 <code>reviewed_at</code>; <code>**</code> patterns and path
+escape forms are unsupported. Findings remain visible with review metadata.
+Site-local source locations match against their relative site path; source
+paths outside the selected site cannot match an exclusion.
+Required build, input, tool or coverage failure cannot become success through
+severity changes or exclusions.</p>
+<p>Same-origin HTML references outside the configured base path are policy
+findings unless a reviewed <code>external_scopes</code> URL declares a separately deployed
+path scope. Each scope needs the same review metadata and an absolute HTTP(S)
+URL without credentials, query or fragment. Matching uses complete path
+segments. The scope cannot exempt missing targets inside the project or required
+local machine-output targets. Different-origin references remain explicitly
+unverified by offline static checks.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--translations">Translation policy and review evidence
+</h2>
+<p><code>translations.scopes</code> selects source pages using clean absolute Hugo
+<code>Page.Path</code> prefixes, then finds targets through Hugo&rsquo;s translation identity.
+It does not infer a public route or language from a filename. Each scope has
+<code>path</code>, <code>source_language</code>, <code>required_languages</code>, <code>mode</code> and <code>drafts</code>.
+<code>mode</code> defaults to <code>localized</code>; <code>strict</code> is also supported. <code>drafts</code> defaults
+to <code>include</code>; <code>ignore</code> excludes draft sources/targets, and <code>require-published</code>
+requires the selected source and required targets to exist in production.
+Known disabled Hugo languages are <code>not_applicable</code>; unknown languages are
+invalid policy. The most specific matching path owns a source page.</p>
+<p>Without scopes, existing pairs rooted in Hugo&rsquo;s enabled default language and
+duplicate relationships are inspected. Universal localization is not required;
+<code>translations.coverage</code> records the unconfigured language scope as optional
+<code>not_checked</code>. Missing required targets and duplicate selected relationships
+are policy findings. Draft/publication state is independent of review state.</p>
+<p>Constraints are opt-in: <code>explicit_ids</code> compares the full recognized explicit-ID
+map in strict mode; localized mode requires a selected <code>ids</code> list. <code>ids</code> requires
+each named ID in both files, <code>placeholders</code> compares exact declared prose-literal
+counts, and <code>code_labels</code> protects fenced blocks with each named language/info
+token. <code>required_fields</code> requires nonempty dotted front matter fields in both
+files; <code>equal_fields</code> compares their actual values. No rule requires matching
+heading counts, translated prose or all code blocks by default.</p>
+<p><code>.oink/translations.json</code> uses <code>oink.translations/v1</code>. Explicit review records
+bind Hugo source/target IDs, source language, complete source/translation byte
+SHA-256 values, reviewer, reason and RFC 3339 time. An absent record is <code>unknown</code>;
+equal hashes are <code>current</code>; source-only, target-only or both changes are
+<code>source_changed</code>, <code>translation_changed</code> or <code>both_changed</code>. These are evidence
+of changes since review, not semantic judgments. File modification time never
+establishes review. Unproven sources stay unknown; a recorded review or protected
+constraint that cannot be verified produces required incompletion.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--native-content">Native content rules and coverage
+</h2>
+<p>Source rules extract evidence from Markdown structure and independent enabled
+Hugo attributes, preserving original UTF-8 bytes, CRLF/BOM, source offsets and
+YAML/TOML/JSON front matter with unknown fields. Actual effective Hugo attribute
+switches and configured math passthrough delimiters control recognition.
+Fenced/inline code, shortcode bodies, raw HTML and passthrough contents do not
+become prose or invented headings. Unsupported body syntax remains visible;
+required source coverage cannot silently pass.</p>
+<p>Generic rules detect duplicate recognized explicit IDs and evaluate declared
+<code>style.protected</code> entries with <code>file</code>, exact prose <code>literal</code> and expected <code>count</code>.
+The bounded OINK v1.1.0 catalog adds advisory code/table attribute, deprecated
+front matter and dropped unsafe-attribute findings. Each rule records module,
+version, immutable revision, module sum, license and exact source-file SHA-256
+provenance in <code>data.native_rule_provenance</code>.</p>
+<p>The catalog runs only when the actual mounted public v1.1.0 module-cache inputs
+match those hashes. A replacement, vendor copy, other version or unknown source
+does not select a latest-theme fallback: <code>native-theme-rules</code> is optional
+<code>not_checked</code>, while generic syntax checks still run. This catalog does not
+certify every custom component or theme feature.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--review-plans">Baselines and reviewed file plans
+</h2>
+<p><code>baseline</code> selects a clean relative file, default <code>.oink/baseline.json</code>, using
+<code>oink.baseline/v1</code>. Capture requires completed work and explicit review metadata.
+The fingerprint binds exact rule ID, normalized location/pointer and condition
+message; it excludes severity. Acknowledged findings stay visible with
+<code>disposition: &quot;baseline&quot;</code> and original severity; new conditions still block
+according to policy. Required incomplete findings/coverage cannot be acknowledged.</p>
+<p>Review and capture preview <code>oink.plan/v1</code> with selected edits, readable diffs,
+base existence/bytes/modes, after bytes and read guards. The plan ID excludes
+mutable validated/applied/recovery state. <code>--plan FILE</code> exclusively saves the
+plan; these commands do not accept <code>--write</code>. <code>plans apply FILE --site DIR</code>
+requires that exact selected site, fresh isolated candidate validation through
+the same checks and rechecked source guards before any write. Escapes, <code>.git</code>,
+symlinks and nonregular files are protected; overlapping candidate/source trees
+are refused. Stale plans fail safely. Optional <code>external_inputs_hash</code> binds
+captured non-site input bytes, full modes and inventory into the plan ID. This
+opaque SHA-256 grants no external paths or permission to read them. The owning
+validator compares fresh proven inputs; trusted original external guards are
+rechecked around selected writes.</p>
+<p>Exclusive installation preserves a file created during commit. Partial failures
+restore owned unchanged writes; subsequent editor bytes, modes or deletions
+remain intact. The reported recovery directory keeps original bytes/modes and
+actual concurrent captured evidence. Unrelated files and new editor children
+are preserved. No file content authorizes shell execution or publication.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--project-graph">Captured page inspection and impact
+</h2>
+<p><code>inspect PAGE</code> selects an actual Hugo page by exact language:path ID, Hugo
+Path, permalink or proven site-owned source file. A known default language
+resolves a multilingual Path; remaining ambiguity or an unknown selector is
+required incomplete (<code>2</code>). <code>data.inspection</code> exposes source byte hash/full
+mode, actual output identities, observed inbound/outbound references,
+translations and physical bundle attachments. Physical attachments are
+distinguished from observed published resources.</p>
+<p><code>impact --since REF</code> compares captured current inputs and an isolated committed
+Git tree rendered by the same Hugo engine. It retains deleted prior pages and
+their inbound edges, unchanged referring pages, translation peers, attachments
+and actual derived outputs. Global or uncertain inputs expand causal scope;
+an unowned actual HTML output such as an alias also forces conservative full
+scope. Alias declarations never create guessed route ownership. Historical
+inputs in proven Git mode scopes compare only Git&rsquo;s executable bit; other
+module/foreign inputs and current facts retain full modes.</p>
+<p>Historical materialization reads bounded Git objects without checkout hooks,
+filters, smudge execution or document execution. The limits are 10,000 files,
+16 MiB per file and 128 MiB per tree; required private history is bounded at
+256 MiB. Symlinks, submodules, capped or missing objects, required incomplete
+history and unsupported monorepo GitInfo are explicit incomplete states.
+Committed site-owned dependencies can be proven. Current external local
+replacement/workspace bytes cannot substitute for historical evidence.</p>
+<p><code>data.impact.baseline_state</code> is <code>complete</code>, <code>incomplete</code> or <code>unavailable</code>.
+When the required baseline is unavailable, the result returns <code>2</code>, retains all
+known current pages/attachments/references/outputs and expands full scope. It
+creates no prior pages or invented changes; only an actually resolved commit
+is recorded. <code>check [GROUP] --since REF</code> deliberately performs the full
+current check and declares <code>data.check_scope: full</code>; no incremental speed or
+partial validation claim is made. <code>data.impact.full_scope</code> describes causal
+uncertainty separately from that validation scope.</p>
+<p>Completed <code>inspect</code> and <code>impact</code> fact queries return <code>0</code> even when
+their separately reported <code>data.current_check</code> has completed quality findings
+(<code>1</code>). Required capture failures remain top-level <code>2</code>. <code>check --since</code> keeps
+the current policy&rsquo;s quality exit code and required completion precedence.</p>
+<p><code>context</code> is removed. Read page facts through the JSON/YAML report from <code>inspect</code>.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--content-moves">Content move plans
+</h2>
+<p><code>move SOURCE TARGET [--plan FILE]</code> previews a physical site-relative file or
+bundle relocation. Actual Hugo identities determine translation peers and
+old/new outputs. The plan includes byte/full-mode-preserved files and binary
+attachments, readable diffs, proven Markdown destination rewrites, observed
+route changes and alias advice. Front matter is not rewritten to install
+aliases. Raw HTML, shortcode output, transformed destinations and ambiguous
+source/output ownership stay visible manual actions; opaque source spans are
+not changed. Repeated ordinary Markdown destinations can also lack a unique
+source/output occurrence proof, including aggregate/print appearances. Matching
+URLs alone do not authorize rewriting those occurrences. A relocated physical
+attachment does not prove its new published URL. Resource URL changes require
+paired actual rendered edges and equal emitted bytes; a proven processed image
+URL does not prove an absolute original-resource URL. Unproven original URLs
+stay manual and are not constructed from the directory move.</p>
+<p>The original <code>before</code> check and provisional <code>route_probe</code> are separate from
+the final candidate check. The provisional relocation may expose findings
+<code>1</code> from stale inbound links. A plan is validated or saved only after the
+final isolated candidate and reference proof pass. Unsupported identity or
+required capture failure returns <code>2</code>; an actual final quality failure remains
+<code>1</code> and cannot save an applicable plan.</p>
+<p>Content move plans must be saved outside the selected site. Their additive
+<code>oink.plan/v1</code> <code>move</code> selectors and <code>source_inputs_hash</code> bind the complete raw
+source inventory, bytes and full modes; external-input and fresh-directory
+guards also apply. Saved apply regenerates the original/relocated Hugo proof
+and requires exact expected plan ID and files before final reference
+verification. It rechecks current guards before writes, restores raw original
+modes rather than private-copy modes, and preserves later editor bytes/modes
+on refusal or guarded recovery. Stale inputs or an occupied fresh target lack
+the required proof and return <code>2</code>. Only explicit <code>plans apply</code> writes selected
+files; previews never stage or commit Git changes.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--supported-inputs">Supported input boundary
+</h2>
+<p>Initial full validation supports materialized files in a normal checkout or
+without Git metadata, including supported local module replacements copied
+into the isolated tree. It does not follow mounted symlinks or external mounts
+back into the user&rsquo;s workspace. Auxiliary symlinks outside effective mounts
+are omitted rather than validated. Linked Git worktrees with a <code>.git</code> file
+need a materialized review copy; Git-dependent behavior needs a copy with its
+own Git metadata.</p>
+<p>The snapshot excludes top-level <code>public</code>, <code>resources</code>, <code>node_modules</code>, <code>tmp</code>,
+and the Hugo build lock. A mount that needs excluded input cannot silently
+pass. Root configuration and the standard <code>config</code> tree are supported;
+explicit configuration files must be inside the selected site, and custom
+<code>HUGO_CONFIGDIR</code> locations are refused. Supported configuration relocation is
+not a second implementation of Hugo validation.</p>
+<p>Content adapters (<code>_content.gotmpl</code>) can create unlisted pages that cannot be
+enumerated completely through the supported public Hugo APIs. Full output
+validation therefore reports incomplete work for those inputs. A disabled
+page kind or render segment that omits an enabled language&rsquo;s probe is also
+incomplete. Multihost language configuration is outside the first full-check
+scope and returns incomplete work; multilingual paths on a single host remain
+supported. These cases must not be presented as a successful partial check.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--authoring">Ordinary content plans
+</h2>
+<p><code>new BUNDLE --title TEXT [--language LANG] [--translations LANGS]</code>
+<code>[--kind page|docs|blog|book] [--plan FILE]</code> previews an ordinary Hugo leaf
+bundle through captured site-owned content mounts. The primary language
+falls back to the effective default; selected peers must be distinct enabled
+languages. Shared filename and language-directory layouts follow actual Hugo
+mounts, including observed <code>sites.matrix.languages</code> selection rather than an
+assumed legacy <code>lang</code> field. Ambiguous, filtered or unsupported mappings require
+manual authoring.
+Existing bundles or sibling files owning that page are refused.</p>
+<p>The primary index has <code>draft: false</code>; selected peer indexes have <code>draft: true</code>.
+The title is a supplied literal, not translated text. No review record is
+created. Full quality analysis and isolated candidate validation precede the
+shared guarded plan. Every proposed new file must map to exactly one actual
+site-owned Hugo source page with actual rendered outputs, including translation
+drafts in the explicit analysis view. Link-only/no-output, ignored, hidden or
+build-never content cannot
+pass merely because the existing site renders cleanly; required identity is
+checked even when ordinary source-check groups are disabled. Saving <code>--plan</code> creates only a new plan file; explicit
+<code>plans apply FILE --site DIR</code> revalidates and checks source bytes/modes,
+existence, fresh directories and later attachment conflicts before applying.
+Fresh-directory state is bound into the plan identity and checked before/after
+validation, between writes and at completion. Rollback preserves later editor
+attachments and reports recovery; it does not delete unrelated directory entries.</p>
+<p>Editor settings and Markdown snippets belong to the site editor.
+<code>editor</code> and <code>snippets</code> are removed.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--init-profiles">Initialization profiles
+</h2>
+<p><code>init DIR [--profile project|docs|blog|book] [--languages en|en,zh|all]</code>
+composes one embedded MIT-licensed Starter archive. The default <code>project</code>
+retains the previous complete language projection byte-for-byte. The language
+selection is independent of the content profile: <code>all</code> means English,
+Chinese and French.</p>
+<p>Explicit <code>docs</code>, <code>blog</code>, and <code>book</code> retain their corresponding archived content
+section and shared home, assets, examples, workflows and license. Native
+section front matter defines their documentation, blog or sequential book
+model and navigation. Each language&rsquo;s site title/description comes from its
+archived section; existing localized home cards/actions/CTA are projected to
+that section. Only their generated <code>hugo.yaml</code> and <code>data/home</code> YAML files are
+serialized; retained content/license bytes stay unchanged. There are no four
+copied Starter trees or runtime template downloads.</p>
+<p>Unknown profiles are policy refusals (<code>1</code>) before candidate validation or
+writes. Missing/failed required Hugo validation remains incomplete (<code>2</code>). New
+and empty-target, candidate-before-publication, exclusive creation and
+concurrent-edit recovery protections apply to every profile. Ordinary Hugo
+builds each generated site with provisioned dependencies. Archived workflows
+remain source examples; <code>init</code> does not generate or execute the checksum-bound
+R3 CI templates.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--upgrade-comparison">Bounded upgrade comparison
+</h2>
+<p><code>upgrade --to TAG</code> now captures baseline and candidate views from the same
+original site inputs and returns a readable module diff with full mode changes.
+Its comparison records actual Hugo pages/outputs/language settings, emitted
+file hashes/sizes/modes, raw alias declarations and separately observed alias
+redirect files. It reports removed/added URLs, proven redirects, alias target/
+byte changes and enabled language/output/search changes. A clean candidate
+build alone does not prove route or capability preservation.</p>
+<p>A previous URL is preserved only when an observed redirect at its exact old
+output file targets the corresponding actual candidate page. Unknown/relative
+custom alias identity remains required incomplete (<code>2</code>). Removed previously
+emitted routes or outputs are blocking findings (<code>1</code>). Both resolved theme
+versions must match the explicitly selected pins; unknown/substituted pins,
+unknown/different normalized Hugo versions or environments, or unexpected
+other input changes remain incomplete. Comparison supports one HTTP(S) base
+origin/path; multihost inputs stay incomplete. No configuration migration
+transform or universal browser/theme compatibility is claimed; manual review
+remains explicit optional unchecked coverage. Observed aliases that retarget a different
+unique Hugo page are blocking independently of same-page URL moves.</p>
+<p>The v2 upgrade plan ID binds the selected module plan, copied source bytes/full
+modes/file inventory and normalized actual comparison. <code>--expect-plan ID</code>
+checks a fresh capture/comparison, not a previously saved successful build.
+Because emitted file hashes are bound, nondeterministic templates can require
+a refreshed preview even when source files appear unchanged. Guards are rechecked before returning a preview, before each write and after
+writes, including proven local dependency/workspace inputs read-only. Only
+selected module files are written; rollback restores only unchanged files
+owned by the operation and preserves later editor bytes. Existing dirty target,
+replacement and vendor safeguards remain in force.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--preservation">File preservation and release checks
+</h2>
+<p>Initialization embeds the complete Starter commit and preserves its license.
+The provenance records its hash and every projection: independent content/language
+selection, the exact public theme pin/checksums, and disabling Git metadata for
+a fresh directory. The default project retains prior bytes; selected content
+profiles share the same archived source and license. Candidate validation precedes target writes. Exclusive
+creation refuses existing files; rollback removes only unchanged files created
+by that invocation and preserves concurrent user edits with recovery evidence.</p>
+<p>Upgrade owns only a single site&rsquo;s selected <code>go.mod</code> and <code>go.sum</code> changes. It
+preserves unrelated dependencies and directives, refuses dirty target files
+for <code>--write</code>, checks the reviewed plan ID when provided, rechecks targets
+before writing, and records backups/recovery. Unrelated dirty source files do
+not block read-only diagnosis or justify overwriting them.</p>
+<p><code>check --release</code> disables <code>GOWORK</code> and <code>HUGO_MODULE_WORKSPACE</code> and removes
+the environment replacement for the subprocess. It preserves <code>go.mod</code>
+replacements, reports conflicting local OINK replacement policy, and keeps
+vendor evidence separate from the public requirement. Upgrade refuses an OINK
+replacement and refuses <code>_vendor</code>; vendor refresh remains a separate explicit
+workflow. No module pin change is described as updating vendor bytes. If Hugo
+actually selects vendored OINK, <code>--release</code> reports required public-source
+verification as incomplete (exit <code>2</code>); matching version metadata is not proof
+that the vendor bytes match the public tag. Ordinary <code>check</code> still validates
+the actual vendor build.</p>
+<p>Configured Hugo module replacements are also disabled only in the release
+snapshot. If Hugo changes module files in that snapshot during resolution or
+build, the CLI reports that dependency inputs need explicit preparation and
+review. It preserves the original bytes rather than silently accepting a
+build that depended on an unreviewed generated module-file change.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--checked-artifacts">Checked builds and artifact identity
+</h2>
+<p><code>build --check --destination DIR --manifest FILE</code> uses an isolated,
+warning-strict production build. Hugo renders once; the check engines inspect
+that output, then seal and export those same bytes. It never invokes a second
+renderer to create the publication tree. The source checkout remains unchanged.
+Only an outcome of <code>0</code> with complete or inapplicable required coverage can be
+sealed. Blocked or incomplete checks do not create a verified export.</p>
+<p>This production view does not include the separate nonpublishable maintenance
+render. An explicit scoped translation policy whose required Hugo identities
+are unknown because publication excludes their sources returns <code>2</code>. It does
+not infer missing translations from filenames or silently skip the scope.
+Standalone <code>check</code> and <code>translations</code> retain the full maintenance view.</p>
+<p>The destination must be new or empty, with an existing parent; the local
+manifest must be a new file outside that tree. Export uses exclusive creation,
+preserves exact bytes and full regular-file modes regardless of umask, and
+rechecks source and destination against the manifest. Existing entries,
+symlinks and overlapping trees are refused. Failed partial exports remain
+unverified evidence and are preserved. Empty directories and directory modes
+are outside the published file inventory.</p>
+<p><code>--marker</code> is optional and off by default. It adds
+<code>.well-known/oink-build.json</code> with only <code>oink.build-marker/v1</code> and the artifact
+ID. That file&rsquo;s entry is excluded from artifact-ID calculation to avoid a
+circular hash, then its exact digest is included in the final inventory.
+An existing marker path is refused. The manifest is never copied into the
+public tree automatically.</p>
+<p>The separately saved <code>oink.artifact/v1</code> manifest records the source-input hash,
+known source Git revision and dirty state, actual resolved theme identity,
+CLI/Hugo versions, effective environment/base URL/release settings, required
+coverage, actual Hugo route contexts and each file&rsquo;s relative path, size, full
+mode and SHA-256. Canonical URLs and HTML language values come from emitted
+HTML; Hugo language keys remain separate. Unknown Git state stays unknown.
+Original input bytes and modes are captured before temporary probe overlays
+or workspace/replacement path rebasing. The public manifest omits absolute
+local paths, arbitrary arguments, process logs and free-form coverage details.
+Hashes prove byte identity, not a signature or publication of a local checkout.</p>
+<p>Managed builds accept only the boolean Hugo flags <code>--minify</code>, <code>--gc</code>,
+<code>--ignoreCache</code> and <code>--noTimes</code> after <code>--</code>, including <code>=true</code>/<code>=false</code> forms.
+Other passthrough flags are unsupported inputs. Ordinary <code>build</code> keeps its
+existing transparent passthrough behavior. Effective example/local addresses
+are warnings during ordinary diagnosis and errors for checked release builds.
+<code>--release</code> still requires separate evidence for actual public theme resolution;
+a local Git revision or declared pin does not attest to vendor/replacement bytes.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--artifact-verification">Local and deployed verification
+</h2>
+<p><code>artifacts verify --artifact DIR --manifest FILE</code> is read-only and offline.
+It compares the exact file set, bytes, sizes and full modes. Changed, missing,
+additional, unsafe or mode-changed files invalidate identity (<code>1</code>). Invalid
+manifests, unreadable inputs and unsupported or interrupted inspection return
+<code>2</code>. Verify the export again immediately before an uploader consumes it; later
+edits cannot inherit a previous successful result.</p>
+<p><code>verify --site URL --manifest FILE --network</code> explicitly authorizes HTTP reads.
+It checks every declared file and distinct actual Hugo route URL, including
+all language/subpath contexts, against the manifest&rsquo;s bounded response size
+and decoded-byte digest. Recorded HTML canonical/language values and an enabled marker are
+checked when available. Shared URL/file requests may be coalesced without
+removing their recorded contexts. HTTP cannot verify local file-mode bits.</p>
+<p>A wrong body, soft-404, wrong route, changed captured canonical/language value
+or wrong marker is a conclusive finding (<code>1</code>). Timeouts, authentication failures,
+rate limiting, server unavailability and an absent required marker leave work
+incomplete (<code>2</code>). Redirects outside the selected origin/base path are blocked;
+the command does not discover or send credentials. Static build checks do not
+perform this deployment check. Network permission for a build does not authorize
+a later verification request or an upload.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--ci-generation">Retired CI generation
+</h2>
+<p><code>ci init</code> is removed. Keep CI configuration in the site or Starter.
+Local CLI validation does not execute hosted CI or deploy a site. Previously
+saved CI plans are rejected by <code>plans apply</code>.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--workspace-registry">Explicit workspace registry
+</h2>
+<div class="td-callout td-callout--note" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-info" aria-hidden="true"></i><span class="td-callout__label">R6 supported local scope accepted</span></div>
+  <div class="td-callout__body">
+<p>The registry and optional-tool boundaries passed frozen owning/runtime, actual
+protocol, four-consumer parity/preservation and canonical source/render gates.
+A07 adapter and A15 workspace supported scope is accepted locally in the
+<a href="/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r6">maintenance record</a>.
+The recorded R1–R8 and A18 scope passed for its historical source and binaries;
+changes to the current CLI require new evidence.</p>
+  </div>
+</div><p>A workspace is one explicitly supplied YAML registry, independently versioned
+as <code>oink.workspace/v1</code>. It contains only site names and directories:</p>
+<div class="td-code td-code--untitled" id="td-code-e08f9e4d-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="6">
+  <div class="td-code__viewport" id="td-code-e08f9e4d-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">schema_version</span><span class="p">:</span><span class="w"> </span><span class="l">oink.workspace/v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">sites</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">docs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l">../docs-site</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">blog</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l">../blog-site</span></span></span></code></pre></div></div>
+</div>
+<p>The registry must be a regular nonsymlink file containing exactly one YAML
+document with known fields, 1–64 entries and at most 256 KiB. Names match
+<code>[A-Za-z][A-Za-z0-9_-]{0,63}</code> and are case sensitive. Directories are literal
+relative paths from the registry&rsquo;s actual parent, or absolute paths; variables,
+globs and sibling discovery are not evaluated. Explicit directory symlinks and
+operating-system aliases resolve to their canonical identity. Duplicate names,
+duplicate or overlapping actual roots, filesystem roots, dangling symlinks
+and nondirectory ancestors are rejected. Missing directories with a proven
+existing ancestor remain listed; checking one returns that site&rsquo;s <code>2</code> without
+preventing later selected sites from being checked.</p>
+<p><code>workspace list|check [GROUP] --workspace FILE [--sites NAME,NAME]</code> selects all
+registered sites when <code>--sites</code> is omitted. Explicit selections require exact,
+nonempty, distinct registered names and retain registry order, including when
+the names were supplied in another order. <code>list</code> needs no Hugo renderer.
+<code>check</code> reuses the single-site engine and each site&rsquo;s own Hugo inputs and
+<code>oink.policy/v1</code> policy. It never duplicates Hugo configuration in the registry.</p>
+<p>The existing <code>oink.result/v1</code> envelope contains <code>data.registry</code>,
+<code>selected_sites</code>, <code>sites: [{name, path, result}]</code>, <code>completed_sites</code>,
+<code>finding_sites</code> and <code>incomplete_sites</code>. Each child is a full single-site result.
+Completed sites include exits <code>0</code> and <code>1</code>; finding sites are the <code>1</code> subset.
+The aggregate exit is <code>2</code> if any selected site is incomplete, otherwise <code>1</code> if
+any has blocking findings, otherwise <code>0</code>. Human output includes each site&rsquo;s
+result and findings. This aggregation does not infer completion for unselected
+sites.</p>
+<p>Supported single-site commands accept <code>--workspace FILE --site NAME</code>, with one
+explicit registered name and no default site. <code>init</code>, <code>artifacts</code> and <code>verify</code>
+do not accept this selection. A saved <code>plans apply FILE</code> must bind to
+the selected canonical directory; selecting another registered site returns
+<code>2</code> before source writes. There is no automatic multi-site apply or upgrade.
+Existing candidate validation and source/dependency byte and mode guards still
+apply. Registry listing/checking neither provisions missing sites nor installs
+tools, commits or writes consumer configuration.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--optional-checkers">Optional check adapters
+</h2>
+<p>Explicit <code>tools</code> entries in each site&rsquo;s <code>oink.yaml</code> select already provisioned
+executables. These entries extend <code>oink.policy/v1</code>; they are not a second Hugo
+configuration or an installer. Each kind has <code>enabled</code> (default <code>true</code>),
+<code>required</code> (default <code>false</code>), <code>command</code> (default the kind&rsquo;s name), <code>config</code>
+(a clean site-relative regular file when supplied) and <code>timeout_seconds</code>
+(default 60 seconds; bounded nondefault values 1–300). Commands are one
+executable name or absolute path, not shell expressions.</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Kind</th>
+      <th scope="col">Owning check group</th>
+      <th scope="col">Current supported protocol</th>
+      <th scope="col">Configuration boundary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>markdownlint</code></td>
+      <td><code>style</code></td>
+      <td>markdownlint-cli <code>0.49.1</code></td>
+      <td>Optional declarative JSON/YAML/TOML; no JS, JSONC, custom rules or <code>extends</code></td>
+    </tr>
+    <tr>
+      <td><code>vale</code></td>
+      <td><code>style</code></td>
+      <td>Vale <code>3.24.0</code></td>
+      <td>Explicit INI plus captured styles from the supported declarative subset</td>
+    </tr>
+    <tr>
+      <td><code>lychee</code></td>
+      <td><code>links</code></td>
+      <td>lychee <code>0.24.2</code></td>
+      <td>Optional bounded request settings; explicit network consent</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Unconfigured tools are not discovered. A tool outside the selected check group
+is visibly <code>not_checked</code>. A configured optional tool that is unavailable,
+unsupported or cannot complete leaves an omission; required incompletion
+returns <code>2</code> and cannot be downgraded by rule severity, exclusions or a problem
+baseline. Required and disabled cannot be combined. Completed typed findings
+still follow policy: blocking findings return <code>1</code>. An unrecognized tool version
+or invalid protocol output does not count as a completed check.</p>
+<p><code>data.adapters</code> records each kind, requirement, status, typed diagnostics,
+<code>adapter.KIND</code> coverage, raw process evidence, omissions and provenance.
+Provenance includes the observed supported version, executable SHA-256,
+captured configuration/style paths with SHA-256 and full mode, and pinned
+public protocol sources. Tool logs stay in stderr and evidence; JSON stdout
+remains one result. Per-process time and output are bounded, and changed
+executables, captured configurations or tool-modified private inputs invalidate
+their evidence.</p>
+<p>Prose tools receive private masked copies of proven site-owned Markdown.
+Front matter, BOM/CRLF and UTF-8 offsets, code, shortcodes, raw HTML, configured
+math and attributes retain their source boundaries. Code prose is outside source attribution; Markdown structure and fence/inline
+code boundaries remain available to markdownlint, while Vale receives the
+prose-only mask. Findings touching excluded or synthetic mask text are not
+attributed to original source. Source locations are emitted only for proven
+original lines/ranges; unsupported syntax and
+suppressed findings remain visible omissions. These adapters do not format or
+rewrite original content.</p>
+<p>Markdownlint uses an unpredictable generated JSON pointer to isolate the
+captured rule object after upstream rc merging. Executable configs, custom
+rule loaders and recursive <code>extends</code> are refused. Vale uses an explicit
+captured INI, <code>--no-global</code> and copied declarative styles; sync, packages,
+actions, scripts, conversions and style pipelines are unsupported. Lychee
+accepts bounded <code>timeout</code>, <code>max_retries</code> and <code>max_concurrency</code> settings, plus
+the literal <code>cache = false</code>; caching remains disabled and <code>cache = true</code> is
+refused. Preprocessors and arbitrary command options are refused.</p>
+<p>Offline is the default. Lychee is not invoked, including its version probe,
+unless <code>--network</code> is explicit: optional coverage is <code>not_checked</code>, required
+coverage is incomplete <code>2</code>. It receives only observed external HTTP(S)
+references from actual Hugo output; local links remain the native check&rsquo;s
+responsibility. Definitive failed <code>4xx</code> responses are policy findings, except
+<code>401</code>, <code>403</code>, <code>408</code>, <code>425</code> and <code>429</code>; those, <code>5xx</code>, DNS/TLS failures and timeouts
+are inconclusive, returning <code>2</code> when required and an omission when optional.
+External fragments, browser behavior and remote content identity are not
+verified. Findings retain the rendered output file and DOM pointer; no Markdown
+line is invented from an external URL.</p>
+<p>Child processes do not receive caller proxy-URL/credential settings or Node
+preload variables. Literal <code>NO_PROXY</code>/<code>no_proxy</code> host-list data may be forwarded
+for the qualified runtime. This is not a promise that every operating-system
+proxy route is disabled, or an OS network sandbox. Tool preparation and any
+network operation remain separate explicit actions; no tool is installed by
+these commands.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--offline">Offline and compatibility boundary
+</h2>
+<p>Offline is the default for managed subprocesses. Dependency misses are
+incomplete work. <code>--network</code> explicitly enables network use for the current
+operation; it conflicts with <code>--offline</code>. Isolated checks may seed disposable
+caches from already provisioned local modules. Downloading into a disposable
+cache does not promise a persistent cache for the next invocation.</p>
+<p>Only module download artifacts are seeded; isolated resource caches start
+fresh. The CLI does not reuse a global <code>GetRemote</code> cache to promise offline
+remote-resource builds. Required resources must be available as local inputs,
+or that operation must explicitly enable network access.</p>
+<p>The CLI does not download a Go toolchain, install packages, alter global
+configuration, or enable telemetry. Its process policy is not an operating
+system network sandbox. Qualification records distinguish ordinary offline
+execution from tests that actually deny outbound access at the OS boundary.</p>
+<p>Compatibility is declared from executed evidence, not inferred from a
+successful cross compilation. The local candidate has an exercised macOS
+arm64 path with Hugo Extended 0.166.0 and public OINK v1.1.0; the version gate
+accepts Hugo Extended 0.160.1 or newer without claiming all such versions were
+tested. Initialized sites retain normal Hugo inputs and require only their
+documented dependencies after removing the CLI.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--studio">Retired local Studio
+</h2>
+<p><code>studio</code> is removed from the CLI. Use an ordinary editor and <code>oink dev</code> for
+a site preview. Read maintenance facts through <code>inspect</code> and structured reports.
+The dated R7 acceptance remains historical evidence for its identified inputs.</p>
+<h3 id="pg-00c712f95095272da7efd7dff2203436--studio-api">Retired management API
+</h3>
+<p>The CLI no longer serves a management API. Earlier Studio API acceptance
+does not describe the current executable.</p>
+<h3 id="pg-00c712f95095272da7efd7dff2203436--studio-limits">Historical capture limits
+</h3>
+<p>Historical R7 limits belong to the dated acceptance record. Current command
+coverage and supported inputs are defined in this contract.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--editing">Retired general editing
+</h2>
+<p><code>edit</code> and Studio editing are removed. Edit source with an ordinary editor,
+then run <code>check</code>. <code>new</code>, <code>move</code>, review records, and baseline plans retain
+candidate validation and byte/mode guards. Previously saved editing plans
+are rejected. The dated R8 record remains historical evidence.</p>
+<h3 id="pg-00c712f95095272da7efd7dff2203436--editing-text-fields">Retired text and field editing
+</h3>
+<p>The CLI no longer owns general text or front matter editing forms.</p>
+<h3 id="pg-00c712f95095272da7efd7dff2203436--editing-components-attachments">Retired snippets and attachment editing
+</h3>
+<p>Write Markdown and add attachments with the site editor. The CLI no longer
+provides a snippet catalog or general attachment editing command.</p>
+<h3 id="pg-00c712f95095272da7efd7dff2203436--editing-studio">Retired Studio editing
+</h3>
+<p>The CLI does not serve an editor or accept browser Apply requests.</p>
+<h2 id="pg-00c712f95095272da7efd7dff2203436--verification">Verification and remaining scope
+</h2>
+<p>Use <code>make test</code> for offline Go tests and vet. Use <code>make test-hugo</code> for actual
+Hugo integration and <code>make test-tools</code> for configured optional tools.
+Skipped integration cases are not passing runtime evidence. Current changes
+need new source/binary-bound evidence; an older record does not qualify them.</p>
+<div class="td-callout td-callout--warning" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="td-callout__label">Current integration gate is incomplete</span></div>
+  <div class="td-callout__body">
+<p>On 2026-10-04, <code>make test</code> passed on macOS arm64 with Go 1.27.1 and Hugo
+Extended 0.166.0. The <code>make test-hugo</code> run failed
+<code>TestPublicR5CachedPublicModuleMovePreviewApplyAndOrdinaryHugo</code>: module-collection
+text preceded the configuration JSON, and the move returned <code>2</code> with
+<code>Hugo config did not return JSON</code>. Candidate validation refused the operation
+and reported the source unchanged. An immediate targeted rerun passed.
+The intermittent failure remains unexplained; the rerun does not establish
+a passing full integration gate for the current candidate.</p>
+  </div>
+</div><p>The dated <a href="/docs/design/research/2026-10-03-cli-maintenance-acceptance/">maintenance acceptance record</a>
+preserves earlier R1–R8 and A18 evidence. Declared targets are macOS arm64 and
+Linux arm64/amd64. Darwin amd64 is experimental and unqualified; Windows is
+unsupported. Archive creation, signing, distribution, consumer adoption, and
+deployment are separate states. This contract authorizes no automatic commit,
+push, publication, or deployment.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-f116aea3f411ec32ea7164585cda622b">6 - Paper and Slate visual presets</h1>
+    <div class="lead">Accepted phase-one visual identity and appearance controls, with separate reader style and mode state.</div>
+	<div class="td-callout td-callout--note" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-info" aria-hidden="true"></i><span class="td-callout__label">OINK 1.2.0</span></div>
+  <div class="td-callout__body">
+<p>Paper and Slate ship in 1.2.0. Ink and Terminal are included as explicit
+opt-ins; their remaining design work is recorded below.</p>
+  </div>
+</div><h2 id="pg-f116aea3f411ec32ea7164585cda622b--decision">Decision
+</h2>
+<p>Paper is the default, with warm paper/ink colors, blue links, IBM Plex Sans,
+heading hairlines and framed tables. Slate retains the v1.1.0 palette,
+Inter/Chakra/Plex Mono roles and Landing grid/glow. This gives reading sites a
+quieter default while preserving an explicit compatibility choice. The cost is
+a visible default change: existing sites can set <code>params.ui.preset: slate</code>.
+The 1.2.0 release notes and upgrade guide call out this default change.</p>
+<p>The reader menu is opt-in (<code>preset_menu: false</code>). The docs site enables it.
+One Appearance disclosure combines native Style and Light radio groups;
+mobile uses a modal dialog in the browser top layer. It is reachable by touch
+and keyboard without relying on hover. The cost is replacing the old one-click
+mode toggle with a selection panel; the <code>t</code> shortcut still toggles mode.</p>
+<p>Style and mode use separate attributes and storage keys. Choosing the site
+default preset clears the style key. Hugo renders the default without JavaScript;
+an allowlisted inline script restores reader state before CSS. This prevents
+the common initial preset mismatch, while keeping blocked storage usable.
+Presets ship in one stylesheet, at the cost of additional CSS bytes.</p>
+<p><code>brand</code> separates the wordmark from display headings. Paper adds the local
+OFL IBM Plex Sans variable font, including normal/italic and the six supported
+small writing-system subsets. Font files download on use; system typography
+and explicit role overrides retain priority. Chinese uses the system stack.
+Phase 1 includes no serif face and no external font request.</p>
+<p>Page task determines density: Landing keeps display scale, long articles keep
+their reading measure, and navigation/configuration tables remain compact.
+No global spacing increase, new shell, or geometry abstraction is introduced.
+Giscus and print follow the preset; API vendors and charts retain their current
+mode-only behavior. This keeps the first implementation bounded.</p>
+<h2 id="pg-f116aea3f411ec32ea7164585cda622b--later-work">Later work
+</h2>
+<p>A subsequent October 5 experiment implements Ink and Terminal behind explicit
+configuration; see the <a href="/docs/design/research/2026-10-05-ink-terminal-experiment/">experiment record</a>.
+They are not stable defaults. <code>preset_menu: true</code> offers Paper/Slate and the site
+default; an explicit list can expose either experiment. The menu uses the same
+compact icon-and-name buttons for all four, without experiment badges.
+This gives reviewers actual theme output without changing ordinary menu choices.
+The cost is additional scoped CSS and a larger menu when experiments are enabled.</p>
+<p>The experiment uses owned component rules for square/2 px geometry and compact
+desktop navigation instead of introducing a global density framework. It reuses
+existing local fonts, state handling and accessibility controls. Charts and API
+vendors stay mode-only; comment palettes and print follow the experiments.
+Remaining work is visual acceptance, wider device review and any decision to
+promote them into the stable set.</p>
+<h2 id="pg-f116aea3f411ec32ea7164585cda622b--evidence">Evidence
+</h2>
+<p>The <a href="/docs/design/architecture/#visual-presets">architecture contract</a> and
+<a href="/docs/design/shell/#appearance-control">shell contract</a> own behavior.
+<code>check-presets.py</code> owns token parity, AA palette checks, the frozen Slate
+v1.1.0 palette and strict configuration output. Font, parameter, vendor,
+namespace, action and runtime checkers retain their existing ownership.
+The documentation site&rsquo;s <code>appearance.spec.mjs</code> tests real output; the
+<a href="/docs/design/research/2026-10-05-visual-presets-acceptance/">dated acceptance record</a>
+distinguishes executed checks from remaining experiments.</p>
 
 </div>
 
@@ -642,7 +1706,7 @@ documented normatively in <a href="/docs/customize/config/#editor-schema">Config
 
       </main>
     </div>
-    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"Copy Markdown","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["Copy Markdown","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Copy Markdown","url":"/docs/design/decisions/index.md"},{"available":true,"description":"Copy link","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["Copy link","Share","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"Copy link","url":"http://localhost:1313/docs/design/decisions/"},{"available":true,"description":"Open in ChatGPT","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["Open in ChatGPT","Ask about this page","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in ChatGPT","url":"https://chatgpt.com/?hints=search\u0026prompt=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fdesign%2Fdecisions%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"Open in Claude","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["Open in Claude","Ask about this page","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in Claude","url":"https://claude.ai/new?q=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fdesign%2Fdecisions%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"View markdown","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["View markdown","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View markdown","url":"/docs/design/decisions/index.md"},{"available":true,"description":"View edit history","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["View edit history","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View edit history","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/design/decisions/_index.md"},{"available":true,"description":"Edit this page","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["Edit this page","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Edit this page","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/design/decisions/_index.md"},{"available":true,"description":"Create child page","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["Create child page","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create child page","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/design/decisions?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"Create docs issue","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["Create docs issue","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create docs issue","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=Design+decisions"},{"available":true,"description":"Create project issue","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["Create project issue","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create project issue","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"Print entire section","disabledReason":"Print entire section: unavailable","icon":"fa-solid fa-print","id":"print_section","keywords":["Print entire section","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Print entire section","url":""},{"available":true,"description":"Print this page","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["Print this page","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"Print this page","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL required","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"Switch language","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["Switch language","language"],"kind":"choice","options":[{"active":true,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/design/decisions/"},{"active":false,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/design/decisions/"}],"placements":{"page":false,"palette":true},"target":"self","title":"Switch language","url":""},{"available":false,"description":"Appearance","disabledReason":"unavailable","icon":"fa-solid fa-palette","id":"switch_preset","keywords":["preset","style","Paper","Slate","Style"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"paper","title":"Paper","value":"paper"}],"placements":{"page":false,"palette":true},"target":"self","title":"Style","url":""},{"available":true,"description":"Toggle color theme","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["Toggle color theme","Light","Dark"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"System","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"Light","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"Dark","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"Toggle color theme","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"Report or review theme and documentation issues","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["bug","support","roadmap"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK issues","url":"https://github.com/pgsty/oink/issues"}],"language":"en","quickLinks":[{"available":true,"description":"OINK is a documentation theme that needs nothing but Hugo Extended — components are written in Markdown, assets ship with the theme, both languages work out of the box, and one source produces four outputs.","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["Docs","docs"],"kind":"url","target":"self","title":"Docs","url":"/docs/"},{"available":true,"description":"OINK engineering stories, immersive guides, and release notes","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["Blog","blog"],"kind":"url","target":"self","title":"Blog","url":"/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"Copy Markdown","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["Copy Markdown","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Copy Markdown","url":"/docs/design/decisions/index.md"},{"available":true,"description":"Copy link","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["Copy link","Share","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"Copy link","url":"http://localhost:1313/docs/design/decisions/"},{"available":true,"description":"Open in ChatGPT","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["Open in ChatGPT","Ask about this page","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in ChatGPT","url":"https://chatgpt.com/?hints=search\u0026prompt=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fdesign%2Fdecisions%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"Open in Claude","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["Open in Claude","Ask about this page","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in Claude","url":"https://claude.ai/new?q=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fdesign%2Fdecisions%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"View markdown","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["View markdown","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View markdown","url":"/docs/design/decisions/index.md"},{"available":true,"description":"View edit history","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["View edit history","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View edit history","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/design/decisions/_index.md"},{"available":true,"description":"Edit this page","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["Edit this page","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Edit this page","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/design/decisions/_index.md"},{"available":true,"description":"Create child page","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["Create child page","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create child page","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/design/decisions?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"Create docs issue","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["Create docs issue","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create docs issue","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=Design+decisions"},{"available":true,"description":"Create project issue","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["Create project issue","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create project issue","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"Print entire section","disabledReason":"Print entire section: unavailable","icon":"fa-solid fa-print","id":"print_section","keywords":["Print entire section","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Print entire section","url":""},{"available":true,"description":"Print this page","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["Print this page","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"Print this page","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL required","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"Switch language","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["Switch language","language"],"kind":"choice","options":[{"active":true,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/design/decisions/"},{"active":false,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/design/decisions/"}],"placements":{"page":false,"palette":true},"target":"self","title":"Switch language","url":""},{"available":false,"description":"Appearance","disabledReason":"unavailable","icon":"fa-solid fa-palette","id":"switch_preset","keywords":["preset","style","Paper","Slate","Style"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"paper","title":"Paper","value":"paper"}],"placements":{"page":false,"palette":true},"target":"self","title":"Style","url":""},{"available":true,"description":"Toggle color theme","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["Toggle color theme","Light","Dark"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"System","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"Light","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"Dark","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"Toggle color theme","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"Report or review theme and documentation issues","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["bug","support","roadmap"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK issues","url":"https://github.com/pgsty/oink/issues"}],"language":"en","quickLinks":[{"available":true,"description":"Build a technical content site with shared navigation, multilingual support and search for documentation, blogs, books and API references.","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["Docs","docs"],"kind":"url","target":"self","title":"Docs","url":"/docs/"},{"available":true,"description":"OINK engineering stories, immersive guides, and release notes","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["Blog","blog"],"kind":"url","target":"self","title":"Blog","url":"/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
 
 <script src="/js/actions.js"></script>
 

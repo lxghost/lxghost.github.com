@@ -24,6 +24,8 @@ OINK 过去把评审、PRD 与执行记录放在本地 `plan/` 目录中。这�
 | [配置模型](/zh/docs/design/decisions/configuration/)      | 配置放在哪里、页面如何覆盖，以及 OINK 为什么不另造配置命名空间               |
 | [Markdown 优先创作](/zh/docs/design/decisions/authoring/) | 为什么优先使用原生 Markdown，以及 Docs、Blog、Book、Landing 如何延长共享系统 |
 | [生成式配置 Schema](/zh/docs/design/decisions/config-schema/) | 为什么编辑器 Schema 是生成的投影，以及漂移门禁如何阻止第三个配置权威出现 |
+| [可选 CLI 与结果契约](/zh/docs/design/decisions/cli/) | 本地 CLI 候选的独立 Go 可执行文件、版本化诊断、覆盖范围与显式写入边界 |
+| [视觉预设](/zh/docs/design/decisions/visual-presets/) | Paper 默认、Slate 兼容、可选外观菜单、独立明暗状态与字体边界 |
 
 ## 记录格式 {#record-format}
 
@@ -47,6 +49,8 @@ Git 历史和版本变更记录中，不在导航树里并列保留两套“现�
 - [配置模型](/zh/docs/design/decisions/configuration/): OINK 延长 Hugo 与 Docsy 兼容配置，不另造第二套命名空间或全局 resolver。
 - [Markdown 优先创作](/zh/docs/design/decisions/authoring/): 原生 Markdown 承载常见语义；shortcode 只填补真实能力缺口，各内容模型延长共享外壳而不是分叉。
 - [生成式配置 Schema](/zh/docs/design/decisions/config-schema/): 编辑器 Schema 是从既有配置权威投影生成的，CI 漂移门禁保证它永远不会成为第三个权威。
+- [可选 CLI 与结果契约](/zh/docs/design/decisions/cli/): 当前本地 CLI 候选的独立 Go 可执行文件边界、版本化诊断、隔离验证与有保护的维护计划。
+- [Paper 与 Slate 视觉预设](/zh/docs/design/decisions/visual-presets/): 第一阶段已接受的视觉身份与外观控件，分别维护读者的风格和明暗状态。
 
 ---
 

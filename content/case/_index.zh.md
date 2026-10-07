@@ -18,7 +18,7 @@ blog_index_columns: 3
 blog_index_size: 24
 featured_image: hero
 toc_taxonomies: false
-footer_style: slim
+footer_style: fat
 comments: false
 share: [copy]
 # 分区身份：案例用中性深灰。
@@ -30,7 +30,7 @@ cascade:
   featured_image: hero
   toc_style: flow
   toc_taxonomies: false
-  footer_style: slim
+  footer_style: fat
   comments: false
   reading_time: false
   share: [copy]
@@ -40,5 +40,6 @@ cascade:
   sidebar_expand_levels: 3
 ---
 
-十五个生产环境站点，从两页的小工具到多语言文档体系与三本书。
-每张卡片都会打开对应的线上站点。
+十五个站点项目，从两页的小工具到多语言文档体系与三本书。
+点击卡片先阅读案例，再访问其中的站点或源码链接。也可以按[案例导览](/zh/docs/about/showcase/)
+比较与自己目标形态接近的站点。

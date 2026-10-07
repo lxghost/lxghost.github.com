@@ -9,11 +9,21 @@ LLMS index: [llms.txt](/llms.txt)
 ---
 
 *Write Beautiful Docs* is the tutorial companion to the OINK reference. The
-reference tells you what each parameter and component does; this book follows
-one site from its first local preview to a reviewed, published result.
+reference tells you what each parameter and component does; this book is being developed around one Starter site, from its first local
+preview toward a reviewed, published result.
 
 The first three chapters contain working material. Later chapters deliberately
 show the Book draft state while their full walkthroughs are being written.
+
+## How to read this book {#reading-path}
+
+Start with [Chapter 1: Start with a working site](/book/01-start/). Chapters
+1–3 use the same Starter to preview the site, add bilingual pages, and improve
+their content. Chapters 4–6 and the appendix are still draft outlines. To
+finish customization and deployment now, continue with the
+[Starter tutorial](/docs/start/starter/) and [Deploy](/docs/admin/deploy/).
+The object indexes below also demonstrate Book publishing features; use them
+when you need to locate a figure, table, or example.
 
 ## Contents {#contents}
 
@@ -55,7 +65,7 @@ show the Book draft state while their full walkthroughs are being written.
 
 ## Figures {#figures}
 
-- [Figure 1-1](/book/01-start/#fig-first-preview) — The first milestone is a site a reader can open\, not a configuration file that merely looks plausible\.
+- [Figure 1-1](/book/01-start/#fig-first-preview) — Documentation\-site illustration\. Your Starter preview uses neutral sample content\; the first milestone is a site you can open and edit\.
 
 ## Tables {#tables}
 
@@ -69,19 +79,13 @@ show the Book draft state while their full walkthroughs are being written.
 
 ## Examples {#examples}
 
-- [Example 3-1](/book/03-compose/#eg-page-contract) — A page contract with one stable title\, one summary\, and an explicit place in the tree\.
-
-## How to read this book {#reading-path}
-
-Read chapters 1–3 in order when starting a site. Return to chapters 4–6 when
-you are shaping the public presentation and preparing a release. The appendix
-is a copy-and-adapt reference for the front matter patterns used throughout.
+- [Example 3-1](/book/03-compose/#eg-page-contract) — The same page now states a prerequisite\, a command\, and a visible result\.
 
 ---
 
 Section pages:
 
-- [Start with a working site](/book/01-start/): Install the one required tool, run a local preview, and establish a visible baseline before changing the design.
+- [Start with a working site](/book/01-start/): Install the prerequisite tools, run a local preview, and establish a visible baseline before changing the design.
 - [Give the content a structure](/book/02-structure/): Turn directories, section indexes, page bundles, and weights into one predictable reading and navigation order.
 - [Compose a page worth reading](/book/03-compose/): Combine prose, callouts, code, media, tables, and mathematics without turning the page into a component catalogue.
 - [Shape the reading experience](/book/04-design/): Turn a sound content structure into a recognizable, responsive, and bilingual publication.

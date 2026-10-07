@@ -52,8 +52,8 @@ weight: 20
 
 - [编写页面](/zh/docs/write/pages/): 新建一页文档：文件放在哪、front matter 写什么、标题锚点为什么要手写、链接与图片怎么写、页尾会自动出现什么。
 - [组织内容](/zh/docs/write/organize/): 目录结构就是侧栏树：`_index.md` 与 weight、栏目首页样式、图标与折叠、隐藏页面、把文档放在任意路径。
-- [页面参数](/zh/docs/write/frontmatter/): front matter 全表：主题真正读取的每一个页面键，按侧栏、外壳、搜索、输出、页尾、Book、Landing、发布页分组。
-- [博客与文章](/zh/docs/write/blog/): 开一个博客栏目：目录约定、文章的 front matter、封面图、按年份分组的列表页与 RSS。
+- [页面参数](/zh/docs/write/frontmatter/): front matter 全表：主题读取的页面键与 1.x 兼容 no-op，按侧栏、外壳、搜索、输出、页尾、Book、Landing、发布页分组。
+- [博客与文章](/zh/docs/write/blog/): 开一个博客栏目：目录约定、文章的 front matter、封面图、按日期排序的列表页与 RSS。
 - [书籍出版](/zh/docs/write/book/): 用 `type: book` 把一棵目录树变成一本书：章节编号、图表式例编号、交叉引用、生成式索引与整本打印。
 - [发布与下载页](/zh/docs/write/releases/): 把版本号、标签、归档链接、校验和与安装命令写成本地事实，再让发布卡片、资产表、下载区块和索引页从同一份记录推导出来。
 - [API 文档](/zh/docs/write/openapi/): 把 OpenAPI 规范放进站点，用随主题分发的 Swagger UI 或 Redoc 渲染成可浏览的接口文档，不连 CDN。

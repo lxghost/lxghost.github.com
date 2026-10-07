@@ -63,7 +63,7 @@ Hugo 的 `.Param` 查找让大部分参数可以逐页覆盖，优先级从高�
 3. 站点 `params`。
 
 **写进 front matter 时要去掉 `ui.` 前缀。**
-站点上的 `params.ui.scroll_spy` 在页面里就写成 `scroll_spy`。front matter 里出现 `ui:`
+站点上的 `params.ui.reading_time` 在页面里就写成 `reading_time`。front matter 里出现 `ui:`
 块的话，里面的键没有人读，也没有人报错——某个设置看着没生效时，先对照[页面参数](/zh/docs/write/frontmatter/)核一遍键名。
 
 ```yaml {title="content/docs/wide-reference.md"}
@@ -72,7 +72,7 @@ title: 宽版参考
 page_width: wide
 navbar_enabled: false
 footer_style: slim
-scroll_spy: true
+reading_time: false
 ---
 ```
 
@@ -176,9 +176,9 @@ favicon 没有参数：主题按约定名扫描 `static/`（`favicon.ico` `favic
 | 参数 | 类型 | 默认 | 说明 |
 | --- | --- | --- | --- |
 | `params.ui.featured_image` | enum | none | 文章正文里怎么渲染自己的题图：`none` 不渲染，`banner` 在标题上方框出一张 16:9 的图，`wash` 把它铺在文章头部背后、只留十分之一的不透明度，`hero` 把它作为外壳自己的通栏背景铺开并把开头下移——单页与栏目列表页都一样。用的就是这一页在卡片与 `og:image` 里已经在用的那张图，两处不会打架。没有题图的文章在任何模式下都不渲染任何东西 |
-| `params.ui.blog_index` | enum | list | 博客栏目列表页的形态：`list` 是行列表，`cards` 是内容卡片网格，卡片带 16:9 题图、日期与栏目行，以及三行摘要，`table` 是每篇一行的紧凑表格——整个栏目一次列全，不按年分组，也不分页。按年分组、分页与 `manual_link` 在 `list` 与 `cards` 下行为一致 |
+| `params.ui.blog_index` | enum | list | 博客索引形态：`list` 是行列表，`cards` 是带题图、日期与摘要的卡片，`table` 是紧凑表格。均按日期倒序排列，不按年分组；仅 `blog_index_toggle: false` 时的独立 `table` 不分页、列出整个栏目 |
 | `params.ui.blog_index_columns` | integer | 3 | `blog_index: cards` 时的列数；md 到 xl 之间恒为两列，md 以下一列，不受此值影响 |
-| `params.ui.blog_index_size` | integer | 12 | `list` 与 `cards` 索引每页的文章数；`table` 形态总是列全。12 能被 2、3、4 整除，卡片行不会缺角 |
+| `params.ui.blog_index_size` | integer | 12 | `list`、`cards` 及启用切换时三种视图共享的每页文章数；独立 `table` 忽略此值 |
 | `params.ui.blog_index_toggle` | boolean | false | 让读者从索引工具栏在列表、卡片、表格之间切换。默认关闭，因为它会把三种形态都放进文档——隐藏的那些不加载图片，但标记是真实存在的 |
 | `params.ui.toc_style` | enum | fixed | 右栏的呈现方式：`fixed` 是钉在视口上的面板，`flow` 是跟随内容流、从文章开头处开始、滚动后才钉住的宽面板 |
 | `params.ui.toc_taxonomies` | boolean | true | 右栏的分类词云。既没有目录也没有词云的右栏不会渲染任何东西 |
@@ -211,7 +211,7 @@ favicon 没有参数：主题按约定名扫描 `static/`（`favicon.ico` `favic
 | `params.ui.sidebar_menu_compact` | boolean | true | 只展开当前分支与邻近条目 |
 | `params.ui.sidebar_menu_foldable` | boolean | true | 允许读者展开/折叠分区 |
 | `params.ui.sidebar_menu_truncate` | integer | 2000 | 一个分区最多渲染的条目数，超出截断 |
-| `params.ui.sidebar_cache_limit` | integer | 500 | 站点页数超过它就复用共享导航标记，active 状态改由浏览器还原 |
+| `params.ui.sidebar_cache_limit` | integer | 500 | 页数达到此值后，按语言、导航根与有效设置复用可见的中性导航标记；浏览器补 active 状态 |
 | `params.ui.sidebar_width_min` | integer | 220 | 桌面端拖拽调宽的下限，像素 |
 | `params.ui.sidebar_width_max` | integer | 480 | 拖拽调宽的上限，像素 |
 | `params.ui.sidebar_item_overflow` | enum | ellipsis | `ellipsis` 长标题省略，`wrap` 换行 |
@@ -232,7 +232,7 @@ favicon 没有参数：主题按约定名扫描 `static/`（`favicon.ico` `favic
 | --- | --- | --- | --- |
 | `markup.tableOfContents.startLevel` | integer | 2 | Hugo 原生：收录的最高标题级别 |
 | `markup.tableOfContents.endLevel` | integer | 3 | Hugo 原生：收录的最低标题级别 |
-| `params.ui.scroll_spy` | boolean | false | 滚动位置跟踪；设为 `true` 打开活动项高亮 |
+| `params.ui.scroll_spy` | boolean | false | 1.x 静默兼容 no-op；普通外壳运行时始终跟踪当前大纲标题，此键不加载资源 |
 {.fields meta="type default"}
 
 单页隐藏大纲用 front matter `notoc: true`，见[页面参数](/zh/docs/write/frontmatter/)。
@@ -291,12 +291,17 @@ favicon 没有参数：主题按约定名扫描 `static/`（`favicon.ico` `favic
 
 | 参数 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `params.ui.typography` | enum | technical | `technical` 用随主题分发的 Inter / Chakra Petch / IBM Plex Mono；`system` 只用平台字体栈，不请求品牌字体。非法值告警并回退 |
+| `params.ui.preset` | enum | paper | 站点级视觉预设：`paper`、`slate`，或显式选择的实验 `ink`、`terminal`。1.2.0 新增；选择 `slate` 保留原有外观 |
+| `params.ui.preset_menu` | boolean 或列表 | false | `true` 提供 Paper、Slate 与站点默认值；列表显式开启实验且必须包含站点默认值；与 `dark_mode` 独立 |
+| `params.ui.typography` | enum | technical | `technical` 使用所选预设的本地字体（Paper：Plex Sans；Slate：Inter）；`system` 只用平台字体栈，不请求品牌字体。非法值告警并回退 |
+| `params.ui.fonts` | map | | 为 `ui` `body` `heading` `code` `display` `meta` `brand` `print` 八个角色指定字体族。主题校验名称但不加载字体文件；每份列表都应以通用字体族收尾 |
 | `params.page_width` | enum | normal | 外壳整体宽度：`normal` `wide` `full`，可逐页覆盖 |
 | `params.reading_width` | enum | normal | Book 页正文的阅读行宽：`slim` `normal` `wide`，不影响外壳 |
 {.fields meta="type default"}
 
-自定义字体与配色走 SCSS 入口而不是 YAML，见[品牌外观](/zh/docs/customize/brand/#fonts)。
+读者系统已有字体，或者站点已经用 `@font-face` 声明时，可以直接写
+`params.ui.fonts`。随站点分发字体文件与更底层的排版调整仍走 SCSS/CSS 入口，见
+[品牌外观](/zh/docs/customize/brand/#fonts)。
 
 ## 评论与反馈 {#comments-feedback}
 
@@ -325,7 +330,8 @@ favicon 没有参数：主题按约定名扫描 `static/`（`favicon.ico` `favic
 | `params.ui.feedback.reasons` | boolean | true | 选「否」后展开四个可选原因 |
 {.fields meta="type default"}
 
-四个 giscus 必填项缺任意一个，评论区就不渲染：不报错，也不出现。
+四个 giscus 必填项缺任意一个，都会告警并跳过评论区。普通预览继续；带
+`--panicOnWarning` 的构建失败。必填字段见[评论](/zh/docs/admin/comments/#enable)。
 
 ## 仓库链接与页面信息 {#repository}
 
@@ -335,10 +341,12 @@ favicon 没有参数：主题按约定名扫描 `static/`（`favicon.ico` `favic
 | `params.github_project_repo` | string | github_repo | 产品仓库 URL，用于「提项目 issue」与顶栏 GitHub 入口 |
 | `params.github_branch` | string | main | 编辑链接指向的分支 |
 | `params.github_subdir` | string | | 内容站在 monorepo 里的子目录 |
-| `params.path_base_for_github_subdir` | string 或 map | | 源路径重写；map 形式接受 `from` 与 `to` |
+| `params.path_base_for_github_subdir` | string 或 map | | 重写统一为 `/` 的源码路径；map 接受 `from` 与 `to`。外部挂载必须显式映射为仓库相对路径，见[仓库链接](/zh/docs/customize/repository/#imported-content)。 |
 | `params.github_url` | — | — | 已移除，改写 `params.github_repo`。那份负责提示替代键名的迁移登记表已经删掉，所以旧键现在只是一个没人读的键 |
 | `params.ui.lastmod_commit` | enum | subject | 「最后修改」后面附什么：`subject` commit 标题、`hash` 短哈希、`none` 不附。非法值告警并回退 |
 | `params.images` | string 数组 | — | 站点级社交卡片：页面自己没有封面时用它填 `og:image`；只进元数据，不会渲染成列表缩略图 |
+| `params.upstream_source` | 字符串 | — | 声明了 `upstream_link` 的页面默认使用哪个 `data/upstreams` 记录；页面 front matter 可以覆盖 |
+| `params.upstream_modified` | 布尔 | `false` | 上游材料是否经过改编的站点默认值；页面可以覆盖，没有 `upstream_link` 时不渲染署名 |
 | `params.default_featured` | — | — | 已移除，改写 `params.images` 或栏目 `cascade` 里的 `images`。同上，旧键现在只是一个没人读的键 |
 {.fields meta="type default"}
 
@@ -363,11 +371,12 @@ Mermaid、KaTeX、ECharts、Infographic、Asciinema、Swagger UI 与 Redoc 按�
 
 ## 输出格式 {#outputs}
 
-主题声明了两种自定义输出格式，但 **不替站点打开**：要哪种就在 `outputs` 里写哪种。
+主题声明自定义输出格式，但 **不替站点打开**：要哪种就在 `outputs` 里写哪种。成本
+较高的聚合输出与机器可读输出始终需要显式选择。
 
 ```yaml {title="hugo.yml"}
 outputs:
-  home: [HTML, markdown, LLMS]
+  home: [HTML, markdown, LLMS, NAVJSON]
   page: [HTML, markdown]
   section: [HTML, RSS, print, markdown]
 ```
@@ -377,8 +386,15 @@ outputs:
 | `HTML` | `index.html` | 交互形态，必选 |
 | `markdown` | `index.md` | 每页的纯 Markdown 版本，页面操作里的「复制 Markdown」「查看源码」依赖它，见 [Agent 支持](/zh/docs/customize/agents/) |
 | `LLMS` | `llms.txt` | 主题声明的纯文本格式，通常只挂在 `home` |
+| `LLMSFULL` | `llms-full.txt` | 顶层栏目 opt-in：按侧栏阅读顺序拼接同一份逐页 Markdown，每种语言一份全文包 |
+| `NAVJSON` | `navigation.json` | 首页 opt-in：每种语言把侧栏 / 翻页使用的导航权威序列化一次，由 `schema/nav.v1.schema.json` 校验 |
 | `print` | `_print/index.html` | 主题声明的整分区打印页，见[打印支持](/zh/docs/customize/print/) |
+| `BookManifest` | `book.json` | Book 根 opt-in，向 EPUB/PDF 打包工具交接的 JSON；本身不是电子书 |
 | `RSS` | `index.xml` | Hugo 原生，挂在 `section` 上让每个栏目都有订阅源 |
+
+`LLMSFULL` 与 `BookManifest` 写在对应顶层栏目的 front matter `outputs` 中，
+`NAVJSON` 写在 `outputs.home`。完整示例与限制见 [Agent 支持](/zh/docs/customize/agents/)
+和[书籍出版](/zh/docs/write/book/)。
 
 打印输出的两个参数：
 
@@ -399,7 +415,7 @@ outputs:
 | `languages.<lang>.locale` | string | | 完整 locale，用于 `<html lang>` 与 SEO |
 | `languages.<lang>.weight` | integer | | 语言顺序，也是点击语言图标时的循环顺序 |
 | `languages.<lang>.title` | string | | 该语言的站名 |
-| `languages.<lang>.languageDirection` | string | ltr | RTL 语言设为 `rtl` |
+| `languages.<lang>.direction` | string | ltr | RTL 语言设为 `rtl` |
 {.fields meta="type default"}
 
 写作侧的对等文件、锚点对齐与缺译回退见[多语言](/zh/docs/customize/i18n/)。
@@ -434,21 +450,23 @@ outputs:
 主题在其 `schema/` 目录下携带两个生成的 JSON Schema：校验站点 `hugo.yaml` 的
 `site-params.schema.json` 与校验页面 front matter 的
 `front-matter.schema.json`。它们是主题自身 `hugo.yaml` 默认值（注释即悬浮文档）
-与参数扫描注册表的投影；主题 CI 会重新生成并在漂移时失败，因此它们永远不会与你
-pin 的主题版本相左。
+与参数扫描注册表的投影；主题 CI 会重新生成并检查漂移。使用时应选择与主题固定版本
+相同标签下的 Schema。
 
-配合 VS Code YAML 扩展，在设置中映射站点 Schema：
+配合 VS Code YAML 扩展，在设置中映射站点 Schema。下面以 OINK v1.2.0 为例，
+请将标签换成 `go.mod` 中固定的版本；两种常见 YAML 配置文件名都已覆盖：
 
 ```json {title=".vscode/settings.json"}
 {
   "yaml.schemas": {
-    "https://raw.githubusercontent.com/pgsty/oink/main/schema/site-params.schema.json": "hugo.yaml"
+    "https://raw.githubusercontent.com/pgsty/oink/v1.2.0/schema/site-params.schema.json": ["hugo.yml", "hugo.yaml"]
   }
 }
 ```
 
-把 URL 里的 `main` 换成你的发布 tag，与 `go.mod` 的 pin 保持一致。front matter
-补全取决于你的 Markdown 工具链，用同样方式指向 `front-matter.schema.json` 即可。
+验证关联是否生效时，可暂时把 `params.offline_search` 这类已知布尔键写成字符串，
+确认编辑器提示类型不匹配后恢复正确值。front matter 补全取决于你的 Markdown
+工具链，用同样方式指向 `front-matter.schema.json` 即可。
 front-matter Schema 刻意不带类型约束，因为 `share`、`theme_color` 这类键在常规
 类型之外还接受裸布尔退出。
 
@@ -481,16 +499,18 @@ hugo --printPathWarnings --panicOnWarning
 
 配置改动还要至少验证三件事：每种语言各一页、缺译页的回退、生产 `baseURL` 下的链接（子路径部署容易漏）。
 
-主题声明的 Hugo 下限是 `0.160.1`，当前验证版本是 `0.164.0`。改动配置后按这两个版本各构建一次，可以及早发现只在新版本可用的特性：
+主题声明的 Hugo 下限是 `0.160.1`。OINK 的持续测试工具链固定为 Hugo Extended
+`0.165.0`；配置改动只使用这个固定版本测试一次，不再运行版本矩阵：
 
 ```bash
-# 下限版本的二进制
-/path/to/hugo-0.160.1 --printPathWarnings --panicOnWarning
-# 当前验证版本
+# 输出必须包含 v0.165.0+extended
+hugo version
 hugo --printPathWarnings --panicOnWarning
 ```
 
-下限版本写在主题的 `hugo.yaml` 与 `theme.toml` 里，站点自己的 `module.hugoVersion.min` 应与它一致。
+下限版本写在主题的 `hugo.yaml` 与 `theme.toml` 里，站点自己的
+`module.hugoVersion.min` 应与它一致。它仍是消费站兼容性声明，不再是第二个常规 CI
+测试项。
 
 ## 相关 {#related}
 

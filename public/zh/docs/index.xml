@@ -9,9 +9,19 @@
     
     
     
+      <lastBuildDate>Mon, 01 Jan 0001 00:00:00 +0000</lastBuildDate>
+    
     
       <atom:link href="http://localhost:1313/zh/docs/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+        <title>OINK CLI</title>
+        <link>http://localhost:1313/zh/docs/cli/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/cli/</guid>
+        <description>&lt;p&gt;&lt;code&gt;oink&lt;/code&gt; 是 OINK 站点的可选命令行工具，帮助创建站点、检查 Hugo 产物，以及&#xA;审阅内容或主题变更。Hugo 仍负责渲染，站点仍是普通 Hugo 项目。&lt;/p&gt;&#xA;&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;草案 · 尚未正式发布&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;OINK CLI 正在独立的 &lt;code&gt;oink-cli&lt;/code&gt; 仓库中开发。本页介绍本地 &lt;code&gt;0.1.0-dev&lt;/code&gt; 候选，&#xA;目前没有正式发行版或公开安装入口，命令接口仍可能调整。&lt;/p&gt;</description>
+      </item>
     
   </channel>
 </rss>

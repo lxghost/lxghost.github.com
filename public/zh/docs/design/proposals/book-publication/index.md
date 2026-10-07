@@ -202,9 +202,3 @@ DOM 改写。
   与渲染复核。
 - 2026-08-24：PDF 复核只修复 owning Print 契约：聚合数学能力传播、Bootstrap 列选择器
   范围、代码换行、编号公式单列布局与 CSS 页边距。
-
----
-
-反链：
-
-- [提案](/zh/docs/design/proposals/)

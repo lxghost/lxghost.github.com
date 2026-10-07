@@ -1,6 +1,6 @@
 # pgint.vonng.com
 
-> PG Internals: the Chinese edition of PostgreSQL Internals. A single-language book site that runs the Book shell on its own, with no documentation tree beside it.
+> 《PG 技术内幕》的中文译本站。它只使用 Book 阅读外壳，没有另建文档树。
 
 ---
 

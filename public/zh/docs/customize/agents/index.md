@@ -81,15 +81,15 @@ outputs:
 ## Site index
 
 - [Home page](https://oink.pgsty.com/zh/index.md)
-- [文档](https://oink.pgsty.com/zh/docs/index.md): OINK 是一款只需 Hugo Extended 的技术文档主题……
+- [文档](https://oink.pgsty.com/zh/docs/index.md): OINK 是一套本地优先的 Hugo 文档框架……
 - [博客](https://oink.pgsty.com/zh/blog/index.md): Docsy 文章、OINK 工程实践与 OINK 发布注记
 
 ## Documentation index
 
-- [简介](https://oink.pgsty.com/zh/docs/about/index.md): 一款只需 Hugo Extended 的技术文档主题……
+- [简介](https://oink.pgsty.com/zh/docs/about/index.md): 一套从 Docsy 演化而来的本地优先 Hugo 文档框架……
   - [亮点特性](https://oink.pgsty.com/zh/docs/about/features/index.md): 逐条列出 OINK 与普通 Hugo 主题的差别……
-  - [示例站点](https://oink.pgsty.com/zh/docs/about/showcase/index.md): 十四个生产站点在用 OINK……
-- [快速上手](https://oink.pgsty.com/zh/docs/start/index.md): 克隆 OINK 文档站，本地预览，替换站点信息，部署到 GitHub Pages。
+  - [案例](https://oink.pgsty.com/zh/docs/about/showcase/index.md): 找到最接近你的生产案例……
+- [快速上手](https://oink.pgsty.com/zh/docs/start/index.md): 从官方 OINK Starter 建立本地基线，再分层定制。
 …
 
 ## Site locales
@@ -268,34 +268,35 @@ outputs: [HTML, RSS, print]
 
 ## 验证 {#verify}
 
+在自己的站点根目录执行，先启用 Markdown 与 LLMS 输出。将 `PAGE_MD` 换成实际页面
+生成的 Markdown 文件。下例假设文档分区为 `docs`，请按站点结构调整分区名与语言前缀。
+
 ```bash
-hugo -d public
-ls public/zh/llms.txt public/zh/docs/customize/agents/index.md
-ls public/zh/docs/llms-full.txt public/zh/navigation.json   # 开了才有
+hugo --printPathWarnings --panicOnWarning
+PAGE_MD=public/zh/docs/getting-started/index.md
+ls "$PAGE_MD" public/zh/llms.txt
+# 仅在 docs 启用 LLMSFULL、home 启用 NAVJSON 时检查：
+ls public/zh/docs/llms-full.txt public/zh/navigation.json
 ```
 
-线上或本地预览用 `curl`：
+对运行中的本地预览或生产站点，用自己的地址与页面路径检查。`BASE_URL` 要包含部署
+子路径；检查译文站点时也包含语言前缀：
 
-```console
-$ curl -s http://localhost:1313/zh/docs/customize/agents/index.md | head -5
-# Agent 支持
-
-> 每一页多产出一份 .md，站点根目录多一份 llms.txt，读者可以把当前页交给 ChatGPT 或 Claude。
-
-$ curl -sI http://localhost:1313/zh/llms.txt | head -3
-
-$ curl -s http://localhost:1313/zh/docs/llms-full.txt | head -3
-================
-Source: http://localhost:1313/zh/docs/index.md
-================
+```bash
+BASE_URL=https://your-site.example/zh/
+PAGE_PATH=docs/getting-started/index.md
+curl -fsS "${BASE_URL}${PAGE_PATH}" | head -5
+curl -fsSI "${BASE_URL}llms.txt" | head -3
+# 仅在 docs 启用 LLMSFULL 时检查：
+curl -fsS "${BASE_URL}docs/llms-full.txt" | head -3
 ```
 
 再检查四处：
 
-- 任一页 HTML 的 `<head>` 里有 `rel="alternate" type="text/markdown"`；
-- 面包屑行右侧的复制按钮点击后粘贴，得到的是 Markdown 而不是 HTML；
+- 所选页面 HTML 的 `<head>` 中有 `rel="alternate" type="text/markdown"`；
+- 点击标题旁的复制按钮后粘贴，得到的是 Markdown 而不是 HTML；
 - `llms.txt` 里没有指向站外的链接；
-- 开了这两种输出的话：`llms-full.txt` 里每一页都以一行 `Source:` 开头，同一页在各语言 `navigation.json` 里的 `id` 相同。
+- 开启对应输出时，`llms-full.txt` 里每一页都以 `Source:` 行开头，同一页在各语言 `navigation.json` 里的 `id` 相同。
 
 ## 限制 {#limits}
 
@@ -323,9 +324,10 @@ Source: http://localhost:1313/zh/docs/index.md
 - [发布上线](/zh/docs/admin/deploy/)
 - [定制站点](/zh/docs/customize/)
 - [配置总览](/zh/docs/customize/config/)
+- [导航与菜单](/zh/docs/customize/navigation/)
 - [命令面板](/zh/docs/customize/panel/)
 - [打印支持](/zh/docs/customize/print/)
 - [仓库与页面信息](/zh/docs/customize/repository/)
-- [快速上手](/zh/docs/start/)
+- [提案](/zh/docs/design/proposals/)
 - [页面参数](/zh/docs/write/frontmatter/)
 - [API 文档](/zh/docs/write/openapi/)

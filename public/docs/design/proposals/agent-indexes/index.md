@@ -135,9 +135,3 @@ output is a complete exit with no residue.
   HTML URL, Markdown URL, kind, children, optional description) with `weight` never serialized;
   `llms.txt` lists both enabled artifacts by default; the checker reports size evidence without
   enforcing any model-context ceiling.
-
----
-
-Backlinks:
-
-- [Proposals](/docs/design/proposals/)

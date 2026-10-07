@@ -238,9 +238,3 @@ rewrites.
 - 2026-08-24: PDF review fixed only the owning Print contracts: aggregate math
   capability propagation, Bootstrap column-selector scope, code wrapping,
   single-column numbered equations, and CSS page margins.
-
----
-
-Backlinks:
-
-- [Proposals](/docs/design/proposals/)

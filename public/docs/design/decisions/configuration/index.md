@@ -90,3 +90,4 @@ peer are checked in the integration site's bilingual and rendered-link suites.
 Backlinks:
 
 - [Decisions](/docs/design/decisions/)
+- [Visual presets](/docs/design/proposals/visual-presets/)

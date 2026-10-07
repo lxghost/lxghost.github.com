@@ -1,6 +1,6 @@
 # pigsty.io
 
-> PIGSTY: the English home of the open-source PostgreSQL distribution. A large site combining a distribution manual, editorial blog, extension catalogue and pricing landing pages.
+> 开源 PostgreSQL 发行版 Pigsty 的英文主站，将大型发行版手册、博客、扩展目录与价格落地页集中在一起。
 
 ---
 

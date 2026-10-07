@@ -8,9 +8,53 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 
 ---
 
-本页覆盖站点外观：站名与 Logo 写在 `hugo.yml`，配色与字体走 SCSS 入口，页宽与页脚形态是参数。前提是站点已能构建（[十分钟上手](/zh/docs/start/)）。
+本页的前提是站点已能构建（[十分钟上手](/zh/docs/start/)）。站名、Logo、页宽和页脚
+先在 `hugo.yml` 中设置。选择系统已有或站点已加载的字体，用
+[`params.ui.fonts`](#fonts-in-config) 即可；[分区强调色](#theme-color)也有对应配置键。
 
-需要改动的文件有四个：`hugo.yml`、`static/` 下的图标、`assets/scss/_variables_project.scss`、`assets/scss/_styles_project.scss`。**不要改主题目录里的文件**：主题是 Hugo Module，升级时整个目录会被替换。
+图标放在 `static/` 下。需要修改 SCSS 变量时再使用
+`assets/scss/_variables_project.scss`；自定义样式或新增 `@font-face` 声明放在
+`assets/scss/_styles_project.scss`。**不要改主题目录里的文件**：升级会替换它们。
+
+## 视觉预设 {#visual-presets}
+
+OINK 1.2.0 默认使用 Paper：暖纸色背景、墨色正文、蓝色链接、Plex Sans、标题
+尾随细线与外框表格。Slate 保留 OINK 原有的冷灰蓝外观。开启读者选择：
+
+```yaml
+params:
+  ui:
+    preset: paper
+    preset_menu: true
+    dark_mode: true
+```
+
+主题的 `preset_menu` 默认值为 `false`。设置 `preset: slate` 即可保留原有外观。
+风格与明暗分别保存；选择站点默认项（悬停提示中注明）恢复跟随站点。所有风格共用一个
+样式表，字体全部本地加载。
+
+本地主题已提供 Ink 与 Terminal 实验版，需要显式开启：
+
+```yaml
+params:
+  ui:
+    preset: paper
+    preset_menu: [paper, slate, ink, terminal]
+    dark_mode: true
+```
+
+Ink 使用黑白表面、红色标记、直角面板和带下划线的正文链接。Terminal 使用等宽
+控件与标题、青色链接、琥珀强调和紧凑的桌面导航，长文正文仍为无衬线字体。两者
+均支持明暗切换并复用现有字体。菜单使用两列排列的四个简洁按钮，各带主题色图标，
+不加实验标记。`preset_menu: true` 提供 Paper、
+Slate 和站点默认值，不会自动开启所有实验。设置 `preset: ink` 或 `preset: terminal`
+可将实验风格设为站点默认值，不依赖读者菜单。测试范围与后续设计工作见
+[实验记录](/zh/docs/design/research/2026-10-05-ink-terminal-experiment/)。
+
+只使用 `[data-bs-theme='dark']` 的站点自定义深色规则，优先级低于 Paper 深色色板。
+可以保留 Slate，或改用 `[data-td-preset='paper'][data-bs-theme='dark']` 限定规则。
+字体配置与分区 `theme_color` 在所有预设下继续优先。打印始终使用浅色与白纸背景。
+
 
 ## 站名 {#site-title}
 
@@ -105,8 +149,8 @@ $danger: #b42318;
 
 ## 分区主题色 {#theme-color}
 
-上面的品牌配色决定整站的颜色。`theme_color` 是它旁边一件更小的乐器：一个十六
-进制色，为外壳的强调底着色，让读者不用被告知也知道自己身在站点的哪一块。
+上面的品牌配色决定整站外观。`theme_color` 用一个十六进制颜色调整当前分区的
+界面强调色，让读者通过选中状态和导航提示辨认所在分区。
 
 ```yaml {title="hugo.yml"}
 params:
@@ -127,10 +171,9 @@ cascade:
 Hugo 会把这些 cascade 值同时解析到分区首页与子页，因此只声明这一对即可。同一对
 解析结果既驱动页面强调色，也驱动根切换器里该分区的图标。
 
-**它作用于**：侧栏选中行、以及指针划过其它行时那一层更灰的底、hover 淡铺、
-页面目录的药丸与那条会走的轨道和光点、指针落在其上的 Book 章节小标题、标签与
-徽章的 hover、内容卡片 hover 时的外边、分享按钮 hover 时的实心底、文本选中、
-焦点环，以及侧栏根切换器里每个分区的图标。
+**它作用于**：侧栏选中行与悬停背景、当前目录项的背景及其指示线和位置标记、
+悬停或聚焦的 Book 章节小标题、标签与徽章的悬停状态、卡片的悬停边框、分享按钮的
+悬停背景、文本选中背景、焦点环，以及侧栏根切换器中的分区图标。
 
 **它刻意不作用于**：正文链接、外链、行内代码。这些是阅读约定，不是品牌表面 ——
 一页密集的标识符在任何分区都该读成「代码与正文」，链接在哪里都该看起来像链接。
@@ -142,15 +185,15 @@ Hugo 会把这些 cascade 值同时解析到分区首页与子页，因此只声
 一个非法的 `theme_color` 旁边，两种模式都不会着色 —— 主题会发出警告并保留默认配色，
 而不是只给暗色模式上色。
 
-彩色栏目里的某一页可以用主题的裸布尔惯例谢绝颜色：front matter 写
-`theme_color: false` 即让该页退出继承的栏目色（含继承的暗色一半），静默回到默认
-配色，不产生警告。其他非十六进制取值（数字、`true`、颜色名）都会告警。
+要让某一页恢复默认配色，在 front matter 中设置 `theme_color: false`。
+这会同时取消继承的亮色与暗色分区配色，不产生警告。其他非十六进制取值
+（数字、`true`、颜色名）都会告警。
 
 > [!CAUTION] 对比度是检查，不是强制
-> 主题会把你的颜色放在它自己的画布上读，低于 AA 正文对比度（4.5:1）就告警。
-> 颜色照常生效：自定义画布或品牌强制色是你的决定。告警里带着能让它闭嘴的
-> `ignoreLogs` id；而发布构建带 `--panicOnWarning`，所以在你要么调深颜色、
-> 要么关掉检查之前，关卡会一直卡住。
+> 主题按默认页面背景检查颜色，低于 AA 正文对比度（4.5:1）时告警，颜色仍会生效。
+> 若使用自定义背景或必须保留品牌色，可根据实际对比度选择是否忽略该告警。
+> 发布构建使用 `--panicOnWarning`，因此需要调整颜色，或将告警给出的 ID 加入
+> `ignoreLogs` 后才能通过。
 >
 > 这个检查是拿颜色对着页面画布读的。有些交互表面会同时把它用作文字与半透明淡铺；
 > 例如可点击的实心徽章在 hover 时，是强调色文字压在 12% 的同色淡铺上。这一对比
@@ -169,7 +212,10 @@ params:
     dark_mode: true
 ```
 
-开启后顶栏出现一个主题控件：点击在浅色与深色之间切换，悬停或键盘聚焦展开「跟随系统 / 浅色 / 深色」。读者的选择存在浏览器本地，没有选择时跟随 `prefers-color-scheme`。切换脚本在首屏绘制前设置好 `data-bs-theme`，不会出现主题闪烁。
+太阳/月亮图标表示当前状态：浅色显示太阳，深色显示月亮。
+点击顶栏或底栏的「外观」，打开浅色、深色、跟随系统单选组，支持触屏与键盘，
+手机上显示为底部表单。选择保存在浏览器本地并同步到其他标签页，没有选择时跟随
+`prefers-color-scheme`。head 内联脚本在样式表加载前应用实际明暗状态。
 
 只要深色调色板、不要控件时写 `dark_mode: { show_menu: false, enable: true }`；`dark_mode: false`（默认）两者都不启用。
 
@@ -177,7 +223,7 @@ params:
 
 ## 字体 {#fonts}
 
-字体有两档预设，在构建期决定，不涉及 JavaScript：
+字体策略在构建期选择，切换视觉预设时使用对应的内置字体：
 
 ```yaml {title="hugo.yml"}
 params:
@@ -185,13 +231,14 @@ params:
     typography: technical # technical | system
 ```
 
-- `technical`（默认）：界面与正文用随主题分发的 Inter（可变字重，拉丁 / 西里尔 / 希腊 / 越南语子集，中文与 emoji 落到平台字体），标题装饰用 Chakra Petch，代码用 IBM Plex Mono。字体文件都是本地的，不请求 Google Fonts。
+- `technical`（默认）：Paper 的界面、正文与展示标题使用 IBM Plex Sans；Slate 的界面与正文使用 Inter，展示标题使用 Chakra Petch。两者的字标使用 Chakra Petch，代码使用 IBM Plex Mono。中文与 emoji 落到平台字体。Plex Sans 与 Inter 包含本地拉丁、西里尔、希腊与越南语子集，不请求 Google Fonts。
+- 实验字体：Ink 的界面、正文与标题使用 Inter；Terminal 的控件与标题使用 IBM Plex Mono，正文使用 Plex Sans。两者复用现有代码字体。显式 `fonts.ui` 仍控制主字体；需要独立正文字体时设置 `fonts.body`。
 - `system`：界面、展示、元数据、打印与等宽角色全部回到平台字体栈，浏览器不请求品牌字体。字体文件仍随主题分发，只是不被引用。
 
 非法取值告警并回落到 `technical`，普通 `hugo server` 照常可用；发布门禁开着 `--panicOnWarning`，这类告警在那里才是硬失败。选中的值写入 `<html data-td-typography="…">`，可在浏览器中确认。
 
 ### 自定义字体 {#custom-fonts}
-字体角色是七个 CSS 自定义属性，覆盖它们即可，不必查找组件选择器：
+字体角色是八个 CSS 自定义属性，覆盖它们即可，不必查找组件选择器：
 
 | 属性 | 配置键 | 用在哪 |
 | --- | --- | --- |
@@ -199,8 +246,9 @@ params:
 | `--td-body-font-family` | `body` | 正文与博客 |
 | `--td-heading-font-family` | `heading` | 正文标题 |
 | `--td-code-font-family` | `code` | 代码与终端 |
-| `--td-display-font-family` | `display` | 字标与展示型大标题 |
+| `--td-display-font-family` | `display` | 展示型大标题 |
 | `--td-meta-font-family` | `meta` | 技术标签与元数据 |
+| `--td-brand-font-family` | `brand` | 字标 |
 | `--td-print-font-family` | `print` | 打印正文 |
 
 `ui` 是主字体：`body` 经它解析，`heading` 又经 `body` 解析，所以只写 `ui` 一行，界面、正文与标题一起换掉。
@@ -225,7 +273,7 @@ params:
 该块在样式表之后输出，这正是作者字体能在同等优先级下压过 `typography` 预设的原因。
 
 #### 在样式表里换 {#fonts-in-css}
-要自带字体文件，或者只给某一类内容换字体，仍然走样式表。把 `.woff2` 放进站点 `static/webfonts/`，在项目样式里声明字面，再改写角色：
+要自带字体文件，或者只给某一类内容换字体，仍然走样式表。把 `.woff2` 放进站点 `static/webfonts/`，在项目样式中声明字体，再指定各角色使用的字体族：
 
 ```scss {title="assets/scss/_styles_project.scss"}
 @font-face {
@@ -266,14 +314,14 @@ body.td-blog {
 | 旧 Sass 变量 | 喂给的字体角色 | 说明 |
 | --- | --- | --- |
 | `$td-fonts-serif` | `--td-ui-font-family` / `--td-body-font-family` | Docsy 的界面字体栈，赋值给 `$font-family-sans-serif` |
-| `$font-family-sans-serif` | `--td-ui-font-family` / `--td-body-font-family` | 项目给出自己的栈时，`technical` 预设不再把 Inter 放在它前面 |
+| `$font-family-sans-serif` | `--td-ui-font-family` / `--td-body-font-family` | 项目给出自己的栈时，`technical` 预设不再把预设内置的无衬线字体放在它前面 |
 | `$font-family-base` | `--td-ui-font-family` / `--td-body-font-family` | Bootstrap 的正文变量，经 `--bs-body-font-family` 进入角色 |
 | `$headings-font-family` | `--td-heading-font-family` | 不设置时标题继承正文角色 |
 | `$font-family-code` | `--td-code-font-family` | 代码、终端与 `pre` / `code` / `kbd` |
 | `$td-font-family-monospace` | `--bs-font-monospace` | 赋值给 `$font-family-monospace` |
 | `$font-family-monospace` | `--bs-font-monospace` | `system` 预设下，项目的显式取值优先于平台等宽栈 |
 
-Docsy 的三个 Google Fonts 变量 `$td-enable-google-fonts`、`$td-google-font-name` 与 `$td-web-font-path` 主题已不再读取。它们留在 `_variables_project.scss` 里不影响构建，也不产生任何效果：随主题分发的是 Inter、Chakra Petch 与 IBM Plex Mono，两档预设都不向 Google Fonts 发请求。打印角色 `--td-print-font-family` 跟随正文角色，主题不为纸张单独提供字体。
+Docsy 的三个 Google Fonts 变量 `$td-enable-google-fonts`、`$td-google-font-name` 与 `$td-web-font-path` 主题已不再读取。它们留在 `_variables_project.scss` 里不影响构建，也不产生任何效果：随主题分发的是 IBM Plex Sans、Inter、Chakra Petch 与 IBM Plex Mono，所有预设都不向 Google Fonts 发请求。打印角色 `--td-print-font-family` 跟随正文角色，主题不为纸张单独提供字体。
 
 YAML 里只接受字体族名。远程字体 URL 与任意 CSS 都不接受：字体文件与样式必须是可审查的本地输入，一次普通构建不会因为字体发出任何网络请求。
 
@@ -284,7 +332,9 @@ params:
   page_width: normal # normal | wide | full
 ```
 
-`page_width` 控制外壳整体宽度，可逐页或按分区 cascade 覆盖。Book 页另有一个 `reading_width`（`slim` / `normal` / `wide`），改的是正文阅读行宽，不是外壳。两个键取值非法都让构建失败。
+`page_width` 控制外壳整体宽度，可逐页或按分区 cascade 覆盖。Book 页另有一个
+`reading_width`（`slim` / `normal` / `wide`），改的是正文阅读行宽，不是外壳。
+两个键取值非法都会在普通预览中告警并回退；带 `--panicOnWarning` 的发布构建会失败。
 
 ## 页脚 {#footer}
 
@@ -303,7 +353,9 @@ params:
 - `slim`：只有版权行；
 - `none`：不渲染页脚。
 
-页面 front matter（含分区 cascade）可以覆盖它，本站的文档栏目用的是 `footer_style: slim`。无法识别的取值让构建失败。
+页面 front matter（含分区 cascade）可以覆盖它，本站的文档栏目用的是
+`footer_style: slim`。无法识别的取值在普通预览中告警并回退到 `fat`，严格发布构建
+拒绝这条警告。
 
 多列网格的数据在 `data/footer/<语言>.yaml`，写法见[导航与菜单](/zh/docs/customize/navigation/#footer)。配了 `fat` 但没有数据时自动降级成 `slim`，可以先开启再补内容。
 
@@ -321,7 +373,7 @@ params:
 
 编译顺序是：Bootstrap 函数 → 项目变量 → OINK 默认值与 Bootstrap → Bootstrap 之后的项目变量 → OINK 组件与品牌层 → 项目样式。
 
-CSS 接口有明确边界。[字体](#fonts)那一节的七个字体角色与 `--td-brand-*` 品牌属性是公开接口，主题在小版本之间保持它们的名字与含义。组件别名（如 `--td-asciinema-font-family`）只承诺在该组件范围内有效，未在文档中记录的 `--td-shell-*` 一类变量是实现细节，随时可能改名或消失。
+CSS 接口有明确边界。[字体](#fonts)那一节的八个字体角色与 `--td-brand-*` 品牌属性是公开接口，主题在小版本之间保持它们的名字与含义。组件别名（如 `--td-asciinema-font-family`）只承诺在该组件范围内有效，未在文档中记录的 `--td-shell-*` 一类变量是实现细节，随时可能改名或消失。
 
 不该做的事：
 
@@ -344,7 +396,7 @@ hugo --printPathWarnings --panicOnWarning
 - 切到深色模式再看一遍正文、表格、提示块、代码块与焦点框。配色改动容易只在一种模式下验证过；
 - 换一种语言，确认站名随之切换。
 
-字体是否已替换，用浏览器开发者工具查任意一段正文的 `font-family`：应当是自己声明的字面，而不是 `Inter`。
+字体是否已替换，用浏览器开发者工具查任意一段正文的 `font-family`：应当包含自己设置的字体族；再查看实际渲染字体，确认文件加载或系统字体回退符合预期。
 
 ## 相关 {#related}
 
@@ -358,6 +410,7 @@ hugo --printPathWarnings --panicOnWarning
 
 反链：
 
+- [OINK v1.2.0](/zh/blog/release/1.2.0/)
 - [塑造体验](/zh/book/04-design/)
 - [exp.pgsty.com](/zh/case/pg-exporter/)
 - [文档](/zh/docs/)
@@ -370,5 +423,6 @@ hugo --printPathWarnings --panicOnWarning
 - [布局与页面类型](/zh/docs/customize/layout/)
 - [导航与菜单](/zh/docs/customize/navigation/)
 - [打印支持](/zh/docs/customize/print/)
+- [视觉预设](/zh/docs/design/proposals/visual-presets/)
 - [快速上手](/zh/docs/start/)
 - [页面参数](/zh/docs/write/frontmatter/)

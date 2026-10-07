@@ -21,7 +21,9 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 | <kbd>f</kbd> / <kbd>c</kbd> | 同上两者，由[键盘导航](/zh/docs/customize/keyboard/)提供 |
 | 在框里输入 `>` 开头的查询 | 纯命令态 |
 
-<kbd>/</kbd>、反斜杠、<kbd>f</kbd>、<kbd>c</kbd> 都是裸单键，会给输入让行：焦点位于 input、textarea、select 或 `contenteditable` 中，以及正在用输入法组字时，按键作为普通字符输入。带修饰键的 <kbd>⌘</kbd>/<kbd>Ctrl</kbd> + <kbd>K</kbd> 没有这个限制，在输入框里也能打开面板。
+<kbd>/</kbd>、反斜杠、<kbd>f</kbd>、<kbd>c</kbd> 都是裸单键，会给输入让行：焦点位于 input、textarea、select 或 `contenteditable` 中，以及正在用输入法组字时，按键作为普通字符输入。带修饰键的 <kbd>⌘</kbd>/<kbd>Ctrl</kbd> + <kbd>K</kbd> 可以在输入框里打开面板，但同样会给输入法组字让行。
+所有打开面板的快捷键都会让行于其他已打开的原生对话框或可见的 ARIA 对话框，
+包括固定定位的对话框；隐藏的 ARIA 对话框不会阻止快捷键。
 
 面板内：<kbd>↑</kbd> <kbd>↓</kbd> 选择，<kbd>Enter</kbd> 执行，<kbd>Esc</kbd> 关闭并把焦点交还给打开它的控件。
 
@@ -74,7 +76,8 @@ languages:
               keywords: [缺陷, 支持, 路线图]
 ```
 
-上面是本站在用的那一条。字段共七个，写其它键构建失败：
+上面是本站在用的那一条。字段共七个。写入其它键或无效记录时，普通预览告警并
+丢弃该命令，严格发布构建拒绝这条警告：
 
 - `id` 必填，小写字母开头，只能用小写字母、数字、下划线和短横线；不能与内建动作 ID 重名。
 - `title` 显示在面板里；`description` 是它下面那行小字；`icon` 是一对 Font Awesome class。
@@ -92,21 +95,26 @@ languages:
 
 面板里的「页面操作」与文档标题旁的拆分按钮是同一套实现：同一份动作描述、同一段 URL 生成逻辑、同一个执行器。按钮左半边复制本页 Markdown，右侧箭头展开全部动作。
 
-整组关闭，或只在某些页面关闭：
+要隐藏标题旁的按钮，设置 `page_context_menu: false`；命令面板中的对应操作仍然保留：
 
 ```yaml {title="hugo.yml"}
 params:
   ui:
-    page_context_menu:
-      enable: true
-      # 打开后才会出现「在 ChatGPT / Claude 中打开」
-      assistant_links: false
-      links: []
+    page_context_menu: false
 ```
 
-`enable: false` 只移除标题旁的按钮，面板里的对应项保留，面板本身就是命令入口。单页用 front matter 的 `page_context_menu: false` 覆盖。
+只隐藏某一页的按钮时，在该页 front matter 中设置 `page_context_menu: false` 即可。
 
-`assistant_links` 默认关闭，原因是读者点击时 **当前页面的完整 URL（含查询串与锚点）会被发送到第三方**，页面正文不会上传。这是站点级的选择，页面 front matter 里的 `assistant_links` 只能把它收紧，不能替站点打开。
+`assistant_links` 默认关闭，原因是读者点击时 **当前页面的完整 URL（含查询串与锚点）会被发送到第三方**，页面正文不会上传。全站通过 `params.ui.page_context_menu.assistant_links` 启用，页面只能用以下
+front matter 收紧策略：
+
+```yaml {title="页面 front matter"}
+page_context_menu:
+  assistant_links: false
+```
+
+确认该页的标题菜单和命令面板均没有助理入口。跳转行为见
+[Agent 支持](/zh/docs/customize/agents/)。
 
 `links` 是额外的外部动作，只出现在标题旁的菜单里，不进面板：
 
@@ -133,15 +141,55 @@ params:
 
 打印态不装配面板，打印输出里没有它；关闭 `offline_search` 后同样没有面板，此时 <kbd>f</kbd> 与 <kbd>c</kbd> 静默，不影响正常输入。
 
+## 使用当前查询的站点操作 {#search-tail}
+
+受信任站点 JavaScript 使用的运行时接口自 OINK 1.1 起提供。
+使用前检查能力是否存在：v1.0.0 和未启用本地搜索的页面不提供它。集成代码应在主题脚本
+之后加载，例如使用 `layouts/_partials/hooks/body-end.html`。以下示例假定站点实现了
+`openSiteAssistant`，并自行管理服务商设置：
+
+```javascript
+if (window.OinkCommandPalette?.registerSearchTail) {
+  const unregister = window.OinkCommandPalette.registerSearchTail({
+    id: 'ask-site',
+    rows(context) {
+      return [{ id: 'ask', title: '询问站点', description: context.query }];
+    },
+    activate(row, context) {
+      context.handoff();
+      return openSiteAssistant(context.query, {
+        locale: context.locale,
+        signal: context.signal,
+      });
+    },
+  });
+  // 移除此集成时调用 unregister()。
+}
+```
+
+扩展行排在原生结果和操作之后，包括空结果与索引错误状态；空查询、命令、选择和加载状态
+不出现扩展行。`rows()` 应保持纯净且同步，所有字符串都作为文本渲染。激活接收生成该行时
+的查询，不会读取更新后的输入值。打开另一个受协调器管理的界面前调用 `handoff()`，此后
+由站点负责新界面的焦点与失败提示。没有新界面的操作直接返回 Promise，不调用 handoff。
+
+[Shell 契约](/zh/docs/design/shell/#search-tail-extensions) 定义了字段、取消、校验和生命周期。
+YAML 仍不能包含回调，OINK 默认不添加远程服务或遥测。
+
 ## 验证 {#verify}
+
+先在自己的站点根目录完成严格构建。下方命令中的
+`public/zh/docs/getting-started/index.html` 是示例；请换成自己站点实际生成的文档页，
+并按语言配置调整路径前缀。
 
 1. 构建后确认命令清单进了页面：
 
    ```bash
-   grep -o 'id="oink-action-manifest"' public/zh/docs/customize/panel/index.html
+   hugo --printPathWarnings --panicOnWarning
+   PAGE=public/zh/docs/getting-started/index.html
+   test -f "$PAGE" && grep -o 'td-action-manifest' "$PAGE"
    ```
 
-   没有这一行说明本地搜索没启用，或者这个页面不在外壳布局里。
+   这一步确认操作数据已写入 HTML；其余步骤用于在启用本地搜索后检查命令面板界面。
 
 2. 打开站点按下 <kbd>⌘</kbd>/<kbd>Ctrl</kbd> + <kbd>K</kbd>，什么都不输入：应该看到快速链接、页面操作、偏好设置、命令四组，顺序如上。
 
@@ -163,8 +211,10 @@ params:
 
 反链：
 
+- [OINK v1.1.0](/zh/blog/release/1.1.0/)
 - [亮点特性](/zh/docs/about/features/)
 - [排错与检查](/zh/docs/admin/troubleshooting/)
+- [版本升级](/zh/docs/admin/upgrade/)
 - [按键](/zh/docs/components/kbd/)
 - [定制站点](/zh/docs/customize/)
 - [Agent 支持](/zh/docs/customize/agents/)

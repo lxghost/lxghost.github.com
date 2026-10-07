@@ -23,6 +23,30 @@
         <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;已验证快照&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;这些探针在 Hugo Extended 0.160.1 与 0.164.0 上得到字节一致的相关输出。它们解释&#xA;OINK 的原生组件形态；当前&lt;a href=&#34;http://localhost:1313/zh/docs/design/components/&#34;&gt;组件契约&lt;/a&gt;仍是权威。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;method&#34;&gt;方法&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;探针使用一个不带 OINK 模板的最小 Hugo 站点。渲染钩子把上下文字段与 &lt;code&gt;.Attributes&lt;/code&gt; 输出为&#xA;可见标记。站点开启 Goldmark 块属性、行内与块级数学 passthrough 分隔符，以及为检查原始 HTML&#xA;而刻意启用的 unsafe 渲染，并设置 &lt;code&gt;wrapStandAloneImageWithinParagraph: false&lt;/code&gt;。&lt;/p&gt;</description>
       </item>
     <item>
+        <title>Ink 与 Terminal 实验，2026-10-05</title>
+        <link>http://localhost:1313/zh/docs/design/research/2026-10-05-ink-terminal-experiment/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/research/2026-10-05-ink-terminal-experiment/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;本地实验，不代表发布&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;Ink 与 Terminal 现已编入真实主题样式表，使用现有外观控件，不是截图注入样式。&#xA;两者仍为需要显式开启的实验，等待视觉定稿。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;inputs&#34;&gt;输入与方法&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;本实验基于 10 月 5 日工作树中的 &lt;a href=&#34;http://localhost:1313/zh/docs/design/research/2026-10-05-visual-presets-acceptance/&#34;&gt;Paper/Slate 实现&lt;/a&gt;。&#xA;工具为 macOS ARM64 上的 Hugo Extended 0.166.0、Go 1.27.1、Node 26.9.0、&#xA;Playwright 1.62.1。集成检查使用文档站与同级本地主题；站点公开 pin 仍为 v1.1.0。&#xA;这不是兼容下限、CI 固定工具链或线上验收。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>OINK 1.2 发布前审查，2026-10-05</title>
+        <link>http://localhost:1313/zh/docs/design/research/2026-10-05-v1-2-release-review/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/research/2026-10-05-v1-2-release-review/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;本地候选版本证据&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本次审查覆盖 10 月 5 日工作树，包含尚未提交的修改。&#xA;它不代表某个不可变发布提交或已发布 1.2.0 模块的验收结果。&#xA;公开主题标签与文档站消费版本仍为 v1.1.0。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>视觉预设验收，2026-10-05</title>
+        <link>http://localhost:1313/zh/docs/design/research/2026-10-05-visual-presets-acceptance/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/research/2026-10-05-visual-presets-acceptance/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;仅为本地证据&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本记录针对同级主题 checkout 的真实输出，没有注入原型样式；不代表发布版本、&#xA;升级消费站点或验收线上站点。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;inputs&#34;&gt;输入&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;2026-10-05 的主题与文档站工作树；macOS ARM64，Hugo Extended 0.166.0、&#xA;Go 1.27.1、Node 26.9.0、Playwright 1.62.1。常规浏览器套件使用 Chromium；&#xA;另有 Chromium、Firefox 与 WebKit 专项检查。站点仍固定 v1.1.0，&#xA;&lt;code&gt;make check&lt;/code&gt;、&lt;code&gt;make browser&lt;/code&gt; 与 &lt;code&gt;make dev&lt;/code&gt; 使用同级本地主题，公开 pin 未修改。&#xA;本轮不是 Hugo 0.160.1 下限或 CI 固定工具链验收。&lt;/p&gt;</description>
+      </item>
+    <item>
         <title>消费站与迁移证据</title>
         <link>http://localhost:1313/zh/docs/design/research/consumer-evidence/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -37,6 +61,38 @@
         
         <guid>http://localhost:1313/zh/docs/design/research/2026-08-26-comprehensive-review/</guid>
         <description>&lt;div class=&#34;td-callout td-callout--warning&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-triangle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;审查快照，不是新契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本文记录 2026-08-26 对 &lt;code&gt;github.com/pgsty/oink&lt;/code&gt; 主线与本站集成面的审查证据。&#xA;它不会改变既有 API，也不表示文中建议已经实现。当前行为仍以 Design 契约、实现与 owning checker 为准。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;其中一部分已被 OINK 0.7.1 取代。&lt;/strong&gt; F01–F06 这些代码问题已在该版本修复，见&#xA;&lt;a href=&#34;http://localhost:1313/zh/blog/release/0.7.1/&#34;&gt;0.7.1 发布说明&lt;/a&gt;。下面的发现应当读作促成修复的证据，而不是主题当前的状态。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>社区 Issue 与 PR 调研，2026-09-19</title>
+        <link>http://localhost:1313/zh/docs/design/research/2026-09-19-upstream-review/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/research/2026-09-19-upstream-review/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;原始调研快照&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本文记录 2026-09-19 的源码审查、GitHub 实时状态、本地构建与定向浏览器观察。&#xA;初始调研完成时，这些建议尚未成为已接受契约，功能也尚未实现；当时没有合并 PR、&#xA;发布版本或向贡献者发送回复。文末的实施补记单独记录了随后完成的变更。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>OINK 1.1 发布审查，2026-09-20</title>
+        <link>http://localhost:1313/zh/docs/design/research/2026-09-20-release-review/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/research/2026-09-20-release-review/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;发布准备，不是发布声明&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本文分别记录审查基线、已提交修复、已完成验证与尚待执行的发布步骤。基线 CI 通过不能&#xA;证明后续修复也已通过验收。从正文到“限制”保留发布前快照；后续已核实的发布证据追加在&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/research/2026-09-20-release-review/#publication-follow-up&#34;&gt;发布后续&lt;/a&gt;中。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>2026-10-03 CLI 维护验收</title>
+        <link>http://localhost:1313/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;历史源码与二进制证据&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本记录保留此前 R1–R8/A18 验收，不随命令调整重写历史结果。2026-10-04 的&#xA;CLI 精简与 Cobra/文本/JSON/YAML 界面以&lt;a href=&#34;http://localhost:1313/zh/docs/design/decisions/cli/&#34;&gt;当前契约&lt;/a&gt;和&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/start/cli/&#34;&gt;指南&lt;/a&gt;为准；旧运行时资格不能自动证明修改后的二进制。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>2026-09-29 CLI 验收快照</title>
+        <link>http://localhost:1313/zh/docs/design/research/2026-09-29-cli-acceptance/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/research/2026-09-29-cli-acceptance/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;本地实现与验收完成&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本地 &lt;code&gt;0.1.0-dev&lt;/code&gt; 实现已通过本文记录的检查，CLI 源码已提交为 &lt;code&gt;e623d93&lt;/code&gt;。&#xA;公开发布、下游采用和生产部署仍是独立状态，本轮未执行。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;inputs&#34;&gt;输入与方法&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;CLI 位于独立的 &lt;code&gt;oink-cli&lt;/code&gt; Go 仓库。已接受的边界见&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/decisions/cli/&#34;&gt;CLI 与结果契约&lt;/a&gt;，可复现的用户步骤见&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/start/cli/&#34;&gt;使用指南&lt;/a&gt;。Hugo 继续作为外部渲染器，生成站点保留普通&#xA;Hugo 输入。&lt;/p&gt;</description>
       </item>
     
   </channel>

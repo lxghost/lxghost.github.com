@@ -26,11 +26,18 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 | 放法 | 源码里怎么写 | 适合 |
 | --- | --- | --- |
 | 与页面同目录（页面包 `index.md` + 图片） | `![…](oink-shell.webp)` | 只有这一页用的截图；随页面一起移动、翻译共用 |
+| 当前分区的页面包（`_index.md` 及其资源） | `![…](post/image.png)` | 分区内的图片；路径相对于该分区的资源目录 |
 | 全局资源 `assets/images/…` | `![…](images/logo/oink.webp)` | 多页共用、还要做处理（缩放 / 裁切）的图 |
 | 静态目录 `static/images/…` | `![…](/images/hero-light.webp)` | 不需要处理的大图、下载物；主题拿不到尺寸时可以用 `width`/`height` 补 |
 | 远程 URL | `![…](https://example.com/a.png)` | 少用：构建期不会下载，也不能处理 |
 
-相对路径先按页面资源、再按全局资源查找，都找不到时按静态路径原样输出；主题不检查静态路径与远程 URL 是否存在。只有要求处理（`command=`）的图找不到资源时才构建失败。
+相对路径依次按页面资源、当前分区资源、全局资源查找，都找不到时按静态路径输出；主题不检查
+静态路径与远程 URL 是否存在。要求处理（`command=`）却解析不到可处理资源时，普通
+预览告警并保留未处理图片；严格发布构建拒绝这条警告。
+
+Markdown 中的替代文字优先于资源 metadata，包括明确表示装饰图的空 alt。资源的
+`params.alt` 必须是字符串；无效 metadata 会告警并被忽略，保留正文中编写的 alt。
+严格发布构建拒绝这条警告。
 
 ## 行内与块级 {#inline-vs-block}
 位于文字中间的是行内图片，渲染为一个 `<img>`，不能带属性；独立成段的是块级图片，可以带属性行。
@@ -58,11 +65,11 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 
 ```markdown {title="源码"}
 ![发布卡片：版本号、发布日期与资产按钮](release-note.webp)
-{caption="发布卡片由 data/download 与页面的 release 记录生成"}
+{caption="发布卡片使用页面的 release_url 与 date"}
 ```
 
 ![发布卡片：版本号、发布日期与资产按钮](release-note.webp)
-{caption="发布卡片由 data/download 与页面的 release 记录生成"}
+{caption="发布卡片使用页面的 release_url 与 date"}
 
 Markdown 里的 `"标题"` 保持原义（悬停提示），不会成为图注。
 
@@ -96,7 +103,9 @@ Markdown 里的 `"标题"` 保持原义（悬停提示），不会成为图注�
 ![文档外壳左半边](oink-shell.webp)
 {command="Fill" options="300x150 Left" caption="Fill 300x150 Left：填满框，从左侧裁"}
 
-静态路径、远程 URL 与 SVG 不能处理，对它们写 `command` 会构建失败。选项语法（锚点、质量、格式转换，如 `300x150 webp q80`）见 [Hugo 图片处理](https://gohugo.io/content-management/image-processing/)。
+静态路径、远程 URL 与 SVG 不能处理。对它们写 `command` 时告警并保留未处理图片；
+严格发布构建拒绝这条警告。选项语法（锚点、质量、格式转换，如
+`300x150 webp q80`）见 [Hugo 图片处理](https://gohugo.io/content-management/image-processing/)。
 
 ## 链接图片 {#link}
 两种写法，用途不同：
@@ -116,7 +125,8 @@ Markdown 里的 `"标题"` 保持原义（悬停提示），不会成为图注�
 ![发布卡片](release-note.webp)
 {caption="点击图片查看发布与下载页的说明" link="/zh/docs/write/releases/"}
 
-带链接的图不参与缩放。没有图注只写 `link=` 会构建失败，报错中提示改用 `[![…](…)](…)`。
+带链接的图不参与缩放。没有图注只写 `link=` 时告警并丢弃链接，消息提示改用
+`[![…](…)](…)`；严格发布构建拒绝这条警告。
 
 ## 编号图 {#numbered}
 
@@ -139,6 +149,10 @@ Markdown 里的 `"标题"` 保持原义（悬停提示），不会成为图注�
 ## 缩放 {#zoom}
 
 图片缩放默认关闭。站点开启后，块级图片、figure、画廊中带 alt 的图成为可点击的按钮，在原生 `<dialog>` 中查看大图（Esc 关闭，焦点回到原处）。本页在 front matter 中开启了它，上面的图都可以点击。
+
+自 OINK 1.1 起，预览操作和图片描述保留在按钮的无障碍名称中，不会给复制的
+文章增加辅助文字；复制得到的富文本 HTML 保留图片和作者写的图注。v1.0.0 的隐藏预览
+标签可能在粘贴后出现。升级之前，可设置 `image_zoom: false` 并重新构建来避免这个标签。
 
 ```yaml {title="hugo.yml"}
 params:
@@ -164,19 +178,19 @@ image_zoom: false
 主题没有按深浅色切换图片的参数。需要两张图时，各写一个 `class`，在站点 CSS 中按 `[data-bs-theme="dark"]` 显示其一：
 
 ```markdown {title="源码"}
-![侧栏（浅色）](oink-shell.webp)
+![侧栏（浅色）](sidebar-light.webp)
 {class="only-light"}
 
-![侧栏（深色）](oink-shell.webp)
+![侧栏（深色）](sidebar-dark.webp)
 {class="only-dark"}
 ```
 
 ```scss {title="assets/scss/_styles_project.scss"}
-[data-bs-theme="dark"] .only-light,
-:not([data-bs-theme="dark"]) .only-dark { display: none; }
+html[data-bs-theme="dark"] .only-light,
+html:not([data-bs-theme="dark"]) .only-dark { display: none; }
 ```
 
-`class` 由主题原样透传，供站点 CSS 使用。
+把 `sidebar-light.webp` 与 `sidebar-dark.webp` 换成自己的浅色、深色图片。主题把 `data-bs-theme` 设在 `html` 上，上面的选择器让对应图片单独显示；`class` 由主题原样透传给站点 CSS。
 
 ## 输出形态 {#outputs}
 
@@ -204,7 +218,8 @@ image_zoom: false
 | `data-*` / `aria-*` | 字符串 | — | 透传 |
 {.fields meta="type default"}
 
-`style`、`on*`、`alt`、`title`、`src` 与其它任何键出现在属性行都会构建失败（alt、title、src 属于 Markdown 图片本身）。
+`style`、`on*`、`alt`、`title`、`src` 与不支持的键出现在属性行时告警并忽略；
+严格发布构建拒绝这条警告。alt、title、src 属于 Markdown 图片本身。
 
 ## 限制与常见问题 {#limits}
 
@@ -225,6 +240,8 @@ image_zoom: false
 
 反链：
 
+- [OINK v1.1.0](/zh/blog/release/1.1.0/)
+- [版本升级](/zh/docs/admin/upgrade/)
 - [组件](/zh/docs/components/)
 - [Asciinema](/zh/docs/components/asciinema/)
 - [卡片](/zh/docs/components/cards/)
@@ -237,6 +254,7 @@ image_zoom: false
 - [品牌外观](/zh/docs/customize/brand/)
 - [配置总览](/zh/docs/customize/config/)
 - [打印支持](/zh/docs/customize/print/)
+- [2026-09-19 社区反馈调研](/zh/docs/design/research/2026-09-19-upstream-review/)
 - [书籍出版](/zh/docs/write/book/)
 - [页面参数](/zh/docs/write/frontmatter/)
 - [编写页面](/zh/docs/write/pages/)

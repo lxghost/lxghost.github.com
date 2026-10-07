@@ -108,7 +108,7 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/zh/docs/components/plantuml/</guid>
-        <description>&lt;p&gt;&lt;code&gt;plantuml&lt;/code&gt; 围栏里写 PlantUML 源码，浏览器把源码压缩编码后拼在一个 PlantUML 服务的 URL 后面，换回一张 SVG。适合需要完整 UML 表达力的时序图、类图、组件图、活动图与用例图。渲染依赖一个渲染服务：主题不提供默认端点，&lt;code&gt;enable: true&lt;/code&gt; 却没给 &lt;code&gt;svg_image_url&lt;/code&gt; 会让构建失败；没有可用服务时改用 &lt;a href=&#34;http://localhost:1313/zh/docs/components/mermaid/&#34;&gt;Mermaid&lt;/a&gt;。&lt;/p&gt;</description>
+        <description>&lt;p&gt;&lt;code&gt;plantuml&lt;/code&gt; 围栏里写 PlantUML 源码，浏览器把源码压缩编码后拼在一个 PlantUML 服务的&#xA;URL 后面，换回一张 SVG。适合需要完整 UML 表达力的时序图、类图、组件图、活动图与&#xA;用例图。渲染依赖一个服务：主题不提供默认端点；&lt;code&gt;enable: true&lt;/code&gt; 却没给&#xA;&lt;code&gt;svg_image_url&lt;/code&gt; 时，普通预览告警并保持关闭，严格发布构建拒绝这条警告。没有可用&#xA;服务时改用 &lt;a href=&#34;http://localhost:1313/zh/docs/components/mermaid/&#34;&gt;Mermaid&lt;/a&gt;。&lt;/p&gt;</description>
       </item>
     <item>
         <title>思维导图</title>
@@ -132,7 +132,7 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/zh/docs/components/echarts/</guid>
-        <description>&lt;p&gt;&lt;code&gt;echarts&lt;/code&gt; 围栏的正文是一段 YAML 或 JSON 的 ECharts 选项对象，不是代码。适用于需要坐标轴、序列与图例的定量图表；只表达关系与流程时用 &lt;a href=&#34;http://localhost:1313/zh/docs/components/mermaid/&#34;&gt;Mermaid&lt;/a&gt;，只表达顺序与层级时用 &lt;a href=&#34;http://localhost:1313/zh/docs/components/infographic/&#34;&gt;Infographic&lt;/a&gt;。Hugo 在构建期解析选项，解析失败则构建失败；浏览器用随主题分发的 ECharts 绘图，只有用到它的页面加载运行时。&lt;/p&gt;</description>
+        <description>&lt;p&gt;&lt;code&gt;echarts&lt;/code&gt; 围栏的正文是一段 YAML 或 JSON 的 ECharts 选项对象，不是代码。适用于需要&#xA;坐标轴、序列与图例的定量图表；只表达关系与流程时用&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/components/mermaid/&#34;&gt;Mermaid&lt;/a&gt;，只表达顺序与层级时用&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/components/infographic/&#34;&gt;Infographic&lt;/a&gt;。Hugo 在构建期解析选项；无效输入在&#xA;普通预览中告警并保留可读源码，严格发布构建拒绝这条警告。浏览器用随主题分发的&#xA;ECharts 绘图，只有用到它的页面加载运行时。&lt;/p&gt;</description>
       </item>
     <item>
         <title>Infographic</title>
@@ -180,7 +180,7 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/zh/docs/components/asciinema/</guid>
-        <description>&lt;p&gt;&lt;code&gt;asciinema&lt;/code&gt; 把一段 &lt;code&gt;.cast&lt;/code&gt; 录像渲染成页面里的终端播放器。适用于命令行流程的演示：终端里的文字仍然是文字，可以选中复制，一段六分多钟的安装过程约 190 KB。图形界面的操作用截图或视频，本组件只播放终端录像。播放器与样式随主题分发，构建期不下载、运行期不连 CDN，只有用到它的页面、且只在 HTML 输出里加载这套运行时。&lt;/p&gt;</description>
+        <description>&lt;p&gt;&lt;code&gt;asciinema&lt;/code&gt; 把一段 &lt;code&gt;.cast&lt;/code&gt; 录像渲染成页面里的终端播放器。适用于命令行流程的演示：终端里的文字仍然是文字，可以选中复制，本页六分多钟的安装录像约 196 KB。图形界面的操作用截图或视频，本组件只播放终端录像。播放器与样式随主题分发，构建期不下载、运行期不连 CDN，只有用到它的页面、且只在 HTML 输出里加载这套运行时。&lt;/p&gt;</description>
       </item>
     
   </channel>

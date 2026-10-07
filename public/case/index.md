@@ -8,8 +8,10 @@ LLMS index: [llms.txt](/llms.txt)
 
 ---
 
-Fifteen production sites, from a two-page utility to a multilingual
-documentation estate and three books. Every card opens the live site.
+Fifteen site projects, from a two-page utility to a multilingual
+documentation estate and three books. Open a card to read the case, then follow
+its site or source link. Use the [Case Guide](/docs/about/showcase/) to compare
+examples by the kind of site you want to build.
 
 ---
 
@@ -27,7 +29,7 @@ Section pages:
 - [ddia.vonng.com](/case/ddia/): DDIA: the Chinese edition of Designing Data-Intensive Applications. A multilingual book site and the largest proving ground for OINK numbering, cross-references and indexes.
 - [tpme.vonng.com](/case/tpme/): TPME: the Chinese edition of The Product-Minded Engineer. A focused bilingual publication that needs only OINK's Book shell.
 - [pgint.vonng.com](/case/pg-internal/): PG Internals: the Chinese edition of PostgreSQL Internals. A single-language book site that runs the Book shell on its own, with no documentation tree beside it.
-- [pgsql.cc](/case/pgsql-cc/): PGSQL.CC: an operations library for PostgreSQL and the components around it. Several upstream manuals and partially translated language trees share one search and one visual system.
+- [PostgreSQL ecosystem library](/case/pgsql-cc/): A Hugo operations library for PostgreSQL components, with shared search and navigation across upstream manuals and partially translated language trees.
 - [pgsty.pro](/case/pgsty-pro/): PIGSTY PRO: the enterprise edition of Pigsty. A bilingual documentation and release archive built around reusable, structured release records.
 - [ext.pgsty.com](/case/pgext-cloud/): PGEXT: the PostgreSQL extension catalog. 2,241 extensions indexed and 576 packaged, searchable across 16 Linux platforms and 5 major versions.
 
@@ -40,7 +42,7 @@ Backlinks:
 - [OINK Docs](/case/oink/)
 - [exp.pgsty.com](/case/pg-exporter/)
 - [ext.pgsty.com](/case/pgext-cloud/)
-- [pgsql.cc](/case/pgsql-cc/)
+- [PostgreSQL ecosystem library](/case/pgsql-cc/)
 - [pgsty.com](/case/pgsty-com/)
 - [pgsty.pro](/case/pgsty-pro/)
 - [pig.pgsty.com](/case/pig/)

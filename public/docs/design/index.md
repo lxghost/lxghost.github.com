@@ -8,10 +8,11 @@ LLMS index: [llms.txt](/llms.txt)
 
 ---
 
-> [!IMPORTANT] OINK 0.8.0 contract
-> This section publishes the maintainer contracts released with OINK 0.8.0,
-> with Hugo Extended 0.160.1 as the compatibility floor. The canonical
-> bilingual sources live in this repository under `content/docs/design/`.
+> [!NOTE] OINK 1.2.0 contract
+> This contract describes the v1.2.0 release. Its canonical bilingual sources
+> are in `content/docs/design/`.
+> Hugo Extended 0.160.1 remains the compatibility floor. CI uses 0.165.0;
+> the floor is not a second full CI matrix.
 
 This section is the durable design record for OINK. It complements the
 task-oriented guides elsewhere on the site: use those guides to build a site,
@@ -32,7 +33,7 @@ proposal.
 
 | Contract                                      | Authority                                                                                            |
 | --------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| [Architecture](/docs/design/architecture/)    | Build, configuration, diagnostics, featured images, output, security, accessibility, and performance |
+| [Architecture](/docs/design/architecture/)    | Build, configuration, diagnostics, localization, featured images, output, security, accessibility, and performance |
 | [Components](/docs/design/components/)        | Component API, Book and release primitives, validation, and output degradation                       |
 | [Shell and navigation](/docs/design/shell/)   | Navigation, search, blog presentation, actions, taxonomies, and page-end composition                 |
 | [Landing pages](/docs/design/landing/)        | Landing data, the 22-section registry, runtime, accessibility, and outputs                           |
@@ -69,11 +70,11 @@ delivery. Tests should exercise behavior and output rather than pinning prose.
 
 Section pages:
 
-- [Architecture contract](/docs/design/architecture/): Repository assembly, configuration, diagnostics, output, performance, security, CSS, accessibility, and release-state boundaries.
+- [Architecture contract](/docs/design/architecture/): Repository assembly, configuration, diagnostics, localization, output, performance, security, CSS, accessibility, and release-state boundaries.
 - [Component contract](/docs/design/components/): The maintainer contract for OINK authoring primitives, validation, Book and release behavior, and output degradation.
 - [Shell and navigation contract](/docs/design/shell/): Navigation authorities, immersive blog presentation, search, actions, taxonomies, indexes, and page-end composition.
 - [Landing contract](/docs/design/landing/): The maintainer contract for landing data, the built-in section registry, language resolution, runtime, accessibility, and outputs.
-- [OINK migration boundary](/docs/design/migration/): The supported source, configuration, and validation boundaries for migration from OINK 0.4 through OINK 0.8.0.
+- [OINK migration boundary](/docs/design/migration/): Supported source, configuration, and validation boundaries for OINK migration, including the 1.2.0 changes.
 - [Design decisions](/docs/design/decisions/): Accepted choices that explain why OINK's public contracts and implementation have their present shape.
 - [Design research](/docs/design/research/): Dated experiments and consumer evidence used to make OINK design decisions, without normative force.
 - [Design proposals and PRDs](/docs/design/proposals/): The canonical bilingual home for OINK PRDs and designs that are still being evaluated.
@@ -82,6 +83,7 @@ Section pages:
 
 Backlinks:
 
+- [OINK v1.0.0](/blog/release/1.0.0/)
 - [OINK Docs](/case/oink/)
 - [Docs](/docs/)
 - [Decisions](/docs/design/decisions/)

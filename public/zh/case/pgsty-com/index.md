@@ -1,6 +1,6 @@
 # pgsty.com
 
-> PGSTY: the company behind Pigsty. A small bilingual corporate site that uses OINK primarily as a data-driven landing-page system.
+> PGSTY 是 Pigsty 背后的公司。这个小型双语公司站主要将 OINK 用作数据驱动的落地页系统。
 
 ---
 

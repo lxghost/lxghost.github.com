@@ -1,6 +1,6 @@
 # Upgrade
 
-> Move to a new theme version, convert 0.4 shortcodes to v5 syntax with the migration toolkit, migrate from Docsy, and roll back when something goes wrong.
+> Pin a published theme version, adopt the 1.2.0 changes, migrate legacy content or a Docsy site, and roll back safely.
 
 ---
 
@@ -10,7 +10,7 @@ LLMS index: [llms.txt](/llms.txt)
 
 Upgrading OINK is changing one pinned module version and confirming the site
 still builds warning-free. Most content needs no change; where it does — 0.4
-shortcodes becoming v5's native Markdown forms — a dry-run-first migration tool
+shortcodes becoming the current native Markdown forms — a dry-run-first migration tool
 does it, so hundreds of files need not be edited by hand.
 
 An upgrade changes rendered output. Create an upgrade branch before starting,
@@ -30,62 +30,166 @@ guessing afterwards why a page looks different.
 
 ## Upgrading the Hugo Module {#hugo-module}
 
-A production site pins a release tag or an immutable commit, follows no branch,
-and does not use `@latest`:
+A production site pins a published release tag or a deliberately selected
+immutable commit, follows no branch, and does not use `@latest`. The example
+below upgrades to the published `v1.2.0` tag. For a later release, verify its
+publication and module resolution before selecting that tag:
 
 ```bash {title="Terminal"}
-hugo mod get github.com/pgsty/oink@v0.8.0   # the tag from the release notes
+hugo mod get github.com/pgsty/oink@v1.2.0   # the published release tag
 hugo mod tidy
 hugo mod graph | grep github.com/pgsty/oink
 ```
 
-The last command must show that tag itself resolving, not a pseudo-version
-(`v0.0.0-2026...-abcdef`) or `main`. The pinned version lands in `go.mod` and is
-committed with the code:
+When selecting a tag, confirm that the module graph shows that exact version.
+A deliberately selected immutable commit is normally recorded as a Go
+pseudo-version; that is valid if it resolves to the intended commit, but it is
+not evidence of a named release. Commit the resulting `go.mod` and `go.sum`.
+For the published tag in this example, `go.mod` contains:
 
 ```go {title="go.mod"}
 module github.com/pgsty/oink.pgsty.com
 
-go 1.26.6
+go 1.27.0
 
-require github.com/pgsty/oink v0.8.0
+require github.com/pgsty/oink v1.2.0
 ```
 
 > [!DANGER] A local module replacement overrides that pin
 > `make dev` and `make check` set `HUGO_MODULE_REPLACEMENTS` for that command
 > only, using the sibling theme checkout. To judge whether a release tag works,
-> use `make build` without a replacement; otherwise what is verified is the
-> local copy.
+> remove that environment replacement and disable both `GOWORK` and
+> `HUGO_MODULE_WORKSPACE`. Inspect persistent replacements and `_vendor/` too;
+> `make build` by itself does not prove which theme was resolved. See the
+> [preview guide](/docs/admin/preview/#theme-workspace).
 
-One line for each other install method. Git submodule: fetch the new ref with
-`git submodule update --remote themes/oink` and commit the submodule pointer.
-Offline archive and clone: replace `themes/oink/` wholesale with the new
-version's unpacked tree, and confirm `theme:` still matches the directory name.
-Weighing the three is in
+For a Git submodule, check that it has no local edits, fetch the tags, and
+check out the exact published version rather than following its remote branch:
+
+```bash {title="Terminal"}
+git -C themes/oink fetch origin --tags
+git -C themes/oink checkout --detach v1.2.0
+git add themes/oink
+```
+
+Commit the updated submodule pointer after validation. For an offline archive
+or clone, replace `themes/oink/` with the selected version's complete tree and
+confirm that `theme:` still matches the directory name. The install-method
+tradeoffs are in
 [From scratch and other install methods](/docs/start/from-scratch/).
 
 ## What to do after upgrading {#after-upgrade}
 
 ```bash {title="Terminal"}
 rm -rf public resources/_gen
-hugo --gc --minify --printPathWarnings --panicOnWarning --logLevel info
+env -u HUGO_MODULE_REPLACEMENTS GOWORK=off HUGO_MODULE_WORKSPACE=off \
+  hugo --gc --minify --printPathWarnings --panicOnWarning --logLevel info
 ```
 
 That does three things at once: clears possibly stale caches, rebuilds with the
 new version, and turns any warning into a failure.
 
-`--logLevel info` is there to surface Hugo's deprecation notices. Hugo
-deprecates in two stages: first a `WARN` (still usable), then an `ERROR` in the
-next version (the build fails). Carrying `--panicOnWarning` finds them a version
-early and leaves you the time to fix them.
+`--logLevel info` includes informational diagnostics, while
+`--panicOnWarning` treats warnings as failures. Review the deprecation messages
+emitted by the pinned Hugo version before upgrading it; the severity and
+removal schedule depend on the deprecated feature.
 
 Once the build passes, look with your own eyes: the home page, a documentation
 page, a blog page, the 404, both languages, both colour schemes, the print view,
 and anywhere the site customized something.
 
+## Upgrading from 1.0 to 1.1 {#from-1-0}
+
+> [!IMPORTANT] OINK 1.1.0 upgrade checklist
+> This checklist covers the published v1.1.0 release. Each consumer still needs
+> to update its dependency pin, rebuild and deploy; theme publication does not
+> upgrade an existing site automatically.
+
+No source migration is required from 1.0.0. Hugo Extended 0.160.1 remains the
+floor; CI uses the pinned 0.165.0 toolchain. The module's Go 1.27.0 directive is
+unchanged from 1.0.0. On Hugo 0.160.x, a non-default generic `zh` language
+alongside the regional Chinese catalogs needs `locale: zh-CN`.
+
+Review the affected surfaces before choosing the new pin:
+
+| Surface | 1.1 behavior and upgrade check |
+| --- | --- |
+| Languages | All 32 interface catalogs have the same native-message schema. Check the site's language labels, plural counts, and RTL direction; authored translations remain the site's responsibility. |
+| Taxonomies | Root pages become term-card directories with a taxonomy switcher. Review any taxonomy-template or CSS overrides, author portraits, and localized breadcrumbs. |
+| Sidebars | Cached trees preserve effective page settings and remain usable without JavaScript. Exercise collapse, hover restore, mobile drawer, and keyboard focus; hidden content must leave the focus order. |
+| Groups | `sidebar_divider: true` retains a section's children. Add `build.render: never` only when that group's own outputs are intentionally omitted; verify child navigation, breadcrumbs, paging, Print, and Book contents. |
+| Root menus | Explicit `sidebar_root_menu: false` now applies to self-root sections too. The current linkable root remains a location marker. |
+| Custom scripts | Feature-detect `OinkSidebar` and `OinkCommandPalette.registerSearchTail` if an integration must also support 1.0.0. Restore branch state through the API rather than changing classes or ARIA attributes directly. |
+| Copying articles | With image zoom enabled, copy an image and its caption as plain text and rich HTML. Preview instructions must not enter the copied article; zoom and its keyboard controls must still work. |
+| Print and Redoc | Check page and Book aggregate Print, heading and tab links, and local Redoc specifications under the real deployment prefix. Local specification paths are rooted under `static/`. |
+{.fields}
+
+`params.ui.image_zoom` and `params.offline_search` remain off by default. The
+new search hook does not enable a remote provider or add query telemetry.
+`params.ui.scroll_spy` and page-level `scroll_spy` remain accepted no-ops in
+1.x; removing the obsolete patch does not disable normal outline tracking.
+
+Update or remove affected site-level copies of theme code after comparing
+them with the new implementation. A copied old image-zoom script or sidebar
+partial will otherwise continue to hide the upstream fix.
+
+To test local theme changes with the documentation site, use its sibling theme
+checkout without committing a filesystem replacement:
+
+```bash {title="Terminal — from oink.pgsty.com"}
+make check
+make browser
+make dev
+```
+
+These commands validate the local checkout. For release acceptance, pin the
+published version, build without a module replacement, then validate the deployed pages.
+The authoring and API details live in [content groups](/docs/write/organize/#group-only),
+the [sidebar contract](/docs/design/shell/#sidebar-runtime),
+[search actions](/docs/customize/panel/#search-tail), and
+[image zoom](/docs/components/image/#zoom).
+
+## Upgrading from 1.1 to 1.2 {#preparing-1-2}
+
+> [!IMPORTANT] Default appearance change
+> Paper is the default in OINK 1.2.0. Set `params.ui.preset: slate` before
+> adopting this change if the site must retain its existing appearance.
+> `preset_menu: true` enables reader choice; its default remains false.
+> Ink and Terminal require an explicit preset or menu list. Their buttons do
+> not carry experiment badges; the configuration opt-in remains unchanged.
+> Review custom dark brand selectors as described in [Brand](/docs/customize/brand/#visual-presets).
+
+OINK 1.2.0 is available as a published tag. Apart from the default appearance
+change above, no content migration is required. Hugo Extended 0.160.1 remains
+the compatibility floor. Update the module, then verify the site:
+
+- Check the chosen preset, light/dark icons, keyboard and mobile menus, saved
+  preferences, and custom font/accent overrides. Sun means light; moon means
+  dark. Switching styles must not change the saved light/dark preference.
+- Recheck explicit navigation, hidden subtrees, page links, Blog pagination
+  canonicals, and SEO alternates for pages without translations.
+- Check CJK keyword-only search summaries and outline links with literal
+  percent signs. Compare source-derived Edit, History, and Create child links
+  on Windows or mounted content; mappings must yield repository-relative paths.
+- Check Landing content with JavaScript disabled or blocked, preserved metric
+  formatting, dialogs and keyboard shortcuts, copy fallback, Draw.io controls,
+  and numbered equations at narrow widths.
+- Run a warning-fatal build for diagram endpoints and resource alt metadata;
+  malformed values now produce a warning and use a safe fallback. To disable
+  a PlantUML or Draw.io endpoint intentionally, use `false` or an empty string.
+- Use the revised PDF and migration tools when testing publication or content
+  conversion. Review PDF remote-resource opt-ins and migration diffs, including
+  code examples nested in lists. The consumer-upgrade helper ships with
+  1.2.0 for inventory, module updates and exact-version validation.
+
+The [Architecture](/docs/design/architecture/),
+[Components](/docs/design/components/), [Shell](/docs/design/shell/), and
+[Migration](/docs/design/migration/) contracts describe the published 1.2.0
+behavior.
+
 ## The content migration toolkit {#migration-toolkit}
 
-A batch of 0.4 shortcodes became native Markdown forms in v5. The theme
+A batch of 0.4 shortcodes became the current native Markdown forms. The theme
 repository ships a tool for that, depending only on the Python standard library:
 
 ```bash {title="Terminal"}
@@ -122,9 +226,9 @@ python3 bin/migrations/oink06.py migrate --site ~/www/ddia --only callout,tabs -
 Rebuild afterwards (with `--panicOnWarning`) and look at the rendered pages: the
 tool guarantees correct syntax, not that the meaning is what you intended.
 
-## The 0.4 → v5 syntax map {#syntax-map}
+## The 0.4 → current syntax map {#syntax-map}
 
-| The 0.4 form | The v5 form | `--only` key |
+| The 0.4 form | The current form | `--only` key |
 | --- | --- | --- |
 | `{{% alert color= title= %}}`, `{{% details %}}`, `{{% pageinfo %}}`, hand-written `<details><summary>` | `> [!TYPE] Title` / `> [!DETAILS]-` | `callout` |
 | `{{< tabpane >}}` + `{{% tab header= %}}`, `{{< code-group >}}` + `{{< code-tab >}}` | Adjacent fences with `{tab= group= value=}`; tabs in running text use `{{< tabs >}}` + `{{< tab >}}` | `tabs` |
@@ -171,7 +275,7 @@ implementation take over — not rewriting the prose.
 
 1. Fonts and styling compatibility. The Docsy Sass variables in the site's `assets/scss/_variables_project.scss` still work as the seed values for the font roles, and need not be deleted to upgrade: `$td-fonts-serif`, `$font-family-sans-serif`, `$headings-font-family` and `$font-family-code` each feed their role. Docsy's Google Fonts switches `$td-enable-google-fonts`, `$td-google-font-name` and `$td-web-font-path` are no longer read by the theme; leaving them breaks nothing and does nothing, because OINK ships Inter, Chakra Petch and IBM Plex Mono and neither preset requests anything from Google Fonts. To change fonts, go through the token layer — see [Brand and appearance](/docs/customize/brand/).
 
-1. Convert the shortcodes. Docsy's `alert`, `pageinfo`, `tabpane` and `card` families all have a v5 counterpart; convert them in bulk with the [migration toolkit](#migration-toolkit) above, one `--only` class at a time.
+1. Convert the shortcodes. Docsy's `alert`, `pageinfo`, `tabpane` and `card` families all have a current counterpart; convert them in bulk with the [migration toolkit](#migration-toolkit) above, one `--only` class at a time.
 
 1. Delete one group at a time, building after each. Rehearse on a scratch copy, recording the theme commit, the Hugo version, which files were removed and how many HTML files came out; only after confirming equivalence, repeat it on the production branch.
 {.steps}
@@ -195,7 +299,7 @@ needs it, and a site that still does loads it itself:
 <script src="{{ (resources.Get "js/jquery.min.js").RelPermalink }}"></script>
 ```
 
-A home page built from Docsy's `blocks/*` fails the v5 build with
+A home page built from Docsy's `blocks/*` fails an OINK build with
 `template for shortcode "blocks/cover" not found`: the theme has no such
 shortcode family. Switch to home page sections in
 `data/home/<language>.yaml`, or give the page `layout: landing` — see
@@ -208,7 +312,7 @@ upgrade, check these first:
 
 - Sequential paging is on by default. `docs`, `book` and `blog` pages all have previous / next at the page end; documentation follows the sidebar tree and the blog follows time. A page deliberately outside any sequence opts out with `pager: false`.
 - The navbar shows on every layout. Its compact state is one row of icon navigation, with no second mobile accordion menu, so local scripts and tests that depend on the old mobile menu have to go. A whole section without a navbar uses `navbar_enabled: false` in a cascade.
-- The footer defaults to `fat` site-wide. Only `fat` / `slim` / `none` are accepted, and footer data must live in `data/footer/<language>.yaml` (or `data/footer.yaml` on a single-language site); a leftover `footer` key in `data/home` fails the build with the new location.
+- The footer defaults to `fat` site-wide. Only `fat` / `slim` / `none` are accepted, and footer data must live in `data/footer/<language>.yaml` (or `data/footer.yaml` on a single-language site); a leftover `footer` key in `data/home` warns with the new location, and strict publishing rejects it.
 - Single-key navigation is on by default: `/` opens full search and `\` command-only mode. Training material describing the old behaviour needs updating. Page actions have also moved to a split button beside the breadcrumbs.
 - The code block DOM changed. A `.td-code` wrapper now encloses the original `.highlight` (both `.highlight` and `.chroma` are kept), so a direct child selector such as `.td-content > .highlight` in site CSS becomes the descendant selector `.td-content .highlight`.
 - Two ICP footer parameters were removed: `footer_icp` and `footer_icp_url` became one string accepting inline Markdown.
@@ -242,8 +346,9 @@ An upgrade is not finished at "the build passed". Look at each surface:
 This site's full gate is:
 
 ```bash {title="Terminal"}
-npm test           # build assertions, Markdown and favicon goldens, translation parity, rendered links
-npm run test:browser   # Playwright: accessibility, responsive shell, keyboard navigation, content components, code blocks, scenario components
+make check     # local sibling theme: build, outputs, translations, and rendered links
+make browser   # local sibling theme: accessibility, responsive and interactive behavior
+make build     # published theme pinned in go.mod, without a local replacement
 ```
 
 Another site runs the equivalent build, link, output and browser checks; the
@@ -251,9 +356,9 @@ details are in
 [Troubleshooting](/docs/admin/troubleshooting/#site-checks).
 
 > [!IMPORTANT] A successful local build is not a completed release
-> The source building, the tag being signed and resolvable through the Go proxy,
-> the site pinning that tag, and production being deployed are four things, each
-> recorded separately. Do not let one green local build stand in for them.
+> A validated source commit, a published tag that resolves through the module
+> proxy, a consumer pin with its checksum, and a verified production deployment
+> are separate states. One green local build does not prove the others.
 
 The last step happens in the real environment: deploy a preview, verify the
 pages and the browser's network requests on the real URL, merge once reviewed,
@@ -264,7 +369,7 @@ and smoke-test production afterwards.
 What rolls back is the version pin, not the working tree:
 
 ```bash {title="Terminal"}
-hugo mod get github.com/pgsty/oink@v0.4.0   # the last known-good tag
+hugo mod get github.com/pgsty/oink@v1.0.0   # example: the site's last known-good tag
 hugo mod tidy
 rm -rf public resources/_gen
 hugo --gc --minify --panicOnWarning
@@ -285,17 +390,20 @@ is in [Deploy](/docs/admin/deploy/#rollback).
 - [Troubleshooting](/docs/admin/troubleshooting/) — reading a build error after an upgrade
 - [Local preview](/docs/admin/preview/) — clearing caches and the `go.work` workspace
 - [From scratch and other install methods](/docs/start/from-scratch/) — weighing the four install methods
-- [Components](/docs/components/) — each component's v5 form
+- [Components](/docs/components/) — each component's current form
 
 ---
 
 Backlinks:
 
+- [OINK v1.1.0](/blog/release/1.1.0/)
+- [OINK v1.2.0](/blog/release/1.2.0/)
 - [Docs](/docs/)
 - [Operations](/docs/admin/)
 - [Deploy](/docs/admin/deploy/)
 - [Troubleshooting](/docs/admin/troubleshooting/)
 - [Migration boundary](/docs/design/migration/)
-- [Repository tour](/docs/start/anatomy/)
+- [Get started](/docs/start/)
 - [From scratch](/docs/start/from-scratch/)
+- [OINK Starter](/docs/start/starter/)
 - [Releases and downloads](/docs/write/releases/)

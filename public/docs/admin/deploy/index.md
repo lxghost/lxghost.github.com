@@ -47,9 +47,12 @@ hugo --gc --minify --baseURL "https://example.com/docs/"
 > `baseURL`, and turning `canonifyURLs` on rewrites the relative links that were
 > already correct, making the problem harder to locate.
 
-To tell whether it matches, look at the search index request path after a build:
-the browser should fetch `<baseURL>/offline-search-index.en.json`, and fetching
-it from anywhere else means `baseURL` is wrong.
+With local search enabled, open search and inspect its index request in the
+browser's Network panel. It must use the correct language and deployment
+subpath and return 200. The page's `data-td-index-src` attribute supplies the
+actual URL: production filenames are
+`offline-search-index.<language>.<hash>.json`; development filenames have no
+hash. Do not test a guessed filename.
 
 ## Choosing a host {#hosts}
 
@@ -57,12 +60,11 @@ it from anywhere else means `baseURL` is wrong.
 
 With the source on GitHub, one Actions workflow is enough: the build runs in
 Actions and the output is published through the Pages deployment API, with no
-`gh-pages` branch to maintain.
+`gh-pages` branch to maintain. OINK Starter already includes the file below;
+copy it only when assembling a site manually.
 
-Commit the following file:
-
-```yaml {title=".github/workflows/pages.yml" lineNos="inline" collapse=30}
-name: Deploy Oink site to GitHub Pages
+```yaml {title=".github/workflows/github-pages.yaml" lineNos="inline" collapse=30}
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -75,35 +77,33 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: github-pages
   cancel-in-progress: false
 
 env:
-  GO_VERSION: 1.26.6
-  HUGO_VERSION: 0.164.0
+  HUGO_VERSION: 0.165.0
   # a workspace from a sibling checkout must never take part in a CI build
   GOWORK: off
   HUGO_MODULE_WORKSPACE: off
   HUGO_CACHEDIR: ${{ github.workspace }}/.hugo_cache
-  GOMODCACHE:
-    ${{ github.workspace }}/.hugo_cache/modules/filecache/modules/pkg/mod
 
 jobs:
   build:
     name: Build Pages artifact
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Check out source
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
       - name: Set up Go
-        uses: actions/setup-go@v6
+        uses: actions/setup-go@v7
         with:
-          go-version: ${{ env.GO_VERSION }}
+          go-version-file: go.mod
+          cache-dependency-path: go.sum
 
-      - name: Set up Pages
+      - name: Configure GitHub Pages
         id: pages
         uses: actions/configure-pages@v6
 
@@ -114,10 +114,10 @@ jobs:
             "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
           sudo dpkg -i "${RUNNER_TEMP}/hugo.deb"
 
-      - name: Download Hugo module
+      - name: Download OINK
         run: go mod download github.com/pgsty/oink
 
-      - name: Build site
+      - name: Build
         run: |
           hugo --cleanDestinationDir --gc --minify --environment production \
             --printPathWarnings --panicOnWarning \
@@ -129,19 +129,19 @@ jobs:
           path: public
 
   deploy:
-    name: Deploy to GitHub Pages
+    name: Deploy
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Deploy
+      - name: Publish
         id: deployment
         uses: actions/deploy-pages@v5
 ```
 
-That is the workflow this site uses. Several pieces cannot be removed:
+That is the workflow shipped by OINK Starter. Several pieces cannot be removed:
 
 - `fetch-depth: 0` — with `enableGitInfo` on, "last modified" and contributor information need the full Git history, and a shallow clone leaves them empty.
 - `setup-go` plus `go mod download` — with the theme as a Hugo Module, Hugo needs Go to resolve it. A site installing the theme as a submodule uses `submodules: recursive` instead, and one using an offline archive commits `themes/oink/`; either way both steps go.
@@ -153,38 +153,35 @@ In the repository, set Settings → Pages → Build and deployment → Source to
 GitHub Actions, push to `main`, and watch the first run on the Actions tab.
 
 A custom domain goes in the Custom domain field on that same settings page, with
-DNS configured as prompted, after which `baseURL` in `hugo.yml` becomes that
+DNS configured as prompted, after which `baseURL` in `hugo.yaml` becomes that
 domain. Where the publishing flow needs a `CNAME` file in the output, put it at
 `static/CNAME` and Hugo copies it into `public/` unchanged.
 
 **Cloudflare Pages**
 
-Cloudflare Pages builds from a connected GitHub / GitLab repository and creates
-a preview deployment per review branch. The build happens on the platform side,
-so no workflow is needed in the repository.
+OINK Starter ships `.github/workflows/cloudflare-pages.yaml`, a Direct Upload
+workflow. The strict build stays in GitHub Actions and Wrangler uploads the
+same `public/` artifact to a Cloudflare Pages project.
 
-Import the repository under Workers & Pages and choose the production branch:
-
-| Setting | Value |
-| --- | --- |
-| Build command | `hugo --gc --minify --printPathWarnings --panicOnWarning` |
-| Build output directory | `public` |
-| `HUGO_VERSION` | `0.164.0` (or another version the theme has verified) |
-| `GO_VERSION` | Needed only for the Hugo Module method; pin a version the build image supports |
-| `SKIP_DEPENDENCY_INSTALL` | `1` |
-{.fields}
-
-Four notes:
-
-1. `HUGO_VERSION` must be set explicitly, in both the Production and Preview environments. The Cloudflare v3 build image's default Hugo is older than OINK's required `0.160.1`, and leaving it unpinned changes the toolchain silently when the image updates.
-1. `SKIP_DEPENDENCY_INSTALL=1` turns off the generic dependency install step. A consuming OINK site needs no Node.js, and a `package.json` present only for maintenance tooling should not be installed by the platform.
-1. Where the Hugo site is not at the repository root, set Root directory to the site directory; the output directory resolves against it.
-1. A preview deployment is not a production release. Where a preview needs the generated Pages URL as its base URL, use `hugo --gc --minify --baseURL "$CF_PAGES_URL"`, and rebuild for production with the canonical domain.
+1. Create a **Direct Upload** Pages project. By default its name matches the
+   repository; override it with repository variable `CLOUDFLARE_PROJECT_NAME`.
+1. Add repository secrets `CLOUDFLARE_ACCOUNT_ID` and
+   `CLOUDFLARE_API_TOKEN`. The token needs **Account → Cloudflare Pages → Edit**.
+1. Run **Deploy to Cloudflare Pages** manually once. Set repository variable
+   `CLOUDFLARE_PAGES_ENABLED=true` to deploy every push to `main`.
+1. The canonical URL defaults to `https://<project>.pages.dev/`. Set
+   `CLOUDFLARE_SITE_URL` when a custom domain becomes production.
 {.steps}
 
-Check the first build log: a healthy consuming OINK build is one Hugo command,
-with no npm, PostCSS or Autoprefixer step and no download of the theme's own
-browser assets.
+The workflow pins Hugo Extended 0.165.0, reads Go from `go.mod`, disables local
+module workspaces, and builds with `--panicOnWarning` before upload. It is the
+recommended reproducible path for Starter users.
+
+Cloudflare Git integration remains valid as a separate mode: configure build
+command `hugo --gc --minify --printPathWarnings --panicOnWarning`, output
+directory `public`, Hugo `0.165.0`, and Go `1.27`. Use Git integration **or**
+the Direct Upload workflow for one project, not both. A preview deployment is
+still not production proof; rebuild with its own URL and keep it unindexed.
 
 **Others**
 
@@ -198,7 +195,7 @@ command = "hugo --gc --minify --printPathWarnings --panicOnWarning"
 publish = "public"
 
 [build.environment]
-HUGO_VERSION = "0.164.0"
+HUGO_VERSION = "0.165.0"
 ```
 
 With the theme as a submodule, enable recursive submodule checkout; with a Hugo
@@ -209,14 +206,16 @@ use one Hugo version, unless the preview environment exists to test an upgrade.
 directory `public`, environment variable `HUGO_VERSION`. It likewise needs no
 npm install.
 
-**Any static server (Nginx / Caddy)** — lay the contents of `public/` down as
-they are:
+**Any static server (Nginx / Caddy)** — serve an unchanged copy of `public/`.
+The example below uses a `current` symlink to a release directory; create it
+with the offline packaging steps below. Set the host's document root to that
+link when configuring Nginx or Caddy:
 
 ```nginx {title="/etc/nginx/conf.d/docs.conf"}
 server {
     listen 80;
     server_name docs.example.com;
-    root /var/www/oink;
+    root /var/www/oink/current;
     index index.html;
 
     location / {
@@ -249,18 +248,38 @@ the standard environment variables or configuration file (on AWS, confirm with
 `aws s3 ls` first).
 
 **Offline packaging** — in a network-isolated environment, build on a connected
-machine and carry the output across as one package:
+machine and carry the output across as one package. Choose your own archive path
+and a new release name for every artifact. On the Linux host, these commands
+require write access to `/var/www/oink` and GNU `mv`; `current` must be absent or
+a symlink, and `current.next` must not already exist. Configure Nginx or Caddy to
+serve `current`, as above; this is a host setting, not a Hugo option.
 
 ```bash {title="Terminal"}
-hugo --gc --minify --baseURL "https://docs.internal.example.com/"
-tar -czf oink-site-$(date +%Y%m%d).tar.gz -C public .
+hugo --cleanDestinationDir --gc --minify --panicOnWarning --baseURL "https://docs.internal.example.com/" &&
+  tar -czf oink-site-20260929-01.tar.gz -C public .
 
-# on the target machine
-tar -xzf oink-site-20260817.tar.gz -C /var/www/oink
 ```
 
-Build with the target environment's `baseURL` from the start; the absolute links
-in the output cannot be changed after unpacking.
+Only after the build and packaging succeed, transfer this archive to the Linux
+host and run the following there. Use a new release name for every artifact:
+
+```bash {title="Linux host"}
+release_dir=/var/www/oink/releases/20260929-01
+mkdir -p /var/www/oink/releases
+mkdir "$release_dir" &&
+  tar -xzf oink-site-20260929-01.tar.gz -C "$release_dir" &&
+  test -f "$release_dir/index.html" &&
+  ln -s "$release_dir" /var/www/oink/current.next &&
+  mv -Tf /var/www/oink/current.next /var/www/oink/current
+```
+
+The command chain switches `current` only after a new directory is created,
+extraction succeeds and `index.html` exists. Check the deployed pages afterward
+and retain the previous release directory for rollback. Never unpack a release
+over an existing release directory.
+
+Build with the target environment's `baseURL` from the start; changing it requires
+a new build.
 
 **A host without Go** — the Hugo Module method needs Go in the build
 environment. Where a platform does not provide it, switch to a Git submodule
@@ -285,17 +304,30 @@ nothing to an analytics service.
 
 ## Content Security Policy {#csp}
 
-The runtimes, fonts and icons the theme ships are all same-origin assets, so a
-strict Content Security Policy is workable. The theme provides no general
-policy: which directives you need depends on what the site enabled.
+The shipped runtimes, fonts and icons are same-origin assets, but
+`script-src 'self'; style-src 'self'` alone does not cover an ordinary OINK
+page. The theme emits inline theme initialization and shell prepaint scripts,
+inline styles for the initial canvas, theme colors and font roles, and style
+attributes in some components. Markmap adds inline configuration and styles.
+The theme provides neither a general policy nor automatic CSP hashes or nonce
+injection; the deployment owns a policy derived from its actual built output.
 
-Five things change the directives needed:
+Additional features change the directives needed:
 
 - Inline HTML and inline scripts written by authors, which are the author's responsibility under `renderer.unsafe: true`.
 - [ECharts `$fn:` callbacks](/docs/components/echarts/#callbacks): the callback functions are registered by the site on `window.OinkEchartsFunctions`, and the registering script's origin belongs in `script-src`.
 - [Analytics scripts](/docs/admin/analytics/#other-analytics): the script the site inserts, and the destination it reports to.
 - [Remote API specifications](/docs/write/openapi/#spec-file) and [self-hosted diagram services](/docs/components/plantuml/#server): these land in `connect-src` and `img-src`.
 - [giscus](/docs/admin/comments/#privacy): `script-src` and `frame-src` must both permit it.
+
+Hash each permitted inline script/style block from the final deployed bytes,
+or have the hosting layer inject a fresh nonce into both the response policy
+and the corresponding tags. A nonce on a style tag does not authorize style
+attributes; review those separately under `style-src-attr`. Recheck hashes when
+content, configuration, minification, or the theme changes. Begin with
+`Content-Security-Policy-Report-Only` and exercise light/dark startup, shell
+state, menus, and every enabled component before enforcing it. An origin scan
+alone cannot establish CSP compatibility.
 
 Start from a minimal policy covering only reviewed features and permit things
 one at a time: keep ECharts options pure data where no callback is needed,
@@ -315,10 +347,10 @@ be checked on the real URL.
 | `baseURL` is correct | `<link rel="canonical">` in the page source points at the real production address, subpath included |
 | Sitemap | `<baseURL>/sitemap.xml` resolves; a multilingual site has an index pointing at `/en/sitemap.xml` and `/zh/sitemap.xml` |
 | robots | `<baseURL>/robots.txt` reads `Allow: /` with a `Sitemap:` line; a preview deployment should read `Disallow: /` |
-| Search index | The browser can fetch `<baseURL>/offline-search-index.<language>.json`, and site search returns results |
+| Search index | With local search enabled, the URL from `data-td-index-src` returns 200; production filenames contain a hash, and site search returns results |
 | Markdown output | Appending `index.md` to any page URL returns plain text (where the site enabled `markdown` under `outputs.page`) |
-| `llms.txt` | `<baseURL>/llms.txt` and `<baseURL>/zh/llms.txt` resolve (where the site enabled `LLMS` under `outputs.home`) |
-| Both languages | Documentation, blog and home pages open in both, and switching language lands on the corresponding page rather than the home page |
+| `llms.txt` | The primary and every enabled language root publish `llms.txt` where the site enabled `LLMS` under `outputs.home` |
+| Enabled languages | Documentation, blog and home pages open in each, and switching language lands on the corresponding page rather than the home page |
 | Appearance and interaction | The light/dark toggle, the print view and representative components (callouts, tabs, code block copy) all work |
 | 404 | Visiting a path that does not exist shows the site's own 404 page |
 {.fields}
@@ -332,9 +364,22 @@ The switches for `sitemap.xml`, `robots.txt`, `.md` and `llms.txt` are in
 Rolling back a static site means republishing the last known-good commit; never
 edit files by hand in production.
 
-- GitHub Pages: find the last successful `Deploy Oink site to GitHub Pages` run in Actions and click Re-run all jobs; or `git revert` the offending commit and push again.
+- GitHub Pages: find the last successful `Deploy to GitHub Pages` run in Actions and click Re-run all jobs; or `git revert` the offending commit and push again.
 - Cloudflare Pages / Netlify / Vercel: pick the last successful deployment from the list and use the platform's Rollback / Publish deploy to make it production again.
-- A self-hosted static server: keep the previous `tar.gz` and unpack it over the top. The dated suffix in [offline packaging](#hosts) exists for exactly this.
+- A self-hosted static server: point `current` back to the previous release directory from [offline packaging](#hosts). Do not overlay the old archive on the new files: paths added by the newer release would remain live.
+
+On the Linux host, replace the example path with the retained known-good release.
+The same symlink and GNU `mv` prerequisites apply:
+
+```bash {title="Terminal"}
+previous_release=/var/www/oink/releases/20260928-01
+test -d "$previous_release" &&
+  ln -s "$previous_release" /var/www/oink/current.next &&
+  mv -Tf /var/www/oink/current.next /var/www/oink/current
+```
+
+Check a representative old page at the public URL and confirm that a path added
+only by the rejected release is no longer served.
 
 Where the problem is a theme upgrade rather than the content, what rolls back is
 the version pinned in `go.mod` — see
@@ -352,6 +397,7 @@ the version pinned in `go.mod` — see
 
 Backlinks:
 
+- [Book](/book/)
 - [Validate and ship](/book/06-ship/)
 - [Docs](/docs/)
 - [Operations](/docs/admin/)
@@ -362,3 +408,5 @@ Backlinks:
 - [Upgrade](/docs/admin/upgrade/)
 - [Versions](/docs/customize/versions/)
 - [Get started](/docs/start/)
+- [Repository tour](/docs/start/anatomy/)
+- [OINK Starter](/docs/start/starter/)

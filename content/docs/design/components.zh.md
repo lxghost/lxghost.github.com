@@ -5,12 +5,12 @@ description: OINK 创作原语、校验、Book、发布行为与输出降级的�
 weight: 20
 icon: fa-solid fa-cubes-stacked
 search_keywords: [OINK 组件契约, shortcode API, Markdown 组件, Book, 发布, 校验]
-contract_status: released-v0.8.0
+contract_status: v1.2.0
 ---
 
-> [!IMPORTANT] OINK 0.8.0 契约
-> 这是随 OINK 0.8.0 正式发布的组件契约。本页是权威中文源文件，与英文版本
-> 一同维护在 `content/docs/design/`。
+> [!NOTE] OINK 1.2.0 契约
+> 本契约描述 v1.2.0 的正式行为。唯一的中英文契约源文件位于
+> `content/docs/design/`。
 
 教程与完整示例位于面向读者的[组件](/zh/docs/components/)专栏。本页定义这些
 指南所依赖的 API 与行为。
@@ -60,7 +60,8 @@ OINK 有 29 个 shortcode：
 | 表格 | 属性、caption、编号或标签页 | 复合 Book 表格使用 `tbl` | 只有标签页表格加载 tabs |
 | Book 目标 | 图片、表格、passthrough、围栏加 `{num=}` | `fig`、`tbl`、`eq`、`eg` | 无 |
 | 发布资产 | `checksums` 数据围栏 | `release-assets` | HTML 中加载复制功能 |
-| 图表与数据 | `mermaid`、`plantuml`、`markmap`、`math`、`chem`、`echarts`、`infographic` 围栏 | 无 | 只加载选中的本地运行时 |
+| 数学与化学公式 | passthrough、`math`、`chem` 围栏 | `eq` | 无；构建期渲染并加载本地样式 |
+| 图表与数据 | `mermaid`、`plantuml`、`markmap`、`echarts`、`infographic` 围栏 | 无 | 只加载选中的本地运行时 |
 
 ## 校验 {#validation}
 
@@ -71,9 +72,11 @@ OINK 有 29 个 shortcode：
 token 校验。渲染钩子与 shortcode 目标共享同一个页面注册表，因此冲突不会生成
 重复的输出 ID。
 
-URL 使用 `content/url.html`。图片依次从页面资源、分区资源、全局 assets、static
+URL 使用 `content/url.html`；不允许原始反斜杠，因为浏览器可能将其解释为 URL
+分隔符。图片依次从页面资源、分区资源、全局 assets、static
 或显式远程 URL 中解析。本地位图带固有尺寸；SVG、static 与远程来源仍然有效，
 但不能执行 Hugo 图片操作。
+资源元数据 `alt` 必须是字符串；无效值会告警并被忽略，保留正文填写的替代文本。
 
 ## 组件行为 {#component-behavior}
 
@@ -81,7 +84,7 @@ URL 使用 `content/url.html`。图片依次从页面资源、分区资源、全
 
 提示块类型包括 `note`、`tip`、`important`、`warning`、`caution`、`success`、
 `danger`、`question`、`example`、`quote` 与 `details`；`-` 表示初始折叠，`+`
-表示初始展开。未知类型会以中性提示块保持可见，不依赖 JavaScript。
+表示初始展开。未知类型渲染为保留原标记的普通块引用，不依赖 JavaScript。
 
 只有连续且区块类型相同的相邻标签页才会分组。`group` 启用
 `#<group>-<value>` hash 与 `td-tabs:v1:<group>` 存储键；未分组标签页两者都不用。
@@ -114,14 +117,35 @@ Markdown 图片钩子是普通图片 API。行内图片保持行内；块图片�
 链接图片使用 Markdown 语法，因此 `link` 属性要求同时有 caption 或编号。链接
 图片与装饰图片不加载缩放。
 
+缩放按钮通过 ARIA 无障碍名称保留图片的 alt 与本地化预览操作，不向正文插入辅助
+文字。复制纯文本或富文本 HTML 时，即使编辑器移除主题样式，也不得额外带入
+预览提示；作者原有的图片与图注保持不变。资源 metadata 中的 `alt` 必须是字符串；
+无效值会告警并被忽略，保留正文中编写的图片 alt。
+Draw.io 与图片缩放共用一张图片时，编辑与缩放是同级的独立按钮。编辑入口支持
+键盘访问，并在触摸设备和强制颜色模式下保持可见。
+
 画廊每行接受一张 Markdown 图片，可带描述、链接与 class。FileTree 接受缩进、
 `- name`、可选 `/`、注释，以及经过校验的 icon、tone、open、type 属性。Markdown
 保留作者源文；打印输出渲染展开的静态图片与文件树。
 
 所有代码高亮都使用 Chroma。通用围栏属性包括 `title`、`copy`、`wrap`、
 `collapse`、`label`、`id`、行选项、标签页，以及 Book 的 `num`/`caption`。复制
-操作返回作者源文。ECharts 输入是声明式 JSON/YAML；回调使用
+操作返回作者源文。Mermaid 色板按明暗切换，与视觉预设独立；默认深色连线标签
+背景使用 `#404040`，使标签文字达到 AA 对比度。显式
+`params.mermaid.themeVariables` 配置仍然优先。
+
+ECharts 输入是声明式 JSON/YAML；回调使用
 `window.OinkEchartsFunctions` 中的 `$fn:<name>`，绝不执行嵌入脚本。
+
+数学公式使用 Hugo 构建时生成的 KaTeX 产物和本地 CSS，不加载浏览器数学运行时。
+共享渲染器在 HTML 和 Print 中将 KaTeX 0.18 之前的类名统一为本地样式支持的类名，
+保留 Hugo 0.160.1 兼容下限、MathML 与作者的 TeX 源文。Markmap 使用与样式配套的
+本地 KaTeX 运行时。
+窄屏中，编号公式的标题在阅读列内换行，长标题不得撑宽整页。
+
+Swagger 与 Redoc 接受 HTTP(S) 规范 URL 或以 `static/` 为根的路径，都不解析页面
+资源。Redoc 将开头有无斜杠视为等价，并把本地路径与 `baseURL` 拼接。只有 HTML
+输出可交互；Print、Markdown 与 RSS 输出静态规范链接。
 
 ### Book {#book}
 
@@ -138,8 +162,10 @@ Markdown 图片钩子是普通图片 API。行内图片保持行内；块图片�
 中的脚注引用会警告并保持字面形式；该检查忽略代码形态的文本。
 
 `book-toc` 按 1–3 层导航顺序生成目录；四个 `book-*` 索引各自收集一种目标。
-整书打印会改写跨页链接，并给普通标题与脚注增加命名空间，同时保留显式目标 ID。
-消费站点自行选择是否启用这种潜在成本较高的输出。
+单页 Print 与普通 HTML 保持完全相同的普通标题与脚注 ID。只有多页分区
+Print 与整书 Print 会改写跨页链接，并给这些页面局部标题与脚注增加命名
+空间，避免聚合后冲突；显式目标 ID 保持不变。消费站点自行选择是否启用这些
+潜在成本较高的聚合输出。
 
 ### 发布与下载 {#release-and-download}
 

@@ -46,4 +46,4 @@ sidebar_enabled: false
 
 反链：
 
-- [选择发布界面](/zh/book/05-publishing/)
+- [选择内容类型](/zh/book/05-publishing/)

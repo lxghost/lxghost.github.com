@@ -31,7 +31,7 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 - [发布上线](/zh/docs/admin/deploy/): 把 public/ 部署到 GitHub Pages、Cloudflare Pages 或任何静态托管：baseURL 配对、内容安全策略、验收清单与回滚。
 - [启用评论](/zh/docs/admin/comments/): 用 giscus 把 GitHub Discussions 接成页面底部的评论区，全站开、按页关、跟随深浅色。
 - [分析与 SEO](/zh/docs/admin/analytics/): 接入一个分析服务（或者不接），并把主题已经生成的 canonical、hreflang、社交卡片、站点地图与 robots 配对。
-- [版本升级](/zh/docs/admin/upgrade/): 升到新版主题、用迁移工具把 0.4 的 shortcode 改成 v5 语法、从 Docsy 迁过来，以及出问题怎么退回去。
+- [版本升级](/zh/docs/admin/upgrade/): 固定已发布的主题版本、验证 1.2.0 变化、迁移旧内容或 Docsy 站点，并在出问题时安全回滚。
 - [排错与检查](/zh/docs/admin/troubleshooting/): 构建、语言、搜索、平台四类故障的症状 → 原因 → 修法，以及站点可以自己跑的那几项检查。
 
 ---

@@ -18,13 +18,13 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 
 ```markdown {title="源码"}
 1. 安装 Hugo Extended
-1. 克隆文档站
+1. 克隆 OINK Starter
 1. 启动本地预览
 {.steps}
 ```
 
 1. 安装 Hugo Extended
-1. 克隆文档站
+1. 克隆 OINK Starter
 1. 启动本地预览
 {.steps}
 
@@ -34,10 +34,10 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 列表项里可以放任何块级内容：段落、代码围栏、提示块、表格、嵌套列表、图片。缩进对齐到列表项的内容列（三个空格）即可。
 
 ````markdown {title="源码"}
-1. 克隆文档站，它本身就是主题的完整示例。
+1. 克隆 OINK Starter，它是面向项目的精简模板。
 
    ```bash
-   git clone https://github.com/pgsty/oink.pgsty.com my-docs
+   git clone https://github.com/pgsty/oink-starter my-docs
    cd my-docs
    ```
 
@@ -60,10 +60,10 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 {.steps}
 ````
 
-1. 克隆文档站，它本身就是主题的完整示例。
+1. 克隆 OINK Starter，它是面向项目的精简模板。
 
    ```bash
-   git clone https://github.com/pgsty/oink.pgsty.com my-docs
+   git clone https://github.com/pgsty/oink-starter my-docs
    cd my-docs
    ```
 

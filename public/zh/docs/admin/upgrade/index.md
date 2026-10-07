@@ -1,6 +1,6 @@
 # 版本升级
 
-> 升到新版主题、用迁移工具把 0.4 的 shortcode 改成 v5 语法、从 Docsy 迁过来，以及出问题怎么退回去。
+> 固定已发布的主题版本、验证 1.2.0 变化、迁移旧内容或 Docsy 站点，并在出问题时安全回滚。
 
 ---
 
@@ -8,7 +8,9 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 
 ---
 
-升级 OINK 是换一个固定的模块版本，再确认站点仍能零告警构建。内容多数不用改；需要改的场景（0.4 的 shortcode 换成 v5 的 Markdown 原生形态）有一个可以干跑的迁移工具，不必手改几百个文件。
+升级 OINK 是换一个固定的模块版本，再确认站点仍能零告警构建。内容多数不用改；
+0.4 shortcode 改成当前 Markdown 原生形态时，有一套默认干跑的迁移工具，不必手改
+几百个文件。
 
 升级会改变渲染结果。先建一个升级分支再动手，回退的代价就是丢弃一个分支。
 
@@ -23,45 +25,140 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 
 ## 升级 Hugo Module {#hugo-module}
 
-生产站点固定发布标签或不可变 commit，不跟随分支，也不用 `@latest`：
+生产站点固定已发布标签或主动选定的不可变 commit，不跟随分支，也不用 `@latest`。
+下面升级到已发布的 `v1.2.0` 标签；选择后续版本时，先确认已经发布且模块可以解析，
+再替换示例中的版本。
 
 ```bash {title="终端"}
-hugo mod get github.com/pgsty/oink@v0.8.0   # 换成发布注记里的标签
+hugo mod get github.com/pgsty/oink@v1.2.0   # 已发布的版本标签
 hugo mod tidy
 hugo mod graph | grep github.com/pgsty/oink
 ```
 
-最后一条要能看到解析结果是那个标签本身，而不是伪版本（`v0.0.0-2026...-abcdef`）或 `main`。固定的版本落在 `go.mod` 里，跟着代码一起提交：
+选择标签时，确认模块图显示的就是该版本。主动选定的不可变 commit 通常会记录为 Go
+伪版本；只要它解析到预期提交就是有效固定，但不能作为某个命名版本已发布的证据。
+提交生成的 `go.mod` 与 `go.sum`。使用上面的公开标签时，`go.mod` 包含：
 
 ```go {title="go.mod"}
 module github.com/pgsty/oink.pgsty.com
 
-go 1.26.6
+go 1.27.0
 
-require github.com/pgsty/oink v0.8.0
+require github.com/pgsty/oink v1.2.0
 ```
 
 > [!DANGER] 本地模块替换会盖掉这个固定版本
-> `make dev` 和 `make check` 会仅对当前命令设置 `HUGO_MODULE_REPLACEMENTS`，使用同级的主题 checkout。判定某个发布标签是否可用时使用不带替换的 `make build`，否则验证的是本地那份代码。
+> `make dev` 和 `make check` 只为当次命令设置 `HUGO_MODULE_REPLACEMENTS`，
+> 使用同级主题 checkout。判定发布标签是否可用时，移除该环境变量替换，同时禁用
+> `GOWORK` 和 `HUGO_MODULE_WORKSPACE`。还要检查持久替换与 `_vendor/`；仅执行
+> `make build` 无法证明实际解析的是哪个主题版本。参见
+> [本地预览指南](/zh/docs/admin/preview/#theme-workspace)。
 
-其它安装方式各一句。Git submodule：用 `git submodule update --remote themes/oink` 拉到新 ref，再提交 submodule 指针。离线归档与克隆：把 `themes/oink/` 整个换成新版本的解压结果，确认 `theme:` 的值仍与目录名一致。三种方式的取舍见[从零建站与其它安装方式](/zh/docs/start/from-scratch/)。
+使用 Git submodule 时，先确认没有本地修改，再拉取标签并检出精确的公开版本，
+不要跟随远端分支：
+
+```bash {title="终端"}
+git -C themes/oink fetch origin --tags
+git -C themes/oink checkout --detach v1.2.0
+git add themes/oink
+```
+
+验证后提交更新的 submodule 指针。离线归档与克隆则用选定版本的完整内容替换
+`themes/oink/`，确认 `theme:` 的值仍与目录名一致。安装方式的取舍见
+[从零建站与其它安装方式](/zh/docs/start/from-scratch/)。
 
 ## 升级后必做 {#after-upgrade}
 
 ```bash {title="终端"}
 rm -rf public resources/_gen
-hugo --gc --minify --printPathWarnings --panicOnWarning --logLevel info
+env -u HUGO_MODULE_REPLACEMENTS GOWORK=off HUGO_MODULE_WORKSPACE=off \
+  hugo --gc --minify --printPathWarnings --panicOnWarning --logLevel info
 ```
 
 三件事一起做了：清掉可能过期的缓存、用新版本重新构建、把任何告警变成失败。
 
-`--logLevel info` 是为了看见 Hugo 的弃用提示。Hugo 的弃用分两级：先是 `WARN` 级提示（仍可使用），下一个版本变成 `ERROR`（构建失败）。带上 `--panicOnWarning` 相当于提前一个版本发现它们，把修复的时间留给自己。
+`--logLevel info` 包含信息级诊断，`--panicOnWarning` 将警告视为失败。升级 Hugo
+之前，先处理当前固定版本发出的弃用提示；诊断级别与移除时间取决于具体的弃用功能。
 
 构建通过之后，人眼再过一遍：首页、一个文档页、一个博客页、404、两种语言、两种配色、打印视图，以及站点自己定制过的地方。
 
+## 从 1.0 升到 1.1 {#from-1-0}
+
+> [!IMPORTANT] OINK 1.1.0 升级清单
+> 本清单对应已发布的 v1.1.0。各消费站仍需更新依赖固定版本、重新构建和部署；
+> 主题发布不会自动升级既有站点。
+
+从 1.0.0 升级不需要迁移源码。Hugo Extended 0.160.1 仍是下限，CI 固定使用 0.165.0，
+模块的 Go 1.27.0 声明与 1.0.0 相同。在 Hugo 0.160.x 上，非默认通用 `zh` 与区域中文
+目录并存时，需要配置 `locale: zh-CN`。
+
+选择新固定版本前，检查这些受影响的页面与行为：
+
+| 范围 | 1.1 行为与升级检查 |
+| --- | --- |
+| 语言 | 32 份界面目录均具有相同的原生消息结构。检查站点语言标签、复数计数与 RTL 方向；正文译文仍由站点负责。 |
+| 分类法 | 根页变成术语卡片目录，并提供分类法切换器。检查分类法模板或 CSS 覆盖、作者头像与本地化面包屑。 |
+| 侧栏 | 缓存树保留页面有效设置，没有 JavaScript 时也可使用。检查折叠、悬停恢复、移动抽屉与键盘焦点，隐藏内容必须退出焦点顺序。 |
+| 分组 | `sidebar_divider: true` 保留分区子文档。仅在明确不发布分组自身输出时添加 `build.render: never`；检查子导航、面包屑、翻页、Print 与 Book 目录。 |
+| 根菜单 | 显式 `sidebar_root_menu: false` 对自根分区也生效；当前可链接的根仍作为位置标记显示。 |
+| 自定义脚本 | 若还需支持 1.0.0，先检测 `OinkSidebar` 与 `OinkCommandPalette.registerSearchTail`。通过 API 恢复分支状态，不要直接修改 class 或 ARIA 属性。 |
+| 文章复制 | 启用图片缩放时，以纯文本与富文本 HTML 复制图片和图注。预览提示不得进入文章复制内容，缩放与键盘操作仍需正常工作。 |
+| Print 与 Redoc | 检查单页和 Book 聚合 Print、标题与标签页链接，以及真实部署前缀下的本地 Redoc 规范。本地规范路径相对于 `static/`。 |
+{.fields}
+
+`params.ui.image_zoom` 与 `params.offline_search` 仍默认关闭。新搜索钩子不会启用远程
+服务，也不会添加查询遥测。`params.ui.scroll_spy` 与页面级 `scroll_spy` 在 1.x 中仍
+作为 no-op 接受；移除无效补丁不影响普通大纲跟踪。
+
+将受影响的站点级主题副本与新实现比较后再更新或移除。保留旧图片缩放脚本或侧栏
+partial，会让站点继续使用旧实现，无法获得上游修复。
+
+在文档站验证本地主题修改时，使用同级主题 checkout，不要提交文件系统模块替换：
+
+```bash {title="终端 — 在 oink.pgsty.com 目录内"}
+make check
+make browser
+make dev
+```
+
+这些命令验证的是本地 checkout。验收正式版本时，固定已发布标签，在没有模块替换的情况下
+构建，并验证部署后的页面。创作与 API 细节见[内容分组](/zh/docs/write/organize/#group-only)、
+[侧栏契约](/zh/docs/design/shell/#sidebar-runtime)、
+[搜索动作](/zh/docs/customize/panel/#search-tail) 与[图片缩放](/zh/docs/components/image/#zoom)。
+
+## 从 1.1 升级到 1.2 {#preparing-1-2}
+
+> [!IMPORTANT] 默认外观变化
+> OINK 1.2.0 默认改为 Paper。需要保留原有外观的站点，在采用此改动前设置
+> `params.ui.preset: slate`。`preset_menu: true` 开启读者切换，默认仍为 false。
+> Ink 与 Terminal 需要显式设置预设或菜单列表；按钮不显示实验标记，配置启用边界不变。
+> 自定义深色品牌选择器的兼容处理见[品牌外观](/zh/docs/customize/brand/#visual-presets)。
+
+OINK 1.2.0 已发布。除上面的默认外观变化外，无需迁移内容源码。
+Hugo Extended 下限仍为 0.160.1。更新模块后，按以下清单验收站点：
+
+- 检查所选预设、明暗图标、键盘与手机菜单、保存的偏好，以及自定义字体和强调色覆盖。
+  太阳表示亮色，月亮表示暗色；切换风格不得改变保存的明暗偏好。
+- 复查显式导航、隐藏子树、页面链接、博客分页 canonical，以及缺少译文页面的
+  SEO 备用链接。
+- 检查仅关键词命中的 CJK 搜索摘要，以及带字面百分号的大纲链接。复查 Windows
+  或挂载内容的编辑、历史与新建子页链接；映射结果必须是仓库相对路径。
+- 检查 JavaScript 被禁用或阻断时的 Landing 内容、指标格式、弹窗与快捷键、
+  复制回退、Draw.io 操作，以及窄屏上的编号公式。
+- 对图表端点与资源 alt 元数据执行将警告视为失败的构建；非法值现在会警告并采用
+  安全回退。要有意禁用 PlantUML 或 Draw.io 端点，使用 `false` 或空字符串。
+- 测试出版或内容转换时，使用修订后的 PDF 与迁移工具。审查 PDF 远程资源开关
+  和迁移 diff，包括嵌套在列表中的代码示例。消费站升级工具也随 1.2.0
+  一同发布，可用于批量清点、更新与验证模块版本。
+
+[架构](/zh/docs/design/architecture/)、[组件](/zh/docs/design/components/)、
+[外壳](/zh/docs/design/shell/)与[迁移](/zh/docs/design/migration/)契约描述
+1.2.0 的正式行为。
+
 ## 内容迁移工具 {#migration-toolkit}
 
-0.4 的一批 shortcode 在 v5 里换成了 Markdown 原生形态。主题仓库带了一个只依赖 Python 标准库的工具做这件事：
+0.4 的一批 shortcode 已换成当前 Markdown 原生形态。主题仓库带了一个只依赖
+Python 标准库的工具做这件事：
 
 ```bash {title="终端"}
 git clone https://github.com/pgsty/oink
@@ -95,9 +192,9 @@ python3 bin/migrations/oink06.py migrate --site ~/www/ddia --only callout,tabs -
 
 改完重新构建一次（带 `--panicOnWarning`），并逐页看渲染结果：工具保证语法正确，不保证语义符合预期。
 
-## 0.4 → v5 语法映射 {#syntax-map}
+## 0.4 → 当前语法映射 {#syntax-map}
 
-| 0.4 的写法 | v5 的写法 | `--only` 键 |
+| 0.4 的写法 | 当前写法 | `--only` 键 |
 | --- | --- | --- |
 | `{{% alert color= title= %}}`、`{{% details %}}`、`{{% pageinfo %}}`、手写 `<details><summary>` | `> [!TYPE] 标题` / `> [!DETAILS]-` | `callout` |
 | `{{< tabpane >}}` + `{{% tab header= %}}`、`{{< code-group >}}` + `{{< code-tab >}}` | 相邻围栏加 `{tab= group= value=}`；正文型标签页用 `{{< tabs >}}` + `{{< tab >}}` | `tabs` |
@@ -135,7 +232,8 @@ OINK 是 Docsy 的硬分支：内容模型、`td-` 命名、Sass 变量、大部
 
 1. 字体与样式的兼容点。站点的 `assets/scss/_variables_project.scss` 里那些 Docsy Sass 变量仍然生效，会作为字体角色的种子值，不用为了升级把它们删掉：`$td-fonts-serif`、`$font-family-sans-serif`、`$headings-font-family`、`$font-family-code` 各自喂给对应的字体角色。Docsy 的 Google Fonts 开关 `$td-enable-google-fonts`、`$td-google-font-name` 与 `$td-web-font-path` 主题已不再读取，留在文件里不影响构建，也不产生任何效果：OINK 自带 Inter、Chakra Petch 与 IBM Plex Mono，任何预设都不向 Google Fonts 发请求。想换字体走 token 层，见[品牌外观](/zh/docs/customize/brand/)。
 
-1. 换 shortcode。Docsy 的 `alert`、`pageinfo`、`tabpane`、`card` 系列在 v5 里都有对应形态，用上面的[迁移工具](#migration-toolkit)批量转，`--only` 一类一类来。
+1. 换 shortcode。Docsy 的 `alert`、`pageinfo`、`tabpane`、`card` 系列都有当前对应
+   形态，用上面的[迁移工具](#migration-toolkit)批量转，`--only` 一类一类来。
 
 1. 一次删一组，每组构建一次。在临时副本里演练，记下主题 commit、Hugo 版本、删了哪些文件、产出多少个 HTML；确认等价之后再在生产分支上重做一遍。
 {.steps}
@@ -157,7 +255,10 @@ OINK 是 Docsy 的硬分支：内容模型、`td-` 命名、Sass 变量、大部
 <script src="{{ (resources.Get "js/jquery.min.js").RelPermalink }}"></script>
 ```
 
-用 Docsy `blocks/*` 搭的首页在 v5 构建失败，报 `template for shortcode "blocks/cover" not found`：主题没有这一组 shortcode。改用 `data/home/<语言>.yaml` 的首页分区，或给页面写 `layout: landing`，见[首页与落地页](/zh/docs/customize/home/)。
+用 Docsy `blocks/*` 搭的首页在 OINK 构建中报
+`template for shortcode "blocks/cover" not found`：主题没有这一组 shortcode。改用
+`data/home/<语言>.yaml` 的首页分区，或给页面写 `layout: landing`，见
+[首页与落地页](/zh/docs/customize/home/)。
 
 ## 从 0.4 升级的要点 {#from-0-4}
 
@@ -165,7 +266,9 @@ OINK 是 Docsy 的硬分支：内容模型、`td-` 命名、Sass 变量、大部
 
 - 顺序翻页默认开启。`docs`、`book`、`blog` 页尾都有上一页 / 下一页；文档沿侧栏树走，博客沿时间走。刻意不属于任何序列的页面用 `pager: false` 退出。
 - 顶栏在所有布局上都显示。紧凑状态只有一行图标导航，没有第二套移动端手风琴菜单，依赖旧移动菜单的本地脚本与测试要删掉。整个分区不要顶栏时用 cascade 里的 `navbar_enabled: false`。
-- 页脚默认 `fat` 且全站生效。只接受 `fat` / `slim` / `none`；页脚数据必须放在 `data/footer/<语言>.yaml`（单语言站点用 `data/footer.yaml`），`data/home` 里残留的 `footer` 键会让构建失败并提示新位置。
+- 页脚默认 `fat` 且全站生效。只接受 `fat` / `slim` / `none`；页脚数据必须放在
+  `data/footer/<语言>.yaml`（单语言站点用 `data/footer.yaml`），`data/home` 里残留的
+  `footer` 键会告警并提示新位置，严格发布构建拒绝这条警告。
 - 单键导航默认开启：`/` 打开完整搜索，`\` 只进命令模式。培训材料里描述旧行为的地方要改。页面操作也挪到了面包屑旁边的拆分按钮上。
 - 代码块的 DOM 变了。`.td-code` 外壳套在原来的 `.highlight` 外面（`.highlight` 与 `.chroma` 都保留），站点 CSS 里 `.td-content > .highlight` 这类直接子选择器要改成后代选择器 `.td-content .highlight`。
 - 两个 ICP 页脚参数被移除：`footer_icp` 与 `footer_icp_url` 换成一个支持行内 Markdown 的字符串。
@@ -197,14 +300,16 @@ OINK 是 Docsy 的硬分支：内容模型、`td-` 命名、Sass 变量、大部
 本站的完整门禁是：
 
 ```bash {title="终端"}
-npm test           # 构建断言、Markdown 与 favicon goldens、翻译对等、渲染后链接
-npm run test:browser   # Playwright：无障碍、响应式外壳、键盘导航、内容组件、代码块、场景组件
+make check     # 同级本地主题：构建、输出、翻译与渲染后链接
+make browser   # 同级本地主题：无障碍、响应式与交互行为
+make build     # go.mod 固定的公开主题，不带本地替换
 ```
 
 其它站点跑等价的构建、链接、输出与浏览器检查即可，细节见[排错与检查](/zh/docs/admin/troubleshooting/#site-checks)。
 
 > [!IMPORTANT] 本地构建成功不等于发布完成
-> 源码可构建、标签已签名并能通过 Go proxy 解析、站点已固定该标签、线上已部署，这是四件事，要分别记录。别用一次绿色的本地构建代替它们。
+> 源码提交通过验收、公开标签能通过模块代理解析、消费站固定版本及校验和、生产部署
+> 通过验证，是彼此独立的状态。一次绿色的本地构建不能代替其它证据。
 
 最后一步在真实环境上做：先部署一份预览，在真实 URL 上验证页面与浏览器的网络请求，评审通过再合并，合并后在生产上做一次冒烟测试。
 
@@ -213,7 +318,7 @@ npm run test:browser   # Playwright：无障碍、响应式外壳、键盘导航
 回滚的是版本固定，不是工作树：
 
 ```bash {title="终端"}
-hugo mod get github.com/pgsty/oink@v0.4.0   # 上一个已知可用的标签
+hugo mod get github.com/pgsty/oink@v1.0.0   # 示例：本站上一个已知可用的标签
 hugo mod tidy
 rm -rf public resources/_gen
 hugo --gc --minify --panicOnWarning
@@ -233,17 +338,20 @@ hugo --gc --minify --panicOnWarning
 - [排错与检查](/zh/docs/admin/troubleshooting/) — 升级后构建报错怎么读
 - [本地预览](/zh/docs/admin/preview/) — 清缓存与 `go.work` 工作区
 - [从零建站与其它安装方式](/zh/docs/start/from-scratch/) — 四种安装方式的取舍
-- [组件总览](/zh/docs/components/) — v5 每个组件的新写法
+- [组件总览](/zh/docs/components/) — 每个组件的当前写法
 
 ---
 
 反链：
 
+- [OINK v1.1.0](/zh/blog/release/1.1.0/)
+- [OINK v1.2.0](/zh/blog/release/1.2.0/)
 - [文档](/zh/docs/)
 - [维护管理](/zh/docs/admin/)
 - [发布上线](/zh/docs/admin/deploy/)
 - [排错与检查](/zh/docs/admin/troubleshooting/)
 - [迁移边界](/zh/docs/design/migration/)
-- [仓库导览](/zh/docs/start/anatomy/)
+- [快速上手](/zh/docs/start/)
 - [从零建站](/zh/docs/start/from-scratch/)
+- [OINK Starter](/zh/docs/start/starter/)
 - [发布与下载页](/zh/docs/write/releases/)

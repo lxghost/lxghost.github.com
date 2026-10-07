@@ -64,9 +64,15 @@ fails when `schema/` is stale or missing; the theme's CI runs it beside the
 parameter contract checker. Editor wiring and the behaviour itself are
 documented normatively in [Configuration](/docs/customize/config/#editor-schema).
 
+Visual preset enum values are also derived from `preset-config.html`. The
+`preset_menu` union accepts a boolean or a list of those resolver-owned values;
+the schema does not maintain its own list.
+
 ---
 
 Backlinks:
 
 - [Decisions](/docs/design/decisions/)
+- [CLI contract](/docs/design/decisions/cli/)
 - [Proposals](/docs/design/proposals/)
+- [CLI and roadmap](/docs/design/proposals/oink-cli-roadmap/)

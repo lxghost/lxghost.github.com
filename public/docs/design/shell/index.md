@@ -8,10 +8,9 @@ LLMS index: [llms.txt](/llms.txt)
 
 ---
 
-> [!IMPORTANT] OINK 0.8.0 contract
-> This is the shell and navigation contract released with OINK 0.8.0. This
-> page is the canonical English source; its Chinese peer is maintained beside
-> it in `content/docs/design/`.
+> [!NOTE] OINK 1.2.0 contract
+> This contract describes the v1.2.0 release. Its canonical bilingual sources
+> are in `content/docs/design/`.
 
 ## Authorities and navigation {#authorities-and-navigation}
 
@@ -35,13 +34,19 @@ single column. Menu descriptions are configuration data only. The link tree
 stays
 true-centered at every width: text links from lg, icon links below. Between lg
 and md the end edge keeps search, version, language, theme, and GitHub with no
-menu button. Below md those utilities move to the footline dock, and Home or
+menu button. Below md appearance stays beside search and the drawer entry; version,
+language, and GitHub move to the footline dock. Home or
 explicit Landing pages add one drawer entry beside search that opens the full
-labelled tree; no other width or surface renders a drawer entry. Language
+labelled tree. Shell pages with a sidebar open its drawer in that position
+instead; no drawer button is shown from md upward. Language
 links target the
 page translation or that language's home, stay relative when languages share a
 host/base path, and become absolute only for language-specific `baseURL`s;
-`hreflang` stays absolute. `navbar_autohide` applies to fine pointers from
+`hreflang` stays absolute and lists only actual translations, never the
+language-home fallback offered by the switcher. Paginated blog indexes use
+their own canonical URL; later pages omit cross-language alternates because
+translated archives need not have matching page boundaries.
+`navbar_autohide` applies to fine pointers from
 768px, never touch or drawer widths, and the hidden bar keeps its slot: the
 layout reserves the navbar band in both states, a pinned bar occupies exactly
 that band with its rule inside it, revealing fades the bar in place without
@@ -54,7 +59,76 @@ Sidebar and pager share root and order. `manual_link`, `build.render: link`,
 dividers, hidden nodes, and placeholders retain their documented semantics.
 `sidebar_icon_policy` is `all` (default), `groups`, or `none`; icons are one
 Font Awesome class pair. Invalid policies follow the shared warning/fallback
-contract.
+contract. At `sidebar_cache_limit`, the two walkers may reuse neutral markup
+only for the same language, navigation root, and output-affecting effective
+settings. That markup remains visible without JavaScript; the normal shell
+runtime adds the active path. A Book page that emits `sidebar_headings` stays
+page-specific and bypasses the shared tree cache.
+
+Root candidates are linkable, non-divider top-level sections followed by `sidebar_root_for: self`
+sections, deduplicated by URL. Both sources honor explicit
+`sidebar_root_menu: false`; absent/true preserves inclusion. The current
+resolved root is appended even when excluded from global choices. Zero entries
+emit no control; one emits a static link. Language and deployment prefixes stay
+on every URL. A divider or a section with `build.render: never` cannot become a
+switcher link.
+
+A `sidebar_divider` leaf retains its static heading. A divider section retains
+its children in both sidebar walkers, with a non-link label and a real
+disclosure button when folding is enabled. It never becomes a pager target;
+its children retain their positions. Pair it with `build.render: never` to
+omit the section's own outputs without hiding its descendants. Breadcrumbs
+render its label without a link, search omits it, navigation JSON hoists its
+children, and Print keeps the child documents. Book TOCs retain the group label
+and child links, but omit headings from the unpublished group body. `toc_hide` still hides the
+whole subtree and is not a grouping option. Explicit navigation keys are
+language- and deployment-independent paths; rendered links retain both prefixes.
+An explicitly empty navigation `sections` array warns and falls back to the
+content tree in every navigation output. Both authorities prune `toc_hide`
+subtrees, and navigation JSON preserves `manual_link_relref` as an internal
+link to its resolved destination rather than a page identity.
+
+## Sidebar runtime {#sidebar-runtime}
+
+> [!NOTE] Available since OINK 1.1
+> OINK 1.1.0 provides this disclosure API and explicit hidden-content isolation.
+> Version 1.0.0 does not provide the API.
+
+`window.OinkSidebar` owns registered tree disclosures and movable TOC,
+backlink, and taxonomy groups, independent of their current DOM parent.
+`setExpanded(id, boolean, {source})` returns true for a valid target and false
+for unknown IDs or non-boolean values. `getState(id)` returns a fresh
+`{id, expanded}` snapshot or null. IDs are the existing `aria-controls` region
+IDs; arbitrary elements outside the registered OINK groups cannot be changed.
+
+Sources are `user`, `active-path`, `responsive`, and `api` (default). Every
+writer commits `aria-expanded`, `td-is-open`, the localized label, and the
+region's inert state before one `oink:sidebar-disclosure` document event with
+`detail: {id, expanded, source}`. Repeated state writes emit no event. API
+restoration keeps current-path ancestors expanded; explicit user disclosure
+can still collapse them. Closing a region containing focus returns it to the
+toggle before isolation.
+
+`ready` is a Promise resolving to the API after initial hydration and responsive
+placement; `isReady` and `oink:sidebar-ready` also expose completion to late
+consumers. Optional persistence belongs to the site: await ready, read storage
+inside a try/catch, and restore valid region IDs through the setter. OINK owns
+whole-column collapse, width, and scroll persistence, not a version/locale
+schema for reader-selected branches.
+
+Desktop collapse and a closed mobile drawer make panel content inert and mark
+the panel `aria-hidden`. Focus leaves before isolation; opening clears it
+before focus enters. The panel itself remains the 16px pointer sensor, and the
+external restore control remains active. Hover, Escape, backdrop dismissal,
+breakpoint cleanup, and scroll unlocking retain their existing behavior.
+These runtime attributes are not emitted into the no-JavaScript fallback.
+
+Whole-column TOC collapse also isolates its hidden panel. If the collapsing
+control held focus, focus moves to the visible floating restore button; restoring
+the column returns focus to its visible column control. When the aside moves
+into the mobile sidebar, its former column isolation is cleared before the
+drawer owns interaction. The drawer's Tab trap includes only rendered,
+non-inert controls, excluding hidden or collapsed descendants.
 
 ## Immersive blog presentation {#immersive-blog-presentation}
 
@@ -100,15 +174,31 @@ Search metadata is `search_keywords`, `search_boost` (default 1), and
 `search_exclude`. The index carries URL, title, taxonomies, excerpt, headings,
 description, body/summary, root, section, type, keywords, boost, breadcrumb,
 and icon. Fixture budget is 2 MiB raw / 512 KiB gzip. Sites may return extra
-strings from `hooks/search-keywords-extra.html`.
+strings from `hooks/search-keywords-extra.html`. Keywords affect matching and
+ranking; CJK keyword-only matches display the page description or excerpt, not
+the keyword list. Body matches retain their surrounding text as context.
 
 Built-in action IDs are `copy_markdown`, `copy_link`, `open_chatgpt`,
 `open_claude`, `view_markdown`, `view_history`, `edit_page`,
 `create_child_page`, `create_issue`, `create_project_issue`, `print_section`,
-`print`, `switch_theme`, `switch_language`, `switch_version`, and
+`print`, `switch_preset`, `switch_theme`, `switch_language`, `switch_version`, and
 `open_github`. `copy_link` is Palette-only outside the share bar. Site commands
 under `languages.<lang>.params.ui.command_palette.commands` may open a safe URL
-or invoke a built-in ID, never inject JavaScript.
+or invoke a built-in ID, never inject JavaScript. The legacy clipboard fallback
+restores the previous focus and selection, including its direction, without taking focus back if another
+control acquired it during the copy operation.
+
+Edit, history, and create-child actions require a repository-relative source
+file. Physical filenames and the site working directory use normalized `/`
+separators before containment checks. `path_base_for_github_subdir` matches
+that normalized path: relative to the working directory for local content,
+absolute for an external mount. A string regex removes its matches; a
+`{from, to}` mapping may replace it. External sources require an explicit
+match. After mapping and path cleanup, empty paths, `.`, absolute or
+drive-qualified paths, and paths starting with `..` as a segment suppress
+these three actions. Docs and project issue actions remain available under
+their existing repository settings. Windows mappings must match `/` rather
+than `\`; normalization does not change filename case.
 
 The Palette has empty, text-search, and `>` command modes; quick links derive
 from navigation. It has no history, semantic search, personalization, or remote
@@ -116,15 +206,75 @@ fallback. Search queries stay in-browser and no default telemetry is sent.
 
 `OinkSurfaceCoordinator` arbitrates Palette, drawer, root, language, and version
 menus. Surfaces own focus restoration and Escape. Keyboard navigation ignores
-editable controls and modals: `/`, `\`, `f`, `c` open search/commands; `j`/`k`
+editable controls and modals; Ctrl/Cmd+K also yields to another open dialog,
+including fixed-position ARIA dialogs.
+ `/`, `\`, `f`, `c` open search/commands; `j`/`k`
 move headings; `q`/`e` move pages; `h` changes presentation; `l`/`y`, `t`, and
 `r` open language, theme, and root choices. Sidebar WASD/Arrow navigation uses
 real focus without rewriting Tab order.
+Non-link divider buttons participate in this tree navigation. Left/`a` from a
+child first focuses its parent group, then a second press folds it; Right/`d`
+opens a closed group or enters its first visible child when already open.
+Previous/next page navigation still considers links only, never group buttons.
 
 The outline derives cursor and visible-heading range from one heading model and
 the scroller's computed `scroll-padding-top`; its SVG line and dot share the
-same animated values so they cannot drift. No speculative DOM repair pass is
-allowed.
+same animated values so they cannot drift. URL fragments are decoded when
+valid; malformed percent sequences fall back to the literal heading ID, both
+when indexing links and when selecting a requested heading near the page end.
+No speculative DOM repair pass is
+allowed. This tracking is always owned by the normal shell runtime.
+`params.ui.scroll_spy` and the page key `scroll_spy` are quiet compatibility
+no-ops throughout 1.x, emit no separate runtime, and may be removed only in a
+future breaking release.
+
+## Search-tail extensions {#search-tail-extensions}
+
+> [!NOTE] Available since OINK 1.1
+> This API is included in OINK 1.1.0 and absent from version 1.0.0.
+
+Trusted site JavaScript may call
+`OinkCommandPalette.registerSearchTail({id, rows, activate})`; YAML and the
+action manifest remain data-only. The bundle stays conditional on local search.
+Registration requires a unique ID matching `[A-Za-z0-9][A-Za-z0-9_-]*` and two
+functions; invalid or duplicate registrations throw. The returned unregister
+function is idempotent and cannot remove a later registration reusing the ID.
+Live changes schedule one owned render; removal cancels that provider's pending action.
+
+`rows(context)` synchronously returns descriptors. Context is a frozen snapshot
+`{query, locale, phase, pageResultCount}`: query is trimmed; locale is the HTML
+language tag; phase is `results`, `empty`, or `error`; count covers only local
+page results after the limit. Providers run only for settled, non-empty text
+search, never empty, command, choice, or loading states. Rows follow all native
+results and actions in the localized Actions group, in registration order.
+Native empty/error messages and input-triggered index retry remain available.
+
+Each descriptor requires a unique per-provider `id` with the same ID syntax and
+a non-empty string `title`. Optional `description`, `icon`, and `disabledReason`
+are strings; `available` is boolean, default true. OINK copies and freezes these
+fields and renders display strings as text. Invalid descriptors, duplicate IDs,
+an asynchronous return, or a thrown callback discard that provider for the
+render without affecting other providers. No callback-count promise is made.
+
+`activate(row, context)` runs only through ordinary row activation. It receives
+the copied descriptor and its original context plus an `AbortSignal` and a
+`handoff()` function. Pending activation blocks all other row activations,
+including entry into native choice menus. Synchronous throws
+and rejected promises release pending state, keep the Palette open, and announce
+the localized action-failed message. Fulfillment values are ignored; success
+closes the Palette without stealing focus from another surface. Closing,
+reopening, changing the rendered query, or unregistering cancels pending work;
+late settlement cannot modify a newer session.
+
+Before opening another coordinated surface, call `context.handoff()`. It closes
+the Palette without returning focus or aborting that activation. The consumer
+then owns the new surface's focus and error UI. A later Palette session or
+unregistration can still cancel unfinished work; successful completion does not
+abort a handed-off operation. OINK imposes no timeout.
+
+`rows()` must remain pure. This is a trusted-code contract, not a sandbox. The
+default query remains local, with no remote provider or telemetry bundled.
+Any extension network behavior and provider consent belong to the site.
 
 ## Share {#share}
 
@@ -189,8 +339,9 @@ glyph with a term glyph (`folder-open`/`folder`, `tags`/`tag`, `cubes`/`cube`,
 `params.ui.taxonomy_icons` overrides a pair with one string for both surfaces
 or a `taxonomy`/`term` map; unusable input warns and keeps the built-in. The
 right-rail cloud wears the whole-taxonomy glyph on its head alone: cloud chips
-and the term-archive filter chips stay text plus count, because repeating the
-glyph beside an announced taxonomy is noise. The byline carries the people
+stay text plus count, because repeating the glyph beside an announced taxonomy
+is noise. A standalone taxonomy directory card carries one term glyph; the
+byline carries the people
 alone—portrait, name, and the profile's one-line bio—with no label and no date.
 List rows, cards, and term archives share one metadata line of the same shape:
 date, one localized author-and-section phrase, then word count and minutes
@@ -241,7 +392,36 @@ are one flat run, newest first, sharing `blog_index_size` pagination—the
 metadata line's dates make year headings redundant; `table` shows the whole
 section as date/title/tag rows without pagination. Cards use the shared lead
 image, localized date/author/section metadata, tags, and a three-line summary.
-Term and taxonomy pages stay row lists.
+
+A taxonomy page (`/tags/`, `/authors/`) and its term pages share one head,
+`shell/taxonomy-head.html`. The taxonomy page opens with the whole-taxonomy
+glyph in a tinted tile, the localized name, and a count of terms. A term page
+opens with the term's title and its page count from `ui_taxonomy_pages`, using
+the current locale's CLDR plural form; where no breadcrumb is rendered, a kicker above the
+title names the taxonomy and links back to it, since an enabled trail already
+does both one line higher: a crumb standing for a generated taxonomy page
+borrows the same localized label the head renders, not Hugo's plural title.
+Under the head the taxonomy page lays its terms out as a grid of one-line
+cards, `shell/taxonomy-cards.html`, most-used first with alphabetical ties—the
+order the rail cloud already uses—filling equal columns by `auto-fill` so a
+short taxonomy never stretches two cards across the page. A card is the term
+glyph, the term, and its page count, and the whole card is the link; authors
+alone lead with the byline's small portrait through the same avatar partial.
+No card carries a description or a newest page: a term has nothing to say
+that its title and count do not, and the extra line only blurred the grid.
+There is no filter chip row and no "All" chip: the section root already lives
+in the sidebar and the navbar. Term pages stay row lists, and author profiles
+keep their own head.
+
+The rail on a taxonomy or term page leads with `shell/taxonomy-switcher.html`:
+one row per declared taxonomy—whole-taxonomy glyph, localized name, term
+count—linking to its index page, the current taxonomy on the selected ground.
+It is the way from one taxonomy's pages to another's, because cloud chips jump
+to terms and cloud heads only collapse; a site with one taxonomy renders no
+switcher. The group sits behind the same `toc_taxonomies` switch as the clouds.
+A taxonomy page scopes its clouds to the whole site (`taxonomy-root.html`
+returns no root for that kind) and omits its own cloud, whose terms are the
+cards beside it; term pages keep the section scope and the full set.
 
 `params.ui.blog_index_toggle` renders all three forms for the current paginator
 slice and lets readers cycle them. The configured form controls first paint and
@@ -277,10 +457,51 @@ goldens, and the consumer browser suite cover navigation, language/subpath
 links, blog variants, page-end order, keyboard behavior, accessibility, and
 responsive layout.
 
+## Appearance control {#appearance-control}
+
+The navbar and footer dock share one click/keyboard disclosure. The Landing
+mobile drawer also provides a labeled Appearance row. The panel offers native
+Style radios when `preset_menu` allows a choice and native Light/Dark/System
+radios when `dark_mode.show_menu` is enabled. Selection is immediate and keeps
+the panel open. Enter, Space, or ArrowDown opens it; arrow keys select within
+a group; Tab moves between groups; Escape closes and returns focus. Sun/moon
+trigger icons show the resolved current state: sun for light and moon for
+dark, including changes while following the system.
+
+The English group labels are Style and Light. Style options are independent
+buttons in a two-column grid, with a colored page, layers, pen-nib or terminal
+icon and the preset name. There are no Aa previews or experiment badges.
+The site default is identified in its tooltip and accessible name; selecting
+it clears the saved preset. A tinted background and border show selection,
+and keyboard focus has a separate outline.
+
+Desktop uses a non-modal dialog anchored to the trigger; outside press or
+focus leaving closes it. Below 768 px and inside the Landing drawer,
+`showModal()` opens a bottom sheet in the browser top layer with a close
+button and 44 px option targets. Closing the sheet preserves the underlying
+drawer. The surface coordinator closes unrelated popovers before opening.
+The `t` shortcut still toggles light/dark through `switch_theme`;
+`switch_preset` is the separate command-palette choice.
+
+The local Ink/Terminal experiments require explicit configuration;
+`preset_menu: true` continues
+to offer Paper/Slate plus the site default. Both reuse the same state, keyboard,
+command-palette and bottom-sheet mechanisms. Terminal compacts desktop
+navigation rows, while prose and mobile touch targets retain their sizes.
+
 ---
 
 Backlinks:
 
+- [OINK v1.1.0](/blog/release/1.1.0/)
+- [Upgrade](/docs/admin/upgrade/)
+- [Command palette](/docs/customize/panel/)
 - [Design](/docs/design/)
 - [Architecture](/docs/design/architecture/)
 - [Markdown-first authoring](/docs/design/decisions/authoring/)
+- [Visual presets](/docs/design/decisions/visual-presets/)
+- [Landing pages](/docs/design/landing/)
+- [Visual presets](/docs/design/proposals/visual-presets/)
+- [2026-09-19 community review](/docs/design/research/2026-09-19-upstream-review/)
+- [Blog posts](/docs/write/blog/)
+- [Organizing content](/docs/write/organize/)

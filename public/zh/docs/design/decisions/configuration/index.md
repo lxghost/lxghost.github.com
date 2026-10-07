@@ -72,3 +72,4 @@ snake_case。
 反链：
 
 - [决策](/zh/docs/design/decisions/)
+- [视觉预设](/zh/docs/design/proposals/visual-presets/)

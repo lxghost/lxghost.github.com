@@ -1,6 +1,6 @@
 # OINK
 
-> A local-first, Hugo-only theme for technical documentation
+> A local-first Hugo theme for technical documentation
 
 ---
 
@@ -13,7 +13,7 @@ Section pages:
 - [Write Beautiful Docs](/book/): A practical tutorial for creating clear, beautiful, and maintainable technical content with OINK.
 - [OINK Case](/case/): Fifteen real sites show how OINK scales from a two-page utility to a multilingual documentation estate and three books.
 - [Blog](/blog/): OINK engineering stories, immersive guides, and release notes
-- [OINK Documentation](/docs/): OINK is a documentation theme that needs nothing but Hugo Extended — components are written in Markdown, assets ship with the theme, both languages work out of the box, and one source produces four outputs.
+- [OINK Documentation](/docs/): Build a technical content site with shared navigation, multilingual support and search for documentation, blogs, books and API references.
 - [Search Results](/search/)
 
 ---

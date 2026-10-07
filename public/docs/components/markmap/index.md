@@ -15,6 +15,16 @@ with direction and conditions, use [Mermaid](/docs/components/mermaid/).
 
 ## Shortest form {#minimal}
 
+First enable Markmap in the site configuration; it is off by default. Without
+this setting, the fence remains a readable code block.
+
+```yaml {title="hugo.yml"}
+params:
+  markmap: true
+```
+
+Then put the outline in a `markmap` fence:
+
 ````markdown {title="Source"}
 ```markmap
 # OINK
@@ -65,9 +75,10 @@ sections of this theme's documentation site and their page counts.
 ### Feature tour
 ### Showcase
 ### Licences
-## Get started (3 pages)
-### Fork this site
-### Directory layout
+## Get started (4 pages)
+### Choose a path
+### OINK Starter
+### Repository tour
 ### From scratch
 ## Authoring (8 pages)
 ### Organizing content
@@ -97,9 +108,10 @@ sections of this theme's documentation site and their page counts.
 ### Feature tour
 ### Showcase
 ### Licences
-## Get started (3 pages)
-### Fork this site
-### Directory layout
+## Get started (4 pages)
+### Choose a path
+### OINK Starter
+### Repository tour
 ### From scratch
 ## Authoring (8 pages)
 ### Organizing content

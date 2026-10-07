@@ -511,9 +511,9 @@ parameters in <a href="/docs/components/">Components</a>.</p>
 </span></span><span class="line"><span class="cl">   ``<span class="sb">`bash
 </span></span></span><span class="line"><span class="cl"><span class="sb">   brew install hugo
 </span></span></span><span class="line"><span class="cl"><span class="sb">   `</span>`<span class="sb">`
-</span></span></span><span class="line"><span class="cl"><span class="sb">1. Clone the documentation site and preview it:
+</span></span></span><span class="line"><span class="cl"><span class="sb">1. Clone OINK Starter and preview it:
 </span></span></span><span class="line"><span class="cl"><span class="sb">   `</span>`<span class="sb">`bash
-</span></span></span><span class="line"><span class="cl"><span class="sb">   git clone https://github.com/pgsty/oink.pgsty.com my-docs
+</span></span></span><span class="line"><span class="cl"><span class="sb">   git clone https://github.com/pgsty/oink-starter my-docs
 </span></span></span><span class="line"><span class="cl"><span class="sb">   cd my-docs &amp;&amp; hugo server
 </span></span></span><span class="line"><span class="cl"><span class="sb">   `</span>`<span class="sb">`
 </span></span></span><span class="line"><span class="cl"><span class="sb">   &gt; [!TIP]
@@ -527,10 +527,10 @@ parameters in <a href="/docs/components/">Components</a>.</p>
   <div class="td-code__viewport" id="td-code-3aaf514f-fence-6-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">brew install hugo</span></span></code></pre></div></div>
 </div>
 </li>
-<li>Clone the documentation site and preview it:
+<li>Clone OINK Starter and preview it:
 <div class="td-code td-code--untitled" id="td-code-3aaf514f-fence-7" data-td-code data-td-code-auto-id
      data-td-language="bash" data-td-line-count="2">
-  <div class="td-code__viewport" id="td-code-3aaf514f-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/pgsty/oink.pgsty.com my-docs
+  <div class="td-code__viewport" id="td-code-3aaf514f-fence-7-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/pgsty/oink-starter my-docs
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> my-docs <span class="o">&amp;&amp;</span> hugo server</span></span></code></pre></div></div>
 </div>
 <div class="td-callout td-callout--tip" role="note">
@@ -778,8 +778,10 @@ groups stay and the leaf-level icons go. This site uses that setting, so only
 the six sections on the left carry icons.</p>
 <h2 id="pg-0ad7c5c517f825a7f886d2ade10cf2e3--folding">Expanding and folding
 </h2>
-<p>A section with children carries a fold arrow in the sidebar, and the reader&rsquo;s
-expansion state is kept locally. The default behaviour: the path containing the
+<p>A section with children carries a fold arrow in the sidebar. OINK saves the
+whole sidebar&rsquo;s collapse, width, and scroll state; persisting individual branch
+choices is optional site code using the <a href="/docs/design/shell/#sidebar-runtime">sidebar runtime API</a>.
+The default behaviour: the path containing the
 current page is expanded and everything else is collapsed; blog-type sections
 are expanded by default.</p>
 <div class="td-code td-code--titled" id="td-code-673cb3f0-fence-7" data-td-code data-td-code-auto-id
@@ -825,28 +827,52 @@ key definitions are in <a href="/docs/customize/config/">Configuration</a>.</p>
 
 <p><code>toc_hide</code> and <code>hide_summary</code> control two different entry points, so set both
 only when the page should appear in neither.</p>
+<h2 id="pg-0ad7c5c517f825a7f886d2ade10cf2e3--group-only">Groups without a landing page
+</h2>
+<p>Since OINK 1.1, a divider section keeps its children while its title has no
+link. This fixes the missing children in v1.0.0. Use this
+<code>_index.md</code> when the directory should only organize child pages:</p>
+<div class="td-code td-code--untitled" id="td-code-673cb3f0-fence-8" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="6">
+  <div class="td-code__viewport" id="td-code-673cb3f0-fence-8-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">Reference</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">sidebar_divider</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">build</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">render</span><span class="p">:</span><span class="w"> </span><span class="l">never</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">---</span></span></span></code></pre></div></div>
+</div>
+<p>The title is a group label, its button folds the children when sidebar folding
+is enabled, and the children
+remain in the pager, search, navigation JSON, and Print. Without JavaScript,
+the group stays expanded. Omit <code>build</code> to keep publishing the section page
+while still showing a non-link sidebar label. Leaf dividers keep their old
+separator appearance.</p>
+<p><code>toc_hide</code> hides a section&rsquo;s entire subtree. <code>no_list</code> only removes the child
+list from a section&rsquo;s body, and <code>hide_summary</code> removes an entry from its parent
+page. None of these is a replacement for a group-only section. <code>build.render: link</code> retains a permalink without publishing a page; prefer <code>never</code> for an
+unpublished group so other navigation cannot invent a destination.</p>
 <h2 id="pg-0ad7c5c517f825a7f886d2ade10cf2e3--type-and-shell">The shell follows <code>type</code>, not the path
 </h2>
 <p>The documentation shell (sidebar, table of contents, breadcrumbs, pager) does
 not depend on the directory name. It depends only on whether the page&rsquo;s <code>type</code>
 is listed in <code>params.ui.shell_types</code>:</p>
-<div class="td-code td-code--titled" id="td-code-673cb3f0-fence-8" data-td-code data-td-code-auto-id
-     data-td-language="yaml" data-td-line-count="3" role="group" aria-labelledby="td-code-673cb3f0-fence-8-title">
+<div class="td-code td-code--titled" id="td-code-673cb3f0-fence-9" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="3" role="group" aria-labelledby="td-code-673cb3f0-fence-9-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-673cb3f0-fence-8-title" title="hugo.yml: the theme default">hugo.yml: the theme default</span>
+    <span class="td-code__filename" id="td-code-673cb3f0-fence-9-title" title="hugo.yml: the theme default">hugo.yml: the theme default</span>
   </div>
-  <div class="td-code__viewport" id="td-code-673cb3f0-fence-8-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+  <div class="td-code__viewport" id="td-code-673cb3f0-fence-9-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ui</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">shell_types</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">docs, book, blog, swagger]</span></span></span></code></pre></div></div>
 </div>
 <p>Documentation can therefore live at any path, with <code>type</code> assigned by a cascade.
 To put a handbook at <code>content/handbook/</code>, the section root reads:</p>
-<div class="td-code td-code--titled" id="td-code-673cb3f0-fence-9" data-td-code data-td-code-auto-id
-     data-td-language="yaml" data-td-line-count="7" role="group" aria-labelledby="td-code-673cb3f0-fence-9-title">
+<div class="td-code td-code--titled" id="td-code-673cb3f0-fence-10" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="7" role="group" aria-labelledby="td-code-673cb3f0-fence-10-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-673cb3f0-fence-9-title" title="content/handbook/_index.md">content/handbook/_index.md</span>
+    <span class="td-code__filename" id="td-code-673cb3f0-fence-10-title" title="content/handbook/_index.md">content/handbook/_index.md</span>
   </div>
-  <div class="td-code__viewport" id="td-code-673cb3f0-fence-9-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+  <div class="td-code__viewport" id="td-code-673cb3f0-fence-10-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">Operations handbook</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">docs</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="nt">sidebar_root_for</span><span class="p">:</span><span class="w"> </span><span class="l">self     </span><span class="w"> </span><span class="c"># the sidebar tree roots here rather than falling back to /docs</span><span class="w">
@@ -867,12 +893,12 @@ sees the <code>/docs/</code> tree.</p>
 <p>By default the sidebar tree roots at the top-level section the reader is in, and
 a row above the tree names the current root. A large subtree can become a root
 of its own — a versioned API reference, say, or a self-contained handbook:</p>
-<div class="td-code td-code--titled" id="td-code-673cb3f0-fence-10" data-td-code data-td-code-auto-id
-     data-td-language="yaml" data-td-line-count="4" role="group" aria-labelledby="td-code-673cb3f0-fence-10-title">
+<div class="td-code td-code--titled" id="td-code-673cb3f0-fence-11" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="4" role="group" aria-labelledby="td-code-673cb3f0-fence-11-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-673cb3f0-fence-10-title" title="content/docs/api/v2/_index.md">content/docs/api/v2/_index.md</span>
+    <span class="td-code__filename" id="td-code-673cb3f0-fence-11-title" title="content/docs/api/v2/_index.md">content/docs/api/v2/_index.md</span>
   </div>
-  <div class="td-code__viewport" id="td-code-673cb3f0-fence-10-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+  <div class="td-code__viewport" id="td-code-673cb3f0-fence-11-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">API reference v2</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="nt">sidebar_root_for</span><span class="p">:</span><span class="w"> </span><span class="l">self  </span><span class="w"> </span><span class="c"># self | children</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="nn">---</span></span></span></code></pre></div></div>
@@ -901,17 +927,18 @@ of its own — a versioned API reference, say, or a self-contained handbook:</p>
 <p>The switcher above the root is site-wide: it lists every top-level section plus
 every section anywhere that declares <code>sidebar_root_for: self</code>. With only one
 entry it degrades to a plain link; two or more make it a dropdown. To keep a
-top-level section out of the switcher, write <code>sidebar_root_menu: false</code> in its
-<code>_index.md</code>.</p>
+top-level section or nested self-root out of the global choices, write
+<code>sidebar_root_menu: false</code> in its <code>_index.md</code>. The current root remains as a
+location marker when browsing that section.</p>
 <p>Below the switcher, the section index remains the first link in the tree: the
 switcher picks a tree and the root link points at a document.
 <code>sidebar_root_link_self: false</code> makes that row point at the parent section
 instead.</p>
 <h2 id="pg-0ad7c5c517f825a7f886d2ade10cf2e3--verify">Verify
 </h2>
-<div class="td-code td-code--untitled" id="td-code-673cb3f0-fence-11" data-td-code data-td-code-auto-id
+<div class="td-code td-code--untitled" id="td-code-673cb3f0-fence-12" data-td-code data-td-code-auto-id
      data-td-language="bash" data-td-line-count="1">
-  <div class="td-code__viewport" id="td-code-673cb3f0-fence-11-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo --printPathWarnings --panicOnWarning</span></span></code></pre></div></div>
+  <div class="td-code__viewport" id="td-code-673cb3f0-fence-12-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo --printPathWarnings --panicOnWarning</span></span></code></pre></div></div>
 </div>
 <p>It must reach <code>Total in …</code> with no ERROR and no WARN. <code>--printPathWarnings</code>
 reports two pages resolving to the same output path, which happens most often
@@ -926,6 +953,36 @@ while changing the directory structure.</p>
 <p>When sidebar entries exceed <code>params.ui.sidebar_menu_truncate</code>, the build warns
 and says what to raise it to. That warning cannot be ignored: truncated entries
 never appear in the sidebar.</p>
+<h2 id="pg-0ad7c5c517f825a7f886d2ade10cf2e3--sidebar-api">Controlling a branch from site code
+</h2>
+<p>The <code>window.OinkSidebar</code> API is available since OINK 1.1; v1.0.0 does not
+provide it. Load site code after the theme scripts, for example through
+<code>layouts/_partials/hooks/body-end.html</code>, and wait for <code>ready</code> before reading or
+restoring branch state. This example expands the first sidebar group:</p>
+<div class="td-code td-code--untitled" id="td-code-673cb3f0-fence-13" data-td-code data-td-code-auto-id
+     data-td-language="javascript" data-td-line-count="11">
+  <div class="td-code__viewport" id="td-code-673cb3f0-fence-13-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">sidebar</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">OinkSidebar</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">sidebar</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">sidebar</span><span class="p">.</span><span class="nx">ready</span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">button</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;#td-shell-sidebar [data-td-shell-tree-toggle]&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">button</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">button</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;aria-controls&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">sidebar</span><span class="p">.</span><span class="nx">setExpanded</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+</div>
+<p>Use the button&rsquo;s existing <code>aria-controls</code> value as the region ID;
+<code>getState(id)</code> returns <code>{id, expanded}</code> or <code>null</code>. A change sends one
+<code>oink:sidebar-disclosure</code> event on <code>document</code>, after the button, region and
+accessibility state agree. Its detail is <code>{id, expanded, source}</code>; repeated
+writes of the same value send no event. Restoring through the API keeps the
+current page&rsquo;s ancestor groups open, while a reader can still fold them.</p>
+<p>The theme does not save individual branch preferences. A site that adds this
+should own the storage key&rsquo;s language and navigation-version scope, tolerate
+unavailable storage, and ignore IDs absent from the current page. The
+<a href="/docs/design/shell/#sidebar-runtime">sidebar contract</a> defines the lifecycle.</p>
 <h2 id="pg-0ad7c5c517f825a7f886d2ade10cf2e3--related">Related
 </h2>
 <ul>
@@ -951,9 +1008,9 @@ never appear in the sidebar.</p>
 <div class="td-content" style="page-break-before: always">
     
 	<h1 id="pg-6bd1daf239974c6ec3ee77be3a658360">3 - Page parameters</h1>
-    <div class="lead">The full front matter table — every page key the theme actually reads, grouped by sidebar, shell, search, output, page end, Book, landing and release pages.</div>
-	<p>This page is the complete table of page-level parameters, listing only the keys
-the OINK theme reads. Keys the theme reads solely to warn that they were
+    <div class="lead">The full front matter table — active page keys and retained 1.x compatibility no-ops, grouped by sidebar, shell, search, output, page end, Book, landing and release pages.</div>
+	<p>This page is the complete table of page-level parameters, listing the keys the
+OINK theme reads plus explicit 1.x compatibility no-ops. Keys the theme reads solely to warn that they were
 renamed or removed are not listed here — they are in
 <a href="/docs/design/migration/">Migration</a>, and they are also kept out of the
 generated editor schema. Hugo&rsquo;s own front matter fields (<code>slug</code>, <code>url</code>, <code>build</code>,
@@ -1114,7 +1171,7 @@ stop a build belongs to Hugo, not the theme: a reference that cannot resolve.</p
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>boolean</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>false</code></span></span>
 </dt>
-<dd class="td-field__description">Absent from the sidebar tree and from the pager sequence</dd>
+<dd class="td-field__description">Excludes this page and its subtree from sidebar navigation and the pager sequence, in both content-derived and explicit trees</dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">hide_summary</code>
@@ -1128,7 +1185,7 @@ stop a build belongs to Hugo, not the theme: a reference that cannot resolve.</p
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>boolean</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>false</code></span></span>
 </dt>
-<dd class="td-field__description">The row renders as a sidebar group heading: not a link, and not in the pager sequence</dd>
+<dd class="td-field__description">A non-link group heading, excluded from pager destinations; the 1.1 implementation retains a section&rsquo;s children. Use <code>build.render: never</code> for a <a href="/docs/write/organize/#group-only">group without its own page</a></dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">sidebar_expanded</code>
@@ -1156,7 +1213,7 @@ stop a build belongs to Hugo, not the theme: a reference that cannot resolve.</p
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>boolean</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>true</code></span></span>
 </dt>
-<dd class="td-field__description">Whether a top-level section appears in the root switcher</dd>
+<dd class="td-field__description">Includes a top-level section or nested self-root in global switcher choices; an excluded current root remains a location marker. The nested-root exclusion is fixed in 1.1</dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">toc_root</code>
@@ -1250,6 +1307,13 @@ stop a build belongs to Hugo, not the theme: a reference that cannot resolve.</p
 <dd class="td-field__description">The navbar hides itself on pointer devices</dd>
 </div>
 <div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">breadcrumb</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>boolean</code></span></span>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>shell default</code></span></span>
+</dt>
+<dd class="td-field__description">Whether this page renders breadcrumbs; Docs/Book default on and Blog defaults off</dd>
+</div>
+<div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">theme_color</code>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>string</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>site value</code></span></span>
@@ -1333,7 +1397,7 @@ stop a build belongs to Hugo, not the theme: a reference that cannot resolve.</p
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>boolean</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>site value</code></span></span>
 </dt>
-<dd class="td-field__description">Scroll tracking in the outline; <code>true</code> enables it</dd>
+<dd class="td-field__description">Quiet 1.x compatibility no-op; active-heading tracking is always provided by the normal shell runtime</dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">keyboard_nav</code>
@@ -1355,6 +1419,41 @@ stop a build belongs to Hugo, not the theme: a reference that cannot resolve.</p
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>site value</code></span></span>
 </dt>
 <dd class="td-field__description">Sidebar behaviour can be overridden per page too; the values are in <a href="/docs/customize/config/">Configuration</a></dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">sidebar_width_min</code>, <code>sidebar_width_max</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>positive integer</code></span></span>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value">site value (<code>220</code> / <code>480</code>)</span></span>
+</dt>
+<dd class="td-field__description">Per-page lower and upper bounds for desktop sidebar resizing; a minimum above its maximum warns and restores the site pair</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">code_copy</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>boolean</code></span></span>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value">site value (<code>true</code>)</span></span>
+</dt>
+<dd class="td-field__description">Default copy control for code blocks on this page; an explicit fence <code>copy=</code> still wins</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">toc_style</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>fixed</code> / <code>flow</code></span></span>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value">site value (<code>fixed</code>)</span></span>
+</dt>
+<dd class="td-field__description">Fixed right-rail panel or a wider rail beginning in the content flow</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">toc_taxonomies</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>boolean</code></span></span>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value">site value (<code>true</code>)</span></span>
+</dt>
+<dd class="td-field__description">Whether taxonomy clouds join the right-rail outline</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">taxonomy_icons</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>map</code></span></span>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>site value</code></span></span>
+</dt>
+<dd class="td-field__description">Per-taxonomy icon overrides for this page or section cascade</dd>
 </div>
 </dl>
 </div>
@@ -1600,18 +1699,46 @@ the same name.</p>
 <dd class="td-field__description">The first entry becomes the post&rsquo;s featured image and share card; put it in a section <code>_index.md</code> cascade for a section-wide default. <code>images: []</code> opts the page out of an inherited cascade value; it does not suppress an image the page bundle already supplies under a <code>featured</code>, <code>cover</code> or <code>thumbnail</code> name</dd>
 </div>
 <div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">byline</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>string</code></span></span>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>—</code></span></span>
+</dt>
+<dd class="td-field__description">Credit shown with the resolved featured image when that image is rendered</dd>
+</div>
+<div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">featured_image</code>
-<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>none</code> / <code>banner</code> / <code>wash</code></span></span>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>none</code> / <code>banner</code> / <code>wash</code> / <code>hero</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value">site value (<code>none</code>)</span></span>
 </dt>
-<dd class="td-field__description">How this article renders its own featured image. An invalid value warns and falls back</dd>
+<dd class="td-field__description">How this article renders its own featured image; <code>hero</code> paints the immersive full-bleed shell. An invalid value warns and falls back</dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">blog_index</code>
-<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>list</code> / <code>cards</code></span></span>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>list</code> / <code>cards</code> / <code>table</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value">site value (<code>list</code>)</span></span>
 </dt>
-<dd class="td-field__description">Written on a blog root, the list form for that section. An invalid value warns and falls back</dd>
+<dd class="td-field__description">Written on a blog root, the index form for that section. A standalone <code>table</code> with <code>blog_index_toggle: false</code> lists the whole section without pagination. An invalid value warns and falls back</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">blog_index_columns</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>positive integer</code></span></span>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value">site value (<code>3</code>)</span></span>
+</dt>
+<dd class="td-field__description">Card columns at wide breakpoints; medium and narrow layouts retain their responsive limits</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">blog_index_size</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>positive integer</code></span></span>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value">site value (<code>12</code>)</span></span>
+</dt>
+<dd class="td-field__description">Posts per page for <code>list</code>, <code>cards</code>, and all three views when the toggle is enabled; a standalone <code>table</code> ignores it</dd>
+</div>
+<div class="td-field">
+<dt class="td-field__term"><code class="td-field__name">blog_index_toggle</code>
+<span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>boolean</code></span></span>
+<span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value">site value (<code>false</code>)</span></span>
+</dt>
+<dd class="td-field__description">Publishes all three index forms and lets the reader switch among them; hidden forms do not load images</dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">share</code>
@@ -1702,7 +1829,7 @@ newest first.</p>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>string</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>—</code></span></span>
 </dt>
-<dd class="td-field__description">One GitHub release URL, <code>https://github.com/&lt;owner&gt;/&lt;repo&gt;/releases/tag/&lt;tag&gt;</code>. The theme derives the project, tag, date and asset list from it. Anything else warns and the release block is skipped</dd>
+<dd class="td-field__description">One GitHub release URL, <code>https://github.com/&lt;owner&gt;/&lt;repo&gt;/releases/tag/&lt;tag&gt;</code>. The theme extracts the owner, project and tag and generates source archive links. The date comes from the page&rsquo;s <code>date</code>; download assets come from the release body&rsquo;s <code>checksums</code> block (see <a href="/docs/write/releases/">Releases</a>). Anything else warns and the release block is skipped</dd>
 </div>
 </dl>
 </div>
@@ -1730,18 +1857,18 @@ newest first.</p>
 <div class="td-content" style="page-break-before: always">
     
 	<h1 id="pg-00860202e20793636376f450437026e8">4 - Blog posts</h1>
-    <div class="lead">Setting up a blog section — directory conventions, a post&rsquo;s front matter, featured images, the year-grouped list page, and RSS.</div>
+    <div class="lead">Setting up a blog section — directory conventions, a post&rsquo;s front matter, featured images, the date-ordered list page, and RSS.</div>
 	<p>A blog post&rsquo;s body is written exactly like a documentation page; the shell is
 what differs. A post carries a date, an author, tags and a featured image, the
-list is grouped by year newest first, and the section has an RSS feed. This page
+list is ordered by date newest first, and the section has an RSS feed. This page
 covers creating the blog section, a post&rsquo;s front matter, featured images, list
 pagination and feeds.</p>
 <h2 id="pg-00860202e20793636376f450437026e8--layout">The blog directory
 </h2>
 <p>A blog is a section under <code>content/</code>, and <code>type: blog</code> gives it the blog shell.
 Subdirectories divide it by publisher and audience, with posts sitting flat
-inside. Do not create year directories: the year grouping is generated by the
-list page.</p>
+inside. Year directories are unnecessary: the list orders posts by their
+<code>date</code>.</p>
 <div class="td-filetree td-filetree--static" style="--td-filetree-name-col:35.5ch" role="group" aria-labelledby="td-filetree-718af4857ae7ec11c65ea893184faf09-f0-title"><div class="td-filetree__chrome"><p class="td-filetree__title" id="td-filetree-718af4857ae7ec11c65ea893184faf09-f0-title" dir="auto">this site&#39;s content/blog/</p></div><div class="td-filetree__body"><ul class="td-filetree__list td-filetree__list--root"><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:0"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="content/">content/</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="blog/">blog/</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="_index.md">_index.md</span></span><span class="td-filetree__comment" title="type: blog + cascade"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">type: blog + cascade</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="_index.zh.md">_index.zh.md</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="oink/">oink/</span></span><span class="td-filetree__comment" title="engineering notes and announcements"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">engineering notes and announcements</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:3"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="_index.md">_index.md</span></span><span class="td-filetree__comment" title="cascade: images: [/images/oink.webp]"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">cascade: images: [/images/oink.webp]</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:3"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="oink-announcement.md">oink-announcement.md</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:3"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="oink-announcement.zh.md">oink-announcement.zh.md</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span></li></ul></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="release/">release/</span></span><span class="td-filetree__comment" title="versioned release notes"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">versioned release notes</span></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:3"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="_index.md">_index.md</span></span><span class="td-filetree__comment" title="cascade: images: [/images/releasenote.webp]"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">cascade: images: [/images/releasenote.webp]</span></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:3"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="0.4.0.md">0.4.0.md</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span></li><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:3"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="0.4.0.zh.md">0.4.0.zh.md</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span></li></ul></li></ul></li></ul></li></ul></div></div><p>The section root pushes the type down the whole subtree and sets the behaviour
 that section shares:</p>
 <div class="td-code td-code--titled" id="td-code-718af485-fence-1" data-td-code data-td-code-auto-id
@@ -1776,7 +1903,7 @@ first; giving one post a <code>weight</code> pins it to the top.</p>
   <div class="td-code__viewport" id="td-code-718af485-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">Oink 0.4.0 — scenario components for a complete release workflow</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="nt">linkTitle</span><span class="p">:</span><span class="w"> </span><span class="l">Oink v0.4.0       </span><span class="w"> </span><span class="c"># short name in the sidebar and pager</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="nt">date</span><span class="p">:</span><span class="w"> </span><span class="ld">2026-08-14</span><span class="w">              </span><span class="c"># publication date; decides ordering and grouping</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">date</span><span class="p">:</span><span class="w"> </span><span class="ld">2026-08-14</span><span class="w">              </span><span class="c"># publication date; decides list order</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="nt">lastmod</span><span class="p">:</span><span class="w"> </span><span class="ld">2026-08-14</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p">&gt;-</span><span class="sd">
 </span></span></span><span class="line"><span class="cl"><span class="sd">  Oink 0.4.0 delivers sequential reading and release surfaces, reusable landing
@@ -1788,7 +1915,7 @@ first; giving one post a <code>weight</code> pins it to the top.</p>
 </div>
 <p>Where it differs from a documentation page:</p>
 <ul>
-<li><code>date</code> is required. It decides the post&rsquo;s place in the list, its year group and its RSS timestamp. A date in the future is not built by default; <code>hugo server -F</code> previews it.</li>
+<li><code>date</code> is required. It decides the post&rsquo;s place in the list and its RSS timestamp. A date in the future is not built by default; <code>hugo server -F</code> previews it.</li>
 <li><code>description</code> is rendered as a standfirst above the body, not only as a search snippet, so write it as a sentence for the reader.</li>
 <li><code>author</code> accepts inline Markdown, so <code>[Vonng](https://vonng.com)</code> works. For more than one author, a portrait, or a profile page, use the <code>authors</code> taxonomy below instead; the two do not interfere, and a post keeps rendering <code>author</code> wherever <code>authors</code> is absent.</li>
 <li>The date display format comes from <code>params.time_format_blog</code> and can be set per language (this site uses <code>Monday, January 02, 2006</code> in English and <code>2006年1月2日</code> in Chinese).</li>
@@ -1802,7 +1929,7 @@ translated; commit IDs, version numbers, commands and URLs are not.</p>
 this order, first match winning:</p>
 <ol>
 <li><code>images</code> in the post&rsquo;s front matter, first entry;</li>
-<li>An image resource in the page bundle whose filename contains <code>featured</code> (it is cropped to a thumbnail, and the resource&rsquo;s own <code>byline</code> becomes its caption);</li>
+<li>An image resource in the page bundle whose filename matches <code>featured</code> or <code>feature</code>, then <code>cover</code> or <code>thumbnail</code> (it is cropped to a thumbnail, and the resource&rsquo;s own <code>byline</code> becomes its caption);</li>
 <li>An <code>images</code> value inherited from an ancestor section&rsquo;s <code>cascade</code>, nearest first.</li>
 </ol>
 <p>A section-wide default uses Hugo&rsquo;s native <code>cascade</code> over the whole subtree; this
@@ -1815,16 +1942,16 @@ site sets one for each of its two subsections:</p>
   <div class="td-code__viewport" id="td-code-718af485-fence-3-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">cascade</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">images</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">/images/releasenote.webp]</span></span></span></code></pre></div></div>
 </div>
-<p>To drop the image on one post, write <code>images: []</code> in its front matter; to drop
-it for a whole subsection, put <code>images: []</code> in that level&rsquo;s <code>cascade</code>. The
-site-level <code>params.images</code> is unaffected — it feeds the share card only and is
-never rendered as a list thumbnail.</p>
+<p>To clear an inherited image on one post, write <code>images: []</code> in its front matter;
+for a whole subsection, put it in that level&rsquo;s <code>cascade</code>. This does not suppress
+an image supplied by the page bundle. To hide the image on the article itself,
+use <code>featured_image: none</code>; list thumbnails and share cards are separate uses.
+The site-level <code>params.images</code> feeds the share card only and is never rendered
+as a list thumbnail.</p>
 <h3 id="pg-00860202e20793636376f450437026e8--featured-image-article">On the article itself
 </h3>
-<p>By default the resolved image appears on list rows and in the social card, and
-the article itself shows nothing — write the hero by hand and it will disagree
-with the card sooner or later. <code>params.ui.featured_image</code> renders it from the
-same resolver instead:</p>
+<p>By default the resolved image appears on list rows and in the social card. Set
+<code>params.ui.featured_image</code> to use the same image on the article itself:</p>
 <div class="td-table-scroll td-table-scroll--static">
 <table>
   <thead>
@@ -1836,7 +1963,7 @@ same resolver instead:</p>
   <tbody>
     <tr>
       <td><code>none</code></td>
-      <td>Nothing. The theme default, so a site that renders nothing today renders exactly the same bytes</td>
+      <td>No article image; the theme default</td>
     </tr>
     <tr>
       <td><code>banner</code></td>
@@ -1844,7 +1971,11 @@ same resolver instead:</p>
     </tr>
     <tr>
       <td><code>wash</code></td>
-      <td>The image behind the article header at a tenth of its opacity, masked to nothing before the text starts — the post takes a colour from its subject without spending any contrast on it</td>
+      <td>A faint image behind the article header, fading before the body</td>
+    </tr>
+    <tr>
+      <td><code>hero</code></td>
+      <td>An immersive full-bleed image header</td>
     </tr>
   </tbody>
 </table>
@@ -1861,8 +1992,8 @@ same resolver instead:</p>
 </div>
 <p>The page key is <code>featured_image</code>, so a <code>cascade</code> on one subsection turns it on
 for that tree and a single post can opt out. A post with no image renders
-nothing in either mode, which is why a section can carry the switch for a run of
-posts that do not all have art. Neither mode adds a script or a bundle member.</p>
+no image in any mode, so a section can enable it even when only some posts have
+art. These modes need no additional script.</p>
 <div class="td-code td-code--titled" id="td-code-718af485-fence-5" data-td-code data-td-code-auto-id
      data-td-language="yaml" data-td-line-count="2" role="group" aria-labelledby="td-code-718af485-fence-5-title">
   <div class="td-code__header">
@@ -1874,21 +2005,23 @@ posts that do not all have art. Neither mode adds a script or a bundle member.</
 <h2 id="pg-00860202e20793636376f450437026e8--list">List pages and pagination
 </h2>
 <p>After the body of the section <code>_index.md</code>, the theme appends the post list:
-grouped by year (&ldquo;Posted in 2026&rdquo;), years newest first, each row showing the
+ordered by date, newest first, with no year groups. Each row shows the
 title, date, subsection, tags, thumbnail and the first 250 characters of the
 body as a summary.</p>
-<p>Pagination uses Hugo&rsquo;s native paginator, ten posts per page by default, adjusted
-in <code>hugo.yml</code>:</p>
+<p>List and card views show 12 posts per page by default. Set the theme&rsquo;s
+<code>blog_index_size</code> in <code>hugo.yml</code> to change it:</p>
 <div class="td-code td-code--titled" id="td-code-718af485-fence-6" data-td-code data-td-code-auto-id
-     data-td-language="yaml" data-td-line-count="2" role="group" aria-labelledby="td-code-718af485-fence-6-title">
+     data-td-language="yaml" data-td-line-count="3" role="group" aria-labelledby="td-code-718af485-fence-6-title">
   <div class="td-code__header">
     <span class="td-code__filename" id="td-code-718af485-fence-6-title" title="hugo.yml">hugo.yml</span>
   </div>
-  <div class="td-code__viewport" id="td-code-718af485-fence-6-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">pagination</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">pagerSize</span><span class="p">:</span><span class="w"> </span><span class="m">20</span></span></span></code></pre></div></div>
+  <div class="td-code__viewport" id="td-code-718af485-fence-6-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ui</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">blog_index_size</span><span class="p">:</span><span class="w"> </span><span class="m">20</span></span></span></code></pre></div></div>
 </div>
-<p>The values and the remaining pagination options are in the
-<a href="https://gohugo.io/configuration/pagination/">Hugo documentation</a>.</p>
+<p>The same key in a blog section&rsquo;s front matter overrides the site value. The
+theme passes this size to Hugo&rsquo;s paginator explicitly, so <code>pagination.pagerSize</code>
+does not control these lists.</p>
 <h3 id="pg-00860202e20793636376f450437026e8--list-cards">The card form
 </h3>
 <p><code>params.ui.blog_index: cards</code> renders the same list as a grid of content cards
@@ -1904,24 +2037,38 @@ subsection line, and a three-line summary.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">blog_index</span><span class="p">:</span><span class="w"> </span><span class="l">cards</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">blog_index_columns</span><span class="p">:</span><span class="w"> </span><span class="m">3</span></span></span></code></pre></div></div>
 </div>
-<p>The choice is presentational only — year grouping, pagination and <code>manual_link</code>
-behave identically, and the row output is unchanged to the byte. The column
-count applies above the xl breakpoint; between md and xl the grid is two
-columns and below md it is one. Front matter <code>blog_index</code> on a blog root, or its
-<code>cascade</code>, sets it per section. Term and taxonomy pages keep the row list, and
-there is no reader-side switch between the two forms.</p>
+<p>List and card views share date ordering, pagination and <code>manual_link</code> behavior.
+The column count applies above the xl breakpoint; between md and xl the grid is
+two columns and below md it is one. Front matter <code>blog_index</code> on a blog root,
+or its <code>cascade</code>, sets the view per section. Term and taxonomy pages keep the
+row list.</p>
+<p>A standalone <code>blog_index: table</code> with <code>blog_index_toggle: false</code> lists the
+entire section without pagination. Set <code>blog_index_toggle: true</code> to let readers
+switch among list, cards and table:</p>
+<div class="td-code td-code--titled" id="td-code-718af485-fence-8" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="2" role="group" aria-labelledby="td-code-718af485-fence-8-title">
+  <div class="td-code__header">
+    <span class="td-code__filename" id="td-code-718af485-fence-8-title" title="content/blog/_index.md">content/blog/_index.md</span>
+  </div>
+  <div class="td-code__viewport" id="td-code-718af485-fence-8-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">blog_index</span><span class="p">:</span><span class="w"> </span><span class="l">cards</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">blog_index_toggle</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span></span></span></code></pre></div></div>
+</div>
+<p>With switching enabled, all three views show the same current page of posts,
+using <code>blog_index_size</code>. Only the standalone table with
+<code>blog_index_toggle: false</code> shows the entire section. Hidden views do not load
+their images.</p>
 <p>Card images go through Hugo&rsquo;s <code>.Fill</code> whenever the resource can be processed, so
 a grid of posts does not download a full-size original per card.</p>
 <h2 id="pg-00860202e20793636376f450437026e8--rss">RSS
 </h2>
 <p>Which pages produce a feed is decided by <code>outputs</code>. Adding <code>RSS</code> to <code>section</code>
 gives every section its own feed:</p>
-<div class="td-code td-code--titled" id="td-code-718af485-fence-8" data-td-code data-td-code-auto-id
-     data-td-language="yaml" data-td-line-count="4" role="group" aria-labelledby="td-code-718af485-fence-8-title">
+<div class="td-code td-code--titled" id="td-code-718af485-fence-9" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="4" role="group" aria-labelledby="td-code-718af485-fence-9-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-718af485-fence-8-title" title="hugo.yml">hugo.yml</span>
+    <span class="td-code__filename" id="td-code-718af485-fence-9-title" title="hugo.yml">hugo.yml</span>
   </div>
-  <div class="td-code__viewport" id="td-code-718af485-fence-8-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">outputs</span><span class="p">:</span><span class="w">
+  <div class="td-code__viewport" id="td-code-718af485-fence-9-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">outputs</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">home</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">HTML, markdown, LLMS]</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">page</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">HTML, markdown]</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">section</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">HTML, RSS, print, markdown]</span></span></span></code></pre></div></div>
@@ -1939,12 +2086,12 @@ subsection pages, the first action button beside the title row is the RSS link,
 so a reader need not assemble the address by hand.</p>
 <p>To drop feeds site-wide, turn the kind off with <code>disableKinds</code>, which is more
 thorough than removing <code>RSS</code> from each page kind:</p>
-<div class="td-code td-code--titled" id="td-code-718af485-fence-9" data-td-code data-td-code-auto-id
-     data-td-language="yaml" data-td-line-count="1" role="group" aria-labelledby="td-code-718af485-fence-9-title">
+<div class="td-code td-code--titled" id="td-code-718af485-fence-10" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="1" role="group" aria-labelledby="td-code-718af485-fence-10-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-718af485-fence-9-title" title="hugo.yml">hugo.yml</span>
+    <span class="td-code__filename" id="td-code-718af485-fence-10-title" title="hugo.yml">hugo.yml</span>
   </div>
-  <div class="td-code__viewport" id="td-code-718af485-fence-9-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">disableKinds</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">RSS]</span></span></span></code></pre></div></div>
+  <div class="td-code__viewport" id="td-code-718af485-fence-10-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">disableKinds</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">RSS]</span></span></span></code></pre></div></div>
 </div>
 <p>Components degrade to their static shape in a feed: disclosures are expanded and
 interactive controls are removed. The four-output rules are the same for blog
@@ -1973,34 +2120,31 @@ and keeps comments.</p>
 <h2 id="pg-00860202e20793636376f450437026e8--authors">Authors and bylines
 </h2>
 <p>Declaring the taxonomy is the entire switch; the theme adds no parameter:</p>
-<div class="td-code td-code--titled" id="td-code-718af485-fence-10" data-td-code data-td-code-auto-id
-     data-td-language="yaml" data-td-line-count="4" role="group" aria-labelledby="td-code-718af485-fence-10-title">
+<div class="td-code td-code--titled" id="td-code-718af485-fence-11" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="4" role="group" aria-labelledby="td-code-718af485-fence-11-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-718af485-fence-10-title" title="hugo.yml">hugo.yml</span>
+    <span class="td-code__filename" id="td-code-718af485-fence-11-title" title="hugo.yml">hugo.yml</span>
   </div>
-  <div class="td-code__viewport" id="td-code-718af485-fence-10-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">taxonomies</span><span class="p">:</span><span class="w">
+  <div class="td-code__viewport" id="td-code-718af485-fence-11-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">taxonomies</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="l">categories</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l">tags</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l">authors</span></span></span></code></pre></div></div>
 </div>
 <p>A post then names its authors in order:</p>
-<div class="td-code td-code--untitled" id="td-code-718af485-fence-11" data-td-code data-td-code-auto-id
+<div class="td-code td-code--untitled" id="td-code-718af485-fence-12" data-td-code data-td-code-auto-id
      data-td-language="yaml" data-td-line-count="1">
-  <div class="td-code__viewport" id="td-code-718af485-fence-11-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">authors</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">vonng, ada-example]</span></span></span></code></pre></div></div>
+  <div class="td-code__viewport" id="td-code-718af485-fence-12-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">authors</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">vonng, ada-example]</span></span></span></code></pre></div></div>
 </div>
-<p>The article head renders portraits and linked names in exactly that order — the
-front matter sequence is both the set and the order — a list row renders the
-names, and the blog feed emits one <code>&lt;dc:creator&gt;</code> per author per item beside the
-site-level <code>managingEditor</code>. Names are separated by a CSS gap rather than a
-connector word, because &ldquo;and&rdquo; is a per-locale decision and there are 32 locales.</p>
-<p>An author&rsquo;s profile is simply the term page, so there is no <code>data/authors</code> file
-to disagree with it:</p>
-<div class="td-code td-code--titled" id="td-code-718af485-fence-12" data-td-code data-td-code-auto-id
-     data-td-language="markdown" data-td-line-count="7" role="group" aria-labelledby="td-code-718af485-fence-12-title">
+<p>The article head renders portraits and linked names in that order; list rows
+show the names. The blog feed includes each author alongside the site-level
+<code>managingEditor</code>.</p>
+<p>An author&rsquo;s profile is the taxonomy term page; no <code>data/authors</code> file is needed:</p>
+<div class="td-code td-code--titled" id="td-code-718af485-fence-13" data-td-code data-td-code-auto-id
+     data-td-language="markdown" data-td-line-count="7" role="group" aria-labelledby="td-code-718af485-fence-13-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-718af485-fence-12-title" title="content/authors/vonng/_index.md">content/authors/vonng/_index.md</span>
+    <span class="td-code__filename" id="td-code-718af485-fence-13-title" title="content/authors/vonng/_index.md">content/authors/vonng/_index.md</span>
   </div>
-  <div class="td-code__viewport" id="td-code-718af485-fence-12-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">---
+  <div class="td-code__viewport" id="td-code-718af485-fence-13-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">---
 </span></span><span class="line"><span class="cl">title: Vonng
 </span></span><span class="line"><span class="cl">description: Maintainer of OINK and Pigsty.
 </span></span><span class="line"><span class="cl">images: [portrait.webp]
@@ -2022,31 +2166,28 @@ form warns about the other.</p>
 <p>A series is a reading path through articles that each stand alone. Numbering,
 cross-references and aggregate output belong to <a href="/docs/write/book/">Book</a>; this
 is the lighter thing. Declaring the taxonomy is again the whole switch:</p>
-<div class="td-code td-code--titled" id="td-code-718af485-fence-13" data-td-code data-td-code-auto-id
-     data-td-language="yaml" data-td-line-count="2" role="group" aria-labelledby="td-code-718af485-fence-13-title">
+<div class="td-code td-code--titled" id="td-code-718af485-fence-14" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="2" role="group" aria-labelledby="td-code-718af485-fence-14-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-718af485-fence-13-title" title="hugo.yml">hugo.yml</span>
+    <span class="td-code__filename" id="td-code-718af485-fence-14-title" title="hugo.yml">hugo.yml</span>
   </div>
-  <div class="td-code__viewport" id="td-code-718af485-fence-13-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">taxonomies</span><span class="p">:</span><span class="w">
+  <div class="td-code__viewport" id="td-code-718af485-fence-14-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">taxonomies</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">series</span><span class="p">:</span><span class="w"> </span><span class="l">series</span></span></span></code></pre></div></div>
 </div>
 <p>An article names the series and may place itself in it:</p>
-<div class="td-code td-code--untitled" id="td-code-718af485-fence-14" data-td-code data-td-code-auto-id
+<div class="td-code td-code--untitled" id="td-code-718af485-fence-15" data-td-code data-td-code-auto-id
      data-td-language="yaml" data-td-line-count="2">
-  <div class="td-code__viewport" id="td-code-718af485-fence-14-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">series</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">shell-internals]</span><span class="w">
+  <div class="td-code__viewport" id="td-code-718af485-fence-15-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">series</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">shell-internals]</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="nt">series_weight</span><span class="p">:</span><span class="w"> </span><span class="m">20</span></span></span></code></pre></div></div>
 </div>
 <p>It then carries a strip above its body naming the series, its position, the next
 part, and the whole list behind a <code>&lt;details&gt;</code> — no JavaScript, no bundle member.
 The term page <code>content/series/&lt;name&gt;/_index.md</code> is the introduction, and an
 <code>_index.zh.md</code> beside it makes the pair bilingual.</p>
-<p>Reading order is the theme&rsquo;s own, because a term page cannot supply one: Hugo&rsquo;s
-taxonomy weight reaches neither <code>Page.Weight</code> nor <code>GroupByParam</code>. Weighted
-members come first in ascending <code>series_weight</code>, the rest follow by ascending
-date, and <code>Path</code> breaks a tie. The strip and the term page read the same
-resolver, so they can never disagree about which article is part 2 — which also
-means a series term page lists oldest-first rather than newest-first, unlike
-every other term page. That is the feature.</p>
+<p>Members with <code>series_weight</code> come first in ascending order; the rest follow
+from oldest to newest, with the content path breaking ties. The series strip
+and term page use this same reading order. For implementation details, see
+<a href="/docs/design/shell/#authors-and-series">Authors and series</a>.</p>
 <p>A member of several series shows one strip, for the first term it names. A
 series of one shows none.</p>
 <p>Neither <code>authors</code> nor <code>series</code> appears in the generic taxonomy chip row on an
@@ -2057,12 +2198,12 @@ article, because each has a surface of its own. Name one in
 <p><code>params.ui.share</code> puts a share bar at the top of the page end. It is empty by
 default, so nothing renders until a site names its targets, in the order it
 wants them:</p>
-<div class="td-code td-code--titled" id="td-code-718af485-fence-15" data-td-code data-td-code-auto-id
-     data-td-language="yaml" data-td-line-count="3" role="group" aria-labelledby="td-code-718af485-fence-15-title">
+<div class="td-code td-code--titled" id="td-code-718af485-fence-16" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="3" role="group" aria-labelledby="td-code-718af485-fence-16-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-718af485-fence-15-title" title="hugo.yml">hugo.yml</span>
+    <span class="td-code__filename" id="td-code-718af485-fence-16-title" title="hugo.yml">hugo.yml</span>
   </div>
-  <div class="td-code__viewport" id="td-code-718af485-fence-15-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+  <div class="td-code__viewport" id="td-code-718af485-fence-16-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ui</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">share</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">x, bluesky, mastodon, reddit, hackernews, email, copy]</span></span></span></code></pre></div></div>
 </div>
@@ -2074,25 +2215,20 @@ URL at all, so <code>copy</code> stands in for it rather than the theme guessing
 private scheme.</p>
 <p>The page key is <code>share</code>, so a <code>cascade</code> scopes the bar to one tree, a page&rsquo;s own
 list replaces the inherited one, and <code>share: false</code> opts a single page out:</p>
-<div class="td-code td-code--titled" id="td-code-718af485-fence-16" data-td-code data-td-code-auto-id
-     data-td-language="yaml" data-td-line-count="2" role="group" aria-labelledby="td-code-718af485-fence-16-title">
+<div class="td-code td-code--titled" id="td-code-718af485-fence-17" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="2" role="group" aria-labelledby="td-code-718af485-fence-17-title">
   <div class="td-code__header">
-    <span class="td-code__filename" id="td-code-718af485-fence-16-title" title="content/blog/_index.md">content/blog/_index.md</span>
+    <span class="td-code__filename" id="td-code-718af485-fence-17-title" title="content/blog/_index.md">content/blog/_index.md</span>
   </div>
-  <div class="td-code__viewport" id="td-code-718af485-fence-16-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">cascade</span><span class="p">:</span><span class="w">
+  <div class="td-code__viewport" id="td-code-718af485-fence-17-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">cascade</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">share</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">x, bluesky, email, copy]</span></span></span></code></pre></div></div>
 </div>
 <p>Only a regular page renders the bar — a list, a term page and the home page have
 no single thing being shared — and print, Markdown and RSS carry none of it.</p>
-<p>What the bar does not do is why it can ship in this theme at all. There is no
-share count, no platform SDK, no iframe, and no third-party script or
-stylesheet, which is what those three usually arrive as: one request per page to
-a company the reader never chose. Every target is a plain <code>&lt;a href&gt;</code> intent link
-carrying only the page&rsquo;s own permalink and title, with no campaign parameters,
-plus one local copy button. Nothing is fetched when the site builds or when the
-page loads; the only request a share can cause is the navigation the reader
-starts by clicking. A build with every target enabled passes
-<code>bin/check-output-security.py</code> with no <code>--third-party</code> allowance.</p>
+<p>Share targets are links carrying the page&rsquo;s permalink and title, plus a local
+copy button. The bar loads no third-party scripts or stylesheets; a target is
+contacted only when the reader clicks its link. See the
+<a href="/docs/design/shell/#share">Share contract</a> for the implementation rules.</p>
 <p><code>chatgpt</code> and <code>claude</code> hand that same build-time permalink to an assistant with
 a prompt asking it to read the page. They are not the &ldquo;open in ChatGPT&rdquo; /
 &ldquo;open in Claude&rdquo; entries of the page action menu, which the runtime rewrites at
@@ -2103,13 +2239,13 @@ Palette carries it on every page of every site whether or not a bar is
 configured.</p>
 <h2 id="pg-00860202e20793636376f450437026e8--verify">Verify
 </h2>
-<div class="td-code td-code--untitled" id="td-code-718af485-fence-17" data-td-code data-td-code-auto-id
+<div class="td-code td-code--untitled" id="td-code-718af485-fence-18" data-td-code data-td-code-auto-id
      data-td-language="bash" data-td-line-count="1">
-  <div class="td-code__viewport" id="td-code-718af485-fence-17-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo --printPathWarnings --panicOnWarning</span></span></code></pre></div></div>
+  <div class="td-code__viewport" id="td-code-718af485-fence-18-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo --printPathWarnings --panicOnWarning</span></span></code></pre></div></div>
 </div>
 <p>It must reach <code>Total in …</code> with no ERROR and no WARN. Then confirm:</p>
 <ol>
-<li>The post appears under the right year group at <code>/blog/</code>, with the date in the expected format;</li>
+<li>The post appears in the right date order at <code>/blog/</code>, with the date in the expected format;</li>
 <li><code>public/blog/index.xml</code> exists, contains the post, and its links are complete absolute addresses;</li>
 <li>The thumbnail shows in the list (a missing one means none of the three featured-image sources matched);</li>
 <li>Tag chips lead to the corresponding tag page.</li>
@@ -2148,6 +2284,8 @@ whole-book print HTML.</p>
 <p>Two prerequisites: the site&rsquo;s <code>markup.goldmark</code> has attribute lines and
 passthrough enabled (see <a href="/docs/components/">Components</a>); and
 <code>params.ui.shell_types</code> still contains <code>book</code> (the theme default includes it).</p>
+<p>For a new book, start with the directory below. For an existing manuscript,
+see <a href="#pg-84b5cbf8fdbac8cf37b1b9f7351fc596--migrate">Migrating an existing manuscript</a>.</p>
 <h2 id="pg-84b5cbf8fdbac8cf37b1b9f7351fc596--layout">A book&rsquo;s directory
 </h2>
 <p>The book root is an ordinary Hugo section, chapters are its subdirectories, and
@@ -2288,9 +2426,9 @@ text comes from the Markdown image itself and is never replaced by the caption.<
 <h3 id="pg-84b5cbf8fdbac8cf37b1b9f7351fc596--equation">Equations
 </h3>
 <p>An attribute line follows a <code>$$</code> block, and the default ID is <code>eq-&lt;num&gt;</code>. The
-number and caption sit on one non-wrapping line to the right of the formula, so
-a long caption squeezes the formula column until it becomes a horizontally
-scrolling region. Keep an equation caption short.</p>
+number and caption sit to the right of the formula on wider screens. On narrow
+screens they move below it and wrap; a wide formula can scroll horizontally.
+Short captions keep the equation easy to scan.</p>
 <div class="td-code td-code--titled" id="td-code-8126662a-fence-6" data-td-code data-td-code-auto-id
      data-td-language="markdown" data-td-line-count="4" role="group" aria-labelledby="td-code-8126662a-fence-6-title">
   <div class="td-code__header">
@@ -2313,7 +2451,8 @@ use the <code>eq</code> shortcode below, which goes through local server-side Ka
 <p>A code fence with <code>num=</code> and <code>caption=</code> is a numbered example, and the default
 ID is <code>eg-&lt;num&gt;</code>. An <code>#id</code> written on the fence names the enclosing <code>&lt;figure&gt;</code> —
 the reference target — rather than the code block itself. The caption is
-required: writing only <code>num</code> or only <code>caption</code> fails the build. A numbered
+required: a lone caption is ignored and a lone number is dropped with a
+warning; strict publishing rejects the warning. A numbered
 example renders as one framed unit: the caption is the frame&rsquo;s header and the
 body sits inside it, and a body that is exactly one code block sits flush
 against the frame instead of drawing a second border.</p>
@@ -2341,9 +2480,11 @@ against the frame instead of drawing a second border.</p>
 </h2>
 <p>The four shortcodes <code>fig</code>, <code>tbl</code>, <code>eq</code> and <code>eg</code> render a <code>&lt;figure&gt;</code> identical to
 the native form, register into the same target table, and sort by source
-position. Use them only where the native form cannot reach: an image that needs
-an outbound link, several tables under one number, a site without passthrough,
-or an example body made of several fences and prose.</p>
+position. Use them where the native form cannot reach: a figure with several
+images or other Markdown, several tables under one number, a site without
+passthrough, or an example body made of several fences and prose. A single
+numbered image can use <code>link</code> in its native attribute line; it does not need
+<code>fig</code> just for an outbound link.</p>
 <p><code>fig</code> takes <code>src=</code> (it also accepts inner Markdown content, and the two are
 mutually exclusive) and additionally supports <code>link</code>, <code>alt</code>, <code>width</code>, <code>height</code>,
 <code>class</code>, and the migration alias <code>title</code>:</p>
@@ -2438,14 +2579,15 @@ policy, usually holding one or more fences:</p>
 </div>
 </figure>
 <p>IDs must be unique within a page, and within one kind a number maps to exactly
-one ID. A duplicate fails the build, and the error names the line that claimed
-it first.</p>
+one ID. A duplicate warns and keeps the first registration; strict publishing
+rejects the warning, which names the line that claimed it first.</p>
 <div class="td-callout td-callout--important" role="note">
   <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-exclamation" aria-hidden="true"></i><span class="td-callout__label">Footnotes cannot appear in a shortcode body</span></div>
   <div class="td-callout__body">
 <p>Hugo renders a shortcode body as its own Goldmark document, and footnotes are
 page-level. A <code>[^label]</code> inside the body of <code>tbl</code>, <code>eg</code>, <code>fig</code>, <code>card</code>, <code>tab</code>,
-<code>field</code> or <code>include</code> fails the build, naming the file, the line and the label.
+<code>field</code> or <code>include</code> warns, naming the file, line, and label. Strict
+publishing rejects the warning.
 With the definition on the page, the reference would print literally as
 <code>[^label]</code>; with the definition in the body, it would build a second footnote
 list whose <code>fn:N</code> ids collide with the page&rsquo;s own. Neither belongs in
@@ -2559,12 +2701,15 @@ of contents, the root page&rsquo;s body and every descendant chapter in visible
 reading order, all inside one HTML document. Pages with <code>no_print: true</code>,
 link-only nodes, divider rows and hidden placeholders never become chapters.</p>
 <p>Inside the aggregate, the IDs of numbered components are preserved byte for
-byte. Markdown heading IDs within a page are prefixed with their source page to
-avoid collisions when several chapters share an anchor such as <code>summary</code>, and
-the generated heading links are rewritten to match. The output is
-print-oriented HTML. An opt-in <code>BookManifest</code> output records that same reading
-order as JSON, and the theme ships <code>bin/book-epub.py</code> and <code>bin/book-pdf.py</code>,
-which turn the manifest and the print HTML into EPUB and PDF.</p>
+byte. Markdown heading and footnote IDs within a page are prefixed with their
+source page to avoid collisions when several chapters share an anchor such as
+<code>summary</code> or each start with <code>fn:1</code>; generated links are rewritten to match. A
+page rendered alone as Print keeps the same page-local IDs as ordinary HTML —
+only a multi-page section or whole-Book aggregate adds the namespace.</p>
+<p>The output is print-oriented HTML. An opt-in <code>BookManifest</code> output records that
+same reading order as JSON, and the theme ships <code>bin/book-epub.py</code> and
+<code>bin/book-pdf.py</code>, which turn the manifest and the print HTML into EPUB and
+PDF.</p>
 <p>The switches themselves, and per-chapter print, are covered in
 <a href="/docs/customize/print/">Print</a>.</p>
 <h2 id="pg-84b5cbf8fdbac8cf37b1b9f7351fc596--migrate">Migrating an existing manuscript
@@ -2776,7 +2921,7 @@ alternative text worthy of its caption.</p>
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>page reference</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value"><code>current page</code></span></span>
 </dt>
-<dd class="td-field__description">Resolved through page lookup in the current language; a missing page fails the build</dd>
+<dd class="td-field__description">Resolved through page lookup in the current language; a missing page warns and renders text without a link</dd>
 </div>
 </dl>
 </div>
@@ -2810,7 +2955,7 @@ parameters.</p>
 <li>The attribute line must touch its block, with no blank line between. An attribute line a tool like Prettier has moved fails silently, and the figure degrades to a plain image.</li>
 <li><code>book_kind</code> and <code>book_part</code> are metadata keys the contract acknowledges but the current templates do not render. The ones with a visible effect are <code>book_number</code> and <code>book_status</code>.</li>
 <li>The index shortcodes trigger descendant content rendering, which noticeably lengthens the build on a very large tree. The same reason is why whole-book <code>print</code> has to be requested explicitly.</li>
-<li>A footnote reference cannot appear in a shortcode body; the build fails and names the native form to use instead — see <a href="#pg-84b5cbf8fdbac8cf37b1b9f7351fc596--numbering-shortcodes">Numbering: the shortcode form</a>.</li>
+<li>A footnote reference cannot appear in a shortcode body; it warns and names the native form to use instead, and strict publishing rejects it — see <a href="#pg-84b5cbf8fdbac8cf37b1b9f7351fc596--numbering-shortcodes">Numbering: the shortcode form</a>.</li>
 <li>Packaging is opt-in and runs outside the build. <code>BookManifest</code> plus <code>bin/book-epub.py</code> / <code>bin/book-pdf.py</code> produce EPUB and PDF, but no Hugo build emits either file on its own, and typeset pagination, font embedding and index compilation remain outside the contract.</li>
 </ul>
 <h2 id="pg-84b5cbf8fdbac8cf37b1b9f7351fc596--related">Related
@@ -2993,8 +3138,8 @@ verbatim output of a <code>sha*sum</code> command:</p>
 <p>Only two line shapes are accepted: <code>&lt;hex&gt;&lt;two spaces&gt;&lt;filename&gt;</code> and
 <code>&lt;hex&gt;&lt;space&gt;*&lt;filename&gt;</code>. Blank lines and lines starting with <code>#</code> are ignored.
 The hash length decides the algorithm (MD5 / SHA-1 / SHA-256 / SHA-512), and one
-block holds one algorithm. A malformed line fails the build with its line
-number. A filename must be a single path segment. The type, operating system and
+block holds one algorithm. A malformed line warns and is skipped with its line
+number; strict publishing rejects the warning. A filename must be a single path segment. The type, operating system and
 architecture badges are inferred from the filename; they are decoration, and
 nothing shows when the inference fails.</p>
 <p>The base for asset links: with <code>release_url</code> front matter on the page it is derived
@@ -3101,8 +3246,9 @@ pipe table of full hashes.</p>
 </span></span></span><span class="line"><span class="cl"><span class="sd">      aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  oink-0.4.0.tar.gz</span></span></span></code></pre></div></div>
 </div>
 <p>The record has exactly five top-level fields — <code>version</code>, <code>repo</code>, <code>tag</code>,
-<code>published</code>, <code>channels</code> — and one extra key fails the build. <code>version</code> may be
-omitted here and supplied by the site&rsquo;s <code>params.version</code> instead.</p>
+<code>published</code>, <code>channels</code>. An extra key warns and skips the record; strict
+publishing rejects the warning. <code>version</code> may be omitted here and supplied by
+the site&rsquo;s <code>params.version</code> instead.</p>
 <div class="td-fields">
 <dl class="td-fields__list">
 <div class="td-field">
@@ -3110,7 +3256,7 @@ omitted here and supplied by the site&rsquo;s <code>params.version</code> instea
 <span class="visually-hidden">, </span><span class="td-field__type"><span class="td-field__meta-value"><code>string</code></span></span>
 <span class="visually-hidden">, </span><span class="td-field__default"><span class="td-field__meta-label">default</span><span class="td-field__meta-value">site <code>params.version</code></span></span>
 </dt>
-<dd class="td-field__description">Missing in both places fails the build</dd>
+<dd class="td-field__description">Missing in both places warns and skips the block</dd>
 </div>
 <div class="td-field">
 <dt class="td-field__term"><code class="td-field__name">repo</code>
@@ -3348,12 +3494,12 @@ new <code>content/blog/release/&lt;version&gt;.md</code> with its <code>release_
     
 	<h1 id="pg-f8a96b7d554a4c8e301c9b637691fec1">7 - API reference pages</h1>
     <div class="lead">Put an OpenAPI specification on the site and render it as a browsable API reference with the bundled Swagger UI or Redoc, without touching a CDN.</div>
-	<p>An API reference page is one OpenAPI specification plus one shortcode. The
-Swagger UI and Redoc runtimes ship with the theme (versions 5.32.13 and 2.5.3
-respectively, per the repository&rsquo;s <code>VENDOR.json</code>), load only on a page that uses
-them in its HTML output, and reach no external service at build time or in the
-browser. Swagger UI&rsquo;s online validator is pinned off (<code>validatorUrl: null</code>), so
-a published API page never sends its specification address anywhere.</p>
+	<p>An API reference page is one OpenAPI specification plus one shortcode. Choose
+Swagger UI when readers need to try requests, or Redoc for browsing endpoint
+descriptions and schemas. Both runtimes ship with the theme and load only on
+pages that use them in HTML output, without a CDN. Swagger UI&rsquo;s online validator
+is disabled; remote specifications and API requests still contact their
+configured hosts.</p>
 <p>Three steps: put the specification file under <code>static/</code>, create a page with the
 shortcode, and change the page <code>type</code> to <code>swagger</code> if it needs the dedicated
 shell.</p>
@@ -3361,18 +3507,18 @@ shell.</p>
 </h2>
 <p>The specification goes under <code>static/</code>, is published unchanged at the site root,
 and both shortcodes then receive a URL the browser can fetch:</p>
-<div class="td-filetree td-filetree--static" style="--td-filetree-name-col:24.0ch" role="group" aria-labelledby="td-filetree-6966d05406cd3c726d1e91acb25481a2-f0-title"><div class="td-filetree__chrome"><p class="td-filetree__title" id="td-filetree-6966d05406cd3c726d1e91acb25481a2-f0-title" dir="auto">where the specification lives</p></div><div class="td-filetree__body"><ul class="td-filetree__list td-filetree__list--root"><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:0"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="static/">static/</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="openapi/">openapi/</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-solid fa-gear td-filetree__glyph"></i></span><span class="td-filetree__name" title="docs-demo.yaml">docs-demo.yaml</span></span><span class="td-filetree__comment" title="published as /openapi/docs-demo.yaml"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">published as /openapi/docs-demo.yaml</span></span></span></li></ul></li></ul></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:0"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="content/">content/</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="docs/">docs/</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="write/">write/</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:3"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="openapi.md">openapi.md</span></span><span class="td-filetree__comment" title="this page"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">this page</span></span></span></li></ul></li></ul></li></ul></li></ul></div></div><p>Do not put the specification beside the page. <code>redoc</code> looks for a file of that
-name in the content directory and builds a URL from it, but a <code>.yaml</code> in the
-content directory is a page resource, and Hugo publishes one only when it is
-referenced or processed. <code>redoc</code> builds a URL without referencing the resource,
-so the browser gets a 404.</p>
+<div class="td-filetree td-filetree--static" style="--td-filetree-name-col:24.0ch" role="group" aria-labelledby="td-filetree-6966d05406cd3c726d1e91acb25481a2-f0-title"><div class="td-filetree__chrome"><p class="td-filetree__title" id="td-filetree-6966d05406cd3c726d1e91acb25481a2-f0-title" dir="auto">where the specification lives</p></div><div class="td-filetree__body"><ul class="td-filetree__list td-filetree__list--root"><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:0"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="static/">static/</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="openapi/">openapi/</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-solid fa-gear td-filetree__glyph"></i></span><span class="td-filetree__name" title="docs-demo.yaml">docs-demo.yaml</span></span><span class="td-filetree__comment" title="published as /openapi/docs-demo.yaml"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">published as /openapi/docs-demo.yaml</span></span></span></li></ul></li></ul></li><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:0"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="content/">content/</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:1"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="docs/">docs/</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--dir td-filetree__item--parent"><span class="td-filetree__row" style="--td-filetree-depth:2"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--dir" aria-hidden="true"><i class="fa-regular fa-folder td-filetree__glyph td-filetree__glyph--closed"></i><i class="fa-regular fa-folder-open td-filetree__glyph td-filetree__glyph--open"></i></span><span class="td-filetree__name" title="write/">write/</span></span><span class="td-filetree__comment" aria-hidden="true"></span></span><ul class="td-filetree__list"><li class="td-filetree__item td-filetree__item--file"><span class="td-filetree__row" style="--td-filetree-depth:3"><span class="td-filetree__name-cell"><span class="td-filetree__icon td-filetree__icon--file" aria-hidden="true"><i class="fa-brands fa-markdown td-filetree__glyph"></i></span><span class="td-filetree__name" title="openapi.md">openapi.md</span></span><span class="td-filetree__comment" title="this page"><span class="td-filetree__hash" aria-hidden="true">#</span><span class="td-filetree__comment-text">this page</span></span></span></li></ul></li></ul></li></ul></li></ul></div></div><p>Do not put the specification beside the page. Both shortcodes treat a local
+value as a path under <code>static/</code>; neither resolves page resources. A <code>.yaml</code>
+beside a content page is a page resource, and Hugo does not publish it merely
+because its name appears in one of these shortcodes, so the browser gets a 404.</p>
 <p>A remote specification (starting <code>https://…</code>) is accepted by both shortcodes,
 but that is a network dependency, and it exposes the reader&rsquo;s metadata to that
 host. Intranet deployments and sites with a CSP should use a same-origin
 specification. Only <code>http</code> and <code>https</code> are accepted: any other scheme, a
 protocol-relative <code>//host</code>, or an empty value warns and the shortcode renders
 nothing.</p>
-<p>The examples below use the real <code>/openapi/docs-demo.yaml</code>, a demonstration
+<p>To try the examples, download <a href="/openapi/docs-demo.yaml">docs-demo.yaml</a> and save
+it as <code>static/openapi/docs-demo.yaml</code> in your site. It describes a demonstration
 cluster-management API with no reachable server behind it.</p>
 <h2 id="pg-f8a96b7d554a4c8e301c9b637691fec1--swaggerui">Swagger UI
 </h2>
@@ -3386,18 +3532,11 @@ resolves correctly:</p>
   </div>
   <div class="td-code__viewport" id="td-code-6966d054-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">{{&lt; swagger src=&#34;/openapi/docs-demo.yaml&#34; &gt;}}</span></span></code></pre></div></div>
 </div>
-<p>It renders a container with <code>class=&quot;td-swagger-ui&quot;</code> carrying the specification
-address in <code>data-td-spec-url</code>; a single cacheable <code>js/chunks/swagger-init.js</code>
-mounts every container on the page. The container ID is derived from the page
-address and the shortcode&rsquo;s ordinal (<code>td-swagger-&lt;hash&gt;-&lt;n&gt;</code>), so one page can
-hold several.</p>
-<p>This page shows the source without rendering Swagger UI: the markup it generates
-carries axe WCAG AA violations (the server dropdown has no accessible name, and
-the version stamp is a scrollable region without keyboard access), and this
-site&rsquo;s accessibility gate requires zero violations per page. The Redoc below is
-really rendered — but be aware that both widgets are scoped out of that gate,
-because Redoc&rsquo;s operation descriptions have their own colour-contrast defect.
-Neither is a fully accessible interface; see <a href="#pg-f8a96b7d554a4c8e301c9b637691fec1--limits">Limits</a>.</p>
+<p>In your local preview, this displays expandable API operations, request
+parameters and response schemas. &ldquo;Try it out&rdquo; sends requests to the
+specification&rsquo;s <code>servers</code> address; the sample has no working backend.</p>
+<p>This page shows Swagger UI source and a live Redoc example below. Both widgets
+have known accessibility limitations; see <a href="#pg-f8a96b7d554a4c8e301c9b637691fec1--limits">Limits</a>.</p>
 <h2 id="pg-f8a96b7d554a4c8e301c9b637691fec1--redoc">Redoc
 </h2>
 <p><code>redoc</code> takes exactly one positional parameter, the specification path. A
@@ -3410,11 +3549,12 @@ second parameter warns and the shortcode renders nothing.</p>
   <div class="td-code__viewport" id="td-code-6966d054-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">{{&lt; redoc &#34;openapi/docs-demo.yaml&#34; &gt;}}</span></span></code></pre></div></div>
 </div>
 <p class="td-redoc-print">OpenAPI specification — <a href="http://localhost:1313/openapi/docs-demo.yaml">http://localhost:1313/openapi/docs-demo.yaml</a></p>
-<p>Path resolution has three branches, in order: anything starting with <code>http</code> is
-a remote URL; a file of that name found in the content directory yields
-<code>baseURL + page directory + filename</code>; otherwise it is <code>baseURL + the path as written</code>. So a <code>redoc</code> path must not begin with a slash — <code>/openapi/…</code> would
-produce a doubled slash such as <code>https://example.com//openapi/…</code>. Unlike
-<code>swagger</code>, it generates an absolute URL based on <code>baseURL</code>.</p>
+<p>An <code>http</code> or <code>https</code> URL remains remote. Any other accepted value is a path
+under <code>static/</code>; leading and non-leading slash forms are equivalent. For
+example, <code>openapi/docs-demo.yaml</code> and <code>/openapi/docs-demo.yaml</code> both become
+<code>https://example.com/preview/openapi/docs-demo.yaml</code> when the site <code>baseURL</code> is
+<code>https://example.com/preview/</code>. Unlike <code>swagger</code>, Redoc receives this absolute
+URL based on <code>baseURL</code>.</p>
 <p>The theme pins five attributes — <code>hide-hostname</code>, <code>hide-logo</code>,
 <code>suppress-warnings</code>, <code>lazy-rendering</code>, <code>native-scrollbars</code> — and hides the
 Redocly brand mark with CSS. Redoc&rsquo;s remaining attributes are not exposed to
@@ -3484,9 +3624,9 @@ four outputs.</p>
 <ul>
 <li>Both components derive their container ID from the page address and the shortcode&rsquo;s ordinal, so several on one page never collide.</li>
 <li>The two can coexist on one page, but the page becomes long and its HTML output loads both runtimes. Pick one for a production site.</li>
-<li>Neither interface is fully accessible, and both come from upstream distributions the theme does not rewrite. Swagger UI&rsquo;s markup has axe WCAG AA violations (<code>select-name</code>, <code>scrollable-region-focusable</code>); Redoc&rsquo;s operation descriptions fail AA colour contrast. This site excludes <code>.td-swagger-ui</code> and <code>.td-redoc</code> from its zero-violation gate for that reason — a site with such a gate has to do the same, and should say so rather than assume either widget passes.</li>
+<li>Neither interface is fully accessible: Swagger UI has unnamed server controls and scrollable regions without keyboard access; Redoc&rsquo;s operation descriptions have insufficient colour contrast. Assess these limitations against your site&rsquo;s accessibility requirements. Excluding a widget from an automated check does not make it conformant; provide readable endpoint documentation when an embedded widget is unsuitable.</li>
 <li><code>redoc</code> accepts no attribute parameter: a second positional argument warns and the shortcode renders nothing.</li>
-<li>A <code>redoc</code> path must not start with <code>/</code>, or the URL gains a doubled slash.</li>
+<li>A local <code>redoc</code> path is rooted under <code>static/</code>; a leading <code>/</code> is optional, and page resources are not resolved.</li>
 <li>The specification must be fetchable by the browser: put it in <code>static/</code> and confirm the file exists under <code>public/</code> after a build.</li>
 <li>There is no mock server: Swagger UI&rsquo;s &ldquo;Try it out&rdquo; makes a real request to whatever <code>servers</code> names, and the address in the sample specification is not reachable.</li>
 </ul>
@@ -3496,7 +3636,7 @@ four outputs.</p>
 <li>The build is warning-free: <code>hugo --printPathWarnings --panicOnWarning</code>.</li>
 <li>The specification really was published: <code>ls public/openapi/docs-demo.yaml</code>, or open <code>http://localhost:1313/openapi/docs-demo.yaml</code>.</li>
 <li>Endpoints expand on the page and their schemas appear; the browser console shows no 404 and no cross-origin error.</li>
-<li>Reload once with the network off: the runtimes are local, and with a same-origin specification the interface should still appear.</li>
+<li>Disconnect from the external network while keeping the local preview server reachable, then reload: local runtimes and a same-origin specification should still appear.</li>
 </ol>
 <h2 id="pg-f8a96b7d554a4c8e301c9b637691fec1--related">Related
 </h2>
@@ -3519,7 +3659,7 @@ four outputs.</p>
 
       </main>
     </div>
-    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"Copy Markdown","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["Copy Markdown","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Copy Markdown","url":"/docs/write/index.md"},{"available":true,"description":"Copy link","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["Copy link","Share","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"Copy link","url":"http://localhost:1313/docs/write/"},{"available":true,"description":"Open in ChatGPT","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["Open in ChatGPT","Ask about this page","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in ChatGPT","url":"https://chatgpt.com/?hints=search\u0026prompt=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fwrite%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"Open in Claude","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["Open in Claude","Ask about this page","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in Claude","url":"https://claude.ai/new?q=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fwrite%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"View markdown","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["View markdown","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View markdown","url":"/docs/write/index.md"},{"available":true,"description":"View edit history","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["View edit history","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View edit history","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/write/_index.md"},{"available":true,"description":"Edit this page","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["Edit this page","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Edit this page","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/write/_index.md"},{"available":true,"description":"Create child page","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["Create child page","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create child page","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/write?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"Create docs issue","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["Create docs issue","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create docs issue","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=Authoring"},{"available":true,"description":"Create project issue","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["Create project issue","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create project issue","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"Print entire section","disabledReason":"Print entire section: unavailable","icon":"fa-solid fa-print","id":"print_section","keywords":["Print entire section","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Print entire section","url":""},{"available":true,"description":"Print this page","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["Print this page","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"Print this page","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL required","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"Switch language","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["Switch language","language"],"kind":"choice","options":[{"active":true,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/write/"},{"active":false,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/write/"}],"placements":{"page":false,"palette":true},"target":"self","title":"Switch language","url":""},{"available":false,"description":"Appearance","disabledReason":"unavailable","icon":"fa-solid fa-palette","id":"switch_preset","keywords":["preset","style","Paper","Slate","Style"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"paper","title":"Paper","value":"paper"}],"placements":{"page":false,"palette":true},"target":"self","title":"Style","url":""},{"available":true,"description":"Toggle color theme","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["Toggle color theme","Light","Dark"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"System","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"Light","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"Dark","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"Toggle color theme","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"Report or review theme and documentation issues","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["bug","support","roadmap"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK issues","url":"https://github.com/pgsty/oink/issues"}],"language":"en","quickLinks":[{"available":true,"description":"OINK is a documentation theme that needs nothing but Hugo Extended — components are written in Markdown, assets ship with the theme, both languages work out of the box, and one source produces four outputs.","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["Docs","docs"],"kind":"url","target":"self","title":"Docs","url":"/docs/"},{"available":true,"description":"OINK engineering stories, immersive guides, and release notes","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["Blog","blog"],"kind":"url","target":"self","title":"Blog","url":"/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"Copy Markdown","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["Copy Markdown","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Copy Markdown","url":"/docs/write/index.md"},{"available":true,"description":"Copy link","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["Copy link","Share","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"Copy link","url":"http://localhost:1313/docs/write/"},{"available":true,"description":"Open in ChatGPT","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["Open in ChatGPT","Ask about this page","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in ChatGPT","url":"https://chatgpt.com/?hints=search\u0026prompt=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fwrite%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"Open in Claude","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["Open in Claude","Ask about this page","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in Claude","url":"https://claude.ai/new?q=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fwrite%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"View markdown","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["View markdown","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View markdown","url":"/docs/write/index.md"},{"available":true,"description":"View edit history","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["View edit history","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View edit history","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/write/_index.md"},{"available":true,"description":"Edit this page","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["Edit this page","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Edit this page","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/write/_index.md"},{"available":true,"description":"Create child page","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["Create child page","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create child page","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/write?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"Create docs issue","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["Create docs issue","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create docs issue","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=Authoring"},{"available":true,"description":"Create project issue","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["Create project issue","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create project issue","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"Print entire section","disabledReason":"Print entire section: unavailable","icon":"fa-solid fa-print","id":"print_section","keywords":["Print entire section","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Print entire section","url":""},{"available":true,"description":"Print this page","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["Print this page","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"Print this page","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL required","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"Switch language","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["Switch language","language"],"kind":"choice","options":[{"active":true,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/write/"},{"active":false,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/write/"}],"placements":{"page":false,"palette":true},"target":"self","title":"Switch language","url":""},{"available":false,"description":"Appearance","disabledReason":"unavailable","icon":"fa-solid fa-palette","id":"switch_preset","keywords":["preset","style","Paper","Slate","Style"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"paper","title":"Paper","value":"paper"}],"placements":{"page":false,"palette":true},"target":"self","title":"Style","url":""},{"available":true,"description":"Toggle color theme","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["Toggle color theme","Light","Dark"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"System","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"Light","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"Dark","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"Toggle color theme","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"Report or review theme and documentation issues","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["bug","support","roadmap"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK issues","url":"https://github.com/pgsty/oink/issues"}],"language":"en","quickLinks":[{"available":true,"description":"Build a technical content site with shared navigation, multilingual support and search for documentation, blogs, books and API references.","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["Docs","docs"],"kind":"url","target":"self","title":"Docs","url":"/docs/"},{"available":true,"description":"OINK engineering stories, immersive guides, and release notes","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["Blog","blog"],"kind":"url","target":"self","title":"Blog","url":"/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
 
 <script src="/js/actions.js"></script>
 

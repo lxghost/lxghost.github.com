@@ -15,15 +15,17 @@ search_keywords:
     proposal,
     PRD,
   ]
-contract_status: released-v0.8.0
+contract_status: v1.2.0
 cascade:
+  search_boost: 0.6
   categories: [Design]
 ---
 
-> [!IMPORTANT] OINK 0.8.0 contract
-> This section publishes the maintainer contracts released with OINK 0.8.0,
-> with Hugo Extended 0.160.1 as the compatibility floor. The canonical
-> bilingual sources live in this repository under `content/docs/design/`.
+> [!NOTE] OINK 1.2.0 contract
+> This contract describes the v1.2.0 release. Its canonical bilingual sources
+> are in `content/docs/design/`.
+> Hugo Extended 0.160.1 remains the compatibility floor. CI uses 0.165.0;
+> the floor is not a second full CI matrix.
 
 This section is the durable design record for OINK. It complements the
 task-oriented guides elsewhere on the site: use those guides to build a site,
@@ -44,7 +46,7 @@ proposal.
 
 | Contract                                      | Authority                                                                                            |
 | --------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| [Architecture](/docs/design/architecture/)    | Build, configuration, diagnostics, featured images, output, security, accessibility, and performance |
+| [Architecture](/docs/design/architecture/)    | Build, configuration, diagnostics, localization, featured images, output, security, accessibility, and performance |
 | [Components](/docs/design/components/)        | Component API, Book and release primitives, validation, and output degradation                       |
 | [Shell and navigation](/docs/design/shell/)   | Navigation, search, blog presentation, actions, taxonomies, and page-end composition                 |
 | [Landing pages](/docs/design/landing/)        | Landing data, the 22-section registry, runtime, accessibility, and outputs                           |

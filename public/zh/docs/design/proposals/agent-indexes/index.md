@@ -116,9 +116,3 @@ HTML、脚本、评论、反馈控件或导航 chrome。
   最小集（稳定 ID、标题、HTML URL、Markdown URL、kind、children、可选 description），
   不序列化 `weight`；`llms.txt` 默认列出已启用的两类产物；检查器只报告体积证据，
   不执行任何模型上下文上限。
-
----
-
-反链：
-
-- [提案](/zh/docs/design/proposals/)

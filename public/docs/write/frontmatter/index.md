@@ -1,6 +1,6 @@
 # Page parameters
 
-> The full front matter table — every page key the theme actually reads, grouped by sidebar, shell, search, output, page end, Book, landing and release pages.
+> The full front matter table — active page keys and retained 1.x compatibility no-ops, grouped by sidebar, shell, search, output, page end, Book, landing and release pages.
 
 ---
 
@@ -8,8 +8,8 @@ LLMS index: [llms.txt](/llms.txt)
 
 ---
 
-This page is the complete table of page-level parameters, listing only the keys
-the OINK theme reads. Keys the theme reads solely to warn that they were
+This page is the complete table of page-level parameters, listing the keys the
+OINK theme reads plus explicit 1.x compatibility no-ops. Keys the theme reads solely to warn that they were
 renamed or removed are not listed here — they are in
 [Migration](/docs/design/migration/), and they are also kept out of the
 generated editor schema. Hugo's own front matter fields (`slug`, `url`, `build`,
@@ -92,13 +92,13 @@ The guide is [Organizing content](/docs/write/organize/).
 | Key | Type | Default | Description |
 | --- | --- | --- | --- |
 | `icon` | Font Awesome class pair | — | Icon in the sidebar, section cards and search results, e.g. `fa-solid fa-rocket` |
-| `toc_hide` | boolean | `false` | Absent from the sidebar tree and from the pager sequence |
+| `toc_hide` | boolean | `false` | Excludes this page and its subtree from sidebar navigation and the pager sequence, in both content-derived and explicit trees |
 | `hide_summary` | boolean | `false` | Absent from the section index |
-| `sidebar_divider` | boolean | `false` | The row renders as a sidebar group heading: not a link, and not in the pager sequence |
+| `sidebar_divider` | boolean | `false` | A non-link group heading, excluded from pager destinations; the 1.1 implementation retains a section's children. Use `build.render: never` for a [group without its own page](/docs/write/organize/#group-only) |
 | `sidebar_expanded` | boolean | `true` for blog sections, `false` otherwise | This section is expanded by default in the sidebar |
 | `sidebar_root_for` | `self` / `children` | — | Makes this section a sidebar tree root; `self` includes the section index, `children` covers descendants only. Any other value warns and is ignored |
 | `sidebar_root_link_self` | boolean | `true` | The root row links to itself; `false` links to the parent section instead. A non-boolean warns and uses `true` |
-| `sidebar_root_menu` | boolean | `true` | Whether a top-level section appears in the root switcher |
+| `sidebar_root_menu` | boolean | `true` | Includes a top-level section or nested self-root in global switcher choices; an excluded current root remains a location marker. The nested-root exclusion is fixed in 1.1 |
 | `toc_root` | boolean | `false` | When the sidebar root is the site home, excludes this whole top-level section from the tree and the pager sequence |
 | `manual_link` | URL | — | The sidebar and section index row points elsewhere |
 | `manual_link_relref` | content reference | — | The same, resolved with `relref`; a missing target fails the build |
@@ -112,6 +112,7 @@ The guide is [Organizing content](/docs/write/organize/).
 | `pager` | boolean | decided by `params.ui.pager_types` | `false` turns off previous / next for this page. A non-boolean warns and is ignored |
 | `navbar_enabled` | boolean | site value (`true`) | Whether this page renders the navbar |
 | `navbar_autohide` | boolean | site value (`false`) | The navbar hides itself on pointer devices |
+| `breadcrumb` | boolean | shell default | Whether this page renders breadcrumbs; Docs/Book default on and Blog defaults off |
 | `theme_color` | string | site value | `#rgb`/`#rrggbb` hex tinting this page's accent grounds. On a section root's `cascade` it gives the whole section an identity — see [Brand and appearance](/docs/customize/brand/#theme-color) |
 | `theme_color_dark` | string | derived | The dark half of the accent. A page overriding `theme_color` under a cascade that also sets this key inherits that dark value, so override both. `theme_color: false` opts the page out of an inherited section color entirely |
 | `page_context_menu` | boolean | site value (`true`) | The page action menu on the title row (copy Markdown, edit this page, print, …) |
@@ -131,10 +132,15 @@ Site-level defaults and what they do are in
 | `body_class` | string | — | A class appended to `<body>` for the site's own CSS |
 | `reading_time` | boolean | site value | Whether this page shows a reading time; `false` hides it |
 | `sidebar_enabled` | boolean | `true` | Whether this page shows the left sidebar; `false` hides it |
-| `scroll_spy` | boolean | site value | Scroll tracking in the outline; `true` enables it |
+| `scroll_spy` | boolean | site value | Quiet 1.x compatibility no-op; active-heading tracking is always provided by the normal shell runtime |
 | `keyboard_nav` | boolean | site value (`true`) | Single-key keyboard navigation — see [Keyboard navigation](/docs/customize/keyboard/). A non-boolean warns and falls back |
 | `lastmod_commit` | `subject` / `hash` / `none` | `subject` | How the commit is shown after "last modified". An invalid value warns and falls back |
 | `sidebar_expand_levels`, `sidebar_menu_compact`, `sidebar_menu_foldable`, `sidebar_item_overflow` | as the site parameter | site value | Sidebar behaviour can be overridden per page too; the values are in [Configuration](/docs/customize/config/) |
+| `sidebar_width_min`, `sidebar_width_max` | positive integer | site value (`220` / `480`) | Per-page lower and upper bounds for desktop sidebar resizing; a minimum above its maximum warns and restores the site pair |
+| `code_copy` | boolean | site value (`true`) | Default copy control for code blocks on this page; an explicit fence `copy=` still wins |
+| `toc_style` | `fixed` / `flow` | site value (`fixed`) | Fixed right-rail panel or a wider rail beginning in the content flow |
+| `toc_taxonomies` | boolean | site value (`true`) | Whether taxonomy clouds join the right-rail outline |
+| `taxonomy_icons` | map | site value | Per-taxonomy icon overrides for this page or section cascade |
 {.fields meta="type default"}
 
 ## Search {#search}
@@ -223,8 +229,12 @@ The guide is [Blog posts](/docs/write/blog/).
 | `tags` | string array | — | Tags — see [Taxonomies](/docs/customize/taxonomy/) |
 | `categories` | string array | — | Categories, likewise |
 | `images` | string array | — | The first entry becomes the post's featured image and share card; put it in a section `_index.md` cascade for a section-wide default. `images: []` opts the page out of an inherited cascade value; it does not suppress an image the page bundle already supplies under a `featured`, `cover` or `thumbnail` name |
-| `featured_image` | `none` / `banner` / `wash` | site value (`none`) | How this article renders its own featured image. An invalid value warns and falls back |
-| `blog_index` | `list` / `cards` | site value (`list`) | Written on a blog root, the list form for that section. An invalid value warns and falls back |
+| `byline` | string | — | Credit shown with the resolved featured image when that image is rendered |
+| `featured_image` | `none` / `banner` / `wash` / `hero` | site value (`none`) | How this article renders its own featured image; `hero` paints the immersive full-bleed shell. An invalid value warns and falls back |
+| `blog_index` | `list` / `cards` / `table` | site value (`list`) | Written on a blog root, the index form for that section. A standalone `table` with `blog_index_toggle: false` lists the whole section without pagination. An invalid value warns and falls back |
+| `blog_index_columns` | positive integer | site value (`3`) | Card columns at wide breakpoints; medium and narrow layouts retain their responsive limits |
+| `blog_index_size` | positive integer | site value (`12`) | Posts per page for `list`, `cards`, and all three views when the toggle is enabled; a standalone `table` ignores it |
+| `blog_index_toggle` | boolean | site value (`false`) | Publishes all three index forms and lets the reader switch among them; hidden forms do not load images |
 | `share` | string array or `false` | site `params.ui.share` (empty) | The page-end share targets, replacing any inherited list; `false` opts this page out — see [Share](/docs/write/blog/#share). An unknown target warns and is dropped |
 | `summary` | string | — | Fallback excerpt for post rows on tag and category pages; `description` wins |
 {.fields meta="type default"}
@@ -261,7 +271,7 @@ newest first.
 
 | Key | Type | Default | Description |
 | --- | --- | --- | --- |
-| `release_url` | string | — | One GitHub release URL, `https://github.com/<owner>/<repo>/releases/tag/<tag>`. The theme derives the project, tag, date and asset list from it. Anything else warns and the release block is skipped |
+| `release_url` | string | — | One GitHub release URL, `https://github.com/<owner>/<repo>/releases/tag/<tag>`. The theme extracts the owner, project and tag and generates source archive links. The date comes from the page's `date`; download assets come from the release body's `checksums` block (see [Releases](/docs/write/releases/)). Anything else warns and the release block is skipped |
 {.fields meta="type default"}
 
 ## Related {#related}

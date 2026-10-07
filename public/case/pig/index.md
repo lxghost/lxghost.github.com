@@ -22,6 +22,18 @@ explanations. The home page is assembled from `data/home`.
 Choose this pattern when the reference manual is small and stable but product
 news, tutorials, and release context need room to grow.
 
+## Reuse the separation, not the product data {#implementation}
+
+The [Docs root](https://github.com/pgsty/pig.pgsty.com/blob/d9065c0b4b04285f230f7af7e24d7f3bc12c4cde/content/docs/_index.md)
+selects the documentation type. Separately,
+[`data/home/metrics.yaml`](https://github.com/pgsty/pig.pgsty.com/blob/d9065c0b4b04285f230f7af7e24d7f3bc12c4cde/data/home/metrics.yaml)
+keeps product counters outside the prose. The site maintains those facts and
+the templates that consume them; OINK supplies the reading shell.
+
+For a small product, start with ordinary Docs files and add structured home
+data only for facts reused elsewhere. Copy the organization, not PIG's package
+counts or product-specific home implementation.
+
 → [Docs structure](/docs/start/anatomy/) · [All OINK cases](/case/)
 
 ---

@@ -1,6 +1,6 @@
 # exp.pgsty.com
 
-> PG Exporter: the Prometheus metrics exporter for PostgreSQL and Pgbouncer. A bilingual manual combining generated navigation, a structured catalogue and system typography.
+> PG Exporter 是面向 PostgreSQL 与 PgBouncer 的 Prometheus 指标采集器。这个双语手册结合了生成导航、结构化指标目录与系统字体。
 
 ---
 

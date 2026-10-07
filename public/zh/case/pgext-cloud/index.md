@@ -1,6 +1,6 @@
 # ext.pgsty.com
 
-> PGEXT: the PostgreSQL extension catalog. 2,241 extensions indexed and 576 packaged, searchable across 16 Linux platforms and 5 major versions.
+> PostgreSQL 扩展目录。案例快照收录 2,241 个扩展，其中 576 个已打包，可按 16 个 Linux 平台与 5 个 PostgreSQL 大版本查询。
 
 ---
 
@@ -9,12 +9,12 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 ---
 
 [ext.pgsty.com](https://ext.pgsty.com/) 是 PostgreSQL 扩展目录：可以按扩展、
-包family、依赖，以及每个扩展可用的 PostgreSQL 与操作系统组合进行检索。目录收录
+软件包系列、依赖，以及每个扩展可用的 PostgreSQL 与操作系统组合进行检索。目录收录
 2,241 个扩展，其中 576 个已打包，覆盖 16 个 Linux 平台与 5 个 PG 大版本。
 
 ## 它展示了什么 {#what-it-demonstrates}
 
-- 把可检索的数据集作为站点的主要对象呈现，同时让阅读壳退到一边。
+- 以可检索的数据集为站点主体，并隐藏不必要的阅读导航。
 - 目录与正文共处一个 OINK 站点，这与 [PG Exporter](/zh/case/pg-exporter/) 和
   [pigsty.io](/zh/case/pigsty-io/) 安放结构化数据的方式一致。
 

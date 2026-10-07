@@ -134,3 +134,4 @@ G1 的问题已全部决议（见决策日志）。仍然开放、属于 G2/G3 �
 反链：
 
 - [提案](/zh/docs/design/proposals/)
+- [CLI 与路线图](/zh/docs/design/proposals/oink-cli-roadmap/)

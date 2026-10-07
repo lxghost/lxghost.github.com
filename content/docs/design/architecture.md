@@ -1,17 +1,16 @@
 ---
 title: Architecture contract
 linkTitle: Architecture
-description: Repository assembly, configuration, diagnostics, output, performance, security, CSS, accessibility, and release-state boundaries.
+description: Repository assembly, configuration, diagnostics, localization, output, performance, security, CSS, accessibility, and release-state boundaries.
 weight: 10
 icon: fa-solid fa-sitemap
-search_keywords: [OINK architecture, repository boundary, runtime, output formats, security, accessibility, performance]
-contract_status: released-v0.8.0
+search_keywords: [OINK architecture, repository boundary, runtime, i18n, Docsy locales, output formats, security, accessibility, performance]
+contract_status: v1.2.0
 ---
 
-> [!IMPORTANT] OINK 0.8.0 contract
-> This is the architecture contract released with OINK 0.8.0. This page is the
-> canonical English source; its Chinese peer is maintained beside it in
-> `content/docs/design/`.
+> [!NOTE] OINK 1.2.0 contract
+> This contract describes the v1.2.0 release. Its canonical bilingual sources
+> are in `content/docs/design/`.
 
 ## Repository and assembly {#repository-and-assembly}
 
@@ -73,6 +72,54 @@ Network-capable features are explicit and degrade closed. PlantUML requires
 requires `appId`, `apiKey`, and `indexName`; incomplete configuration warns and
 emits no request. Draw.io loads only when rendered content contains PNG or SVG
 candidates, then inspects each distinct image URL once.
+Diagram endpoints must be strings containing an HTTP(S) URL with a host or a
+same-site path. Unsupported schemes, protocol-relative URLs, backslashes, whitespace, and
+pathless same-site references warn and disable the integration before its runtime is selected.
+
+## Interface localization {#interface-localization}
+
+> [!NOTE] Available since OINK 1.1
+> OINK 1.1.0 expands the native interface catalogs to the complete locale set
+> below. Consumer-authored content still needs its own translations.
+
+OINK ships native interface catalogs for the 31 locale filenames present in
+[`google/docsy@64f51c5`](https://github.com/google/docsy/tree/64f51c5bde2abd2e8a001cb31b32656f5800ca56/theme/i18n),
+plus generic `zh` as the Simplified Chinese default:
+
+```text
+ar az bg bn de en es et fa fi fr he hi hu it ja ko nl no oc pl pt-br ro ru
+sr-cyrl sr-latn sv tr uk zh-cn zh-tw
+```
+
+That is a compatibility scope, not a runtime dependency on Docsy and not a
+claim that a consumer's authored content has been translated. A new Docsy
+locale does not enter OINK automatically: it needs a complete OINK catalog and
+the same review as every existing locale.
+
+`i18n/en.yaml` owns the 194-message schema. Every one of the 32 OINK bundles has
+exactly that key set and native UI text; an English value may remain only when
+it is a reviewed product name, punctuation token, conventional abbreviation,
+or genuine word shared by the target language. There are no generated English
+fallback blocks. `zh` and `zh-cn` carry Simplified Chinese, while `zh-tw`
+carries Traditional Chinese.
+
+On the Hugo 0.160.x compatibility floor, a non-default generic `zh` language
+key must set the concrete `locale: zh-CN` value when the regional Chinese
+catalogs are also present. Bare `locale: zh` resolves in that configuration
+from Hugo 0.161 onward. This affects language configuration, not the
+`i18n/zh.yaml` catalog name.
+
+Runtime placeholders such as `%s`, `{count}`, and `{{ .Count }}` may move to a
+grammatically natural position but must remain byte-for-byte identical. Values
+are strings or Hugo plural-message maps. Plural maps use the locale's supported
+categories (`zero`, `one`, `two`, `few`, `many`, `other`); `other` is required,
+and every form is a string with the same placeholders. Catalogs contain no hidden bidirectional controls; Arabic,
+Persian, and Hebrew direction still comes from the consumer language setting
+(`direction: rtl`), not from characters injected into translations.
+`bin/check-i18n.py` enforces the locale set, schema, value shape, placeholders,
+directional controls, and the small reviewed set of English-identical terms.
+Adding a visible string therefore means translating it in every bundle in the
+same change, not running a fallback generator.
 
 ## Featured images {#featured-images}
 
@@ -91,7 +138,11 @@ processable rasters may be cropped; SVG, static, and remote resources remain
 valid without Hugo image operations.
 
 `featured-image-resolve.html` owns source ranking and relative/absolute URLs.
-A page's bundled resource outranks an inherited cascade image. List thumbnails,
+A page's explicit `images` outranks its bundled resource, which outranks an
+inherited cascade image, even when explicit and inherited values are identical.
+For file-backed pages, authored presence is read from the source front matter;
+Hugo parses its YAML, TOML, or JSON. For generated pages without a source file,
+resolved `images` is treated as explicit. List thumbnails,
 Open Graph/Twitter/schema helpers, author avatars, Pinterest media, and blog
 presentation all consume that decision.
 
@@ -113,6 +164,13 @@ Every base template sets `Page.Store.tdOutputFormat`:
 | RSS | Safe static summary or explicit omission |
 | NAVJSON | Opt-in per site: one `navigation.json` per language, serializing the navigation authority the sidebar and pager already read |
 | BookManifest | Opt-in ordered JSON handoff for a publication packager; never presented as an EPUB or PDF |
+
+Output formats run in their defined order; the mutable-format concern is not a
+cross-format race. Within Print, however, Hugo may render a Book page and
+overlapping aggregates in parallel. One per-page cached coordinator therefore
+produces the plain and Book variants in a fixed order, and each caller selects
+the form it needs. Plain Print keeps page-local heading and routed xref URLs;
+Book aggregates keep namespaced headings and in-document xrefs.
 
 Consumers opt into custom outputs; OINK does not force expensive Book
 aggregates. HTML gets the shared action and core layers plus stable first-party
@@ -151,6 +209,10 @@ whole-Book Print HTML and accepts consumer metadata separately. The PDF runner
 serves that Print output only on a temporary loopback address, invokes an
 explicit Chrome/Chromium binary behind a `script-src 'none'` Content Security
 Policy, and emits A4 pages with CSS page numbers.
+The PDF server also applies a CSP sandbox, rejects meta-refresh navigation,
+and refuses symlinks escaping the build tree. Without the network opt-in,
+image and media requests are limited to the loopback origin and data URLs,
+including requests initiated by CSS or SVG.
 Both tools refuse missing or out-of-tree resources; network resources and
 output replacement each require a separate explicit flag. The network opt-in
 allows passive HTTP(S) media only; remote scripts and local-file schemes remain
@@ -173,8 +235,7 @@ Performance rules:
 - validate reachable author input, not hypothetical internal states.
 
 `bin/measure-baseline.py` measures build time, output weight, bundle count, and
-shortcode density. `bin/sites/build-all.py` builds maintained consumers in
-isolated snapshots.
+shortcode density.
 
 ## Trust, CSS, and accessibility {#trust-css-and-accessibility}
 
@@ -193,7 +254,15 @@ and narrow viewports. Theme-owned decorative icons carry `aria-hidden`; pages
 with task lists or raw authored Font Awesome elements alone load the authored
 accessibility repair.
 
-Font roles are `ui`, `body`, `heading`, `code`, `display`, `meta`, and
+Reading-container focus distinguishes pointer origin from keyboard navigation.
+A pointer-focused main region, table viewport, or code `pre` does not acquire
+an outline merely because the reader presses another key. Tab, blur, or a new
+non-pointer focus clears that exemption. Controls retain their own focus
+styles, scrollable containers retain `tabindex`, and the skip-link destination
+shows a local outline around its title instead of the entire article. Forced
+colors preserve the keyboard indication; no global focus-outline reset is used.
+
+Font roles are `ui`, `body`, `heading`, `code`, `display`, `meta`, `brand`, and
 `print`, exposed as `--td-*-font-family`. `ui` is the main face: `body`
 resolves through it, and `heading` through `body`, so one assignment moves
 chrome, prose, and headings together. `params.ui.typography` is `technical` or
@@ -213,8 +282,8 @@ the prose face, not in a technical one.
 
 The accent family splits by role. Accent *text* -- links, external URLs, inline
 code -- follows the Bootstrap link family and `--bs-code-color`, which a theme
-color never redeclares; inline code is a fixed crimson pair so a page dense in
-identifiers reads as code and prose rather than code and links. Accent
+color never redeclares. Inline code follows the visual preset: Slate retains
+the crimson pair, while Paper uses ink text on a quiet chip. Accent
 *grounds* -- selected rows, the greyed ground a navigation row takes under the
 pointer, hover washes, the outline pill, rail and dot, chip hovers, a card's
 hovered edge, a share button's hover fill, selection, focus rings -- follow
@@ -225,7 +294,7 @@ anchors the viewport is standing over, and a Book chapter's headings under the
 pointer or keyboard focus, light in the section's color, not in the link blue.
 `theme_color` and `theme_color_dark` take `#rgb`/`#rrggbb`; front matter and
 section cascades override the site value. An unconfigured site emits nothing.
-An unparseable value warns and keeps the default palette. A resolved color below 4.5:1 against the theme's own
+An unparseable value warns and keeps the default palette. A resolved color below 4.5:1 against the site default preset
 canvas warns with a suppressible id and still ships: the check is advisory, and
 only a parse failure drops a color. The light color is the key: a
 `theme_color_dark` with no valid `theme_color` warns and is ignored, so a page
@@ -234,6 +303,52 @@ white in 4% steps until it clears 4.5:1 on the dark canvas. Every emitted byte i
 formatted from parsed integer channels, never from author text. One resolver
 answers "what color is this page" for the head block and the sidebar root
 switcher alike.
+
+## Visual presets {#visual-presets}
+
+OINK 1.2.0 defaults to Paper. `params.ui.preset` accepts
+`paper`, `slate`, and the explicit experimental presets `ink`, `terminal`.
+Invalid and reserved names (`folio`, `canvas`) warn and fall back to `paper`.
+`params.ui.preset_menu` defaults to `false`; `true` offers Paper, Slate and the
+site default. A list selects available choices, including experiments. A list must include the site default; missing it
+warns and adds it. There is no page-level preset override.
+
+Hugo renders `data-td-preset` and `data-td-site-preset` on every document root,
+including 404 and print output. With reader choice enabled, an inline head
+script validates `td-preset` before CSS loads. Selecting the default removes
+that storage key. Invalid saved values are removed; blocked storage leaves
+in-page controls usable and shows a non-persistence note. The `storage` event
+synchronizes tabs. `td-preset-change` carries `{preset, previous, stored}`.
+Mode remains independent: `data-bs-theme`, `td-color-theme`, and
+`td-theme-change` retain their meaning. The browser chrome color follows the
+resolved mode and preset. Without JavaScript, the site default light palette
+renders; appearance controls require JavaScript.
+
+All four presets compile into one stylesheet. Slate retains the v1.1.0 base
+palette selectors and values. Paper changes palette and selected component
+rules without changing shell columns, breakpoints, or global spacing. Dark
+Paper redeclares every light palette token, including nested dark islands.
+Font roles have equal selector specificity: preset, then `typography: system`,
+then head-emitted `params.ui.fonts`. Site `_styles_project.scss` remains last.
+`brand` controls the wordmark independently from display headings. Paper uses
+local IBM Plex Sans; Slate keeps Inter; both retain Chakra Petch for the
+wordmark and IBM Plex Mono for code. System typography requests no bundled
+text face unless the site explicitly overrides a role. No external font is
+introduced. Ink uses Inter throughout, with red markers, underlined prose
+links, square geometry and no shadows. Terminal uses mono chrome/headings,
+Plex Sans prose, teal links, amber accents, 2 px corners and no shadows. Its
+navigation density changes only on desktop; prose measure and mobile targets
+remain unchanged. CSS heading marks have empty accessible alternatives and
+are omitted in unsupported browsers. Explicit `fonts.ui` still supplies the
+main face unless a valid `fonts.body` overrides it. See the
+[experiment record](/docs/design/research/2026-10-05-ink-terminal-experiment/).
+
+Giscus auto palettes follow both dimensions; explicit Giscus theme or
+light/dark stylesheet overrides remain authoritative. Print uses a light
+preset palette on white paper even when the screen is dark. Mermaid and
+ECharts continue to follow mode only; API widgets retain vendor palettes.
+See the [accepted decision](/docs/design/decisions/visual-presets/) and
+[local acceptance record](/docs/design/research/2026-10-05-visual-presets-acceptance/).
 
 ## Release states {#release-states}
 

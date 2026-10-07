@@ -1,6 +1,6 @@
-# pgsql.cc
+# PostgreSQL 组件文库
 
-> PGSQL.CC: an operations library for PostgreSQL and the components around it. Several upstream manuals and partially translated language trees share one search and one visual system.
+> PostgreSQL 组件运维文库：让多个上游手册与完成度不一的翻译树共享搜索和视觉体系。
 
 ---
 
@@ -8,9 +8,11 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 
 ---
 
-[pgsql.cc](https://pgsql.cc/) 把 Patroni、HAProxy、etcd、PgBouncer、pgBackRest
+[PostgreSQL 组件文库](https://github.com/pgsty/pgsql.cc) 把 Patroni、HAProxy、etcd、PgBouncer、pgBackRest
 与 pgBadger 的运维手册汇总为一套 PostgreSQL 专题文库。本案例快照中有
 二百一十七页英文内容与八十页中文内容。
+
+这个案例介绍 Hugo 组件文库项目；[PGSQL.CC](https://pgsql.cc/) 中文门户是独立的 Django 应用。
 
 ## 它展示了什么 {#what-it-demonstrates}
 

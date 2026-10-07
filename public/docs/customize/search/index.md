@@ -65,7 +65,8 @@ params:
 | `summary` | The above plus description and summary | Sites in the thousands of pages; this site uses it |
 | `content` | The above plus the full plain text | The default, suitable up to a few hundred pages |
 
-Any other value fails the build with `invalid params.offline_search_index`.
+Any other value warns and uses `content` during ordinary preview; a strict
+publishing build fails on `invalid params.offline_search_index`.
 
 `offline_search_summary_length` is where a result row's excerpt is cut (default
 70), and `offline_search_max_results` caps the number of results (default 10).
@@ -120,8 +121,9 @@ search_exclude: true
 ---
 ```
 
-`search_exclude` is the only spelling; `exclude_search` and `excludeSearch` fail
-the build with the new name. A page with an empty body is not indexed.
+`search_exclude` is the only spelling. The removed `exclude_search` and
+`excludeSearch` keys are not read and therefore do not protect a page; the
+migration checker reports them. A page with an empty body is not indexed.
 
 > [!WARNING] The index is a static JSON file anyone can download; it is not access control.
 > Do not put content that should stay private on the site, and do not use
@@ -134,6 +136,10 @@ in the query, the whole query switches to substring matching: it compares title,
 keywords, in-page headings, description and body in turn, scores whichever layer
 matched, and finally multiplies by `search_boost` as usual. Both paths rank by
 the same rules.
+
+In the 1.2.0 working implementation, a keyword-only match displays the page
+description or excerpt, keeping synonym lists out of result summaries. A body
+match still displays surrounding text as context.
 
 Three things follow:
 
@@ -164,8 +170,9 @@ params:
       indexName: YOUR_INDEX
 ```
 
-All three values must be written explicitly, and a missing one stops the build:
-OINK never falls back to another project's public index. The DocSearch JS and
+All three values must be written explicitly. A missing value produces a
+warning and disables Algolia: ordinary previews continue, while a build with
+`--panicOnWarning` fails. OINK never falls back to another project's public index. The DocSearch JS and
 CSS ship with the theme rather than loading from a CDN, but every query is a
 request to Algolia. Real credentials and a real index are needed for it to work,
 so nothing is rendered here.

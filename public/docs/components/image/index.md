@@ -33,14 +33,21 @@ Sources resolve in the following order, written the same way in each case:
 | Placement | How it is written | Suited to |
 | --- | --- | --- |
 | Beside the page (a bundle: `index.md` plus the image) | `![…](oink-shell.webp)` | A screenshot only this page uses; it travels with the page and is shared by translations |
+| Current section bundle (`_index.md` and its resources) | `![…](post/image.png)` | Images belonging to a section; use the resource path relative to that section |
 | Global resource `assets/images/…` | `![…](images/logo/oink.webp)` | Images several pages share, especially ones needing processing (resize / crop) |
 | Static directory `static/images/…` | `![…](/images/hero-light.webp)` | Large images and downloads that need no processing; supply `width`/`height` where the theme cannot measure them |
 | Remote URL | `![…](https://example.com/a.png)` | Rare: nothing is downloaded at build time and nothing can be processed |
 
-A relative path is looked up first as a page resource and then as a global
-resource; failing both, it is emitted as a static path. The theme does not check
-whether a static path or a remote URL exists. Only an image that asks for
-processing (`command=`) fails the build when its resource cannot be found.
+A relative path is looked up as a page resource, a resource of the current
+section, and then a global resource; if none matches, it is emitted as a static
+path. The theme does not check whether a static path or a remote URL exists. When processing cannot resolve a
+processable resource, ordinary preview warns and leaves the image unprocessed;
+strict publishing rejects the warning.
+
+Markdown alternative text takes precedence over resource metadata, including an
+explicitly empty alt for a decorative image. Resource `params.alt` must be a
+string; invalid metadata warns and is ignored, preserving the authored alt.
+Strict publishing rejects that warning.
 
 ## Inline versus block {#inline-vs-block}
 An image inside a line of text is an inline image, rendered as one `<img>` and
@@ -76,11 +83,11 @@ An attribute line with `caption="…"` renders the image as a `<figure>` plus a
 
 ```markdown {title="Source"}
 ![Release card: version, publication date and asset buttons](release-note.webp)
-{caption="The release card is generated from data/download and the page's release record"}
+{caption="The release card uses the page's release_url and date"}
 ```
 
 ![Release card: version, publication date and asset buttons](release-note.webp)
-{caption="The release card is generated from data/download and the page's release record"}
+{caption="The release card uses the page's release_url and date"}
 
 A Markdown `"title"` keeps its own meaning (a hover tooltip) and never becomes
 the caption.
@@ -121,8 +128,9 @@ original.
 ![the left half of the shell](oink-shell.webp)
 {command="Fill" options="300x150 Left" caption="Fill 300x150 Left: fills the box, cropped from the left"}
 
-Static paths, remote URLs and SVG cannot be processed, and writing `command` for
-one fails the build. The options syntax (anchors, quality, format conversion, as
+Static paths, remote URLs and SVG cannot be processed. Writing `command` for
+one warns and leaves it unprocessed; strict publishing rejects the warning. The
+options syntax (anchors, quality, format conversion, as
 in `300x150 webp q80`) is in
 [Hugo image processing](https://gohugo.io/content-management/image-processing/).
 
@@ -144,8 +152,8 @@ Two forms, for different purposes:
 ![Release card](release-note.webp)
 {caption="Click the image for the releases and downloads guide" link="/docs/write/releases/"}
 
-A linked image never zooms. Writing `link=` with no caption fails the build, and
-the error points at `[![…](…)](…)` instead.
+A linked image never zooms. Writing `link=` with no caption warns and drops the
+link, pointing at `[![…](…)](…)` instead; strict publishing rejects the warning.
 
 ## Numbered figures {#numbered}
 
@@ -178,6 +186,12 @@ and gallery images that have alt text become clickable buttons that open the
 full image in a native `<dialog>` (Esc closes it, focus returns where it was).
 This page turns it on in its front matter, so every image above is clickable.
 
+Since OINK 1.1, the preview action is kept in the button's
+accessible name, alongside the image description. It adds no helper text to
+copied articles; the copied HTML retains images and authored captions for
+rich-text editors. In v1.0.0, a hidden preview label can appear after pasting.
+Until upgrading, setting `image_zoom: false` and rebuilding avoids that label.
+
 ```yaml {title="hugo.yml"}
 params:
   ui:
@@ -206,19 +220,21 @@ images are needed, give each a `class` and show one per scheme with
 `[data-bs-theme="dark"]` in the site's CSS:
 
 ```markdown {title="Source"}
-![Sidebar (light)](oink-shell.webp)
+![Sidebar (light)](sidebar-light.webp)
 {class="only-light"}
 
-![Sidebar (dark)](oink-shell.webp)
+![Sidebar (dark)](sidebar-dark.webp)
 {class="only-dark"}
 ```
 
 ```scss {title="assets/scss/_styles_project.scss"}
-[data-bs-theme="dark"] .only-light,
-:not([data-bs-theme="dark"]) .only-dark { display: none; }
+html[data-bs-theme="dark"] .only-light,
+html:not([data-bs-theme="dark"]) .only-dark { display: none; }
 ```
 
-`class` is passed through by the theme untouched, for the site's CSS to use.
+Replace `sidebar-light.webp` and `sidebar-dark.webp` with your own light and
+dark images. The theme sets `data-bs-theme` on `html`; the selectors above
+show only the matching image. `class` is passed through for the site's CSS.
 
 ## Output {#outputs}
 
@@ -246,8 +262,9 @@ The attribute line `{…}` (the line immediately after a block image):
 | `data-*` / `aria-*` | string | — | Passed through |
 {.fields meta="type default"}
 
-`style`, `on*`, `alt`, `title`, `src` and any other key on the attribute line
-fail the build (alt, title and src belong to the Markdown image itself).
+`style`, `on*`, `alt`, `title`, `src`, and unsupported keys on the attribute
+line warn and are ignored; strict publishing rejects the warning. Alt, title,
+and src belong to the Markdown image itself.
 
 ## Limits {#limits}
 
@@ -268,6 +285,8 @@ fail the build (alt, title and src belong to the Markdown image itself).
 
 Backlinks:
 
+- [OINK v1.1.0](/blog/release/1.1.0/)
+- [Upgrade](/docs/admin/upgrade/)
 - [Components](/docs/components/)
 - [Asciinema](/docs/components/asciinema/)
 - [Cards](/docs/components/cards/)
@@ -280,6 +299,7 @@ Backlinks:
 - [Brand and appearance](/docs/customize/brand/)
 - [Configuration](/docs/customize/config/)
 - [Print](/docs/customize/print/)
+- [2026-09-19 community review](/docs/design/research/2026-09-19-upstream-review/)
 - [Books](/docs/write/book/)
 - [Page parameters](/docs/write/frontmatter/)
 - [Writing pages](/docs/write/pages/)

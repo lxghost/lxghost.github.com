@@ -69,7 +69,7 @@
   <meta itemprop="name" content="Design proposals and PRDs">
   <meta itemprop="description" content="The canonical bilingual home for OINK PRDs and designs that are still being evaluated.">
   <meta itemprop="dateModified" content="2026-08-28T00:08:16+08:00">
-  <meta itemprop="wordCount" content="454">
+  <meta itemprop="wordCount" content="666">
   <meta itemprop="keywords" content="Design">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Design proposals and PRDs">
@@ -141,7 +141,31 @@ This is the multi-page printable view of this section.
     
     
     <li>
-4: <a href="#pg-7be5d407e1731fe0d9afc340d1b6d80d">Book publication pipeline</a>
+4: <a href="#pg-d7496727960c394d4c6a7a3e4bd35d81">OINK CLI and the next product stage</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+5: <a href="#pg-24be65d51ce1bd2e0a8315caa4dfb631">OINK CLI maintenance roadmap</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+6: <a href="#pg-7be5d407e1731fe0d9afc340d1b6d80d">Book publication pipeline</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+7: <a href="#pg-f4135abca8c4380df19e6d4e53b5304e">Visual presets and appearance switching</a>
 
 
     </li>
@@ -180,23 +204,42 @@ or the documentation repository.</p>
       <td>Partially implemented; the media-result contract and Landing resource metadata shipped, M3 resolved for native-image processing, retirement (M4) open</td>
     </tr>
     <tr>
-      <td><a href="/docs/design/proposals/agent-indexes/">Bulk agent indexes</a></td>
-      <td>Accepted (2026-08-27); both outputs are implemented on the theme&rsquo;s main branch and ship with OINK 0.8.0, after which this proposal retires</td>
+      <td><a href="/docs/design/proposals/oink-cli-roadmap/">OINK CLI and the next product stage</a></td>
+      <td>Independent Go repository and first-stage boundary accepted; local CLI candidate implemented, not publicly released; later theme, migration, adoption, versioning, OpenAPI, and platform stages remain proposals</td>
     </tr>
     <tr>
-      <td><a href="/docs/design/proposals/book-publication/">Book publication pipeline</a></td>
-      <td>Manifest and EPUB/PDF tooling are released — see <a href="/docs/design/architecture/">Architecture</a>; only consumer migration is still open here</td>
+      <td><a href="/docs/design/proposals/visual-presets/">Visual presets and appearance switching</a></td>
+      <td>Paper/Slate locally implemented; Ink/Terminal remain research; see the accepted decision and dated acceptance record</td>
     </tr>
   </tbody>
 </table>
 </div>
 
+<p>The bulk agent-index proposal retired after the outputs shipped. Its stable
+behaviour now belongs to <a href="/docs/design/architecture/#outputs-and-runtime">Architecture</a>,
+and user steps belong to <a href="/docs/customize/agents/">Agent-ready output</a>.
+The Book publication proposal likewise retired after <code>BookManifest</code> and the
+EPUB/PDF tooling shipped. The stable behaviour belongs to
+<a href="/docs/design/architecture/#outputs-and-runtime">Architecture</a> and
+<a href="/docs/write/book/#print">Writing a book</a>; dated downstream adoption evidence
+belongs to <a href="/docs/design/research/consumer-evidence/#publication-adoption">Consumer evidence</a>.
+Remaining consumer adoption does not keep an upstream design proposal active.
+Both proposal drafts remain available in Git history.</p>
 <p>The generated-configuration-schema proposal has been retired through the
 lifecycle: the behaviour is documented normatively in
 <a href="/docs/customize/config/#editor-schema">Configuration</a>, the long-lived
 rationale moved to the
 <a href="/docs/design/decisions/config-schema/">generated configuration schema decision</a>,
 and the draft text is preserved by Git history.</p>
+<h2 id="pg-c4144f0fbb65a66b7a949fd356225368--cli-maintenance-candidate">CLI workspaces and adapters
+</h2>
+<p>Explicit workspaces and optional adapters remain in the current reduced CLI.
+The <a href="/docs/design/decisions/cli/#workspace-registry">current contract</a> and
+<a href="/docs/start/cli/#workspace-registry">usage guide</a> define the command boundary.
+The dated R1–R8 and A18 record is historical source/binary-bound evidence.
+It does not qualify later command or output changes. The finite maintenance
+roadmap remains retired from active navigation; no public CLI release or
+deployment is established.</p>
 <h2 id="pg-c4144f0fbb65a66b7a949fd356225368--where-a-new-prd-goes">Where a new PRD goes
 </h2>
 <p>Create one English-primary page and its Simplified Chinese peer:</p>
@@ -246,6 +289,18 @@ implementation, a changed design updates this bilingual proposal before code
 silently diverges. Acceptance requires the narrow theme checker, the real
 documentation site, rendered EN/ZH, relevant outputs, accessibility, and
 responsive review.</p>
+<h2 id="pg-c4144f0fbb65a66b7a949fd356225368--cli-studio-candidate">Read-only Studio candidate
+</h2>
+<p>Studio is removed from the current CLI on 2026-10-04. Use <code>oink dev</code>,
+an ordinary editor, and structured <code>inspect</code>/<code>check</code> reports. The
+<a href="/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r7">R7 record</a>
+preserves historical acceptance of the earlier browser implementation.</p>
+<h2 id="pg-c4144f0fbb65a66b7a949fd356225368--cli-editing-candidate">Reviewed editing
+</h2>
+<p>General source editing is removed from the current CLI. Guarded <code>new</code>,
+<code>move</code>, review records, and baseline plans remain. Old editing plans are
+rejected. The <a href="/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r8">R8 record</a>
+remains historical evidence rather than the current command API.</p>
 
 </div>
 </div>
@@ -727,7 +782,1355 @@ enforcing any model-context ceiling.</li>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-7be5d407e1731fe0d9afc340d1b6d80d">4 - Book publication pipeline</h1>
+	<h1 id="pg-d7496727960c394d4c6a7a3e4bd35d81">4 - OINK CLI and the next product stage</h1>
+    <div class="lead">The accepted independent CLI boundary and local first-stage candidate, with later adoption, theme, migration, and content-model proposals kept explicit.</div>
+	<div class="td-callout td-callout--warning" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="td-callout__label">Local first-stage candidate; later roadmap remains draft</span></div>
+  <div class="td-callout__body">
+<p>The independent Go repository <code>pgsty/oink-cli</code> and first-stage development were authorized on 2026-09-29. Its six commands now have a local <code>0.1.0-dev</code> implementation, with final local acceptance recorded separately. Current behavior belongs to the <a href="/docs/design/decisions/cli/">CLI decision and result contract</a> and <a href="/docs/start/cli/">usage guide</a>. This is not a public CLI release or independent-user adoption record. Theme 1.2, its tooling descriptor, Docsy migration, version lifecycle, OpenAPI, MCP, and Studio remain proposals.</p>
+  </div>
+</div><div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Record</th>
+      <th scope="col">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Status</td>
+      <td>Repository choice and first-stage scope accepted; local candidate implemented and validated; later roadmap remains draft</td>
+    </tr>
+    <tr>
+      <td>Owner</td>
+      <td>OINK maintainers; final local acceptance and public release remain separate</td>
+    </tr>
+    <tr>
+      <td>Date</td>
+      <td>2026-09-29</td>
+    </tr>
+    <tr>
+      <td>Scope</td>
+      <td>OINK theme, independent CLI, existing Starter, and documentation site</td>
+    </tr>
+    <tr>
+      <td>Affected contracts</td>
+      <td>Architecture, configuration/diagnostics, outputs, migration, and later version navigation/API content</td>
+    </tr>
+    <tr>
+      <td>Source snapshot</td>
+      <td>Theme HEAD <code>3a18234</code>, documentation HEAD <code>85f16bf</code>, Starter HEAD <code>137843b</code>, plus the explicitly identified local work below</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-d7496727960c394d4c6a7a3e4bd35d81--recommendation">Recommendation
+</h2>
+<p>Create a separate <strong><code>oink-cli</code> repository</strong>, publish one executable named <strong><code>oink</code></strong>, and keep <strong>OINK</strong> as the single product identity. The theme renders content; the CLI helps people initialize, inspect, validate, upgrade, and eventually migrate their sites. The documentation site continues to own public guides, bilingual design records, and integration acceptance.</p>
+<p>The repository choice and Go implementation are now accepted and exist locally. Public publication remains a separate action. The first-stage behavior has moved to the <a href="/docs/design/decisions/cli/">CLI contract</a>; the <a href="/docs/design/research/2026-09-29-cli-acceptance/">dated acceptance record</a> identifies executed checks and remaining limits. This roadmap stays active for its later stages and adoption targets.</p>
+<p>The first release should improve the path from an existing repository to a reliable publication. Its four substantive workflows are <strong>doctor, check, init, and upgrade</strong>. <code>dev</code> and <code>build</code> may provide small, transparent Hugo shortcuts. A supported Docsy migration path follows evidence from actual input repositories. Version lifecycle and OpenAPI generation come after that first usable release, with one major content-model project active at a time.</p>
+<p>Keep the theme usable without installing the CLI. For generated content, this means committing or otherwise delivering the generated Hugo inputs: removing the CLI must still leave a site that ordinary Hugo can build. Regenerating those inputs remains a separate operation.</p>
+<h2 id="pg-d7496727960c394d4c6a7a3e4bd35d81--position">Product position and target user
+</h2>
+<p>Recommended public description:</p>
+<blockquote>
+<p>OINK is a local-first documentation toolkit built on Hugo, publishing engineering knowledge for readers and agents.</p>
+</blockquote>
+<p>Retain “Hugo theme” in installation and discovery pages because it describes what users install. “Knowledge compiler” is a useful architectural direction, but it is not yet evidence that OINK owns a new product category. A new name should not obscure the current Markdown/Hugo path.</p>
+<p>Prioritize Git-oriented maintainers of open-source infrastructure, developer tools, and multilingual technical documentation. Their immediate jobs are to get a site working, diagnose a failure, keep upgrades safe, and move existing content without losing URLs or meaning. Existing maintained sites provide regression coverage; independent teams provide adoption evidence. Those are different kinds of evidence.</p>
+<p>For the first stage, non-goals include a visual CMS, hosted accounts, a deployment control plane, a package marketplace, an LLM runtime, a semantic-search service, and a new rendering engine. Books, blogs, and landing pages remain supported, but their feature catalogs do not drive this roadmap.</p>
+<h2 id="pg-d7496727960c394d4c6a7a3e4bd35d81--evidence">Evidence and changes to the research recommendation
+</h2>
+<p>This proposal considers the supplied strategy report and checks it against the local implementation, bilingual Design section, Starter, and current primary documentation. It does not treat the report&rsquo;s star counts, effort estimates, commercial prices, or market claims as verified demand.</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Observation</th>
+      <th scope="col">Product consequence</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>OINK already has a public Starter, generated configuration schemas, migration scripts, publication tools, and focused theme checkers</td>
+      <td>Productize selected workflows instead of starting a second implementation of everything</td>
+    </tr>
+    <tr>
+      <td>The front-matter schema deliberately omits type constraints</td>
+      <td>It is not a complete executable validator; strict checks must respect the owning resolvers and actual Hugo output</td>
+    </tr>
+    <tr>
+      <td>Existing version support includes a cross-site menu, archive banners, and optional path concatenation</td>
+      <td>The gap is lifecycle and reliable page correspondence, not another menu or banner</td>
+    </tr>
+    <tr>
+      <td>Current version documentation explicitly uses independent Hugo builds</td>
+      <td>Preserve that model initially; do not silently introduce a multi-version renderer inside one build</td>
+    </tr>
+    <tr>
+      <td>OpenAPI widgets become specification links outside HTML and have documented accessibility exclusions</td>
+      <td>Static, accessible endpoint content is a concrete future improvement</td>
+    </tr>
+    <tr>
+      <td>Backlinks are implemented; G2/G3 remain draft</td>
+      <td>A graph visualization is not an already-accepted commitment</td>
+    </tr>
+    <tr>
+      <td><code>bin/update-consumers.py</code> exists in this working tree as uncommitted local work</td>
+      <td>Its release-resolution and preservation rules are useful design input, not a claim of shipped CLI functionality</td>
+    </tr>
+    <tr>
+      <td>The theme and documentation trees contain substantial unrelated local changes</td>
+      <td>This proposal records recommendations; it does not certify or release that work</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>The supplied report correctly emphasizes adoption and an optional tools layer. Four changes make it executable:</p>
+<ol>
+<li>Put safe upgrades alongside initialization and diagnosis. Existing users have an immediate, testable maintenance need.</li>
+<li>Separate maintainer regression checkers from consumer checks. A synthetic-fixture checker is not automatically a general-purpose site validator.</li>
+<li>Treat migrations as supported input profiles, not a promise of complete Docsy or arbitrary MDX conversion.</li>
+<li>Replace the simultaneous versioning/OpenAPI/graph/platform program with sequential decisions. A feature list and hour estimates are not a staffed delivery plan.</li>
+</ol>
+<p>Current competitors validate the workflow direction, not demand for OINK itself. <a href="https://www.mintlify.com/docs/cli/commands">Mintlify&rsquo;s CLI</a> exposes preview, validation, and link checking. <a href="https://github.com/cloudflare/nimbus">Nimbus</a> combines scaffolding and agent-readable output while remaining pre-1.0. <a href="https://docusaurus.io/docs/versioning">Docusaurus</a> makes version snapshots explicit and warns about their maintenance/build cost. Copying Nimbus&rsquo;s entire source-owned UI model would shift upgrade work to OINK consumers; use that pattern for small generated recipes, while retaining the upgradable theme module.</p>
+<h2 id="pg-d7496727960c394d4c6a7a3e4bd35d81--repository-choice">Why a separate repository
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Option</th>
+      <th scope="col">Benefit</th>
+      <th scope="col">Cost</th>
+      <th scope="col">Decision</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Extend Python scripts under theme <code>bin/</code></td>
+      <td>Fastest small maintenance improvements; same-change tests</td>
+      <td>Weak installation/distribution experience; no cohesive public command contract</td>
+      <td>Retain for internal and historical tooling</td>
+    </tr>
+    <tr>
+      <td>Put <code>cmd/oink</code> in the theme&rsquo;s root Go module</td>
+      <td>One checkout and atomic source edits</td>
+      <td>Mixes a Hugo asset module with application dependencies, binary releases, and consumer support</td>
+      <td>Do not choose for the public CLI</td>
+    </tr>
+    <tr>
+      <td>Use an isolated Go submodule in the theme repository</td>
+      <td>Atomic repository changes without sharing Go dependencies</td>
+      <td>Separate module tags and releases still need management; easier to reach into unpublished theme internals</td>
+      <td>Viable fallback for a time-boxed prototype, not the preferred product home</td>
+    </tr>
+    <tr>
+      <td>Create <code>pgsty/oink-cli</code></td>
+      <td>Clear executable boundary, independent releases, no need for users to clone theme internals</td>
+      <td>Requires explicit compatibility and cross-repository acceptance</td>
+      <td>Accepted; local Go repository created</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>This is a release and responsibility decision, not a claim that a monorepo is technically impossible. A nested module can isolate dependencies. Conversely, separate repositories create a real coordination cost: a renderer change may require two pull requests, paired contracts, and a compatibility test. OINK already operates a theme/site/Starter split, so that cost is acceptable if the public boundary stays small.</p>
+<p>Theme and CLI releases must not share a forced version number. A proposed <code>oink</code> CLI <code>0.1.x</code> should work with a tested OINK <code>1.1.0</code> baseline and the next supported theme release. Compatibility is declared per capability. Unsupported functionality must be reported, rather than interpreting every schema from the newest theme as valid for every old site.</p>
+<p>Do not create separate repositories for the linter, migration engine, OpenAPI generator, or a shared SDK now. They can begin as internal CLI packages. The binary can be built in Go without importing Hugo&rsquo;s internal Go packages or making the theme module depend on the CLI.</p>
+<h2 id="pg-d7496727960c394d4c6a7a3e4bd35d81--responsibilities">Responsibility map
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Surface</th>
+      <th scope="col">Owner</th>
+      <th scope="col">Boundary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Layouts, components, style, navigation, search, accessibility, output semantics</td>
+      <td><code>pgsty/oink</code></td>
+      <td>Executes inside Hugo and the static site</td>
+    </tr>
+    <tr>
+      <td>Theme defaults, owning resolvers, generated schemas, output schemas</td>
+      <td><code>pgsty/oink</code></td>
+      <td>Authoritative theme behavior and its projections</td>
+    </tr>
+    <tr>
+      <td>Theme implementation checks and narrow invalid-input fixtures</td>
+      <td><code>pgsty/oink</code></td>
+      <td>Remain maintainer tools, even if implemented in Python or JavaScript</td>
+    </tr>
+    <tr>
+      <td>Environment diagnosis, consumer checks, initialization, upgrade; later migration transformations</td>
+      <td><code>pgsty/oink-cli</code></td>
+      <td>Initial commands implemented locally; migration remains proposed</td>
+    </tr>
+    <tr>
+      <td>OpenAPI parsing and generated source, later version snapshot orchestration</td>
+      <td>Proposed later <code>pgsty/oink-cli</code> capabilities</td>
+      <td>Produces ordinary Hugo inputs; does not own final rendering</td>
+    </tr>
+    <tr>
+      <td>Small official site skeleton and language profiles</td>
+      <td><code>pgsty/oink-starter</code></td>
+      <td>Single source for CLI initialization; pinned snapshots can be embedded in CLI releases</td>
+    </tr>
+    <tr>
+      <td>Guides, examples, PRDs, accepted rationale, EN/ZH integration/browser review</td>
+      <td><code>pgsty/oink.pgsty.com</code></td>
+      <td>Continues as the canonical public documentation and regression site</td>
+    </tr>
+    <tr>
+      <td>Hosting credentials, account setup, deployment authorization</td>
+      <td>Consumer workflow</td>
+      <td>Existing CI/provider tools; first CLI release does not deploy</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="td-code td-code--untitled" id="td-code-e269069b-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="12">
+  <div class="td-code__viewport" id="td-code-e269069b-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">                          optional oink CLI
+</span></span><span class="line"><span class="cl">                  init / doctor / check / upgrade
+</span></span><span class="line"><span class="cl">                      later migrate / generate
+</span></span><span class="line"><span class="cl">                               |
+</span></span><span class="line"><span class="cl">                               v
+</span></span><span class="line"><span class="cl">              user-owned Markdown + Hugo config + data
+</span></span><span class="line"><span class="cl">                               |
+</span></span><span class="line"><span class="cl">                     Hugo Extended + OINK theme
+</span></span><span class="line"><span class="cl">                               |
+</span></span><span class="line"><span class="cl">               HTML / Print / Markdown / search / indexes
+</span></span><span class="line"><span class="cl">                               |
+</span></span><span class="line"><span class="cl">                  readers / agents / optional adapters</span></span></code></pre></div></div>
+</div>
+<p>The CLI reads Hugo&rsquo;s effective configuration, the resolved theme&rsquo;s published contract artifacts, and rendered outputs. It must not guess the final page tree from filenames or maintain a second navigation resolver. <a href="https://gohugo.io/commands/hugo_config/">Hugo config</a> already exposes effective configuration; module inspection must also account for replacements, workspaces, and <a href="https://gohugo.io/hugo-modules/use-modules/">vendoring</a>.</p>
+<h2 id="pg-d7496727960c394d4c6a7a3e4bd35d81--theme-next">Next theme release: proposed OINK 1.2
+</h2>
+<p>This section remains draft. The local CLI candidate works against the published OINK v1.1.0 baseline; neither a 1.2 release nor a new tooling descriptor is accepted or required by the first-stage CLI decision.</p>
+<p>Give this release an adoption objective: <strong>a site can explain its configuration and output capabilities to tools, and upgrade without adopting a new authoring model</strong>. The release should be small enough to ship independently of the broader roadmap.</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Priority</th>
+      <th scope="col">Requirement</th>
+      <th scope="col">Acceptance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>P0</td>
+      <td>Package a small, versioned tooling descriptor beside existing schemas, describing available schema/output contracts and supported toolchain boundaries</td>
+      <td>Descriptor is checked against owning implementation; CLI can inspect it from the resolved module; no extra per-page output or runtime request</td>
+    </tr>
+    <tr>
+      <td>P0</td>
+      <td>Make selected high-value configuration diagnostics actionable: parameter, invalid value, expected form, fallback, and owning guide</td>
+      <td>Cover actual onboarding failures such as Goldmark/output/language wiring; retain ordinary preview warnings and strict publication failure</td>
+    </tr>
+    <tr>
+      <td>P0</td>
+      <td>Preserve one navigation and Markdown authority across reader and machine outputs</td>
+      <td>Existing output and navigation checks continue to cover language, ordering, subpath, and opt-in behavior; no duplicate CLI renderer</td>
+    </tr>
+    <tr>
+      <td>P0</td>
+      <td>Release with a tested Starter snapshot and a reviewed downstream adoption record</td>
+      <td>Validate published module resolution separately from sibling replacement builds; record consumer pins and deployments independently</td>
+    </tr>
+    <tr>
+      <td>P1</td>
+      <td>Add stable identifiers to the small set of diagnostics consumed by tooling, if the prototype shows they are necessary</td>
+      <td>A focused owning checker verifies each identifier; the CLI never relies on parsing all human warning prose</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>The descriptor is release metadata, not a new configuration authority. Configuration schemas continue to be generated from current authorities; optional shape validation remains owned by its resolver/checker. Do not create a generic renamed-key registry in conflict with the current diagnostic decision. Migration transformations belong to explicit CLI profiles, not a permanent compatibility path in templates.</p>
+<p>No new visual component family is required for 1.2. Correctness, accessibility, and already-demonstrated regressions can still justify changes. Existing media work retains its own acceptance scope; this roadmap does not make completion of every draft a release condition.</p>
+<h2 id="pg-d7496727960c394d4c6a7a3e4bd35d81--cli-first">First CLI release: proposed 0.1
+</h2>
+<p>The commands below are implemented in the local <code>0.1.0-dev</code> candidate. Their current flags, result semantics, and limits are defined by the <a href="/docs/design/decisions/cli/">CLI contract</a> and <a href="/docs/start/cli/">usage guide</a>; public distribution and final acceptance are separate states.</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Command</th>
+      <th scope="col">User outcome</th>
+      <th scope="col">First-release boundary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>oink doctor</code></td>
+      <td>Understand why the site cannot run or why its environment differs from CI</td>
+      <td>Inspect Hugo Extended/version, module pin and effective source, Starter/toolchain requirements, essential configuration, and enabled outputs; no repair by default</td>
+    </tr>
+    <tr>
+      <td><code>oink check</code></td>
+      <td>Know whether a publication build and its local references are valid</td>
+      <td>One strict build into isolated output, then check local links/anchors/assets and enabled machine outputs; report coverage and unsupported checks</td>
+    </tr>
+    <tr>
+      <td><code>oink init my-docs</code></td>
+      <td>Start a small, neutral site that can be maintained without the CLI</td>
+      <td>Generate from a pinned Starter snapshot into a new/empty target; select the supported language profile and explicit theme pin</td>
+    </tr>
+    <tr>
+      <td><code>oink upgrade --to &lt;tag&gt;</code></td>
+      <td>See the exact changes needed for a theme upgrade</td>
+      <td>Preview first; <code>--write</code> applies a reviewed scope after validation; protect unrelated module dependencies, user changes, and vendored output</td>
+    </tr>
+    <tr>
+      <td><code>oink dev</code> / <code>oink build</code></td>
+      <td>Use a memorable entry point without learning a second build system</td>
+      <td>Thin Hugo invocations with visible effective arguments; <code>build</code> uses publication strictness; direct Hugo remains fully supported</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p><code>check</code> is the single quality entry point. Avoid separate overlapping <code>lint</code>, <code>validate</code>, <code>audit</code>, and <code>check</code> products in 0.1. Later <code>--scope</code> options can separate source hints from rendered-output validation when users need the distinction.</p>
+<h3 id="pg-d7496727960c394d4c6a7a3e4bd35d81--diagnosis-quality">Diagnosis and quality scope
+</h3>
+<p>Start with high-confidence, actionable failures: wrong toolchain, unresolved theme, malformed required configuration, missing local link targets/anchors/assets, and inconsistent enabled output references. Resolve routing and anchor truth from Hugo&rsquo;s output, including language and base-path handling. Do not label a valid custom front-matter key as invalid merely because an editor schema does not list it.</p>
+<p>Disabled optional outputs are not missing-output errors. The local candidate does not check translation completeness; any future completeness rule must use the languages and coverage policies the site actually declares. Duplicate titles, orphan pages, missing descriptions, prose style, and freshness remain later optional observations after real false-positive review. Static inspection is not a claim that browser accessibility or interaction tests passed.</p>
+<p>The local candidate freezes <code>oink.result/v1</code>: structured diagnostics have stable rule IDs, severity, known locations, explanations, actions, and explicit coverage. JSON stdout contains only the result; logs go to stderr, and no command waits for input. Exit meanings are <code>0</code> for completed work with no blocking findings, <code>1</code> for policy findings, and <code>2</code> for required incomplete work. Required unsupported checks cannot succeed. The <a href="/docs/design/decisions/cli/#result">result contract</a> owns the detailed fields; line numbers are never invented for build-derived findings.</p>
+<p>Keep raw Hugo errors available as subprocess evidence. Their translated wording is not the CLI protocol. A future SARIF export can project from the same result without changing rule semantics.</p>
+<h3 id="pg-d7496727960c394d4c6a7a3e4bd35d81--upgrade-preservation">Upgrade and file preservation
+</h3>
+<p>The existing consumer-upgrade script provides valuable local precedents: distinguish declared pin from resolved version, disable both workspace mechanisms for release verification, recognize module replacements, and inspect <code>_vendor</code>. Port those behaviors with focused tests; do not shell out to unpublished Python files while claiming a standalone Go binary.</p>
+<p>For 0.1, upgrade one explicitly selected site. Multi-site fleet discovery stays with the maintainer script until a consumer need is demonstrated. A normal <code>check</code> may examine a deliberate local theme replacement; <code>check --release</code> must verify the declared published release without those replacements. It should report a conflicting <code>go.mod</code> replacement rather than edit it away.</p>
+<p>Preview the proposed touched files and verify the prospective upgrade before applying it. Back up only those files, refuse changes to files that changed since the preview, and preserve unrelated dirty work. A failed operation must describe what was and was not applied, with a recovery path that does not overwrite subsequent edits. A dirty repository is not a reason to block read-only diagnosis. Refreshing vendor content is a separate explicit action; changing <code>go.mod</code> alone is not an upgrade of vendored output.</p>
+<p>Do not commit, push, deploy, alter global agent settings, or install system packages as side effects of initialization or repair. Creating a new named directory is the requested initialization action; transforming existing files defaults to a preview. Do not build a generic workflow engine to implement these bounded operations.</p>
+<h3 id="pg-d7496727960c394d4c6a7a3e4bd35d81--distribution-offline">Distribution and offline behavior
+</h3>
+<p>The local candidate currently provides a tested source/Make installation path and archive preparation. A published Homebrew formula and public download/tag installation remain future distribution work. Runtime qualification currently covers macOS arm64; the other archive targets are cross-compiled candidates, not exercised platforms.</p>
+<p>Use a Go executable with release archives/checksums and a Homebrew installation path. Initially qualify macOS and Linux on the architectures actually tested; mark other targets experimental until their filesystem and process behavior is validated. The installed CLI itself needs no installed Go toolchain, Python, Node, or account. Hugo remains an external renderer; first module resolution still needs the site&rsquo;s documented Git/Go/Hugo toolchain.</p>
+<p>Embed or ship an exact, licensed Starter snapshot for deterministic initialization. Do not fetch a moving <code>main</code> branch on every invocation, and do not maintain handwritten CLI copies of Starter configuration. Check embedded/template drift during CLI release.</p>
+<p>Distinguish a cold installation from offline operation. Downloading Hugo, the theme, or an uncached template requires connectivity unless supplied locally. Once dependencies are present, local diagnosis/check/build paths must work without external services. An offline request must fail clearly on a cache miss, never silently fetch. External URL checking, remote specifications, and other network actions are separate opt-ins. No default telemetry or background update check is required.</p>
+<h2 id="pg-d7496727960c394d4c6a7a3e4bd35d81--migration">Migration: the first expansion
+</h2>
+<p>Start with a <strong>documented Docsy input profile</strong> selected from actual candidate sites, reusing the current migration fixtures and report model as evidence. Existing OINK 0.4/0.6 transformations are not proof that arbitrary Docsy sites can already migrate. Validate configuration, navigation, assets, languages, and routes as well as Markdown syntax.</p>
+<p>Proposed workflow: <code>oink migrate --from docsy --source &lt;site&gt; --output &lt;new-site&gt;</code>. Assessment comes before writing; application uses an explicit flag and a separate destination. Every source item receives one primary status: unchanged-compatible, transformed, manual-review, or unsupported. Counts must reconcile, with reasons and source locations. Custom templates and dynamic behavior remain visible manual work.</p>
+<p>Acceptance means source preservation, idempotent supported transforms, no edits inside literal code examples, valid local references, and an explicit old-to-new route report. Unchanged URLs are preferred; changes require a redirect plan appropriate to the hosting target. HTML build success alone does not establish semantic parity or production redirects.</p>
+<p>Do not promise “one command migrates any Docusaurus site.” Arbitrary JSX, imports, and embedded React/Vue are programs. Do not execute untrusted source to infer their meaning or silently drop unsupported constructs. Start a second framework only after the first profile is reused successfully without maintainer rescue. Full MDX migration is a later product investment, not an MVP parser task.</p>
+<h2 id="pg-d7496727960c394d4c6a7a3e4bd35d81--version-lifecycle">Next content capability: version lifecycle
+</h2>
+<p>After the first CLI is useful, version lifecycle is the default next candidate because it extends OINK&rsquo;s existing independent-build model. Move OpenAPI ahead only if real API users provide the stronger repeated need. Do not implement both foundations simultaneously with one primary maintainer.</p>
+<p>Theme responsibilities: consistent version identity in the reader surface, reliable page switching, archive status, and correctly scoped search/machine outputs. CLI responsibilities: inspect/list versions, prepare a snapshot, validate page correspondence, and change declared lifecycle state. Use <code>oink --version</code> for the executable; a future <code>oink docs version ...</code> namespace avoids confusing it with documentation versions.</p>
+<p>Prefer a small version manifest with version label, source reference, base URL, status, and default selection. Keep independent per-version builds and existing external archives. CLI-managed manifests may produce checked-in Hugo configuration; in that mode the manifest is authored and configuration is a checked projection. Existing manually managed <code>params.versions</code> remains supported. The initial prototype must settle this projection before freezing its format.</p>
+<p>Page correspondence needs a logical page key scoped by documentation family, language, and version. Reuse a suitable existing <code>translationKey</code> or explicit stable key before inventing universal UUIDs. Missing peers should be disclosed and lead to a defined version/section landing page, not a fabricated equivalent or an unchecked concatenated URL. Route aliases handle moves separately from page identity.</p>
+<p>Distinct historical content should ordinarily keep its own canonical URL; do not point every old page at the newest version. Language alternates must refer to genuine translated peers in the same version. Default search and agent bundles stay inside the selected language/version. A cross-version collection, if later needed, is explicit. Archiving preserves the source and records how its built artifact is retained; it is not deletion and does not silently redeploy an immutable archive.</p>
+<p><code>NAVJSON</code> v1 currently has closed object schemas. Adding version or identity fields therefore requires an explicit new schema/output contract or a separate artifact, not a supposedly harmless addition to v1. No change to current page identity is justified merely to reserve space for a future graph.</p>
+<h2 id="pg-d7496727960c394d4c6a7a3e4bd35d81--openapi">Following capability: static OpenAPI reference
+</h2>
+<p>The first OpenAPI product should be a <strong>read-only static reference generator</strong>. The CLI parses a local specification and supported local references, emits ordinary Markdown/Hugo data, and records source provenance. The theme supplies accessible semantic presentation and the existing output pipeline. Ordinary Hugo then builds HTML, Print, Markdown, search, and agent indexes from those generated pages.</p>
+<p>Start with operations, parameters, request/response bodies, and linked schema descriptions. Explicitly declare the supported OpenAPI versions and constructs after a parser spike; unsupported constructs cannot disappear silently. Use operation identity scoped to the API/specification; a missing <code>operationId</code> can derive a method/path key with a warning about identity changes. Reused <code>operationId</code> values across different APIs must not collide.</p>
+<p>Keep human-authored guides separate from generated facts. Generation must be deterministic, record source hashes and generator version, detect stale output, and refuse to overwrite unexpected human changes. Check generated source into the site, or supply it as a versioned build input, so rendering itself remains CLI-independent. Resolving remote references is an explicit preparation step; normal generation must not traverse arbitrary external URLs.</p>
+<p>Acceptance requires a real user specification in addition to a toy example, complete accounting of supported operations, cyclic-reference handling, stable routes, semantic content in all selected outputs, and accessibility checks with no inherited Swagger/Redoc exclusion for the new static renderer. Measure a representative large specification before promising a throughput target.</p>
+<p>Keep existing Swagger/Redoc integrations compatible. Interactive requests, credential handling, SDK generation, mock servers, and an API testing platform are outside this first compiler increment.</p>
+<h2 id="pg-d7496727960c394d4c6a7a3e4bd35d81--architecture">Architecture and compatibility rules
+</h2>
+<p>Keep CLI internals modest: command handling, Hugo/process integration, diagnostics, template loading, and bounded file changes. Add migration and OpenAPI packages when their stages begin. This is a suggested decomposition, not a plugin ABI or public SDK.</p>
+<p>Three boundaries need versioning: the CLI&rsquo;s machine result format, the theme&rsquo;s public schema/output contracts, and each supported migration/generation input profile. Prefer capability checks over a single “requires newest OINK” rule. A newer unsupported schema must produce a useful compatibility diagnosis.</p>
+<p>The CLI cannot import a sibling theme&rsquo;s private Python modules, depend on a local checkout layout, or download executable checks at runtime. Port selected consumer operations with behavior tests. Keep template-internal checkers in the theme, and make future changes to exposed consumer rules update their owning contract. Existing scripts stay available during the transition; retire duplication only when the replacement covers the supported cases.</p>
+<p>No CLI configuration file is required initially. Hugo retains rendering configuration. If repeated usage later justifies a tool-policy file, it may hold ignored paths, rule severity, or a reviewed baseline, but must not mirror <code>params.ui</code>, navigation, languages, or module pins. A reviewed lint baseline cannot suppress a failed Hugo build, an unreadable input, or an unsupported required check.</p>
+<h2 id="pg-d7496727960c394d4c6a7a3e4bd35d81--roadmap">Roadmap and staffing assumption
+</h2>
+<p>The planning envelope below is retained as the original proposal, not as an execution log. Stages 0 and 1 now have a local first-stage candidate; this does not complete the publication, independent-user study, migration, or later content-model outcomes. Actual evidence belongs in the <a href="/docs/design/research/2026-09-29-cli-acceptance/">acceptance record</a>.</p>
+<p>The following is an <strong>8–12 week first-stage planning envelope</strong>, assuming roughly one full-time implementation owner plus part-time documentation/review help. It is not a commitment or a claim about actual staffing. Toolchain qualification, recruitment, and bilingual review consume time; reduce scope before adding nominal parallel workstreams.</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Stage</th>
+      <th scope="col">Timing from approval</th>
+      <th scope="col">Deliverable</th>
+      <th scope="col">Exit evidence</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0: establish the boundary</td>
+      <td>Weeks 1–2</td>
+      <td>Accept repository choice; collect failure examples; define result format and supported baseline; prototype read-only doctor/check against current 1.1.0</td>
+      <td>Starter plus at least three varied real repositories; failures and coverage omissions recorded</td>
+    </tr>
+    <tr>
+      <td>1: complete the daily workflow</td>
+      <td>Weeks 3–6</td>
+      <td>Doctor/check, pinned init, thin dev/build; prospective single-site upgrade and file-preservation tests</td>
+      <td>New users can diagnose a seeded failure; ordinary Hugo still builds generated sites; no unexplained source changes</td>
+    </tr>
+    <tr>
+      <td>2: release a bounded product</td>
+      <td>Weeks 7–12</td>
+      <td>Proposed theme 1.2 + CLI 0.1; compatibility record; docs; qualified installation; limited Docsy migration assessment/pilot</td>
+      <td>First-run study and repeat upgrade use; migration limitations are explicit; published pins and consumer adoption checked separately</td>
+    </tr>
+    <tr>
+      <td>3: validate migration and one content model</td>
+      <td>Months 4–6</td>
+      <td>Harden the first migrator; choose version lifecycle or OpenAPI based on users; propose theme 1.3 / CLI 0.2 as needed</td>
+      <td>At least two real repositories use the chosen workflow; accepted contract precedes compatibility promises</td>
+    </tr>
+    <tr>
+      <td>4: earn expansion</td>
+      <td>After month 6</td>
+      <td>The other content capability, then optional recipes/provenance or agent transport where justified</td>
+      <td>Repeated use and maintenance capacity; no automatic commitment to a SaaS product</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>If stage 2 overruns, remove migration writing from that release and keep its assessment report. Do not cut upgrade preservation, truthful diagnostics, or independence from the CLI. If no independent team wants the migration profile, stop expanding framework coverage and investigate onboarding/positioning instead.</p>
+<p>Freshness/ownership is a later optional quality feature, initially a report whose findings users actually act on. A modification date must never be presented as verification. Ship a handful of useful official page recipes before a registry. Graph G2/G3, MCP, analytics adapters, executable examples, Studio, and managed services each need a specific user problem and capacity decision; they are not dates on this roadmap. Existing static agent outputs make MCP less urgent than adoption.</p>
+<h2 id="pg-d7496727960c394d4c6a7a3e4bd35d81--acceptance">Acceptance and product measures
+</h2>
+<p>The user/adoption measures below remain targets. Maintainer-run local pilots validate implementation and preservation; they do not establish independent teams, first-user success rates, retention, or production adoption.</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Area</th>
+      <th scope="col">Initial target or required property</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>First successful use</td>
+      <td>With prerequisites already installed, at least 4 of 5 unfamiliar target users reach local preview and a passing strict check within 15 minutes without maintainer intervention; record cold installation separately</td>
+    </tr>
+    <tr>
+      <td>Maintenance value</td>
+      <td>At least three real sites use diagnosis/checks and repeat a supported upgrade; every failure has an actionable report</td>
+    </tr>
+    <tr>
+      <td>Diagnostic precision</td>
+      <td>Triage all blocking findings in the pilot; aim for less than 5% false positives in an explicitly counted labeled sample, not an unmeasured headline</td>
+    </tr>
+    <tr>
+      <td>Integrity</td>
+      <td>Zero silent content loss; every migration input is accounted for; repeat transforms have no diff; user edits and unrelated dependencies survive</td>
+    </tr>
+    <tr>
+      <td>Independence</td>
+      <td>Initialized/generated sites build through ordinary Hugo with provisioned dependencies; optional CLI and output features remain optional</td>
+    </tr>
+    <tr>
+      <td>Offline behavior</td>
+      <td>Run the qualified local workflow with outbound access denied after provisioning; record cache misses and explicitly networked features separately</td>
+    </tr>
+    <tr>
+      <td>Compatibility</td>
+      <td>Current tested theme baseline and candidate release, pinned site regression toolchain, root/subpath, and EN/ZH cases; do not imply that every Hugo version above the floor was tested</td>
+    </tr>
+    <tr>
+      <td>Adoption</td>
+      <td>Seek five independent pilot teams within the first stage, and track which reach production and continue using the result at 30/90 days; this is a validation target, not observed traction</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Use independently maintained production sites as the main adoption measure, verified through public references or voluntary user confirmation. A stable documentation site should not stop counting merely because it has no commit in 60 days. Track theme upgrade recency separately from retention. Stars, download counts, internal consumer count, and agent-generated volume are supporting signals, not proof of independent adoption.</p>
+<p>Track time to first local success, time to production, upgrade effort, and manual migration effort separately. Deployment can depend on accounts and providers outside the CLI, so do not equate successful local validation with publication. Do not add default telemetry to obtain these measures.</p>
+<h2 id="pg-d7496727960c394d4c6a7a3e4bd35d81--implementation-validation">Implementation ownership and validation
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Change</th>
+      <th scope="col">Owning validation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Tooling descriptor and schema compatibility</td>
+      <td>A focused theme descriptor check plus <code>generate-config-schema.py --check</code> and relevant parameter checks</td>
+    </tr>
+    <tr>
+      <td>Diagnostics exposed to consumers</td>
+      <td>Owning resolver/checker cases; CLI diagnostic result/exit-code tests</td>
+    </tr>
+    <tr>
+      <td>Existing output behavior</td>
+      <td><code>check-agent-indexes.py</code>, output/security/navigation checks appropriate to the changed surface</td>
+    </tr>
+    <tr>
+      <td>Init and upgrade</td>
+      <td>CLI tests against pinned Starter snapshots and repositories with replacements, vendor content, unrelated dependencies, and dirty target files</td>
+    </tr>
+    <tr>
+      <td>Migration</td>
+      <td>Ported/extended transform cases, source-preservation and repeat-run checks; reviewed real-site route/content evidence</td>
+    </tr>
+    <tr>
+      <td>Future version/API presentation</td>
+      <td>Theme output checks plus bilingual documentation-site integration, browser, accessibility, responsive, and visual review</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Run the smallest owning check first. Public behavior changes still require implementation, checker, and both language contracts in one coordinated delivery. Use the sibling site&rsquo;s <code>make check</code>, <code>make browser</code>, and <code>make dev</code> workflow for actual integration and visual acceptance. Do not move public regression scenarios into the theme&rsquo;s synthetic fixture tree, or force consumer installations to install the maintainer Node test stack.</p>
+<p>For a release, separately record local checks, commits, tags, published module/binary resolution, consumer pins, and deployment. Theme release adoption continues through the maintained consumer inventory procedure. A coordinated issue/checklist can join the repositories; a new orchestration framework is unnecessary.</p>
+<h2 id="pg-d7496727960c394d4c6a7a3e4bd35d81--open-decisions">Open decisions and stop conditions
+</h2>
+<p>Repository selection and first-stage implementation are settled locally. Remaining release decisions include qualified platforms, the public distribution channel, compatibility claims justified by executed evidence, and independent pilot recruitment. The acceptance record identifies the actual local toolchain and selected sites; it does not make future platforms or users validated.</p>
+<p>Result and exit semantics are frozen for the local candidate in the CLI contract. The minimal theme descriptor and stable theme warning identifiers remain separate proposals, not prerequisites retroactively added to this first CLI. Before a versioning beta, settle manifest projections, archive retention, and page correspondence. Before an OpenAPI beta, settle the supported spec subset and generated-source ownership.</p>
+<p>Reconsider the separate CLI investment if pilots only need a tiny maintenance script, if rules must repeatedly duplicate template semantics, or if maintaining distribution consumes more effort than the measured user benefit. Keep successful standalone scripts in that case. Reorder versioning versus OpenAPI when evidence changes; do not expand the total concurrent scope.</p>
+<h2 id="pg-d7496727960c394d4c6a7a3e4bd35d81--decision-log">Decision log and sources
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Record</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2026-09-29</td>
+      <td>Draft created from the supplied strategy research and local source review. Recommends a separate optional CLI, a small adoption release, bounded migrations, and sequential content capabilities. No implementation or repository creation accepted by this document.</td>
+    </tr>
+    <tr>
+      <td>2026-09-29</td>
+      <td>Subsequent user authorization accepted the independent Go repository and first-stage development. A local <code>0.1.0-dev</code> candidate implements doctor/check/init/upgrade/dev/build; stable behavior moved to the CLI decision and usage guide. Local acceptance passed for CLI commit <code>e623d93</code>; public release, independent adoption, and all later-stage proposals retain separate states.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Local authorities consulted: <a href="/docs/design/architecture/">Architecture</a>, <a href="/docs/design/decisions/config-schema/">generated schema decision</a>, <a href="/docs/design/migration/">migration boundary</a>, <a href="/docs/customize/versions/">version behavior</a>, <a href="/docs/write/openapi/#limits">OpenAPI limits</a>, and <a href="/docs/design/proposals/knowledge-graph/">graph proposal status</a>. The source inspection also covered theme <code>bin/</code>, <code>schema/nav.v1.schema.json</code>, the existing Starter, and documentation-site build/check commands. Local in-progress changes are not represented as published release evidence.</p>
+<p>External primary sources were checked on 2026-09-29: the linked Mintlify command reference, Nimbus repository, Docusaurus versioning guide, and Hugo config/module documentation. They inform comparisons; they do not validate OINK market demand or the proposed schedule.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-24be65d51ce1bd2e0a8315caa4dfb631">5 - OINK CLI maintenance roadmap</h1>
+    <div class="lead">The historical R1–R8 requirements record for documentation maintenance and Oink Studio, retained alongside acceptance evidence and the current reduced CLI contract.</div>
+	<div class="td-callout td-callout--note" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-info" aria-hidden="true"></i><span class="td-callout__label">Implemented requirements record</span></div>
+  <div class="td-callout__body">
+<p>The finite R1–R8 supported local implementation and A18 runtime/archive
+scope passed for the historical source and binaries recorded in the acceptance
+supplement. The current reduced CLI requires its own validation. This dated
+requirements record is retained at its original URL
+and anchors, with historical planning text and failed trials preserved. Stable
+behavior belongs to the <a href="/docs/design/decisions/cli/">CLI contract</a> and
+<a href="/docs/start/cli/">guide</a>; historical evidence belongs to the
+<a href="/docs/design/research/2026-10-03-cli-maintenance-acceptance/#a18">2026-10-04 supplement</a>.
+It retires from active navigation; uninvoked E1–E4 are separate inactive scope.
+Rendered navigation/URL verification requires its own receipt for these exact promoted bytes.</p>
+  </div>
+</div><p>Complete documentation maintenance before building a local visual workbench.
+The proposed product should help a maintainer check a change, understand its
+effects, review a safe modification, and publish the exact artifact that passed
+checks. Studio should expose these same capabilities.</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Record</th>
+      <th scope="col">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Status</td>
+      <td>Implemented; R1–R8 supported local scope and current A18 runtime/archive qualification passed; rendered lifecycle verification has a separate exact-byte receipt boundary</td>
+    </tr>
+    <tr>
+      <td>Owner</td>
+      <td>OINK maintainers; implementation and review assignments remain to be confirmed</td>
+    </tr>
+    <tr>
+      <td>Date</td>
+      <td>2026-10-03</td>
+    </tr>
+    <tr>
+      <td>Baseline</td>
+      <td>Local CLI <code>0.1.0-dev</code>, commit <code>e623d93</code>; Hugo Extended 0.166.0 and Go 1.27.1 on macOS arm64</td>
+    </tr>
+    <tr>
+      <td>Completion scope</td>
+      <td>R1–R8 and the acceptance cases below; conditional extensions have separate entry criteria</td>
+    </tr>
+    <tr>
+      <td>Affected surfaces</td>
+      <td>CLI command/result contract, Starter projection, consumer CI, translation policy, maintenance operations, local Studio, EN/ZH guides</td>
+    </tr>
+    <tr>
+      <td>Schedule assumption</td>
+      <td>One full-time developer with scheduled documentation and review support; estimates are planning judgments</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--background">Background and evidence
+</h2>
+<p>The <a href="/docs/design/proposals/oink-cli-roadmap/">original CLI roadmap</a> accepted
+an independent Go executable and narrowed the first implementation to
+<code>doctor</code>, <code>check</code>, <code>init</code>, single-site <code>upgrade</code>, <code>dev</code>, and <code>build</code>.
+This proposal adds a bounded maintenance program. Docsy migration, version
+lifecycle, OpenAPI generation, and theme 1.2 retain their own scopes.</p>
+<p>The 2026-10-03 local audit reran the Go suite and actual Hugo integration tests.
+A bilingual initialized site passed checks over 223 files and 4,461 references.
+The PIG consumer site passed over 1,392 files and 64,440 references; 858 source
+files and its Git state were unchanged. These are local validation observations,
+not public distribution, independent adoption, or deployment evidence.</p>
+<p>The audit also reproduced four limits. A missing rendered link failed <code>check</code>
+while <code>build</code> succeeded. Ordinary HTML references outside the configured base
+path were marked untested. <code>doctor --release</code> accepted a Starter still using
+<code>https://example.org/</code>. Both embedded deployment workflows called Hugo without
+the CLI&rsquo;s additional checks. Translation completeness and readable upgrade
+diffs were absent. These findings define the first increments.</p>
+<h2 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--product-goal">Product goal and users
+</h2>
+<p>Prioritize maintainers of multilingual engineering documentation and small
+teams maintaining several Hugo sites. Their recurring jobs are reviewing
+translations, preventing broken publications, updating dependencies, and
+reorganizing content without losing references or public URLs.</p>
+<p>The product succeeds when an ordinary consumer repository can use one quality
+entry point locally and in CI, inspect the affected pages, and apply a reviewed
+change while preserving unrelated work. CLI, Studio, and Agent callers must
+receive the same findings and change plans.</p>
+<h2 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--feature-selection">Feature selection
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Capability from the supplied design</th>
+      <th scope="col">Decision</th>
+      <th scope="col">Delivery</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Links, anchors, attachments and machine outputs</td>
+      <td>Strengthen existing checks and explain uncovered cases</td>
+      <td>R1–R3</td>
+    </tr>
+    <tr>
+      <td>Environment diagnosis, preview and strict builds</td>
+      <td>Complete release diagnosis and add opt-in verified builds</td>
+      <td>R1, R3</td>
+    </tr>
+    <tr>
+      <td>Translation completeness and protected structure</td>
+      <td>Build as a primary product capability</td>
+      <td>R2</td>
+    </tr>
+    <tr>
+      <td>Initialization and CI configuration</td>
+      <td>Extend the fixed Starter and manage reviewed CI changes</td>
+      <td>R3–R4</td>
+    </tr>
+    <tr>
+      <td>Native content rules and project style</td>
+      <td>Implement a small deterministic core; optional general tools</td>
+      <td>R2, R6</td>
+    </tr>
+    <tr>
+      <td>New content, snippets and editor setup</td>
+      <td>Implement ordinary Hugo inputs with overwrite protection</td>
+      <td>R4</td>
+    </tr>
+    <tr>
+      <td>Safe upgrades and migration preflight</td>
+      <td>Add diffs and candidate comparisons; framework migration remains separate</td>
+      <td>R4</td>
+    </tr>
+    <tr>
+      <td>Page moves, renaming and impact analysis</td>
+      <td>Implement after page relationships and change plans are dependable</td>
+      <td>R5</td>
+    </tr>
+    <tr>
+      <td>Issue panels and translation comparison</td>
+      <td>Build a read-only local Studio first</td>
+      <td>R7</td>
+    </tr>
+    <tr>
+      <td>Multiple sites</td>
+      <td>Add an explicit site registry over the same single-site engine</td>
+      <td>R6</td>
+    </tr>
+    <tr>
+      <td>EPUB, PDF and offline packaging</td>
+      <td>Conditional adapter to distributed publication tools</td>
+      <td>E1</td>
+    </tr>
+    <tr>
+      <td>Executable documentation examples</td>
+      <td>Conditional, explicit execution profiles</td>
+      <td>E2</td>
+    </tr>
+    <tr>
+      <td>Agent inspection, impact and context</td>
+      <td>Implement deterministic local operations</td>
+      <td>R5</td>
+    </tr>
+    <tr>
+      <td>AI translation and semantic review</td>
+      <td>Conditional proposals after deterministic maintenance works</td>
+      <td>E4</td>
+    </tr>
+    <tr>
+      <td>Sources, evidence and knowledge dependencies</td>
+      <td>Limit this program to build/review provenance and observed page relationships</td>
+      <td>Wider knowledge management deferred</td>
+    </tr>
+    <tr>
+      <td>Rich editing, live collaboration and native desktop apps</td>
+      <td>Deliver safe Markdown editing only; defer the broader platform</td>
+      <td>R8; remainder deferred</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--scope">Scope and non-goals
+</h2>
+<p>R1–R8 are the finite completion scope for this PRD. Each can deliver value and
+be accepted separately. Suggested CLI versions <code>0.2</code>, <code>0.3</code>, and <code>0.4</code> identify
+release candidates, not required public tags or theme versions.</p>
+<p>The program does not include a renderer, universal migration engine, hosting
+account manager, deployment API, built-in LLM, vector database, remote editor,
+real-time collaboration, native desktop shell, or full WYSIWYG editor.
+Existing provider workflows perform deployment. Publication permissions and
+credentials remain consumer-owned.</p>
+<h2 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--shared-project-facts">Shared project facts and check policy
+</h2>
+<p>This scope is accepted locally. The original requirements below are retained
+as proposal history; current behavior and flags belong to the
+<a href="/docs/design/decisions/cli/#project-policy">CLI contract</a>.</p>
+<p>Extend the existing isolated Hugo analysis rather than introducing a second
+configuration parser or navigation authority. Proposed internal facts include
+page identity, language, publication state, actual output URLs, known source
+files, translation relationships, and observed rendered references.</p>
+<p>Use Hugo&rsquo;s public <a href="https://gohugo.io/methods/page/translations/">Page.Translations</a>
+and <a href="https://gohugo.io/methods/page/outputformats/">Page.OutputFormats</a> for
+relationships and outputs. <a href="https://gohugo.io/methods/page/file/">Page.File</a> can
+provide provenance, but some pages have no backing file. Such findings must
+retain an output location and unknown source state. Any temporary probe must
+leave ordinary published outputs unchanged after its removal.</p>
+<p>Introduce <code>oink.yaml</code> only for check selection, severity, translation policy,
+reviewed exclusions, and tool/workflow options. Hugo continues to own languages,
+titles, menus, URLs, and site configuration; module files own theme versions.
+Initially provide <code>check links</code>, <code>check translations</code>, and <code>check style</code> over
+one shared analysis. Keep <code>--json</code>; <code>--format json</code> may be an additive alias.</p>
+<p>Report blocking errors, warnings, and suggestions through the existing
+<code>error</code>, <code>warning</code>, and <code>info</code> severities. Unsupported required tools or input
+shapes remain exit <code>2</code>. Policy cannot turn failed builds, unreadable inputs,
+or incomplete required checks into success. Source locations need reliable
+mapping; otherwise report the actual output and pointer.</p>
+<h2 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--translation-maintenance">Translation maintenance
+</h2>
+<p>This scope is accepted locally. The original requirements below are retained
+as proposal history; current behavior and flags belong to the
+<a href="/docs/design/decisions/cli/#translations">CLI contract</a>.</p>
+<p>Support filename languages, language-specific content directories, and
+<code>translationKey</code> relationships as resolved by Hugo. Coverage policies select
+required languages for an explicit content scope; disabled languages and
+intentional localizations must not become missing-translation errors.
+Check duplicate identities and configured draft/publication requirements.
+If a production build omits a source needed to assess policy, use an explicit
+analysis view; do not confuse that view with publishable output.</p>
+<p>Provide two policies: strict correspondence for manuals, and localized content
+for blogs or product pages. Strict policy can require explicit IDs, declared
+placeholders, selected code blocks, and necessary fields to agree. Localized
+policy checks only declared shared constraints. Heading counts and all code
+blocks must not become universal requirements.</p>
+<p>Propose <code>translations status</code>, <code>translations diff &lt;page&gt;</code>, and an explicit
+review-record operation. A versioned review record binds the translation to a
+source content hash or Git revision, plus the translation hash and declared
+source language. A missing record means unknown; a changed hash means changed
+since review, not automatically a bad translation. Recording review requires
+a user-requested write and must never happen just because a checker ran.</p>
+<h2 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--native-content-rules">Native content rules and baselines
+</h2>
+<p>This scope is accepted locally. The original requirements below are retained
+as proposal history; current behavior and flags belong to the
+<a href="/docs/design/decisions/cli/#native-content">CLI contract</a>.</p>
+<p>Start with a small catalog of high-confidence rules drawn from actual
+consumer failures: malformed supported component/attribute usage, conflicting
+explicit IDs, known deprecated forms, and configured protected content.
+Code, inline code, shortcode bodies, raw HTML, and attributes require their
+real syntax boundaries. Do not apply regular expressions indiscriminately.</p>
+<p>Use contracts from the effective theme version. An editor schema that omits
+types is not a complete strict validator. Missing compatible metadata must
+produce explicit limited coverage rather than validate against the latest
+theme. Do not require a future theme release to finish basic checks.</p>
+<p>A visible versioned baseline can acknowledge existing findings with stable
+fingerprints, reasons, and review metadata. Reports show acknowledged and new
+findings separately. Baseline updates are explicit and reviewable; they cannot
+hide required incomplete work. Formatting and prose suggestions are optional.
+Automatic fixes first produce a diff, then validate a candidate before applying
+a narrow set of files.</p>
+<h2 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--verified-publication">Verified publication and CI
+</h2>
+<p>This scope is accepted locally. The original requirements below are retained
+as proposal history; current behavior and flags belong to the
+<a href="/docs/design/decisions/cli/#checked-artifacts">CLI contract</a>.</p>
+<p>Preserve the current transparent <code>build</code> default. Add an explicit managed
+<code>build --check</code> workflow: one strict Hugo build, selected checks over the same
+output, then export only that verified artifact to a new or empty destination.
+Do not delete arbitrary directories or mix stale files into a verified tree.
+Default <code>build</code> must continue to say when extra checks were not run.</p>
+<p>A local versioned manifest records source revision and dirty state when known,
+source-input hash, effective theme identity, Hugo/CLI versions, build settings,
+base URL, check coverage, and file digests. Secrets and machine paths must not
+be copied into public metadata. If a public build marker is enabled, it contains
+only the minimum identity needed for verification. Artifact changes after
+validation invalidate the recorded result.</p>
+<p>Propose <code>ci init github-pages</code> and <code>ci init cloudflare-pages --mode direct-upload</code>.
+Generate local configuration only, explain variables and permissions, and
+record template provenance. Detect existing workflows, preview diffs, preserve
+unknown modifications, and require explicit application. Both use the same
+quality engine and upload the verified output without another Hugo build.
+Before a public CLI release, templates must accept a documented immutable
+source/archival input rather than assume a nonexistent download tag.</p>
+<p>Extend release diagnosis with an example-address warning, a release-policy
+error when publication checks require a real address, effective local source
+commit/dirty state when available, and comparisons with supported generated CI
+settings. Unknown custom CI is reported as unknown. A local checkout&rsquo;s commit
+does not attest to a published module; vendor byte identity remains separate.</p>
+<p>Propose <code>verify --site URL --manifest FILE</code> with explicit network permission.
+Check representative pages, languages, resources, search/Markdown outputs,
+canonical addresses, and artifact identity. HTTP 200 from a generic fallback
+must fail identity checks. Timeout, authentication, rate limiting, or an absent
+required identity produce unknown/incomplete results, not invented success.
+Local HTTP fixtures test this without deploying to a provider.</p>
+<h2 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--authoring-and-upgrades">Authoring and upgrade assistance
+</h2>
+<p>Add <code>new</code>, a small snippet catalog, and explicit editor-schema setup. Create
+page bundles, selected translation drafts, and ordinary front matter while
+refusing existing files. Translation drafts are not completed translations.
+Editor hints follow the effective theme and preserve existing editor settings.</p>
+<p>Extend <code>init</code> with docs, blog, book, and project profiles by composing one
+licensed Starter source; do not maintain four copied template trees. Existing
+projects get diagnosis and reviewed proposals rather than replacement config.</p>
+<p>Keep the explicit-tag, single-site upgrade protections. Add readable unified
+diffs and baseline/candidate route and capability comparisons. Report removed
+URLs, changed aliases and missing previously enabled outputs. A clean candidate
+build alone does not prove compatibility. Proposed configuration migrations
+need a documented transform and tests; otherwise return a manual action.
+Conflicting replacements and vendor refresh remain explicit owner operations.</p>
+<h2 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--impact-and-change-plans">Impact analysis and safe content changes
+</h2>
+<p>This supported scope is accepted locally. The original proposal requirements
+below remain as history; current behavior, limits and flags belong to the
+<a href="/docs/design/decisions/cli/#project-graph">captured-facts contract</a>,
+<a href="/docs/design/decisions/cli/#content-moves">move contract</a> and
+<a href="/docs/start/cli/#project-graph">guide</a>.</p>
+<p>Provide <code>inspect &lt;page&gt;</code>, <code>impact --since &lt;ref&gt;</code>, and <code>context &lt;task&gt;</code> over the
+shared facts. Inspect shows provenance, publication state, references,
+translations, and outputs. Context packages relevant local material with
+versions, paths, selection reasons, and size limits; no vector service or LLM
+is required. Document content is data and cannot authorize executing commands.</p>
+<p>Initially <code>check --since</code> may still perform a full check and say so. Later
+optimization must include changed targets, their inbound references, translations,
+and derived outputs. Deleting B must still inspect unchanged A that links to B.
+Configuration, templates, navigation, or uncertain dependency changes expand
+the scope to a full check. Cache data is disposable evidence, not authority.</p>
+<p>Propose <code>move &lt;source&gt; &lt;target&gt;</code> as preview by default. A plan contains touched
+files, readable diffs, base hashes, translations, attachments, route changes,
+and an alias recommendation. Only confidently understood links can be rewritten;
+ambiguous template/shortcode references require review. Apply verifies bases,
+validates an isolated candidate, protects concurrent edits, and retains recovery
+information. A failing or stale plan does not partially overwrite user work.</p>
+<h2 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--workspaces-and-optional-tools">Workspaces and optional tools
+</h2>
+<p>An explicit workspace registry names selected site directories. It reuses the
+single-site engine, reports per-site results and aggregate completion, and
+allows writes only to explicitly selected sites. It must not discover and
+upgrade every sibling repository automatically or duplicate Hugo settings.</p>
+<p>Optional markdownlint, Vale, and lychee adapters use explicitly configured,
+already provisioned tools and normalize their findings. Required missing tools
+return <code>2</code>; optional omissions remain visible. Exclude syntax the adapter cannot
+understand rather than rewrite it. Ambiguous external-link failures require a
+network-status distinction. Tool installation and network access are separate
+actions, and generic formatters never overwrite content by default.</p>
+<h3 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--r6-candidate">R6 accepted local boundary
+</h3>
+<p>The explicit registry and optional adapters are accepted locally in supported R6
+scope. Stable fields and limits are documented in the
+<a href="/docs/design/decisions/cli/#workspace-registry">registry contract</a> and
+<a href="/docs/design/decisions/cli/#optional-checkers">tool contract</a>; user steps belong
+to the <a href="/docs/start/cli/#workspace-registry">guide</a>. The accepted R7/R8 boundaries below retain their own evidence and limits.</p>
+<p><code>oink.workspace/v1</code> names 1–64 literal directories in one regular YAML file
+bounded to 256 KiB, without duplicating Hugo settings or discovering siblings.
+Exact names, canonical root identity, registry-order selection, per-site
+<code>0</code>/<code>1</code>/<code>2</code> parity and explicit-name saved-plan application are the supported
+workspace boundary. Already provisioned markdownlint-cli <code>0.49.1</code>, Vale
+<code>3.24.0</code> and lychee <code>0.24.2</code> extend each site&rsquo;s policy, with captured
+configuration and typed protocol/source/network coverage. They do not install
+or format tools/content. Lychee needs explicit network consent; ambiguous
+external failures remain unknown rather than definite broken links.</p>
+<p>Frozen Go/vet, actual Hugo/pinned-tool and owning race gates have passed. The
+exact binary also passed four-site direct/aggregate diagnostic/coverage/exit
+parity and all source byte/full-mode/Git/ignored-input/directory guards. Initial
+preparation failures remain excluded, and the receipt-driver-only command
+metadata correction is recorded without a CLI runtime correction or rerun.
+Guarded canonical EN/ZH source/rendered checks passed, and supported R6/A07/A15
+scope is accepted locally in the
+<a href="/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r6">R6 record</a>.
+Current A18 runtime/archive qualification passed; Darwin amd64 remains
+experimental/unverified. No release, consumer adoption, source
+write or deployment is inferred from focused tests.</p>
+<h2 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--read-only-studio">Read-only Oink Studio
+</h2>
+<p>Build a local Web interface with project overview, issue panel, translation
+comparison, page relationships, and publication panel. These views use the same
+core results as CLI/CI. Support filters, known-source navigation, actual Hugo
+preview, change comparisons, and copying proposed actions. A large graph or
+embedded editor is not needed for this acceptance.</p>
+<p>Default to loopback and an explicit site allowlist. Separate untrusted rendered
+content from the management origin; handle Host/Origin checks and session
+authorization before adding write APIs. Ship prebuilt UI assets with the CLI;
+Node is a contributor build dependency, not a consumer runtime requirement.
+Cover keyboard operation, screen-reader labels, mobile layouts, light/dark
+themes, and readable long diagnostic lists.</p>
+<h3 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--r7-candidate">R7 candidate boundary
+</h3>
+<p>The read-only Studio candidate now serves an embedded five-view browser and
+an authenticated literal-loopback API over the same native checks and captured
+Hugo facts. Stable candidate boundaries are in the
+<a href="/docs/design/decisions/cli/#studio">contract</a> and
+<a href="/docs/start/cli/#studio">guide</a>. Explicit existing-site/registry selection,
+typed paginated findings, source/diff/hash states, actual production preview and
+separate optional analysis coverage preserve the CLI authority.</p>
+<p>Frozen native/browser/core-case and exact-binary four-consumer receipts now
+qualify the supported read-only scope, including explicit partial-preview
+incompletion. They exercise native <code>0</code>/<code>1</code>/<code>2</code> parity, keyboard/mobile/light/dark
+flows, literal source data and separate-origin preview attacks. R7/A16
+passed guarded canonical promotion/rendered gates and is accepted locally.
+R1–R8 supported scope and current A18 runtime/archive qualification passed. No
+consumer Node requirement, implicit installation, source writes, public
+release/adoption or deployment is introduced.</p>
+<h2 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--safe-markdown-editing">Safe Markdown editing
+</h2>
+<p>Add Markdown editing, front matter forms, selected component insertion, and
+attachments after the read-only workbench is accepted. Reuse the CLI change-plan
+engine and actual Hugo preview; there is no second save/validation mechanism.</p>
+<p>An unchanged open/save cycle must preserve bytes. Updating one field preserves
+unknown fields, comments, order, encoding, and unrelated whitespace. Detect
+external-editor changes and refuse stale saves. If a front matter form cannot
+preserve a construct, keep it editable as text and explain the form limitation.
+Do not round-trip the whole document through a generic serializer.</p>
+<p>Writes need an authorized local session, an allowed directory, base verification,
+and a visible diff. Reject path traversal, symlink escapes, and requests from
+untrusted preview content. Attachments must not overwrite existing files.
+Publishing a static site never adds these management APIs to it.</p>
+<h3 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--r8-candidate">R8 accepted editing boundary
+</h3>
+<p>R8 now has one source-preserving proposal engine for CLI <code>edit text</code>, <code>field</code>,
+<code>snippet</code> and <code>attachment</code>, and the explicit <code>studio --edit</code> flow. Default Studio
+remains read-only. Known site-owned Markdown, exact source hashes, supported
+top-level YAML scalars with text fallback, original catalog byte-boundary
+insertion and new-only leaf-bundle attachments share the same saved plans and
+guarded writer. The complete visible review binds plan/file/full-mode identities;
+candidate HTML comes from actual selected nonpublishable Hugo analysis, with
+native findings and required view incompletion kept distinct.</p>
+<p>The accepted local interface is documented in the
+<a href="/docs/design/decisions/cli/#editing">contract</a> and <a href="/docs/start/cli/#editing">guide</a>.
+Corrected frozen public/Go/race/vet, actual/ordinary Hugo, Editor browser
+accessibility/mobile and exact-binary four-consumer preservation gates passed.
+R8/A17 supported local scope also passed guarded canonical source/render gates
+and is accepted in the
+<a href="/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r8">R8 record</a>.
+Earlier failed browser/preparation trials are evidence of those trial inputs,
+not qualification of later bytes. R1–R8 supported scope and current A18 runtime/archive qualification passed.
+Darwin amd64 stays experimental/unverified; public release, adoption and
+deployment are separate unperformed states.</p>
+<h2 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--delivery-sequence">Delivery sequence and schedule
+</h2>
+<p>The following is a one-developer estimate, not a measured productivity claim.
+T0 is the implementation start after scope approval; no calendar start date has
+been committed. Dependencies are sequential acceptance gates. Additional staff
+can parallelize independent tests and UI work, but cannot remove those gates.</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Stage</th>
+      <th scope="col">Effective weeks</th>
+      <th scope="col">Delivery</th>
+      <th scope="col">Acceptance gate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>R1</td>
+      <td>1–2</td>
+      <td>Shared facts, check policy, focused scopes, trustworthy locations</td>
+      <td>Hugo owns routes/relationships; required incomplete checks cannot pass</td>
+    </tr>
+    <tr>
+      <td>R2</td>
+      <td>3–5</td>
+      <td>Translation policy/review state, native checks, visible baseline</td>
+      <td>Three language layouts; strict/localized cases; reviewed fixes preserve files</td>
+    </tr>
+    <tr>
+      <td>R3</td>
+      <td>6–8</td>
+      <td>Verified build artifacts, CI init, release diagnosis, deployed-site verification</td>
+      <td>One checked artifact is uploaded; stale bytes and HTTP 200 fallback are detected</td>
+    </tr>
+    <tr>
+      <td>R4</td>
+      <td>9–11</td>
+      <td>New content, profiles, snippets/editor setup, upgrade diffs/comparisons</td>
+      <td>Ordinary Hugo build; dirty/replaced/vendor and route-regression cases remain safe</td>
+    </tr>
+    <tr>
+      <td>R5</td>
+      <td>12–15</td>
+      <td>Inspect, impact, context, move and shared change plans</td>
+      <td>Unchanged inbound links and translations are included; stale plans cannot write</td>
+    </tr>
+    <tr>
+      <td>R6</td>
+      <td>16–17</td>
+      <td>Explicit workspaces and optional check adapters</td>
+      <td>Per-site parity; required unavailable tools are incomplete; no implicit installs</td>
+    </tr>
+    <tr>
+      <td>R7</td>
+      <td>18–20</td>
+      <td>Read-only Studio and its security boundary</td>
+      <td>Five useful views; CLI/UI findings agree; accessibility and preview isolation pass</td>
+    </tr>
+    <tr>
+      <td>R8</td>
+      <td>21–24</td>
+      <td>Safe Markdown/forms/attachments with conflict review</td>
+      <td>No-op save has zero diff; comments/unknown fields survive; concurrent saves fail safely</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Allow another 4–6 weeks for integration, false-positive review, cross-platform
+execution, and repairs, distributed across the gates. Total planning range is
+28–30 effective weeks. At roughly half-time availability, elapsed calendar time
+may be roughly twice that; this is an assumption to revisit, not a promise.</p>
+<p>R1–R3 yield a proposed <code>0.2</code> quality/publication candidate around weeks 9–10
+including early reserve. R4–R6 yield a proposed <code>0.3</code> maintenance candidate
+around weeks 19–20 cumulatively. R7–R8 yield a proposed <code>0.4</code> local Studio
+candidate around weeks 28–30 cumulatively. Public publication is a separate
+authorized action; local candidates do not require releasing every stage.</p>
+<h2 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--conditional-extensions">Conditional extensions
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Extension</th>
+      <th scope="col">Entry criterion</th>
+      <th scope="col">Proposed boundary</th>
+      <th scope="col">Separate estimate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>E1 Publication exports</td>
+      <td>At least two maintained books need a recurring export workflow</td>
+      <td>Reuse distributable EPUB/PDF tools and package local artifacts; declare external dependencies</td>
+      <td>1–2 weeks after R3/R4</td>
+    </tr>
+    <tr>
+      <td>E2 Executable examples</td>
+      <td>Explicit owners identify runnable examples and disposable test environments</td>
+      <td>Reviewed execution profiles, time/resource limits, offline default; never execute discovered prose automatically</td>
+      <td>3–5 weeks after R5</td>
+    </tr>
+    <tr>
+      <td>E3 MCP</td>
+      <td>An existing Agent integration needs capabilities beyond invoking JSON CLI results</td>
+      <td>Thin adapter over inspect/check/impact/context/plans; same permissions and diagnostics</td>
+      <td>1–2 weeks after R5</td>
+    </tr>
+    <tr>
+      <td>E4 AI review and translation</td>
+      <td>Deterministic translation maintenance works and a reviewed evaluation corpus exists</td>
+      <td>User-selected provider, explicit network/cost settings, proposals bound to source hashes; no automatic source writes</td>
+      <td>3–6 weeks for a limited experiment after R5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>These estimates are outside the R1–R8 total. Activate an extension only for its
+stated use case; a future need is not an unfinished core milestone. Remote
+Studio, live collaboration, native shells, general knowledge provenance, vector
+retrieval, and universal framework migration require separate PRDs and evidence.</p>
+<h2 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--architecture-and-compatibility">Architecture and compatibility
+</h2>
+<p>Keep Go for core operations and use subprocesses for Hugo and optional tools.
+Extend existing packages when they own the behavior; add a package only with
+its capability. Do not create a generic plugin platform, public SDK, or shared
+service layer before an actual consumer needs it.</p>
+<p>Preserve <code>oink.result/v1</code>, exit meanings, and the default thin wrappers. New
+diagnostic details and command data may be additive; changed field semantics
+need a new result version. Version review records, baselines, plans, build
+manifests, and workspace registries independently. Detect supported capabilities
+from the actual theme; do not require all users to install the latest release.</p>
+<p>Read/check/preview, local file application, networking, example execution, and
+deployment are distinct side effects. No telemetry, background updater,
+credential discovery, arbitrary directory cleanup, global configuration change,
+commit, push, or deployment happens as a maintenance side effect. Read-only
+consumer trials preserve sources, replacements, workspaces, and vendor bytes.</p>
+<h2 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--acceptance-cases">Acceptance cases and owning checks
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Case</th>
+      <th scope="col">Required outcome</th>
+      <th scope="col">Primary owner</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A01 JSON and completion</td>
+      <td>One JSON result on stdout; clean stderr separation; findings <code>1</code>, required incompletion <code>2</code></td>
+      <td><code>internal/report</code>, <code>internal/app</code>, Schema</td>
+    </tr>
+    <tr>
+      <td>A02 Hugo truth</td>
+      <td>Slug/url/permalinks/aliases, custom mounts, unlisted pages and language roots follow actual Hugo results</td>
+      <td><code>internal/site</code>, <code>internal/outputcheck</code>, actual Hugo fixtures</td>
+    </tr>
+    <tr>
+      <td>A03 Subpaths</td>
+      <td>A definite project-local missing route fails; outside-origin/path references remain classified honestly; declared external scopes avoid false positives</td>
+      <td>Output checker and policy tests</td>
+    </tr>
+    <tr>
+      <td>A04 Translations</td>
+      <td>Filename, directory and translationKey layouts; duplicate/missing/draft cases; strict/localized policy</td>
+      <td>Translation engine and public-command tests</td>
+    </tr>
+    <tr>
+      <td>A05 Review state</td>
+      <td>No record is unknown; changed source hash is visible; mtime never determines review state</td>
+      <td>Translation/review-record tests</td>
+    </tr>
+    <tr>
+      <td>A06 Content syntax</td>
+      <td>Fences, inline code, shortcodes, HTML, attributes, custom fields and configured protected text do not generate invented findings</td>
+      <td>Native-rule tests and real content corpus</td>
+    </tr>
+    <tr>
+      <td>A07 Baselines and adapters</td>
+      <td>Acknowledged findings remain visible; new findings fail policy; unavailable required tools cannot pass</td>
+      <td>Policy/adapter tests</td>
+    </tr>
+    <tr>
+      <td>A08 Artifact identity</td>
+      <td>Modify a file after check and manifest verification fails; provider upload uses the same exported tree without rebuilding</td>
+      <td>Managed-build and workflow tests</td>
+    </tr>
+    <tr>
+      <td>A09 CI preservation</td>
+      <td>Both templates, existing customized workflows, permissions/variables, preview/apply conflict and provenance</td>
+      <td>Starter/CI tests and local workflow rehearsal</td>
+    </tr>
+    <tr>
+      <td>A10 Public verification</td>
+      <td>HTTP 200 fallback, wrong language/build, missing resource, canonical mismatch, timeout/auth/rate limit</td>
+      <td>Local HTTP fixtures, no required cloud account</td>
+    </tr>
+    <tr>
+      <td>A11 Initialization and authoring</td>
+      <td>Supported profiles/languages; empty-target protection; generated sites build with ordinary Hugo; editor config preserves unknown settings</td>
+      <td><code>internal/starter</code>, authoring and Hugo tests</td>
+    </tr>
+    <tr>
+      <td>A12 Upgrade</td>
+      <td>Readable diff, old/new routes, dirty files, both workspaces, replacement/vendor, failure recovery and concurrent edits</td>
+      <td><code>internal/upgrade</code>, public-command/Hugo tests</td>
+    </tr>
+    <tr>
+      <td>A13 Impact</td>
+      <td>Deleted B finds unchanged A; translations/attachments/derived outputs included; global changes expand scope</td>
+      <td>Impact and Git-baseline fixtures</td>
+    </tr>
+    <tr>
+      <td>A14 Change application</td>
+      <td>Candidate validation before apply; hash conflicts and failed writes preserve subsequent edits; ambiguous references are not rewritten</td>
+      <td>Shared plan/apply and move tests</td>
+    </tr>
+    <tr>
+      <td>A15 Workspace and context</td>
+      <td>Per-site results match direct invocation; selected writes only; bounded context gives paths/versions/reasons without executing content</td>
+      <td>Workspace/context tests</td>
+    </tr>
+    <tr>
+      <td>A16 Studio parity</td>
+      <td>Five views show the same results as CLI; usable keyboard/mobile/light/dark flows and source/preview separation</td>
+      <td>Studio browser/accessibility tests</td>
+    </tr>
+    <tr>
+      <td>A17 Editor preservation</td>
+      <td>No-op save is byte-identical; YAML comments/unknown values/order survive; stale saves and attachment collisions are rejected</td>
+      <td>Editor/browser and shared apply tests</td>
+    </tr>
+    <tr>
+      <td>A18 Runtime and recovery</td>
+      <td>Test actual declared macOS/Linux targets; signals stop child processes; cached operations work offline; unsupported inputs remain explicit</td>
+      <td>Process/integration/installation tests</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Run the smallest owning tests before broader integration. Keep Go unit fixtures
+offline. Repeat actual Hugo tests after parser, snapshot, probe, initialization,
+or upgrade changes. Preserve focused checks rather than making consumers run
+theme internals or a browser suite for every document modification.</p>
+<p>At each candidate, record tool versions and source identities, then test the
+Starter plus three distinct maintained sites read-only. Compare source bytes,
+modes, and Git state before and after. Tests for new native rules need a reviewed
+valid/invalid corpus; fix false positives before enabling a blocking default.
+Measure full-build time against the same current-site baseline before promising
+incremental speed. Functional correctness takes priority over check counts.</p>
+<h2 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--completion-and-release">Completion and release evidence
+</h2>
+<p>For each stage, provide implemented behavior, known limits, focused tests,
+actual integration results, updated EN/ZH contracts/guides, and a reviewable
+diff. Track individual requirement/case statuses; passing an aggregate command
+does not automatically close every requirement. This PRD is complete only when
+R1–R8 and their required acceptance cases are satisfied.</p>
+<p>Keep implementation, local validation, commits, archive/runtime qualification,
+public distribution, consumer adoption, provider deployment, and public content
+verification separate. Cross-compilation is not runtime acceptance. Missing
+credentials or an unpublished download URL do not justify claiming remote
+delivery, nor require building a hosting control plane.</p>
+<p>After supported behavior is accepted, move it into the owning CLI contract,
+usage guides, and durable decisions. Retire the corresponding proposal sections
+through the existing lifecycle. Do not make this PRD a permanent second manual.</p>
+<h2 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--decisions-and-stop-conditions">Decisions and stop conditions
+</h2>
+<p>Confirm staffing and start date before turning relative weeks into calendar
+dates. Decide supported runtime targets, review-record storage details, initial
+native-rule catalog, and precise additive command flags in R1. These are bounded
+implementation choices within this scope, not reasons to reopen the product
+boundary or wait for an entire theme release.</p>
+<p>If preservation or correctness work exceeds a stage estimate, move its optional
+convenience work later; never remove stale-write protection, truthful completion,
+or ordinary-Hugo compatibility. If repeated corpus review shows a rule cannot
+be trustworthy, keep it advisory or remove it. If a form cannot preserve source
+bytes, keep that syntax in text mode. Conditional extensions do not enter the
+critical path merely because implementation would be interesting.</p>
+<h2 id="pg-24be65d51ce1bd2e0a8315caa4dfb631--decision-log">Decision log
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Record</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2026-10-03</td>
+      <td>Created from the current CLI audit and the supplied feature goals. Proposed R1–R8, optional extension gates, resource assumptions and executable acceptance cases. No new CLI capability, release, consumer adoption or deployment is claimed by this document.</td>
+    </tr>
+    <tr>
+      <td>2026-10-03</td>
+      <td>R1 shared Hugo facts and check policy passed local owning/actual-Hugo checks. Stable behavior moved into the <a href="/docs/design/decisions/cli/#project-policy">CLI contract</a> and <a href="/docs/start/cli/#project-policy">guide</a>; the <a href="/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r1">acceptance record</a> tracks final refreshed reports and rendered EN/ZH evidence separately. R2–R8 and conditional extensions remain open; no public distribution, adoption or deployment is claimed.</td>
+    </tr>
+    <tr>
+      <td>2026-10-03</td>
+      <td>R2 translation scopes/hash reviews, syntax-bounded native rules and visible baselines now use shared guarded file plans. Local owning, actual-Hugo and focused race gates passed; final refreshed consumer and EN/ZH documentation acceptance remains pending in the <a href="/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r2">record</a>. Implemented behavior is in the <a href="/docs/design/decisions/cli/#translations">contract</a> and <a href="/docs/start/cli/#translations">guide</a>. R3–R8 remain open.</td>
+    </tr>
+    <tr>
+      <td>2026-10-03</td>
+      <td>R2 final corpus and bilingual documentation gates passed. R3 one-render checked export, exact file identity, guarded CI plans for both providers, release diagnosis and explicit-network HTTP verification passed their scoped local gates, including custom-workflow discovery. Stable behavior moved to the <a href="/docs/design/decisions/cli/#checked-artifacts">contract</a> and <a href="/docs/start/cli/#checked-artifacts">guide</a>; exact evidence and A08–A10 outcomes belong to the <a href="/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r3">maintenance record</a>. R4–R8, final A18 runtime/archive refresh and Darwin amd64 remain open. No public distribution, hosted CI execution, adoption or deployment is claimed.</td>
+    </tr>
+    <tr>
+      <td>2026-10-03</td>
+      <td>R4 supported local scope passed frozen Go/vet, actual Hugo/race and exact-binary read-only Starter/docs/PIG/repository gates. One unchanged licensed Starter composes all profiles/languages; ordinary new/editor/snippet flows and source/external-input guards passed, as did readable bounded upgrade views and alias/output regression protection. Stable behavior belongs to the <a href="/docs/design/decisions/cli/#authoring">contract</a> and <a href="/docs/start/cli/#authoring">guide</a>; exact A11/A12 evidence and remaining limits belong to the <a href="/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r4">record</a>. R5–R8, final A18 runtime/archive refresh and Darwin amd64 stay open. No release, consumer writes/adoption or deployment occurred.</td>
+    </tr>
+    <tr>
+      <td>2026-10-03</td>
+      <td>R5 corrected frozen Go/vet, actual Hugo/race and exact-binary four-consumer read-only gates completed. Inspect/context complete for all sites; historical impact and move blockers remain explicit. Guarded canonical source/rendered gates and stage acceptance are pending. Stable behavior belongs to the <a href="/docs/design/decisions/cli/#project-graph">contract</a> and <a href="/docs/start/cli/#project-graph">guide</a>; the <a href="/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r5">record</a> identifies A13/A14/context evidence, the cached-module correction and exact preservation receipt. R6–R8, workspace A15 and final A18 remain open; no consumer writes or deployment occurred.</td>
+    </tr>
+    <tr>
+      <td>2026-10-03</td>
+      <td>R5 supported inspection/impact/bounded-context and guarded move scope is accepted locally after corrected frozen owning gates, exact-binary four-consumer preservation and first-promotion canonical source/rendered gates. The production translation owner retains only its known draft-release omission; separate nonpublishable analysis passes all owners. Stable behavior belongs to the <a href="/docs/design/decisions/cli/#project-graph">contract</a> and <a href="/docs/start/cli/#content-moves">guide</a>; the <a href="/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r5">record</a> retains exact outcomes and the separate post-render evidence boundary. A13/A14 supported CLI scope passed; A15 context passed while workspace/direct parity remains R6. R6–R8 and final A18 remain open; no release, consumer writes/adoption or deployment occurred.</td>
+    </tr>
+    <tr>
+      <td>2026-10-03</td>
+      <td>R6 explicit registry and bounded optional-tool candidate implemented; focused workspace and corrected actual-protocol trials passed, with preparation failures kept separate. Final runtime/corpus/canonical gates and A07/A15 stage acceptance remain pending in the <a href="/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r6">R6 record</a>. R7/R8 and final A18 remain open; no release, consumer write or deployment.</td>
+    </tr>
+    <tr>
+      <td>2026-10-03</td>
+      <td>R6 frozen Go/vet, actual Hugo/pinned tools, owning race and exact-binary four-consumer direct/aggregate parity/preservation qualified. The completed receipt records six original operations, existing repository duplicate-ID findings and a driver-only command-summary correction over unchanged raw outputs; no CLI/Hugo rerun or runtime fix was needed. Canonical source/render checks and explicit R6/A07/A15 stage acceptance remain pending in the <a href="/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r6">record</a>. R7/R8/final A18 remain open; no consumer source writes, release or deployment.</td>
+    </tr>
+    <tr>
+      <td>2026-10-03</td>
+      <td>R6 supported explicit-registry and optional-tool scope is accepted locally after frozen Go/vet, actual Hugo/pinned tools, race, exact-binary four-consumer parity/preservation and guarded canonical source/render gates. A07 adapters and A15 workspace/direct/context supported scope passed; the <a href="/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r6">R6 record</a> separates first-promotion rendered bytes from this post-render status/evidence amendment. R7/R8 and final A18 remain open; no public release, consumer source writes/adoption or deployment.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>| 2026-10-03 | R7 read-only embedded Studio candidate and authenticated loopback views implemented; frozen core/browser and exact-binary four-consumer qualification completed within the declared scope; guarded canonical promotion/render and explicit R7/A16 acceptance remain pending. R1–R6 remain accepted; R8/final A18 open; no consumer writes, release or deployment. |</p>
+<p>| 2026-10-03 | R7/A16 supported read-only Studio is accepted locally after frozen cumulative executed-case/browser proof, exact-binary four-consumer parity/preservation and guarded canonical source/render gates. First-promotion rendered bytes remain distinct from this post-render status amendment; whole invocation failure and explicit partial-preview incompletion stay visible. R1–R7 accepted; R8/final A18 open; no public release, consumer write/adoption or deployment. |</p>
+<p>| 2026-10-03 | R8 CLI/opt-in Editor source-editing candidate implemented; default Studio remains read-only. Pure-core/streaming-output focused evidence is recorded and failed browser trials retained. Final frozen public/browser/consumer/canonical gates and A17 stage acceptance remain pending in the <a href="/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r8">R8 record</a>. R1–R7 remain accepted; R8/final A18 open; no public release or consumer writes/deployment. |</p>
+<p>| 2026-10-03 | R8/A17 reviewed CLI/opt-in Editor supported local scope is accepted after corrected frozen whole owning/browser gates, exact-binary four-consumer proposal parity/source preservation and guarded first canonical promotion/actual rendering. R1–R8 are accepted locally; the <a href="/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r8">R8 record</a> separately binds first-rendered and current status bytes, retaining every failed trial, native finding and required partial-preview incompletion. Final A18 current Linux/archive qualification remains open; no consumer writes, public release, adoption or deployment. |</p>
+<p>| 2026-10-04 | Current backend integrity correction, refreshed owning/Hugo/race, carried unchanged-runtime four-consumer preservation and three declared runtime/archive qualifications passed; see the <a href="/docs/design/research/2026-10-03-cli-maintenance-acceptance/#a18">dated completion supplement</a>. Finite R1–R8 implementation is complete locally. Retain this requirements record and anchors, retire it from active navigation, and keep stable behavior in the contract/guide. Final canonical rendered lifecycle verification remains separate; E1–E4 have not been invoked. No public release, adoption or deployment. |</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-7be5d407e1731fe0d9afc340d1b6d80d">6 - Book publication pipeline</h1>
     <div class="lead">Move Book semantic lowering and generic EPUB/PDF packaging into OINK without taking publication facts away from consumers.</div>
 	<div class="td-callout td-callout--warning" role="note">
   <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="td-callout__label">Draft proposal with implemented publication tooling</span></div>
@@ -1080,12 +2483,1154 @@ single-column numbered equations, and CSS page margins.</li>
     
 	
   
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-f4135abca8c4380df19e6d4e53b5304e">7 - Visual presets and appearance switching</h1>
+    <div class="lead">Paper and Slate ship in 1.2.0; Ink and Terminal are explicitly enabled experiments awaiting design acceptance.</div>
+	<div class="td-callout td-callout--important" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-exclamation" aria-hidden="true"></i><span class="td-callout__label">Phase 1 released in 1.2.0; Ink/Terminal opt-ins available</span></div>
+  <div class="td-callout__body">
+<p>Paper, Slate and the Appearance menu ship with OINK 1.2.0. The <a href="/docs/design/architecture/#visual-presets">architecture contract</a>,
+<a href="/docs/design/decisions/visual-presets/">accepted decision</a> and
+<a href="/docs/design/research/2026-10-05-visual-presets-acceptance/">acceptance record</a>
+own phase-one behavior and evidence. A subsequent <a href="/docs/design/research/2026-10-05-ink-terminal-experiment/">Ink/Terminal experiment</a>
+provides actual selectable output; this proposal remains active for their design acceptance. The October 4 injected screenshots are research prototypes; they
+are distinct from the October 5 screenshots of actual theme output.</p>
+  </div>
+</div><h2 id="pg-f4135abca8c4380df19e6d4e53b5304e--status-and-surface">Status and surface
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Field</th>
+      <th scope="col">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Status</td>
+      <td>Phase 1 released in 1.2.0; Ink/Terminal explicit opt-ins</td>
+    </tr>
+    <tr>
+      <td>Owner</td>
+      <td>OINK maintainers</td>
+    </tr>
+    <tr>
+      <td>Date</td>
+      <td>2026-10-04</td>
+    </tr>
+    <tr>
+      <td>Baseline</td>
+      <td>Theme <code>main</code> after <code>v1.1.0</code> with unreleased <code>1.2.0</code> work; documentation site pinned to <code>v1.1.0</code></td>
+    </tr>
+    <tr>
+      <td>Affected contracts</td>
+      <td><a href="/docs/design/architecture/#trust-css-and-accessibility">Architecture: Trust, CSS, and accessibility</a> (font roles, accent roles, inline-code colour), <a href="/docs/design/shell/">Shell</a> (theme control), <a href="/docs/design/landing/">Landing</a>, <a href="/docs/design/decisions/configuration/">Configuration decision</a>, <a href="/docs/customize/brand/">Brand guide</a></td>
+    </tr>
+    <tr>
+      <td>Phase 1</td>
+      <td>Paper preset, Slate preset, default changed to Paper, reader switching between Paper and Slate</td>
+    </tr>
+    <tr>
+      <td>Later phases</td>
+      <td>Ink/Terminal design acceptance; Folio and Canvas names reserved only</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-f4135abca8c4380df19e6d4e53b5304e--context-and-evidence">Context and evidence
+</h2>
+<p>The baseline and limitations below record the October 4 research input, before phase 1.</p>
+<p>OINK ships one visual identity, referred to here as <strong>Slate</strong>: a cool blue-grey
+canvas (<code>#f1f4f8</code> / <code>#0b1119</code>), navy text, steel-blue links (<code>#245f94</code>), copper
+accents, Inter for interface and prose, Chakra Petch for display and wordmark,
+IBM Plex Mono for code and technical labels, a blueprint grid and glow on the
+Landing hero, and a crimson inline-code pair. It is defined by Bootstrap
+custom properties in <code>assets/scss/td/_brand.scss</code>, shell tokens in
+<code>assets/scss/td/shell/_tokens.scss</code>, and font roles in
+<code>assets/scss/td/_tokens-typography.scss</code>.</p>
+<p>PG.CENTER, an independent site, has a warm editorial reading style that
+maintainers want as the future OINK default. Its presentation tokens live in
+<code>media/css/pgsql.css</code> of that project. Measured on its local preview
+(2026-10-04, light and dark, home, Docs index, long manual page, component
+manual):</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Role</th>
+      <th scope="col">Light</th>
+      <th scope="col">Dark</th>
+      <th scope="col">Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Canvas</td>
+      <td><code>#f7f6f3</code></td>
+      <td><code>#161513</code></td>
+      <td>warm white / warm black</td>
+    </tr>
+    <tr>
+      <td>Raised surface</td>
+      <td><code>#ffffff</code></td>
+      <td><code>#1d1c19</code></td>
+      <td>cards, code blocks</td>
+    </tr>
+    <tr>
+      <td>Secondary surface</td>
+      <td><code>#efede8</code></td>
+      <td><code>#262420</code></td>
+      <td>table header, hover</td>
+    </tr>
+    <tr>
+      <td>Ink</td>
+      <td><code>#21201c</code></td>
+      <td><code>#ece9e3</code></td>
+      <td>body text</td>
+    </tr>
+    <tr>
+      <td>Secondary text</td>
+      <td><code>#56534c</code></td>
+      <td><code>#b6b1a7</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Lines and washes</td>
+      <td>ink at 4.5–22 % alpha</td>
+      <td>light ink at similar alpha</td>
+      <td>no tinted greys</td>
+    </tr>
+    <tr>
+      <td>Radius</td>
+      <td>12 px / 8 px</td>
+      <td>same</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Shadow</td>
+      <td><code>0 2px 10px rgba(33,32,28,.07)</code></td>
+      <td>black-based</td>
+      <td>warm, soft</td>
+    </tr>
+    <tr>
+      <td>Motion</td>
+      <td>160 ms <code>cubic-bezier(.2,.7,.2,1)</code></td>
+      <td>same</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Typography is IBM Plex Sans (variable, 400–600) for interface and prose, IBM
+Plex Mono for code, dates and versions, and Chakra Petch for the wordmark
+only. The component-manual pages are the best long-form model: lead paragraph
+17 px capped at 70ch, h2 followed by a hairline that runs to the edge, framed
+tables with a header band and no zebra, monochrome callouts with a 3 px rule.</p>
+<p>The following PG.CENTER elements are <strong>site identity, not reusable reading
+rules</strong>: the PostgreSQL brand blue <code>#336791</code> family, wine content links,
+version-state colours, release strips, search-kind badges, wiki tones, the
+duotone hero, and the 144-character measure of the imported PostgreSQL manual.
+Two values fail WCAG AA (muted text 3.67:1, link hover 4.22:1) and are
+corrected below rather than copied.</p>
+<p>Measured OINK docs typography for comparison: 16 px / 1.7 body, ≈ 76ch measure,
+h1 36 px / 700, h2 24 px / 600, code 14 px. PG.CENTER Docs index: 15.5 px / 1.7,
+≈ 120ch.</p>
+<h3 id="pg-f4135abca8c4380df19e6d4e53b5304e--current-limitations">Current limitations
+</h3>
+<ul>
+<li>Colours are tied to <code>data-bs-theme</code> only. No attribute selects a second
+palette, and several surfaces bypass tokens: the Landing primary button
+(<code>#2f6793</code> with navy glows), the grid, scrims (<code>rgba(4,10,18,.45)</code>), print
+colours, asciinema surfaces, and the giscus stylesheets.</li>
+<li>About 85 literal border radii and several literal shadows make a flat preset
+impossible without a radius and shadow scale.</li>
+<li>The light/dark control expands on hover or focus. Touch readers cannot reach
+&ldquo;follow system&rdquo;; the trigger mixes <code>aria-pressed</code> and <code>aria-expanded</code>; Esc
+does not close it. The Landing mobile drawer has no theme control.</li>
+<li><code>contrast-on-canvas.html</code> hard-codes Slate canvas luminance for the
+<code>theme_color</code> warning.</li>
+<li><code>dark_mode</code> is opt-in (<code>false</code> by default), so the palette and its menu are
+absent unless a site enables them.</li>
+</ul>
+<h2 id="pg-f4135abca8c4380df19e6d4e53b5304e--goals-and-non-goals">Goals and non-goals
+</h2>
+<p>Goals:</p>
+<ul>
+<li>one site key selects the default visual preset; Paper becomes the default;</li>
+<li>Slate remains available and reproduces current output for sites that choose it;</li>
+<li>readers can switch Paper and Slate instantly, without reload, independent of light/dark/system mode;</li>
+<li>the configured default renders without JavaScript and with storage unavailable;</li>
+<li>presets share templates, components, and layout geometry; they change paint and type;</li>
+<li>local fonts only, ordinary Hugo build, no new runtime framework or required build tool.</li>
+</ul>
+<p>Non-goals:</p>
+<ul>
+<li>implementing Ink, Terminal, Folio, or Canvas in phase 1;</li>
+<li>copying PG.CENTER brand colours, version UI, or page structures;</li>
+<li>per-page or per-section presets (section colour remains <code>theme_color</code>);</li>
+<li>changing layout geometry, density, or navigation structure per preset in phase 1;</li>
+<li>theming Swagger UI, ReDoc, or third-party embeds beyond their existing light/dark handling.</li>
+</ul>
+<h2 id="pg-f4135abca8c4380df19e6d4e53b5304e--preset-model">Preset model
+</h2>
+<p>This table and the phase-one configuration below retain the original scope.
+The later experiment adds explicit <code>ink</code>/<code>terminal</code> configuration and menu-list
+entries; <code>true</code> still offers the stable set plus the site default. The
+<a href="/docs/design/architecture/#visual-presets">architecture contract</a> owns current behavior.</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Preset</th>
+      <th scope="col">Direction</th>
+      <th scope="col">Phase 1</th>
+      <th scope="col">Reader menu</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>paper</code></td>
+      <td>Warm editorial minimalism</td>
+      <td>Implemented, default</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td><code>slate</code></td>
+      <td>Technical minimalism (current OINK)</td>
+      <td>Implemented</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td><code>ink</code></td>
+      <td>Typographic minimalism, Swiss-inspired</td>
+      <td>Spec + research prototype</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td><code>terminal</code></td>
+      <td>Terminal-inspired utilitarian</td>
+      <td>Spec + research prototype</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td><code>folio</code></td>
+      <td>Academic / book publishing</td>
+      <td>Name reserved</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td><code>canvas</code></td>
+      <td>Playful geometric / creator</td>
+      <td>Name reserved</td>
+      <td>No</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Reserved names are rejected by validation until implemented, with a warning
+that names the stable presets.</p>
+<h2 id="pg-f4135abca8c4380df19e6d4e53b5304e--configuration">Configuration
+</h2>
+<div class="td-code td-code--untitled" id="td-code-8dad16ad-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-8dad16ad-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ui</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">preset: paper        # paper | slate        (theme default</span><span class="p">:</span><span class="w"> </span><span class="l">paper)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">preset_menu</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">   </span><span class="c"># false | true | [paper, slate]</span></span></span></code></pre></div></div>
+</div>
+<ul>
+<li><code>preset</code> selects the site default. Invalid or reserved values warn through
+the existing validation path and fall back to <code>paper</code>. Publishing gates turn
+the warning into a failure.</li>
+<li><code>preset_menu</code> controls the reader choice. <code>false</code> renders no style group and
+emits no preset-init script; <code>true</code> offers every stable preset; a list offers
+a subset that must contain <code>preset</code>. Following the <code>dark_mode</code> precedent, the
+default is <code>false</code>; the documentation site enables it; starter adoption is outside this change.</li>
+<li><code>preset</code> is site-level only. Page and section overrides are not supported:
+switching identity per page would break reader expectation and the stored
+choice.</li>
+<li>The Appearance menu exists when either <code>dark_mode.show_menu</code> or a style
+choice is enabled. A site with <code>dark_mode: false</code> and <code>preset_menu: true</code>
+shows only the Style group.</li>
+</ul>
+<h3 id="pg-f4135abca8c4380df19e6d4e53b5304e--existing-keys">Relationship to existing keys
+</h3>
+<p>Precedence, lowest to highest:</p>
+<ol>
+<li>Slate base tokens on <code>:root</code> / <code>[data-bs-theme]</code> (unchanged selectors).</li>
+<li>Preset tokens on <code>[data-td-preset=X]</code>.</li>
+<li><code>params.ui.typography: system</code> — collapses font roles to system faces after
+the preset blocks, so it still requests no brand font in any preset.</li>
+<li><code>params.ui.fonts</code> — emitted inline after the stylesheet at <code>:root</code>; equal
+specificity and later source order beat preset font roles. Explicit fonts
+always win.</li>
+<li><code>theme_color</code> / <code>theme_color_dark</code> — page and section accent <em>backgrounds</em>
+only. They override the preset accent; they never touch links or inline code.</li>
+<li>Site <code>_styles_project.scss</code> — last in the bundle.</li>
+</ol>
+<p><code>typography: technical</code> remains the name for &ldquo;use the preset&rsquo;s bundled faces&rdquo;.
+The preset decides which bundled faces those are (Paper: Plex Sans; Slate:
+Inter + Chakra Petch).</p>
+<h2 id="pg-f4135abca8c4380df19e6d4e53b5304e--reader-state">Reader state
+</h2>
+<p>Two independent dimensions:</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Dimension</th>
+      <th scope="col">Attribute</th>
+      <th scope="col">Storage</th>
+      <th scope="col">Values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Style</td>
+      <td><code>data-td-preset</code> on <code>&lt;html&gt;</code></td>
+      <td><code>localStorage['td-preset']</code></td>
+      <td>stable preset names</td>
+    </tr>
+    <tr>
+      <td>Mode</td>
+      <td><code>data-bs-theme</code> (+ <code>.dark-mode</code>, vendor <code>data-theme</code> mirror)</td>
+      <td><code>localStorage['td-color-theme']</code></td>
+      <td><code>light</code>, <code>dark</code>, <code>auto</code></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Situation</th>
+      <th scope="col">Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>First visit</td>
+      <td>Server renders <code>data-td-preset=&quot;&lt;site preset&gt;&quot;</code> and <code>data-td-site-preset</code>; no script needed</td>
+    </tr>
+    <tr>
+      <td>Reader chooses a preset</td>
+      <td>Applied at once, stored, <code>td-preset-change</code> dispatched</td>
+    </tr>
+    <tr>
+      <td>Reader chooses the preset marked &ldquo;Default&rdquo;</td>
+      <td>Storage key removed; future site default changes reach this reader</td>
+    </tr>
+    <tr>
+      <td>Next page, refresh, other language</td>
+      <td>Inline head script applies the stored value before first paint</td>
+    </tr>
+    <tr>
+      <td>Stored value no longer offered</td>
+      <td>Removed; site default used</td>
+    </tr>
+    <tr>
+      <td>Storage unavailable</td>
+      <td>Choice applies to the current page; the menu states that it will not persist</td>
+    </tr>
+    <tr>
+      <td>JavaScript disabled</td>
+      <td>Site default preset renders in its light palette, as the current theme does without script; no style or mode control is usable</td>
+    </tr>
+    <tr>
+      <td>Style change</td>
+      <td>Never writes <code>td-color-theme</code>; mode change never writes <code>td-preset</code></td>
+    </tr>
+    <tr>
+      <td>Other tab changes the value</td>
+      <td><code>storage</code> event applies it</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>The inline script runs before the stylesheet, beside the existing dark-mode
+script. It validates the stored value against the allowed list embedded at
+build time, sets the attribute, and updates the <code>theme-color</code> meta and the
+pre-paint canvas colour for the preset and mode. It is emitted only when the
+menu offers more than one preset. Independently of the menu, the static
+pre-paint <code>&lt;style&gt;</code> and the resolved <code>theme-color</code> meta in <code>head.html</code> are rendered
+from the site default preset&rsquo;s canvases instead of the current hard-coded
+<code>#0b0d12</code>, <code>#ffffff</code>, and <code>#000000</code>.</p>
+<p>On switch the runtime sets <code>data-td-preset-switching</code> for one frame to suppress
+colour transitions, records the first visible heading or block as a scroll
+anchor, applies the attribute, and restores the anchor offset, again after
+<code>document.fonts.ready</code> because Plex Sans and Inter have different metrics.
+Focus, open menus, and form state stay untouched. Phase 1 uses no cross-fade
+or View Transition.</p>
+<h2 id="pg-f4135abca8c4380df19e6d4e53b5304e--appearance-menu">Appearance menu
+</h2>
+<p>Three options were compared:</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Option</th>
+      <th scope="col">Assessment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Keep the hover menu, add a style row</td>
+      <td>Keeps the touch and keyboard gaps; hover-only discovery</td>
+    </tr>
+    <tr>
+      <td>Separate style and mode buttons</td>
+      <td>Two icons in a crowded navbar; mobile drawer gets longer</td>
+    </tr>
+    <tr>
+      <td><strong>One Appearance disclosure with two radio groups</strong></td>
+      <td>Chosen: one entry point, works with touch and keyboard, scales to more presets</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Behaviour:</p>
+<ul>
+<li><strong>Trigger:</strong> one icon button (<code>aria-expanded</code>, <code>aria-controls</code>, label
+&ldquo;Appearance&rdquo;). It replaces the current theme button in the navbar and in the
+shell footer line. Sun means the current light state; moon means dark.
+The <code>t</code> shortcut keeps toggling light/dark.</li>
+<li><strong>Panel:</strong> a non-modal popover containing two native <code>fieldset</code> radio
+groups. The October 5 revision uses <em>Style</em>: icon-and-name buttons in two
+columns, with a preset-colored icon and no preview letters or experiment
+badges. The site default is identified by its tooltip and accessible name.
+<em>Light</em>: a segmented Light / Dark / System control. Selection applies
+immediately and the panel stays open so readers can compare.</li>
+<li><strong>Keyboard:</strong> Enter/Space or ArrowDown opens and focuses the checked radio;
+arrow keys move within a group (native radio behaviour); Tab moves between
+groups; Esc closes and returns focus to the trigger; focus leaving the panel
+or an outside click closes it.</li>
+<li><strong>Feedback:</strong> the selected option has a tinted background and accent border;
+keyboard focus has a separate outline. Changes are announced through native
+radio semantics; no extra live region.</li>
+<li><strong>Restore default:</strong> selecting the site&rsquo;s default preset clears the stored choice.
+No separate reset button is needed.</li>
+<li><strong>Mobile (&lt; 768 px):</strong> the trigger stays in the compact header and is also
+offered in the docs drawer footer and in a new row of the Landing mobile
+drawer. The panel opens as a bottom sheet with 44 px targets, the same two
+groups, and a close button. The sheet is a modal <code>&lt;dialog&gt;</code> opened with
+<code>showModal()</code>, so it lives in the top layer: the prototype showed that the
+sticky header&rsquo;s <code>backdrop-filter</code> otherwise becomes the containing block of a
+<code>position: fixed</code> sheet and the drawer&rsquo;s stacking context hides it.</li>
+<li><strong>Command palette:</strong> a <code>switch_preset</code> action next to <code>switch_theme</code>.</li>
+</ul>
+<p><code>dark-mode.js</code> keeps its storage key and attributes. It must sync the
+<code>checked</code> state of the Light radios and listen to their <code>change</code> events instead
+of the current <code>aria-pressed</code> buttons.</p>
+<h2 id="pg-f4135abca8c4380df19e6d4e53b5304e--token-architecture">Token architecture
+</h2>
+<p>All presets compile into the single existing <code>main.css</code>. Fonts are declared
+with <code>@font-face</code> and are downloaded only when a rule uses them, so offering a
+preset costs CSS bytes but no font bytes until it is selected.</p>
+<div class="td-code td-code--untitled" id="td-code-8dad16ad-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="scss" data-td-line-count="10">
+  <div class="td-code__viewport" id="td-code-8dad16ad-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="c1">// Slate: existing selectors and values, unchanged
+</span></span></span><span class="line"><span class="cl"><span class="nd">:root</span><span class="o">,</span> <span class="o">[</span><span class="nt">data-bs-theme</span><span class="o">=</span><span class="s1">&#39;light&#39;</span><span class="o">]</span> <span class="p">{</span> <span class="err">…</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span><span class="nt">data-bs-theme</span><span class="o">=</span><span class="s1">&#39;dark&#39;</span><span class="o">]</span> <span class="p">{</span> <span class="err">…</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Every other preset
+</span></span></span><span class="line"><span class="cl"><span class="o">[</span><span class="nt">data-td-preset</span><span class="o">=</span><span class="s1">&#39;paper&#39;</span><span class="o">]</span> <span class="p">{</span> <span class="cm">/* light tokens + font roles */</span> <span class="p">}</span>            <span class="c1">// (0,1,0)
+</span></span></span><span class="line"><span class="cl"><span class="o">[</span><span class="nt">data-td-preset</span><span class="o">=</span><span class="s1">&#39;paper&#39;</span><span class="o">][</span><span class="nt">data-bs-theme</span><span class="o">=</span><span class="s1">&#39;dark&#39;</span><span class="o">],</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span><span class="nt">data-td-preset</span><span class="o">=</span><span class="s1">&#39;paper&#39;</span><span class="o">]</span> <span class="o">[</span><span class="nt">data-bs-theme</span><span class="o">=</span><span class="s1">&#39;dark&#39;</span><span class="o">]</span> <span class="p">{</span> <span class="cm">/* dark tokens */</span> <span class="p">}</span>   <span class="c1">// (0,2,0)
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">//</span> <span class="nt">Then</span><span class="nd">:</span> <span class="o">[</span><span class="nt">data-td-typography</span><span class="o">=</span><span class="s1">&#39;system&#39;</span><span class="o">]</span> <span class="nt">font</span> <span class="nt">block</span> <span class="o">(</span><span class="nt">moved</span> <span class="nt">after</span> <span class="nt">presets</span><span class="o">)</span></span></span></code></pre></div></div>
+</div>
+<p>Rules:</p>
+<ol>
+<li><strong>Token parity.</strong> Each dark block redeclares every token of its light block,
+so Slate dark never leaks into another preset. A checker enforces it.</li>
+<li><strong>Dark islands.</strong> The descendant form covers nested <code>data-bs-theme=&quot;dark&quot;</code>
+islands (Landing code plate, previews).</li>
+<li><strong>Font roles only at (0,1,0)</strong>, so <code>params.ui.fonts</code> keeps winning.</li>
+<li><strong>Accent indirection.</strong> Presets set <code>--td-preset-accent</code> (and <code>-rgb</code>,
+<code>-hover</code>); <code>--td-accent</code> defaults to it. <code>theme_color</code> keeps writing
+<code>--td-accent</code> and therefore overrides the preset in both modes.</li>
+<li><strong>Slate stays attribute-free.</strong> <code>data-td-preset=&quot;slate&quot;</code> matches no override
+block, so current site overrides of brand tokens behave exactly as today.</li>
+<li><strong>Geometry is shared.</strong> Presets do not change grid columns, sidebar width,
+or breakpoints in phase 1.</li>
+<li><strong>Preset-specific rules are few and scoped</strong> to <code>[data-td-preset=X]</code> in one
+partial per preset. Anything two presets need becomes a token.</li>
+</ol>
+<p>New shared tokens required before Paper (phase 1): <code>--td-shell-scrim</code>, Landing
+<code>--td-grid</code> / <code>--td-glow</code> / primary-button tokens, <code>--td-callout-tint</code>,
+<code>--td-code-inline-bg</code>, <code>--td-hairline</code>, and a <code>brand</code> font role
+(<code>--td-brand-font-family</code>, default <code>var(--td-display-font-family)</code>) so the
+wordmark can keep Chakra Petch while Paper&rsquo;s display headings use Plex Sans.</p>
+<p>The original phase-two plan proposed global radius, shadow and density scales.
+The October 5 experiment instead scopes those changes to owned components;
+a wider token refactor is not a prerequisite for trying the designs.</p>
+<p>Contract change: the architecture contract currently fixes inline code to a
+crimson pair. This proposal makes <code>--bs-code-color</code> a <strong>preset</strong> token (Slate
+keeps crimson, Paper uses an ink chip). <code>theme_color</code> still never touches it.</p>
+<h2 id="pg-f4135abca8c4380df19e6d4e53b5304e--fonts">Fonts
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Preset</th>
+      <th scope="col">UI / body / heading</th>
+      <th scope="col">Display</th>
+      <th scope="col">Brand (wordmark)</th>
+      <th scope="col">Meta</th>
+      <th scope="col">Code</th>
+      <th scope="col">New bytes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Paper</td>
+      <td>IBM Plex Sans</td>
+      <td>IBM Plex Sans</td>
+      <td>Chakra Petch</td>
+      <td>IBM Plex Sans</td>
+      <td>IBM Plex Mono</td>
+      <td>Plex Sans</td>
+    </tr>
+    <tr>
+      <td>Slate</td>
+      <td>Inter</td>
+      <td>Chakra Petch</td>
+      <td>Chakra Petch</td>
+      <td>IBM Plex Mono</td>
+      <td>IBM Plex Mono</td>
+      <td>none</td>
+    </tr>
+    <tr>
+      <td>Ink</td>
+      <td>Inter</td>
+      <td>Inter</td>
+      <td>Inter</td>
+      <td>Inter (tabular)</td>
+      <td>IBM Plex Mono</td>
+      <td>none</td>
+    </tr>
+    <tr>
+      <td>Terminal</td>
+      <td>Plex Mono chrome, Plex Sans prose</td>
+      <td>IBM Plex Mono</td>
+      <td>IBM Plex Mono</td>
+      <td>IBM Plex Mono</td>
+      <td>IBM Plex Mono</td>
+      <td>none after Paper</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Paper vendors <code>@fontsource-variable/ibm-plex-sans</code> (OFL-1.1) into
+<code>third_party/</code> with a <code>VENDOR.json</code> entry: Latin, Latin Extended, Cyrillic, Cyrillic Extended, Greek and Vietnamese
+subsets, normal and italic, weights 100–700. PG.CENTER&rsquo;s normal-only 400–600 subset is
+40,240 B (latin) + 25,868 B (latin-ext); exact sizes are recorded at vendor
+time. Italic is required because OINK prose uses emphasis and PG.CENTER&rsquo;s
+synthesized italic is not acceptable. The full small subsets preserve the existing locale coverage; the browser
+loads only the ranges actually used. All 12 font files are recorded in VENDOR.json.</p>
+<p>Chinese, Japanese and Korean use system stacks placed after the Latin face:
+<code>-apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC', 'Noto Sans SC', sans-serif</code>. IBM Plex Sans SC was rejected
+because its files are megabyte-scale. Monospace stacks insert CJK sans
+families before the generic <code>monospace</code> keyword so mixed code keeps a
+predictable CJK face.</p>
+<p><code>typography: system</code> continues to request no brand font: the system block
+follows every preset block and resets all roles, including <code>brand</code>.</p>
+<p><strong>Serif.</strong> Phase 1 uses no serif. Latin serif headings beside CJK sans
+headings look inconsistent, Windows&rsquo; default CJK serif renders poorly at
+heading sizes, and a serif costs another font. A later opt-in display-only
+serif can be reviewed with the side-by-side mockup produced for this proposal.</p>
+<h2 id="pg-f4135abca8c4380df19e6d4e53b5304e--preset-specifications">Preset specifications
+</h2>
+<h3 id="pg-f4135abca8c4380df19e6d4e53b5304e--shared-foundation">Shared foundation
+</h3>
+<p>Belongs to every preset, not to Slate:</p>
+<ul>
+<li>layout geometry, breakpoints, sidebar/TOC widths, ≈ 76ch prose measure;</li>
+<li>body 1rem / 1.7 for prose, 0.875rem for chrome, 0.8125rem for meta;</li>
+<li>type scale ratios (h1 2.25rem, h2 1.5rem, h3 1.25rem, h4 1rem) — presets tune
+weight and tracking, not size, in phase 1;</li>
+<li>focus ring: 2 px accent outline with 2 px offset, never removed; forced-colors
+fallbacks unchanged;</li>
+<li>semantic status colours (note, tip, important, warning, caution) keep their
+hue; presets change tint strength and frame;</li>
+<li>syntax highlighting keeps the existing light/dark Chroma palettes in phase 1;</li>
+<li>motion tokens 100/150/250 ms; <code>prefers-reduced-motion</code> disables transitions;</li>
+<li>WCAG AA: 4.5:1 body, 3:1 large text and UI boundaries, in both modes.</li>
+</ul>
+<h3 id="pg-f4135abca8c4380df19e6d4e53b5304e--paper">Paper
+</h3>
+<p><em>Warm editorial minimalism.</em> Warm paper, ink text, quiet hairlines, soft
+shadows, and generous but not loose reading rhythm. It serves long-form
+reading: lower blue light on large canvases, less chrome contrast, and a
+typeface (Plex Sans) with open counters that reads well at 16 px.</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Token</th>
+      <th scope="col">Light</th>
+      <th scope="col">Dark</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Canvas <code>--bs-body-bg</code></td>
+      <td><code>#f7f6f3</code></td>
+      <td><code>#161513</code></td>
+    </tr>
+    <tr>
+      <td>Raised <code>--td-brand-elev</code>, <code>--td-pre-bg</code></td>
+      <td><code>#ffffff</code></td>
+      <td><code>#1f1e1a</code> / <code>#121110</code></td>
+    </tr>
+    <tr>
+      <td>Secondary surface</td>
+      <td><code>#efede8</code></td>
+      <td><code>#1f1e1a</code></td>
+    </tr>
+    <tr>
+      <td>Body</td>
+      <td><code>#21201c</code> (15.09:1)</td>
+      <td><code>#ece9e3</code></td>
+    </tr>
+    <tr>
+      <td>Secondary text</td>
+      <td><code>#56534c</code> (7.10:1)</td>
+      <td><code>#b6b1a7</code></td>
+    </tr>
+    <tr>
+      <td>Tertiary text</td>
+      <td><code>#6b665d</code> (5.27:1)</td>
+      <td><code>#958f84</code> (5.68:1)</td>
+    </tr>
+    <tr>
+      <td>Border</td>
+      <td>ink 12 %</td>
+      <td>light ink 13 %</td>
+    </tr>
+    <tr>
+      <td>Link / hover</td>
+      <td><code>#2b5f8c</code> (6.23:1) / <code>#1d68a5</code> (5.43:1)</td>
+      <td><code>#7db5e6</code> (8.36:1) / <code>#a3cdf3</code></td>
+    </tr>
+    <tr>
+      <td>Accent (copper)</td>
+      <td><code>#9c5530</code> (5.17:1)</td>
+      <td><code>#d99a6c</code></td>
+    </tr>
+    <tr>
+      <td>Inline code</td>
+      <td>ink on ink-6 % chip</td>
+      <td>light ink on 8 % chip</td>
+    </tr>
+    <tr>
+      <td>Shadow sm / md</td>
+      <td><code>0 2px 10px</code> / <code>0 14px 38px</code> ink 7 % / 13 %</td>
+      <td>black 35 % / 50 %</td>
+    </tr>
+    <tr>
+      <td>Radius</td>
+      <td>code 12 px, cards 12 px, controls 8 px</td>
+      <td>same</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Rules specific to Paper: headings Plex Sans 600 with −0.006em (h1 −0.012em);
+h2 followed by an edge hairline; framed tables (radius 10, header band, no
+zebra); callouts with a 4 % (dark 6 %) semantic wash and a single 3 px rule;
+hairline blockquote; Landing without grid or glow, primary button from tokens
+with a warm shadow, hero title 600 / −0.025em; selected navigation rows on a
+warm neutral ground with 9 % (dark 12 %) accent mixed in. Links remain blue: a
+reading convention, not decoration. Motion 160 ms ease-out for hover and
+popovers; no movement on scroll.</p>
+<h3 id="pg-f4135abca8c4380df19e6d4e53b5304e--slate">Slate
+</h3>
+<p><em>Technical minimalism.</em> The current OINK appearance, unchanged: cool blue-grey
+canvas, navy ink, steel blue and copper, Inter body, Chakra Petch display,
+Plex Mono labels and metadata, blueprint grid and hero glow, crimson inline
+code, 8–12 px radii. Selecting <code>preset: slate</code> must reproduce <code>v1.1</code> token
+values; a checker compares them. Grid, glow, Chakra display headings, mono
+metadata and crimson inline code are Slate identity. Layout, focus, status
+colours, and the shell structure are shared foundation.</p>
+<h3 id="pg-f4135abca8c4380df19e6d4e53b5304e--ink">Ink
+</h3>
+<p><em>Typographic minimalism, Swiss-inspired information design.</em> Black, white and
+neutral grey; one red accent; hierarchy carried by size, weight and alignment
+rather than colour, shadow or rounded surfaces.</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Token</th>
+      <th scope="col">Light</th>
+      <th scope="col">Dark</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Canvas</td>
+      <td><code>#ffffff</code></td>
+      <td><code>#0b0b0b</code></td>
+    </tr>
+    <tr>
+      <td>Body</td>
+      <td><code>#141414</code></td>
+      <td><code>#ededed</code></td>
+    </tr>
+    <tr>
+      <td>Secondary / tertiary</td>
+      <td><code>#474747</code> / <code>#636363</code></td>
+      <td><code>#b5b5b5</code> / <code>#8f8f8f</code></td>
+    </tr>
+    <tr>
+      <td>Surface</td>
+      <td><code>#f4f4f4</code></td>
+      <td><code>#161616</code></td>
+    </tr>
+    <tr>
+      <td>Link</td>
+      <td>ink, underlined; hover red</td>
+      <td>light ink, underlined; hover red</td>
+    </tr>
+    <tr>
+      <td>Accent</td>
+      <td><code>#c8102e</code> (5.88:1)</td>
+      <td><code>#ff5c4d</code></td>
+    </tr>
+    <tr>
+      <td>Radius / shadow</td>
+      <td>0 / none</td>
+      <td>0 / none</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Differences from Slate: no tinted canvas, no blue, no grid texture, no
+shadows, no rounded corners; links are identified by underline, not hue;
+headings use Inter 700–800 with tight tracking instead of Chakra Petch.
+Differences from Paper: neutral not warm, flat not soft, ruled not hairline,
+underline links not blue. Distinctive rules: 2 px black rule above h2; h1 800 /
+−0.035em; uppercase tracked h4, table headers and callout titles; selected
+navigation row marked by a 3 px red bar, not a fill; tabular numerals.</p>
+<h3 id="pg-f4135abca8c4380df19e6d4e53b5304e--terminal">Terminal
+</h3>
+<p><em>Terminal-inspired utilitarian design.</em> Structure and information expression,
+not CRT effects: monospaced chrome, command and path notation, compact
+controls, strong panel borders, amber or teal accents.</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Token</th>
+      <th scope="col">Light</th>
+      <th scope="col">Dark</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Canvas</td>
+      <td><code>#f4f5f2</code></td>
+      <td><code>#0c0f0e</code></td>
+    </tr>
+    <tr>
+      <td>Body</td>
+      <td><code>#1d211f</code></td>
+      <td><code>#d3dbd6</code></td>
+    </tr>
+    <tr>
+      <td>Secondary</td>
+      <td><code>#4a514d</code></td>
+      <td><code>#9aa59f</code></td>
+    </tr>
+    <tr>
+      <td>Surface</td>
+      <td><code>#e9ebe6</code></td>
+      <td><code>#141a18</code></td>
+    </tr>
+    <tr>
+      <td>Link (teal)</td>
+      <td><code>#0a6560</code> (6.31:1)</td>
+      <td><code>#4cc9bd</code></td>
+    </tr>
+    <tr>
+      <td>Accent (amber)</td>
+      <td><code>#935400</code> (5.47:1)</td>
+      <td><code>#f0a73a</code></td>
+    </tr>
+    <tr>
+      <td>Radius</td>
+      <td>2 px</td>
+      <td>2 px</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Mono scope: navigation, headings, labels, metadata, breadcrumbs, buttons and
+code use IBM Plex Mono. Prose paragraphs, lists and table bodies use Plex Sans
+with platform CJK fallbacks, because long monospaced paragraphs and mixed CJK/Latin mono lines
+read poorly. Distinctive rules: <code>## </code> prefix before headings rendered with
+<code>content: '## ' / ''</code> so assistive technology ignores it; bracketed callout
+labels (<code>[NOTE]</code>); the selected navigation row is inverted with a <code>▸</code> marker;
+1 px strong panel borders; static <code>▍</code> caret in the hero. No scanlines, glow,
+blinking, or typing animation.</p>
+<h3 id="pg-f4135abca8c4380df19e6d4e53b5304e--difference-matrix">Difference matrix
+</h3>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Paper</th>
+      <th scope="col">Slate</th>
+      <th scope="col">Ink</th>
+      <th scope="col">Terminal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Temperature</td>
+      <td>warm</td>
+      <td>cool</td>
+      <td>neutral</td>
+      <td>neutral-green</td>
+    </tr>
+    <tr>
+      <td>Canvas light</td>
+      <td><code>#f7f6f3</code></td>
+      <td><code>#f1f4f8</code></td>
+      <td><code>#ffffff</code></td>
+      <td><code>#f4f5f2</code></td>
+    </tr>
+    <tr>
+      <td>Canvas dark</td>
+      <td><code>#161513</code></td>
+      <td><code>#0b1119</code></td>
+      <td><code>#0b0b0b</code></td>
+      <td><code>#0c0f0e</code></td>
+    </tr>
+    <tr>
+      <td>Prose face</td>
+      <td>Plex Sans</td>
+      <td>Inter</td>
+      <td>Inter</td>
+      <td>Plex Sans</td>
+    </tr>
+    <tr>
+      <td>Heading face</td>
+      <td>Plex Sans 600</td>
+      <td>Inter 600–700</td>
+      <td>Inter 700–800</td>
+      <td>Plex Mono</td>
+    </tr>
+    <tr>
+      <td>Display / wordmark</td>
+      <td>Plex Sans / Chakra</td>
+      <td>Chakra / Chakra</td>
+      <td>Inter / Inter</td>
+      <td>Plex Mono</td>
+    </tr>
+    <tr>
+      <td>Link signal</td>
+      <td>blue</td>
+      <td>steel blue</td>
+      <td>underline + red hover</td>
+      <td>teal</td>
+    </tr>
+    <tr>
+      <td>Accent</td>
+      <td>copper</td>
+      <td>copper</td>
+      <td>red</td>
+      <td>amber</td>
+    </tr>
+    <tr>
+      <td>Radius</td>
+      <td>8–12</td>
+      <td>8–12</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>Shadow</td>
+      <td>soft warm</td>
+      <td>navy-tinted</td>
+      <td>none</td>
+      <td>none</td>
+    </tr>
+    <tr>
+      <td>Section rule</td>
+      <td>h2 trailing hairline</td>
+      <td>none</td>
+      <td>2 px top rule</td>
+      <td><code>##</code> marker</td>
+    </tr>
+    <tr>
+      <td>Selected row</td>
+      <td>warm tint</td>
+      <td>accent tint</td>
+      <td>red bar</td>
+      <td>inverted + <code>▸</code></td>
+    </tr>
+    <tr>
+      <td>Inline code</td>
+      <td>ink chip</td>
+      <td>crimson</td>
+      <td>ink chip</td>
+      <td>ink chip, bordered</td>
+    </tr>
+    <tr>
+      <td>Landing texture</td>
+      <td>none</td>
+      <td>grid + glow</td>
+      <td>none</td>
+      <td>none</td>
+    </tr>
+    <tr>
+      <td>Chrome density</td>
+      <td>standard</td>
+      <td>standard</td>
+      <td>standard</td>
+      <td>compact</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-f4135abca8c4380df19e6d4e53b5304e--page-density">Page density
+</h2>
+<p>Density follows the task, not the preset: the Landing hero allows the largest
+display type and brand expression; Docs prose keeps 1rem / 1.7 and ≈ 76ch;
+sidebar, TOC, parameter tables, search results and the command palette keep
+compact rows (0.875rem, 1.4–1.5 line height). Presets may change paint inside
+these zones but not their spacing in phase 1. Terminal&rsquo;s compact chrome is a
+phase 2 density token.</p>
+<h2 id="pg-f4135abca8c4380df19e6d4e53b5304e--runtime-surfaces">Runtime surfaces
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Surface</th>
+      <th scope="col">Phase 1 impact</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Blog, Book, taxonomy</td>
+      <td>Tokens only; Book captions keep the prose face</td>
+    </tr>
+    <tr>
+      <td>Search dialog and command palette</td>
+      <td>Scrim tokenized; selected row uses <code>--td-shell-primary-dim</code></td>
+    </tr>
+    <tr>
+      <td>Mermaid, ECharts</td>
+      <td>Colours baked at init on <code>data-bs-theme</code>. Add a <code>data-td-preset</code> observer only if charts take preset colours; phase 1 keeps mode-only chart palettes</td>
+    </tr>
+    <tr>
+      <td>asciinema</td>
+      <td>Surface tokens; re-mount only if the code face changes (not in phase 1)</td>
+    </tr>
+    <tr>
+      <td>giscus</td>
+      <td>Needs one stylesheet per preset and mode, re-posted on <code>td-preset-change</code></td>
+    </tr>
+    <tr>
+      <td>Swagger UI, ReDoc</td>
+      <td>Keep vendor styling and current light/dark handling</td>
+    </tr>
+    <tr>
+      <td>Print</td>
+      <td>Tokenize navy and cool greys; print always uses a light palette from the active preset</td>
+    </tr>
+    <tr>
+      <td>404</td>
+      <td>Its own <code>&lt;html&gt;</code> must carry the new attributes</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-f4135abca8c4380df19e6d4e53b5304e--boundaries">Accessibility, security, and output
+</h2>
+<ul>
+<li>Every preset palette passes WCAG AA for body, secondary and tertiary text,
+links, and accents in both modes (values above). <code>theme_color</code> contrast
+warnings compute against the active site default preset&rsquo;s canvases.</li>
+<li>The menu uses native radios; no <code>role=&quot;menu&quot;</code>. Focus is never trapped
+except in the mobile bottom sheet, which is modal and restores focus.</li>
+<li><code>prefers-reduced-motion</code> and forced colors keep current behaviour.</li>
+<li>The init script is inline, static, and derived from validated configuration;
+the stored value is matched against a build-time allowlist before use.</li>
+<li>No external font or script request is added. Output adds two <code>&lt;html&gt;</code>
+attributes, one inline script, and CSS.</li>
+</ul>
+<h2 id="pg-f4135abca8c4380df19e6d4e53b5304e--compatibility-and-migration">Compatibility and migration
+</h2>
+<p>Changing the default to Paper changes every site that does not set <code>preset</code>.</p>
+<ul>
+<li>Sites that want the current look add <code>params.ui.preset: slate</code>; the upgrade
+note leads with this one line. Slate output must equal <code>v1.1</code> tokens.</li>
+<li>Sites with custom brand overrides in <code>_styles_project.scss</code>: light overrides
+on <code>:root</code> keep working under Paper by source order; dark overrides on
+<code>[data-bs-theme='dark']</code> are outranked by Paper&rsquo;s dark block. Such sites
+should choose Slate or move overrides to <code>[data-td-preset='paper'][data-bs-theme='dark']</code>.
+The upgrade note and brand guide document this.</li>
+<li><code>theme_color</code>, <code>typography</code>, and <code>fonts</code> keep their meaning and precedence.</li>
+<li>Sites with <code>dark_mode: false</code> still get one light palette, now Paper.</li>
+<li>The release that changes the default must state it as a visible change.
+Whether that release is a minor (<code>1.x</code>) or major version is an open decision.</li>
+<li>A consumer inventory should report sites with brand overrides before the
+default change is published.</li>
+</ul>
+<h2 id="pg-f4135abca8c4380df19e6d4e53b5304e--implementation-plan">Implementation plan
+</h2>
+<p>Phase 1, in dependency order. Each step names its owning checker.</p>
+<ol>
+<li><strong>Tokenize Slate leaks.</strong> Landing primary button, grid, glow, scrims, print
+colours, asciinema surfaces; add <code>--td-preset-accent</code>, <code>brand</code> font role,
+and per-preset canvas luminance in <code>contrast-on-canvas.html</code>. Slate output
+must stay byte-for-byte equivalent in computed colour.
+Checkers: <code>check-landing.py</code>, <code>check-output.py</code>, <code>check-font-tokens.py</code>.</li>
+<li><strong>Vendor IBM Plex Sans.</strong> <code>third_party/</code>, <code>VENDOR.json</code>, licence file.
+Checker: <code>check-vendor.py</code>.</li>
+<li><strong>Preset tokens.</strong> New <code>assets/scss/td/_presets.scss</code> (imported after
+<code>_brand.scss</code>); the implementation keeps Paper in that file instead of a
+separate <code>presets/_paper.scss</code>. Place preset font roles before the <code>system</code>
+typography reset. Checkers: extend <code>check-font-tokens.py</code> (Plex Sans family,
+system block order, token parity between light and dark blocks).</li>
+<li><strong>Configuration.</strong> <code>hugo.yaml</code> defaults (<code>preset: paper</code>,
+<code>preset_menu: false</code>); a resolver partial used by <code>validate.html</code>,
+<code>document-attrs.html</code>, <code>layouts/404.html</code>, and <code>head.html</code> (init script,
+<code>theme-color</code>, pre-paint canvas). Regenerate the schema. Checkers:
+<code>check-params.py</code> (accepted, invalid, reserved), <code>generate-config-schema.py --check</code>,
+<code>check-namespace.py</code>.</li>
+<li><strong>Appearance menu.</strong> Shared partial used by <code>navbar.html</code>,
+<code>shell/footer-line.html</code>, and the Landing mobile drawer; <code>preset.js</code> runtime
+(or a section of <code>dark-mode.js</code>); <code>dark-mode.js</code> radio sync; palette action
+<code>switch_preset</code>; i18n strings in all 32 catalogs. Checkers: <code>check-shell.py</code>,
+<code>check-actions.py</code>, i18n checker, <code>tests/js/preset.test.js</code>,
+<code>tests/js/dark-mode.test.js</code>.</li>
+<li><strong>Third-party surfaces.</strong> Per-preset giscus stylesheets and re-post.</li>
+<li><strong>Documentation.</strong> EN/ZH architecture, shell and landing contracts; brand
+guide (presets, migration, fonts); configuration reference; changelog and
+upgrade note.</li>
+<li><strong>Site validation.</strong> <code>make -C ../oink.pgsty.com check</code>, <code>browser</code> (add
+preset switching, persistence, storage failure, no-JS, EN/ZH,
+desktop/mobile, light/dark cases), and <code>dev</code> for visual review.</li>
+</ol>
+<h2 id="pg-f4135abca8c4380df19e6d4e53b5304e--acceptance-criteria">Acceptance criteria
+</h2>
+<p>The following are the original acceptance targets. Executed checks and remaining
+limits are recorded separately in the <a href="/docs/design/research/2026-10-05-visual-presets-acceptance/">October 5 acceptance record</a>:</p>
+<ul>
+<li>With no <code>preset</code> key, output carries <code>data-td-preset=&quot;paper&quot;</code> and renders
+Paper with JavaScript disabled.</li>
+<li><code>preset: slate</code> produces computed colours and font roles equal to <code>v1.1</code>
+across the checker fixtures.</li>
+<li>Switching style never changes <code>td-color-theme</code>; switching mode never changes
+<code>td-preset</code>; both survive navigation, reload, and language switch.</li>
+<li>Invalid stored values are removed; storage failure leaves the page usable
+and shows the non-persistence note.</li>
+<li>No first-paint flash between presets in Chromium, Firefox and WebKit at
+normal and throttled CPU.</li>
+<li>Scroll position after a switch stays within one line of the anchor.</li>
+<li><code>typography: system</code> triggers no font request in any preset;
+<code>params.ui.fonts</code> overrides preset faces.</li>
+<li><code>theme_color</code> overrides the accent in both modes under Paper and Slate.</li>
+<li>The menu is fully operable with keyboard, touch, and screen readers; axe
+reports no new violations.</li>
+<li>All palettes meet the contrast table in both modes.</li>
+<li>Presets add no external font or script dependency; explicitly configured
+services such as Giscus remain separate. <code>--panicOnWarning</code> builds pass.</li>
+</ul>
+<h2 id="pg-f4135abca8c4380df19e6d4e53b5304e--open-decisions">Open decisions
+</h2>
+<ol>
+<li>Resolved for phase 1: <code>preset_menu: false</code>; the docs site enables it.</li>
+<li>Target resolved for release preparation: <code>1.2.0</code>, with a prominent Paper-default notice and the <code>preset: slate</code> compatibility setting. Published in 1.2.0.</li>
+<li>Resolved for phase 1: the wordmark role is <code>brand</code>.</li>
+<li>Whether a display-only serif becomes a Paper option after phase 1.</li>
+<li>Whether charts (Mermaid, ECharts) should take preset colours in phase 2.</li>
+</ol>
+<h2 id="pg-f4135abca8c4380df19e6d4e53b5304e--ink-terminal-backlog">Ink and Terminal backlog
+</h2>
+<p>Implemented experimentally: both palettes, existing font roles, prose link and
+selection signals, heading treatments, scoped geometry, compact Terminal
+navigation, Giscus palettes, print and the existing switching mechanism. No new
+font file, animation or runtime is added. See the
+<a href="/docs/design/research/2026-10-05-ink-terminal-experiment/">experiment record</a>
+for actual output and verification.</p>
+<p>Before stable promotion, review long-page red accent density and CJK underline
+weight in Ink; numbered headings, mono wrapping and dense parameter tables in
+Terminal; Windows/Android fallback faces and manual screen-reader speech.
+Mermaid/ECharts and API vendors remain mode-only for this experiment. Wider
+geometry/density tokens and preset-colored charts require a separate decision.</p>
+<h2 id="pg-f4135abca8c4380df19e6d4e53b5304e--decision-log">Decision log
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2026-10-04</td>
+      <td>Draft created with Paper/Slate phase-1 scope, Ink/Terminal research specs, Appearance menu choice, and token architecture</td>
+    </tr>
+    <tr>
+      <td>2026-10-05</td>
+      <td>Phase 1 implemented locally; defaults, brand role and mode-only chart scope accepted; release version undecided and no publication performed</td>
+    </tr>
+    <tr>
+      <td>2026-10-05</td>
+      <td>Subsequent explicit Ink/Terminal experiments implemented; stable menu policy retained; design acceptance remains open</td>
+    </tr>
+    <tr>
+      <td>2026-10-05</td>
+      <td>Release preparation targets 1.2.0; simplified Style/Light controls and current-state icons replace the earlier swatch proposal; no tag or deployment created</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+</div>
+
+
+
+    
+	
+  
 
 
 
       </main>
     </div>
-    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"Copy Markdown","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["Copy Markdown","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Copy Markdown","url":"/docs/design/proposals/index.md"},{"available":true,"description":"Copy link","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["Copy link","Share","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"Copy link","url":"http://localhost:1313/docs/design/proposals/"},{"available":true,"description":"Open in ChatGPT","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["Open in ChatGPT","Ask about this page","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in ChatGPT","url":"https://chatgpt.com/?hints=search\u0026prompt=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fdesign%2Fproposals%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"Open in Claude","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["Open in Claude","Ask about this page","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in Claude","url":"https://claude.ai/new?q=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fdesign%2Fproposals%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"View markdown","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["View markdown","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View markdown","url":"/docs/design/proposals/index.md"},{"available":true,"description":"View edit history","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["View edit history","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View edit history","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/design/proposals/_index.md"},{"available":true,"description":"Edit this page","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["Edit this page","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Edit this page","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/design/proposals/_index.md"},{"available":true,"description":"Create child page","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["Create child page","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create child page","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/design/proposals?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"Create docs issue","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["Create docs issue","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create docs issue","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=Design+proposals+and+PRDs"},{"available":true,"description":"Create project issue","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["Create project issue","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create project issue","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"Print entire section","disabledReason":"Print entire section: unavailable","icon":"fa-solid fa-print","id":"print_section","keywords":["Print entire section","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Print entire section","url":""},{"available":true,"description":"Print this page","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["Print this page","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"Print this page","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL required","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"Switch language","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["Switch language","language"],"kind":"choice","options":[{"active":true,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/design/proposals/"},{"active":false,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/design/proposals/"}],"placements":{"page":false,"palette":true},"target":"self","title":"Switch language","url":""},{"available":false,"description":"Appearance","disabledReason":"unavailable","icon":"fa-solid fa-palette","id":"switch_preset","keywords":["preset","style","Paper","Slate","Style"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"paper","title":"Paper","value":"paper"}],"placements":{"page":false,"palette":true},"target":"self","title":"Style","url":""},{"available":true,"description":"Toggle color theme","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["Toggle color theme","Light","Dark"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"System","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"Light","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"Dark","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"Toggle color theme","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"Report or review theme and documentation issues","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["bug","support","roadmap"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK issues","url":"https://github.com/pgsty/oink/issues"}],"language":"en","quickLinks":[{"available":true,"description":"OINK is a documentation theme that needs nothing but Hugo Extended — components are written in Markdown, assets ship with the theme, both languages work out of the box, and one source produces four outputs.","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["Docs","docs"],"kind":"url","target":"self","title":"Docs","url":"/docs/"},{"available":true,"description":"OINK engineering stories, immersive guides, and release notes","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["Blog","blog"],"kind":"url","target":"self","title":"Blog","url":"/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"Copy Markdown","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["Copy Markdown","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Copy Markdown","url":"/docs/design/proposals/index.md"},{"available":true,"description":"Copy link","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["Copy link","Share","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"Copy link","url":"http://localhost:1313/docs/design/proposals/"},{"available":true,"description":"Open in ChatGPT","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["Open in ChatGPT","Ask about this page","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in ChatGPT","url":"https://chatgpt.com/?hints=search\u0026prompt=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fdesign%2Fproposals%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"Open in Claude","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["Open in Claude","Ask about this page","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"Read from %s so I can ask questions about it.","target":"blank","title":"Open in Claude","url":"https://claude.ai/new?q=Read+from+http%3A%2F%2Flocalhost%3A1313%2Fdocs%2Fdesign%2Fproposals%2F+so+I+can+ask+questions+about+it."},{"available":true,"description":"View markdown","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["View markdown","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View markdown","url":"/docs/design/proposals/index.md"},{"available":true,"description":"View edit history","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["View edit history","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"View edit history","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/design/proposals/_index.md"},{"available":true,"description":"Edit this page","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["Edit this page","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Edit this page","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/design/proposals/_index.md"},{"available":true,"description":"Create child page","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["Create child page","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create child page","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/design/proposals?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"Create docs issue","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["Create docs issue","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create docs issue","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=Design+proposals+and+PRDs"},{"available":true,"description":"Create project issue","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["Create project issue","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"Create project issue","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"Print entire section","disabledReason":"Print entire section: unavailable","icon":"fa-solid fa-print","id":"print_section","keywords":["Print entire section","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"Print entire section","url":""},{"available":true,"description":"Print this page","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["Print this page","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"Print this page","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL required","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"Switch language","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["Switch language","language"],"kind":"choice","options":[{"active":true,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/design/proposals/"},{"active":false,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/design/proposals/"}],"placements":{"page":false,"palette":true},"target":"self","title":"Switch language","url":""},{"available":false,"description":"Appearance","disabledReason":"unavailable","icon":"fa-solid fa-palette","id":"switch_preset","keywords":["preset","style","Paper","Slate","Style"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"paper","title":"Paper","value":"paper"}],"placements":{"page":false,"palette":true},"target":"self","title":"Style","url":""},{"available":true,"description":"Toggle color theme","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["Toggle color theme","Light","Dark"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"System","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"Light","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"Dark","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"Toggle color theme","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"Report or review theme and documentation issues","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["bug","support","roadmap"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK issues","url":"https://github.com/pgsty/oink/issues"}],"language":"en","quickLinks":[{"available":true,"description":"Build a technical content site with shared navigation, multilingual support and search for documentation, blogs, books and API references.","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["Docs","docs"],"kind":"url","target":"self","title":"Docs","url":"/docs/"},{"available":true,"description":"OINK engineering stories, immersive guides, and release notes","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["Blog","blog"],"kind":"url","target":"self","title":"Blog","url":"/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
 
 <script src="/js/actions.js"></script>
 

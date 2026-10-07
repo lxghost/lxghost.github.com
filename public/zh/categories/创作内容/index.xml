@@ -44,7 +44,7 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/zh/docs/write/frontmatter/</guid>
-        <description>&lt;p&gt;本页是页面级参数的全表，只列 OINK 主题会读取的键。主题仅为提示「已重命名或已移除」而读取的旧键不在此列——它们在&lt;a href=&#34;http://localhost:1313/zh/docs/design/migration/&#34;&gt;迁移&lt;/a&gt;里，也不会出现在生成的编辑器 Schema 中。Hugo 自身的 front matter 字段（&lt;code&gt;slug&lt;/code&gt;、&lt;code&gt;url&lt;/code&gt;、&lt;code&gt;build&lt;/code&gt;、&lt;code&gt;sitemap&lt;/code&gt;、&lt;code&gt;expiryDate&lt;/code&gt; 等）照常可用，语义见 &lt;a href=&#34;https://gohugo.io/content-management/front-matter/&#34;&gt;Hugo 文档&lt;/a&gt;。站点级参数（&lt;code&gt;hugo.yml&lt;/code&gt; 里的 &lt;code&gt;params.*&lt;/code&gt;）见&lt;a href=&#34;http://localhost:1313/zh/docs/customize/config/&#34;&gt;配置总览&lt;/a&gt;。&lt;/p&gt;</description>
+        <description>&lt;p&gt;本页是页面级参数的全表，包含 OINK 主题会读取的键，以及 1.x 明确保留的兼容&#xA;no-op。主题仅为提示「已重命名或已移除」而读取的旧键不在此列——它们在&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/migration/&#34;&gt;迁移&lt;/a&gt;里，也不会出现在生成的编辑器 Schema 中。Hugo&#xA;自身的 front matter 字段（&lt;code&gt;slug&lt;/code&gt;、&lt;code&gt;url&lt;/code&gt;、&lt;code&gt;build&lt;/code&gt;、&lt;code&gt;sitemap&lt;/code&gt;、&lt;code&gt;expiryDate&lt;/code&gt; 等）&#xA;照常可用，语义见 &lt;a href=&#34;https://gohugo.io/content-management/front-matter/&#34;&gt;Hugo 文档&lt;/a&gt;。&#xA;站点级参数（&lt;code&gt;hugo.yml&lt;/code&gt; 里的 &lt;code&gt;params.*&lt;/code&gt;）见&lt;a href=&#34;http://localhost:1313/zh/docs/customize/config/&#34;&gt;配置总览&lt;/a&gt;。&lt;/p&gt;</description>
       </item>
     <item>
         <title>博客与文章</title>
@@ -52,7 +52,7 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/zh/docs/write/blog/</guid>
-        <description>&lt;p&gt;博客文章与文档页的正文写法相同，区别在外壳：文章带日期、作者、标签与封面图，列表按年份倒序排列，栏目带 RSS。本页覆盖博客栏目的建立、文章 front matter、封面图、列表分页与 Feed。&lt;/p&gt;</description>
+        <description>&lt;p&gt;博客文章与文档页的正文写法相同，区别在外壳：文章带日期、作者、标签与封面图，列表按日期倒序排列，栏目带 RSS。本页覆盖博客栏目的建立、文章 front matter、封面图、列表分页与 Feed。&lt;/p&gt;</description>
       </item>
     <item>
         <title>书籍出版</title>
@@ -76,7 +76,7 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/zh/docs/write/openapi/</guid>
-        <description>&lt;p&gt;一页接口文档由一份 OpenAPI 规范加一个 shortcode 构成。Swagger UI 与 Redoc 两个运行时随主题分发（版本分别是 5.32.13 与 2.5.3，见仓库 &lt;code&gt;VENDOR.json&lt;/code&gt;），只有用到它们的页面、且只在 HTML 输出里加载，构建与浏览都不访问外部服务。Swagger UI 的在线 validator 已写死关闭（&lt;code&gt;validatorUrl: null&lt;/code&gt;），已发布的接口页面不会把规范地址发往任何地方。&lt;/p&gt;</description>
+        <description>&lt;p&gt;一页接口文档由一份 OpenAPI 规范加一个短代码构成。需要让读者试发请求时选 Swagger UI，以阅读端点说明与数据结构为主时选 Redoc。两个运行时都随主题分发，只在用到它们的页面的 HTML 输出中加载，不依赖 CDN。Swagger UI 的在线校验器已关闭；远程规范与 API 请求仍会访问各自配置的主机。&lt;/p&gt;</description>
       </item>
     
   </channel>

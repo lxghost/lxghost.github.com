@@ -119,16 +119,22 @@ fully is in [Navigation and menus](/docs/customize/navigation/).
 `en.yaml`; a single-language site needs only one `data/home.yaml`. See
 [Home and landing pages](/docs/customize/home/).
 
-**Interface strings**: the theme ships interface strings for 32 locales.
-English, Simplified Chinese (`zh` and `zh-cn`) and Traditional Chinese
-(`zh-tw`) are reviewed; the rest keep the translations inherited from Docsy,
-with English fallbacks for the labels OINK added. To change one, create a file
-of the same name under the site's own `i18n/` and write only the keys you
-override:
+**Interface strings**: the theme ships 32 complete interface catalogs: the 31
+locale filenames supported by Docsy, plus generic `zh`. Every catalog contains
+all 194 OINK messages in its native language; none relies on generated English
+fallback blocks. `zh` and `zh-cn` use Simplified Chinese, while `zh-tw` uses
+Traditional Chinese. The exact locale and placeholder contract is recorded in
+[Architecture](/docs/design/architecture/#interface-localization). To change a
+string, create a file of the same name under the site's own `i18n/` and write
+only the keys you override:
 
 ```yaml {title="i18n/en.yaml"}
 ui_search: Search the docs
 ```
+
+Keep the concrete `locale: zh-CN` shown for the non-default language when
+supporting Hugo 0.160.x with regional Chinese catalogs present. Bare
+`locale: zh` is safe in the same configuration from Hugo 0.161 onward.
 
 ## Untranslated fallback and the language picker {#fallback}
 
@@ -148,6 +154,12 @@ Falling back to the home page beats dropping the reader into a 404. The cost is
 that the reader may not notice being sent there, so a bilingual site should
 check "every page has a counterpart" as a constraint rather than relying on the
 fallback.
+
+This fallback belongs to the language picker. The 1.2.0 implementation separates it from SEO: `hreflang` lists only the current page
+and its actual translations, each blog pagination page has its own canonical,
+and later pages omit language alternates. These corrections are not in the
+published v1.1.0 tag; see [SEO version behavior](/docs/admin/analytics/#canonical-hreflang)
+before applying those expectations to a pinned release.
 
 > [!NOTE] A missing translation is never filled in with the original
 > When a Chinese page does not exist, the Chinese site does not have that page
@@ -175,12 +187,18 @@ Two disciplines:
 1. Take the ID from the **HTML the English page renders**, not from the heading text. When a heading contains inline code, a badge or a shortcode, the generated ID does not match the heading text.
 2. Corresponding pages must have the same number of headings, in the same order, with the same IDs. Where a translation genuinely needs an extra section, give it an independent, stable ID that does not collide with the English side.
 
-This site turns that constraint into a CI check with a script that compares
-rendered HTML rather than source:
+This documentation site's [translation checker](https://github.com/pgsty/oink.pgsty.com/blob/main/scripts/check-doc-translations.mjs)
+compares source structure and rendered heading IDs. The following command runs
+in the `oink.pgsty.com` checkout; the script is not part of a normal consumer site:
 
 ```bash
 node scripts/check-doc-translations.mjs --public public
 ```
+
+Before adapting it to your CI, change its fixed content scopes and EN/ZH file
+conventions. It locates source files relative to the script itself; `--public`
+only chooses the rendered output directory. For a manual check, compare the
+heading IDs in a representative translated pair's generated HTML.
 
 Writing explicit English `{#id}` anchors from the moment a page is created costs
 less than retrofitting them.
@@ -194,7 +212,7 @@ languages:
   ar:
     label: العربية
     locale: ar
-    languageDirection: rtl
+    direction: rtl
     weight: 3
 ```
 
@@ -206,7 +224,7 @@ under RTL.
 
 ## Verify {#verify}
 
-1. Build, and confirm both languages' output and indexes exist:
+1. From your site's root, build and confirm both languages' output exists. These paths assume English at `/` and Chinese at `/zh/`; adjust them for your language settings. Check the indexes only if local search is enabled:
 
    ```bash
    hugo --printPathWarnings --panicOnWarning
@@ -214,17 +232,19 @@ under RTL.
    ls public/offline-search-index.*
    ```
 
-2. Check `hreflang`: each page's `<head>` should carry one `rel="alternate"` per language plus a `rel="canonical"` pointing at itself.
+2. Inspect `hreflang` and canonical URLs against your pinned version's [SEO behavior](/docs/admin/analytics/#canonical-hreflang). For the 1.2.0 implementation, expect only actual translations, a canonical for each blog pagination page, and no language alternates after page 1. The v1.1.0 tag retains the earlier behavior; these differences alone do not indicate a configuration error.
 
    ```bash
-   grep -o 'rel="alternate" hreflang="[^"]*"' public/zh/docs/index.html
+   # Replace with an actual generated page in your site.
+   PAGE=public/zh/docs/getting-started/index.html
+   test -f "$PAGE" && grep -o '<link[^>]*hreflang[^>]*>' "$PAGE"
    ```
 
 3. On a translated page, expand the language picker and choose the other language; confirm you stay on the same document. Repeat on an untranslated page and confirm you land on that language's home page rather than a 404.
 
 4. Search the same concept once in each language and confirm both return results.
 
-5. Wire the heading alignment check into CI on a bilingual site, using the script above.
+5. Compare heading IDs in a translated pair. When adding this check to CI, adapt the documentation-site script as described above rather than running it unchanged against a different content tree.
 
 ## Related {#related}
 
@@ -239,7 +259,7 @@ under RTL.
 Backlinks:
 
 - [Shape the experience](/book/04-design/)
-- [pgsql.cc](/case/pgsql-cc/)
+- [PostgreSQL ecosystem library](/case/pgsql-cc/)
 - [pigsty.cc](/case/pigsty-cc/)
 - [Docs](/docs/)
 - [Highlights](/docs/about/features/)
@@ -251,7 +271,6 @@ Backlinks:
 - [Navigation and menus](/docs/customize/navigation/)
 - [Search](/docs/customize/search/)
 - [Taxonomies](/docs/customize/taxonomy/)
-- [Get started](/docs/start/)
 - [Authoring](/docs/write/)
 - [Organizing content](/docs/write/organize/)
 - [Writing pages](/docs/write/pages/)

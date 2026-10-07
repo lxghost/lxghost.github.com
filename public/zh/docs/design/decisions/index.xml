@@ -46,6 +46,22 @@
         <guid>http://localhost:1313/zh/docs/design/decisions/config-schema/</guid>
         <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;决策&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;&lt;code&gt;schema/&lt;/code&gt; 下的两份 JSON Schema 由 &lt;code&gt;bin/generate-config-schema.py&lt;/code&gt; 从主题的&#xA;&lt;code&gt;hugo.yaml&lt;/code&gt; 与模板读取点投影生成，手工编辑无法通过 CI。Schema 是既有权威的&#xA;只读投影，不是第三个配置权威。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;context&#34;&gt;背景&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;主题已有两个配置权威：&lt;code&gt;hugo.yaml&lt;/code&gt; 在注释旁声明每个默认值；&lt;code&gt;check-params.py&lt;/code&gt;&#xA;的读取点扫描知道模板实际消费的每一个键。编辑器对两者一无所知，作者只能凭记忆&#xA;敲 &lt;code&gt;params.ui.*&lt;/code&gt; 和 front matter。&lt;/p&gt;</description>
       </item>
+    <item>
+        <title>可选 CLI 与结果契约</title>
+        <link>http://localhost:1313/zh/docs/design/decisions/cli/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/decisions/cli/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;当前范围；本地候选&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本契约描述 2026-10-04 收缩后的本地 &lt;code&gt;0.1.0-dev&lt;/code&gt; 命令界面。保留站点诊断、&#xA;真实 Hugo 检查、初始化、构建、升级及有保护的维护计划；使用 Cobra、默认彩色&#xA;英文文本与 JSON/YAML 结果。Studio、通用编辑、context、snippets、editor 与&#xA;CI 生成已撤下。历史 R1–R8 验收只对记录中的源码和二进制成立，不能替代当前验证。&#xA;尚未建立公开 CLI 发布、Homebrew 分发或部署。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Paper 与 Slate 视觉预设</title>
+        <link>http://localhost:1313/zh/docs/design/decisions/visual-presets/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/decisions/visual-presets/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 1.2.0&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;Paper 与 Slate 已随 1.2.0 发布。Ink 与 Terminal 作为显式启用的风格一同提供，&#xA;后续设计工作见下文记录。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;decision&#34;&gt;决策&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Paper 成为默认，使用暖纸色与墨色、蓝色链接、IBM Plex Sans、标题细线和外框&#xA;表格。Slate 保留 v1.1.0 色板、Inter/Chakra/Plex Mono 字体角色与 Landing 网格、&#xA;光晕。这样为阅读站点提供更安静的默认外观，同时保留明确的兼容选项。代价是默认&#xA;外观发生可见变化：原站点可设置 &lt;code&gt;params.ui.preset: slate&lt;/code&gt;。1.2.0 发布注记与升级指南已醒目说明此变化。&lt;/p&gt;</description>
+      </item>
     
   </channel>
 </rss>

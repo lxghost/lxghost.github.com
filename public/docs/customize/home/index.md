@@ -68,9 +68,11 @@ That is how this site's home page is written; the complete file is
 
 ## A minimal working home page {#minimal}
 
-Paste the following, replace the text and links, and it publishes. Write
-internal links as site paths without a leading slash, and the theme adds the
-current language prefix (`docs/start/` → `/docs/start/`).
+Create the data file below and replace the text and links with your own pages.
+Put the two hero images in `static/images/hero-light.webp` and
+`static/images/hero-dark.webp`, or omit the entire `hero.image` block for a
+text-only opening. Write internal links as site paths without a leading slash;
+the theme adds the current language prefix (`docs/start/` → `/docs/start/`).
 
 ```yaml {title="data/home/en.yaml"}
 sections:
@@ -102,7 +104,7 @@ cards:
       icon: fa-solid fa-cubes
       url: docs/components/
     - title: Four outputs
-      desc: HTML, print, Markdown and RSS from one source, losing nothing.
+      desc: HTML, print, Markdown and RSS share one source; interactive components use static or source fallbacks.
       icon: fa-solid fa-file-export
       url: docs/customize/agents/
     - title: Local-first
@@ -112,7 +114,7 @@ cards:
 
 cta:
   title: Start from a bilingual site that already works.
-  text: Clone the documentation site, delete what you do not need, make the rest yours.
+  text: Start from OINK Starter, replace the project identity and content, then publish.
   label: Get started
   url: docs/start/
   style: primary
@@ -125,7 +127,7 @@ illustration.
 
 ```yaml {title="data/home/en.yaml"}
 hero:
-  eyebrow: OINK 0.4.0 · Local-first        # small text above the title, with a status dot
+  eyebrow: PROJECT 1.0 · Local-first       # small text above the title, with a status dot
   title_lines:                             # the large title, controlled line by line
     - words:
         - { text: PGSTY OINK }
@@ -153,7 +155,8 @@ without one it is hidden from assistive technology.
 
 `align: center` gives a text-only centred first screen: the text block widens
 and centres, the title balances its line breaks, and `note` moves below the
-buttons. It does not accept `image`, and having both fails the build.
+buttons. When an image is present too, ordinary preview warns and falls back to
+`start` so the image is preserved; a strict publishing build rejects the warning.
 
 ## The section registry {#registry}
 
@@ -359,8 +362,9 @@ language:
       - zh.yaml
 ```
 
-A non-home landing page looks for its data in this order, and fails the build
-rather than rendering an empty page when nothing is found:
+A non-home landing page looks for its data in this order. When nothing is
+found, ordinary preview warns and renders the landing shell with no sections;
+a strict publishing build rejects the warning:
 
 1. `sections` in the page's front matter;
 2. `data/landing/<key>/<exact language>.yaml`;
@@ -380,9 +384,11 @@ sections:
       title: Publish a product page with Hugo alone
       actions:
         - { label: Read the docs, url: docs/, style: primary }
-  - type: download
-    data: { title: Download, keys: [prd5] }
-  - cta
+  - type: cta
+    data:
+      title: Ready to start?
+      label: Read the docs
+      url: docs/
 ---
 ```
 
@@ -425,8 +431,9 @@ params:
 
 The footer is not home page data: it reads `data/footer/<language>.yaml` (or
 `data/footer.yaml` on a single-language site), and this site has one per
-language. A leftover `footer` key in `data/home/<language>.yaml` fails the build
-with a message naming the new location. How to write it is in
+language. A leftover `footer` key in `data/home/<language>.yaml` warns and is
+ignored in ordinary preview; `--panicOnWarning` rejects it while naming the new
+location. How to write it is in
 [Navigation and menus](/docs/customize/navigation/).
 
 ## Output {#outputs}
@@ -438,8 +445,10 @@ with a message naming the new location. How to write it is in
 | Markdown | Titles, prose, lists, tables and code, with no component classes |
 | RSS | Landing sections are not emitted |
 
-With JavaScript disabled the server-rendered document is still complete. The
-marquee's duplicate track stays out of the accessibility tree, and pausing uses a
+With JavaScript disabled or `landing.js` unavailable, all server-rendered
+sections remain visible. Metrics already include their configured number formatting, prefix,
+and suffix; a count animation finishes on the same display text.
+The marquee's duplicate track stays out of the accessibility tree, and pausing uses a
 checkbox that needs no JavaScript; with the reader's reduced-motion preference
 on, movement and reveal are switched off.
 
@@ -473,6 +482,6 @@ Backlinks:
 - [Brand and appearance](/docs/customize/brand/)
 - [Languages](/docs/customize/i18n/)
 - [Layouts and page types](/docs/customize/layout/)
-- [Repository tour](/docs/start/anatomy/)
+- [OINK Starter](/docs/start/starter/)
 - [Page parameters](/docs/write/frontmatter/)
 - [Releases and downloads](/docs/write/releases/)

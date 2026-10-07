@@ -69,7 +69,7 @@
   <meta itemprop="name" content="设计提案与 PRD">
   <meta itemprop="description" content="仍在评估中的 OINK PRD 与设计草案的唯一双语归档位置。">
   <meta itemprop="dateModified" content="2026-08-28T00:08:16+08:00">
-  <meta itemprop="wordCount" content="952">
+  <meta itemprop="wordCount" content="1382">
   <meta itemprop="keywords" content="设计契约">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="设计提案与 PRD">
@@ -141,7 +141,31 @@
     
     
     <li>
-4: <a href="#pg-2527a86e06b64c8398b3349ca4c023f3">Book 出版链路</a>
+4: <a href="#pg-f03349673f164feacf45ab54423e90e1">OINK CLI 与下一阶段产品路线</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+5: <a href="#pg-f23607ae70c920d6a4e6d4e624bb9b54">OINK CLI 文档维护路线图</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+6: <a href="#pg-2527a86e06b64c8398b3349ca4c023f3">Book 出版链路</a>
+
+
+    </li>
+  
+    
+    
+    <li>
+7: <a href="#pg-97b1272c428065f6f74326597bedec18">视觉预设与外观切换</a>
 
 
     </li>
@@ -177,19 +201,33 @@
       <td>部分已实现；media-result 契约与 Landing 资源元数据已交付，M3 决议为原生图片处理，退役（M4）保持开放</td>
     </tr>
     <tr>
-      <td><a href="/zh/docs/design/proposals/agent-indexes/">Agent 批量索引</a></td>
-      <td>已接受（2026-08-27）；两类输出都已在主题 main 分支实现，随 OINK 0.8.0 发布，之后本提案退役</td>
+      <td><a href="/zh/docs/design/proposals/oink-cli-roadmap/">OINK CLI 与下一阶段产品路线</a></td>
+      <td>独立 Go 仓库与首期边界已接受，本地 CLI 候选已实现、尚未公开发布；后续主题、迁移、采用、版本管理、OpenAPI 与平台阶段保持提案</td>
     </tr>
     <tr>
-      <td><a href="/zh/docs/design/proposals/book-publication/">Book 出版链路</a></td>
-      <td>manifest 与 EPUB/PDF 工具已随版本发布，见<a href="/zh/docs/design/architecture/">架构</a>；本页只剩消费站迁移未决</td>
+      <td><a href="/zh/docs/design/proposals/visual-presets/">视觉预设与外观切换</a></td>
+      <td>Paper/Slate 已在本地实现；Ink/Terminal 继续研究；当前行为与证据见已接受决策和带日期验收记录</td>
     </tr>
   </tbody>
 </table>
 </div>
 
+<p>Agent 批量索引提案已在输出交付后退役。稳定行为现在归属
+<a href="/zh/docs/design/architecture/#outputs-and-runtime">架构</a>，用户步骤归属
+<a href="/zh/docs/customize/agents/">Agent 就绪输出</a>。Book 出版提案也在 <code>BookManifest</code> 与 EPUB/PDF
+工具交付后退役。稳定行为归属<a href="/zh/docs/design/architecture/#outputs-and-runtime">架构</a>与
+<a href="/zh/docs/write/book/#print">创作书籍</a>，带日期的下游采纳证据归属
+<a href="/zh/docs/design/research/consumer-evidence/#publication-adoption">消费站证据</a>。剩余的消费站采纳工作
+不会让上游设计提案继续保持活动状态。两份提案草案均由 Git 历史保存。</p>
 <p>生成式配置 Schema 提案已按生命周期退役：行为的规范位置是<a href="/zh/docs/customize/config/#editor-schema">配置总览</a>，
 长期理由进入<a href="/zh/docs/design/decisions/config-schema/">生成式配置 Schema 决策</a>，草案原文由 Git 历史保存。</p>
+<h2 id="pg-c2e00f25191210af42cb0ab695b66d0f--cli-maintenance-candidate">CLI 工作区与适配器
+</h2>
+<p>显式 workspace 与可选适配器保留在当前收缩后的 CLI 中。
+<a href="/zh/docs/design/decisions/cli/#workspace-registry">当前契约</a>与
+<a href="/zh/docs/start/cli/#workspace-registry">使用指南</a>定义命令边界。
+带日期 R1–R8/A18 记录是绑定历史源码/二进制的证据，不能证明后续命令或输出修改。
+有限维护路线继续退出活动导航，尚未建立公开 CLI 发布或部署。</p>
 <h2 id="pg-c2e00f25191210af42cb0ab695b66d0f--where-a-new-prd-goes">新 PRD 放在哪里
 </h2>
 <p>创建一份英文主页面及其简体中文对页：</p>
@@ -232,6 +270,16 @@
 <p>实施前，评审者确认提案没有重复已有外壳、resolver、组件族或数据权威。实施期间，如果设计改变，
 先更新这份双语提案，不能让代码悄悄漂移。验收至少覆盖主题的最窄归属检查、真实文档站、渲染后的
 中英文、相关输出、无障碍与响应式检查。</p>
+<h2 id="pg-c2e00f25191210af42cb0ab695b66d0f--cli-studio-candidate">只读 Studio 候选
+</h2>
+<p>2026-10-04 当前 CLI 移除 Studio。使用 <code>oink dev</code>、普通编辑器与
+<code>inspect</code>/<code>check</code> 结构化报告。<a href="/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r7">R7 记录</a>
+保留此前浏览器实现的历史验收。</p>
+<h2 id="pg-c2e00f25191210af42cb0ab695b66d0f--cli-editing-candidate">受审阅编辑
+</h2>
+<p>当前 CLI 移除通用源码编辑，保留受保护的 <code>new</code>、<code>move</code>、审阅记录与基线计划。
+旧编辑计划会被拒绝。<a href="/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r8">R8 记录</a>
+继续作为历史证据，不是当前命令 API。</p>
 
 </div>
 </div>
@@ -631,7 +679,1245 @@ section 级）与 <code>NAVJSON</code>（<code>application/json</code>、<code>n
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-2527a86e06b64c8398b3349ca4c023f3">4 - Book 出版链路</h1>
+	<h1 id="pg-f03349673f164feacf45ab54423e90e1">4 - OINK CLI 与下一阶段产品路线</h1>
+    <div class="lead">已接受的独立 CLI 边界与首期本地候选，并明确保留后续采用、主题、迁移及内容模型提案。</div>
+	<div class="td-callout td-callout--warning" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="td-callout__label">首期为本地候选，后续路线仍是草案</span></div>
+  <div class="td-callout__body">
+<p>用户于 2026-09-29 授权独立 Go 仓库 <code>pgsty/oink-cli</code> 及首期开发。六个命令已有本地 <code>0.1.0-dev</code> 实现，最终本地验收单独记录。当前行为归属 <a href="/zh/docs/design/decisions/cli/">CLI 决策与结果契约</a>及<a href="/zh/docs/start/cli/">使用指南</a>。这不代表 CLI 已公开发布或已有独立用户采用。主题 1.2、工具能力描述、Docsy 迁移、版本生命周期、OpenAPI、MCP 与 Studio 保持提案状态。</p>
+  </div>
+</div><div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">记录</th>
+      <th scope="col">内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>状态</td>
+      <td>仓库选择与首期范围已接受；本地候选已实现并验证；后续路线保持草案</td>
+    </tr>
+    <tr>
+      <td>负责人</td>
+      <td>OINK 维护者；最终本地验收与公开发布仍为独立状态</td>
+    </tr>
+    <tr>
+      <td>日期</td>
+      <td>2026-09-29</td>
+    </tr>
+    <tr>
+      <td>范围</td>
+      <td>OINK 主题、独立 CLI、现有 Starter 与文档站</td>
+    </tr>
+    <tr>
+      <td>受影响契约</td>
+      <td>架构、配置与诊断、输出、迁移，以及后续的版本导航与 API 内容</td>
+    </tr>
+    <tr>
+      <td>源码快照</td>
+      <td>主题 HEAD <code>3a18234</code>、文档站 HEAD <code>85f16bf</code>、Starter HEAD <code>137843b</code>，以及下文明确标注的本地工作</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-f03349673f164feacf45ab54423e90e1--recommendation">核心建议
+</h2>
+<p>独立建立 <strong><code>oink-cli</code> 仓库</strong>，发布名为 <strong><code>oink</code></strong> 的可执行文件，对外继续使用 <strong>OINK</strong> 这一个产品品牌。主题负责渲染内容；CLI 帮助用户初始化、诊断、校验、升级，随后逐步支持迁移。文档站继续管理公开指南、双语设计记录和集成验收。</p>
+<p>仓库选择与 Go 实现现已接受并在本地建立，公开发布仍是独立动作。首期行为已移入 <a href="/zh/docs/design/decisions/cli/">CLI 契约</a>；<a href="/zh/docs/design/research/2026-09-29-cli-acceptance/">带日期的验收记录</a>列出实际执行的检查与剩余限制。本路线图继续承载后续阶段和采用目标。</p>
+<p>首发应改善从现有仓库到可靠发布的流程，四项实质性能力是 <strong>doctor、check、init、upgrade</strong>。<code>dev</code> 和 <code>build</code> 可以提供轻量、透明的 Hugo 快捷入口。根据真实输入仓库的证据，再扩展一条有明确支持范围的 Docsy 迁移路径。版本生命周期和 OpenAPI 生成排在首个可用版本之后，同一时间只推进一个主要内容模型项目。</p>
+<p>主题必须允许用户不安装 CLI。对于生成内容，这意味着提交生成后的 Hugo 输入，或者以其它明确方式提供这些输入：移除 CLI 后，普通 Hugo 仍能构建站点。重新生成输入是独立操作。</p>
+<h2 id="pg-f03349673f164feacf45ab54423e90e1--position">产品定位与目标用户
+</h2>
+<p>建议对外描述为：</p>
+<blockquote>
+<p>OINK 是基于 Hugo 的本地优先文档工具箱，将工程知识发布给读者与 Agent。</p>
+</blockquote>
+<p>安装说明和检索入口仍保留“Hugo 主题”，因为它准确描述用户安装的东西。“知识编译器”适合作为架构方向，但目前不足以证明 OINK 已经建立了新的产品类别。新的叙事不应遮蔽现有 Markdown/Hugo 路径。</p>
+<p>优先服务使用 Git 的开源基础设施、开发者工具和多语言技术文档维护者。他们眼前的任务是让站点运行起来、定位故障、安全升级，以及在迁移中保留 URL 和内容含义。现有维护站点提供回归证据，独立团队提供采用证据，两者用途不同。</p>
+<p>首阶段明确不做可视化 CMS、托管账户、部署控制台、软件包市场、LLM 运行时、语义搜索服务或新渲染引擎。书籍、博客和落地页继续得到支持，但不由这些场景的功能清单驱动本轮路线图。</p>
+<h2 id="pg-f03349673f164feacf45ab54423e90e1--evidence">证据与对研究建议的调整
+</h2>
+<p>本提案参考用户提供的战略报告，并对照本地实现、双语 Design 专栏、Starter 和当前官方文档核实。不把报告中的 Star 数、工时估算、商业价格或市场判断视为已验证需求。</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">观察</th>
+      <th scope="col">产品含义</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>OINK 已有公开 Starter、生成式配置 Schema、迁移脚本、出版工具和主题检查器</td>
+      <td>应把选定流程产品化，避免另起一套全量实现</td>
+    </tr>
+    <tr>
+      <td>front-matter Schema 刻意不包含类型约束</td>
+      <td>它不是完整的可执行校验器；严格检查要尊重对应解析器和真实 Hugo 输出</td>
+    </tr>
+    <tr>
+      <td>现有版本功能包括跨站菜单、归档横幅和可选的路径拼接</td>
+      <td>缺口是生命周期与可靠的页面对应关系，不是再加一个菜单或横幅</td>
+    </tr>
+    <tr>
+      <td>当前版本文档明确采用各版本独立 Hugo 构建</td>
+      <td>首先延续该模型，不悄悄引入单次构建内的多版本渲染体系</td>
+    </tr>
+    <tr>
+      <td>OpenAPI 组件在 HTML 之外只保留规范链接，并有明确的无障碍豁免</td>
+      <td>静态、无障碍的端点内容是一项具体的后续改进</td>
+    </tr>
+    <tr>
+      <td>反向链接已实现，G2/G3 仍为草案</td>
+      <td>图谱可视化不是已经接受的交付承诺</td>
+    </tr>
+    <tr>
+      <td><code>bin/update-consumers.py</code> 在当前工作树中属于尚未提交的本地工作</td>
+      <td>可以参考其版本解析与文件保护规则，不能据此宣称 CLI 已发布</td>
+    </tr>
+    <tr>
+      <td>主题和文档站有大量与本提案无关的本地修改</td>
+      <td>本提案只记录建议，不替这些工作完成验收或发布</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>原报告正确强调了采用成本和可选工具层。以下四项调整能让它成为可执行计划：</p>
+<ol>
+<li>将安全升级与初始化、诊断并列。现有用户已经有直接、可测试的维护需求。</li>
+<li>区分维护者回归检查器与消费站检查。面向固定夹具的脚本不会自动成为通用站点校验器。</li>
+<li>按明确的输入配置范围承诺迁移，不承诺完整 Docsy 或任意 MDX 转换。</li>
+<li>将同时开展版本化、OpenAPI、图谱和平台建设，改成逐阶段决策。功能列表与工时相加不是人员到位的交付计划。</li>
+</ol>
+<p>竞品能够证明流程方向已有先例，不能证明 OINK 自身的需求。<a href="https://www.mintlify.com/docs/cli/commands">Mintlify CLI</a> 提供预览、校验和链接检查；<a href="https://github.com/cloudflare/nimbus">Nimbus</a> 将脚手架与 Agent 可读产物结合，目前仍为 pre-1.0；<a href="https://docusaurus.io/docs/versioning">Docusaurus</a> 明确定义版本快照，也提醒其维护与构建成本。如果照搬 Nimbus 将整套界面源码交给用户的模式，会把升级维护工作转给 OINK 消费者。可以对小型内容模板借鉴该方式，主题本身仍保留可升级模块。</p>
+<h2 id="pg-f03349673f164feacf45ab54423e90e1--repository-choice">为什么独立建仓
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">方案</th>
+      <th scope="col">好处</th>
+      <th scope="col">代价</th>
+      <th scope="col">建议</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>继续扩充主题 <code>bin/</code> 下的 Python 脚本</td>
+      <td>小型维护改进最快，可以同时修改并测试</td>
+      <td>安装分发体验弱，没有统一的公共命令契约</td>
+      <td>保留内部和历史工具</td>
+    </tr>
+    <tr>
+      <td>在主题根 Go 模块内添加 <code>cmd/oink</code></td>
+      <td>单一 checkout，源码修改可以原子提交</td>
+      <td>混合 Hugo 资源模块、应用依赖、二进制发布和消费站支持</td>
+      <td>不作为公共 CLI 的方案</td>
+    </tr>
+    <tr>
+      <td>在主题仓库中使用独立 Go 子模块</td>
+      <td>保留同仓修改，同时隔离 Go 依赖</td>
+      <td>仍需管理子模块标签与独立发布，也更容易直接调用未发布主题内部实现</td>
+      <td>可用于限时原型，不作为首选产品归属</td>
+    </tr>
+    <tr>
+      <td>新建 <code>pgsty/oink-cli</code></td>
+      <td>可执行工具边界清楚、独立发布，用户无需克隆主题内部工具</td>
+      <td>必须显式维护兼容性和跨仓验收</td>
+      <td>已接受；本地 Go 仓库已建立</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>这是发布与职责划分，不是说单仓在技术上不可行。嵌套模块能够隔离依赖；分仓也确实会带来协作成本：一次渲染行为变化可能需要两个 PR、配套契约与兼容性测试。OINK 已经采用主题、文档站和 Starter 分仓，只要公共边界足够小，这个成本可以接受。</p>
+<p>主题与 CLI 不应强制使用相同版本号。建议 CLI <code>0.1.x</code> 同时支持经过测试的主题 <code>1.1.0</code> 基线和下一受支持版本，按能力声明兼容范围。遇到不支持的功能应明确报告，不能拿最新主题的全部 Schema 去判断所有旧站点。</p>
+<p>现在不另建 linter、迁移引擎、OpenAPI 生成器或共享 SDK 仓库，先作为 CLI 内部包。二进制可以用 Go 编写，同时不引用 Hugo 内部 Go 包，也不让主题模块依赖 CLI。</p>
+<h2 id="pg-f03349673f164feacf45ab54423e90e1--responsibilities">职责划分
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">范围</th>
+      <th scope="col">归属</th>
+      <th scope="col">边界</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>布局、组件、样式、导航、搜索、无障碍、输出语义</td>
+      <td><code>pgsty/oink</code></td>
+      <td>在 Hugo 与静态站点中运行</td>
+    </tr>
+    <tr>
+      <td>主题默认值、对应解析器、生成式 Schema、输出 Schema</td>
+      <td><code>pgsty/oink</code></td>
+      <td>主题行为权威及其投影</td>
+    </tr>
+    <tr>
+      <td>主题实现检查与小范围非法输入夹具</td>
+      <td><code>pgsty/oink</code></td>
+      <td>继续作为维护者工具，允许使用 Python 或 JavaScript</td>
+    </tr>
+    <tr>
+      <td>环境诊断、消费站检查、初始化、升级，以及后续迁移转换</td>
+      <td><code>pgsty/oink-cli</code></td>
+      <td>首期命令已在本地实现；迁移保持提案</td>
+    </tr>
+    <tr>
+      <td>OpenAPI 解析与源码生成、后续版本快照编排</td>
+      <td><code>pgsty/oink-cli</code> 的拟议后续能力</td>
+      <td>生成普通 Hugo 输入，不负责最终渲染</td>
+    </tr>
+    <tr>
+      <td>小型官方站点骨架与语言配置</td>
+      <td><code>pgsty/oink-starter</code></td>
+      <td>CLI 初始化的单一来源；可将固定快照嵌入 CLI 版本</td>
+    </tr>
+    <tr>
+      <td>指南、案例、PRD、已接受理由、双语集成与浏览器验收</td>
+      <td><code>pgsty/oink.pgsty.com</code></td>
+      <td>继续作为公开文档与回归站点的权威</td>
+    </tr>
+    <tr>
+      <td>托管凭据、账户开通、部署授权</td>
+      <td>消费站工作流</td>
+      <td>使用现有 CI 与服务商工具；CLI 首发不执行部署</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="td-code td-code--untitled" id="td-code-c2e0fa06-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="text" data-td-line-count="12">
+  <div class="td-code__viewport" id="td-code-c2e0fa06-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">                         可选的 oink CLI
+</span></span><span class="line"><span class="cl">                  init / doctor / check / upgrade
+</span></span><span class="line"><span class="cl">                      后续 migrate / generate
+</span></span><span class="line"><span class="cl">                               |
+</span></span><span class="line"><span class="cl">                               v
+</span></span><span class="line"><span class="cl">                 用户拥有的 Markdown + Hugo 配置 + data
+</span></span><span class="line"><span class="cl">                               |
+</span></span><span class="line"><span class="cl">                     Hugo Extended + OINK 主题
+</span></span><span class="line"><span class="cl">                               |
+</span></span><span class="line"><span class="cl">               HTML / Print / Markdown / 搜索 / 索引
+</span></span><span class="line"><span class="cl">                               |
+</span></span><span class="line"><span class="cl">                     读者 / Agent / 可选适配器</span></span></code></pre></div></div>
+</div>
+<p>CLI 读取 Hugo 的生效配置、实际解析到的主题所发布的契约文件，以及构建产物。不应通过文件名猜测最终页面树，也不维护第二套导航解析器。<a href="https://gohugo.io/commands/hugo_config/">Hugo config</a> 已能输出生效配置；模块检查还需覆盖 replacement、workspace 与 <a href="https://gohugo.io/hugo-modules/use-modules/">vendoring</a>。</p>
+<h2 id="pg-f03349673f164feacf45ab54423e90e1--theme-next">下一期主题：建议 OINK 1.2
+</h2>
+<p>本节保持草案。本地 CLI 候选使用已发布的 OINK v1.1.0 基线；首期 CLI 决策既未接受主题 1.2 发布或新的工具能力描述，也不以它们作为前提。</p>
+<p>本版本以降低采用成本为目标：<strong>站点能向工具准确说明配置与输出能力，升级不要求引入新的创作模型</strong>。范围应足够小，能够独立于后续大路线发布。</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">优先级</th>
+      <th scope="col">需求</th>
+      <th scope="col">验收</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>P0</td>
+      <td>在已有 Schema 旁提供小型、带版本的工具能力描述，声明可用 Schema、输出契约与工具链边界</td>
+      <td>描述由对应实现校验；CLI 从实际解析的模块读取；不新增逐页产物或运行时请求</td>
+    </tr>
+    <tr>
+      <td>P0</td>
+      <td>让少量高价值配置诊断直接指导修复：参数、非法值、允许形式、回退和对应指南</td>
+      <td>覆盖真实上手故障，如 Goldmark、输出与语言配置；保留普通预览告警、严格发布失败的约定</td>
+    </tr>
+    <tr>
+      <td>P0</td>
+      <td>读者界面与机器产物继续共用导航和 Markdown 权威</td>
+      <td>现有输出、导航检查继续覆盖语言、顺序、子路径及可选输出；CLI 不另写渲染器</td>
+    </tr>
+    <tr>
+      <td>P0</td>
+      <td>随版本交付经过测试的 Starter 快照与下游采用记录</td>
+      <td>将公开模块解析与同级替换构建分开验证，分别记录消费站 pin 和部署</td>
+    </tr>
+    <tr>
+      <td>P1</td>
+      <td>原型证明有必要时，为工具消费的少数诊断加入稳定标识</td>
+      <td>每个标识有对应检查器；CLI 不依赖对所有人工告警文本的解析</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>能力描述属于发布元数据，不是新的配置权威。配置 Schema 继续从现有权威生成，可选形态校验仍归对应解析器与检查器。不要违反现有诊断决策，另建通用改名键注册表。迁移转换应属于明确的 CLI 配置范围，而不是模板中的永久兼容路径。</p>
+<p>1.2 不要求增加新的视觉组件族。正确性、无障碍和已经发现的回归仍可驱动修改。现有媒体工作保留其独立验收范围，本路线图不把所有草案完成都变成发布条件。</p>
+<h2 id="pg-f03349673f164feacf45ab54423e90e1--cli-first">CLI 首发：建议 0.1
+</h2>
+<p>下列命令已在本地 <code>0.1.0-dev</code> 候选中实现。当前参数、结果语义与限制由 <a href="/zh/docs/design/decisions/cli/">CLI 契约</a>及<a href="/zh/docs/start/cli/">使用指南</a>定义；公开分发与最终验收仍为独立状态。</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">命令</th>
+      <th scope="col">用户结果</th>
+      <th scope="col">首发边界</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>oink doctor</code></td>
+      <td>理解站点为何无法运行，或者本地环境为何与 CI 不同</td>
+      <td>检查 Hugo Extended 与版本、模块 pin 与实际来源、Starter/工具链要求、必要配置、启用输出；默认不修复</td>
+    </tr>
+    <tr>
+      <td><code>oink check</code></td>
+      <td>知道发布构建和本地引用是否有效</td>
+      <td>在隔离输出中进行一次严格构建，再检查站内链接、锚点、资源与启用的机器产物；报告覆盖范围与不支持的检查</td>
+    </tr>
+    <tr>
+      <td><code>oink init my-docs</code></td>
+      <td>得到一个无需 CLI 也能维护的小型中性站点</td>
+      <td>从固定 Starter 快照生成到新目录或空目录，选择支持的语言配置并固定主题版本</td>
+    </tr>
+    <tr>
+      <td><code>oink upgrade --to &lt;tag&gt;</code></td>
+      <td>看清主题升级需要修改哪些内容</td>
+      <td>默认预览，<code>--write</code> 在验证后应用已审阅范围；保护无关模块依赖、用户修改与 vendor 内容</td>
+    </tr>
+    <tr>
+      <td><code>oink dev</code> / <code>oink build</code></td>
+      <td>获得容易记忆的入口，无需学习第二套构建系统</td>
+      <td>轻量调用 Hugo，展示生效参数；<code>build</code> 使用发布严格度；始终支持直接使用 Hugo</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p><code>check</code> 是统一质量入口。0.1 不同时设计职责重叠的 <code>lint</code>、<code>validate</code>、<code>audit</code>、<code>check</code>。后续确有需求时，用 <code>--scope</code> 区分源码提示和产物校验。</p>
+<h3 id="pg-f03349673f164feacf45ab54423e90e1--diagnosis-quality">诊断与质量范围
+</h3>
+<p>先覆盖高置信度、可行动的失败：工具链不符、主题未解析、必要配置非法、本地链接目标或锚点或资源缺失、已启用输出的引用不一致。路由和锚点以 Hugo 产物为准，覆盖语言与 base path。不能因为编辑器 Schema 未列出某个自定义 front matter 字段，就把合法输入判成错误。</p>
+<p>未启用的可选输出不应触发缺失错误。本地候选不检查翻译完整性；后续完整性规则必须使用站点实际声明的语言和覆盖政策。重复标题、孤儿页、缺少描述、文风与新鲜度仍属后续可选观察项，经过真实误报评审后再决定默认值。静态检查不能声称浏览器无障碍或交互测试已经通过。</p>
+<p>本地候选冻结 <code>oink.result/v1</code>：结构化诊断包含稳定规则 ID、严重度、已知位置、解释、行动建议与明确覆盖范围。JSON stdout 只输出结果，日志进入 stderr，所有命令均不等待输入。退出码 <code>0</code> 表示必要工作完成且无阻断项，<code>1</code> 表示政策问题，<code>2</code> 表示必要工作未完成。必需但不支持的检查不能返回成功。详细字段归属<a href="/zh/docs/design/decisions/cli/#result">结果契约</a>，不为构建派生问题编造行号。</p>
+<p>保留 Hugo 原始错误作为子进程证据，其人工文案不构成 CLI 协议。将来可以从同一结果投影 SARIF，而不改变规则语义。</p>
+<h3 id="pg-f03349673f164feacf45ab54423e90e1--upgrade-preservation">升级与文件保护
+</h3>
+<p>现有消费站升级脚本提供了有价值的本地先例：区分声明 pin 与解析版本，发布验证时禁用两套 workspace，识别模块 replacement，检查 <code>_vendor</code>。通过聚焦测试移植这些行为，不能在背后调用未发布的 Python 文件，却宣称是独立 Go 二进制。</p>
+<p>0.1 只升级一个明确选择的站点。跨站批量发现暂留维护者脚本，等真实消费者提出需求。普通 <code>check</code> 可以检查有意使用本地主题替换的环境；<code>check --release</code> 必须排除这些替换，验证声明的公开版本。发现 <code>go.mod</code> 中冲突的 replacement 应报告，不应擅自删掉。</p>
+<p>先展示将修改的文件，验证候选升级，再应用。只备份涉及的文件；预览后文件又发生变化时拒绝覆盖；保留无关的未提交工作。失败时应说明哪些已应用、哪些未应用，并提供不会覆盖后续编辑的恢复路径。仓库不干净不应阻止只读诊断。刷新 vendor 是单独的显式动作，只改 <code>go.mod</code> 不等于升级了 vendor 输出。</p>
+<p>初始化和修复不能顺便 commit、push、部署、修改全局 Agent 设置或安装系统包。向明确的新目录初始化，本身就是用户请求的创建动作；修改既有文件则默认预览。不要为了这些有边界的操作构建通用工作流引擎。</p>
+<h3 id="pg-f03349673f164feacf45ab54423e90e1--distribution-offline">分发与离线行为
+</h3>
+<p>本地候选当前提供已测试的源码／Make 安装路径与归档准备。公开 Homebrew formula、下载入口及标签安装仍属后续分发工作。当前运行验收覆盖 macOS arm64；其他归档目标仅为交叉编译候选，尚未在对应平台执行。</p>
+<p>采用 Go 可执行文件，提供发布归档、校验和与 Homebrew 安装方式。先正式验证实际测试过的 macOS、Linux 架构，其它平台在文件系统和进程行为验证前标记为实验支持。安装后的 CLI 本身不要求安装 Go 工具链、Python、Node 或注册账户。Hugo 仍为外部渲染器；首次模块解析仍需要站点文档规定的 Git、Go、Hugo 工具链。</p>
+<p>嵌入或随版本提供准确、保留许可证的 Starter 快照，保证初始化可重复。不应每次抓取变化中的 <code>main</code>，也不在 CLI 中手工维护 Starter 配置副本。发布 CLI 时检查内嵌模板与来源的一致性。</p>
+<p>区分冷安装与离线运行。未在本地提供时，下载 Hugo、主题或未缓存模板需要网络。依赖齐备之后，本地诊断、检查和构建路径应无需外部服务。离线请求遇到缓存缺失应明确失败，不能偷偷下载。外链检查、远程规范等联网行为单独启用。无需默认遥测或后台更新检查。</p>
+<h2 id="pg-f03349673f164feacf45ab54423e90e1--migration">第一项扩展：迁移
+</h2>
+<p>从实际候选站点中选择一套 <strong>有文档说明的 Docsy 输入配置范围</strong>，参考现有迁移夹具和报告模型。现有 OINK 0.4/0.6 转换并不能证明任意 Docsy 站点已经可以迁移。除 Markdown 语法外，还必须检查配置、导航、资源、语言和路由。</p>
+<p>拟议流程为 <code>oink migrate --from docsy --source &lt;site&gt; --output &lt;new-site&gt;</code>。先评估再写入；应用需要显式参数，并输出到独立目录。每个源项目只有一个主要状态：原样兼容、已转换、人工复核、不支持。数量必须能够核对，附理由与源码位置。自定义模板和动态行为应明确列为人工工作。</p>
+<p>验收包括源文件保留、支持范围内的转换幂等、不修改字面代码示例、站内引用有效，以及明确的旧新路由对照。优先保持 URL；改变 URL 时须提供适合托管目标的重定向方案。HTML 构建成功不足以证明语义一致或生产重定向生效。</p>
+<p>不要承诺“一条命令迁移任意 Docusaurus 站点”。任意 JSX、import、内嵌 React/Vue 是程序，不能执行不受信任的源码来猜测含义，也不能静默删除无法处理的内容。第一条配置范围在没有维护者救场的情况下得到复用后，再开始第二个框架。完整 MDX 迁移是后续产品投入，不是 MVP 的一个解析器任务。</p>
+<h2 id="pg-f03349673f164feacf45ab54423e90e1--version-lifecycle">下一项内容能力：版本生命周期
+</h2>
+<p>首个 CLI 有用之后，默认优先考虑版本生命周期，因为它延续 OINK 已有的独立构建模型。只有真实 API 用户提出更强、反复出现的需求时，才把 OpenAPI 提前。单一主维护者不同时实现这两个基础。</p>
+<p>主题负责读者界面的版本身份、可靠页面切换、归档状态，以及范围正确的搜索和机器输出。CLI 负责查看版本、准备快照、验证页面对应关系、修改声明的生命周期状态。<code>oink --version</code> 表示可执行文件版本；将来的 <code>oink docs version ...</code> 避免与文档版本混淆。</p>
+<p>优先采用小型版本清单，记录版本标签、源引用、base URL、状态和默认选择。保留各版本独立构建及现有外部归档。CLI 管理的清单可以生成纳入 Git 的 Hugo 配置；在该模式中，清单由用户维护，配置是接受检查的投影。现有手工管理的 <code>params.versions</code> 继续受支持。原型必须先确定投影关系，再冻结格式。</p>
+<p>页面对应关系需要按文档族、语言、版本区分的逻辑页面键。优先复用合适的 <code>translationKey</code> 或显式稳定键，不先引入通用 UUID。目标版本缺页时应明确说明，并进入约定的版本或分区首页，不能伪造等价页或盲目拼接 URL。路由别名处理页面搬迁，与页面身份分开。</p>
+<p>内容有实质差异的历史页通常保留自己的 canonical URL，不能全部指向最新版。语言 alternate 应指向同版本中确实存在的翻译。默认搜索与 Agent bundle 保持在当前语言和版本范围内；将来若有跨版本聚合，必须显式启用。归档应保留源码并记录构建产物如何保存，不等于删除，也不悄悄重新部署不可变归档。</p>
+<p><code>NAVJSON</code> v1 的对象 Schema 当前禁止额外字段。因此增加版本或身份字段需要明确的新 Schema、输出契约或独立产物，不能声称是无影响的 v1 字段扩展。仅仅为未来图谱预留空间，不足以成为修改当前页面身份的理由。</p>
+<h2 id="pg-f03349673f164feacf45ab54423e90e1--openapi">随后的能力：静态 OpenAPI 参考
+</h2>
+<p>首个 OpenAPI 产品应是 <strong>只读静态参考生成器</strong>。CLI 解析本地规范及支持的本地引用，输出普通 Markdown/Hugo data，记录来源。主题提供符合无障碍要求的语义呈现和已有输出流水线，再由普通 Hugo 将生成页构建为 HTML、Print、Markdown、搜索和 Agent 索引。</p>
+<p>先支持操作、参数、请求与响应正文，以及带链接的 Schema 描述。解析器原型完成后明确支持的 OpenAPI 版本和构造，不能静默丢弃不支持的构造。操作身份按 API/规范分域；缺少 <code>operationId</code> 时可由 method/path 派生，同时提示路径变化会影响身份。不同 API 复用同一 <code>operationId</code> 不能发生冲突。</p>
+<p>人工指南与生成事实分开保存。生成必须确定、记录源哈希和生成器版本、能够检测过期输出，遇到非预期人工修改拒绝覆盖。将生成源码纳入站点 Git，或作为带版本的构建输入提供，使渲染本身仍不依赖 CLI。解析远程引用属于显式准备步骤，普通生成不能遍历任意外部 URL。</p>
+<p>验收除玩具示例外，还要有真实用户规范；支持的操作完整可核对，循环引用能够处理，路由稳定，选定输出均包含语义内容，新静态渲染器的无障碍检查不继承 Swagger/Redoc 豁免。承诺吞吐指标前先测有代表性的大型规范。</p>
+<p>保留现有 Swagger/Redoc 集成的兼容性。交互请求、凭据管理、SDK 生成、mock server 和 API 测试平台不进入本轮生成器增量。</p>
+<h2 id="pg-f03349673f164feacf45ab54423e90e1--architecture">架构与兼容规则
+</h2>
+<p>CLI 内部保持简单：命令处理、Hugo/进程适配、诊断、模板加载、限定范围的文件修改。迁移和 OpenAPI 到达对应阶段后再增加内部包。这只是建议分层，不是插件 ABI 或公共 SDK。</p>
+<p>三个边界需要版本化：CLI 的机器结果格式、主题的公共 Schema/输出契约、受支持的迁移或生成输入配置范围。优先按能力检测，不一刀切要求“最新 OINK”。遇到更新但不支持的 Schema 时，必须给出可理解的兼容性诊断。</p>
+<p>CLI 不能导入同级主题的私有 Python 模块、依赖特定本地 checkout 布局，或者运行时下载可执行检查器。通过行为测试移植选中的消费站操作。模板内部检查器仍留在主题；公开消费规则的后续变化同步更新其对应契约。过渡期间保留现有脚本，替代实现覆盖受支持场景后再退出重复实现。</p>
+<p>初期不要求 CLI 配置文件，渲染配置继续由 Hugo 管理。重复使用证明有必要时，工具政策文件可以包含忽略路径、规则严重性和经过审阅的基线，但不能再维护 <code>params.ui</code>、导航、语言或模块 pin 的副本。Lint 基线不能豁免 Hugo 构建失败、输入不可读或必需检查不受支持。</p>
+<h2 id="pg-f03349673f164feacf45ab54423e90e1--roadmap">路线图与人力假设
+</h2>
+<p>下列时间范围保留原始规划含义，不作为执行日志。阶段 0 与阶段 1 已有首期本地候选，但这不代表公开发布、独立用户研究、迁移或后续内容模型目标已完成。实际证据归入<a href="/zh/docs/design/research/2026-09-29-cli-acceptance/">验收记录</a>。</p>
+<p>以下是 <strong>首阶段 8–12 周的规划范围</strong>，假设约一名全职实现负责人，并有部分文档与评审支持。这不是交付承诺，也不是对实际人力的判断。工具链验证、用户招募和双语评审都需要时间；应优先缩小范围，避免名义上的多线并行。</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">阶段</th>
+      <th scope="col">自批准起的时间</th>
+      <th scope="col">交付物</th>
+      <th scope="col">退出证据</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0：确定边界</td>
+      <td>第 1–2 周</td>
+      <td>接受仓库选择，收集真实故障，定义结果格式与支持基线，在当前 1.1.0 上原型验证只读 doctor/check</td>
+      <td>Starter 加至少三个不同形态的真实仓库；记录失败与覆盖缺口</td>
+    </tr>
+    <tr>
+      <td>1：完成日常流程</td>
+      <td>第 3–6 周</td>
+      <td>doctor/check、固定模板 init、轻量 dev/build、单站候选升级与文件保护测试</td>
+      <td>新用户能定位预置故障；生成站仍可直接 Hugo 构建；没有无法解释的源码修改</td>
+    </tr>
+    <tr>
+      <td>2：发布有边界的产品</td>
+      <td>第 7–12 周</td>
+      <td>拟议主题 1.2、CLI 0.1、兼容记录、文档、经过验证的安装方式、有限 Docsy 迁移评估与试点</td>
+      <td>首次使用测试与重复升级使用；迁移限制明确；公开 pin 与下游采用单独验收</td>
+    </tr>
+    <tr>
+      <td>3：验证迁移及一个内容模型</td>
+      <td>第 4–6 月</td>
+      <td>完善首条迁移路径；按用户证据选择版本生命周期或 OpenAPI；需要时规划主题 1.3 / CLI 0.2</td>
+      <td>至少两个真实仓库使用所选流程；接受契约后才承诺兼容性</td>
+    </tr>
+    <tr>
+      <td>4：证据支持的扩展</td>
+      <td>第 6 月之后</td>
+      <td>另一项内容能力，再按需求引入模板、来源信息或 Agent 传输层</td>
+      <td>有重复使用与维护能力；不自动承诺 SaaS 产品</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>如果阶段 2 超期，移除该版本中的迁移写入能力，保留评估报告。不能削减升级保护、真实诊断或 CLI 可选性。如果没有独立团队需要这套迁移配置范围，就停止扩充框架覆盖，回到上手体验与定位研究。</p>
+<p>新鲜度、归属信息是后续可选质量能力，先以用户确实会处理的报告验证价值。修改日期绝不能冒充验证日期。先提供少量有用的官方页面模板，再考虑 registry。G2/G3 图谱、MCP、分析适配器、可执行示例、Studio 和托管服务，都需要具体用户问题及资源决策，不应现在填入确定日程。已有静态 Agent 输出，使 MCP 的紧迫性低于采用流程。</p>
+<h2 id="pg-f03349673f164feacf45ab54423e90e1--acceptance">验收与产品指标
+</h2>
+<p>下列用户与采用指标仍是目标。维护者执行的本地试点用于验证实现和文件保护，不能证明独立团队、首次使用成功率、留存或生产采用情况。</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">范围</th>
+      <th scope="col">初始目标或必须满足的性质</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>首次成功</td>
+      <td>前置工具已安装时，5 名不熟悉 OINK 的目标用户中，至少 4 名在 15 分钟内无需维护者干预就完成预览与严格检查；冷安装另行记录</td>
+    </tr>
+    <tr>
+      <td>维护价值</td>
+      <td>至少三个真实站点使用诊断与检查，并重复完成受支持升级；每次失败均有可行动报告</td>
+    </tr>
+    <tr>
+      <td>诊断准确性</td>
+      <td>试点中逐项复核阻断发现，在明确计数、人工标注的样本中争取误报率低于 5%，不能把它当作未经测量的宣传</td>
+    </tr>
+    <tr>
+      <td>完整性</td>
+      <td>零静默内容丢失；迁移输入逐项可核对；重复转换无差异；用户编辑和无关依赖得到保留</td>
+    </tr>
+    <tr>
+      <td>独立性</td>
+      <td>依赖准备好后，初始化或生成的站点可以直接用 Hugo 构建；CLI 与可选输出仍可选择</td>
+    </tr>
+    <tr>
+      <td>离线行为</td>
+      <td>依赖准备完成后，在禁止出站访问的环境验证受支持本地流程；缓存缺失和显式联网功能分别记录</td>
+    </tr>
+    <tr>
+      <td>兼容性</td>
+      <td>当前经过测试的主题基线与候选版本、固定的站点回归工具链、根路径和子路径、中英文场景；不暗示已测试兼容下限以上的每个 Hugo 版本</td>
+    </tr>
+    <tr>
+      <td>采用情况</td>
+      <td>首阶段争取五个独立试点团队，跟踪其是否进入生产及在 30/90 天后继续使用；这是验证目标，不是现有用户成绩</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>主要采用指标使用独立维护的生产站点，通过公开引用或用户自愿确认核实。稳定文档站不应因为 60 天没有提交而退出统计；主题升级时效与留存分别衡量。Star、下载次数、自有消费站数量和 Agent 生成量都只是辅助信号，不能证明独立采用。</p>
+<p>首次本地成功时间、首次生产发布时间、升级成本、迁移人工成本分别记录。部署可能依赖 CLI 之外的账户与服务商，不能把本地验证等同于发布。不要为收集指标引入默认遥测。</p>
+<h2 id="pg-f03349673f164feacf45ab54423e90e1--implementation-validation">实现归属与验证
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">改动</th>
+      <th scope="col">对应验证</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>工具能力描述与 Schema 兼容</td>
+      <td>聚焦的主题描述检查器，以及 <code>generate-config-schema.py --check</code> 和相关参数检查</td>
+    </tr>
+    <tr>
+      <td>暴露给消费者的诊断</td>
+      <td>对应解析器与检查器用例，CLI 诊断结果和退出码测试</td>
+    </tr>
+    <tr>
+      <td>已有输出行为</td>
+      <td>按变化范围选择 <code>check-agent-indexes.py</code>、输出、安全和导航检查</td>
+    </tr>
+    <tr>
+      <td>初始化与升级</td>
+      <td>固定 Starter 快照，以及包含 replacement、vendor、无关依赖、目标文件未提交修改的 CLI 测试仓库</td>
+    </tr>
+    <tr>
+      <td>迁移</td>
+      <td>移植并扩充转换用例、源文件保护与重复运行检查，真实站点路由和内容复核</td>
+    </tr>
+    <tr>
+      <td>后续版本与 API 呈现</td>
+      <td>主题输出检查，以及双语文档站的集成、浏览器、无障碍、响应式和视觉评审</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>先运行最小归属检查。公共行为变化仍要求实现、检查器和双语契约协调交付。真实集成与视觉验收使用同级站点的 <code>make check</code>、<code>make browser</code>、<code>make dev</code> 流程。公开回归场景不搬回主题的合成夹具树，也不要求普通消费者安装维护者使用的 Node 测试栈。</p>
+<p>发布时分别记录本地检查、提交、标签、公开模块或二进制解析、消费站 pin 与部署。主题发布后的采用继续使用现有消费站盘点流程。一个协调 issue 或清单即可连接各仓库，无需新增编排框架。</p>
+<h2 id="pg-f03349673f164feacf45ab54423e90e1--open-decisions">待决问题与停止条件
+</h2>
+<p>仓库选择与首期实现在本地已确定。剩余发布决策包括经过验证的平台、公开分发渠道、有实际执行证据支持的兼容声明，以及独立试点招募。验收记录列明实际本地工具链与选定站点，不代表未来平台或用户已经验证。</p>
+<p>本地候选的结果与退出语义已在 CLI 契约中冻结。最小主题能力描述与稳定主题警告 ID 保持独立提案，不追加入首个 CLI 的前提条件。版本 beta 前确定清单投影、归档保存方式和页面对应关系；OpenAPI beta 前确定支持的规范子集与生成源码归属。</p>
+<p>如果试点实际只需要一个小型维护脚本，规则必须反复复制模板语义，或者分发维护成本超过测得的用户价值，就重新评估独立 CLI 投入，并保留已经有用的独立脚本。证据变化时可以调整版本化与 OpenAPI 的顺序，不增加同时开展的总范围。</p>
+<h2 id="pg-f03349673f164feacf45ab54423e90e1--decision-log">决策日志与来源
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">日期</th>
+      <th scope="col">记录</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2026-09-29</td>
+      <td>根据提供的战略研究与本地源码评审创建草案。建议独立可选 CLI、小型采用版本、有边界的迁移和依次推进的内容能力。本文件没有接受任何实现或建仓操作。</td>
+    </tr>
+    <tr>
+      <td>2026-09-29</td>
+      <td>随后用户授权并接受独立 Go 仓库与首期开发。本地 <code>0.1.0-dev</code> 候选已实现 doctor/check/init/upgrade/dev/build；稳定行为移入 CLI 决策与使用指南。CLI 提交 <code>e623d93</code> 已通过本地验收；公开发布、独立采用及所有后续阶段提案继续分别记录状态。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>查阅的本地权威包括：<a href="/zh/docs/design/architecture/">架构</a>、<a href="/zh/docs/design/decisions/config-schema/">生成式 Schema 决策</a>、<a href="/zh/docs/design/migration/">迁移边界</a>、<a href="/zh/docs/customize/versions/">现有版本行为</a>、<a href="/zh/docs/write/openapi/#limits">OpenAPI 限制</a>、<a href="/zh/docs/design/proposals/knowledge-graph/">图谱提案状态</a>。还检查了主题 <code>bin/</code>、<code>schema/nav.v1.schema.json</code>、现有 Starter 与文档站构建检查命令。本地在途改动没有被表述为公开发布证据。</p>
+<p>外部一手资料核实日期为 2026-09-29，包括上文链接的 Mintlify 命令参考、Nimbus 仓库、Docusaurus 版本指南及 Hugo 配置和模块文档。这些来源支持产品比较，不能证明 OINK 的市场需求或拟议时间表。</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-f23607ae70c920d6a4e6d4e624bb9b54">5 - OINK CLI 文档维护路线图</h1>
+    <div class="lead">文档维护与 Oink Studio 的 R1–R8 历史需求记录，保留对应验收证据并指向当前精简 CLI 契约。</div>
+	<div class="td-callout td-callout--note" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-info" aria-hidden="true"></i><span class="td-callout__label">已实现需求记录</span></div>
+  <div class="td-callout__body">
+<p>有限 R1–R8 受支持本地实现与 A18 运行时/归档范围对验收增补记录的历史源码和
+二进制通过；当前精简 CLI 需要独立验证。本记录保留原 URL
+与锚点，保留历史排期文本和失败试验；稳定行为归属
+<a href="/zh/docs/design/decisions/cli/">CLI 契约</a>与<a href="/zh/docs/start/cli/">指南</a>，历史证据归属
+<a href="/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/#a18">2026-10-04 增补</a>。
+记录退出活动导航，未启动 E1–E4 是独立非活动范围。渲染导航/URL 验证需要这些准确晋升字节的独立收据。</p>
+  </div>
+</div><p>先完成文档维护，再建立本地可视化工作台。产品应当帮助维护者检查修改、理解影响、
+审阅安全变更，并发布刚才通过检查的同一份产物。Studio 使用这些相同能力。</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">记录</th>
+      <th scope="col">内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>状态</td>
+      <td>已实现；R1–R8 受支持本地范围与当前 A18 运行时/归档验收通过；渲染生命周期验证具有独立准确字节收据边界</td>
+    </tr>
+    <tr>
+      <td>负责人</td>
+      <td>OINK 维护者；具体研发与评审人员待确认</td>
+    </tr>
+    <tr>
+      <td>日期</td>
+      <td>2026-10-03</td>
+    </tr>
+    <tr>
+      <td>已有基线</td>
+      <td>本地 CLI <code>0.1.0-dev</code>，提交 <code>e623d93</code>；macOS arm64 上的 Hugo Extended 0.166.0 与 Go 1.27.1</td>
+    </tr>
+    <tr>
+      <td>完成范围</td>
+      <td>R1–R8 及下文验收用例；条件性扩展另有启动条件</td>
+    </tr>
+    <tr>
+      <td>受影响范围</td>
+      <td>CLI 命令与结果契约、Starter 投影、消费站 CI、翻译政策、维护操作、本地 Studio、中英文指南</td>
+    </tr>
+    <tr>
+      <td>排期假设</td>
+      <td>一名全职开发，配合定期文档与评审支持；工期属于规划判断</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--background">背景与证据
+</h2>
+<p><a href="/zh/docs/design/proposals/oink-cli-roadmap/">原 CLI 路线图</a>已接受独立 Go
+可执行文件，将首次实现收敛为 <code>doctor</code>、<code>check</code>、<code>init</code>、单站点 <code>upgrade</code>、
+<code>dev</code> 与 <code>build</code>。本提案增加有明确边界的文档维护计划。Docsy 迁移、版本生命周期、
+OpenAPI 生成与主题 1.2 保留各自范围。</p>
+<p>2026-10-03 的本地盘点重新执行了 Go 套件与真实 Hugo 集成测试。初始化的双语站点
+检查通过，覆盖 223 个文件、4,461 条引用。PIG 消费站检查通过，覆盖 1,392 个文件、
+64,440 条引用；858 个源文件及 Git 状态保持不变。这些是本地验证观察，不代表公开
+分发、独立用户采用或部署。</p>
+<p>盘点还复现了四项限制：渲染链接缺失时 <code>check</code> 失败而 <code>build</code> 成功；普通 HTML
+引用越出配置的 base path 时被标为未检查；<code>doctor --release</code> 接受仍使用
+<code>https://example.org/</code> 的 Starter；两份内嵌部署工作流都直接调用 Hugo，没有执行
+CLI 的附加检查。翻译完整性与可读升级 diff 也尚未实现。首批增量由这些发现确定。</p>
+<h2 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--product-goal">产品目标与用户
+</h2>
+<p>优先服务多语言工程文档维护者，以及维护多个 Hugo 站点的小团队。高频任务是审阅
+翻译、防止发布损坏内容、更新依赖，以及在不丢失引用和公开 URL 的前提下整理文档。</p>
+<p>普通消费站能在本地与 CI 使用同一个质量入口，查看受影响页面，审阅并应用修改，
+同时保留无关工作，才算实现产品目标。CLI、Studio 与 Agent 调用应得到相同的发现项
+和修改计划。</p>
+<h2 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--feature-selection">功能取舍
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">原设计能力</th>
+      <th scope="col">决策</th>
+      <th scope="col">交付阶段</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>内链、锚点、附件与机器产物</td>
+      <td>加强已有检查，说明未覆盖情况</td>
+      <td>R1–R3</td>
+    </tr>
+    <tr>
+      <td>环境诊断、预览与严格构建</td>
+      <td>补齐发布诊断，增加显式的已验证构建流程</td>
+      <td>R1、R3</td>
+    </tr>
+    <tr>
+      <td>翻译完整性与受保护结构</td>
+      <td>作为核心产品能力建设</td>
+      <td>R2</td>
+    </tr>
+    <tr>
+      <td>初始化与 CI 配置</td>
+      <td>扩展固定 Starter，管理可审阅的 CI 修改</td>
+      <td>R3–R4</td>
+    </tr>
+    <tr>
+      <td>原生内容规则与项目风格</td>
+      <td>实现少量确定性核心规则，通用工具按需接入</td>
+      <td>R2、R6</td>
+    </tr>
+    <tr>
+      <td>新建内容、片段与编辑器配置</td>
+      <td>生成普通 Hugo 输入，保护已有文件</td>
+      <td>R4</td>
+    </tr>
+    <tr>
+      <td>安全升级与迁移预检</td>
+      <td>增加 diff 和候选对比；框架迁移保持独立范围</td>
+      <td>R4</td>
+    </tr>
+    <tr>
+      <td>页面移动、重命名与影响分析</td>
+      <td>页面关系与修改计划可靠后再实施</td>
+      <td>R5</td>
+    </tr>
+    <tr>
+      <td>问题面板与翻译对照</td>
+      <td>先做只读的本地 Studio</td>
+      <td>R7</td>
+    </tr>
+    <tr>
+      <td>多站点</td>
+      <td>在单站引擎上增加显式站点登记</td>
+      <td>R6</td>
+    </tr>
+    <tr>
+      <td>EPUB、PDF 与离线打包</td>
+      <td>对可分发出版工具的条件性适配</td>
+      <td>E1</td>
+    </tr>
+    <tr>
+      <td>可执行文档示例</td>
+      <td>使用显式执行配置的条件性功能</td>
+      <td>E2</td>
+    </tr>
+    <tr>
+      <td>Agent 检查、影响与上下文</td>
+      <td>实现确定性的本地操作</td>
+      <td>R5</td>
+    </tr>
+    <tr>
+      <td>AI 翻译与语义审阅</td>
+      <td>确定性维护流程可用后，再验证修改提案</td>
+      <td>E4</td>
+    </tr>
+    <tr>
+      <td>来源、证据与知识依赖</td>
+      <td>本轮限定为构建及审阅来源、已观察到的页面关系</td>
+      <td>更广的知识管理延后</td>
+    </tr>
+    <tr>
+      <td>富文本编辑、实时协作与原生桌面端</td>
+      <td>只交付安全 Markdown 编辑；更大的平台延后</td>
+      <td>R8；其余暂缓</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--scope">范围与非目标
+</h2>
+<p>R1–R8 是本 PRD 有限且明确的完成范围，每阶段都能独立产生价值并验收。拟议 CLI
+版本 <code>0.2</code>、<code>0.3</code> 与 <code>0.4</code> 仅标识候选交付，不要求创建对应公开标签，也不绑定主题版本。</p>
+<p>本计划不包含新渲染器、通用迁移引擎、托管账户管理器、部署 API、内置 LLM、向量
+数据库、远程编辑器、实时协作、原生桌面壳或完整所见即所得编辑器。部署由既有
+服务商工作流完成；发布权限与凭据继续由消费站所有者管理。</p>
+<h2 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--shared-project-facts">共享项目事实与检查政策
+</h2>
+<p>此范围已本地接受。下文保留原始提案需求作为历史；当前行为与参数归
+<a href="/zh/docs/design/decisions/cli/#project-policy">CLI 契约</a>所有。</p>
+<p>扩展已有隔离 Hugo 分析，不另建配置解析器或导航权威。拟议内部事实包括页面身份、
+语言、发布状态、实际输出 URL、已知源文件、翻译关系及已观察到的渲染引用。</p>
+<p>使用 Hugo 公开的 <a href="https://gohugo.io/methods/page/translations/">Page.Translations</a>
+与 <a href="https://gohugo.io/methods/page/outputformats/">Page.OutputFormats</a> 获取关系和产物。
+<a href="https://gohugo.io/methods/page/file/">Page.File</a>可提供来源，但部分页面没有对应文件。
+这些发现项必须保留产物位置和源码未知状态。临时探针移除后，普通发布产物的字节
+应保持不变。</p>
+<p>仅用 <code>oink.yaml</code> 管理检查选择、严重度、翻译政策、已审阅排除项及工具和流程选项。
+语言、标题、菜单、URL 与站点配置继续归 Hugo，主题版本归模块文件。先提供共享
+同一次分析的 <code>check links</code>、<code>check translations</code> 与 <code>check style</code>。保留 <code>--json</code>；
+<code>--format json</code> 可以作为兼容性的新增别名。</p>
+<p>阻断错误、警告与建议沿用 <code>error</code>、<code>warning</code>、<code>info</code> 严重度。必需工具或输入形态
+不受支持时仍返回退出码 <code>2</code>。政策不能把构建失败、输入不可读或必需检查未完成降级
+为成功。源码位置需要可靠映射；无法定位时报告实际产物和 pointer。</p>
+<h2 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--translation-maintenance">翻译维护
+</h2>
+<p>此范围已本地接受。下文保留原始提案需求作为历史；当前行为与参数归
+<a href="/zh/docs/design/decisions/cli/#translations">CLI 契约</a>所有。</p>
+<p>支持 Hugo 解析的文件名语言、独立语言内容目录与 <code>translationKey</code> 关系。覆盖政策
+在明确的内容范围内选择必需语言；已禁用语言和有意本地化不能变成缺译错误。
+检查重复身份以及政策指定的草稿和发布状态。生产构建未包含评估政策所需的源文档时，
+使用明确的分析视图；不能把分析视图当成可发布产物。</p>
+<p>提供两类政策：技术手册使用严格对译，博客或产品页面使用本地化内容。严格政策可
+要求显式 ID、声明的占位符、指定代码块和必要字段一致；本地化政策只检查明确声明
+的共同约束。标题数量相等、所有代码块相等都不能成为普遍要求。</p>
+<p>拟议提供 <code>translations status</code>、<code>translations diff &lt;page&gt;</code> 和显式的审阅记录操作。
+带版本的记录将译文绑定到源文档内容哈希或 Git 修订，并记录译文哈希与声明的源语言。
+没有记录表示未知；哈希改变表示审阅后有变更，不自动断言翻译错误。记录审阅必须
+来自用户要求的写入，检查器运行本身不能自动生成已审阅状态。</p>
+<h2 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--native-content-rules">原生内容规则与问题基线
+</h2>
+<p>此范围已本地接受。下文保留原始提案需求作为历史；当前行为与参数归
+<a href="/zh/docs/design/decisions/cli/#native-content">CLI 契约</a>所有。</p>
+<p>先从真实消费站故障中提取少量高置信度规则：受支持组件及属性写法非法、显式 ID
+冲突、已知弃用形式，以及项目配置的受保护内容。代码块、行内代码、短代码正文、
+原始 HTML 和属性块需要各自的语法边界，不能无差别套用正则。</p>
+<p>使用实际生效主题版本的契约。没有类型约束的编辑器 Schema 不能作为完整严格验证器。
+缺少兼容元数据时，应明确限制覆盖范围，不能拿最新主题规则验证旧项目。基本检查
+完成不以未来主题发布为前提。</p>
+<p>可见且带版本的问题基线可以用稳定指纹、原因和审阅元数据确认已有发现项。报告
+分别显示已确认项和新增项。基线更新必须显式、可审阅，不能隐藏必需检查未完成。
+格式化与文风建议属于可选项。自动修复先生成 diff，再验证候选，最后只应用少量
+边界明确的文件。</p>
+<h2 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--verified-publication">已验证发布产物与 CI
+</h2>
+<p>此范围已本地接受。下文保留原始提案需求作为历史；当前行为与参数归
+<a href="/zh/docs/design/decisions/cli/#checked-artifacts">CLI 契约</a>所有。</p>
+<p>保留当前 <code>build</code> 默认的透明调用。增加显式受管理的 <code>build --check</code> 流程：严格运行
+一次 Hugo，在同一份输出上执行选定检查，再把已验证产物导出到新目录或空目录。
+不能删除任意目录，也不能把旧文件混入已验证产物树。默认 <code>build</code> 必须继续说明
+附加检查尚未执行。</p>
+<p>本地版本化 manifest 记录已知的源码修订与修改状态、源码输入哈希、实际主题身份、
+Hugo/CLI 版本、构建设置、base URL、检查覆盖与文件摘要。秘密和本机路径不得进入
+公开元数据。启用公开构建标识时，只保留验证所需的最少身份信息。检查后产物字节
+发生变化，已有检查结果就不能继续证明该产物。</p>
+<p>拟议提供 <code>ci init github-pages</code> 和 <code>ci init cloudflare-pages --mode direct-upload</code>。
+只生成本地配置，解释变量与权限，记录模板来源。发现已有工作流时展示 diff，保留
+未知修改，并要求显式应用。两种模板使用相同质量引擎，上传已验证输出，中间不能
+再运行一次 Hugo。CLI 尚无公开版本时，模板必须接受明确记录的不可变源码或归档
+输入，不能假设某个下载标签已经存在。</p>
+<p>发布诊断增加示例地址警告；发布政策要求正式地址时，该问题成为阻断项。可取得时，
+报告实际本地来源提交和修改状态，并与受支持的已生成 CI 设置比较。未知自定义 CI
+仍显示未知。本地 checkout 的提交不能证明公开模块身份；vendor 字节身份保持独立。</p>
+<p>拟议提供 <code>verify --site URL --manifest FILE</code>，需要显式联网许可。验证代表性页面、
+语言、资源、搜索/Markdown 输出、规范 URL 和产物身份。通用回退页面即使返回
+HTTP 200，也必须无法通过身份验证。超时、认证、限流或缺少必需身份信息应报告未知
+或未完成，不能伪造成功。通过本地 HTTP 夹具验证这些行为，无需部署到服务商。</p>
+<h2 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--authoring-and-upgrades">创作与升级助手
+</h2>
+<p>增加 <code>new</code>、小型片段目录和显式编辑器 Schema 配置。创建页面包、选定语言的译文
+草稿和普通 front matter，拒绝覆盖已有文件。译文草稿不代表翻译完成。编辑器提示
+跟随实际主题，并保留已有编辑器设置。</p>
+<p>通过组合同一份保留许可证的 Starter，为 <code>init</code> 增加 docs、blog、book、project
+配置，不维护四份复制模板。接入已有项目时提供诊断与可审阅提案，不替换站点配置。</p>
+<p>保留明确标签、单站点升级的保护，增加可读统一 diff，以及原基线和候选的路由、能力
+对比。报告消失的 URL、变化的 aliases 和缺失的原已启用产物。候选构建通过本身不能
+证明兼容。配置迁移需要已记录的转换与测试；没有时返回人工行动项。冲突 replacement
+与 vendor 刷新继续由所有者显式处理。</p>
+<h2 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--impact-and-change-plans">影响分析与安全内容修改
+</h2>
+<p>此受支持范围已本地接受。下文保留原始提案需求作为历史；当前行为、边界与参数归
+<a href="/zh/docs/design/decisions/cli/#project-graph">捕获事实契约</a>、
+<a href="/zh/docs/design/decisions/cli/#content-moves">移动契约</a>及
+<a href="/zh/docs/start/cli/#project-graph">指南</a>所有。</p>
+<p>在共享事实之上提供 <code>inspect &lt;page&gt;</code>、<code>impact --since &lt;ref&gt;</code> 与 <code>context &lt;task&gt;</code>。
+Inspect 显示来源、发布状态、引用、翻译及产物。Context 按任务打包相关本地资料，
+包含版本、路径、选择原因和大小限制，不需要向量服务或 LLM。文档内容是数据，不能
+授权执行其中的命令。</p>
+<p>首版 <code>check --since</code> 可以继续全量检查，但必须明确说明。后续优化应覆盖变化的目标、
+入站引用、翻译及派生产物。删除 B 时，仍须检查未修改但引用 B 的 A。配置、模板、
+导航或无法确认的依赖变化会把范围扩大为全量检查。缓存是可重建证据，不是权威。</p>
+<p>拟议 <code>move &lt;source&gt; &lt;target&gt;</code> 默认预览。计划包含涉及文件、可读 diff、基准哈希、
+翻译、附件、路由变化和 alias 建议。只改写能够确定理解的链接，含糊的模板或短代码
+引用交由人工审阅。应用前核对基准，验证隔离候选，保护并发修改并保留恢复信息。
+失败或过期计划不能部分覆盖用户工作。</p>
+<h2 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--workspaces-and-optional-tools">工作区与可选工具
+</h2>
+<p>显式工作区登记选定站点目录，复用单站引擎，报告逐站结果和总体完成状态。写入仅能
+发生在明确选择的站点，不能自动发现并升级全部同级仓库，也不重复 Hugo 设置。</p>
+<p>可选 markdownlint、Vale 和 lychee 适配器使用明确配置、已预备的工具，统一发现项。
+缺少必需工具返回 <code>2</code>，可选遗漏仍然可见。排除适配器无法理解的语法，不改写这些
+内容。外链失败有歧义时要区分网络状态。安装工具与联网是独立动作，通用 formatter
+默认不得覆盖内容。</p>
+<h3 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--r6-candidate">R6 已接受本地边界
+</h3>
+<p>显式登记与可选适配器的受支持 R6 范围已本地接受。稳定字段和限制见
+<a href="/zh/docs/design/decisions/cli/#workspace-registry">登记契约</a>与
+<a href="/zh/docs/design/decisions/cli/#optional-checkers">工具契约</a>，用户步骤归属
+<a href="/zh/docs/start/cli/#workspace-registry">指南</a>。下述已接受 R7/R8 边界仍有
+自身证据与限制。</p>
+<p><code>oink.workspace/v1</code> 用一份最多 256 KiB 的普通 YAML 文件登记 1–64 个字面目录，
+不复制 Hugo 设置，也不发现同级站点。准确名称、规范根目录身份、登记顺序选择、
+逐站 <code>0</code>/<code>1</code>/<code>2</code> 一致性及显式名称应用保存计划构成受支持工作区边界。已预备的
+markdownlint-cli <code>0.49.1</code>、Vale <code>3.24.0</code> 与 lychee <code>0.24.2</code> 扩展各站政策，
+捕获配置并提供类型化协议/源码/网络覆盖；不安装工具或格式化内容。Lychee 需要
+显式联网授权；有歧义的外部失败保留未知，不判为确定断链。</p>
+<p>冻结 Go/vet、实际 Hugo/固定工具及归属 race 门禁已经通过。精确二进制也通过
+四站直接/汇总诊断/覆盖/退出一致性，以及全部源码字节/完整模式/Git/被忽略输入/
+目录保护。初次预备失败仍不计作验证通过证据；仅验收驱动命令元数据的收据修正
+独立记录，没有 CLI 运行时修正或重跑。受保护规范中英文源码/渲染检查通过，
+R6/A07/A15 受支持范围已本地接受，见
+<a href="/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r6">R6 记录</a>。
+当前 A18 运行时/归档验证通过；Darwin amd64 保持实验/未验证。聚焦测试不能推断版本发布、消费者采用、源码写入或部署。</p>
+<h2 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--read-only-studio">只读 Oink Studio
+</h2>
+<p>建设本地 Web 界面，提供项目总览、问题面板、翻译对照、页面关系和发布面板。
+这些视图使用与 CLI/CI 相同的核心结果，支持筛选、跳转已知来源、真实 Hugo 预览、
+变更对照和复制建议。大型图谱或内置编辑器不是这一阶段验收的前提。</p>
+<p>默认仅监听本机，明确允许访问的站点。将不可信渲染内容与管理界面隔离到不同 origin；
+增加写 API 前，做好 Host/Origin 检查和会话授权。UI 预构建后随 CLI 分发，Node 是
+贡献者构建依赖，不是消费用户运行依赖。覆盖键盘操作、屏幕阅读器标签、移动端布局、
+深浅色和长问题列表的可读性。</p>
+<h3 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--r7-candidate">R7 候选边界
+</h3>
+<p>只读 Studio 候选现已基于同一原生检查与捕获 Hugo 事实，提供内嵌五视图浏览器和
+鉴权字面回环 API。稳定候选边界见<a href="/zh/docs/design/decisions/cli/#studio">契约</a>与
+<a href="/zh/docs/start/cli/#studio">指南</a>。显式现存站点/登记选择、类型化分页发现、源码/
+diff/哈希状态、真实生产预览及独立可选分析覆盖保留 CLI 权威。</p>
+<p>冻结原生/浏览器/核心案例及精确二进制四消费者收据现已验证受支持只读范围，
+包含明确局部预览未完成状态。它们覆盖原生 <code>0</code>/<code>1</code>/<code>2</code> 一致性、键盘/移动端/深浅色、
+字面源码数据及独立 origin 预览攻击。R7/A16 已通过受保护规范晋升/渲染门禁并
+本地接受。R1–R8 受支持范围已接受；
+当前 A18 运行时/归档验证通过。不新增消费者 Node 依赖、隐式安装、源码写入、公开发布/采用
+或部署。</p>
+<h2 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--safe-markdown-editing">安全 Markdown 编辑
+</h2>
+<p>只读工作台验收后，增加 Markdown 编辑、front matter 表单、选定组件插入和附件。
+复用 CLI 修改计划引擎及真实 Hugo 预览，不建立第二套保存与验证机制。</p>
+<p>没有修改的打开/保存周期必须保留原始字节。更新一个字段应保留未知字段、注释、顺序、
+编码和无关空白。检测外部编辑器修改，拒绝过期保存。表单无法保留某种 front matter
+构造时，保留文本编辑并说明表单限制，不通过通用序列化器重新输出整篇文档。</p>
+<p>写入需要已授权本地会话、允许目录、基准校验和可见 diff。拒绝目录穿越、符号链接
+越界以及来自不可信预览内容的请求。附件不能覆盖既有文件。发布静态站点不会把管理
+API 一并发布出去。</p>
+<h3 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--r8-candidate">R8 已接受编辑边界
+</h3>
+<p>R8 已为 CLI <code>edit text</code>、<code>field</code>、<code>snippet</code>、<code>attachment</code> 及显式
+<code>studio --edit</code> 实现同一源码保护提议引擎，默认 Studio 保持只读。已知站点所有
+Markdown、准确源码哈希、支持顶层 YAML 标量/文本回退、原生目录字节边界插入及
+仅新建 leaf-bundle 附件共享同一保存计划和保护写入器。完整可见审阅绑定计划/文件/
+完整模式身份；候选 HTML 来自实际选定不可发布 Hugo 分析，原生发现与必需视图
+未完成保持不同。</p>
+<p>已接受本地接口见<a href="/zh/docs/design/decisions/cli/#editing">契约</a>及
+<a href="/zh/docs/start/cli/#editing">指南</a>。修正冻结公共/Go/race/vet、实际/普通
+Hugo、Editor 浏览器/无障碍/移动端及精确二进制四消费者保护门禁已通过。
+R8/A17 受支持本地范围也通过受保护规范源码/渲染门禁并已接受，记录于 <a href="/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r8">R8 记录</a>。
+先前失败浏览器/准备试验只证明当次输入，不验证后续字节。R1–R8 受支持范围已接受；当前 A18 运行时/归档验证通过。Darwin amd64 保持实验/未验证，公开发布、采用
+与部署是独立未执行状态。</p>
+<h2 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--delivery-sequence">交付顺序与排期
+</h2>
+<p>以下按一名开发估算，不代表已经测量的开发效率。T0 是范围批准后的实施起点，尚未
+承诺日历开始日期。阶段依赖由顺序验收门禁约束；增加人员可并行独立测试与 UI 工作，
+但不能取消门禁。</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">阶段</th>
+      <th scope="col">有效工作周</th>
+      <th scope="col">交付内容</th>
+      <th scope="col">验收门禁</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>R1</td>
+      <td>第 1–2 周</td>
+      <td>共享事实、检查政策、分类检查、可信位置</td>
+      <td>Hugo 拥有路由和关系；必需检查未完成不能通过</td>
+    </tr>
+    <tr>
+      <td>R2</td>
+      <td>第 3–5 周</td>
+      <td>翻译政策及审阅状态、原生检查、可见基线</td>
+      <td>三种语言组织方式；严格/本地化用例；审阅修复保留文件</td>
+    </tr>
+    <tr>
+      <td>R3</td>
+      <td>第 6–8 周</td>
+      <td>已验证构建产物、CI init、发布诊断、公网站点验证</td>
+      <td>上传同一份已检查产物；检测字节漂移与 HTTP 200 回退</td>
+    </tr>
+    <tr>
+      <td>R4</td>
+      <td>第 9–11 周</td>
+      <td>新建内容、配置组合、片段/编辑器配置、升级 diff 与对比</td>
+      <td>普通 Hugo 可构建；脏文件、替换、vendor 与路由回归仍安全</td>
+    </tr>
+    <tr>
+      <td>R5</td>
+      <td>第 12–15 周</td>
+      <td>Inspect、Impact、Context、Move 与共享修改计划</td>
+      <td>包含未改入站引用及翻译；过期计划不能写入</td>
+    </tr>
+    <tr>
+      <td>R6</td>
+      <td>第 16–17 周</td>
+      <td>显式工作区与可选检查适配器</td>
+      <td>逐站结果一致；必需工具缺失为未完成；不隐式安装</td>
+    </tr>
+    <tr>
+      <td>R7</td>
+      <td>第 18–20 周</td>
+      <td>只读 Studio 与安全边界</td>
+      <td>五个实用视图；CLI/UI 发现项相同；无障碍与预览隔离通过</td>
+    </tr>
+    <tr>
+      <td>R8</td>
+      <td>第 21–24 周</td>
+      <td>安全 Markdown/表单/附件与冲突审阅</td>
+      <td>无修改保存零 diff；注释和未知字段保留；并发保存安全失败</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>另留 4–6 周用于集成、误报审阅、跨平台执行与修复，分配到各验收门禁。总规划范围为
+28–30 个有效工作周。投入约为半职时，日历跨度可能约翻倍；这是需要复核的假设，
+不是承诺。</p>
+<p>R1–R3 形成拟议 <code>0.2</code> 质量与发布候选，计入早期预留后约在第 9–10 周。R4–R6
+形成拟议 <code>0.3</code> 维护候选，累计约第 19–20 周。R7–R8 形成拟议 <code>0.4</code> 本地 Studio
+候选，累计约第 28–30 周。公开发布是另行授权的动作，本地候选不要求每阶段都发布。</p>
+<h2 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--conditional-extensions">条件性扩展
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">扩展</th>
+      <th scope="col">启动条件</th>
+      <th scope="col">拟议边界</th>
+      <th scope="col">独立估算</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>E1 出版导出</td>
+      <td>至少两本维护中的书需要重复执行导出流程</td>
+      <td>复用可分发 EPUB/PDF 工具，打包本地产物，声明外部依赖</td>
+      <td>R3/R4 后 1–2 周</td>
+    </tr>
+    <tr>
+      <td>E2 可执行示例</td>
+      <td>明确的所有者指定可运行示例及可丢弃环境</td>
+      <td>审阅的执行配置、时间和资源上限、默认离线；不自动执行发现的正文</td>
+      <td>R5 后 3–5 周</td>
+    </tr>
+    <tr>
+      <td>E3 MCP</td>
+      <td>既有 Agent 集成确实需要 JSON CLI 调用以外的能力</td>
+      <td>对 inspect/check/impact/context/plans 的薄适配，沿用权限和诊断</td>
+      <td>R5 后 1–2 周</td>
+    </tr>
+    <tr>
+      <td>E4 AI 审阅与翻译</td>
+      <td>确定性翻译维护可用，且已有审阅过的评估语料</td>
+      <td>用户选择服务商，显式网络及费用设置，提案绑定源码哈希；不自动写源文件</td>
+      <td>R5 后 3–6 周的有限实验</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>这些估算不计入 R1–R8 总工期。扩展只在相应场景成立时启动；未来需求不是尚未完成
+的核心里程碑。远程 Studio、实时协作、原生壳、通用知识来源管理、向量检索与通用
+框架迁移需要独立 PRD 和证据。</p>
+<h2 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--architecture-and-compatibility">架构与兼容
+</h2>
+<p>核心操作继续用 Go，通过子进程调用 Hugo 和可选工具。已有包拥有相应行为时就在
+其中扩展，新包随真实能力加入。实际消费者需要之前，不建设通用插件平台、公共 SDK
+或共享服务层。</p>
+<p>保留 <code>oink.result/v1</code>、退出码含义和默认薄包装。诊断详情与命令数据可增加字段，
+改变字段语义则需要新结果版本。审阅记录、基线、计划、构建 manifest 和工作区登记
+分别版本化。从实际主题检测受支持能力，不强制全部用户安装最新版本。</p>
+<p>读取/检查/预览、应用本地文件、联网、执行示例和部署是不同副作用。维护操作不顺便
+进行遥测、后台更新、发现凭据、清理任意目录、修改全局配置、提交、推送或部署。
+消费站只读试点保留源码、replacement、workspace 和 vendor 字节。</p>
+<h2 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--acceptance-cases">验收用例与归属检查
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">用例</th>
+      <th scope="col">必须达到的结果</th>
+      <th scope="col">主要归属</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A01 JSON 与完成状态</td>
+      <td>stdout 只有一个 JSON；日志分离；发现问题为 <code>1</code>，必需未完成为 <code>2</code></td>
+      <td><code>internal/report</code>、<code>internal/app</code>、Schema</td>
+    </tr>
+    <tr>
+      <td>A02 Hugo 权威</td>
+      <td>Slug/url/permalinks/aliases、自定义挂载、未列出页面与语言根遵循真实 Hugo 结果</td>
+      <td><code>internal/site</code>、<code>internal/outputcheck</code>、真实 Hugo 夹具</td>
+    </tr>
+    <tr>
+      <td>A03 子路径</td>
+      <td>确定属于项目的缺失路由失败；越出 origin/path 的引用真实分类；声明外部范围避免误报</td>
+      <td>产物检查与政策测试</td>
+    </tr>
+    <tr>
+      <td>A04 翻译</td>
+      <td>文件名、目录及 translationKey；重复/缺失/草稿场景；严格/本地化政策</td>
+      <td>翻译引擎与公共命令测试</td>
+    </tr>
+    <tr>
+      <td>A05 审阅状态</td>
+      <td>无记录为未知；源哈希改变可见；mtime 不决定审阅状态</td>
+      <td>翻译与审阅记录测试</td>
+    </tr>
+    <tr>
+      <td>A06 内容语法</td>
+      <td>围栏、行内代码、短代码、HTML、属性、自定义字段及受保护文本不产生虚构问题</td>
+      <td>原生规则测试与真实内容语料</td>
+    </tr>
+    <tr>
+      <td>A07 基线与适配器</td>
+      <td>已确认问题保持可见；新问题按政策失败；必需工具缺失不能通过</td>
+      <td>政策与适配器测试</td>
+    </tr>
+    <tr>
+      <td>A08 产物身份</td>
+      <td>检查后修改文件使 manifest 验证失败；服务商上传同一导出树，不重新构建</td>
+      <td>受管理构建与工作流测试</td>
+    </tr>
+    <tr>
+      <td>A09 CI 文件保护</td>
+      <td>两种模板、已定制工作流、权限/变量、预览/应用冲突与来源记录</td>
+      <td>Starter/CI 测试与本地流程演练</td>
+    </tr>
+    <tr>
+      <td>A10 公网验证</td>
+      <td>HTTP 200 回退、错误语言/构建、资源缺失、canonical 差异、超时/认证/限流</td>
+      <td>本地 HTTP 夹具，不强制云账户</td>
+    </tr>
+    <tr>
+      <td>A11 初始化与创作</td>
+      <td>支持的配置/语言；空目标保护；生成站直接用 Hugo 构建；编辑器未知设置保留</td>
+      <td><code>internal/starter</code>、创作与 Hugo 测试</td>
+    </tr>
+    <tr>
+      <td>A12 升级</td>
+      <td>可读 diff、新旧路由、脏文件、两套 workspace、replacement/vendor、失败恢复及并发修改</td>
+      <td><code>internal/upgrade</code>、公共命令/Hugo 测试</td>
+    </tr>
+    <tr>
+      <td>A13 影响</td>
+      <td>删除 B 发现未改 A；包含翻译/附件/派生输出；全局变化扩大范围</td>
+      <td>影响分析与 Git 基线夹具</td>
+    </tr>
+    <tr>
+      <td>A14 修改应用</td>
+      <td>应用前候选验证；哈希冲突和写入失败保留后续编辑；不改写含糊引用</td>
+      <td>共享计划/应用与 move 测试</td>
+    </tr>
+    <tr>
+      <td>A15 工作区与上下文</td>
+      <td>逐站结果与直接调用一致；只写选定站点；上下文有路径/版本/原因且受大小限制，不执行正文</td>
+      <td>工作区与 context 测试</td>
+    </tr>
+    <tr>
+      <td>A16 Studio 一致性</td>
+      <td>五个视图呈现相同 CLI 结果；键盘/移动端/深浅色可用；来源与预览隔离</td>
+      <td>Studio 浏览器和无障碍测试</td>
+    </tr>
+    <tr>
+      <td>A17 编辑保护</td>
+      <td>无修改保存字节一致；YAML 注释/未知值/顺序保留；拒绝过期保存和附件冲突</td>
+      <td>编辑器/浏览器与共享应用测试</td>
+    </tr>
+    <tr>
+      <td>A18 运行与恢复</td>
+      <td>在声明的 macOS/Linux 目标实测；信号结束子进程；缓存齐备可离线；不支持输入明确报告</td>
+      <td>进程/集成/安装测试</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>先运行最小归属测试，再做更广集成。Go 单元夹具保持离线。解析、快照、探针、初始化
+或升级改变后，重跑真实 Hugo 测试。保留聚焦检查，不要求消费用户每改一篇文档就运行
+主题内部测试或浏览器套件。</p>
+<p>每个候选记录工具版本和源码身份，在 Starter 与三个不同维护站点上只读验证。前后
+对比源码字节、模式与 Git 状态。原生新规则需要已审阅的合法/非法语料；成为默认阻断
+前先修正误报。承诺增量速度前，应在同一当前站点基线上测量完整构建时间。功能正确
+优先于检查项数量。</p>
+<h2 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--completion-and-release">完成条件与发布证据
+</h2>
+<p>每阶段交付已实现行为、已知限制、聚焦测试、真实集成结果、更新的中英文契约/指南
+和可审阅 diff。逐项记录需求及用例状态，不能因为某个汇总命令通过就自动关闭全部
+需求。只有 R1–R8 及其必需验收用例满足，本 PRD 才算完成。</p>
+<p>实现、本地验证、提交、归档和运行平台验收、公开分发、消费站采用、服务商部署与
+公网内容验证分别报告。交叉编译不等于运行验收。缺少凭据或尚无公开下载地址不能
+成为声称远程交付的理由，也不要求为此建设托管控制台。</p>
+<p>受支持行为被接受后，进入归属 CLI 契约、使用指南和长期决策，再按现有生命周期
+退役相应提案内容。本 PRD 不作为永久的第二份命令手册。</p>
+<h2 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--decisions-and-stop-conditions">待决项与停止条件
+</h2>
+<p>将相对工作周转换为日历日期前，确认投入和开始日期。R1 决定支持的运行平台、审阅
+记录的具体存储、首批原生规则和精确的兼容新增参数。这些是范围内的有限实现选择，
+不应因此重开产品边界或等待整个主题发布。</p>
+<p>文件保护或正确性工作超过估算时，把可选便利功能移后，不能删掉过期写入保护、真实
+完成状态或普通 Hugo 兼容。多轮语料审阅仍无法可靠的规则保持建议级或移除。表单
+无法保留源码字节的语法继续用文本模式。不能因为某个扩展值得尝试，就让它进入关键
+交付路径。</p>
+<h2 id="pg-f23607ae70c920d6a4e6d4e624bb9b54--decision-log">决策日志
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">日期</th>
+      <th scope="col">记录</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2026-10-03</td>
+      <td>根据当前 CLI 盘点与提供的功能目标创建草案，提出 R1–R8、可选扩展门禁、投入假设及可执行验收用例。本文不声称新增 CLI 能力、版本发布、消费站采用或部署已经完成。</td>
+    </tr>
+    <tr>
+      <td>2026-10-03</td>
+      <td>R1 共享 Hugo 事实与检查政策通过本地归属/真实 Hugo 检查。稳定行为移入 <a href="/zh/docs/design/decisions/cli/#project-policy">CLI 契约</a>和<a href="/zh/docs/start/cli/#project-policy">指南</a>；<a href="/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r1">验收记录</a>分别跟踪最终报告刷新与中英文产物证据。R2–R8 及条件性扩展仍未完成，不声称公开分发、采用或部署。</td>
+    </tr>
+    <tr>
+      <td>2026-10-03</td>
+      <td>R2 翻译范围/哈希审阅、有界原生规则和可见基线已使用共享保护文件计划。本地归属、真实 Hugo 与聚焦 race 门禁通过，最终消费站刷新和中英文文档验收仍在<a href="/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r2">记录</a>中待完成。已实现行为见<a href="/zh/docs/design/decisions/cli/#translations">契约</a>与<a href="/zh/docs/start/cli/#translations">指南</a>。R3–R8 仍未完成。</td>
+    </tr>
+    <tr>
+      <td>2026-10-03</td>
+      <td>R2 最终语料与中英文文档门禁通过。R3 一次渲染的已检查导出、准确文件身份、两种服务商的保护 CI 计划、发布诊断和显式联网 HTTP 验证已通过各自本地门禁，包括自定义 workflow 发现。稳定行为移入<a href="/zh/docs/design/decisions/cli/#checked-artifacts">契约</a>与<a href="/zh/docs/start/cli/#checked-artifacts">指南</a>；准确证据与 A08–A10 结果归<a href="/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r3">维护记录</a>所有。R4–R8、最终 A18 运行时/归档刷新及 Darwin amd64 仍未完成。不声称公开分发、托管 CI 已执行、采用或部署。</td>
+    </tr>
+    <tr>
+      <td>2026-10-03</td>
+      <td>R4 受支持本地范围通过冻结 Go/vet、真实 Hugo/race 及准确二进制只读 Starter/文档站/PIG/repository 门禁。同一未修改许可证 Starter 组合全部配置/语言；普通 new/editor/snippet 流程与源码/外部输入保护，以及可读有界升级视图和 alias/输出回归保护均通过。稳定行为归<a href="/zh/docs/design/decisions/cli/#authoring">契约</a>与<a href="/zh/docs/start/cli/#authoring">指南</a>，准确 A11/A12 证据和边界归<a href="/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r4">记录</a>。R5–R8、最终 A18 运行时/归档刷新及 Darwin amd64 仍未完成。未公开发布、写消费站/采用或部署。</td>
+    </tr>
+    <tr>
+      <td>2026-10-03</td>
+      <td>R5 修正冻结 Go/vet、实际 Hugo/race 及精确二进制四消费者只读门禁已完成。全部站点 inspect/context 完成；历史影响与移动阻断保持明确。受保护规范源码/渲染门禁及阶段接受仍待完成。稳定行为归<a href="/zh/docs/design/decisions/cli/#project-graph">契约</a>与<a href="/zh/docs/start/cli/#project-graph">指南</a>所有；<a href="/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r5">记录</a>标识 A13/A14/context 证据、缓存模块修正及精确保护记录。R6–R8、workspace A15 与最终 A18 保持未完成；没有消费者写入或部署。</td>
+    </tr>
+    <tr>
+      <td>2026-10-03</td>
+      <td>R5 受支持检查/影响/有界上下文与受保护移动范围在修正冻结归属门禁、精确二进制四消费者保护及首次晋升规范源码/渲染门禁后已本地接受。生产翻译检查仅保留已知 draft 发布文档缺失；独立不可发布分析的全部归属检查通过。稳定行为归<a href="/zh/docs/design/decisions/cli/#project-graph">契约</a>与<a href="/zh/docs/start/cli/#content-moves">指南</a>所有；<a href="/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r5">记录</a>保留精确结果及单独渲染后证据边界。A13/A14 受支持 CLI 范围通过；A15 context 通过，workspace/direct 一致仍归 R6。R6–R8 与最终 A18 未完成；没有发布、消费者写入/采用或部署。</td>
+    </tr>
+    <tr>
+      <td>2026-10-03</td>
+      <td>R6 显式登记与有界可选工具候选已实现；聚焦工作区与修正实际协议试验通过，预备失败独立记录。最终运行时/语料/规范门禁及 A07/A15 阶段接受仍待完成，见 <a href="/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r6">R6 记录</a>。R7/R8 与最终 A18 未完成；无版本发布、消费者写入或部署。</td>
+    </tr>
+    <tr>
+      <td>2026-10-03</td>
+      <td>R6 冻结 Go/vet、实际 Hugo/固定工具、归属 race 及精确二进制四消费者直接/汇总一致性与保护已验证。完成收据记录六个原始操作、repository 已有重复 ID 发现，以及不变原始输出上的驱动命令摘要修正；无需 CLI/Hugo 重跑或运行时修正。规范源码/渲染检查和显式 R6/A07/A15 阶段接受仍在<a href="/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r6">记录</a>中待完成。R7/R8/最终 A18 未完成；没有消费者源码写入、版本发布或部署。</td>
+    </tr>
+    <tr>
+      <td>2026-10-03</td>
+      <td>R6 受支持显式登记与可选工具范围在冻结 Go/vet、实际 Hugo/固定工具、race、精确二进制四消费者一致性/保护及受保护规范源码/渲染门禁后已本地接受。A07 适配器与 A15 工作区/直接/context 受支持范围通过；<a href="/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r6">R6 记录</a>区分首次晋升渲染字节与本次渲染后状态/证据修订。R7/R8 与最终 A18 仍未完成；没有公开发布、消费者源码写入/采用或部署。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>| 2026-10-03 | R7 只读内嵌 Studio 候选及鉴权回环视图已实现；冻结核心/浏览器及精确二进制四消费者验收在声明范围内完成；受保护规范晋升/渲染及显式 R7/A16 接受仍待完成。R1–R6 保持已接受；R8/最终 A18 未完成；没有消费者写入、公开发布或部署。 |</p>
+<p>| 2026-10-03 | R7/A16 受支持只读 Studio 在冻结累计已执行案例/浏览器证明、精确二进制四消费者一致性/保护及受保护规范源码/渲染门禁后已本地接受。首次晋升渲染字节与本次渲染后状态修订保持不同；完整调用失败与明确局部预览未完成保持可见。R1–R7 已接受；R8/最终 A18 未完成；没有公开发布、消费者写入/采用或部署。 |</p>
+<p>| 2026-10-03 | R8 CLI/显式 Editor 源码编辑候选已实现；默认 Studio 保持只读。纯核心/流式输出复制聚焦证据已记录，失败浏览器试验保留。最终冻结公共/浏览器/消费者/规范门禁及 A17 阶段接受仍待完成，见 <a href="/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r8">R8 记录</a>。R1–R7 保持已接受，R8/最终 A18 未完成；没有公开发布或消费者写入/部署。 |</p>
+<p>| 2026-10-03 | R8/A17 受审阅 CLI/显式 Editor 受支持本地范围在修正冻结完整归属/浏览器、精确二进制四消费者提议一致性与源码保护，以及受保护首次规范晋升/实际渲染后接受。R1–R8 已本地接受；<a href="/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r8">R8 记录</a>独立绑定首次渲染与本次状态字节，并保留所有失败试验、原生发现与必需局部预览未完成。最终 A18 当前 Linux/归档验证仍未完成；没有消费者写入、公开发布、采用或部署。 |</p>
+<p>| 2026-10-04 | 当前后端完整性修正、刷新归属/Hugo/race、未变运行时复用的四消费者保护与三个声明运行时/归档验证通过，见<a href="/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/#a18">带日期完成增补</a>。有限 R1–R8 实现本地完成；需求记录/锚点保留，退出活动导航，稳定行为归属契约/指南。最终规范渲染生命周期验证独立，E1–E4 未启动；没有公开发布、采用或部署。 |</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-2527a86e06b64c8398b3349ca4c023f3">6 - Book 出版链路</h1>
     <div class="lead">把 Book 语义降级与通用 EPUB/PDF 打包收回 OINK，同时让出版事实继续属于消费站。</div>
 	<div class="td-callout td-callout--warning" role="note">
   <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="td-callout__label">已实现出版工具的提案草案</span></div>
@@ -948,12 +2234,1072 @@ headless shell 151.0.7922.34。主题、DDIA 与 TPME PDF 均通过结构、文�
     
 	
   
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-97b1272c428065f6f74326597bedec18">7 - 视觉预设与外观切换</h1>
+    <div class="lead">Paper 与 Slate 已在本地实现；Ink 与 Terminal 提供显式开启的实验，等待视觉定稿。</div>
+	<div class="td-callout td-callout--important" role="note">
+  <div class="td-callout__title"><i class="td-callout__icon fa-solid fa-circle-exclamation" aria-hidden="true"></i><span class="td-callout__label">第一阶段随 1.2.0 发布，Ink/Terminal 可显式启用</span></div>
+  <div class="td-callout__body">
+<p>Paper、Slate 与外观菜单已随 OINK 1.2.0 发布。当前行为与证据由
+<a href="/zh/docs/design/architecture/#visual-presets">架构契约</a>、
+<a href="/zh/docs/design/decisions/visual-presets/">已接受决策</a>和
+<a href="/zh/docs/design/research/2026-10-05-visual-presets-acceptance/">验收记录</a>管理。
+随后的 <a href="/zh/docs/design/research/2026-10-05-ink-terminal-experiment/">Ink/Terminal 实验</a>提供真实可切换输出；本提案继续承载两者的设计定稿。10 月 4 日注入样式生成的截图仍是研究原型，
+与 10 月 5 日真实主题输出截图分开看待。</p>
+  </div>
+</div><h2 id="pg-97b1272c428065f6f74326597bedec18--status-and-surface">状态与影响面
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">字段</th>
+      <th scope="col">值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>状态</td>
+      <td>第一阶段随 1.2.0 发布；Ink/Terminal 显式启用</td>
+    </tr>
+    <tr>
+      <td>负责人</td>
+      <td>OINK 维护者</td>
+    </tr>
+    <tr>
+      <td>日期</td>
+      <td>2026-10-04</td>
+    </tr>
+    <tr>
+      <td>基线</td>
+      <td>主题 <code>main</code>（<code>v1.1.0</code> 之后，含未发布的 <code>1.2.0</code> 工作）；文档站固定 <code>v1.1.0</code></td>
+    </tr>
+    <tr>
+      <td>受影响契约</td>
+      <td><a href="/zh/docs/design/architecture/#trust-css-and-accessibility">架构：信任、CSS 与无障碍</a>（字体角色、强调色角色、行内代码颜色）、<a href="/zh/docs/design/shell/">外壳</a>（主题控件）、<a href="/zh/docs/design/landing/">Landing</a>、<a href="/zh/docs/design/decisions/configuration/">配置决策</a>、<a href="/zh/docs/customize/brand/">品牌指南</a></td>
+    </tr>
+    <tr>
+      <td>第一阶段</td>
+      <td>Paper 预设、Slate 预设、默认改为 Paper、读者在 Paper 与 Slate 间切换</td>
+    </tr>
+    <tr>
+      <td>后续阶段</td>
+      <td>Ink/Terminal 视觉定稿；Folio 与 Canvas 只保留名称</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-97b1272c428065f6f74326597bedec18--context-and-evidence">背景与依据
+</h2>
+<p>以下基线与限制记录 10 月 4 日实施前的研究输入。</p>
+<p>OINK 目前只有一套视觉，本文称为 <strong>Slate</strong>：冷灰蓝画布（<code>#f1f4f8</code> / <code>#0b1119</code>）、
+海军蓝文字、钢蓝链接（<code>#245f94</code>）、铜色点缀；Inter 用于界面与正文，Chakra Petch
+用于展示标题与字标，IBM Plex Mono 用于代码与技术标注；Landing 首屏有蓝图网格与
+光晕；行内代码为一组深红色。它由 <code>assets/scss/td/_brand.scss</code> 的 Bootstrap 自定义
+属性、<code>assets/scss/td/shell/_tokens.scss</code> 的外壳 token，以及
+<code>assets/scss/td/_tokens-typography.scss</code> 的字体角色定义。</p>
+<p>PG.CENTER 是独立站点，具有维护者希望成为 OINK 未来默认的暖色编辑式阅读风格。
+其展示层 token 位于该项目的 <code>media/css/pgsql.css</code>。在本地预览上测量
+（2026-10-04，浅色与深色；首页、Docs 索引、长篇手册页、组件手册页）：</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">角色</th>
+      <th scope="col">浅色</th>
+      <th scope="col">深色</th>
+      <th scope="col">说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>画布</td>
+      <td><code>#f7f6f3</code></td>
+      <td><code>#161513</code></td>
+      <td>暖白 / 暖黑</td>
+    </tr>
+    <tr>
+      <td>抬升表面</td>
+      <td><code>#ffffff</code></td>
+      <td><code>#1d1c19</code></td>
+      <td>卡片、代码块</td>
+    </tr>
+    <tr>
+      <td>次级表面</td>
+      <td><code>#efede8</code></td>
+      <td><code>#262420</code></td>
+      <td>表头、悬停</td>
+    </tr>
+    <tr>
+      <td>墨色正文</td>
+      <td><code>#21201c</code></td>
+      <td><code>#ece9e3</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>次级文字</td>
+      <td><code>#56534c</code></td>
+      <td><code>#b6b1a7</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>线与淡底</td>
+      <td>墨色 4.5–22 % 透明度</td>
+      <td>浅墨色相近透明度</td>
+      <td>不使用带色相的灰</td>
+    </tr>
+    <tr>
+      <td>圆角</td>
+      <td>12 px / 8 px</td>
+      <td>相同</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>阴影</td>
+      <td><code>0 2px 10px rgba(33,32,28,.07)</code></td>
+      <td>以黑色为基</td>
+      <td>暖、柔</td>
+    </tr>
+    <tr>
+      <td>动效</td>
+      <td>160 ms <code>cubic-bezier(.2,.7,.2,1)</code></td>
+      <td>相同</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>字体方面，IBM Plex Sans（可变字重 400–600）用于界面与正文；IBM Plex Mono 用于代码、
+日期与版本；Chakra Petch 只用于字标。组件手册页是最好的长文样板：导语 17 px、
+最宽 70ch；h2 后跟一条延伸到边缘的细线；带表头底色、无斑马纹的外框表格；
+单色提示块加 3 px 竖线。</p>
+<p>以下 PG.CENTER 元素属于站点身份，<strong>不是可复用的阅读规则</strong>：PostgreSQL 品牌蓝
+<code>#336791</code> 系列、酒红正文链接、版本状态色、版本条、搜索类型徽标、Wiki 色调、
+双色首屏，以及导入的 PostgreSQL 手册约 144 字符的行长。两个值不满足 WCAG AA
+（弱化文字 3.67:1、链接悬停 4.22:1），下文予以修正而非照搬。</p>
+<p>用于对照的 OINK 文档测量值：正文 16 px / 1.7、行长约 76ch、h1 36 px / 700、
+h2 24 px / 600、代码 14 px。PG.CENTER Docs 索引：15.5 px / 1.7，约 120ch。</p>
+<h3 id="pg-97b1272c428065f6f74326597bedec18--current-limitations">现有限制
+</h3>
+<ul>
+<li>颜色只与 <code>data-bs-theme</code> 绑定，没有属性能选择第二套调色板；多个表面绕过
+token：Landing 主按钮（<code>#2f6793</code> 与海军蓝光晕）、网格、遮罩
+（<code>rgba(4,10,18,.45)</code>）、打印颜色、asciinema 表面与 giscus 样式表。</li>
+<li>约 85 处字面圆角与若干字面阴影，使扁平预设在没有圆角与阴影尺度前无法实现。</li>
+<li>明暗控件靠悬停或聚焦展开。触屏读者无法到达“跟随系统”；触发按钮混用
+<code>aria-pressed</code> 与 <code>aria-expanded</code>；Esc 不能关闭。Landing 手机抽屉没有主题控件。</li>
+<li><code>contrast-on-canvas.html</code> 硬编码了 Slate 画布亮度，用于 <code>theme_color</code> 警告。</li>
+<li><code>dark_mode</code> 默认 <code>false</code>，站点不开启就既没有深色调色板也没有菜单。</li>
+</ul>
+<h2 id="pg-97b1272c428065f6f74326597bedec18--goals-and-non-goals">目标与非目标
+</h2>
+<p>目标：</p>
+<ul>
+<li>一个站点配置键选择默认视觉预设；默认改为 Paper；</li>
+<li>Slate 保留可选，选择它的站点得到与当前一致的输出；</li>
+<li>读者可即时切换 Paper 与 Slate，无需刷新，并与浅色/深色/跟随系统彼此独立；</li>
+<li>禁用 JavaScript 或存储不可用时，站点配置的默认风格照常呈现；</li>
+<li>预设共享模板、组件与布局几何，只改变配色与字体；</li>
+<li>只用本地字体、普通 Hugo 构建，不引入新的运行时框架或必需构建工具。</li>
+</ul>
+<p>非目标：</p>
+<ul>
+<li>第一阶段实现 Ink、Terminal、Folio 或 Canvas；</li>
+<li>复制 PG.CENTER 品牌色、版本界面或页面结构；</li>
+<li>按页面或栏目切换预设（栏目颜色仍由 <code>theme_color</code> 负责）；</li>
+<li>第一阶段按预设改变布局几何、密度或导航结构；</li>
+<li>在现有明暗处理之外为 Swagger UI、ReDoc 或第三方嵌入换肤。</li>
+</ul>
+<h2 id="pg-97b1272c428065f6f74326597bedec18--preset-model">预设模型
+</h2>
+<p>此表与下文第一阶段配置保留原始范围。后续实验增加显式 <code>ink</code>/<code>terminal</code> 配置及
+菜单列表选项；<code>true</code> 仍提供稳定选项与站点默认值。当前行为由
+<a href="/zh/docs/design/architecture/#visual-presets">架构契约</a>管理。</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">预设</th>
+      <th scope="col">方向</th>
+      <th scope="col">第一阶段</th>
+      <th scope="col">读者菜单</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>paper</code></td>
+      <td>温暖的编辑式极简</td>
+      <td>实现，默认</td>
+      <td>是</td>
+    </tr>
+    <tr>
+      <td><code>slate</code></td>
+      <td>技术极简（当前 OINK）</td>
+      <td>实现</td>
+      <td>是</td>
+    </tr>
+    <tr>
+      <td><code>ink</code></td>
+      <td>排版极简，受瑞士风格启发</td>
+      <td>规格 + 研究原型</td>
+      <td>否</td>
+    </tr>
+    <tr>
+      <td><code>terminal</code></td>
+      <td>终端工具式功能设计</td>
+      <td>规格 + 研究原型</td>
+      <td>否</td>
+    </tr>
+    <tr>
+      <td><code>folio</code></td>
+      <td>学术与书籍出版</td>
+      <td>仅保留名称</td>
+      <td>否</td>
+    </tr>
+    <tr>
+      <td><code>canvas</code></td>
+      <td>活泼几何与创作者</td>
+      <td>仅保留名称</td>
+      <td>否</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>保留名称在实现前会被校验拒绝，警告中列出可用的稳定预设。</p>
+<h2 id="pg-97b1272c428065f6f74326597bedec18--configuration">配置
+</h2>
+<div class="td-code td-code--untitled" id="td-code-e267fe9a-fence-0" data-td-code data-td-code-auto-id
+     data-td-language="yaml" data-td-line-count="4">
+  <div class="td-code__viewport" id="td-code-e267fe9a-fence-0-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ui</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">preset</span><span class="p">:</span><span class="w"> </span><span class="l">paper       </span><span class="w"> </span><span class="c"># paper | slate        （主题默认：paper）</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">preset_menu</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">   </span><span class="c"># false | true | [paper, slate]</span></span></span></code></pre></div></div>
+</div>
+<ul>
+<li><code>preset</code> 选择站点默认值。无效或保留值通过现有校验路径警告并回退到 <code>paper</code>；
+发布门禁会把警告变成失败。</li>
+<li><code>preset_menu</code> 控制读者选择。<code>false</code> 不渲染风格分组、不输出预设初始化脚本；
+<code>true</code> 提供所有稳定预设；列表提供子集，且必须包含 <code>preset</code>。沿用 <code>dark_mode</code>
+的先例，默认 <code>false</code>；文档站开启，Starter 采纳不在本轮范围内。</li>
+<li><code>preset</code> 只能在站点级设置，不支持页面与栏目覆盖：逐页切换视觉身份会破坏读者
+预期与已保存的选择。</li>
+<li>只要 <code>dark_mode.show_menu</code> 或风格选择任一开启，外观菜单就存在。
+<code>dark_mode: false</code> 且 <code>preset_menu: true</code> 的站点只显示“风格”分组。</li>
+</ul>
+<h3 id="pg-97b1272c428065f6f74326597bedec18--existing-keys">与现有配置的关系
+</h3>
+<p>优先级由低到高：</p>
+<ol>
+<li><code>:root</code> / <code>[data-bs-theme]</code> 上的 Slate 基础 token（选择器不变）。</li>
+<li><code>[data-td-preset=X]</code> 上的预设 token。</li>
+<li><code>params.ui.typography: system</code>：在所有预设块之后把字体角色收拢为系统字体，
+因此在任何预设下都不请求品牌字体。</li>
+<li><code>params.ui.fonts</code>：在样式表之后以 <code>:root</code> 内联输出；特异性相同、源顺序靠后，
+因此覆盖预设字体角色。显式字体永远优先。</li>
+<li><code>theme_color</code> / <code>theme_color_dark</code>：只作用于页面与栏目的强调背景，覆盖预设
+强调色；从不触碰链接或行内代码。</li>
+<li>站点 <code>_styles_project.scss</code>：位于样式包最后。</li>
+</ol>
+<p><code>typography: technical</code> 仍表示“使用预设自带字体”。具体是哪些字体由预设决定
+（Paper：Plex Sans；Slate：Inter + Chakra Petch）。</p>
+<h2 id="pg-97b1272c428065f6f74326597bedec18--reader-state">读者状态
+</h2>
+<p>两个彼此独立的维度：</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">维度</th>
+      <th scope="col">属性</th>
+      <th scope="col">存储</th>
+      <th scope="col">取值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>风格</td>
+      <td><code>&lt;html&gt;</code> 上的 <code>data-td-preset</code></td>
+      <td><code>localStorage['td-preset']</code></td>
+      <td>稳定预设名</td>
+    </tr>
+    <tr>
+      <td>明暗</td>
+      <td><code>data-bs-theme</code>（及 <code>.dark-mode</code>、供应商 <code>data-theme</code> 镜像）</td>
+      <td><code>localStorage['td-color-theme']</code></td>
+      <td><code>light</code>、<code>dark</code>、<code>auto</code></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">情形</th>
+      <th scope="col">结果</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>初次访问</td>
+      <td>服务端输出 <code>data-td-preset=&quot;&lt;站点预设&gt;&quot;</code> 与 <code>data-td-site-preset</code>，不依赖脚本</td>
+    </tr>
+    <tr>
+      <td>读者选择预设</td>
+      <td>立即应用、保存，并派发 <code>td-preset-change</code></td>
+    </tr>
+    <tr>
+      <td>读者选择标有“默认”的预设</td>
+      <td>删除存储键；之后站点默认值变化能到达该读者</td>
+    </tr>
+    <tr>
+      <td>下一页、刷新、切换语言</td>
+      <td>head 内联脚本在首次绘制前应用已保存的值</td>
+    </tr>
+    <tr>
+      <td>已保存的值不再提供</td>
+      <td>删除，使用站点默认值</td>
+    </tr>
+    <tr>
+      <td>存储不可用</td>
+      <td>选择只作用于当前页面，菜单提示不会保存</td>
+    </tr>
+    <tr>
+      <td>禁用 JavaScript</td>
+      <td>站点默认预设以浅色调色板呈现，与当前主题无脚本时一致；风格与明暗控件不可用</td>
+    </tr>
+    <tr>
+      <td>切换风格</td>
+      <td>从不写入 <code>td-color-theme</code>；切换明暗从不写入 <code>td-preset</code></td>
+    </tr>
+    <tr>
+      <td>其他标签页修改</td>
+      <td>通过 <code>storage</code> 事件同步</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>内联脚本位于样式表之前，与现有明暗脚本并列。它用构建时嵌入的允许列表校验已保存的
+值，设置属性，并按预设与明暗更新 <code>theme-color</code> meta 与首绘画布颜色。只有菜单提供
+多于一个预设时才输出。与菜单无关，<code>head.html</code> 中静态的首绘 <code>&lt;style&gt;</code> 与单个
+解析后的 <code>theme-color</code> meta 改为按站点默认预设的画布颜色渲染，取代原先硬编码的
+<code>#0b0d12</code>、<code>#ffffff</code> 与 <code>#000000</code>。</p>
+<p>切换时，运行时设置 <code>data-td-preset-switching</code> 一帧以抑制颜色过渡；记录第一个可见
+标题或块作为滚动锚点；应用属性后恢复锚点偏移，并在 <code>document.fonts.ready</code> 后再校正
+一次，因为 Plex Sans 与 Inter 的字形度量不同。焦点、已打开的菜单与表单状态保持不变。
+第一阶段不使用淡入淡出或 View Transition。</p>
+<h2 id="pg-97b1272c428065f6f74326597bedec18--appearance-menu">外观菜单
+</h2>
+<p>比较了三个方案：</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">方案</th>
+      <th scope="col">评估</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>保留悬停菜单，增加一行风格</td>
+      <td>触屏与键盘缺口仍在；只能靠悬停发现</td>
+    </tr>
+    <tr>
+      <td>风格与明暗分成两个按钮</td>
+      <td>拥挤的导航栏多一个图标；手机抽屉更长</td>
+    </tr>
+    <tr>
+      <td><strong>一个“外观”展开按钮 + 两组单选</strong></td>
+      <td>选定：单一入口，触屏与键盘均可用，可扩展到更多预设</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>行为：</p>
+<ul>
+<li><strong>触发器</strong>：一个图标按钮（<code>aria-expanded</code>、<code>aria-controls</code>，标签“外观”），替换
+导航栏与外壳页脚行中现有的主题按钮。太阳表示当前亮色状态，月亮表示暗色。
+快捷键 <code>t</code> 继续切换浅色/深色。</li>
+<li><strong>面板</strong>：非模态弹出层，包含两个原生 <code>fieldset</code> 单选组。10 月 5 日修订后，
+<em>风格</em> 使用两列图标与名称按钮，图标采用预设主题色，不显示字母预览或实验标记；
+站点默认值在悬停提示与无障碍名称中注明。<em>明暗</em> 为浅色 / 深色 / 跟随系统分段
+控件，英文分组名为 Style 和 Light。选择立即生效，面板保持打开以便比较。</li>
+<li><strong>键盘</strong>：Enter/Space 或 ArrowDown 打开并聚焦已选中的单选；方向键在组内移动
+（原生单选行为）；Tab 在组间移动；Esc 关闭并把焦点还给触发器；焦点离开面板或
+点击外部时关闭。</li>
+<li><strong>反馈</strong>：选中项使用淡色背景与强调色边框，键盘焦点另有轮廓线。变化由原生
+单选语义播报，不额外增加 live region。</li>
+<li><strong>恢复默认</strong>：选择站点默认预设即清除已保存的选择，无需单独的重置按钮。</li>
+<li><strong>手机（&lt; 768 px）</strong>：触发器保留在紧凑页头，并在文档抽屉页脚与 Landing 手机抽屉的
+新行中提供。面板以底部表单打开，44 px 触控目标，同样两组，带关闭按钮。底部表单是用
+<code>showModal()</code> 打开的模态 <code>&lt;dialog&gt;</code>，处于顶层：原型显示，粘性页头的
+<code>backdrop-filter</code> 否则会成为 <code>position: fixed</code> 表单的包含块，抽屉的层叠上下文
+也会把它遮住。</li>
+<li><strong>命令面板</strong>：在 <code>switch_theme</code> 旁新增 <code>switch_preset</code> 动作。</li>
+</ul>
+<p><code>dark-mode.js</code> 保留存储键与属性，但需同步明暗单选的 <code>checked</code> 状态并监听其
+<code>change</code> 事件，取代目前的 <code>aria-pressed</code> 按钮。</p>
+<h2 id="pg-97b1272c428065f6f74326597bedec18--token-architecture">Token 架构
+</h2>
+<p>所有预设编译进现有的单一 <code>main.css</code>。字体通过 <code>@font-face</code> 声明，只有规则实际使用时
+才下载；因此提供一个预设只增加 CSS 字节，在被选中前不增加字体字节。</p>
+<div class="td-code td-code--untitled" id="td-code-e267fe9a-fence-1" data-td-code data-td-code-auto-id
+     data-td-language="scss" data-td-line-count="10">
+  <div class="td-code__viewport" id="td-code-e267fe9a-fence-1-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="c1">// Slate：沿用现有选择器与取值
+</span></span></span><span class="line"><span class="cl"><span class="nd">:root</span><span class="o">,</span> <span class="o">[</span><span class="nt">data-bs-theme</span><span class="o">=</span><span class="s1">&#39;light&#39;</span><span class="o">]</span> <span class="p">{</span> <span class="err">…</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span><span class="nt">data-bs-theme</span><span class="o">=</span><span class="s1">&#39;dark&#39;</span><span class="o">]</span> <span class="p">{</span> <span class="err">…</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 其他预设
+</span></span></span><span class="line"><span class="cl"><span class="o">[</span><span class="nt">data-td-preset</span><span class="o">=</span><span class="s1">&#39;paper&#39;</span><span class="o">]</span> <span class="p">{</span> <span class="cm">/* 浅色 token + 字体角色 */</span> <span class="p">}</span>               <span class="c1">// (0,1,0)
+</span></span></span><span class="line"><span class="cl"><span class="o">[</span><span class="nt">data-td-preset</span><span class="o">=</span><span class="s1">&#39;paper&#39;</span><span class="o">][</span><span class="nt">data-bs-theme</span><span class="o">=</span><span class="s1">&#39;dark&#39;</span><span class="o">],</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span><span class="nt">data-td-preset</span><span class="o">=</span><span class="s1">&#39;paper&#39;</span><span class="o">]</span> <span class="o">[</span><span class="nt">data-bs-theme</span><span class="o">=</span><span class="s1">&#39;dark&#39;</span><span class="o">]</span> <span class="p">{</span> <span class="cm">/* 深色 token */</span> <span class="p">}</span>   <span class="c1">// (0,2,0)
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">//</span> <span class="nt">随后</span><span class="err">：</span><span class="o">[</span><span class="nt">data-td-typography</span><span class="o">=</span><span class="s1">&#39;system&#39;</span><span class="o">]</span> <span class="nt">字体块</span><span class="err">（</span><span class="nt">移到预设之后</span><span class="err">）</span></span></span></code></pre></div></div>
+</div>
+<p>规则：</p>
+<ol>
+<li><strong>Token 对等</strong>：每个深色块重新声明其浅色块的全部 token，Slate 深色值不会泄漏
+到其他预设。由检查器强制。</li>
+<li><strong>深色孤岛</strong>：后代选择器形式覆盖嵌套的 <code>data-bs-theme=&quot;dark&quot;</code> 孤岛
+（Landing 代码板、预览）。</li>
+<li><strong>字体角色只用 (0,1,0)</strong>，<code>params.ui.fonts</code> 因而继续优先。</li>
+<li><strong>强调色间接层</strong>：预设设置 <code>--td-preset-accent</code>（及 <code>-rgb</code>、<code>-hover</code>），
+<code>--td-accent</code> 默认取它；<code>theme_color</code> 继续写入 <code>--td-accent</code>，因此在两种明暗下
+都能覆盖预设。</li>
+<li><strong>Slate 不依赖属性</strong>：<code>data-td-preset=&quot;slate&quot;</code> 不匹配任何覆盖块，现有站点对品牌
+token 的覆盖行为与今天完全相同。</li>
+<li><strong>几何共享</strong>：第一阶段预设不改变栅格列、侧栏宽度或断点。</li>
+<li><strong>预设专属规则少而局部</strong>：每个预设一个 partial，限定在 <code>[data-td-preset=X]</code> 下；
+两个预设都需要的东西就提升为 token。</li>
+</ol>
+<p>Paper 之前（第一阶段）需要的新共享 token：<code>--td-shell-scrim</code>、Landing 的
+<code>--td-grid</code> / <code>--td-glow</code> / 主按钮 token、<code>--td-callout-tint</code>、<code>--td-code-inline-bg</code>、
+<code>--td-hairline</code>，以及 <code>brand</code> 字体角色（<code>--td-brand-font-family</code>，默认
+<code>var(--td-display-font-family)</code>），使字标保留 Chakra Petch，而 Paper 的展示标题
+使用 Plex Sans。</p>
+<p>原第二阶段计划提出全局圆角、阴影与密度尺度。10 月 5 日实验改为仅作用于主题
+自有组件的规则；更广泛的 token 重构不作为试用设计的前提。</p>
+<p>契约变化：之前的架构契约把行内代码固定为一组深红色。第一阶段把 <code>--bs-code-color</code> 改为
+<strong>预设</strong> token（Slate 保留深红，Paper 使用墨色底片）。<code>theme_color</code> 仍然从不触碰它。</p>
+<h2 id="pg-97b1272c428065f6f74326597bedec18--fonts">字体
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">预设</th>
+      <th scope="col">界面 / 正文 / 标题</th>
+      <th scope="col">展示</th>
+      <th scope="col">品牌（字标）</th>
+      <th scope="col">元信息</th>
+      <th scope="col">代码</th>
+      <th scope="col">新增字节</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Paper</td>
+      <td>IBM Plex Sans</td>
+      <td>IBM Plex Sans</td>
+      <td>Chakra Petch</td>
+      <td>IBM Plex Sans</td>
+      <td>IBM Plex Mono</td>
+      <td>Plex Sans</td>
+    </tr>
+    <tr>
+      <td>Slate</td>
+      <td>Inter</td>
+      <td>Chakra Petch</td>
+      <td>Chakra Petch</td>
+      <td>IBM Plex Mono</td>
+      <td>IBM Plex Mono</td>
+      <td>无</td>
+    </tr>
+    <tr>
+      <td>Ink</td>
+      <td>Inter</td>
+      <td>Inter</td>
+      <td>Inter</td>
+      <td>Inter（等宽数字）</td>
+      <td>IBM Plex Mono</td>
+      <td>无</td>
+    </tr>
+    <tr>
+      <td>Terminal</td>
+      <td>界面用 Plex Mono，正文用 Plex Sans</td>
+      <td>IBM Plex Mono</td>
+      <td>IBM Plex Mono</td>
+      <td>IBM Plex Mono</td>
+      <td>IBM Plex Mono</td>
+      <td>Paper 之后无</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Paper 将 <code>@fontsource-variable/ibm-plex-sans</code>（OFL-1.1）vendor 到 <code>third_party/</code>
+并登记 <code>VENDOR.json</code>：拉丁、扩展拉丁、西里尔、扩展西里尔、希腊与越南语子集，正体与斜体，字重 100–700。PG.CENTER
+仅正体、400–600 的子集为 40,240 B（latin）+ 25,868 B（latin-ext）；准确体积在
+vendor 时记录。需要斜体，因为 OINK 正文使用强调，PG.CENTER 的合成斜体不可接受。
+完整的小型子集保留现有语言覆盖，浏览器按实际字符范围加载；12 个字体文件均登记于 VENDOR.json。</p>
+<p>中日韩文字使用排在拉丁字体之后的系统字体栈：<code>-apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC', 'Noto Sans SC', sans-serif</code>。IBM Plex Sans SC 因文件达到 MB 级被否决。等宽字体栈在通用
+<code>monospace</code> 之前插入 CJK 无衬线字体，使混排代码的中文字形可预期。</p>
+<p><code>typography: system</code> 仍不请求任何品牌字体：system 块位于所有预设块之后，并重置
+包括 <code>brand</code> 在内的全部角色。</p>
+<p><strong>衬线</strong>：第一阶段不使用衬线。拉丁衬线标题与中文无衬线标题并列显得不一致；Windows
+默认中文衬线在标题字号下渲染较差；衬线还要多一套字体。第一阶段之后可基于本提案的
+同内容对照样稿，评审一个可选的、仅用于展示标题的衬线。</p>
+<h2 id="pg-97b1272c428065f6f74326597bedec18--preset-specifications">预设规格
+</h2>
+<h3 id="pg-97b1272c428065f6f74326597bedec18--shared-foundation">共享基础
+</h3>
+<p>属于所有预设，而不是 Slate：</p>
+<ul>
+<li>布局几何、断点、侧栏/目录宽度、约 76ch 正文行长；</li>
+<li>正文 1rem / 1.7，界面 0.875rem，元信息 0.8125rem；</li>
+<li>字号比例（h1 2.25rem、h2 1.5rem、h3 1.25rem、h4 1rem）——第一阶段预设只调字重与
+字距，不调字号；</li>
+<li>焦点环：2 px 强调色描边、2 px 偏移，绝不移除；强制颜色模式回退不变；</li>
+<li>语义状态色（note、tip、important、warning、caution）保持色相；预设只改变淡底强度
+与边框；</li>
+<li>第一阶段语法高亮沿用现有 Chroma 浅色/深色调色板；</li>
+<li>动效 token 100/150/250 ms；<code>prefers-reduced-motion</code> 关闭过渡；</li>
+<li>WCAG AA：两种明暗下正文 4.5:1，大字与界面边界 3:1。</li>
+</ul>
+<h3 id="pg-97b1272c428065f6f74326597bedec18--paper">Paper
+</h3>
+<p><em>温暖的编辑式极简。</em> 暖纸色、墨色文字、安静的细线、柔和阴影，舒展但不松散的阅读
+节奏。它服务长篇阅读：大面积画布蓝光更少，界面对比更克制，Plex Sans 字怀开阔，
+16 px 下易读。</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Token</th>
+      <th scope="col">浅色</th>
+      <th scope="col">深色</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>画布 <code>--bs-body-bg</code></td>
+      <td><code>#f7f6f3</code></td>
+      <td><code>#161513</code></td>
+    </tr>
+    <tr>
+      <td>抬升 <code>--td-brand-elev</code>、<code>--td-pre-bg</code></td>
+      <td><code>#ffffff</code></td>
+      <td><code>#1f1e1a</code> / <code>#121110</code></td>
+    </tr>
+    <tr>
+      <td>次级表面</td>
+      <td><code>#efede8</code></td>
+      <td><code>#1f1e1a</code></td>
+    </tr>
+    <tr>
+      <td>正文</td>
+      <td><code>#21201c</code>（15.09:1）</td>
+      <td><code>#ece9e3</code></td>
+    </tr>
+    <tr>
+      <td>次级文字</td>
+      <td><code>#56534c</code>（7.10:1）</td>
+      <td><code>#b6b1a7</code></td>
+    </tr>
+    <tr>
+      <td>三级文字</td>
+      <td><code>#6b665d</code>（5.27:1）</td>
+      <td><code>#958f84</code>（5.68:1）</td>
+    </tr>
+    <tr>
+      <td>边框</td>
+      <td>墨色 12 %</td>
+      <td>浅墨色 13 %</td>
+    </tr>
+    <tr>
+      <td>链接 / 悬停</td>
+      <td><code>#2b5f8c</code>（6.23:1）/ <code>#1d68a5</code>（5.43:1）</td>
+      <td><code>#7db5e6</code>（8.36:1）/ <code>#a3cdf3</code></td>
+    </tr>
+    <tr>
+      <td>强调（铜色）</td>
+      <td><code>#9c5530</code>（5.17:1）</td>
+      <td><code>#d99a6c</code></td>
+    </tr>
+    <tr>
+      <td>行内代码</td>
+      <td>墨色字、墨色 6 % 底片</td>
+      <td>浅墨色字、8 % 底片</td>
+    </tr>
+    <tr>
+      <td>阴影 sm / md</td>
+      <td><code>0 2px 10px</code> / <code>0 14px 38px</code>，墨色 7 % / 13 %</td>
+      <td>黑色 35 % / 50 %</td>
+    </tr>
+    <tr>
+      <td>圆角</td>
+      <td>代码 12 px、卡片 12 px、控件 8 px</td>
+      <td>相同</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Paper 专属规则：标题 Plex Sans 600，字距 −0.006em（h1 −0.012em）；h2 后接延伸到
+边缘的细线；外框表格（圆角 10、表头底色、无斑马纹）；提示块使用 4 %（深色 6 %）语义
+淡底与单条 3 px 竖线；细线引用块；Landing 去掉网格与光晕，主按钮取自 token 并带暖色
+阴影，首屏标题 600 / −0.025em；导航选中行使用暖中性底并混入 9 %（深色 12 %）强调色。
+链接保持蓝色：这是阅读惯例，不是装饰。悬停与弹出层使用 160 ms ease-out；滚动时
+不做动效。</p>
+<h3 id="pg-97b1272c428065f6f74326597bedec18--slate">Slate
+</h3>
+<p><em>技术极简。</em> 即当前 OINK 外观，保持不变：冷灰蓝画布、海军蓝墨色、钢蓝与铜色、
+Inter 正文、Chakra Petch 展示、Plex Mono 标签与元信息、蓝图网格与首屏光晕、深红
+行内代码、8–12 px 圆角。选择 <code>preset: slate</code> 必须复现 <code>v1.1</code> 的 token 值，由检查器
+比较。网格、光晕、Chakra 展示标题、等宽元信息与深红行内代码属于 Slate 身份；布局、
+焦点、状态色与外壳结构属于共享基础。</p>
+<h3 id="pg-97b1272c428065f6f74326597bedec18--ink">Ink
+</h3>
+<p><em>排版极简，受瑞士风格启发的信息设计。</em> 黑、白与中性灰，一个红色强调；层级由字号、
+字重与对齐承担，而不是颜色、阴影或圆角表面。</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Token</th>
+      <th scope="col">浅色</th>
+      <th scope="col">深色</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>画布</td>
+      <td><code>#ffffff</code></td>
+      <td><code>#0b0b0b</code></td>
+    </tr>
+    <tr>
+      <td>正文</td>
+      <td><code>#141414</code></td>
+      <td><code>#ededed</code></td>
+    </tr>
+    <tr>
+      <td>次级 / 三级</td>
+      <td><code>#474747</code> / <code>#636363</code></td>
+      <td><code>#b5b5b5</code> / <code>#8f8f8f</code></td>
+    </tr>
+    <tr>
+      <td>表面</td>
+      <td><code>#f4f4f4</code></td>
+      <td><code>#161616</code></td>
+    </tr>
+    <tr>
+      <td>链接</td>
+      <td>墨色加下划线；悬停为红</td>
+      <td>浅墨色加下划线；悬停为红</td>
+    </tr>
+    <tr>
+      <td>强调</td>
+      <td><code>#c8102e</code>（5.88:1）</td>
+      <td><code>#ff5c4d</code></td>
+    </tr>
+    <tr>
+      <td>圆角 / 阴影</td>
+      <td>0 / 无</td>
+      <td>0 / 无</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>与 Slate 的区别：画布无色相、无蓝色、无网格纹理、无阴影、无圆角；链接靠下划线而非
+色相识别；标题使用 Inter 700–800 紧字距，而不是 Chakra Petch。与 Paper 的区别：
+中性而非暖色，平面而非柔和，粗线分隔而非细线，下划线链接而非蓝色链接。标志性规则：
+h2 上方 2 px 黑线；h1 800 / −0.035em；h4、表头与提示块标题大写加字距；导航选中行用
+3 px 红色竖条而不是底色；等宽数字。</p>
+<h3 id="pg-97b1272c428065f6f74326597bedec18--terminal">Terminal
+</h3>
+<p><em>终端工具式功能设计。</em> 体现在结构与信息表达上，而不是 CRT 特效：等宽界面、命令与
+路径表达、紧凑控件、明确的面板边界、琥珀或青绿强调。</p>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Token</th>
+      <th scope="col">浅色</th>
+      <th scope="col">深色</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>画布</td>
+      <td><code>#f4f5f2</code></td>
+      <td><code>#0c0f0e</code></td>
+    </tr>
+    <tr>
+      <td>正文</td>
+      <td><code>#1d211f</code></td>
+      <td><code>#d3dbd6</code></td>
+    </tr>
+    <tr>
+      <td>次级</td>
+      <td><code>#4a514d</code></td>
+      <td><code>#9aa59f</code></td>
+    </tr>
+    <tr>
+      <td>表面</td>
+      <td><code>#e9ebe6</code></td>
+      <td><code>#141a18</code></td>
+    </tr>
+    <tr>
+      <td>链接（青绿）</td>
+      <td><code>#0a6560</code>（6.31:1）</td>
+      <td><code>#4cc9bd</code></td>
+    </tr>
+    <tr>
+      <td>强调（琥珀）</td>
+      <td><code>#935400</code>（5.47:1）</td>
+      <td><code>#f0a73a</code></td>
+    </tr>
+    <tr>
+      <td>圆角</td>
+      <td>2 px</td>
+      <td>2 px</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>等宽范围：导航、标题、标签、元信息、面包屑、按钮与代码使用 IBM Plex Mono。正文段落、
+列表与表格正文使用 Plex Sans，中文使用平台回退字体，因为长段等宽文字与中英混排
+等宽行都难以阅读。
+标志性规则：标题前的 <code>## </code> 前缀用 <code>content: '## ' / ''</code> 渲染，辅助技术会忽略它；
+方括号提示标签（<code>[NOTE]</code>）；导航选中行反色并带 <code>▸</code> 标记；1 px 强边框面板；首屏静态
+<code>▍</code> 光标。没有扫描线、辉光、闪烁或打字动画。</p>
+<h3 id="pg-97b1272c428065f6f74326597bedec18--difference-matrix">差异矩阵
+</h3>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Paper</th>
+      <th scope="col">Slate</th>
+      <th scope="col">Ink</th>
+      <th scope="col">Terminal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>色温</td>
+      <td>暖</td>
+      <td>冷</td>
+      <td>中性</td>
+      <td>中性偏绿</td>
+    </tr>
+    <tr>
+      <td>浅色画布</td>
+      <td><code>#f7f6f3</code></td>
+      <td><code>#f1f4f8</code></td>
+      <td><code>#ffffff</code></td>
+      <td><code>#f4f5f2</code></td>
+    </tr>
+    <tr>
+      <td>深色画布</td>
+      <td><code>#161513</code></td>
+      <td><code>#0b1119</code></td>
+      <td><code>#0b0b0b</code></td>
+      <td><code>#0c0f0e</code></td>
+    </tr>
+    <tr>
+      <td>正文字体</td>
+      <td>Plex Sans</td>
+      <td>Inter</td>
+      <td>Inter</td>
+      <td>Plex Sans</td>
+    </tr>
+    <tr>
+      <td>标题字体</td>
+      <td>Plex Sans 600</td>
+      <td>Inter 600–700</td>
+      <td>Inter 700–800</td>
+      <td>Plex Mono</td>
+    </tr>
+    <tr>
+      <td>展示 / 字标</td>
+      <td>Plex Sans / Chakra</td>
+      <td>Chakra / Chakra</td>
+      <td>Inter / Inter</td>
+      <td>Plex Mono</td>
+    </tr>
+    <tr>
+      <td>链接信号</td>
+      <td>蓝色</td>
+      <td>钢蓝</td>
+      <td>下划线 + 红色悬停</td>
+      <td>青绿</td>
+    </tr>
+    <tr>
+      <td>强调色</td>
+      <td>铜色</td>
+      <td>铜色</td>
+      <td>红色</td>
+      <td>琥珀</td>
+    </tr>
+    <tr>
+      <td>圆角</td>
+      <td>8–12</td>
+      <td>8–12</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>阴影</td>
+      <td>柔和暖色</td>
+      <td>海军蓝调</td>
+      <td>无</td>
+      <td>无</td>
+    </tr>
+    <tr>
+      <td>章节分隔</td>
+      <td>h2 尾随细线</td>
+      <td>无</td>
+      <td>2 px 顶线</td>
+      <td><code>##</code> 标记</td>
+    </tr>
+    <tr>
+      <td>选中行</td>
+      <td>暖色底</td>
+      <td>强调色底</td>
+      <td>红色竖条</td>
+      <td>反色 + <code>▸</code></td>
+    </tr>
+    <tr>
+      <td>行内代码</td>
+      <td>墨色底片</td>
+      <td>深红</td>
+      <td>墨色底片</td>
+      <td>带框墨色底片</td>
+    </tr>
+    <tr>
+      <td>Landing 纹理</td>
+      <td>无</td>
+      <td>网格 + 光晕</td>
+      <td>无</td>
+      <td>无</td>
+    </tr>
+    <tr>
+      <td>界面密度</td>
+      <td>标准</td>
+      <td>标准</td>
+      <td>标准</td>
+      <td>紧凑</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-97b1272c428065f6f74326597bedec18--page-density">页面密度
+</h2>
+<p>密度跟随页面任务，而不是预设：Landing 首屏允许最大的展示字号与品牌表达；Docs 正文
+保持 1rem / 1.7 与约 76ch；侧栏、目录、参数表、搜索结果与命令面板保持紧凑行
+（0.875rem，行高 1.4–1.5）。第一阶段预设可以改变这些区域的配色，但不改变间距。
+Terminal 的紧凑界面属于第二阶段的密度 token。</p>
+<h2 id="pg-97b1272c428065f6f74326597bedec18--runtime-surfaces">运行时表面
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">表面</th>
+      <th scope="col">第一阶段影响</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Blog、Book、分类</td>
+      <td>仅 token；Book 题注保持正文字体</td>
+    </tr>
+    <tr>
+      <td>搜索对话框与命令面板</td>
+      <td>遮罩 token 化；选中行使用 <code>--td-shell-primary-dim</code></td>
+    </tr>
+    <tr>
+      <td>Mermaid、ECharts</td>
+      <td>颜色在初始化时依 <code>data-bs-theme</code> 固化。只有图表采用预设颜色时才需观察 <code>data-td-preset</code>；第一阶段保持仅随明暗变化</td>
+    </tr>
+    <tr>
+      <td>asciinema</td>
+      <td>表面 token；只有代码字体变化才需重新挂载（第一阶段不变）</td>
+    </tr>
+    <tr>
+      <td>giscus</td>
+      <td>每个预设与明暗各需一份样式表，并在 <code>td-preset-change</code> 时重新下发</td>
+    </tr>
+    <tr>
+      <td>Swagger UI、ReDoc</td>
+      <td>保持供应商样式与现有明暗处理</td>
+    </tr>
+    <tr>
+      <td>打印</td>
+      <td>海军蓝与冷灰 token 化；打印始终使用当前预设的浅色调色板</td>
+    </tr>
+    <tr>
+      <td>404</td>
+      <td>其自有 <code>&lt;html&gt;</code> 必须带上新属性</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pg-97b1272c428065f6f74326597bedec18--boundaries">无障碍、安全与输出
+</h2>
+<ul>
+<li>每套调色板在两种明暗下的正文、次级与三级文字、链接与强调色均满足 WCAG AA（见上文
+数值）。<code>theme_color</code> 对比度警告按站点默认预设的画布计算。</li>
+<li>菜单使用原生单选，不使用 <code>role=&quot;menu&quot;</code>。除手机底部表单（模态并恢复焦点）外不捕获焦点。</li>
+<li><code>prefers-reduced-motion</code> 与强制颜色模式保持现有行为。</li>
+<li>初始化脚本内联、静态，来自已校验的配置；已保存的值使用前先与构建时允许列表比对。</li>
+<li>不新增外部字体或脚本请求。输出只增加两个 <code>&lt;html&gt;</code> 属性、一段内联脚本与 CSS。</li>
+</ul>
+<h2 id="pg-97b1272c428065f6f74326597bedec18--compatibility-and-migration">兼容与迁移
+</h2>
+<p>默认改为 Paper 会改变所有未设置 <code>preset</code> 的站点。</p>
+<ul>
+<li>想保留当前外观的站点加上 <code>params.ui.preset: slate</code>；升级说明以这一行开头。
+Slate 输出必须等于 <code>v1.1</code> 的 token。</li>
+<li>在 <code>_styles_project.scss</code> 中覆盖品牌 token 的站点：<code>:root</code> 上的浅色覆盖在 Paper
+下仍按源顺序生效；<code>[data-bs-theme='dark']</code> 上的深色覆盖会被 Paper 深色块压过。
+这类站点应选择 Slate，或把覆盖改写到
+<code>[data-td-preset='paper'][data-bs-theme='dark']</code>。升级说明与品牌指南需说明。</li>
+<li><code>theme_color</code>、<code>typography</code> 与 <code>fonts</code> 的含义与优先级不变。</li>
+<li><code>dark_mode: false</code> 的站点仍只有一套浅色调色板，只是变为 Paper。</li>
+<li>改变默认值的版本必须把它列为可见变化。该版本是次版本（<code>1.x</code>）还是主版本，
+是待决问题。</li>
+<li>在发布默认值变化前，消费方盘点应报告哪些站点覆盖了品牌 token。</li>
+</ul>
+<h2 id="pg-97b1272c428065f6f74326597bedec18--implementation-plan">实施计划
+</h2>
+<p>第一阶段，按依赖顺序；每步注明负责的检查器。</p>
+<ol>
+<li><strong>Token 化 Slate 泄漏点</strong>：Landing 主按钮、网格、光晕、遮罩、打印颜色、asciinema
+表面；增加 <code>--td-preset-accent</code>、<code>brand</code> 字体角色，以及
+<code>contrast-on-canvas.html</code> 的按预设画布亮度。Slate 的计算颜色必须保持等价。
+检查器：<code>check-landing.py</code>、<code>check-output.py</code>、<code>check-font-tokens.py</code>。</li>
+<li><strong>Vendor IBM Plex Sans</strong>：<code>third_party/</code>、<code>VENDOR.json</code>、许可证文件。
+检查器：<code>check-vendor.py</code>。</li>
+<li><strong>预设 token</strong>：新增 <code>assets/scss/td/_presets.scss</code>（在 <code>_brand.scss</code> 之后导入）；
+当前实现将 Paper 保留在这个文件中，不另建 <code>presets/_paper.scss</code>。
+字体预设块放在 <code>system</code> 重置之前。检查器：扩展
+<code>check-font-tokens.py</code>（Plex Sans 字体族、system 块顺序、浅深块 token 对等）。</li>
+<li><strong>配置</strong>：<code>hugo.yaml</code> 默认值（<code>preset: paper</code>、<code>preset_menu: false</code>）；一个
+resolver partial，供 <code>validate.html</code>、<code>document-attrs.html</code>、<code>layouts/404.html</code>
+与 <code>head.html</code>（初始化脚本、<code>theme-color</code>、首绘画布）使用；重新生成 schema。
+检查器：<code>check-params.py</code>（接受、无效、保留值）、
+<code>generate-config-schema.py --check</code>、<code>check-namespace.py</code>。</li>
+<li><strong>外观菜单</strong>：共享 partial，供 <code>navbar.html</code>、<code>shell/footer-line.html</code> 与 Landing
+手机抽屉使用；<code>preset.js</code> 运行时（或 <code>dark-mode.js</code> 的一节）；<code>dark-mode.js</code>
+单选同步；命令面板动作 <code>switch_preset</code>；32 个语言目录的 i18n 字符串。
+检查器：<code>check-shell.py</code>、<code>check-actions.py</code>、i18n 检查器、
+<code>tests/js/preset.test.js</code>、<code>tests/js/dark-mode.test.js</code>。</li>
+<li><strong>第三方表面</strong>：按预设的 giscus 样式表与重新下发。</li>
+<li><strong>文档</strong>：EN/ZH 架构、外壳与 Landing 契约；品牌指南（预设、迁移、字体）；
+配置参考；变更日志与升级说明。</li>
+<li><strong>站点验证</strong>：<code>make -C ../oink.pgsty.com check</code>、<code>browser</code>（增加预设切换、持久化、
+存储失败、无 JS、EN/ZH、桌面/手机、浅色/深色用例），以及用于视觉评审的 <code>dev</code>。</li>
+</ol>
+<h2 id="pg-97b1272c428065f6f74326597bedec18--acceptance-criteria">验收标准
+</h2>
+<p>以下保留最初的验收目标，已执行检查与剩余限制分别记录在<a href="/zh/docs/design/research/2026-10-05-visual-presets-acceptance/">10 月 5 日验收记录</a>中：</p>
+<ul>
+<li>未设置 <code>preset</code> 时，输出带 <code>data-td-preset=&quot;paper&quot;</code>，禁用 JavaScript 也呈现 Paper。</li>
+<li><code>preset: slate</code> 在检查器样例上产生与 <code>v1.1</code> 相同的计算颜色与字体角色。</li>
+<li>切换风格不改变 <code>td-color-theme</code>；切换明暗不改变 <code>td-preset</code>；两者在导航、刷新与
+切换语言后保持。</li>
+<li>无效的已保存值被删除；存储失败时页面可用并显示不保存提示。</li>
+<li>在 Chromium、Firefox 与 WebKit 的正常及降速 CPU 下，预设之间无首绘闪色。</li>
+<li>切换后滚动位置与锚点相差不超过一行。</li>
+<li>任何预设下 <code>typography: system</code> 都不触发字体请求；<code>params.ui.fonts</code> 覆盖预设字体。</li>
+<li>Paper 与 Slate 下，<code>theme_color</code> 在两种明暗中都覆盖强调色。</li>
+<li>菜单可完全通过键盘、触屏与屏幕阅读器操作；axe 不报告新增违规。</li>
+<li>所有调色板在两种明暗下满足对比度表。</li>
+<li>预设不新增外部字体或脚本依赖；Giscus 等显式配置的服务单独说明。
+<code>--panicOnWarning</code> 构建通过。</li>
+</ul>
+<h2 id="pg-97b1272c428065f6f74326597bedec18--open-decisions">待决问题
+</h2>
+<ol>
+<li>第一阶段已选择 <code>preset_menu: false</code>，文档站开启。原问题：<code>false</code>（与 <code>dark_mode</code> 一样需显式开启）还是 <code>true</code>。</li>
+<li>发布准备目标已确定为 <code>1.2.0</code>：醒目说明 Paper 成为默认，并提供 <code>preset: slate</code> 兼容设置；已随 1.2.0 正式发布。</li>
+<li>第一阶段已选择 <code>brand</code>。原问题：字标字体角色命名：<code>brand</code> 还是 <code>wordmark</code>。</li>
+<li>第一阶段之后，是否把仅用于展示标题的衬线作为 Paper 选项。</li>
+<li>第二阶段图表（Mermaid、ECharts）是否采用预设颜色。</li>
+</ol>
+<h2 id="pg-97b1272c428065f6f74326597bedec18--ink-terminal-backlog">Ink 与 Terminal 后续清单
+</h2>
+<p>已实验实现：两套色板、现有字体角色、正文链接与选中信号、标题处理、局部几何、
+Terminal 紧凑导航、Giscus 色板、打印与现有切换机制。不新增字体文件、动画或
+运行时。真实输出与验证范围见<a href="/zh/docs/design/research/2026-10-05-ink-terminal-experiment/">实验记录</a>。</p>
+<p>晋升稳定预设前，仍需评审 Ink 长页红色强调密度与中文下划线；Terminal 编号标题、
+等宽换行与密集参数表；Windows/Android 回退字体，以及人工屏幕阅读器朗读。
+本次实验明确保留 Mermaid/ECharts 与 API 供应商组件仅随明暗变化；全局几何与
+密度 token、预设图表色板需要另行决定。</p>
+<h2 id="pg-97b1272c428065f6f74326597bedec18--decision-log">决策记录
+</h2>
+<div class="td-table-scroll td-table-scroll--static">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">日期</th>
+      <th scope="col">变化</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2026-10-04</td>
+      <td>创建草案：Paper/Slate 第一阶段范围、Ink/Terminal 研究规格、外观菜单选择与 token 架构</td>
+    </tr>
+    <tr>
+      <td>2026-10-05</td>
+      <td>第一阶段已在本地实现；默认值、brand 角色、图表仅随明暗的范围已接受；发布版本未定，本轮没有发布</td>
+    </tr>
+    <tr>
+      <td>2026-10-05</td>
+      <td>随后实现显式开启的 Ink/Terminal 实验；保留稳定菜单策略；视觉定稿仍未完成</td>
+    </tr>
+    <tr>
+      <td>2026-10-05</td>
+      <td>按 1.2.0 做发布准备；简洁的风格/明暗控件与当前状态图标取代早期色样方案；未创建标签或部署</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+</div>
+
+
+
+    
+	
+  
 
 
 
       </main>
     </div>
-    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"复制 Markdown 文本","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["复制 Markdown 文本","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"复制 Markdown 文本","url":"/zh/docs/design/proposals/index.md"},{"available":true,"description":"复制链接","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["复制链接","分享","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"复制链接","url":"http://localhost:1313/zh/docs/design/proposals/"},{"available":true,"description":"在 ChatGPT 中打开","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["在 ChatGPT 中打开","就本页提问","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 ChatGPT 中打开","url":"https://chatgpt.com/?hints=search\u0026prompt=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fdocs%2Fdesign%2Fproposals%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":true,"description":"在 Claude 中打开","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["在 Claude 中打开","就本页提问","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 Claude 中打开","url":"https://claude.ai/new?q=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fdocs%2Fdesign%2Fproposals%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":true,"description":"查阅 Markdown 源码","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["查阅 Markdown 源码","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅 Markdown 源码","url":"/zh/docs/design/proposals/index.md"},{"available":true,"description":"查阅编辑历史","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["查阅编辑历史","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅编辑历史","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/design/proposals/_index.zh.md"},{"available":true,"description":"编辑当前页面","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["编辑当前页面","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"编辑当前页面","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/design/proposals/_index.zh.md"},{"available":true,"description":"添加子页面","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["添加子页面","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"添加子页面","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/design/proposals?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"提交文档议题","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["提交文档议题","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交文档议题","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=%E8%AE%BE%E8%AE%A1%E6%8F%90%E6%A1%88%E4%B8%8E+PRD"},{"available":true,"description":"提交项目议题","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["提交项目议题","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交项目议题","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"打印完整章节","disabledReason":"打印完整章节: 暂不可用","icon":"fa-solid fa-print","id":"print_section","keywords":["打印完整章节","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"打印完整章节","url":""},{"available":true,"description":"打印此页面","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["打印此页面","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"打印此页面","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL 必填","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"切换语言","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["切换语言","language"],"kind":"choice","options":[{"active":false,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/design/proposals/"},{"active":true,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/design/proposals/"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换语言","url":""},{"available":false,"description":"外观","disabledReason":"暂不可用","icon":"fa-solid fa-palette","id":"switch_preset","keywords":["preset","style","Paper","Slate","风格"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"paper","title":"Paper","value":"paper"}],"placements":{"page":false,"palette":true},"target":"self","title":"风格","url":""},{"available":true,"description":"切换配色","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["切换配色","亮色","暗色"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"跟随系统","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"亮色","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"暗色","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换配色","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"报告或查看主题与文档问题","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["缺陷","支持","路线图"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK 问题反馈","url":"https://github.com/pgsty/oink/issues"}],"language":"zh","quickLinks":[{"available":true,"description":"OINK 是一款只需 Hugo Extended 的技术文档主题：组件写在 Markdown 里，资源随主题分发，双语开箱可用，一份内容产出四种输出。","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["文档","docs"],"kind":"url","target":"self","title":"文档","url":"/zh/docs/"},{"available":true,"description":"OINK 工程实践、沉浸式阅读指南与发布注记","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["博客","blog"],"kind":"url","target":"self","title":"博客","url":"/zh/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"复制 Markdown 文本","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["复制 Markdown 文本","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"复制 Markdown 文本","url":"/zh/docs/design/proposals/index.md"},{"available":true,"description":"复制链接","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["复制链接","分享","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"复制链接","url":"http://localhost:1313/zh/docs/design/proposals/"},{"available":true,"description":"在 ChatGPT 中打开","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["在 ChatGPT 中打开","就本页提问","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 ChatGPT 中打开","url":"https://chatgpt.com/?hints=search\u0026prompt=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fdocs%2Fdesign%2Fproposals%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":true,"description":"在 Claude 中打开","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["在 Claude 中打开","就本页提问","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 Claude 中打开","url":"https://claude.ai/new?q=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fdocs%2Fdesign%2Fproposals%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":true,"description":"查阅 Markdown 源码","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["查阅 Markdown 源码","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅 Markdown 源码","url":"/zh/docs/design/proposals/index.md"},{"available":true,"description":"查阅编辑历史","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["查阅编辑历史","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅编辑历史","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/design/proposals/_index.zh.md"},{"available":true,"description":"编辑当前页面","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["编辑当前页面","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"编辑当前页面","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/design/proposals/_index.zh.md"},{"available":true,"description":"添加子页面","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["添加子页面","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"添加子页面","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/design/proposals?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"提交文档议题","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["提交文档议题","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交文档议题","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=%E8%AE%BE%E8%AE%A1%E6%8F%90%E6%A1%88%E4%B8%8E+PRD"},{"available":true,"description":"提交项目议题","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["提交项目议题","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交项目议题","url":"https://github.com/pgsty/oink/issues/new"},{"available":false,"description":"打印完整章节","disabledReason":"打印完整章节: 暂不可用","icon":"fa-solid fa-print","id":"print_section","keywords":["打印完整章节","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"打印完整章节","url":""},{"available":true,"description":"打印此页面","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["打印此页面","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"打印此页面","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL 必填","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"切换语言","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["切换语言","language"],"kind":"choice","options":[{"active":false,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/design/proposals/"},{"active":true,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/design/proposals/"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换语言","url":""},{"available":false,"description":"外观","disabledReason":"暂不可用","icon":"fa-solid fa-palette","id":"switch_preset","keywords":["preset","style","Paper","Slate","风格"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"paper","title":"Paper","value":"paper"}],"placements":{"page":false,"palette":true},"target":"self","title":"风格","url":""},{"available":true,"description":"切换配色","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["切换配色","亮色","暗色"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"跟随系统","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"亮色","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"暗色","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换配色","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"报告或查看主题与文档问题","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["缺陷","支持","路线图"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK 问题反馈","url":"https://github.com/pgsty/oink/issues"}],"language":"zh","quickLinks":[{"available":true,"description":"为文档、博客、书籍与 API 参考建立统一的技术内容站点，共用导航、多语言与搜索。","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["文档","docs"],"kind":"url","target":"self","title":"文档","url":"/zh/docs/"},{"available":true,"description":"OINK 工程实践、沉浸式阅读指南与发布注记","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["博客","blog"],"kind":"url","target":"self","title":"博客","url":"/zh/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
 
 <script src="/js/actions.js"></script>
 

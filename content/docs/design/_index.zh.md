@@ -1,19 +1,22 @@
 ---
 title: 设计与开发
 linkTitle: 设计
-description: 在唯一的双语专栏中管理 OINK 维护者契约、已接受决策、定期研究与候选提案。
+description: 在唯一的双语专栏中管理 OINK 维护者契约、已接受决策、带日期的研究记录与候选提案。
 weight: 70
 icon: fa-solid fa-compass-drafting
 no_list: true
 search_keywords: [OINK 设计, 维护者契约, 架构, 决策, 研究, 提案, PRD]
-contract_status: released-v0.8.0
+contract_status: v1.2.0
 cascade:
+  search_boost: 0.6
   categories: [设计契约]
 ---
 
-> [!IMPORTANT] OINK 0.8.0 契约
-> 本专栏公开随 OINK 0.8.0 正式发布的维护者契约，兼容性下限为 Hugo Extended
-> 0.160.1。唯一的中英文契约源文件位于本站仓库的 `content/docs/design/`。
+> [!NOTE] OINK 1.2.0 契约
+> 本契约描述 v1.2.0 的正式行为。唯一的中英文契约源文件位于
+> `content/docs/design/`。
+> Hugo Extended 0.160.1 仍为兼容下限，CI 固定使用 0.165.0；下限版本
+> 不作为第二套完整 CI 矩阵。
 
 本专栏是 OINK 可长期维护的设计记录。站内其它专栏按任务讲解如何搭建站点；
 这里集中说明现行不变量、这些选择背后的理由、用于比较方案的证据，以及仍处于
@@ -32,7 +35,7 @@ cascade:
 
 | 契约                                      | 权威范围                                             |
 | ----------------------------------------- | ---------------------------------------------------- |
-| [架构契约](/zh/docs/design/architecture/) | 构建、配置、诊断、特色图片、输出、安全、无障碍与性能 |
+| [架构契约](/zh/docs/design/architecture/) | 构建、配置、诊断、本地化、特色图片、输出、安全、无障碍与性能 |
 | [组件契约](/zh/docs/design/components/)   | 组件 API、Book 与发布原语、校验和输出降级            |
 | [外壳与导航契约](/zh/docs/design/shell/)  | 导航、搜索、博客展示、操作、分类法与页尾组合         |
 | [落地页契约](/zh/docs/design/landing/)    | 落地页数据、22 种区块注册表、运行时、无障碍与输出    |

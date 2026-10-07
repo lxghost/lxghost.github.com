@@ -8,10 +8,9 @@ LLMS index: [llms.txt](/llms.txt)
 
 ---
 
-> [!IMPORTANT] OINK 0.8.0 contract
-> This is the component contract released with OINK 0.8.0. This page is the
-> canonical English source; its Chinese peer is maintained beside it in
-> `content/docs/design/`.
+> [!NOTE] OINK 1.2.0 contract
+> This contract describes the v1.2.0 release. Its canonical bilingual sources
+> are in `content/docs/design/`.
 
 Tutorials and exhaustive examples belong in the reader-facing
 [Components](/docs/components/) section. This page defines the API and behavior
@@ -64,7 +63,8 @@ OINK has 29 shortcodes:
 | Table | attributes, caption, number, or tabs | `tbl` for compound Book tables | tabs when tabbed |
 | Book target | image/table/passthrough/fence + `{num=}` | `fig`, `tbl`, `eq`, `eg` | none |
 | Release assets | `checksums` data fence | `release-assets` | copy in HTML |
-| Diagram/data | `mermaid`, `plantuml`, `markmap`, `math`, `chem`, `echarts`, `infographic` fences | none | selected local runtime only |
+| Math and chemistry | passthrough, `math`, `chem` fences | `eq` | none; build-time rendering and local styles |
+| Diagram/data | `mermaid`, `plantuml`, `markmap`, `echarts`, `infographic` fences | none | selected local runtime only |
 
 ## Validation {#validation}
 
@@ -76,10 +76,13 @@ and positional forms are not mixed. Book target IDs match
 token-validated. Hook and shortcode targets share one page registry, so
 collisions cannot produce duplicate output IDs.
 
-URLs use `content/url.html`. Images resolve through page resources, section
+URLs use `content/url.html`; raw backslashes are invalid because browsers may
+interpret them as URL separators. Images resolve through page resources, section
 resources, global assets, then static or explicit remote URLs. Local rasters
 carry intrinsic dimensions; SVG, static, and remote sources remain valid but
 cannot use Hugo image operations.
+Resource metadata `alt` must be a string; an invalid value warns and is ignored,
+preserving the image's authored alt text.
 
 ## Component behavior {#component-behavior}
 
@@ -87,7 +90,7 @@ cannot use Hugo image operations.
 
 Callout types are `note`, `tip`, `important`, `warning`, `caution`, `success`,
 `danger`, `question`, `example`, `quote`, and `details`; `-` starts folded and
-`+` expanded. Unknown types remain visible as neutral callouts without JS.
+`+` expanded. Unknown types render as plain blockquotes with their markers preserved, without JS.
 
 Adjacent tabs group only when consecutive and of the same block kind. `group`
 enables hash `#<group>-<value>` and storage `td-tabs:v1:<group>`; ungrouped tabs
@@ -127,6 +130,14 @@ Hugo `Fit`, `Resize`, `Fill`, or `Crop` on processable local resources. A plain
 linked image uses Markdown syntax; the `link` attribute therefore requires a
 caption or number. Linked and decorative images do not load Zoom.
 
+Zoom triggers keep the image's alt text and localized preview action in their
+ARIA accessible name, without inserting helper text into the article. Copying
+content as plain text or rich HTML must not add preview instructions, even when
+an editor discards the theme's styles. Authored images and captions are preserved.
+When Draw.io and Image Zoom share an image, Edit and Zoom remain separate sibling
+buttons. The editor entry supports keyboard access and stays visible on touch
+devices and in forced-colors mode.
+
 Gallery accepts one Markdown image per line with optional description, link,
 and class. FileTree accepts indentation, `- name`, optional `/`, comments, and
 validated icon/tone/open/type attributes. Markdown preserves authored source;
@@ -134,9 +145,25 @@ print renders expanded static figures and trees.
 
 All code highlighting uses Chroma. Common fence attributes include `title`,
 `copy`, `wrap`, `collapse`, `label`, `id`, line options, tabs, and Book
-`num`/`caption`. Copy returns authored source. ECharts input is declarative
+`num`/`caption`. Copy returns authored source. Mermaid palettes follow mode independently
+of visual presets. The default dark edge-label background is `#404040` for
+AA text contrast; authored `params.mermaid.themeVariables` remain authoritative.
+
+ECharts input is declarative
 JSON/YAML; callbacks use `$fn:<name>` from `window.OinkEchartsFunctions`, never
 embedded script execution.
+
+Mathematics uses Hugo's build-time KaTeX output and local CSS, without a browser
+math runtime. The shared renderer normalizes pre-0.18 KaTeX class names to the
+vendored stylesheet in HTML and Print, preserving the Hugo 0.160.1 floor,
+MathML, and authored TeX. Markmap uses the matching vendored KaTeX runtime.
+On narrow screens, numbered-equation captions wrap within the reading column;
+a long caption must not widen the page.
+
+Swagger and Redoc accept an HTTP(S) specification URL or a path rooted under
+`static/`; neither resolves page resources. Redoc treats leading and
+non-leading slashes equivalently and joins local paths to `baseURL`. Only HTML
+is interactive; Print, Markdown, and RSS render a static specification link.
 
 ### Book {#book}
 
@@ -155,9 +182,12 @@ references in `tbl`, `eg`, `fig`, `card`, `tab`, `field`, or `include` warn and
 remain literal; code-shaped text is ignored by that check.
 
 `book-toc` follows navigation order at depth 1–3; the four `book-*` indexes
-collect one target kind each. Whole-Book print rewrites cross-page links and
-namespaces ordinary headings and footnotes while preserving explicit target
-IDs. Consumers opt into that potentially expensive output.
+collect one target kind each. Single-page Print preserves the page's ordinary
+heading and footnote IDs exactly as regular HTML renders them. Multi-page
+section Print and whole-Book Print rewrite cross-page links and namespace those
+page-local headings and footnotes to avoid aggregate collisions, while
+preserving explicit target IDs. Consumers opt into those potentially expensive
+aggregate outputs.
 
 ### Release and download {#release-and-download}
 
@@ -191,8 +221,10 @@ browser tests cover interactive surfaces. Migration is documented in the
 
 Backlinks:
 
+- [Upgrade](/docs/admin/upgrade/)
 - [Design](/docs/design/)
 - [Markdown-first authoring](/docs/design/decisions/authoring/)
 - [Landing pages](/docs/design/landing/)
 - [Migration boundary](/docs/design/migration/)
+- [2026-09-19 community review](/docs/design/research/2026-09-19-upstream-review/)
 - [Goldmark attributes](/docs/design/research/goldmark-attributes/)

@@ -168,3 +168,4 @@ G2/G3:
 Backlinks:
 
 - [Proposals](/docs/design/proposals/)
+- [CLI and roadmap](/docs/design/proposals/oink-cli-roadmap/)

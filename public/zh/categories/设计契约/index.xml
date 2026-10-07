@@ -28,7 +28,7 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/zh/docs/design/architecture/</guid>
-        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;这是随 OINK 0.8.0 正式发布的架构契约。本页是权威中文源文件，与英文版本&#xA;一同维护在 &lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;repository-and-assembly&#34;&gt;仓库与装配&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;仓库根目录是一个完整的 Hugo 模块与主题，不是站点，也不是 npm workspace。&#xA;Hugo Extended 负责编译 SCSS 与模板。浏览器运行时与第三方资源都已提交到仓库，&#xA;因此普通构建不会访问网络。公开的双语文档、示例与浏览器测试位于同级的&#xA;&lt;code&gt;oink.pgsty.com&lt;/code&gt; 仓库；主题仓库只在 &lt;code&gt;tests/site/&lt;/code&gt; 中保留范围明确的内部回归&#xA;夹具，不再维护独立的公开示例面。&lt;/p&gt;</description>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 1.2.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本契约描述 v1.2.0 的正式行为。唯一的中英文契约源文件位于&#xA;&lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;repository-and-assembly&#34;&gt;仓库与装配&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;仓库根目录是一个完整的 Hugo 模块与主题，不是站点，也不是 npm workspace。&#xA;Hugo Extended 负责编译 SCSS 与模板。浏览器运行时与第三方资源都已提交到仓库，&#xA;因此普通构建不会访问网络。公开的双语文档、示例与浏览器测试位于同级的&#xA;&lt;code&gt;oink.pgsty.com&lt;/code&gt; 仓库；主题仓库只在 &lt;code&gt;tests/site/&lt;/code&gt; 中保留范围明确的内部回归&#xA;夹具，不再维护独立的公开示例面。&lt;/p&gt;</description>
       </item>
     <item>
         <title>警告与安全回退</title>
@@ -45,6 +45,30 @@
         
         <guid>http://localhost:1313/zh/docs/design/proposals/knowledge-graph/</guid>
         <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;G1 已实现，G2/G3 仍是草案&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;2026-08-27 决议 G1 的全部待决问题并接受 G1（静态反向链接）。它已在主题 main&#xA;分支实现，随 OINK 0.8.0 发布。局部与全站图谱（G2/G3）保持草案状态，等待 G1 的&#xA;真实使用证据；它们的名称和配置在被接受之前不是公开 API。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Ink 与 Terminal 实验，2026-10-05</title>
+        <link>http://localhost:1313/zh/docs/design/research/2026-10-05-ink-terminal-experiment/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/research/2026-10-05-ink-terminal-experiment/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;本地实验，不代表发布&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;Ink 与 Terminal 现已编入真实主题样式表，使用现有外观控件，不是截图注入样式。&#xA;两者仍为需要显式开启的实验，等待视觉定稿。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;inputs&#34;&gt;输入与方法&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;本实验基于 10 月 5 日工作树中的 &lt;a href=&#34;http://localhost:1313/zh/docs/design/research/2026-10-05-visual-presets-acceptance/&#34;&gt;Paper/Slate 实现&lt;/a&gt;。&#xA;工具为 macOS ARM64 上的 Hugo Extended 0.166.0、Go 1.27.1、Node 26.9.0、&#xA;Playwright 1.62.1。集成检查使用文档站与同级本地主题；站点公开 pin 仍为 v1.1.0。&#xA;这不是兼容下限、CI 固定工具链或线上验收。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>OINK 1.2 发布前审查，2026-10-05</title>
+        <link>http://localhost:1313/zh/docs/design/research/2026-10-05-v1-2-release-review/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/research/2026-10-05-v1-2-release-review/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;本地候选版本证据&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本次审查覆盖 10 月 5 日工作树，包含尚未提交的修改。&#xA;它不代表某个不可变发布提交或已发布 1.2.0 模块的验收结果。&#xA;公开主题标签与文档站消费版本仍为 v1.1.0。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>视觉预设验收，2026-10-05</title>
+        <link>http://localhost:1313/zh/docs/design/research/2026-10-05-visual-presets-acceptance/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/research/2026-10-05-visual-presets-acceptance/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;仅为本地证据&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本记录针对同级主题 checkout 的真实输出，没有注入原型样式；不代表发布版本、&#xA;升级消费站点或验收线上站点。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;inputs&#34;&gt;输入&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;2026-10-05 的主题与文档站工作树；macOS ARM64，Hugo Extended 0.166.0、&#xA;Go 1.27.1、Node 26.9.0、Playwright 1.62.1。常规浏览器套件使用 Chromium；&#xA;另有 Chromium、Firefox 与 WebKit 专项检查。站点仍固定 v1.1.0，&#xA;&lt;code&gt;make check&lt;/code&gt;、&lt;code&gt;make browser&lt;/code&gt; 与 &lt;code&gt;make dev&lt;/code&gt; 使用同级本地主题，公开 pin 未修改。&#xA;本轮不是 Hugo 0.160.1 下限或 CI 固定工具链验收。&lt;/p&gt;</description>
       </item>
     <item>
         <title>媒体收敛</title>
@@ -76,7 +100,7 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/zh/docs/design/components/</guid>
-        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;这是随 OINK 0.8.0 正式发布的组件契约。本页是权威中文源文件，与英文版本&#xA;一同维护在 &lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;教程与完整示例位于面向读者的&lt;a href=&#34;http://localhost:1313/zh/docs/components/&#34;&gt;组件&lt;/a&gt;专栏。本页定义这些&#xA;指南所依赖的 API 与行为。&lt;/p&gt;&#xA;&lt;h2 id=&#34;authoring-model&#34;&gt;创作模型&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;一个区块加属性便能表达组件时，使用普通 Markdown；需要复合正文或 Markdown&#xA;无法携带的事实时，使用 shortcode。OINK 没有并行的组件注册表。原生形态要求：&lt;/p&gt;</description>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 1.2.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本契约描述 v1.2.0 的正式行为。唯一的中英文契约源文件位于&#xA;&lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;教程与完整示例位于面向读者的&lt;a href=&#34;http://localhost:1313/zh/docs/components/&#34;&gt;组件&lt;/a&gt;专栏。本页定义这些&#xA;指南所依赖的 API 与行为。&lt;/p&gt;&#xA;&lt;h2 id=&#34;authoring-model&#34;&gt;创作模型&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;一个区块加属性便能表达组件时，使用普通 Markdown；需要复合正文或 Markdown&#xA;无法携带的事实时，使用 shortcode。OINK 没有并行的组件注册表。原生形态要求：&lt;/p&gt;</description>
       </item>
     <item>
         <title>OINK 全面审查（2026-08-26）</title>
@@ -95,6 +119,14 @@
         <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;已实现，随 OINK 0.8.0 发布&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;2026-08-27 决议全部待决问题后接受本提案。两类输出——按顶层 section 分包的&#xA;&lt;code&gt;LLMSFULL&lt;/code&gt; 与语言根下的 &lt;code&gt;NAVJSON&lt;/code&gt; 导航树——都已在主题 &lt;code&gt;main&lt;/code&gt; 分支实现，随 OINK&#xA;0.8.0 发布，之后本提案退役；发布后的行为由&lt;a href=&#34;http://localhost:1313/zh/docs/design/architecture/#outputs-and-runtime&#34;&gt;架构契约&lt;/a&gt;&#xA;承担。OINK 已经支持每页 Markdown、语言内 &lt;code&gt;llms.txt&lt;/code&gt;、HTML discovery link 与&#xA;Copy Markdown；本页只覆盖新增的两类。&lt;/p&gt;</description>
       </item>
     <item>
+        <title>OINK CLI 与下一阶段产品路线</title>
+        <link>http://localhost:1313/zh/docs/design/proposals/oink-cli-roadmap/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/proposals/oink-cli-roadmap/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--warning&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-triangle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;首期为本地候选，后续路线仍是草案&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;用户于 2026-09-29 授权独立 Go 仓库 &lt;code&gt;pgsty/oink-cli&lt;/code&gt; 及首期开发。六个命令已有本地 &lt;code&gt;0.1.0-dev&lt;/code&gt; 实现，最终本地验收单独记录。当前行为归属 &lt;a href=&#34;http://localhost:1313/zh/docs/design/decisions/cli/&#34;&gt;CLI 决策与结果契约&lt;/a&gt;及&lt;a href=&#34;http://localhost:1313/zh/docs/start/cli/&#34;&gt;使用指南&lt;/a&gt;。这不代表 CLI 已公开发布或已有独立用户采用。主题 1.2、工具能力描述、Docsy 迁移、版本生命周期、OpenAPI、MCP 与 Studio 保持提案状态。&lt;/p&gt;</description>
+      </item>
+    <item>
         <title>Markdown 优先创作</title>
         <link>http://localhost:1313/zh/docs/design/decisions/authoring/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -108,7 +140,23 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/zh/docs/design/shell/</guid>
-        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;这是随 OINK 0.8.0 正式发布的外壳与导航契约。本页是权威中文源文件，与英文版本&#xA;一同维护在 &lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;authorities-and-navigation&#34;&gt;权威来源与导航&#xA;&lt;/h2&gt;&#xA;&lt;div class=&#34;td-table-scroll td-table-scroll--static&#34;&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;th scope=&#34;col&#34;&gt;关注点&lt;/th&gt;&#xA;      &lt;th scope=&#34;col&#34;&gt;权威来源&lt;/th&gt;&#xA;    &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;全局导航&lt;/td&gt;&#xA;      &lt;td&gt;Hugo &lt;code&gt;menus.main&lt;/code&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;Docs / Book 侧栏与翻页&lt;/td&gt;&#xA;      &lt;td&gt;内容树或 &lt;code&gt;data/docs_nav.json&lt;/code&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;根栏目切换器&lt;/td&gt;&#xA;      &lt;td&gt;解析后的顶层内容根&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;内容发现&lt;/td&gt;&#xA;      &lt;td&gt;各语言的本地搜索索引&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;页面与命令面板操作&lt;/td&gt;&#xA;      &lt;td&gt;共享操作注册表&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;任何功能都不能引入另一套菜单或页面树。菜单只允许一层子项交互；更深层级会警告，&#xA;并平铺到带链接的分组标题下。外部链接使用&#xA;&lt;code&gt;target=&amp;quot;_blank&amp;quot; rel=&amp;quot;noopener noreferrer&amp;quot;&lt;/code&gt;；内部链接保持语言与子路径感知。&lt;/p&gt;</description>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 1.2.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本契约描述 v1.2.0 的正式行为。唯一的中英文契约源文件位于&#xA;&lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;authorities-and-navigation&#34;&gt;权威来源与导航&#xA;&lt;/h2&gt;&#xA;&lt;div class=&#34;td-table-scroll td-table-scroll--static&#34;&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;th scope=&#34;col&#34;&gt;关注点&lt;/th&gt;&#xA;      &lt;th scope=&#34;col&#34;&gt;权威来源&lt;/th&gt;&#xA;    &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;全局导航&lt;/td&gt;&#xA;      &lt;td&gt;Hugo &lt;code&gt;menus.main&lt;/code&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;Docs / Book 侧栏与翻页&lt;/td&gt;&#xA;      &lt;td&gt;内容树或 &lt;code&gt;data/docs_nav.json&lt;/code&gt;&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;根栏目切换器&lt;/td&gt;&#xA;      &lt;td&gt;解析后的顶层内容根&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;内容发现&lt;/td&gt;&#xA;      &lt;td&gt;各语言的本地搜索索引&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr&gt;&#xA;      &lt;td&gt;页面与命令面板操作&lt;/td&gt;&#xA;      &lt;td&gt;共享操作注册表&lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;任何功能都不能引入另一套菜单或页面树。菜单只允许一层子项交互；更深层级会警告，&#xA;并平铺到带链接的分组标题下。外部链接使用&#xA;&lt;code&gt;target=&amp;quot;_blank&amp;quot; rel=&amp;quot;noopener noreferrer&amp;quot;&lt;/code&gt;；内部链接保持语言与子路径感知。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>OINK CLI 文档维护路线图</title>
+        <link>http://localhost:1313/zh/docs/design/proposals/oink-cli-maintenance-roadmap/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/proposals/oink-cli-maintenance-roadmap/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;已实现需求记录&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;有限 R1–R8 受支持本地实现与 A18 运行时/归档范围对验收增补记录的历史源码和&#xA;二进制通过；当前精简 CLI 需要独立验证。本记录保留原 URL&#xA;与锚点，保留历史排期文本和失败试验；稳定行为归属&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/decisions/cli/&#34;&gt;CLI 契约&lt;/a&gt;与&lt;a href=&#34;http://localhost:1313/zh/docs/start/cli/&#34;&gt;指南&lt;/a&gt;，历史证据归属&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/#a18&#34;&gt;2026-10-04 增补&lt;/a&gt;。&#xA;记录退出活动导航，未启动 E1–E4 是独立非活动范围。渲染导航/URL 验证需要这些准确晋升字节的独立收据。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>社区 Issue 与 PR 调研，2026-09-19</title>
+        <link>http://localhost:1313/zh/docs/design/research/2026-09-19-upstream-review/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/research/2026-09-19-upstream-review/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;原始调研快照&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本文记录 2026-09-19 的源码审查、GitHub 实时状态、本地构建与定向浏览器观察。&#xA;初始调研完成时，这些建议尚未成为已接受契约，功能也尚未实现；当时没有合并 PR、&#xA;发布版本或向贡献者发送回复。文末的实施补记单独记录了随后完成的变更。&lt;/p&gt;</description>
       </item>
     <item>
         <title>Book 出版链路</title>
@@ -124,7 +172,7 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/zh/docs/design/landing/</guid>
-        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;这是随 OINK 0.8.0 正式发布的落地页契约。本页是权威中文源文件，与英文版本&#xA;一同维护在 &lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;共享规则见&lt;a href=&#34;http://localhost:1313/zh/docs/design/architecture/&#34;&gt;架构契约&lt;/a&gt;与&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/components/&#34;&gt;组件契约&lt;/a&gt;；迁移行为属于&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/migration/&#34;&gt;迁移边界&lt;/a&gt;。&lt;/p&gt;&#xA;&lt;h2 id=&#34;shell-and-data&#34;&gt;外壳与数据&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;任何普通页面都可以声明 &lt;code&gt;layout: landing&lt;/code&gt;。它渲染顶部导航栏、全宽画布与页脚，&#xA;不显示 docs 侧栏或 TOC 导轨。首页继续把 &lt;code&gt;data/home/&amp;lt;lang&amp;gt;.yaml&lt;/code&gt; 作为兼容的创作&#xA;路径，并通过同一个渲染器处理。&lt;/p&gt;</description>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 1.2.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本契约描述 v1.2.0 的正式行为。唯一的中英文契约源文件位于&#xA;&lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;共享规则见&lt;a href=&#34;http://localhost:1313/zh/docs/design/architecture/&#34;&gt;架构契约&lt;/a&gt;与&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/components/&#34;&gt;组件契约&lt;/a&gt;；迁移行为属于&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/migration/&#34;&gt;迁移边界&lt;/a&gt;。&lt;/p&gt;&#xA;&lt;h2 id=&#34;shell-and-data&#34;&gt;外壳与数据&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;任何普通页面都可以声明 &lt;code&gt;layout: landing&lt;/code&gt;。它渲染顶部导航栏、全宽画布与页脚，&#xA;不显示 docs 侧栏或 TOC 导轨。首页继续把 &lt;code&gt;data/home/&amp;lt;lang&amp;gt;.yaml&lt;/code&gt; 作为兼容的创作&#xA;路径，并通过同一个渲染器处理。&lt;/p&gt;</description>
       </item>
     <item>
         <title>生成式配置 Schema</title>
@@ -135,12 +183,60 @@
         <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;决策&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;&lt;code&gt;schema/&lt;/code&gt; 下的两份 JSON Schema 由 &lt;code&gt;bin/generate-config-schema.py&lt;/code&gt; 从主题的&#xA;&lt;code&gt;hugo.yaml&lt;/code&gt; 与模板读取点投影生成，手工编辑无法通过 CI。Schema 是既有权威的&#xA;只读投影，不是第三个配置权威。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;context&#34;&gt;背景&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;主题已有两个配置权威：&lt;code&gt;hugo.yaml&lt;/code&gt; 在注释旁声明每个默认值；&lt;code&gt;check-params.py&lt;/code&gt;&#xA;的读取点扫描知道模板实际消费的每一个键。编辑器对两者一无所知，作者只能凭记忆&#xA;敲 &lt;code&gt;params.ui.*&lt;/code&gt; 和 front matter。&lt;/p&gt;</description>
       </item>
     <item>
+        <title>视觉预设与外观切换</title>
+        <link>http://localhost:1313/zh/docs/design/proposals/visual-presets/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/proposals/visual-presets/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;第一阶段随 1.2.0 发布，Ink/Terminal 可显式启用&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;Paper、Slate 与外观菜单已随 OINK 1.2.0 发布。当前行为与证据由&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/architecture/#visual-presets&#34;&gt;架构契约&lt;/a&gt;、&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/decisions/visual-presets/&#34;&gt;已接受决策&lt;/a&gt;和&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/research/2026-10-05-visual-presets-acceptance/&#34;&gt;验收记录&lt;/a&gt;管理。&#xA;随后的 &lt;a href=&#34;http://localhost:1313/zh/docs/design/research/2026-10-05-ink-terminal-experiment/&#34;&gt;Ink/Terminal 实验&lt;/a&gt;提供真实可切换输出；本提案继续承载两者的设计定稿。10 月 4 日注入样式生成的截图仍是研究原型，&#xA;与 10 月 5 日真实主题输出截图分开看待。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>OINK 1.1 发布审查，2026-09-20</title>
+        <link>http://localhost:1313/zh/docs/design/research/2026-09-20-release-review/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/research/2026-09-20-release-review/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;发布准备，不是发布声明&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本文分别记录审查基线、已提交修复、已完成验证与尚待执行的发布步骤。基线 CI 通过不能&#xA;证明后续修复也已通过验收。从正文到“限制”保留发布前快照；后续已核实的发布证据追加在&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/research/2026-09-20-release-review/#publication-follow-up&#34;&gt;发布后续&lt;/a&gt;中。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>可选 CLI 与结果契约</title>
+        <link>http://localhost:1313/zh/docs/design/decisions/cli/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/decisions/cli/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;当前范围；本地候选&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本契约描述 2026-10-04 收缩后的本地 &lt;code&gt;0.1.0-dev&lt;/code&gt; 命令界面。保留站点诊断、&#xA;真实 Hugo 检查、初始化、构建、升级及有保护的维护计划；使用 Cobra、默认彩色&#xA;英文文本与 JSON/YAML 结果。Studio、通用编辑、context、snippets、editor 与&#xA;CI 生成已撤下。历史 R1–R8 验收只对记录中的源码和二进制成立，不能替代当前验证。&#xA;尚未建立公开 CLI 发布、Homebrew 分发或部署。&lt;/p&gt;</description>
+      </item>
+    <item>
         <title>OINK 迁移边界</title>
         <link>http://localhost:1313/zh/docs/design/migration/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/zh/docs/design/migration/</guid>
-        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;这是随 OINK 0.8.0 正式发布的迁移契约。本页是权威中文源文件，与英文版本&#xA;一同维护在 &lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;这是源码与配置指南，不是版本发布流水账。本地源码、提交、标签、推送、消费站点&#xA;固定版本、部署与生产一致仍是彼此独立的状态。面向读者的升级流程见&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/admin/upgrade/&#34;&gt;版本升级&lt;/a&gt;。&lt;/p&gt;</description>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 1.2.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本契约描述 v1.2.0 的正式行为。唯一的中英文契约源文件位于&#xA;&lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;这是源码与配置指南，不是版本发布流水账。本地源码、提交、标签、推送、消费站点&#xA;固定版本、部署与生产一致仍是彼此独立的状态。面向读者的升级流程见&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/admin/upgrade/&#34;&gt;版本升级&lt;/a&gt;。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>Paper 与 Slate 视觉预设</title>
+        <link>http://localhost:1313/zh/docs/design/decisions/visual-presets/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/decisions/visual-presets/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 1.2.0&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;Paper 与 Slate 已随 1.2.0 发布。Ink 与 Terminal 作为显式启用的风格一同提供，&#xA;后续设计工作见下文记录。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;decision&#34;&gt;决策&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Paper 成为默认，使用暖纸色与墨色、蓝色链接、IBM Plex Sans、标题细线和外框&#xA;表格。Slate 保留 v1.1.0 色板、Inter/Chakra/Plex Mono 字体角色与 Landing 网格、&#xA;光晕。这样为阅读站点提供更安静的默认外观，同时保留明确的兼容选项。代价是默认&#xA;外观发生可见变化：原站点可设置 &lt;code&gt;params.ui.preset: slate&lt;/code&gt;。1.2.0 发布注记与升级指南已醒目说明此变化。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>2026-10-03 CLI 维护验收</title>
+        <link>http://localhost:1313/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;历史源码与二进制证据&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本记录保留此前 R1–R8/A18 验收，不随命令调整重写历史结果。2026-10-04 的&#xA;CLI 精简与 Cobra/文本/JSON/YAML 界面以&lt;a href=&#34;http://localhost:1313/zh/docs/design/decisions/cli/&#34;&gt;当前契约&lt;/a&gt;和&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/start/cli/&#34;&gt;指南&lt;/a&gt;为准；旧运行时资格不能自动证明修改后的二进制。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>2026-09-29 CLI 验收快照</title>
+        <link>http://localhost:1313/zh/docs/design/research/2026-09-29-cli-acceptance/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh/docs/design/research/2026-09-29-cli-acceptance/</guid>
+        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;本地实现与验收完成&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本地 &lt;code&gt;0.1.0-dev&lt;/code&gt; 实现已通过本文记录的检查，CLI 源码已提交为 &lt;code&gt;e623d93&lt;/code&gt;。&#xA;公开发布、下游采用和生产部署仍是独立状态，本轮未执行。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;inputs&#34;&gt;输入与方法&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;CLI 位于独立的 &lt;code&gt;oink-cli&lt;/code&gt; Go 仓库。已接受的边界见&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/design/decisions/cli/&#34;&gt;CLI 与结果契约&lt;/a&gt;，可复现的用户步骤见&#xA;&lt;a href=&#34;http://localhost:1313/zh/docs/start/cli/&#34;&gt;使用指南&lt;/a&gt;。Hugo 继续作为外部渲染器，生成站点保留普通&#xA;Hugo 输入。&lt;/p&gt;</description>
       </item>
     <item>
         <title>设计决策</title>
@@ -156,7 +252,7 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/zh/docs/design/</guid>
-        <description>&lt;div class=&#34;td-callout td-callout--important&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 0.8.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本专栏公开随 OINK 0.8.0 正式发布的维护者契约，兼容性下限为 Hugo Extended&#xA;0.160.1。唯一的中英文契约源文件位于本站仓库的 &lt;code&gt;content/docs/design/&lt;/code&gt;。&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;本专栏是 OINK 可长期维护的设计记录。站内其它专栏按任务讲解如何搭建站点；&#xA;这里集中说明现行不变量、这些选择背后的理由、用于比较方案的证据，以及仍处于&#xA;候选阶段的工作。&lt;/p&gt;</description>
+        <description>&lt;div class=&#34;td-callout td-callout--note&#34; role=&#34;note&#34;&gt;&#xA;  &lt;div class=&#34;td-callout__title&#34;&gt;&lt;i class=&#34;td-callout__icon fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;span class=&#34;td-callout__label&#34;&gt;OINK 1.2.0 契约&lt;/span&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;td-callout__body&#34;&gt;&#xA;&lt;p&gt;本契约描述 v1.2.0 的正式行为。唯一的中英文契约源文件位于&#xA;&lt;code&gt;content/docs/design/&lt;/code&gt;。&#xA;Hugo Extended 0.160.1 仍为兼容下限，CI 固定使用 0.165.0；下限版本&#xA;不作为第二套完整 CI 矩阵。&lt;/p&gt;</description>
       </item>
     <item>
         <title>设计研究</title>

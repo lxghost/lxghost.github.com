@@ -5,6 +5,8 @@ description: The canonical bilingual home for OINK PRDs and designs that are sti
 weight: 80
 icon: fa-solid fa-compass-drafting
 no_list: true
+cascade:
+  search_boost: 0.35
 search_keywords: [proposal, PRD, design draft, roadmap, RFC]
 design_kind: proposal-index
 design_status: active
@@ -26,8 +28,19 @@ or the documentation repository.
 | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
 | [Backlinks and knowledge graph](/docs/design/proposals/knowledge-graph/) | G1 (static backlinks) is accepted, implemented on the theme's main branch, and ships with OINK 0.8.0; the local and global graphs (G2/G3) remain draft |
 | [Media convergence](/docs/design/proposals/media-convergence/)           | Partially implemented; the media-result contract and Landing resource metadata shipped, M3 resolved for native-image processing, retirement (M4) open |
-| [Bulk agent indexes](/docs/design/proposals/agent-indexes/)              | Accepted (2026-08-27); both outputs are implemented on the theme's main branch and ship with OINK 0.8.0, after which this proposal retires |
-| [Book publication pipeline](/docs/design/proposals/book-publication/)    | Manifest and EPUB/PDF tooling are released — see [Architecture](/docs/design/architecture/); only consumer migration is still open here |
+| [OINK CLI and the next product stage](/docs/design/proposals/oink-cli-roadmap/) | Independent Go repository and first-stage boundary accepted; local CLI candidate implemented, not publicly released; later theme, migration, adoption, versioning, OpenAPI, and platform stages remain proposals |
+| [Visual presets and appearance switching](/docs/design/proposals/visual-presets/) | Paper/Slate locally implemented; Ink/Terminal remain research; see the accepted decision and dated acceptance record |
+
+The bulk agent-index proposal retired after the outputs shipped. Its stable
+behaviour now belongs to [Architecture](/docs/design/architecture/#outputs-and-runtime),
+and user steps belong to [Agent-ready output](/docs/customize/agents/).
+The Book publication proposal likewise retired after `BookManifest` and the
+EPUB/PDF tooling shipped. The stable behaviour belongs to
+[Architecture](/docs/design/architecture/#outputs-and-runtime) and
+[Writing a book](/docs/write/book/#print); dated downstream adoption evidence
+belongs to [Consumer evidence](/docs/design/research/consumer-evidence/#publication-adoption).
+Remaining consumer adoption does not keep an upstream design proposal active.
+Both proposal drafts remain available in Git history.
 
 The generated-configuration-schema proposal has been retired through the
 lifecycle: the behaviour is documented normatively in
@@ -35,6 +48,16 @@ lifecycle: the behaviour is documented normatively in
 rationale moved to the
 [generated configuration schema decision](/docs/design/decisions/config-schema/),
 and the draft text is preserved by Git history.
+
+## CLI workspaces and adapters {#cli-maintenance-candidate}
+
+Explicit workspaces and optional adapters remain in the current reduced CLI.
+The [current contract](/docs/design/decisions/cli/#workspace-registry) and
+[usage guide](/docs/start/cli/#workspace-registry) define the command boundary.
+The dated R1–R8 and A18 record is historical source/binary-bound evidence.
+It does not qualify later command or output changes. The finite maintenance
+roadmap remains retired from active navigation; no public CLI release or
+deployment is established.
 
 ## Where a new PRD goes {#where-a-new-prd-goes}
 
@@ -88,3 +111,17 @@ implementation, a changed design updates this bilingual proposal before code
 silently diverges. Acceptance requires the narrow theme checker, the real
 documentation site, rendered EN/ZH, relevant outputs, accessibility, and
 responsive review.
+
+## Read-only Studio candidate {#cli-studio-candidate}
+
+Studio is removed from the current CLI on 2026-10-04. Use `oink dev`,
+an ordinary editor, and structured `inspect`/`check` reports. The
+[R7 record](/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r7)
+preserves historical acceptance of the earlier browser implementation.
+
+## Reviewed editing {#cli-editing-candidate}
+
+General source editing is removed from the current CLI. Guarded `new`,
+`move`, review records, and baseline plans remain. Old editing plans are
+rejected. The [R8 record](/docs/design/research/2026-10-03-cli-maintenance-acceptance/#r8)
+remains historical evidence rather than the current command API.

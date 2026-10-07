@@ -1,6 +1,6 @@
 # 设计与开发
 
-> 在唯一的双语专栏中管理 OINK 维护者契约、已接受决策、定期研究与候选提案。
+> 在唯一的双语专栏中管理 OINK 维护者契约、已接受决策、带日期的研究记录与候选提案。
 
 ---
 
@@ -8,9 +8,11 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 
 ---
 
-> [!IMPORTANT] OINK 0.8.0 契约
-> 本专栏公开随 OINK 0.8.0 正式发布的维护者契约，兼容性下限为 Hugo Extended
-> 0.160.1。唯一的中英文契约源文件位于本站仓库的 `content/docs/design/`。
+> [!NOTE] OINK 1.2.0 契约
+> 本契约描述 v1.2.0 的正式行为。唯一的中英文契约源文件位于
+> `content/docs/design/`。
+> Hugo Extended 0.160.1 仍为兼容下限，CI 固定使用 0.165.0；下限版本
+> 不作为第二套完整 CI 矩阵。
 
 本专栏是 OINK 可长期维护的设计记录。站内其它专栏按任务讲解如何搭建站点；
 这里集中说明现行不变量、这些选择背后的理由、用于比较方案的证据，以及仍处于
@@ -29,7 +31,7 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 
 | 契约                                      | 权威范围                                             |
 | ----------------------------------------- | ---------------------------------------------------- |
-| [架构契约](/zh/docs/design/architecture/) | 构建、配置、诊断、特色图片、输出、安全、无障碍与性能 |
+| [架构契约](/zh/docs/design/architecture/) | 构建、配置、诊断、本地化、特色图片、输出、安全、无障碍与性能 |
 | [组件契约](/zh/docs/design/components/)   | 组件 API、Book 与发布原语、校验和输出降级            |
 | [外壳与导航契约](/zh/docs/design/shell/)  | 导航、搜索、博客展示、操作、分类法与页尾组合         |
 | [落地页契约](/zh/docs/design/landing/)    | 落地页数据、22 种区块注册表、运行时、无障碍与输出    |
@@ -62,19 +64,20 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 
 本节页面：
 
-- [架构契约](/zh/docs/design/architecture/): 仓库装配、配置、诊断、输出、性能、安全、CSS、无障碍与发布状态的边界。
+- [架构契约](/zh/docs/design/architecture/): 仓库装配、配置、诊断、本地化、输出、性能、安全、CSS、无障碍与发布状态的边界。
 - [组件契约](/zh/docs/design/components/): OINK 创作原语、校验、Book、发布行为与输出降级的维护者契约。
 - [外壳与导航契约](/zh/docs/design/shell/): 导航权威、沉浸式博客、搜索、操作、分类法、索引与页尾组合契约。
 - [落地页契约](/zh/docs/design/landing/): 落地页数据、内置区块注册表、语言解析、运行时、无障碍与输出的维护者契约。
-- [OINK 迁移边界](/zh/docs/design/migration/): 从 OINK 0.4 到 OINK 0.8.0 所支持的源码、配置与验证迁移边界。
+- [OINK 迁移边界](/zh/docs/design/migration/): OINK 迁移所支持的源码、配置与验证边界，包含 1.2.0 变化。
 - [设计决策](/zh/docs/design/decisions/): 解释 OINK 现行公开契约与实现为何采用当前形态的已接受选择。
-- [设计研究](/zh/docs/design/research/): 用于形成 OINK 设计决策的定期实验与消费站证据，不具备规范效力。
+- [设计研究](/zh/docs/design/research/): 用于形成 OINK 设计决策的带日期的实验与消费站证据，不具备规范效力。
 - [设计提案与 PRD](/zh/docs/design/proposals/): 仍在评估中的 OINK PRD 与设计草案的唯一双语归档位置。
 
 ---
 
 反链：
 
+- [OINK v1.0.0](/zh/blog/release/1.0.0/)
 - [OINK 文档](/zh/case/oink/)
 - [文档](/zh/docs/)
 - [决策](/zh/docs/design/decisions/)

@@ -71,7 +71,7 @@
   <meta itemprop="name" content="键盘导航">
   <meta itemprop="description" content="全部单键快捷键、它们何时让行给输入，以及按站点或按页面关闭的方法。">
   <meta itemprop="dateModified" content="2026-08-28T00:08:16+08:00">
-  <meta itemprop="wordCount" content="2090">
+  <meta itemprop="wordCount" content="2482">
   <meta itemprop="keywords" content="定制站点">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="键盘导航">
@@ -349,7 +349,7 @@
       <span class="td-shell-root__icon"><i class="fa-solid fa-book" aria-hidden="true"></i></span>
       <span class="td-shell-root__meta">
         <span class="td-shell-root__item-title">文档</span>
-        <span class="td-shell-root__item-desc">OINK 是一款只需 Hugo Extended 的技术文档主题：组件写在 Markdown 里，资源随主题分发，双语开箱可用，一份内容产出四种输出。</span>
+        <span class="td-shell-root__item-desc">为文档、博客、书籍与 API 参考建立统一的技术内容站点，共用导航、多语言与搜索。</span>
       </span>
       <span class="td-shell-root__check"><i class="td-shell-icon td-shell-icon--check fa-solid fa-check" aria-hidden="true"></i></span>
     </a>
@@ -413,7 +413,7 @@
   </li><li class="td-shell-tree__item td-has-child"
       id="m-zhdocsstart-li">
     <div class="td-shell-tree__row">
-      <a href="/zh/docs/start/" title="十分钟上手"
+      <a href="/zh/docs/start/" title="快速上手"
         class="td-shell-tree__link"
         id="m-zhdocsstart"><i class="fa-solid fa-rocket" aria-hidden="true"></i><span>快速上手</span></a>
       <button type="button" class="td-shell-tree__chevron" data-td-shell-tree-toggle
@@ -424,9 +424,17 @@
     </div><div id="m-zhdocsstart-children" class="td-shell-tree__children">
         <div class="td-shell-tree__children-inner">
           <ul class="td-shell-tree__list td-shell-tree__list--2"><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocsstartstarter-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/start/starter/" title="使用 OINK Starter"
+        class="td-shell-tree__link"
+        id="m-zhdocsstartstarter"><span>OINK Starter</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
       id="m-zhdocsstartanatomy-li">
     <div class="td-shell-tree__row">
-      <a href="/zh/docs/start/anatomy/" title="仓库导览"
+      <a href="/zh/docs/start/anatomy/" title="Starter 仓库导览"
         class="td-shell-tree__link"
         id="m-zhdocsstartanatomy"><span>仓库导览</span></a>
       
@@ -437,6 +445,22 @@
       <a href="/zh/docs/start/from-scratch/" title="从零建站与其它安装方式"
         class="td-shell-tree__link"
         id="m-zhdocsstartfrom-scratch"><span>从零建站</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocsstartcli-overview-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/start/cli-overview/" title="OINK CLI 功能与后续方向"
+        class="td-shell-tree__link"
+        id="m-zhdocsstartcli-overview"><span>CLI 功能概览</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocsstartcli-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/start/cli/" title="使用 OINK CLI"
+        class="td-shell-tree__link"
+        id="m-zhdocsstartcli"><span>OINK CLI</span></a>
       
     </div>
   </li></ul>
@@ -988,6 +1012,22 @@
         id="m-zhdocsdesigndecisionsconfig-schema"><span>配置 Schema</span></a>
       
     </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesigndecisionscli-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/decisions/cli/" title="可选 CLI 与结果契约"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesigndecisionscli"><span>CLI 契约</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesigndecisionsvisual-presets-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/decisions/visual-presets/" title="Paper 与 Slate 视觉预设"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesigndecisionsvisual-presets"><span>视觉预设</span></a>
+      
+    </div>
   </li></ul>
         </div>
       </div>
@@ -1013,6 +1053,30 @@
       
     </div>
   </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesignresearch2026-10-05-ink-terminal-experiment-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/research/2026-10-05-ink-terminal-experiment/" title="Ink 与 Terminal 实验，2026-10-05"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignresearch2026-10-05-ink-terminal-experiment"><span>Ink / Terminal 实验</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesignresearch2026-10-05-v1-2-release-review-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/research/2026-10-05-v1-2-release-review/" title="OINK 1.2 发布前审查，2026-10-05"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignresearch2026-10-05-v1-2-release-review"><span>OINK 1.2 发布前审查</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesignresearch2026-10-05-visual-presets-acceptance-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/research/2026-10-05-visual-presets-acceptance/" title="视觉预设验收，2026-10-05"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignresearch2026-10-05-visual-presets-acceptance"><span>预设验收</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
       id="m-zhdocsdesignresearchconsumer-evidence-li">
     <div class="td-shell-tree__row">
       <a href="/zh/docs/design/research/consumer-evidence/" title="消费站与迁移证据"
@@ -1026,6 +1090,38 @@
       <a href="/zh/docs/design/research/2026-08-26-comprehensive-review/" title="OINK 全面审查（2026-08-26）"
         class="td-shell-tree__link"
         id="m-zhdocsdesignresearch2026-08-26-comprehensive-review"><span>2026-08-26 全面审查</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesignresearch2026-09-19-upstream-review-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/research/2026-09-19-upstream-review/" title="社区 Issue 与 PR 调研，2026-09-19"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignresearch2026-09-19-upstream-review"><span>2026-09-19 社区反馈调研</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesignresearch2026-09-20-release-review-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/research/2026-09-20-release-review/" title="OINK 1.1 发布审查，2026-09-20"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignresearch2026-09-20-release-review"><span>2026-09-20 发布审查</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesignresearch2026-10-03-cli-maintenance-acceptance-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/" title="2026-10-03 CLI 维护验收"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignresearch2026-10-03-cli-maintenance-acceptance"><span>2026-10-03 CLI 维护</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesignresearch2026-09-29-cli-acceptance-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/research/2026-09-29-cli-acceptance/" title="2026-09-29 CLI 验收快照"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignresearch2026-09-29-cli-acceptance"><span>2026-09-29 CLI 验收</span></a>
       
     </div>
   </li></ul>
@@ -1069,11 +1165,27 @@
       
     </div>
   </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesignproposalsoink-cli-roadmap-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/proposals/oink-cli-roadmap/" title="OINK CLI 与下一阶段产品路线"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignproposalsoink-cli-roadmap"><span>CLI 与路线图</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
       id="m-zhdocsdesignproposalsbook-publication-li">
     <div class="td-shell-tree__row">
       <a href="/zh/docs/design/proposals/book-publication/" title="Book 出版链路"
         class="td-shell-tree__link"
         id="m-zhdocsdesignproposalsbook-publication"><span>Book 出版</span></a>
+      
+    </div>
+  </li><li class="td-shell-tree__item td-leaf td-shell-tree__item--hidden"
+      id="m-zhdocsdesignproposalsvisual-presets-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/design/proposals/visual-presets/" title="视觉预设与外观切换"
+        class="td-shell-tree__link"
+        id="m-zhdocsdesignproposalsvisual-presets"><span>视觉预设</span></a>
       
     </div>
   </li></ul>
@@ -1082,6 +1194,14 @@
   </li></ul>
         </div>
       </div>
+  </li><li class="td-shell-tree__item td-leaf"
+      id="m-zhdocscli-li">
+    <div class="td-shell-tree__row">
+      <a href="/zh/docs/cli/" title="OINK CLI"
+        class="td-shell-tree__link"
+        id="m-zhdocscli"><span>CLI</span></a>
+      
+    </div>
   </li></ul>
         </div>
       </div>
@@ -1207,7 +1327,7 @@
     </tr>
     <tr>
       <td><span class="td-kbd-sequence"><kbd>Enter</kbd></span> <span class="td-kbd-sequence"><kbd>Space</kbd></span> <span class="td-kbd-sequence"><kbd>G</kbd></span></td>
-      <td>打开焦点所在的页面</td>
+      <td>激活焦点所在的项：打开页面链接，或展开/折叠分组按钮</td>
     </tr>
     <tr>
       <td><span class="td-kbd-sequence"><kbd>Esc</kbd></span></td>
@@ -1220,6 +1340,9 @@
 <p>四个字母键不需要先进入树：焦点还在正文时按 <span class="td-kbd-sequence"><kbd>S</kbd></span>，以当前页在侧栏里的那一项为起点下移一格并落焦。焦点行整行加深底色，比「当前页」的底色深一档，用于区分当前页与焦点位置。</p>
 <p>窄屏侧栏收进抽屉、或桌面侧栏被折叠时，第一次按这四个键先展开侧栏。页面没有侧栏树时静默。</p>
 <p>方向键 <strong>只在焦点已经进入侧栏后</strong> 才作用于树，正文里保持浏览器原生滚动。RTL 语言下 <span class="td-kbd-sequence"><kbd>←</kbd></span> <span class="td-kbd-sequence"><kbd>→</kbd></span> 随阅读方向对调，<span class="td-kbd-sequence"><kbd>A</kbd></span> <span class="td-kbd-sequence"><kbd>D</kbd></span> 恒等于「折叠 / 展开」。</p>
+<p>自 OINK 1.1 起，不发布自身页面的分组通过展开按钮参与导航。从子页按 <span class="td-kbd-sequence"><kbd>A</kbd></span>
+先回到父分组，再按一次才折叠；<span class="td-kbd-sequence"><kbd>D</kbd></span> 展开已折叠的分组，已展开时进入第一个
+可见子项。<span class="td-kbd-sequence"><kbd>Q</kbd></span> / <span class="td-kbd-sequence"><kbd>E</kbd></span> 翻页会跳过分组按钮。</p>
 <h2 id="reading">阅读<a class="td-heading-self-link" href="#reading" aria-label="标题锚点"></a>
 </h2>
 <div class="td-table-scroll" tabindex="0" role="region" aria-label="可横向滚动的表格">
@@ -1321,11 +1444,14 @@
 <li>焦点在 input、textarea、select 或 <code>contenteditable</code> 区域里；</li>
 <li>正在用输入法组字（中文站的硬约束）；</li>
 <li>按住修饰键时：<span class="td-kbd-sequence"><kbd>⌘</kbd><span class="td-kbd-sequence__separator" aria-hidden="true">+</span><span class="visually-hidden"> 加 </span><kbd>C</kbd></span> 仍是复制，<span class="td-kbd-sequence"><kbd>Shift</kbd><span class="td-kbd-sequence__separator" aria-hidden="true">+</span><span class="visually-hidden"> 加 </span><kbd>↓</kbd></span> 仍归浏览器；</li>
-<li>命令面板或别的对话框开着，键盘归那个弹层。</li>
+<li>命令面板、其他已打开的原生对话框或可见的 ARIA 对话框占用键盘。固定定位的 ARIA 对话框同样会阻止快捷键，隐藏的 ARIA 对话框则不会。</li>
 </ul>
 <p>评论区在 iframe 中，键事件不冒泡到页面，无需额外隔离。</p>
 <h2 id="a11y">焦点顺序与无障碍<a class="td-heading-self-link" href="#a11y" aria-label="标题锚点"></a>
 </h2>
+<p>自 OINK 1.1 起，隐藏的侧栏与抽屉内容退出键盘焦点范围。鼠标点击正文、表格
+滚动区或代码块后，再按其他键不会出现大范围边框。键盘焦点仍清晰可见：跳转链接在
+文章标题附近显示焦点提示，可滚动的表格和代码保留自己的焦点提示与键盘滚动能力。</p>
 <ul>
 <li><strong>跳转链接</strong>：进入页面后第一次按 <span class="td-kbd-sequence"><kbd>Tab</kbd></span> 出现的就是「跳转到主要内容」，一步跳过顶栏和侧栏。</li>
 <li><strong>真实焦点</strong>：树内导航移动的是真正的 DOM 焦点，不是虚拟光标。屏幕阅读器因此读出链接名与「当前页」标记，<span class="td-kbd-sequence"><kbd>Enter</kbd></span> 是链接的原生行为，Tab 顺序没有被改写。</li>
@@ -1376,15 +1502,20 @@
 </span></span></span><span class="line"><span class="cl"><span class="nn">---</span></span></span></code></pre></div></div>
   <span class="visually-hidden" role="status" aria-live="polite" data-td-code-status></span>
 </div>
-<p>这个键只接受布尔值，写成 <code>&quot;false&quot;</code> 或其它值时构建失败，报 <code>params.ui.keyboard_nav must be a boolean</code>。完整定义见<a href="/zh/docs/customize/config/">配置总览</a>。</p>
+<p>这个键只接受布尔值。写成 <code>&quot;false&quot;</code> 或其它值时，普通预览告警并使用站点默认值；
+严格发布构建因 <code>params.ui.keyboard_nav must be a boolean</code> 失败。完整定义见
+<a href="/zh/docs/customize/config/">配置总览</a>。</p>
 <p>关闭后运行时不进入 JavaScript bundle，而不是加载后再判断。<span class="td-kbd-sequence"><kbd>/</kbd></span>、反斜杠和 <span class="td-kbd-sequence"><kbd>⌘</kbd><span class="td-kbd-sequence__separator" aria-hidden="true">+</span><span class="visually-hidden"> 加 </span><kbd>K</kbd></span> 属于搜索，仍然可用；页脚折叠链接栅格的箭头不受影响。</p>
 <h2 id="verify">验证<a class="td-heading-self-link" href="#verify" aria-label="标题锚点"></a>
 </h2>
+<p>先在自己的站点根目录完成严格构建。下方命令中的
+<code>public/zh/docs/getting-started/index.html</code> 是示例；请换成自己站点实际生成的文档页，
+并按语言配置调整路径前缀。</p>
 <ol>
 <li>
 <p>构建后确认速查卡按钮在页面里：</p>
 <div class="td-code td-code--untitled" id="td-code-7ec7b3bb-fence-2" data-td-code data-td-code-auto-id
-     data-td-language="bash" data-td-line-count="1"><div class="td-code__utilities td-code__utilities--compact">
+     data-td-language="bash" data-td-line-count="3"><div class="td-code__utilities td-code__utilities--compact">
   <button class="td-code__copy" type="button" hidden data-td-code-copy
           data-td-code-target="td-code-7ec7b3bb-fence-2" data-td-copy-mode="all"
           data-td-label-copy="复制代码"
@@ -1394,7 +1525,9 @@
     <i class="fa-regular fa-copy" aria-hidden="true"></i>
   </button>
 </div>
-  <div class="td-code__viewport" id="td-code-7ec7b3bb-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grep -c <span class="s1">&#39;td-shell-keyboard__trigger&#39;</span> public/zh/docs/customize/keyboard/index.html</span></span></code></pre></div></div>
+  <div class="td-code__viewport" id="td-code-7ec7b3bb-fence-2-viewport" data-td-code-viewport><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo --printPathWarnings --panicOnWarning
+</span></span><span class="line"><span class="cl"><span class="nv">PAGE</span><span class="o">=</span>public/zh/docs/getting-started/index.html
+</span></span><span class="line"><span class="cl"><span class="nb">test</span> -f <span class="s2">&#34;</span><span class="nv">$PAGE</span><span class="s2">&#34;</span> <span class="o">&amp;&amp;</span> grep -c <span class="s1">&#39;td-shell-keyboard__trigger&#39;</span> <span class="s2">&#34;</span><span class="nv">$PAGE</span><span class="s2">&#34;</span></span></span></code></pre></div></div>
   <span class="visually-hidden" role="status" aria-live="polite" data-td-code-status></span>
 </div>
 <p>关闭键盘导航且没开本地搜索时，这个按钮整个不生成。</p>
@@ -1410,6 +1543,10 @@
 </li>
 <li>
 <p>系统里打开「减弱动态效果」，再按 <span class="td-kbd-sequence"><kbd>J</kbd></span>：应该瞬间定位，没有滑行。</p>
+</li>
+<li>
+<p>验证 1.1 的焦点修复时，先通过跳转链接进入正文，检查标题附近的焦点提示；再折叠
+侧栏并按 <span class="td-kbd-sequence"><kbd>Tab</kbd></span>，隐藏的链接应被跳过，恢复按钮仍然可以到达。</p>
 </li>
 </ol>
 <h2 id="related">相关<a class="td-heading-self-link" href="#related" aria-label="标题锚点"></a>
@@ -1545,7 +1682,7 @@
         <li class="td-shell-backlinks__item"><a href="/zh/docs/customize/config/" title="主题真正会读的每一个站点参数：类型、默认值、去哪一页改。查参数从这里开始。">配置总览</a></li>
         <li class="td-shell-backlinks__item"><a href="/zh/docs/customize/panel/" title="一个对话框同时承担页面搜索、页面动作与站点命令：如何打开、包含哪些分组、如何添加自定义命令。">命令面板</a></li>
         <li class="td-shell-backlinks__item"><a href="/zh/docs/customize/search/" title="打开本地搜索，控制索引体积与结果排序，让中文查询也能命中。">全文检索</a></li>
-        <li class="td-shell-backlinks__item"><a href="/zh/docs/write/frontmatter/" title="front matter 全表：主题真正读取的每一个页面键，按侧栏、外壳、搜索、输出、页尾、Book、Landing、发布页分组。">页面参数</a></li>
+        <li class="td-shell-backlinks__item"><a href="/zh/docs/write/frontmatter/" title="front matter 全表：主题读取的页面键与 1.x 兼容 no-op，按侧栏、外壳、搜索、输出、页尾、Book、Landing、发布页分组。">页面参数</a></li>
       </ul>
     </div>
   </div>
@@ -1563,11 +1700,11 @@
   <div id="td-shell-taxonomy-categories-zhdocs-children" class="td-shell-tree__children td-is-open">
     <div class="td-shell-tree__children-inner">
       <div class="td-shell-tags-cloud__chips">
+        <a class="td-shell-tag" href="/zh/categories/%E8%AE%BE%E8%AE%A1%E5%A5%91%E7%BA%A6/">
+          <span>设计契约</span><span class="td-shell-tag__count">32</span>
+        </a>
         <a class="td-shell-tag" href="/zh/categories/%E7%BB%84%E4%BB%B6/">
           <span>组件</span><span class="td-shell-tag__count">22</span>
-        </a>
-        <a class="td-shell-tag" href="/zh/categories/%E8%AE%BE%E8%AE%A1%E5%A5%91%E7%BA%A6/">
-          <span>设计契约</span><span class="td-shell-tag__count">20</span>
         </a>
         <a class="td-shell-tag" href="/zh/categories/%E5%AE%9A%E5%88%B6%E7%AB%99%E7%82%B9/">
           <span>定制站点</span><span class="td-shell-tag__count">15</span>
@@ -1581,9 +1718,6 @@
         <a class="td-shell-tag" href="/zh/categories/%E7%AE%80%E4%BB%8B/">
           <span>简介</span><span class="td-shell-tag__count">4</span>
         </a>
-        <a class="td-shell-tag" href="/zh/categories/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">
-          <span>快速上手</span><span class="td-shell-tag__count">3</span>
-        </a>
       </div>
     </div>
   </div>
@@ -1596,7 +1730,59 @@
     title="显示目录" aria-label="显示目录"><i class="td-shell-icon td-shell-icon--menu fa-solid fa-bars" aria-hidden="true"></i></button>
 </div>
       </div>
-      <footer class="td-shell-footline d-print-none" data-td-shell-footer>
+      <footer class="d-print-none" data-td-shell-footer>
+  <div class="td-site-footer" id="td-site-footer">
+    <div class="td-site-footer__container">
+      <div class="td-site-footer__inner">
+        <div class="td-site-footer__brand"><a class="td-site-footer__logo" href="/zh/" aria-label="PGSTY OINK">
+            <img src="/icons/logo.svg" alt="" width="28" height="28">
+            <span>PGSTY OINK</span>
+          </a><div class="td-site-footer__tagline"><strong>O</strong>pen <strong>I</strong>ndexed，<strong>N</strong>avigable <strong>K</strong>nowledge</div><div class="td-site-footer__slogan">A local-first, Hugo theme for engineering documentation</div>
+        </div>
+        <div class="td-site-footer__grid" style="--td-footer-cols: 4">
+          <nav class="td-site-footer__column" aria-label="产品">
+            <h2>产品</h2>
+            <ul>
+              <li><a href="/zh/docs/about/">OINK 是什么</a></li>
+              <li><a href="/zh/docs/about/features/">亮点特性</a></li>
+              <li><a href="/zh/docs/about/showcase/">示例站点</a></li>
+              <li><a href="/zh/docs/about/license/">开源许可与致谢</a></li>
+            </ul>
+          </nav>
+          <nav class="td-site-footer__column" aria-label="文档">
+            <h2>文档</h2>
+            <ul>
+              <li><a href="/zh/docs/start/">快速上手</a></li>
+              <li><a href="/zh/docs/write/">创作内容</a></li>
+              <li><a href="/zh/docs/components/">组件</a></li>
+              <li><a href="/zh/docs/customize/">定制站点</a></li>
+            </ul>
+          </nav>
+          <nav class="td-site-footer__column" aria-label="维护管理">
+            <h2>维护管理</h2>
+            <ul>
+              <li><a href="/zh/docs/admin/preview/">本地预览</a></li>
+              <li><a href="/zh/docs/admin/deploy/">发布上线</a></li>
+              <li><a href="/zh/docs/admin/upgrade/">版本升级</a></li>
+              <li><a href="/zh/docs/customize/config/">配置总览</a></li>
+            </ul>
+          </nav>
+          <nav class="td-site-footer__column" aria-label="社区与知识">
+            <h2>社区与知识</h2>
+            <ul>
+              <li><a href="/zh/blog/">博客</a></li>
+              <li><a href="/zh/blog/release/">版本发布</a></li>
+              <li><a href="https://github.com/pgsty/oink" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+              <li><a href="https://github.com/google/docsy/discussions" target="_blank" rel="noopener noreferrer">Docsy 讨论区</a></li>
+              <li><a href="https://pgsql.cc/docs/" target="_blank" rel="noopener noreferrer">PG 中文文档</a></li>
+              <li><a href="https://pg.center/docs/reference/" target="_blank" rel="noopener noreferrer">PG 知识图谱</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="td-shell-footline d-print-none">
   <div class="td-shell-footline__copy"><span class="td-footer__copyright">&copy; 2026
     <span class="td-footer__authors"><a href="https://vonng.com/en">Ruohang Feng</a> (<a href="https://github.com/Vonng">@Vonng</a>) @ <a href="https://pgsty.com/">PGSTY</a>, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a></span>
   </span><span class="td-footer__all_rights_reserved">保留所有权利</span></div>
@@ -1731,10 +1917,16 @@
     </section>
   </div>
 </div>
+    <button type="button" class="td-shell-footline__toggle" data-td-footer-toggle
+      aria-expanded="true" aria-controls="td-site-footer"
+      title="收起页脚链接" aria-label="收起页脚链接"
+      data-td-label-collapse="收起页脚链接"
+      data-td-label-expand="展开页脚链接"><i class="td-shell-icon td-shell-icon--chevron-down fa-solid fa-angle-down" aria-hidden="true"></i></button>
   </div>
+</div>
 </footer>
     </div>
-    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"复制 Markdown 文本","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["复制 Markdown 文本","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"复制 Markdown 文本","url":"/zh/docs/customize/keyboard/index.md"},{"available":true,"description":"复制链接","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["复制链接","分享","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"复制链接","url":"http://localhost:1313/zh/docs/customize/keyboard/"},{"available":true,"description":"在 ChatGPT 中打开","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["在 ChatGPT 中打开","就本页提问","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 ChatGPT 中打开","url":"https://chatgpt.com/?hints=search\u0026prompt=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fdocs%2Fcustomize%2Fkeyboard%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":true,"description":"在 Claude 中打开","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["在 Claude 中打开","就本页提问","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 Claude 中打开","url":"https://claude.ai/new?q=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fdocs%2Fcustomize%2Fkeyboard%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":true,"description":"查阅 Markdown 源码","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["查阅 Markdown 源码","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅 Markdown 源码","url":"/zh/docs/customize/keyboard/index.md"},{"available":true,"description":"查阅编辑历史","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["查阅编辑历史","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅编辑历史","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/customize/keyboard.zh.md"},{"available":true,"description":"编辑当前页面","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["编辑当前页面","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"编辑当前页面","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/customize/keyboard.zh.md"},{"available":true,"description":"添加子页面","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["添加子页面","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"添加子页面","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/customize?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"提交文档议题","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["提交文档议题","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交文档议题","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=%E9%94%AE%E7%9B%98%E5%AF%BC%E8%88%AA"},{"available":true,"description":"提交项目议题","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["提交项目议题","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交项目议题","url":"https://github.com/pgsty/oink/issues/new"},{"available":true,"description":"打印完整章节","disabledReason":"","icon":"fa-solid fa-print","id":"print_section","keywords":["打印完整章节","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"打印完整章节","url":"/zh/_print/docs/customize/"},{"available":true,"description":"打印此页面","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["打印此页面","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"打印此页面","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL 必填","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"切换语言","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["切换语言","language"],"kind":"choice","options":[{"active":false,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/customize/keyboard/"},{"active":true,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/customize/keyboard/"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换语言","url":""},{"available":false,"description":"外观","disabledReason":"暂不可用","icon":"fa-solid fa-palette","id":"switch_preset","keywords":["preset","style","Paper","Slate","风格"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"paper","title":"Paper","value":"paper"}],"placements":{"page":false,"palette":true},"target":"self","title":"风格","url":""},{"available":true,"description":"切换配色","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["切换配色","亮色","暗色"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"跟随系统","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"亮色","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"暗色","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换配色","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"报告或查看主题与文档问题","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["缺陷","支持","路线图"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK 问题反馈","url":"https://github.com/pgsty/oink/issues"}],"language":"zh","quickLinks":[{"available":true,"description":"OINK 是一款只需 Hugo Extended 的技术文档主题：组件写在 Markdown 里，资源随主题分发，双语开箱可用，一份内容产出四种输出。","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["文档","docs"],"kind":"url","target":"self","title":"文档","url":"/zh/docs/"},{"available":true,"description":"OINK 工程实践、沉浸式阅读指南与发布注记","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["博客","blog"],"kind":"url","target":"self","title":"博客","url":"/zh/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
+    <script type="application/json" id="td-action-manifest">{"actions":[{"available":true,"description":"复制 Markdown 文本","disabledReason":"","icon":"fa-regular fa-copy","id":"copy_markdown","keywords":["复制 Markdown 文本","markdown","copy"],"kind":"copy","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"复制 Markdown 文本","url":"/zh/docs/customize/keyboard/index.md"},{"available":true,"description":"复制链接","disabledReason":"","icon":"fa-solid fa-link","id":"copy_link","keywords":["复制链接","分享","link","url","permalink"],"kind":"copy","options":[],"placements":{"page":false,"palette":true},"target":"self","title":"复制链接","url":"http://localhost:1313/zh/docs/customize/keyboard/"},{"available":true,"description":"在 ChatGPT 中打开","disabledReason":"","icon":"fa-brands fa-openai","id":"open_chatgpt","keywords":["在 ChatGPT 中打开","就本页提问","chatgpt","gpt","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 ChatGPT 中打开","url":"https://chatgpt.com/?hints=search\u0026prompt=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fdocs%2Fcustomize%2Fkeyboard%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":true,"description":"在 Claude 中打开","disabledReason":"","icon":"fa-brands fa-claude","id":"open_claude","keywords":["在 Claude 中打开","就本页提问","claude","anthropic","ai","llm"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"promptTemplate":"请阅读 %s 的内容，以便我就此向你提问。","target":"blank","title":"在 Claude 中打开","url":"https://claude.ai/new?q=%E8%AF%B7%E9%98%85%E8%AF%BB+http%3A%2F%2Flocalhost%3A1313%2Fzh%2Fdocs%2Fcustomize%2Fkeyboard%2F+%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%88%91%E5%B0%B1%E6%AD%A4%E5%90%91%E4%BD%A0%E6%8F%90%E9%97%AE%E3%80%82"},{"available":true,"description":"查阅 Markdown 源码","disabledReason":"","icon":"fa-brands fa-markdown","id":"view_markdown","keywords":["查阅 Markdown 源码","markdown","source"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅 Markdown 源码","url":"/zh/docs/customize/keyboard/index.md"},{"available":true,"description":"查阅编辑历史","disabledReason":"","icon":"fa-solid fa-clock-rotate-left","id":"view_history","keywords":["查阅编辑历史","history","commits","changelog","git"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"查阅编辑历史","url":"https://github.com/pgsty/oink.pgsty.com/commits/main/content/docs/customize/keyboard.zh.md"},{"available":true,"description":"编辑当前页面","disabledReason":"","icon":"fa-solid fa-pencil","id":"edit_page","keywords":["编辑当前页面","edit","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"编辑当前页面","url":"https://github.com/pgsty/oink.pgsty.com/edit/main/content/docs/customize/keyboard.zh.md"},{"available":true,"description":"添加子页面","disabledReason":"","icon":"fa-solid fa-file-circle-plus","id":"create_child_page","keywords":["添加子页面","child","new","page"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"添加子页面","url":"https://github.com/pgsty/oink.pgsty.com/new/main/content/docs/customize?filename=change-me.md\u0026value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60get-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A"},{"available":true,"description":"提交文档议题","disabledReason":"","icon":"fa-solid fa-circle-question","id":"create_issue","keywords":["提交文档议题","issue","github"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交文档议题","url":"https://github.com/pgsty/oink.pgsty.com/issues/new?title=%E9%94%AE%E7%9B%98%E5%AF%BC%E8%88%AA"},{"available":true,"description":"提交项目议题","disabledReason":"","icon":"fa-solid fa-circle-exclamation","id":"create_project_issue","keywords":["提交项目议题","issue","github","project"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"blank","title":"提交项目议题","url":"https://github.com/pgsty/oink/issues/new"},{"available":true,"description":"打印完整章节","disabledReason":"","icon":"fa-solid fa-print","id":"print_section","keywords":["打印完整章节","print","section"],"kind":"url","options":[],"placements":{"page":true,"palette":true},"target":"self","title":"打印完整章节","url":"/zh/_print/docs/customize/"},{"available":true,"description":"打印此页面","disabledReason":"","icon":"fa-solid fa-print","id":"print","keywords":["打印此页面","print"],"kind":"invoke","options":[],"placements":{"page":false,"palette":false},"target":"self","title":"打印此页面","url":""},{"available":true,"description":"v0.8.0","disabledReason":"","icon":"fa-solid fa-code-branch","id":"switch_version","keywords":["v0.8.0","version"],"kind":"choice","options":[{"active":false,"available":false,"disabledReason":"URL 必填","id":"versions","title":"**Versions**","url":""},{"active":true,"available":true,"disabledReason":"","id":"v0.8.0","title":"v0.8.0","url":"https://oink.pgsty.com"}],"placements":{"page":false,"palette":true},"target":"self","title":"v0.8.0","url":""},{"available":true,"description":"切换语言","disabledReason":"","icon":"fa-solid fa-language","id":"switch_language","keywords":["切换语言","language"],"kind":"choice","options":[{"active":false,"available":true,"disabledReason":"","id":"en-US","title":"English","url":"/docs/customize/keyboard/"},{"active":true,"available":true,"disabledReason":"","id":"zh-CN","title":"简体中文","url":"/zh/docs/customize/keyboard/"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换语言","url":""},{"available":false,"description":"外观","disabledReason":"暂不可用","icon":"fa-solid fa-palette","id":"switch_preset","keywords":["preset","style","Paper","Slate","风格"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"paper","title":"Paper","value":"paper"}],"placements":{"page":false,"palette":true},"target":"self","title":"风格","url":""},{"available":true,"description":"切换配色","disabledReason":"","icon":"fa-solid fa-circle-half-stroke","id":"switch_theme","keywords":["切换配色","亮色","暗色"],"kind":"choice","options":[{"available":true,"disabledReason":"","id":"auto","title":"跟随系统","value":"auto"},{"available":true,"disabledReason":"","id":"light","title":"亮色","value":"light"},{"available":true,"disabledReason":"","id":"dark","title":"暗色","value":"dark"}],"placements":{"page":false,"palette":true},"target":"self","title":"切换配色","url":""},{"available":true,"description":"GitHub","disabledReason":"","icon":"fa-brands fa-github","id":"open_github","keywords":["GitHub","repository","source"],"kind":"url","options":[],"placements":{"page":false,"palette":true},"target":"blank","title":"GitHub","url":"https://github.com/pgsty/oink"}],"commands":[{"action":"","available":true,"description":"报告或查看主题与文档问题","disabledReason":"","icon":"fa-brands fa-github","id":"theme_issues","keywords":["缺陷","支持","路线图"],"kind":"url","placements":{"page":false,"palette":true},"target":"blank","title":"OINK 问题反馈","url":"https://github.com/pgsty/oink/issues"}],"language":"zh","quickLinks":[{"available":true,"description":"为文档、博客、书籍与 API 参考建立统一的技术内容站点，共用导航、多语言与搜索。","disabledReason":"","icon":"fa-solid fa-book","id":"quick_docs","keywords":["文档","docs"],"kind":"url","target":"self","title":"文档","url":"/zh/docs/"},{"available":true,"description":"OINK 工程实践、沉浸式阅读指南与发布注记","disabledReason":"","icon":"fa-solid fa-blog","id":"quick_blog","keywords":["博客","blog"],"kind":"url","target":"self","title":"博客","url":"/zh/blog/"}],"rootOrder":["docs","book","case","blog","github"],"version":1}</script>
 
 <script src="/js/actions.js"></script>
 <script src="/js/core.js"></script>
@@ -1778,6 +1970,6 @@
       <span><kbd>esc</kbd> 关闭</span>
     </div>
   </div>
-</div><script src="/js/chunks/shell.js"></script><script src="/js/chunks/keyboard.js"></script><script src="/js/chunks/local-search.js"></script><script src="/js/chunks/dark-mode.js"></script><script src="/js/chunks/appearance.js"></script><script src="/js/chunks/giscus.js"></script><script src="/js/chunks/code-block.js"></script>
+</div><script src="/js/chunks/shell.js"></script><script src="/js/chunks/keyboard.js"></script><script src="/js/chunks/footer-collapse.js"></script><script src="/js/chunks/local-search.js"></script><script src="/js/chunks/dark-mode.js"></script><script src="/js/chunks/appearance.js"></script><script src="/js/chunks/giscus.js"></script><script src="/js/chunks/code-block.js"></script>
   </body>
 </html>

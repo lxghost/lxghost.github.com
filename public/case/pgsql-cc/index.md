@@ -1,6 +1,6 @@
-# pgsql.cc
+# PostgreSQL ecosystem library
 
-> PGSQL.CC: an operations library for PostgreSQL and the components around it. Several upstream manuals and partially translated language trees share one search and one visual system.
+> A Hugo operations library for PostgreSQL components, with shared search and navigation across upstream manuals and partially translated language trees.
 
 ---
 
@@ -8,9 +8,11 @@ LLMS index: [llms.txt](/llms.txt)
 
 ---
 
-[pgsql.cc](https://pgsql.cc/) brings the operating manuals for Patroni, HAProxy,
+[The PostgreSQL ecosystem library](https://github.com/pgsty/pgsql.cc) brings the operating manuals for Patroni, HAProxy,
 etcd, PgBouncer, pgBackRest, and pgBadger into one PostgreSQL-focused library.
 The case snapshot counted 217 English pages and 80 Chinese pages.
+
+This case describes the Hugo component library. The [PGSQL.CC](https://pgsql.cc/) public portal is a separate Django application.
 
 ## What it demonstrates {#what-it-demonstrates}
 

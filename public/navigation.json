@@ -6,7 +6,7 @@
       {
         "children": [
           {
-            "description": "Install the one required tool, run a local preview, and establish a visible baseline before changing the design.",
+            "description": "Install the prerequisite tools, run a local preview, and establish a visible baseline before changing the design.",
             "id": "/book/01-start/",
             "kind": "section",
             "markdown": "http://localhost:1313/book/01-start/index.md",
@@ -72,79 +72,124 @@
       {
         "children": [
           {
-            "kind": "external",
+            "description": "PGSTY: the company behind Pigsty. A small bilingual corporate site that uses OINK primarily as a data-driven landing-page system.",
+            "id": "/case/pgsty-com/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/case/pgsty-com/index.md",
             "title": "pgsty.com",
-            "url": "https://pgsty.com/"
+            "url": "http://localhost:1313/case/pgsty-com/"
           },
           {
-            "kind": "external",
+            "description": "PIGSTY: the Chinese home of the open-source PostgreSQL distribution. Deployed as an independent single-language site so a very large translation corpus evolves on its own.",
+            "id": "/case/pigsty-cc/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/case/pigsty-cc/index.md",
             "title": "pigsty.cc",
-            "url": "https://pigsty.cc/"
+            "url": "http://localhost:1313/case/pigsty-cc/"
           },
           {
-            "kind": "external",
+            "description": "PIGSTY: the English home of the open-source PostgreSQL distribution. A large site combining a distribution manual, editorial blog, extension catalogue and pricing landing pages.",
+            "id": "/case/pigsty-io/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/case/pigsty-io/index.md",
             "title": "pigsty.io",
-            "url": "https://pigsty.io/"
+            "url": "http://localhost:1313/case/pigsty-io/"
           },
           {
-            "kind": "external",
+            "description": "SILO: the community-maintained MinIO fork for S3-compatible object storage. A large bilingual migration whose checked manifest generates the documentation navigation.",
+            "id": "/case/silo/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/case/silo/index.md",
             "title": "silo.pgsty.com",
-            "url": "https://silo.pgsty.com/"
+            "url": "http://localhost:1313/case/silo/"
           },
           {
-            "kind": "external",
+            "description": "OINK: the Hugo theme every site in this library is built with. Public manual, design reference, component gallery and regression fixture in one repository.",
+            "id": "/case/oink/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/case/oink/index.md",
             "title": "OINK Docs",
-            "url": "https://oink.pgsty.com/"
+            "url": "http://localhost:1313/case/oink/"
           },
           {
-            "kind": "external",
+            "description": "CapsLock: turn the most useless key on the keyboard into a fifth modifier. A two-page project site whose second page is a data-driven interactive configurator.",
+            "id": "/case/capslock/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/case/capslock/index.md",
             "title": "caps.vonng.com",
-            "url": "https://caps.vonng.com/"
+            "url": "http://localhost:1313/case/capslock/"
           },
           {
-            "kind": "external",
+            "description": "PIG: the package manager that installs any PostgreSQL extension. A compact bilingual product manual with a data-driven home page and an active companion blog.",
+            "id": "/case/pig/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/case/pig/index.md",
             "title": "pig.pgsty.com",
-            "url": "https://pig.pgsty.com/"
+            "url": "http://localhost:1313/case/pig/"
           },
           {
-            "kind": "external",
+            "description": "SOW: the repository manager that builds and mirrors APT and YUM software repositories. A bilingual operations manual with a download surface fed by release metadata.",
+            "id": "/case/sow/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/case/sow/index.md",
             "title": "sow.pgsty.com",
-            "url": "https://sow.pgsty.com/"
+            "url": "http://localhost:1313/case/sow/"
           },
           {
-            "kind": "external",
+            "description": "PG Exporter: the Prometheus metrics exporter for PostgreSQL and Pgbouncer. A bilingual manual combining generated navigation, a structured catalogue and system typography.",
+            "id": "/case/pg-exporter/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/case/pg-exporter/index.md",
             "title": "exp.pgsty.com",
-            "url": "https://exp.pgsty.com/"
+            "url": "http://localhost:1313/case/pg-exporter/"
           },
           {
-            "kind": "external",
+            "description": "DDIA: the Chinese edition of Designing Data-Intensive Applications. A multilingual book site and the largest proving ground for OINK numbering, cross-references and indexes.",
+            "id": "/case/ddia/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/case/ddia/index.md",
             "title": "DDIA",
-            "url": "https://ddia.vonng.com/"
+            "url": "http://localhost:1313/case/ddia/"
           },
           {
-            "kind": "external",
+            "description": "TPME: the Chinese edition of The Product-Minded Engineer. A focused bilingual publication that needs only OINK's Book shell.",
+            "id": "/case/tpme/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/case/tpme/index.md",
             "title": "TPME",
-            "url": "https://tpme.vonng.com/"
+            "url": "http://localhost:1313/case/tpme/"
           },
           {
-            "kind": "external",
+            "description": "PG Internals: the Chinese edition of PostgreSQL Internals. A single-language book site that runs the Book shell on its own, with no documentation tree beside it.",
+            "id": "/case/pg-internal/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/case/pg-internal/index.md",
             "title": "pgint.vonng.com",
-            "url": "https://pgint.vonng.com/"
+            "url": "http://localhost:1313/case/pg-internal/"
           },
           {
-            "kind": "external",
-            "title": "pgsql.cc",
-            "url": "https://pgsql.cc/"
+            "description": "A Hugo operations library for PostgreSQL components, with shared search and navigation across upstream manuals and partially translated language trees.",
+            "id": "/case/pgsql-cc/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/case/pgsql-cc/index.md",
+            "title": "PostgreSQL ecosystem library",
+            "url": "http://localhost:1313/case/pgsql-cc/"
           },
           {
-            "kind": "external",
+            "description": "PIGSTY PRO: the enterprise edition of Pigsty. A bilingual documentation and release archive built around reusable, structured release records.",
+            "id": "/case/pgsty-pro/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/case/pgsty-pro/index.md",
             "title": "pgsty.pro",
-            "url": "https://pgsty.pro/"
+            "url": "http://localhost:1313/case/pgsty-pro/"
           },
           {
-            "kind": "external",
+            "description": "PGEXT: the PostgreSQL extension catalog. 2,241 extensions indexed and 576 packaged, searchable across 16 Linux platforms and 5 major versions.",
+            "id": "/case/pgext-cloud/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/case/pgext-cloud/index.md",
             "title": "ext.pgsty.com",
-            "url": "https://ext.pgsty.com/"
+            "url": "http://localhost:1313/case/pgext-cloud/"
           }
         ],
         "description": "Fifteen real sites show how OINK scales from a two-page utility to a multilingual documentation estate and three books.",
@@ -158,6 +203,46 @@
         "children": [
           {
             "children": [
+              {
+                "description": "OINK 1.2.0 introduces Paper, Slate, Ink and Terminal, independent style and light/dark controls, local fonts, clearer search, consistent navigation, and safer book publishing and site maintenance.",
+                "id": "/blog/release/1.2.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/blog/release/1.2.0/index.md",
+                "title": "OINK v1.2.0",
+                "url": "http://localhost:1313/blog/release/1.2.0/"
+              },
+              {
+                "description": "OINK 1.1.0 brings 32 native interface catalogs, taxonomy directories, reliable sidebar state, site-owned search actions, and fixes for printing, keyboard focus, and copying images.",
+                "id": "/blog/release/1.1.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/blog/release/1.1.0/index.md",
+                "title": "OINK v1.1.0",
+                "url": "http://localhost:1313/blog/release/1.1.0/"
+              },
+              {
+                "description": "OINK 1.0.0 makes the current knowledge-publishing contracts stable and rolls up every theme change since 0.8.0: Print and Book correctness, pinned Go 1.27 and Hugo 0.165.0 release tooling, a supported Starter, and the public metadata and media needed to enter the wider Hugo ecosystem.",
+                "id": "/blog/release/1.0.0/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/blog/release/1.0.0/index.md",
+                "title": "OINK v1.0.0",
+                "url": "http://localhost:1313/blog/release/1.0.0/"
+              },
+              {
+                "description": "OINK 0.8.2 lowers the Hugo Module's Go directive from 1.27 to 1.26 so GOTOOLCHAIN=local builders, including the official Hugo Themes pipeline, can import the theme without changing its Hugo floor or rendered behavior.",
+                "id": "/blog/release/0.8.2/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/blog/release/0.8.2/index.md",
+                "title": "OINK v0.8.2",
+                "url": "http://localhost:1313/blog/release/0.8.2/"
+              },
+              {
+                "description": "OINK 0.8.1 is a focused maintenance release: single-page Print keeps the same heading and footnote anchors as ordinary HTML, long Book titles no longer squeeze their sidebar numbers, and the project presentation now leads new sites through OINK Starter.",
+                "id": "/blog/release/0.8.1/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/blog/release/0.8.1/index.md",
+                "title": "OINK v0.8.1",
+                "url": "http://localhost:1313/blog/release/0.8.1/"
+              },
               {
                 "description": "Oink 0.8.0 adds two opt-in output formats for readers that arrive as programs — a full-text bundle holding an entire section in one file, and a navigation tree published as JSON — plus static backlinks, which list the pages that link to a page in its right rail. All three stay off until you ask.",
                 "id": "/blog/release/0.8.0/",
@@ -326,7 +411,7 @@
                 "url": "http://localhost:1313/docs/about/license/"
               }
             ],
-            "description": "A documentation theme that needs nothing but Hugo Extended. Evolved from Docsy, its components are written in Markdown, its assets ship with the theme, and fourteen production sites run on it.",
+            "description": "A local-first Hugo documentation framework evolved from Docsy. Its components stay readable in Markdown, its assets ship with the theme, and fifteen production sites exercise it.",
             "id": "/docs/about/",
             "kind": "section",
             "markdown": "http://localhost:1313/docs/about/index.md",
@@ -336,7 +421,15 @@
           {
             "children": [
               {
-                "description": "What every cloned directory is — what must stay, what to replace with your own details, and what belongs to the documentation site and can go entirely.",
+                "description": "Turn the official starter into your project site, one controlled layer at a time — languages, identity, home page, content, navigation, brand, integrations, and deployment.",
+                "id": "/docs/start/starter/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/start/starter/index.md",
+                "title": "OINK Starter",
+                "url": "http://localhost:1313/docs/start/starter/"
+              },
+              {
+                "description": "A file-level map of oink-starter — what owns identity, languages, home, content, navigation, brand, deployment, and the pinned theme.",
                 "id": "/docs/start/anatomy/",
                 "kind": "page",
                 "markdown": "http://localhost:1313/docs/start/anatomy/index.md",
@@ -344,15 +437,31 @@
                 "url": "http://localhost:1313/docs/start/anatomy/"
               },
               {
-                "description": "Build a minimal OINK site in an empty directory, and weigh the four install methods — Module, submodule, offline archive, pinned clone.",
+                "description": "Build a minimal OINK site in an empty directory, and weigh the four install methods — Module, submodule, offline archive, pinned source copy.",
                 "id": "/docs/start/from-scratch/",
                 "kind": "page",
                 "markdown": "http://localhost:1313/docs/start/from-scratch/index.md",
                 "title": "From scratch",
                 "url": "http://localhost:1313/docs/start/from-scratch/"
+              },
+              {
+                "description": "The 2026-09-30 six-command CLI snapshot, its safety and automation features, and the development directions proposed at that time.",
+                "id": "/docs/start/cli-overview/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/start/cli-overview/index.md",
+                "title": "CLI overview",
+                "url": "http://localhost:1313/docs/start/cli-overview/"
+              },
+              {
+                "description": "Build the optional Go executable locally, initialize a pinned Starter, inspect existing sites, and validate a single-site upgrade before writing.",
+                "id": "/docs/start/cli/",
+                "kind": "page",
+                "markdown": "http://localhost:1313/docs/start/cli/index.md",
+                "title": "OINK CLI",
+                "url": "http://localhost:1313/docs/start/cli/"
               }
             ],
-            "description": "Clone the OINK documentation site, preview it locally, replace the site details, and deploy to GitHub Pages.",
+            "description": "Start from the official OINK Starter, establish a working local baseline, then customize content, language, brand, integrations, and deployment in that order.",
             "id": "/docs/start/",
             "kind": "section",
             "markdown": "http://localhost:1313/docs/start/index.md",
@@ -378,7 +487,7 @@
                 "url": "http://localhost:1313/docs/write/organize/"
               },
               {
-                "description": "The full front matter table — every page key the theme actually reads, grouped by sidebar, shell, search, output, page end, Book, landing and release pages.",
+                "description": "The full front matter table — active page keys and retained 1.x compatibility no-ops, grouped by sidebar, shell, search, output, page end, Book, landing and release pages.",
                 "id": "/docs/write/frontmatter/",
                 "kind": "page",
                 "markdown": "http://localhost:1313/docs/write/frontmatter/index.md",
@@ -386,7 +495,7 @@
                 "url": "http://localhost:1313/docs/write/frontmatter/"
               },
               {
-                "description": "Setting up a blog section — directory conventions, a post's front matter, featured images, the year-grouped list page, and RSS.",
+                "description": "Setting up a blog section — directory conventions, a post's front matter, featured images, the date-ordered list page, and RSS.",
                 "id": "/docs/write/blog/",
                 "kind": "page",
                 "markdown": "http://localhost:1313/docs/write/blog/index.md",
@@ -532,7 +641,7 @@
                 "url": "http://localhost:1313/docs/components/markmap/"
               },
               {
-                "description": "Put a `.drawio.svg` that carries an editable copy on the page as an ordinary image; hovering gives the reader a button that opens the Draw.io editor.",
+                "description": "Put a `.drawio.svg` that carries an editable copy on the page as an ordinary image; an edit button opens the Draw.io editor.",
                 "id": "/docs/components/drawio/",
                 "kind": "page",
                 "markdown": "http://localhost:1313/docs/components/drawio/index.md",
@@ -686,7 +795,7 @@
                 "url": "http://localhost:1313/docs/customize/versions/"
               },
               {
-                "description": "Give pages a second index that cuts across the directory tree with tags and categories — term pages, filter chips, the rail cloud and the navbar panel are all automatic.",
+                "description": "Give pages a second index that cuts across the directory tree with tags and categories — term pages, term cards, the rail cloud and the navbar panel are all automatic.",
                 "id": "/docs/customize/taxonomy/",
                 "kind": "page",
                 "markdown": "http://localhost:1313/docs/customize/taxonomy/index.md",
@@ -760,7 +869,7 @@
                 "url": "http://localhost:1313/docs/admin/analytics/"
               },
               {
-                "description": "Move to a new theme version, convert 0.4 shortcodes to v5 syntax with the migration toolkit, migrate from Docsy, and roll back when something goes wrong.",
+                "description": "Pin a published theme version, adopt the 1.2.0 changes, migrate legacy content or a Docsy site, and roll back safely.",
                 "id": "/docs/admin/upgrade/",
                 "kind": "page",
                 "markdown": "http://localhost:1313/docs/admin/upgrade/index.md",
@@ -786,7 +895,7 @@
           {
             "children": [
               {
-                "description": "Repository assembly, configuration, diagnostics, output, performance, security, CSS, accessibility, and release-state boundaries.",
+                "description": "Repository assembly, configuration, diagnostics, localization, output, performance, security, CSS, accessibility, and release-state boundaries.",
                 "id": "/docs/design/architecture/",
                 "kind": "page",
                 "markdown": "http://localhost:1313/docs/design/architecture/index.md",
@@ -818,7 +927,7 @@
                 "url": "http://localhost:1313/docs/design/landing/"
               },
               {
-                "description": "The supported source, configuration, and validation boundaries for migration from OINK 0.4 through OINK 0.8.0.",
+                "description": "Supported source, configuration, and validation boundaries for OINK migration, including the 1.2.0 changes.",
                 "id": "/docs/design/migration/",
                 "kind": "page",
                 "markdown": "http://localhost:1313/docs/design/migration/index.md",
@@ -858,6 +967,22 @@
                     "markdown": "http://localhost:1313/docs/design/decisions/config-schema/index.md",
                     "title": "Config schema",
                     "url": "http://localhost:1313/docs/design/decisions/config-schema/"
+                  },
+                  {
+                    "description": "The independent Go executable boundary, versioned diagnostics, isolated validation, and guarded maintenance plans for the current local CLI candidate.",
+                    "id": "/docs/design/decisions/cli/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/decisions/cli/index.md",
+                    "title": "CLI contract",
+                    "url": "http://localhost:1313/docs/design/decisions/cli/"
+                  },
+                  {
+                    "description": "Accepted phase-one visual identity and appearance controls, with separate reader style and mode state.",
+                    "id": "/docs/design/decisions/visual-presets/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/decisions/visual-presets/index.md",
+                    "title": "Visual presets",
+                    "url": "http://localhost:1313/docs/design/decisions/visual-presets/"
                   }
                 ],
                 "description": "Accepted choices that explain why OINK's public contracts and implementation have their present shape.",
@@ -878,6 +1003,30 @@
                     "url": "http://localhost:1313/docs/design/research/goldmark-attributes/"
                   },
                   {
+                    "description": "Explicit experimental presets in real theme output, their design tradeoffs, checks and remaining work.",
+                    "id": "/docs/design/research/2026-10-05-ink-terminal-experiment/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/research/2026-10-05-ink-terminal-experiment/index.md",
+                    "title": "Ink / Terminal experiment",
+                    "url": "http://localhost:1313/docs/design/research/2026-10-05-ink-terminal-experiment/"
+                  },
+                  {
+                    "description": "Local 1.2.0 candidate review, cleanup, compatibility, resource provenance and publication checks, with release boundaries.",
+                    "id": "/docs/design/research/2026-10-05-v1-2-release-review/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/research/2026-10-05-v1-2-release-review/index.md",
+                    "title": "OINK 1.2 pre-release review",
+                    "url": "http://localhost:1313/docs/design/research/2026-10-05-v1-2-release-review/"
+                  },
+                  {
+                    "description": "Local Paper and Slate verification, real theme output, and bounded browser evidence.",
+                    "id": "/docs/design/research/2026-10-05-visual-presets-acceptance/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/research/2026-10-05-visual-presets-acceptance/index.md",
+                    "title": "Preset acceptance",
+                    "url": "http://localhost:1313/docs/design/research/2026-10-05-visual-presets-acceptance/"
+                  },
+                  {
                     "description": "A dated corpus snapshot that shaped OINK's shells, authoring primitives, and deterministic Book migration policy.",
                     "id": "/docs/design/research/consumer-evidence/",
                     "kind": "page",
@@ -892,6 +1041,38 @@
                     "markdown": "http://localhost:1313/docs/design/research/2026-08-26-comprehensive-review/index.md",
                     "title": "2026-08-26 review",
                     "url": "http://localhost:1313/docs/design/research/2026-08-26-comprehensive-review/"
+                  },
+                  {
+                    "description": "Evidence, acceptance advice, and focused remedies for community issues 40, 41, 42, 44 and pull request 43.",
+                    "id": "/docs/design/research/2026-09-19-upstream-review/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/research/2026-09-19-upstream-review/index.md",
+                    "title": "2026-09-19 community review",
+                    "url": "http://localhost:1313/docs/design/research/2026-09-19-upstream-review/"
+                  },
+                  {
+                    "description": "Five reproduced runtime defects, documentation corrections, validation evidence, and the OINK 1.1 publication follow-up.",
+                    "id": "/docs/design/research/2026-09-20-release-review/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/research/2026-09-20-release-review/index.md",
+                    "title": "2026-09-20 release review",
+                    "url": "http://localhost:1313/docs/design/research/2026-09-20-release-review/"
+                  },
+                  {
+                    "description": "Dated source and binary evidence for the R1–R8/A18 local implementation program, preserving its initial audit, failed trials, and final supported acceptance scope.",
+                    "id": "/docs/design/research/2026-10-03-cli-maintenance-acceptance/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/research/2026-10-03-cli-maintenance-acceptance/index.md",
+                    "title": "2026-10-03 CLI maintenance",
+                    "url": "http://localhost:1313/docs/design/research/2026-10-03-cli-maintenance-acceptance/"
+                  },
+                  {
+                    "description": "Executed Starter, real-site, offline, upgrade, and reproducible-archive checks for the local CLI candidate, with final acceptance and publication kept separate.",
+                    "id": "/docs/design/research/2026-09-29-cli-acceptance/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/research/2026-09-29-cli-acceptance/index.md",
+                    "title": "2026-09-29 CLI acceptance",
+                    "url": "http://localhost:1313/docs/design/research/2026-09-29-cli-acceptance/"
                   }
                 ],
                 "description": "Dated experiments and consumer evidence used to make OINK design decisions, without normative force.",
@@ -928,12 +1109,28 @@
                     "url": "http://localhost:1313/docs/design/proposals/agent-indexes/"
                   },
                   {
+                    "description": "The accepted independent CLI boundary and local first-stage candidate, with later adoption, theme, migration, and content-model proposals kept explicit.",
+                    "id": "/docs/design/proposals/oink-cli-roadmap/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/proposals/oink-cli-roadmap/index.md",
+                    "title": "CLI and roadmap",
+                    "url": "http://localhost:1313/docs/design/proposals/oink-cli-roadmap/"
+                  },
+                  {
                     "description": "Move Book semantic lowering and generic EPUB/PDF packaging into OINK without taking publication facts away from consumers.",
                     "id": "/docs/design/proposals/book-publication/",
                     "kind": "page",
                     "markdown": "http://localhost:1313/docs/design/proposals/book-publication/index.md",
                     "title": "Book publication",
                     "url": "http://localhost:1313/docs/design/proposals/book-publication/"
+                  },
+                  {
+                    "description": "Paper and Slate ship in 1.2.0; Ink and Terminal are explicitly enabled experiments awaiting design acceptance.",
+                    "id": "/docs/design/proposals/visual-presets/",
+                    "kind": "page",
+                    "markdown": "http://localhost:1313/docs/design/proposals/visual-presets/index.md",
+                    "title": "Visual presets",
+                    "url": "http://localhost:1313/docs/design/proposals/visual-presets/"
                   }
                 ],
                 "description": "The canonical bilingual home for OINK PRDs and designs that are still being evaluated.",
@@ -950,9 +1147,17 @@
             "markdown": "http://localhost:1313/docs/design/index.md",
             "title": "Design",
             "url": "http://localhost:1313/docs/design/"
+          },
+          {
+            "description": "A draft introduction to the optional OINK command-line companion for Hugo sites.",
+            "id": "/docs/cli/",
+            "kind": "page",
+            "markdown": "http://localhost:1313/docs/cli/index.md",
+            "title": "CLI",
+            "url": "http://localhost:1313/docs/cli/"
           }
         ],
-        "description": "OINK is a documentation theme that needs nothing but Hugo Extended — components are written in Markdown, assets ship with the theme, both languages work out of the box, and one source produces four outputs.",
+        "description": "Build a technical content site with shared navigation, multilingual support and search for documentation, blogs, books and API references.",
         "id": "/docs/",
         "kind": "section",
         "markdown": "http://localhost:1313/docs/index.md",
@@ -966,7 +1171,7 @@
         "url": "http://localhost:1313/search/"
       }
     ],
-    "description": "A local-first, Hugo-only theme for technical documentation",
+    "description": "A local-first Hugo theme for technical documentation",
     "id": "/",
     "kind": "home",
     "markdown": "http://localhost:1313/index.md",

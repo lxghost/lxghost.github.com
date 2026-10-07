@@ -9,9 +9,16 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 ---
 
 《使用 Oink 创作优美的内容》是 OINK 参考文档的教程伴侣。参考文档解释每个参数和组件的作用；
-本书则沿着一个真实站点的轨迹，从第一次本地预览走到评审与发布。
+本书正在沿着一个 Starter 站点，逐步编写从本地预览到评审与发布的练习。
 
 前三章已放入可直接操作的内容。后续章节在完整演练写作期间，会刻意展示 Book 的草稿状态。
+
+## 阅读方式 {#reading-path}
+
+从[第 1 章：跑起第一个站点](/zh/book/01-start/)开始。第 1–3 章沿用同一个 Starter，
+依次完成预览、新建双语页面和完善正文。第 4–6 章与附录仍为提纲草稿；需要现在完成
+定制与部署时，请继续[Starter 教程](/zh/docs/start/starter/)，再按[发布上线](/zh/docs/admin/deploy/)操作。
+下方对象索引同时演示 Book 的出版能力，可在需要查图表和示例时使用。
 
 ## 目录 {#contents}
 
@@ -35,8 +42,8 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
   - [编排首页](/zh/book/04-design/#home)
   - [保持导航可预期](/zh/book/04-design/#navigation)
   - [同时设计两种语言](/zh/book/04-design/#languages)
-- [5 选择发布界面](/zh/book/05-publishing/)
-  - [让发布界面匹配读者](/zh/book/05-publishing/#surfaces)
+- [5 选择内容类型](/zh/book/05-publishing/)
+  - [让内容类型匹配读者](/zh/book/05-publishing/#surfaces)
   - [配置 Blog 家族](/zh/book/05-publishing/#blog-family)
   - [把样例变成 Case 案例](/zh/book/05-publishing/#case-studies)
   - [让 Book 与 Docs 相互补充](/zh/book/05-publishing/#book-and-docs)
@@ -53,7 +60,7 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 
 ## 图目录 {#figures}
 
-- [图 1-1](/zh/book/01-start/#fig-first-preview) — 第一个里程碑是读者能打开的站点，而不是一份仅仅看起来正确的配置文件。
+- [图 1-1](/zh/book/01-start/#fig-first-preview) — 文档站效果示意。你的 Starter 预览使用中性示例内容；第一个里程碑是能打开并修改的站点。
 
 ## 表目录 {#tables}
 
@@ -67,20 +74,15 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 
 ## 示例目录 {#examples}
 
-- [示例 3-1](/zh/book/03-compose/#eg-page-contract) — 一份只包含稳定标题、摘要和树中位置的页面契约。
-
-## 阅读方式 {#reading-path}
-
-第一次建站时，请按顺序阅读第 1–3 章；开始打磨对外呈现与发布流程后，
-再回到第 4–6 章。附录则汇总全书使用的 front matter 模式，便于直接复用。
+- [示例 3-1](/zh/book/03-compose/#eg-page-contract) — 同一页面现在明确了前置条件、命令与可见结果。
 
 ---
 
 本节页面：
 
-- [从一个能运行的站点开始](/zh/book/01-start/): 安装唯一必需的工具，启动本地预览，在调整设计前先建立可见的基线。
+- [从一个能运行的站点开始](/zh/book/01-start/): 安装前置工具，启动本地预览，在调整设计前先建立可见的基线。
 - [为内容建立结构](/zh/book/02-structure/): 让目录、分区索引、页面包与权重共同构成可预期的阅读与导航顺序。
-- [组合出值得阅读的页面](/zh/book/03-compose/): 把散文、提示块、代码、媒体、表格与数学公式组合在一起，而不把页面变成组件目录。
+- [组合出值得阅读的页面](/zh/book/03-compose/): 把正文、提示块、代码、媒体、表格与数学公式组合在一起，而不把页面变成组件目录。
 - [塑造阅读体验](/zh/book/04-design/): 把稳固的内容结构变成一份可辨识、响应式且双语对齐的出版物。
 - [发布不止于参考页面的内容](/zh/book/05-publishing/): 用 Docs、Blog、Case、Book 与发布页面分别回答读者的不同需求。
 - [有把握地交付](/zh/book/06-ship/): 区分本地预览、仓库集成、主题发布与站点部署，并用对应证据验证每一种状态。

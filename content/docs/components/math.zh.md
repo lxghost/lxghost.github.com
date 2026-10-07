@@ -8,6 +8,30 @@ search_keywords: [公式, 数学, Math, KaTeX, LaTeX, TeX, passthrough, chem, mh
 
 公式由 KaTeX 在构建期渲染成 HTML + MathML，页面只额外加载一份本地 KaTeX 样式表，没有 JavaScript，也不请求远程数学服务。行内公式写 `\(…\)`，块级公式写 `$$…$$`、`\[…\]`，另有 `math` 与 `chem` 两种围栏。需要 TikZ 绘图或 KaTeX 不支持的宏包时，改用预渲染的[图片](/zh/docs/components/image/)。
 
+1.2.0 工作实现将 Hugo 0.160.1 生成的 KaTeX 类名适配到内置样式表，保留 TeX
+与 MathML；无需浏览器数学运行时或额外的站点开关。
+
+## 站点前置配置 {#config}
+
+`math` 与 `chem` 围栏无需配置。`$$`、`\[…\]`、`\(…\)` 这些分隔符依赖 Goldmark 的 passthrough 扩展。Hugo 不合并主题的 `markup` 配置，这段必须写在站点自己的配置文件里。本站使用下面这份：
+
+```yaml {title="hugo.yml"}
+markup:
+  goldmark:
+    parser:
+      attribute:
+        block: true # 编号公式的属性行需要它
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block: [['\[', '\]'], ['$$', '$$']]
+          inline: [['\(', '\)']]
+```
+
+各键的完整定义见[配置总览](/zh/docs/customize/config/)。分隔符不能与站点正文冲突：单个 `$` 没有配进去，避免「$5」这样的价格被当成公式。
+
+
 ## 最简例子 {#minimal}
 
 行内公式写在句子中，前后的空格与标点留在分隔符外面。
@@ -90,7 +114,9 @@ $$
 
 见[公式 3-1](#eq-wal)：乘上保留天数就是归档盘容量的下限。
 
-`caption`（纯文本）可以省略。`#id` 与 `caption` 必须与 `num` 同时出现，不存在「半编号」的公式。同一页里重复的 ID、或同一编号指向两个 ID，都会构建失败。
+`caption`（纯文本）可以省略。`#id` 与 `caption` 必须与 `num` 同时出现，不存在
+「半编号」的公式。不完整或重复目标会告警，并丢弃不可用部分或保留第一项；严格
+发布构建拒绝这条警告。窄屏中的长公式标题在阅读列内换行，不会撑宽整页。
 
 ## 交叉引用 {#xref}
 
@@ -123,26 +149,6 @@ c_{\text{seq}} \cdot P = c_{\text{rand}} \cdot \sigma \cdot T
 {{< /eq >}}
 
 本站已开启 passthrough，日常写作用 `$$`。`eq` 用于迁移来的书稿与不能修改 `hugo.yml` 的场合。
-
-## 站点前置配置 {#config}
-
-`math` 与 `chem` 围栏无需配置。`$$`、`\[…\]`、`\(…\)` 这些分隔符依赖 Goldmark 的 passthrough 扩展。Hugo 不合并主题的 `markup` 配置，这段必须写在站点自己的配置文件里。本站使用下面这份：
-
-```yaml {title="hugo.yml"}
-markup:
-  goldmark:
-    parser:
-      attribute:
-        block: true # 编号公式的属性行需要它
-    extensions:
-      passthrough:
-        enable: true
-        delimiters:
-          block: [['\[', '\]'], ['$$', '$$']]
-          inline: [['\(', '\)']]
-```
-
-各键的完整定义见[配置总览](/zh/docs/customize/config/)。分隔符不能与站点正文冲突：单个 `$` 没有配进去，避免「$5」这样的价格被当成公式。
 
 ## 输出形态 {#outputs}
 
@@ -187,7 +193,8 @@ markup:
 | 正文 | TeX | — | 必填，非空 |
 {.fields meta="type default"}
 
-TeX 写错（未知命令、括号不配对）会构建失败，报错里带 KaTeX 的信息与源码位置。
+TeX 写错时普通预览告警并保留原表达式。消息带 KaTeX 详情与源码位置；严格发布构建
+拒绝这条警告。
 
 ## 限制与常见问题 {#limits}
 

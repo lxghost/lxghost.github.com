@@ -49,7 +49,7 @@ Section pages:
 - [Keyboard navigation](/docs/customize/keyboard/): Every single-key shortcut, when each stands down for typing, and how to turn them off per site or per page.
 - [Languages](/docs/customize/i18n/): Add a language, keep translations side by side, configure menus and interface strings per language, and align heading anchors across languages.
 - [Versions](/docs/customize/versions/): Configure the version switcher and the archive banner, and choose how several versions are laid out across domains.
-- [Taxonomies](/docs/customize/taxonomy/): Give pages a second index that cuts across the directory tree with tags and categories — term pages, filter chips, the rail cloud and the navbar panel are all automatic.
+- [Taxonomies](/docs/customize/taxonomy/): Give pages a second index that cuts across the directory tree with tags and categories — term pages, term cards, the rail cloud and the navbar panel are all automatic.
 - [Repository links and page info](/docs/customize/repository/): Wire "edit this page", "open an issue" and "view history" to your repository, and show the last-modified line, contributors and the feedback widget at the page end.
 - [Print](/docs/customize/print/): A single page goes to the browser's Cmd/Ctrl+P; a whole section becomes one continuous document through the print output format.
 - [AI-agent support](/docs/customize/agents/): Give every page a `.md` twin, the site root an `llms.txt`, and the reader a way to hand the current page to ChatGPT or Claude.

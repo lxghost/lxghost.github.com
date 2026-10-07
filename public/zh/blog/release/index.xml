@@ -9,11 +9,51 @@
     
     
     
-      <lastBuildDate>Fri, 28 Aug 2026 00:08:16 +0800</lastBuildDate>
+      <lastBuildDate>Mon, 05 Oct 2026 00:00:00 +0800</lastBuildDate>
     
     
       <atom:link href="http://localhost:1313/zh/blog/release/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+        <title>OINK 1.2.0：四套风格，本地优先</title>
+        <link>http://localhost:1313/zh/blog/release/1.2.0/</link>
+        <pubDate>Mon, 05 Oct 2026 00:00:00 +0800</pubDate>
+        <dc:creator>OINK</dc:creator>
+        <guid>http://localhost:1313/zh/blog/release/1.2.0/</guid>
+        <description>&lt;p&gt;OINK 1.2.0 为同一份技术内容带来四套视觉风格： &lt;strong&gt;Paper&lt;/strong&gt;、 &lt;strong&gt;Slate&lt;/strong&gt;、 &lt;strong&gt;Ink&lt;/strong&gt;&#xA;和 &lt;strong&gt;Terminal&lt;/strong&gt;。Paper 成为默认外观，Slate 保留熟悉的 OINK 风格。读者可以&#xA;分别选择风格与明暗模式，字体和核心脚本仍从站点本地加载。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>OINK 1.1.0：原生多语言界面、导航与站点扩展</title>
+        <link>http://localhost:1313/zh/blog/release/1.1.0/</link>
+        <pubDate>Sun, 20 Sep 2026 00:00:00 +0800</pubDate>
+        <dc:creator>OINK</dc:creator>
+        <guid>http://localhost:1313/zh/blog/release/1.1.0/</guid>
+        <description>&lt;p&gt;OINK 1.1.0 是稳定 1.0 契约之后的第一个次版本：补齐原生界面翻译，让分类法根页&#xA;成为实用的导航目录，并处理社区对侧栏状态、键盘焦点、内容分组与搜索扩展的反馈。&#xA;现有 1.0 内容与配置不需要迁移源码。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>OINK 1.0.0：稳定契约、Starter 与正式发布</title>
+        <link>http://localhost:1313/zh/blog/release/1.0.0/</link>
+        <pubDate>Sat, 29 Aug 2026 23:30:00 +0800</pubDate>
+        <dc:creator>OINK</dc:creator>
+        <guid>http://localhost:1313/zh/blog/release/1.0.0/</guid>
+        <description>&lt;p&gt;OINK 1.0.0 是稳定性里程碑，不是临发布前重置 API。它把整个 0.x 周期形成的组件、&#xA;配置、内容、输出与维护者契约提升为第一个主版本。本说明汇总 &lt;code&gt;v0.8.0..v1.0.0&lt;/code&gt;&#xA;范围内的全部主题修改；0.8.0 已经交付的 Agent 输出与反向链接是比较基线，不会再&#xA;冒充 1.0 新功能重复计算。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>OINK 0.8.2：面向 Hugo Themes 构建器的 Go 1.26 模块兼容性</title>
+        <link>http://localhost:1313/zh/blog/release/0.8.2/</link>
+        <pubDate>Sat, 29 Aug 2026 21:00:00 +0800</pubDate>
+        <dc:creator>OINK</dc:creator>
+        <guid>http://localhost:1313/zh/blog/release/0.8.2/</guid>
+        <description>&lt;p&gt;OINK 0.8.2 是一次模块元数据兼容性发布。它不修改模板、资产、组件 API、配置键、&#xA;内容语法或任何渲染输出。已经使用 0.8.1 的站点不需要迁移内容。&lt;/p&gt;&#xA;&lt;div class=&#34;td-release-card-static&#34;&gt;&#xA;  &lt;p&gt;&lt;strong&gt;v0.8.2&lt;/strong&gt; · &lt;time datetime=&#34;2026-08-29&#34;&gt;2026-08-29&lt;/time&gt;&lt;/p&gt;&#xA;  &lt;ul&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/releases/tag/v0.8.2&#34;&gt;查看发布&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.8.2.tar.gz&#34;&gt;源码 · tar.gz&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink/archive/refs/tags/v0.8.2.zip&#34;&gt;源码 · zip&lt;/a&gt;&lt;/li&gt;&#xA;    &lt;li&gt;&lt;a href=&#34;https://github.com/pgsty/oink&#34;&gt;pgsty/oink&lt;/a&gt;&lt;/li&gt;&#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;h2 id=&#34;at-a-glance&#34;&gt;概览&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;主题模块现在声明 Go 1.26，而不是 Go 1.27。&lt;/li&gt;&#xA;&lt;li&gt;Hugo 官方主题构建器可以在固定的 Go 1.26 与 &lt;code&gt;GOTOOLCHAIN=local&lt;/code&gt; 环境中导入 OINK。&lt;/li&gt;&#xA;&lt;li&gt;Hugo Extended 0.160.1 仍是公开兼容下限；OINK Starter 继续使用 Hugo Extended&#xA;0.165.0 构建。&lt;/li&gt;&#xA;&lt;li&gt;OINK 不包含 Go 源码，也没有使用 Go 1.27 的语言或模块特性，因此降低 directive&#xA;只改变模块准入条件。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;why&#34;&gt;为什么需要这个补丁&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;OINK 0.8.1 使用 Go 1.27 构建和测试，因此 &lt;code&gt;go.mod&lt;/code&gt; 声明了 &lt;code&gt;go 1.27.0&lt;/code&gt;。但这个仓库&#xA;是由模板和资产组成的 Hugo Module，并不是 Go 软件包。Hugo 官方主题流水线使用&#xA;Go 1.26，而且禁用自动工具链切换，因此会在读取主题元数据之前正确拒绝更高的 directive。&lt;/p&gt;</description>
+      </item>
+    <item>
+        <title>OINK 0.8.1：稳定的 Print 锚点、不被标题挤压的 Book 编号与完整发布材料</title>
+        <link>http://localhost:1313/zh/blog/release/0.8.1/</link>
+        <pubDate>Sat, 29 Aug 2026 00:00:00 +0800</pubDate>
+        <dc:creator>OINK</dc:creator>
+        <guid>http://localhost:1313/zh/blog/release/0.8.1/</guid>
+        <description>&lt;p&gt;OINK 0.8.1 收口了两个小而具体的渲染问题，并让项目的公开展示与 0.8.0&#xA;已经交付的框架能力保持一致。它没有修改组件 API、配置键、内容语法或兼容性下限。&#xA;现有 0.8.0 站点只需升级模块固定版本，不需要迁移内容。&lt;/p&gt;</description>
+      </item>
     <item>
         <title>Oink 0.8.0：整个栏目一次取走，侧栏直接当数据读，以及谁链到了这一页</title>
         <link>http://localhost:1313/zh/blog/release/0.8.0/</link>

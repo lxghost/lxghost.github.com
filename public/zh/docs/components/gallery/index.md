@@ -36,14 +36,14 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 ```gallery
 ![OINK 文档页面的三栏布局](/images/oink.webp) # 默认外壳：侧栏、正文、目录
 ![Docsy 的经典文档布局](/images/docsy.webp) # OINK 的上游 Docsy，内容模型一脉相承
-![发布说明页面](/images/releasenote.webp) # 发布页由 data/download 里的事实生成，不联网
+![发布说明页面](/images/releasenote.webp) # 发布卡片使用 release_url 与 date，checksums 块列出下载资产
 ```
 ````
 
 ```gallery
 ![OINK 文档页面的三栏布局](/images/oink.webp) # 默认外壳：侧栏、正文、目录
 ![Docsy 的经典文档布局](/images/docsy.webp) # OINK 的上游 Docsy，内容模型一脉相承
-![发布说明页面](/images/releasenote.webp) # 发布页由 data/download 里的事实生成，不联网
+![发布说明页面](/images/releasenote.webp) # 发布卡片使用 release_url 与 date，checksums 块列出下载资产
 ```
 
 说明长短可以不一致：网格按最高的一项对齐，说明换行不影响相邻的图。图片先被解析，替代文字与路径里的 `#` 不需要转义。
@@ -81,7 +81,8 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 ![浅色首页（静态路径）](/images/hero-light.webp) # static/images/… 下的图，原样发布
 ```
 
-页面资源与全局资源找不到时构建失败；静态路径与远程 URL 不检查存在性。
+页面 / 全局资源无法解析时按静态路径保留，与显式静态路径相同；主题不检查静态路径
+与远程 URL 是否存在。
 
 ## 装饰图与缩放 {#zoom}
 
@@ -160,7 +161,8 @@ image_zoom: true
 | `class` | class 列表 | — | 透传给站点 CSS |
 {.fields meta="type default"}
 
-没有 `columns`、`caption`、`title` 属性。行首不是图片、`#` 之外的尾随文字、空说明、未知属性、格式错误的 `{…}` 都会让构建失败，报错给出围栏内的行号。
+没有 `columns`、`caption`、`title` 属性。坏行或坏属性会告警，只丢弃无效部分或该行，
+并给出围栏内行号；严格发布构建拒绝这条警告。
 
 ## 限制与常见问题 {#limits}
 

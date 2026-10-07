@@ -18,13 +18,15 @@ LLMS 索引： [llms.txt](/zh/llms.txt)
 
 - 所有 shortcode 都写 `{{< 名字 >}}`，只有 `{{% steps %}}` 用 `%` 分隔符，因为它的正文是页面级 Markdown。
 - 嵌套名字（`tab`、`card`、`field`）只在各自的父 shortcode 里有效。
-- 参数写错不会静悄悄降级，构建失败，报错带文件名与行号。
+- 作者参数写错不会静悄悄降级。普通预览会发出带源码位置的警告，并采用文档规定的
+  回退或略去不安全部分；发布构建带 `--panicOnWarning` 时，那条警告会让门禁失败。
 - 公开字符串参数（图注、标签、标题）一律是纯文本，不解析 Markdown。只有正文是 Markdown：`tab`、`card`、`field` 的正文，`include` 引入的文件，以及 Book 的 `fig`、`tbl`、`eg` 正文。
-- 页面没用到的组件不下发运行时。脚本按这一页实际用到的组件拼成一个包，打印、Markdown 与 RSS 输出不加载任何脚本。
+- 页面没用到的组件不下发运行时。HTML 只引用这一页真正需要的稳定能力分片，打印、
+  Markdown 与 RSS 不加载交互运行时。
 
 ## 站点前置配置 {#prerequisites}
 
-组件依赖三项 Goldmark 设置。克隆本站起步时它们已经配好，从零建站照抄以下片段：
+组件依赖三项 Goldmark 设置。OINK Starter 已经配好；从零建站时照抄以下片段：
 
 ```yaml {title="hugo.yml"}
 markup:
@@ -58,7 +60,7 @@ markup:
 | [步骤](/zh/docs/components/steps/) | 有先后的流程 | `{.steps}` | 原生 + shortcode | 无 |
 | [卡片](/zh/docs/components/cards/) | 一组并列的去处 | `{.cards}` | 原生 + shortcode | 无 |
 | [文件树](/zh/docs/components/filetree/) | 目录结构与对齐的注释列 | ```` ```filetree ```` | 围栏 | 按页加载 |
-| [公式](/zh/docs/components/math/) | KaTeX 行内与块级公式 | `$$ … $$` | 原生 | 按页加载 |
+| [公式](/zh/docs/components/math/) | KaTeX 行内与块级公式 | `$$ … $$` | 原生 | 无 |
 | [Mermaid](/zh/docs/components/mermaid/) | 流程图、时序图、甘特图 | ```` ```mermaid ```` | 围栏 | 按页加载 |
 | [PlantUML](/zh/docs/components/plantuml/) | UML 图；需要自建渲染服务 | ```` ```plantuml ```` | 围栏 | 需站点开关 |
 | [思维导图](/zh/docs/components/markmap/) | Markdown 列表变成思维导图 | ```` ```markmap ```` | 围栏 | 需站点开关 |
@@ -97,7 +99,7 @@ markup:
 - [Mermaid](/zh/docs/components/mermaid/): 用 `mermaid` 围栏把文本写成流程图、时序图、甘特图、类图与状态图，本地渲染、跟随深浅色、diff 友好。
 - [PlantUML](/zh/docs/components/plantuml/): 用 `plantuml` 围栏写时序图、类图、组件图、活动图与用例图；渲染必须由你自己配置一个 PlantUML 服务。
 - [思维导图](/zh/docs/components/markmap/): 用 `markmap` 围栏把一段 Markdown 大纲变成可展开、可缩放的思维导图，源码本身就是能读的提纲。
-- [Draw.io](/zh/docs/components/drawio/): 把带着可编辑副本的 `.drawio.svg` 当普通图片放进页面，读者鼠标移上去就能点开 Draw.io 编辑器改图。
+- [Draw.io](/zh/docs/components/drawio/): 把带着可编辑副本的 `.drawio.svg` 当普通图片放进页面，读者通过编辑按钮打开 Draw.io 编辑器改图。
 - [ECharts](/zh/docs/components/echarts/): 在 `echarts` 围栏里用 YAML 或 JSON 写图表选项，Hugo 构建期校验，浏览器用本地 ECharts 画出跟随深浅色的统计图。
 - [Infographic](/zh/docs/components/infographic/): 用 `infographic` 围栏挑一个 AntV 模板，把标题与条目渲染成流程、时间线、漏斗、网格或层级信息图。
 - [画廊](/zh/docs/components/gallery/): 用 `gallery` 围栏把一组相关截图排成响应式网格，每张可带说明或链接，并复用页面的图片缩放对话框。

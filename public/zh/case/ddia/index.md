@@ -1,6 +1,6 @@
 # ddia.vonng.com
 
-> DDIA: the Chinese edition of Designing Data-Intensive Applications. A multilingual book site and the largest proving ground for OINK numbering, cross-references and indexes.
+> 《设计数据密集型应用》的多语言书籍站，也是 OINK 图表编号、交叉引用与索引的重要应用案例。
 
 ---
 

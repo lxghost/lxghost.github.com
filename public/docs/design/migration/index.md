@@ -1,6 +1,6 @@
 # OINK migration boundary
 
-> The supported source, configuration, and validation boundaries for migration from OINK 0.4 through OINK 0.8.0.
+> Supported source, configuration, and validation boundaries for OINK migration, including the 1.2.0 changes.
 
 ---
 
@@ -8,10 +8,9 @@ LLMS index: [llms.txt](/llms.txt)
 
 ---
 
-> [!IMPORTANT] OINK 0.8.0 contract
-> This is the migration contract released with OINK 0.8.0. This page is the
-> canonical English source; its Chinese peer is maintained beside it in
-> `content/docs/design/`.
+> [!NOTE] OINK 1.2.0 contract
+> This contract describes the v1.2.0 release. Its canonical bilingual sources
+> are in `content/docs/design/`.
 
 This is source and configuration guidance, not a release ledger. Local source,
 commit, tag, push, consumer pin, deployment, and production parity remain
@@ -35,8 +34,55 @@ python3 bin/migrations/oink06.py migrate --site <dir> --write
 python3 bin/migrations/oink06.py check --site <dir>
 ```
 
-Code fences are not rewritten. `book_figures.py` retains narrow TPME, DDIA
+Code-fence contents are not rewritten, including fences that begin on the
+same line as an ordered or unordered list marker, with optional blockquotes.
+An extra literal quote prefix inside a code example does not close that fence.
+`book_figures.py` retains narrow TPME, DDIA
 v1/v2, and pg-internal profiles; it is not a generic parser.
+
+The isolated validation tools `bin/measure-baseline.py` and
+`bin/sites/build-all.py` reject snapshot destinations that overlap any input
+site, the running tools checkout, the selected theme checkout, or another
+snapshot before deleting existing output. This includes `--keep` destinations
+reached through symlink aliases and an alternate `--theme` checkout.
+
+## Updating consumer repositories {#updating-consumers}
+
+After publishing a theme release, inventory maintained consumer checkouts and
+upgrade their exact pins. The theme's `bin/update-consumers.py` scans immediate
+project directories under the supplied roots; it does not recurse into
+archives, generated sites, caches, or theme fixtures.
+
+The tool ships with OINK 1.2.0. Run it from the theme checkout to inventory
+consumers and upgrade them to the published tag.
+
+```sh
+python3 bin/update-consumers.py v1.2.0 --roots ~/www ~/pgsty
+python3 bin/update-consumers.py v1.2.0 --roots ~/www ~/pgsty --write --check
+```
+
+The first command only reports adoption. The second updates `go.mod` and
+OINK's `go.sum` entries, verifies the exact module graph, and builds each
+selected site with warnings fatal. It disables `GOWORK`, Hugo's module
+workspace, and environment module replacements. Logs and original module
+files go to a temporary report directory, or an explicit `--report-dir`.
+The tool restores module files if the update fails; a build failure leaves
+the new pin available for diagnosis and returns a failing status.
+An unreadable scan root or malformed consumer module is recorded as a failed
+entry; the inventory continues through the remaining sites and exits nonzero.
+An explicitly selected missing or non-consumer directory also fails visibly.
+
+Linked worktrees, hidden copies, and non-default branches are skipped. Review
+all skipped and blocked entries: `--sites <path>...` explicitly selects a
+reviewed checkout, including one with existing module edits. OINK replacements
+in `go.mod` require manual resolution. Vendored themes require a separate
+review before `--refresh-vendor`, which backs up and regenerates `_vendor/`;
+changing a module pin alone does not update a vendored theme.
+
+Preserve unrelated work, update current theme-version references in site
+READMEs and configuration, and run each site's owning checks and visual
+review. The tool does not edit content, commit, push, or deploy. Record those
+completion states separately, including consumers already on the target tag.
 
 ## 0.4 content to current forms {#content-to-current-forms}
 
@@ -70,7 +116,7 @@ matching front-matter keys but never edits site configuration.
 | `github_url` | `github_repo` |
 | `ui.no_left_sidebar` | `ui.sidebar_enabled` (inverted) |
 | breadcrumb aliases | `ui.breadcrumb` |
-| `ui.scrollSpy` | `ui.scroll_spy` (inverted) |
+| `ui.scrollSpy` | No behavioral replacement; `ui.scroll_spy` remains a quiet 1.x compatibility no-op |
 | `ui.showLightDarkModeMenu` | `ui.dark_mode.show_menu` |
 | `ui.readingtime` | `ui.reading_time` |
 | `ui.ul_show` | `ui.sidebar_expand_levels` |
@@ -109,18 +155,21 @@ as shown in the [component contract](/docs/design/components/). Enable
 passthrough explicitly for `\(...\)`, `\[...\]`, or `$$...$$`; Hugo does not
 merge theme markup config.
 
-Run the smallest source and output checks for the changed contract, both
-supported Hugo versions, JS tests when runtime changes, and strict root and
-subpath builds. For maintained sites, inspect representative EN/ZH Docs and
-Blog routes at desktop and narrow widths, then record pin, deployment, and
-hosted parity separately.
+Run the smallest source and output checks for the changed contract with the
+pinned Hugo Extended 0.165.0 toolchain, JS tests when runtime changes, and
+strict root and subpath builds. For maintained sites, inspect representative
+EN/ZH Docs and Blog routes at desktop and narrow widths, then record pin,
+deployment, and hosted parity separately.
 
 ---
 
 Backlinks:
 
+- [OINK v1.2.0](/blog/release/1.2.0/)
+- [Upgrade](/docs/admin/upgrade/)
 - [Design](/docs/design/)
 - [Components](/docs/design/components/)
 - [Landing pages](/docs/design/landing/)
+- [CLI and roadmap](/docs/design/proposals/oink-cli-roadmap/)
 - [Consumer evidence](/docs/design/research/consumer-evidence/)
 - [Page parameters](/docs/write/frontmatter/)

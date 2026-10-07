@@ -1,6 +1,6 @@
 # pgsty.pro
 
-> PIGSTY PRO: the enterprise edition of Pigsty. A bilingual documentation and release archive built around reusable, structured release records.
+> PIGSTY PRO 是 Pigsty 的企业版。双语文档与版本档案围绕可复用的结构化发布记录组织。
 
 ---
 

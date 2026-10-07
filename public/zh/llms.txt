@@ -1,30 +1,33 @@
 # OINK
 
-> 本地优先、仅依赖 Hugo 的技术文档主题
+> 本地优先的 Hugo 技术文档主题
 
 ## Site index
 
 - [Home page](http://localhost:1313/zh/index.md)
 - [navigation.json](http://localhost:1313/zh/navigation.json)
-- [文档](http://localhost:1313/zh/docs/index.md): OINK 是一款只需 Hugo Extended 的技术文档主题：组件写在 Markdown 里，资源随主题分发，双语开箱可用，一份内容产出四种输出。
+- [文档](http://localhost:1313/zh/docs/index.md): 为文档、博客、书籍与 API 参考建立统一的技术内容站点，共用导航、多语言与搜索。
 - [教程](http://localhost:1313/zh/book/index.md): 一本实战教程：用 OINK 创作清晰、优美且易于维护的技术内容。
 - [案例](http://localhost:1313/zh/case/index.md): 十五个真实站点展示 OINK 如何覆盖两页小工具、多语言文档群与三本书籍。
 - [博客](http://localhost:1313/zh/blog/index.md): OINK 工程实践、沉浸式阅读指南与发布注记
 
 ## Documentation index
 
-- [简介](http://localhost:1313/zh/docs/about/index.md): 一款只需 Hugo Extended 的技术文档主题，从 Docsy 演化而来，组件写在 Markdown 里，资源随主题分发，十四个生产站点在用。
+- [简介](http://localhost:1313/zh/docs/about/index.md): 一套从 Docsy 演化而来的本地优先 Hugo 文档框架：组件在 Markdown 中仍然可读，资源随主题分发，十五个生产站点持续验证它。
   - [亮点特性](http://localhost:1313/zh/docs/about/features/index.md): 逐条列出 OINK 与普通 Hugo 主题的差别，每条链接到讲它的指南页。
   - [案例](http://localhost:1313/zh/docs/about/showcase/index.md): 按文档、书籍、落地页与交互工具的形态，找到最接近自己需求的 OINK 生产案例。
   - [开源许可与致谢](http://localhost:1313/zh/docs/about/license/index.md): 查清哪一层适用哪份许可证：主题 Apache-2.0、文档 CC BY 4.0、随主题分发的第三方运行时各自保留原许可。
-- [快速上手](http://localhost:1313/zh/docs/start/index.md): 克隆 OINK 文档站，本地预览，替换站点信息，部署到 GitHub Pages。
-  - [仓库导览](http://localhost:1313/zh/docs/start/anatomy/index.md): 克隆下来的每个目录是什么：哪些必须保留、哪些替换为你的信息、哪些是文档站自用可以整个删除。
-  - [从零建站](http://localhost:1313/zh/docs/start/from-scratch/index.md): 从空目录搭一个最小 OINK 站点，以及 Module / submodule / 离线归档 / 克隆四种安装方式的取舍。
+- [快速上手](http://localhost:1313/zh/docs/start/index.md): 从官方 OINK Starter 建立可运行的本地基线，再依次定制内容、语言、品牌、集成与部署。
+  - [OINK Starter](http://localhost:1313/zh/docs/start/starter/index.md): 按语言、身份、首页、内容、导航、品牌、集成、部署的顺序，把官方 Starter 逐层变成你的项目站点。
+  - [仓库导览](http://localhost:1313/zh/docs/start/anatomy/index.md): oink-starter 的文件级地图：身份、语言、首页、内容、导航、品牌、部署与固定主题分别由哪里管理。
+  - [从零建站](http://localhost:1313/zh/docs/start/from-scratch/index.md): 从空目录搭一个最小 OINK 站点，以及 Module / submodule / 离线归档 / 固定版本源码副本四种安装方式的取舍。
+  - [CLI 功能概览](http://localhost:1313/zh/docs/start/cli-overview/index.md): 2026-09-30 的六命令 CLI 快照、安全与自动化能力，以及当时提出的后续研发方向。
+  - [OINK CLI](http://localhost:1313/zh/docs/start/cli/index.md): 在本地构建可选的 Go 命令行工具，初始化固定 Starter、检查既有站点，并在写入前验证单站点主题升级。
 - [创作内容](http://localhost:1313/zh/docs/write/index.md): 写文档页、博客、书籍、发布页与 API 文档：一页文档长什么样，内容怎么组织。
   - [编写页面](http://localhost:1313/zh/docs/write/pages/index.md): 新建一页文档：文件放在哪、front matter 写什么、标题锚点为什么要手写、链接与图片怎么写、页尾会自动出现什么。
   - [组织内容](http://localhost:1313/zh/docs/write/organize/index.md): 目录结构就是侧栏树：`_index.md` 与 weight、栏目首页样式、图标与折叠、隐藏页面、把文档放在任意路径。
-  - [页面参数](http://localhost:1313/zh/docs/write/frontmatter/index.md): front matter 全表：主题真正读取的每一个页面键，按侧栏、外壳、搜索、输出、页尾、Book、Landing、发布页分组。
-  - [博客与文章](http://localhost:1313/zh/docs/write/blog/index.md): 开一个博客栏目：目录约定、文章的 front matter、封面图、按年份分组的列表页与 RSS。
+  - [页面参数](http://localhost:1313/zh/docs/write/frontmatter/index.md): front matter 全表：主题读取的页面键与 1.x 兼容 no-op，按侧栏、外壳、搜索、输出、页尾、Book、Landing、发布页分组。
+  - [博客与文章](http://localhost:1313/zh/docs/write/blog/index.md): 开一个博客栏目：目录约定、文章的 front matter、封面图、按日期排序的列表页与 RSS。
   - [书籍出版](http://localhost:1313/zh/docs/write/book/index.md): 用 `type: book` 把一棵目录树变成一本书：章节编号、图表式例编号、交叉引用、生成式索引与整本打印。
   - [发布与下载页](http://localhost:1313/zh/docs/write/releases/index.md): 把版本号、标签、归档链接、校验和与安装命令写成本地事实，再让发布卡片、资产表、下载区块和索引页从同一份记录推导出来。
   - [API 文档](http://localhost:1313/zh/docs/write/openapi/index.md): 把 OpenAPI 规范放进站点，用随主题分发的 Swagger UI 或 Redoc 渲染成可浏览的接口文档，不连 CDN。
@@ -42,7 +45,7 @@
   - [Mermaid](http://localhost:1313/zh/docs/components/mermaid/index.md): 用 `mermaid` 围栏把文本写成流程图、时序图、甘特图、类图与状态图，本地渲染、跟随深浅色、diff 友好。
   - [PlantUML](http://localhost:1313/zh/docs/components/plantuml/index.md): 用 `plantuml` 围栏写时序图、类图、组件图、活动图与用例图；渲染必须由你自己配置一个 PlantUML 服务。
   - [思维导图](http://localhost:1313/zh/docs/components/markmap/index.md): 用 `markmap` 围栏把一段 Markdown 大纲变成可展开、可缩放的思维导图，源码本身就是能读的提纲。
-  - [Draw.io](http://localhost:1313/zh/docs/components/drawio/index.md): 把带着可编辑副本的 `.drawio.svg` 当普通图片放进页面，读者鼠标移上去就能点开 Draw.io 编辑器改图。
+  - [Draw.io](http://localhost:1313/zh/docs/components/drawio/index.md): 把带着可编辑副本的 `.drawio.svg` 当普通图片放进页面，读者通过编辑按钮打开 Draw.io 编辑器改图。
   - [ECharts](http://localhost:1313/zh/docs/components/echarts/index.md): 在 `echarts` 围栏里用 YAML 或 JSON 写图表选项，Hugo 构建期校验，浏览器用本地 ECharts 画出跟随深浅色的统计图。
   - [Infographic](http://localhost:1313/zh/docs/components/infographic/index.md): 用 `infographic` 围栏挑一个 AntV 模板，把标题与条目渲染成流程、时间线、漏斗、网格或层级信息图。
   - [画廊](http://localhost:1313/zh/docs/components/gallery/index.md): 用 `gallery` 围栏把一组相关截图排成响应式网格，每张可带说明或链接，并复用页面的图片缩放对话框。
@@ -61,7 +64,7 @@
   - [键盘导航](http://localhost:1313/zh/docs/customize/keyboard/index.md): 全部单键快捷键、它们何时让行给输入，以及按站点或按页面关闭的方法。
   - [多语言](http://localhost:1313/zh/docs/customize/i18n/index.md): 增加一种语言、并排放置译文、按语言配置菜单与界面文案，并对齐中英标题锚点。
   - [多版本](http://localhost:1313/zh/docs/customize/versions/index.md): 配置版本切换菜单与归档横幅，并选择多个版本在域名上的部署布局。
-  - [分类体系](http://localhost:1313/zh/docs/customize/taxonomy/index.md): 用 tags / categories 给页面加一条横跨目录的索引：术语页、筛选芯片、右栏分类云与顶栏分类面板都是自动的。
+  - [分类体系](http://localhost:1313/zh/docs/customize/taxonomy/index.md): 用 tags / categories 给页面加一条横跨目录的索引：术语页、术语卡片、右栏分类云与顶栏分类面板都是自动的。
   - [仓库与页面信息](http://localhost:1313/zh/docs/customize/repository/index.md): 把「编辑当前页面」「提交文档议题」「查阅编辑历史」接到你的仓库，并在页尾显示最后修改时间、贡献者与反馈组件。
   - [打印支持](http://localhost:1313/zh/docs/customize/print/index.md): 单页交给浏览器的 Cmd/Ctrl+P，整个栏目用 print 输出格式合成一份连续文档。
   - [Agent 支持](http://localhost:1313/zh/docs/customize/agents/index.md): 每一页多产出一份 .md，站点根目录多一份 llms.txt，读者可以把当前页交给 ChatGPT 或 Claude。
@@ -70,25 +73,38 @@
   - [发布上线](http://localhost:1313/zh/docs/admin/deploy/index.md): 把 public/ 部署到 GitHub Pages、Cloudflare Pages 或任何静态托管：baseURL 配对、内容安全策略、验收清单与回滚。
   - [启用评论](http://localhost:1313/zh/docs/admin/comments/index.md): 用 giscus 把 GitHub Discussions 接成页面底部的评论区，全站开、按页关、跟随深浅色。
   - [分析与 SEO](http://localhost:1313/zh/docs/admin/analytics/index.md): 接入一个分析服务（或者不接），并把主题已经生成的 canonical、hreflang、社交卡片、站点地图与 robots 配对。
-  - [版本升级](http://localhost:1313/zh/docs/admin/upgrade/index.md): 升到新版主题、用迁移工具把 0.4 的 shortcode 改成 v5 语法、从 Docsy 迁过来，以及出问题怎么退回去。
+  - [版本升级](http://localhost:1313/zh/docs/admin/upgrade/index.md): 固定已发布的主题版本、验证 1.2.0 变化、迁移旧内容或 Docsy 站点，并在出问题时安全回滚。
   - [排错与检查](http://localhost:1313/zh/docs/admin/troubleshooting/index.md): 构建、语言、搜索、平台四类故障的症状 → 原因 → 修法，以及站点可以自己跑的那几项检查。
-- [设计](http://localhost:1313/zh/docs/design/index.md): 在唯一的双语专栏中管理 OINK 维护者契约、已接受决策、定期研究与候选提案。
+- [设计](http://localhost:1313/zh/docs/design/index.md): 在唯一的双语专栏中管理 OINK 维护者契约、已接受决策、带日期的研究记录与候选提案。
   - [Goldmark 属性](http://localhost:1313/zh/docs/design/research/goldmark-attributes/index.md): Hugo 0.160.1 与 0.164.0 上列表、图片、表格、passthrough、围栏、callout 与嵌套容器的可复现实测。
-  - [架构](http://localhost:1313/zh/docs/design/architecture/index.md): 仓库装配、配置、诊断、输出、性能、安全、CSS、无障碍与发布状态的边界。
+  - [架构](http://localhost:1313/zh/docs/design/architecture/index.md): 仓库装配、配置、诊断、本地化、输出、性能、安全、CSS、无障碍与发布状态的边界。
   - [诊断策略](http://localhost:1313/zh/docs/design/decisions/diagnostics/index.md): 作者输入无效时，预览阶段发出警告并安全降级；--panicOnWarning 在发布阶段恢复硬门禁。
   - [知识图谱](http://localhost:1313/zh/docs/design/proposals/knowledge-graph/index.md): 从普通 Hugo 链接推导反向链接、局部与全站图谱的三阶段设计草案。
+  - [Ink / Terminal 实验](http://localhost:1313/zh/docs/design/research/2026-10-05-ink-terminal-experiment/index.md): 真实主题输出中的显式实验预设、设计取舍、检查与后续工作。
+  - [OINK 1.2 发布前审查](http://localhost:1313/zh/docs/design/research/2026-10-05-v1-2-release-review/index.md): 本地 1.2.0 候选版本的审查、清理、兼容性、资源来源与出版验证，以及发布边界。
+  - [预设验收](http://localhost:1313/zh/docs/design/research/2026-10-05-visual-presets-acceptance/index.md): Paper 与 Slate 的本地验证、真实主题输出，以及注明范围的浏览器证据。
   - [媒体收敛](http://localhost:1313/zh/docs/design/proposals/media-convergence/index.md): 正文图片、编号图、Landing 媒体与代表图片选择之间剩余收敛工作的设计草案。
   - [配置模型](http://localhost:1313/zh/docs/design/decisions/configuration/index.md): OINK 延长 Hugo 与 Docsy 兼容配置，不另造第二套命名空间或全局 resolver。
   - [消费站证据](http://localhost:1313/zh/docs/design/research/consumer-evidence/index.md): 塑造 OINK 外壳、创作原语与确定性 Book 迁移策略的定期语料快照。
   - [组件](http://localhost:1313/zh/docs/design/components/index.md): OINK 创作原语、校验、Book、发布行为与输出降级的维护者契约。
   - [2026-08-26 全面审查](http://localhost:1313/zh/docs/design/research/2026-08-26-comprehensive-review/index.md): 对 OINK v0.7.0 后主线的实现、配置、输出、安全、测试、性能、双语契约与真实站点所做的证据化全面审查。
   - [Agent 索引](http://localhost:1313/zh/docs/design/proposals/agent-indexes/index.md): 基于 OINK 既有 Markdown 输出与导航权威，可选生成按 section 分包的全文包和稳定导航 JSON。
+  - [CLI 与路线图](http://localhost:1313/zh/docs/design/proposals/oink-cli-roadmap/index.md): 已接受的独立 CLI 边界与首期本地候选，并明确保留后续采用、主题、迁移及内容模型提案。
   - [Markdown 优先创作](http://localhost:1313/zh/docs/design/decisions/authoring/index.md): 原生 Markdown 承载常见语义；shortcode 只填补真实能力缺口，各内容模型延长共享外壳而不是分叉。
   - [外壳与导航](http://localhost:1313/zh/docs/design/shell/index.md): 导航权威、沉浸式博客、搜索、操作、分类法、索引与页尾组合契约。
+  - [CLI 文档维护](http://localhost:1313/zh/docs/design/proposals/oink-cli-maintenance-roadmap/index.md): 文档维护与 Oink Studio 的 R1–R8 历史需求记录，保留对应验收证据并指向当前精简 CLI 契约。
+  - [2026-09-19 社区反馈调研](http://localhost:1313/zh/docs/design/research/2026-09-19-upstream-review/index.md): 对社区 Issue 40、41、42、44 与 PR 43 的证据核查、接收建议和具体解决方案。
   - [Book 出版](http://localhost:1313/zh/docs/design/proposals/book-publication/index.md): 把 Book 语义降级与通用 EPUB/PDF 打包收回 OINK，同时让出版事实继续属于消费站。
   - [落地页](http://localhost:1313/zh/docs/design/landing/index.md): 落地页数据、内置区块注册表、语言解析、运行时、无障碍与输出的维护者契约。
   - [配置 Schema](http://localhost:1313/zh/docs/design/decisions/config-schema/index.md): 编辑器 Schema 是从既有配置权威投影生成的，CI 漂移门禁保证它永远不会成为第三个权威。
-  - [迁移边界](http://localhost:1313/zh/docs/design/migration/index.md): 从 OINK 0.4 到 OINK 0.8.0 所支持的源码、配置与验证迁移边界。
+  - [视觉预设](http://localhost:1313/zh/docs/design/proposals/visual-presets/index.md): Paper 与 Slate 已在本地实现；Ink 与 Terminal 提供显式开启的实验，等待视觉定稿。
+  - [2026-09-20 发布审查](http://localhost:1313/zh/docs/design/research/2026-09-20-release-review/index.md): OINK 1.1 的五项已复现运行时缺陷、文档修订、验证证据与发布后续。
+  - [CLI 契约](http://localhost:1313/zh/docs/design/decisions/cli/index.md): 当前本地 CLI 候选的独立 Go 可执行文件边界、版本化诊断、隔离验证与有保护的维护计划。
+  - [迁移边界](http://localhost:1313/zh/docs/design/migration/index.md): OINK 迁移所支持的源码、配置与验证边界，包含 1.2.0 变化。
+  - [视觉预设](http://localhost:1313/zh/docs/design/decisions/visual-presets/index.md): 第一阶段已接受的视觉身份与外观控件，分别维护读者的风格和明暗状态。
+  - [2026-10-03 CLI 维护](http://localhost:1313/zh/docs/design/research/2026-10-03-cli-maintenance-acceptance/index.md): R1–R8/A18 本地实施的带日期源码与二进制证据，保留初始审计、失败试验与最终受支持验收范围。
+  - [2026-09-29 CLI 验收](http://localhost:1313/zh/docs/design/research/2026-09-29-cli-acceptance/index.md): 本地 CLI 候选已执行的 Starter、真实站点、离线、升级与可复现归档检查，以及独立记录的最终验收和发布状态。
+- [CLI](http://localhost:1313/zh/docs/cli/index.md): 面向 Hugo 站点的可选 OINK 命令行工具草案介绍。
 
 ## Full-text bundles
 

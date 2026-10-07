@@ -28,7 +28,7 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/docs/about/showcase/</guid>
-        <description>&lt;p&gt;The canonical &lt;a href=&#34;http://localhost:1313/case/&#34;&gt;Case library&lt;/a&gt; turns fifteen production sites into short,&#xA;reusable implementation patterns, and the home page mirrors the same fifteen.&#xA;All of them run OINK, including this documentation site itself as a&#xA;self-referential case.&lt;/p&gt;&#xA;&lt;p&gt;Use this guide when you know the shape of the site you want to build. Follow a&#xA;case for its architecture and trade-offs, then use the linked documentation for&#xA;the exact configuration. Counts in individual cases describe the audited&#xA;snapshot rather than a permanent property of a live site.&lt;/p&gt;</description>
+        <description>&lt;p&gt;The &lt;a href=&#34;http://localhost:1313/case/&#34;&gt;Case library&lt;/a&gt; describes fifteen OINK site projects and their&#xA;implementation patterns, including this documentation site. Case pages link to&#xA;the live result or project source and distinguish site-owned code from theme&#xA;features where a pattern needs custom implementation.&lt;/p&gt;&#xA;&lt;p&gt;Use this guide when you know the shape of the site you want to build. Follow a&#xA;case for its architecture and trade-offs, then use the linked documentation for&#xA;the exact configuration. Counts in individual cases describe the audited&#xA;snapshot rather than a permanent property of a live site.&lt;/p&gt;</description>
       </item>
     <item>
         <title>License and acknowledgements</title>
