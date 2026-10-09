@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARTEX HACKER REPORT</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TJHZH273HM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TJHZH273HM');
+</script>
+<style>
+  :root{
+    --paper:#e7d9b6; --paper2:#efe4c8; --card:#f5eddb; --ink:#2c2617;
+    --ink-soft:#5b5240; --line:#c3ad7f; --rule:#b7a179;
+    --red:#b8281f; --red-bg:rgba(184,40,31,.08);
+    --seal:#8a2b2b; --mono:"SFMono-Regular",Consolas,"Courier New",monospace;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; padding:26px 14px; color:var(--ink); line-height:1.75;
+    font-family:"Songti SC","SimSun","Noto Serif SC",Georgia,serif;
+    background-color:var(--paper);
+    background-image:
+      repeating-linear-gradient(0deg,rgba(120,95,55,.035) 0 2px,transparent 2px 4px),
+      radial-gradient(120% 80% at 50% 0%,rgba(255,250,235,.55),transparent 60%),
+      radial-gradient(140% 120% at 100% 100%,rgba(120,90,45,.12),transparent 55%);
+  }
+  .doc{max-width:980px;margin:0 auto;position:relative}
+  .holes{position:absolute;left:-6px;top:120px;display:flex;flex-direction:column;gap:210px}
+  .holes i{width:16px;height:16px;border-radius:50%;background:#b9a67e;box-shadow:inset 0 2px 4px rgba(0,0,0,.45),0 1px 0 rgba(255,255,255,.4)}
+  @media(max-width:820px){.holes{display:none}}
+
+  .folder{background:var(--card); border:1px solid var(--rule); border-radius:4px;
+    box-shadow:0 6px 22px rgba(60,45,20,.22); position:relative; overflow:hidden;}
+  .tab{background:var(--seal);color:#f3e6d0;font-family:var(--mono);letter-spacing:2px;
+    font-size:12px;padding:7px 16px;display:inline-block;border-radius:0 0 6px 0}
+  .classbar{
+    background:repeating-linear-gradient(45deg,#b8281f 0 14px,#7d1712 14px 28px);
+    color:#fff;text-align:center;font-family:var(--mono);font-weight:700;letter-spacing:3px;
+    font-size:12.5px;padding:5px 8px}
+  .classbar small{display:block;font-size:10px;letter-spacing:1px;font-weight:400;opacity:.92}
+  .head{padding:22px 30px 16px;border-bottom:2px solid var(--ink)}
+  .head h1{margin:6px 0 4px;font-size:25px;letter-spacing:1px;line-height:1.28}
+  .head .sub{color:var(--ink-soft);font-size:13px;font-family:var(--mono)}
+  .stamp{position:absolute;right:24px;top:72px;border:3px double var(--seal);color:var(--seal);
+    font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:1px;padding:6px 10px;
+    transform:rotate(-8deg);border-radius:3px;opacity:.82;max-width:180px;text-align:center}
+  .meta{display:grid;grid-template-columns:repeat(2,1fr);gap:0 26px;padding:12px 30px 16px;
+    font-size:12.5px;border-bottom:1px solid var(--rule)}
+  .meta b{font-family:var(--mono);font-weight:700;color:var(--ink-soft);margin-right:6px}
+  @media(max-width:640px){.meta{grid-template-columns:1fr}.stamp{position:static;display:block;margin:0 30px 12px;transform:none;text-align:center}}
+
+  .body{padding:8px 30px 26px}
+  h2{font-size:17px;margin:26px 0 12px;padding:8px 0 8px 12px;border-left:5px solid var(--seal);
+    letter-spacing:.5px;background:linear-gradient(90deg,rgba(138,43,43,.07),transparent 70%)}
+  h3{font-size:14px;margin:16px 0 8px;color:var(--ink);border-bottom:1px dashed var(--rule);padding-bottom:4px}
+  p{margin:9px 0;font-size:14.5px}
+  mark{background:var(--red-bg);color:var(--red);font-weight:700;padding:0 3px;border-radius:2px;
+    box-shadow:inset 0 -2px 0 rgba(184,40,31,.45)}
+
+  .badge{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;
+    padding:2px 8px;border:1.5px solid;border-radius:20px;letter-spacing:.5px;white-space:nowrap}
+  .b-hi{color:var(--seal);border-color:var(--seal);background:rgba(138,43,43,.08)}
+  .b-md{color:#8a6d1f;border-color:#b8952f;background:rgba(184,149,47,.10)}
+  .b-lo{color:#35604a;border-color:#4a7a5f;background:rgba(74,122,95,.10)}
+  .b-claim{color:#6b4f8a;border-color:#8a6dae;background:rgba(138,109,174,.08)}
+  .b-fact{color:var(--red);border-color:var(--red);background:var(--red-bg)}
+  .b-assess{color:#35566b;border-color:#4a7a95;background:rgba(74,122,149,.10)}
+  .b-lead{color:#7a5a1f;border-color:#a8823f;background:rgba(168,130,63,.10)}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:720px){.cards{grid-template-columns:1fr}}
+  .kcard{border:1px solid var(--rule);background:var(--card);border-radius:4px;padding:12px 14px;position:relative}
+  .kcard .jid{font-family:var(--mono);color:var(--seal);font-weight:700;font-size:12px;letter-spacing:1px}
+  .kcard h4{margin:3px 0 6px;font-size:14.5px}
+  .kcard p{margin:0;font-size:13px;color:var(--ink-soft)}
+  .kcard .sw{margin-top:8px;font-size:12.5px;padding-top:7px;border-top:1px dotted var(--rule)}
+  .kcard .sw b{color:var(--red);font-family:var(--mono);font-size:11px}
+
+  .timeline{list-style:none;margin:0;padding:0 0 0 22px;position:relative;border-left:2px solid var(--rule)}
+  .timeline li{margin:0 0 15px;position:relative}
+  .timeline li::before{content:"";position:absolute;left:-30px;top:5px;width:12px;height:12px;border-radius:50%;
+    background:var(--seal);border:2px solid var(--card);box-shadow:0 0 0 2px var(--seal)}
+  .timeline .t{font-family:var(--mono);font-size:12px;color:var(--seal);font-weight:700}
+  .timeline .e{font-size:13.5px}
+  .timeline .c{font-size:12px;color:var(--ink-soft)}
+
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12.5px}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--rule);vertical-align:top}
+  th{background:rgba(138,43,43,.10);font-family:var(--mono);letter-spacing:.5px;font-size:11.5px;
+    color:var(--ink);border-bottom:2px solid var(--seal)}
+  tr:nth-child(even) td{background:rgba(255,252,240,.35)}
+  .mono{font-family:var(--mono)}
+  .defang{font-family:var(--mono);background:rgba(44,38,23,.06);border:1px dashed var(--rule);
+    border-radius:3px;padding:1px 5px;font-size:12px;word-break:break-all}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:720px){.cols{grid-template-columns:1fr}}
+  .panel{border:1px solid var(--rule);border-radius:4px;padding:12px 14px;background:var(--card)}
+  .panel.fact{border-top:3px solid var(--seal)}
+  .panel.claim{border-top:3px solid #8a6dae}
+  .panel h3{border:none;margin:0 0 8px}
+  .panel ul{margin:0;padding-left:18px;font-size:13px}
+  .panel li{margin:0 0 6px}
+
+  .hyp{border-left:3px solid #8a6dae;background:rgba(138,109,174,.06);padding:8px 12px;margin:8px 0;border-radius:0 4px 4px 0;font-size:13px}
+  .hyp b{font-family:var(--mono);color:#6b4f8a}
+  .gap{font-size:13px;margin:0;padding-left:18px}
+  .gap li{margin:0 0 6px}
+  .rec{counter-reset:r;padding:0;margin:0;list-style:none}
+  .rec li{counter-increment:r;position:relative;padding:9px 0 9px 40px;border-bottom:1px dotted var(--rule);font-size:13.5px}
+  .rec li::before{content:counter(r);position:absolute;left:0;top:8px;width:26px;height:26px;border-radius:50%;
+    background:var(--seal);color:#f3e6d0;font-family:var(--mono);font-weight:700;font-size:13px;
+    display:flex;align-items:center;justify-content:center}
+  .rec .who{color:var(--ink-soft);font-size:12px}
+
+  .callout{background:rgba(184,40,31,.07);border:1px solid var(--red);border-radius:4px;padding:11px 14px;margin:12px 0;font-size:13.5px}
+  .callout b{color:var(--red)}
+  .warnbox{background:rgba(168,130,63,.10);border:1px solid #a8823f;border-radius:4px;padding:11px 14px;margin:12px 0;font-size:13px}
+  .note{font-size:12.5px;color:var(--ink-soft);font-style:italic}
+
+  .topo{width:100%;height:auto;display:block;margin:8px auto 4px;background:var(--paper2);
+    border:1px solid var(--rule);border-radius:4px}
+  .topo text{font-family:var(--mono);fill:var(--ink)}
+
+  .confbar{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 12px;font-size:11.5px}
+  .confbar span{font-family:var(--mono);padding:3px 9px;border-radius:3px;border:1px solid var(--rule);background:var(--card)}
+
+  .foot{padding:16px 30px 22px;border-top:2px solid var(--ink);background:var(--paper2)}
+  .src{font-size:11.5px;font-family:var(--mono);color:var(--ink-soft);line-height:1.9;word-break:break-all}
+  .src b{color:var(--ink)}
+  .disc{margin-top:12px;padding:10px 12px;border:1px dashed var(--red);border-radius:4px;font-size:12px;color:var(--seal);background:rgba(184,40,31,.05)}
+  .srcline{border:0;border-top:1px solid var(--rule);margin:18px 0}
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="holes" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="folder">
+    <div class="tab">RED QUEEN威胁情报系统</div>
+
+    <div class="head">
+      <div class="sub">CROWDSTRIKE INTELLIGENCE — Unknown Threat Actor Uses ARTEX to Target South Korean Finance</div>
+      <h1>ARTEX 智能体渗透框架 ×  · 针对韩国金融机构的定向攻击</h1>
+      <div class="sub">深度威胁情报分析卷宗 · Chinese-first CTI Assessment</div>
+      <div class="stamp">SINGLE-SOURCE<br>UNATTRIBUTED<br>单源·未归因</div>
+    </div>
+
+    <div class="meta">
+      <div><b>REPORT ID</b> CTI-2026-1009-ARTEX</div>
+      <div><b>ANALYST</b> 威胁情报分析 · 多智能体编排 + 对抗核验</div>
+      <div><b>COLLECT CUTOFF</b> 2026-10-09 17:41 (Asia/Shanghai)</div>
+      <div><b>EVENT WINDOW</b> 2026-09-下旬 → 10-0初</div>
+      <div><b>PUB TIME</b> 2026-10-07（经二级报道佐证）</div>
+      <div><b>HANDLING</b> TLP:AMBER</div>
+      <div><b>OVERALL CONF.</b> <span class="badge b-md">Medium</span>（攻击者侧观测 ·单源）</div>
+    </div>
+
+    <div class="body">
+
+      <!-- EXEC -->
+      <h2>执行摘要 Executive Summary</h2>
+      <p>CrowdStrike Intelligence 于 2026-10-07 前后披露：一桩针对<b>韩国金融机构</b>的定向攻击活动在 2026 年 9 月底至 10 月初活跃，并<b>报告导致数据被外泄（exfiltrated data）</b>。CrowdStrike 通过被动分析攻击者<b>自身暴露的开放目录</b>取证——其中泄露了 <mark>Claude Code 会话历史</mark>、<mark>ARTEX 配置文件</mark>、<mark>Claude memory 文件</mark>，以及一处 <span class="defang">hxxp[:]//38.244.50[.]120:18899/.claude/CLAUDE.md</span> 内含<b>中文渗透测试 prompt</b> 的项目指令文件。这些一手工件直接刻画了攻击者的工具链与作战手法。</p>
+      <p>核心手法：攻击者以 <mark>ARTEX</mark>（一款近期发布、中国开发的开源<b>智能体(agentic)渗透测试</b>框架）为主作战工具，通过 <mark>Claude Code</mark> 编排、以 <mark>DeepSeek v4.1-flash</mark> 为主 LLM 后端，辅以 GLM-5.3（智谱）、Grok 4.6；疑似经由 <span class="defang">xcai[.]pro</span>（疑似 LLM API 代理/经销商）采购模型；采用「<b>主基础设施(香港 IP) + 38.244.50[.]120 上 ARTEX 实例</b>」双服务器架构，并动用 9 个代理 IP 隐匿来源。会话还显示攻击者<b>询问在哪里出售韩国数据泄露、寻找韩国 Telegram 数据售卖群</b>，并请求生成一份罗列 ARTEX 行动成果的「安全研究员简历」（含自报个人信息）。</p>
+      <p>CrowdStrike <b>未将该活动归因到任何命名对手</b>，仅以<b>中等置信(moderate)</b>评估攻击者「很可能为中文使用者、以经济利益驱动」。</p>
+      <div class="callout">⚠ <b>核心分析警示（证据分层纪律）：</b>本议题的一手证据<b>几乎全部在攻击者侧</b>（开放目录里的文件、IP 清单、会话内容）——这些是「某文件/该内容存在」的事实。<b>但「打了谁、拿到什么、卖没卖」这些受害侧结果，均为二手行业报道或攻击者自述</b>：两家银行的入侵入口、'ARTEX' 字符串来源、数据外泄结论皆系转述，受影响组织数<b>unconfirmed</b>；疑似攻击者 PII（YY/电话/@YY520CN/年龄 vs 生日矛盾/华南理工/广东茂名）出现在<b>「生成简历」这一可虚构语境</b>，文档自身亦声明「无法确定性关联」。<b>本所仅依赖单一来源(CrowdStrike)+二级媒体，无独立第三方验证——下文所有 High 均指「对文档保真度高」，而非「多源确证」。</b></div>
+
+      <div class="confbar">
+        <span>Fact 事实 · 直接观测</span>
+        <span>Claim 转述 · 报告方断言/二手报道</span>
+        <span>Lead 线索 · 未确定性关联</span>
+        <span>Assessment 评估 · 概率判断</span>
+      </div>
+
+      <!-- KEY JUDGMENTS -->
+      <h2>关键判断 Key Judgments</h2>
+      <div class="cards">
+        <div class="kcard">
+          <span class="jid">J1</span> <span class="badge b-fact">FACT</span> <span class="badge b-hi">High · 单源</span>
+          <h4>AI 智能体化的定向攻击事实成立</h4>
+          <p>攻击者侧开放目录中直接观测到 ARTEX 实例、Claude Code 会话/memory、中文渗透 prompt 与双服务器架构(E03/E04/E13-E17)；工具链「LLM 编排 + 智能体渗透框架」清晰。证据全部来自 CrowdStrike 对攻击者自有暴露面的一手采集。</p>
+          <div class="sw"><b>SO WHAT:</b> 这是 agentic-AI 实战化的又一实证样本；对防守方，重点是理解「智能体工具把单人多次入侵的节奏抬高」。</div>
+        </div>
+        <div class="kcard">
+          <span class="jid">J2</span> <span class="badge b-claim">CLAIM</span> <span class="badge b-md">Medium–Low</span>
+          <h4>「数据外泄」＝意图有证、结果靠转述</h4>
+          <p>CrowdStrike 陈述活动「导致数据外泄」，一手能证明的是攻击者<b>询问销赃渠道、找 Telegram 售卖群</b>(E22 意图)，而非受害侧数据离网的证据；组织级外泄细节出自行业报道(E07/E09)。</p>
+          <div class="sw"><b>SO WHAT:</b> 证据不闭合前不应宣布「确认外泄」；但意图明确 → 防守方应假定数据已离开并启动外传通道排查。</div>
+        </div>
+        <div class="kcard">
+          <span class="jid">J3</span> <span class="badge b-claim">CLAIM</span> <span class="badge b-lo">Low</span>
+          <h4>受害侧（银行/入口/规模）＝二手，未点名</h4>
+          <p>「突破贷款进度查询服务」「入侵员工移动办公支持系统」、两家银行、多组织重叠 IP 全部来自未具名行业报道(S2)；组织数 unconfirmed(E10)。CrowdStrike 一手<b>无受害系统遥测</b>。二级媒体另点名新韩/KB 国民/韩亚并称韩国警方已立案(claim级)。</p>
+          <div class="sw"><b>SO WHAT:</b> 别把报道细节当直接证据；对未点名组织勿做防御误判，跨行业告警范围应据此收敛。</div>
+        </div>
+        <div class="kcard">
+          <span class="jid">J4</span> <span class="badge b-assess">ASSESSMENT</span> <span class="badge b-md">Medium</span>
+          <h4>「中文使用者＋经济驱动」＝文档自评 moderate，勿升级</h4>
+          <p>「报告作出了该评估」这一元事实为真；评估内容依据是<b>弱指征</b>：中国开源工具 ARTEX＋中文 prompt。工具来源≠运营者国籍，prompt 语言≠使用者母语，均不具排他性。<b>不得据此归因到命名中国团体或国家行为体。</b></p>
+          <div class="sw"><b>SO WHAT:</b> 保持未归因；若把「工具国籍＝攻击者国籍」外推，将引发误归因与地缘误判。</div>
+        </div>
+        <div class="kcard">
+          <span class="jid">J5</span> <span class="badge b-lead">LEAD</span> <span class="badge b-lo">Low</span>
+          <h4>攻击者身份 PII＝自报、内部矛盾、疑涉未成年</h4>
+          <p>Name YY / Phone <span class="defang">17820191556</span> / Telegram @YY520CN / Age 26 <b>vs</b> 自报生日 2007-09-22(窗口内约合 18–19 岁)——<mark>硬矛盾</mark>；语境为「生成安全研究员简历」。文档明确无法确定性关联。@YY520CN 跨会话复现是本组相对最强标识，但用户名无实名绑定。</p>
+          <div class="sw"><b>SO WHAT:</b> 仅作防御线索，<b>禁入 STIX/阻断源、禁 deanonymize、勿据此排查任何同名或在校真实个人</b>；年龄/生日冲突使「自报生日推算可能涉未成年人」，处置须从严。</div>
+        </div>
+        <div class="kcard">
+          <span class="jid">J6</span> <span class="badge b-assess">ASSESSMENT</span> <span class="badge b-md">Medium</span>
+          <h4>真信号：开发者侧 AI 工件暴露＝双刃取证面</h4>
+          <p>攻击者因开放目录自曝 <span class="defang">.claude/CLAUDE.md</span>、会话与 memory 而落入口径——同一暴露类<b>镜像地威胁防守方</b>：本单位开发者/CI 的 <span class="defang">.claude</span>、会话日志、memory、API 凭据若经开放目录/云存储泄露，将同样成为对手与情报方的富矿。</p>
+          <div class="sw"><b>SO WHAT:</b> 这是本卷宗对本组最直接的 actionable：把智能体编码工具的配置与会话纳入暴露面治理。</div>
+        </div>
+      </div>
+
+      <!-- ATTACK CHAIN / ATT&CK -->
+      <h2>攻击链与 ATT&CK 映射</h2>
+      <div class="warnbox">⚑ <b>映射水印（重要）：</b>文档正文的 MITRE ATT&CK 表<b>实际为空</b>（仅称"本表详述战术与技术"而未列任何 ID，见 E27）。<b>下表全部为分析师据已观测行为推断，非 CrowdStrike 官方映射</b>；本环境 WebFetch <span class="defang">attack.mitre.org</span> 被网络策略拦截，技术 ID/名称<b>未对照官方知识库核实</b>。凡初始访问类均只有「被突破」的二手描述而无利用向量，置信一律从低。</div>
+      <table>
+        <tr><th>阶段</th><th>观察行为（含证据基）</th><th>ATT&CK（分析师推断）</th><th>证据/置信</th></tr>
+        <tr><td>资源开发</td><td>攻击者控制基础设施：38.244.50[.]120 托管 ARTEX 实例+开放目录；香港 IP 承载更多开放目录</td><td class="mono">T1583.003 Acquire Infra: VPS/Server</td><td>E13/E15/E16 观测=High；"自购 vs 入侵第三方"未明 → 备选 T1584</td></tr>
+        <tr><td>能力获取</td><td>获取并部署开源智能体渗透工具 ARTEX，结合 LLM（DeepSeek/GLM/Grok）</td><td class="mono">T1588.007 Obtain Cap: AI <span class="note">(文档未列，据行为)</span></td><td>E04/E19 会话事实=High</td></tr>
+        <tr><td>命令与控制</td><td>ARTEX 活动中使用 9 个分散代理 IP 隐匿来源</td><td class="mono">T1090 Proxy <span class="note">（非 T1090.003：文档未描述跳数/链式转发结构）</span></td><td>E21 观测=High；子技术不坐实</td></tr>
+        <tr><td>侦察</td><td>智能体渗透框架对目标做主动扫描/漏洞发现（据 ARTEX 性质）</td><td class="mono">T1595.002 Vuln Scanning</td><td>纯行为推断=Low；文档未给扫描细节</td></tr>
+        <tr><td>初始访问</td><td>「突破贷款进度查询服务」/「入侵员工移动办公支持系统」——均二手转述、无利用向量</td><td class="mono">T1190 / T1133 / T1078（并列候选）</td><td>E08/E09=CLAIM；置信 Low</td></tr>
+        <tr><td>数据渗出</td><td>报告称数据被外泄；具体通道/格式/落点均未述（疑存在 HTTP:18899/开放目录）</td><td class="mono">T1041 / T1567（通道不确定）</td><td>E02 断言+E22 意图；结果 Low</td></tr>
+        <tr><td>变现</td><td>询问韩国数据出售去向、搜寻 Telegram 数据售卖群</td><td class="mono"><span class="note">超出 ATT&CK 企业矩阵(黑产变现)</span></td><td>E22 观测=High（意图）</td></tr>
+      </table>
+
+      <!-- INFRA TOPOLOGY (SVG) -->
+      <h2>基础设施拓扑（双服务器架构）</h2>
+      <svg class="topo" viewBox="0 0 900 430" role="img" aria-label="ARTEX 双服务器与 LLM 编排拓扑">
+        <defs>
+          <marker id="arw" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+            <path d="M0,0 L8,3 L0,6 Z" fill="#8a2b2b"/>
+          </marker>
+        </defs>
+        <!-- victims -->
+        <rect x="620" y="40" width="230" height="70" rx="6" fill="rgba(138,109,174,.10)" stroke="#8a6dae" stroke-dasharray="5 3"/>
+        <text x="635" y="62" font-size="12.5" fill="#6b4f8a" font-weight="bold">受害方（CLAIM · 二手）</text>
+        <text x="635" y="82" font-size="11">韩国金融机构：贷款进度查询服务</text>
+        <text x="635" y="99" font-size="11">员工移动办公支持系统 · 组织数未确认</text>
+        <!-- HK primary -->
+        <rect x="30" y="40" width="250" height="82" rx="6" fill="#efe4c8" stroke="#8a2b2b" stroke-width="1.6"/>
+        <text x="46" y="62" font-size="12.5" fill="#8a2b2b" font-weight="bold">主基础设施 · 香港 IP</text>
+        <text x="46" y="82" font-size="11">开放目录：Claude Code 会话 / ARTEX 配置 / memory</text>
+        <text x="46" y="102" font-size="11" fill="#5b5240">⚠ 具体 IP 文档缺失（不可阻断）</text>
+        <!-- ARTEX host -->
+        <rect x="30" y="270" width="250" height="110" rx="6" fill="#efe4c8" stroke="#8a2b2b" stroke-width="1.6"/>
+        <text x="46" y="292" font-size="12.5" fill="#8a2b2b" font-weight="bold">ARTEX 实例主机</text>
+        <text x="46" y="312" font-size="11.5"><tspan class="defang">38.244.50[.]120 : 18899</tspan></text>
+        <text x="46" y="332" font-size="11">.claude/CLAUDE.md（中文渗透 prompt）</text>
+        <text x="46" y="352" font-size="11">开放目录 · 疑似"很可能是"攻击实施源</text>
+        <text x="46" y="370" font-size="10.5" fill="#5b5240">← 推断（会话自述，无独立佐证）</text>
+        <!-- orchestrator -->
+        <rect x="330" y="150" width="240" height="120" rx="6" fill="#f5eddb" stroke="#2c2617" stroke-width="1.4"/>
+        <text x="346" y="172" font-size="12.5" fill="#2c2617" font-weight="bold">编排层 · Claude Code</text>
+        <text x="346" y="192" font-size="11">(Anthropic，智能体编码前端)</text>
+        <text x="346" y="214" font-size="11">ARTEX 智能体渗透框架</text>
+        <text x="346" y="234" font-size="11" fill="#5b5240">LLM 后端：</text>
+        <text x="360" y="252" font-size="11">DeepSeek V4.1-flash（主）</text>
+        <text x="360" y="268" font-size="11">GLM-5.3 / Grok 4.6（辅）</text>
+        <!-- LLM proxy -->
+        <rect x="620" y="150" width="230" height="90" rx="6" fill="rgba(168,130,63,.10)" stroke="#a8823f"/>
+        <text x="635" y="172" font-size="12.5" fill="#7a5a1f" font-weight="bold">疑似 LLM API 代理/经销商</text>
+        <text x="635" y="192" font-size="11.5"><tspan class="defang">xcai[.]pro</tspan></text>
+        <text x="635" y="212" font-size="10.5" fill="#5b5240">OSINT: 域名级 not_found</text>
+        <text x="635" y="228" font-size="10.5" fill="#5b5240">"很可能经其访问"=Lead</text>
+        <!-- proxy ip pool -->
+        <rect x="330" y="300" width="240" height="80" rx="6" fill="rgba(53,96,74,.08)" stroke="#4a7a5f"/>
+        <text x="346" y="322" font-size="12" fill="#35604a" font-weight="bold">9× 代理/跳板 IP</text>
+        <text x="346" y="342" font-size="10.5">101.53.80.20 · 205.214.59.31 · 124.155.252.63</text>
+        <text x="346" y="358" font-size="10.5">154.201.79.246 · 23.248.249.90 · 23.158.220.98</text>
+        <text x="346" y="374" font-size="10.5">103.248.148.84 · 203.160.133.172 · 209.209.85.38</text>
+        <!-- arrows -->
+        <line x1="280" y1="100" x2="330" y2="160" stroke="#8a2b2b" stroke-width="1.6" marker-end="url(#arw)"/>
+        <line x1="155" y1="122" x2="155" y2="270" stroke="#8a2b2b" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#arw)"/>
+        <text x="165" y="200" font-size="10" fill="#5b5240">会话指向</text>
+        <line x1="450" y1="150" x2="450" y2="120" stroke="#b7a179" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <line x1="570" y1="200" x2="620" y2="195" stroke="#a8823f" stroke-width="1.4" marker-end="url(#arw)"/>
+        <text x="575" y="190" font-size="10" fill="#5b5240">疑经</text>
+        <line x1="450" y1="270" x2="450" y2="300" stroke="#8a2b2b" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <line x1="570" y1="80" x2="620" y2="80" stroke="#8a6dae" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arw)"/>
+        <text x="585" y="74" font-size="10" fill="#6b4f8a">攻击(推断)</text>
+        <text x="600" y="120" font-size="10" fill="#5b5240" transform="rotate(0)">编排</text>
+        <line x1="280" y1="320" x2="330" y2="330" stroke="#8a2b2b" stroke-width="1.2" marker-end="url(#arw)"/>
+      </svg>
+      <p class="note">连线为分析示意。实线=攻击者侧一手观测/会话自述；虚线紫=受害侧为二手 claim；橙=疑似采购通道(未坐实)。香港主 IP 与 38.244.50[.]120 之间的「主控/被控、谁实施攻击」关系文档未确证，仅作架构描述呈现。</p>
+
+      <!-- TIMELINE -->
+      <h2>事件时间线（event / publication / collection 分列）</h2>
+      <ul class="timeline">
+        <li><span class="t">2026-07/08（旁证）</span> <span class="e">ARTEX 开源框架创建（据中文技术信源，约"两个多月"、AGPL、~1.5k star、百度 agent+ 攻防赛冠军）</span> <span class="c">（OSINT·corroborated；非本文档，作语境）</span></li>
+        <li><span class="t">2026-09-10（旁证）</span> <span class="e">DeepSeek 发布 V4.1-Flash（时间线支撑"攻击者用其为主后端"可行）</span> <span class="c">（OSINT·corroborated；配置细节仅出自会话）</span></li>
+        <li><span class="t">2026-09-下旬</span> <span class="e">多家韩国金融机构数据泄露事件窗口起</span> <span class="c">（行业报道 footnote 1·Low·无精确日）</span></li>
+        <li><span class="t">2026-09-下旬~10-0初</span> <span class="e">ARTEX+LLM 大量针对韩国金融；开放目录内会话/配置/memory 活跃</span> <span class="c">（CrowdStrike 会话分析·Medium）</span></li>
+        <li><span class="t">同窗口</span> <span class="e">两起入侵(贷款进度查询服务 / 移动办公支持系统)·数据外泄断言·销赃询问</span> <span class="c">（CLAIM·入口仅二手，二级报道未复现）</span></li>
+        <li><span class="t">2026-10-02（旁证）</span> <span class="e">韩国 Genians 安全中心负责人披露攻击服务器文档出现 "ARTEX-自主渗透测试控制台" 字样</span> <span class="c">（OSINT·corroborated via 朝鲜日报/腾讯）</span></li>
+        <li><span class="t">≈2026-10-07</span> <span class="e">CrowdStrike 发布本报告（日本时报称"周三"；二级媒体复述逐条吻合）</span> <span class="c">（OSINT·corroborated；采納此 pub time）</span></li>
+        <li><span class="t">2026-10-08（旁证）</span> <span class="e">日本时报：首尔当局调查，新韩/KB 国民等报告泄露；韩国警方立案</span> <span class="c">（OSINT·partial；银行点名属 claim）</span></li>
+        <li><span class="t">2026-10-09</span> <span class="e">本文档采集/提交，作为 collection cutoff；组织数仍 unconfirmed</span> <span class="c">（Fact）</span></li>
+      </ul>
+
+      <!-- VICTIMOLOGY -->
+      <h2>证据基分层：攻击者侧直接观测 vs 受害侧/归因转述（严禁混排）</h2>
+      <div class="cols">
+        <div class="panel fact">
+          <h3>✅ 攻击者侧 · 一手观测 <span class="badge b-fact">FACT</span>（单源）</h3>
+          <ul>
+            <li>开放目录存在 Claude Code 会话历史、ARTEX 配置文件、Claude memory 文件（E03/E16）</li>
+            <li><span class="defang">.claude/CLAUDE.md</span> 含<b>中文渗透测试 prompt</b>（E14）</li>
+            <li>38.244.50[.]120 托管 ARTEX 实例+开放目录，端口 18899（E13）</li>
+            <li>会话揭示 DeepSeek/GLM/Grok 后端组合（E19）</li>
+            <li>9 个代理 IP 出现于会话并列入 IOCs 表（E21/E26）</li>
+            <li>攻击者询问韩国数据出售去向、找 Telegram 售卖群（E22）</li>
+            <li>会话含"生成安全研究员简历"及其自报 PII <b>内容存在</b>（E23）</li>
+          </ul>
+        </div>
+        <div class="panel claim">
+          <h3>⚠ 受害侧 / 归因 / 身份 <span class="badge b-claim">CLAIM</span> <span class="badge b-lead">LEAD</span> <span class="badge b-assess">ASSESSMENT</span></h3>
+          <ul>
+            <li>两家银行入侵入口(贷款查询服务/移动办公系统)、重叠 IP、"HTML 中 'ARTEX' 字符串"——<b>二手行业报道转述</b>(E08/E09/E11/E12)</li>
+            <li>"数据被外泄"——报告断言，仅意图侧有直接证据(E02+E22)</li>
+            <li>受影响组织数量 <mark>unconfirmed</mark>(E10)</li>
+            <li>新韩/KB 国民/韩亚银行点名、韩国警方立案——<b>二级媒体口径</b>，CrowdStrike 未点名(claim)</li>
+            <li>"很可能中文使用者＋经济驱动"——文档 <b>moderate 评估</b>(E06/Assessment)</li>
+            <li>双服务器架构中"38.244.50[.]120 很可能实施攻击""HK 为主控"——推断(E18/Lead)</li>
+            <li>全部自报 PII＋@YY520CN 关联——低关联度线索(E24/E25/Lead)</li>
+            <li>加密/数据破坏——文档<b>完全沉默</b>，此层空白，勿臆测为勒索</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- IOC -->
+      <h2>指标清单 IOC（已 defang · 单一来源，采集时点）</h2>
+      <div class="warnbox">⚑ <b>下游处置须知：</b>下列 IP/URL/域名的信誉与归属<b>在本环境无法独立核实</b>（二级报道不复现 IOC 明细；abuseat/ipinfo/RDAP/whois 均被网络策略拦截，且全程未访问任何疑似基础设施）。status 一律为「据文档、采集时点、未复核」，<b>非确认当前活跃</b>；标 <span class="badge b-lo">unknown</span> 者为 OSINT cannot_verify/not_found。proxy IP 可能为商业/住宅<b>共享</b>基础设施，IOC 重叠≠同一运营者。</div>
+      <table>
+        <tr><th>ID</th><th>类型</th><th>值（去毒化）</th><th>角色/语境</th><th>状态</th><th>证据</th></tr>
+        <tr><td>I-001</td><td>ipv4</td><td><span class="defang">38.244.50[.]120</span></td><td>ARTEX 实例主机 + 开放目录；文档"很可能"攻击实施源(推断)</td><td><span class="badge b-lo">unknown</span> 采集时点</td><td>E13/E26</td></tr>
+        <tr><td>I-011</td><td>url</td><td><span class="defang">hxxp[:]//38.244.50[.]120:18899/.claude/CLAUDE.md</span></td><td>开放目录取证关键工件；暴露监听端口 18899</td><td><span class="badge b-lo">unknown</span></td><td>E13/E14</td></tr>
+        <tr><td>I-012</td><td>filepath</td><td><span class="defang">.claude/CLAUDE.md</span></td><td>Claude Code 项目指令文件（含中文渗透 prompt）</td><td><span class="badge b-hi">工件存在</span></td><td>E14</td></tr>
+        <tr><td>I-013</td><td>domain</td><td><span class="defang">xcai[.]pro</span></td><td>疑似 LLM API 代理/经销商（非网络代理；"很可能经其访问 DeepSeek"）</td><td><span class="badge b-lo">not_found</span></td><td>E20</td></tr>
+        <tr><td>I-016</td><td>ipv4</td><td><b>MISSING</b>（香港主 IP，文档未给数值）</td><td>双服务器架构之"主攻击者控制基础设施"（评估）</td><td><span class="badge b-lo">缺失</span></td><td>E15</td></tr>
+        <tr><td>I-002~010</td><td>ipv4 ×9</td><td><span class="defang">101.53.80[.]20 · 205.214.59[.]31 · 124.155.252[.]63 · 154.201.79[.]246 · 23.248.249[.]90 · 23.158.220[.]98 · 103.248.148[.]84 · 203.160.133[.]172 · 209.209.85[.]38</span></td><td>会话中出现的代理/跳板 IP（归属/地理/用途文档未细分）</td><td><span class="badge b-lo">unknown</span></td><td>E21/E26</td></tr>
+      </table>
+
+      <h3>调查线索（<mark>非阻断指标</mark>）· 攻击者自报身份，仅防御性记录</h3>
+      <div class="warnbox">禁入 STIX/阻断列表 · 对外分享默认删除 · 严禁用于 deanonymize 或联系/排查任何真实个人 · 自报生日 2007-09-22 推算<b>可能涉未成年人</b>，处置从严。</div>
+      <table>
+        <tr><th>字段</th><th>文档原值</th><th>处置说明</th><th>关联度</th></tr>
+        <tr><td>Name</td><td>YY</td><td>「生成简历」prompt 自报；文档声明无法确定性关联</td><td><span class="badge b-lo">Low</span></td></tr>
+        <tr><td>Phone</td><td><span class="defang">17820191556</span></td><td>不补国家码、不拨打、不反查持有人</td><td><span class="badge b-lo">Low</span></td></tr>
+        <tr><td>Telegram</td><td>@YY520CN</td><td>跨会话复现(简历/NFT漏洞研究/疑似中国支付平台)，本组最强持久标识，但无实名绑定</td><td><span class="badge b-lo">Low–Medium</span></td></tr>
+        <tr><td>Age / DOB</td><td>26 <b>vs</b> 2007-09-22</td><td><mark>硬矛盾(差~7–8岁，窗口内生日约合18–19岁)</mark>→判定含虚构成分；疑涉未成年</td><td><span class="badge b-lo">Low</span></td></tr>
+        <tr><td>Education</td><td>South China University of Technology</td><td>勿据此标记/联系任何在校或校友真实个人</td><td><span class="badge b-lo">Low</span></td></tr>
+        <tr><td>Location</td><td>Maoming, Guangdong, China</td><td>地理自报易虚构，不用于定位</td><td><span class="badge b-lo">Low</span></td></tr>
+      </table>
+
+      <!-- EVIDENCE MATRIX -->
+      <h2>证据矩阵 Evidence Matrix</h2>
+      <table>
+        <tr><th>判断</th><th>证据</th><th>来源(谱系)</th><th>源可靠</th><th>信息可信</th><th>注记</th></tr>
+        <tr><td>J1</td><td>开放目录含会话/配置/memory</td><td>S1 CrowdStrike 一手采集</td><td><span class="badge b-md">B 通常可靠</span></td><td>High（但单一来源）</td><td>观察文件存在≠证明对受害者执行</td></tr>
+        <tr><td>J2</td><td>询问销赃/找 TG 群（意图）</td><td>S1 会话</td><td><span class="badge b-md">B</span></td><td>High(意图)/Low(结果)</td><td>外泄结果靠 S2 转述，证据不闭合</td></tr>
+        <tr><td>J3</td><td>两银行入侵/重叠IP/ARTEX字符串</td><td>S2 未具名行业报道(footnote 1)</td><td><span class="badge b-lo">D/E 未具名</span></td><td>Medium-Low</td><td><b>循环报道风险</b>：同一批报道既撑受害者清单又撑 ARTEX 使用主张</td></tr>
+        <tr><td>J4</td><td>中文使用者+经济驱动</td><td>S1（moderate 自评）</td><td><span class="badge b-md">B</span></td><td>Medium</td><td>工具产地/语言均非排他；元事实(报告作此评估)=Fact</td></tr>
+        <tr><td>J5</td><td>YY/电话/@YY520CN/年龄/生日</td><td>S3 攻击者自述(prompt)</td><td><span class="badge b-lo">F 不可判/欺骗性</span></td><td>Low(作为事实 5)</td><td>可虚构语境+内部矛盾；报告亦无法关联</td></tr>
+        <tr><td>J6</td><td>.claude/CLAUDE.md 等工件暴露</td><td>S1 一手</td><td><span class="badge b-md">B</span></td><td>High</td><td>镜像威胁防守方自身暴露面（分析外推）</td></tr>
+        <tr><td>ARTEX 工具真实性</td><td>GitHub Autumn-27/ARTEX·AGPL·双图架构</td><td>OSINT 多中文信源</td><td><span class="badge b-md">Med</span></td><td>corroborated</td><td>独立于本文档，佐证工具确为中国开源智能体渗透框架</td></tr>
+        <tr><td>模型版本</td><td>V4.1-Flash/GLM-5.3/Grok 4.6 存在且时间线合</td><td>OSINT 公开佐证</td><td><span class="badge b-md">Med</span></td><td>corroborated</td><td>但"主/辅后端配置"仅出自会话，不可独立复现</td></tr>
+        <tr><td>基础设施</td><td>38.244.50[.]120 及 9 代理 IP 归属/信誉</td><td>仅 S1</td><td><span class="badge b-lo">—</span></td><td>cannot_verify</td><td>信誉库/whois 不可达；未访问；二级报道不复现 IOC 明细</td></tr>
+      </table>
+      <p class="note">编号体系说明：本卷宗统一采用证据智能体命名 <b>E01–E27 / S1–S3</b>（S1=CrowdStrike 博客=primary·源可靠 B；S2=未具名韩国行业报道 footnote 1=secondary·源可靠 D/E；S3=攻击者侧 prompt 自述=primary 内容但源可靠 F）。早期 IOC/时间线节点内 E-nn 为其文档段落编号，语义不同，以本表为准。</p>
+
+      <!-- HYPOTHESES -->
+      <h2>竞争性假设 Alternative Hypotheses</h2>
+      <div class="hyp"><b>H1（第1·中）</b> 单人/小型中文背景黑客或渗透爱好者，经济驱动，用 ARTEX+LLM 快速实施入侵并图谋卖数据。<i>支撑</i>：中文 prompt、销赃询问、简历包装、平价 LLM 代理采购、短时多入侵。<i>反证</i>：自报 PII 含矛盾、语言/工具不排他。</div>
+      <div class="hyp"><b>H2（第2·中低）</b> 服务化数据窃取-出售业务(cybercrime-for-hire)，ARTEX+LLM 仅提效，背后分工。<i>支撑</i>：多组织重叠IP、入口各异、双服务器工程化。<i>反证</i>：文档仅评个体、无团伙层级/品牌/站点证据。</div>
+      <div class="hyp"><b>H3（第3·中低）</b> 简历身份画像属<b>虚构/烟幕/false flag</b>，真实身份不可知。<i>支撑</i>：年龄↔生日硬矛盾、简历=对外包装语境、文档措辞谨慎。<i>注</i>：对"PII 真实性"此假设置信反高于对 PII 的信任。</div>
+      <div class="hyp"><b>H4（第4·低）</b> 国家级/承包代理借经济犯罪外观作案（韩国金融=地缘敏感）。<i>反证</i>：询问卖数据、用平价代理、简历自夸，更符合牟利个体而非情报纪律；无驻留/外传差异证据。<b>不据本文档支持此归因升级。</b></div>
+      <div class="hyp"><b>H5（第5·低）</b> 观测面混入多操作者，画像实为拼合体（IP 段分散、@YY520CN 亦见于另一不明攻击者）。<i>反证</i>：会话方法论/目标/架构高度一致、开放目录呈同一工作流。</div>
+
+      <!-- CONTRADICTIONS -->
+      <h2>矛盾点与叙述不一致</h2>
+      <ul class="gap">
+        <li>Age 26 ↔ 自报生日 2007-09-22（窗口内约 18–19 岁），PII 内部自相矛盾 → 至少一项虚构/误填。</li>
+        <li>"数据被外泄"为标题级断言，但一手证据只到攻击者侧文件＋"询问出售渠道"的<b>意图</b>，缺受害侧数据离开证据——证据基不闭合。</li>
+        <li>"使用 ARTEX"两套依据强度被合并：①一手开放目录观察到 ARTEX 配置/会话(较强)；②二手报道称 HTML 中出现 'ARTEX' 字符串(较弱且 allegedly)。</li>
+        <li>"ARTEX 中国开发"暗示攻击者国籍，但开源工具可跨境复用——<b>工具来源≠运营者来源</b>，"很可能中文使用者"存在逻辑缝隙。</li>
+        <li>中文 prompt 究竟是攻击者亲写、还是被 LLM 生成/改写，文档未澄清，可能污染语言归因。</li>
+        <li>活动性质未定性：全文对加密/勒索/破坏完全沉默——既不能坐实"数据窃取型"，也不能臆测为勒索加密。</li>
+        <li>"目标组织与行业报道重叠"暗示受害清单可信，但同批未具名报道恰是受害者身份的唯一来源 → 潜在<b>循环引用</b>。</li>
+      </ul>
+
+      <!-- GAPS -->
+      <h2>分析缺口与优先采集</h2>
+      <table>
+        <tr><th>缺口</th><th>为何重要</th><th>采集动作（被动/合规）</th><th>优先级</th></tr>
+        <tr><td>G-001 CrowdStrike 英文一手 PDF/博客原文未直取(域名被拦)</td><td>核对措辞、原始 IOC 表与 ATT&CK 表是否本就被裁切</td><td>待网络放开后取原链/镜像；比对二级媒体</td><td><b>P1</b></td></tr>
+        <tr><td>G-002 香港主 IP 数值缺失</td><td>无法纳入可阻断/反查托管</td><td>等厂商后续更新或受害者侧遥测</td><td>P2</td></tr>
+        <tr><td>G-003 全 10 条 IP + xcai.pro 信誉/归属</td><td>判断基础设施稳定性与误报(共享代理)</td><td>受控环境内 abuseat/RDAP/CT 被动查询</td><td>P2</td></tr>
+        <tr><td>G-004 受害侧指标(载荷/webshell/外联)缺失</td><td>初始访问与外泄均无法一手佐证</td><td>若涉本单位/同业，接入自身 EDR/SIEM 反查重叠 IP</td><td><b>P1</b></td></tr>
+        <tr><td>G-005 ATT&CK 未对照官方 KB</td><td>当前映射系分析师推断</td><td>恢复后逐条核 T1583.003/T1090 等 ID 现名</td><td>P3</td></tr>
+        <tr><td>G-006 数据是否真已外传/涉及何种数据</td><td>决定应急与通知义务</td><td>关注下游泄露站点/TG 频道(被动监测)</td><td>P2</td></tr>
+        <tr><td>G-007 会话↔各次入侵一对一时间线</td><td>区分 ARTEX 活动是否真致各起入侵</td><td>厂商补充逐事件时间戳</td><td>P3</td></tr>
+        <tr><td>G-008 组织数量与受害者清单</td><td>防御资源与告警范围输入</td><td>跟踪韩国监管/PDSA 通报与点名银行公告</td><td>P2</td></tr>
+      </table>
+
+      <!-- REC -->
+      <h2>面向防守方的行动建议（仅防御向 · 结合本组职能）</h2>
+      <ol class="rec">
+        <li><b>治理智能体编码工具的暴露面（本案最高价值 actionable）</b>：清查 <span class="defang">.claude/.cursor/.vscode</span> 目录、会话历史、memory、CLAUDE.md、MCP 配置是否被开放目录/公开对象存储/CI 产物/反向代理误暴露；对开发机与 CI 的 <span class="defang">.claude/projects</span> 类路径做完整性基线与外泄扫描。<div class="who">责任：终端和服务端安全组 / DevSecOps · 时限：7 天首扫</div></li>
+        <li><b>把 agent 指令/Markdown 当可执行攻击面</b>：CLAUDE.md、system prompt、playbook 可能内嵌恶意操作意图（本案即"中文渗透 prompt"）；禁止无审核执行、对来源不明配置做注入检测。<div class="who">责任：DevSecOps</div></li>
+        <li><b>LLM API 凭据与采购通道治理</b>：警惕平价"Token/API 中转站/经销商"(如 xcai.pro 类)，禁止用个人/未审计代理；对模型出网做白名单与最小权限、密钥轮换、用量异常告警。<div class="who">责任：安全架构 / 采购</div></li>
+        <li><b>金融/对外服务边界收敛</b>：本案两起入口均为<b>对外可达的业务系统</b>(经纪人贷款查询、员工移动办公)——对外 Web 应用做暴露面清点、MFA、补丁冷却与最小暴露；第三方/合作方接入按供应链处理。<div class="who">责任：服务端安全 / 应用团队</div></li>
+        <li><b>把 IOC 当"待核验线索"而非"确证阻断项"</b>：上述 IP 未经独立复核，直接进阻断源有误封(共享代理)风险；先在本环境被动核验，再分级处置；受害者侧遥测若命中重叠 IP 立即升 P1。<div class="who">责任：SecOps / 检测工程</div></li>
+        <li><b>PII 处置纪律</b>：攻击者自报身份含矛盾、可能涉未成年，仅作防御线索，<b>禁入 STIX/阻断、禁 deanonymize、禁对外分享</b>；跨报告沟通勿把"文档保真"误读为"多源确证"。<div class="who">责任：CISO / 情报共享</div></li>
+        <li><b>建立"agentic 入侵"检测假设</b>：监控短时多次入侵节奏、非人类操作速率的侦察行为、开放端口上的 AI 工具工件路径（本案 18899/.claude），纳入威胁狩猎用例。<div class="who">责任：检测工程 / SOC</div></li>
+      </ol>
+
+      <!-- TREND -->
+      <h2>趋势研判与关联（分析师语境，非本文档证据）</h2>
+      <p>本案是 2026 年 <mark>agentic-AI 武器化</mark>主线的又一节点，与既有情报同源可串：<b>GTIG《From Prompt to Autonomy》(2026-09)</b>记录行为体用 AI 编码智能体＋预置 Markdown playbook 在 &lt;6h 搭建全自动凭证收割、于 <span class="defang">.claude</span> 隐藏落盘并对 AI 助手做 prompt 注入；<b>荷兰 DIVD 被 AI agent 借零日链秒级到 root</b>、<b>OpenAI 智能体入侵 Hugging Face</b>、<b>Plugin4Shell</b>（Claude Code/Codex 等四代理零点击 RCE）等同属"工具链本身成攻击面"。ARTEX 的特殊信号在于：<b>攻击者把开源智能体渗透框架与前沿 LLM 组合，把'单兵'的作战节奏抬到接近团伙级</b>，而其<b>因开放目录自曝 <span class="defang">.claude/CLAUDE.md</span></b> 反成取证富矿——攻击者的 OPSEC 失误面与防守方的暴露面是<b>同一类风险的两面</b>。此段系跨报告趋势类比，非由本文档直接支撑，作研判语境使用。</p>
+
+      <hr class="srcline">
+
+      <div class="foot">
+        <div style="font-family:var(--mono);font-size:12px;color:var(--seal);letter-spacing:1px;margin-bottom:6px">来源与采集 · 按独立性谱系</div>
+        <div class="src">
+          <div><b>S1 · 主源(primary)</b> CrowdStrike Intelligence 博客《Unknown Threat Actor Uses ARTEX to Target South Korean Finance》· 用户提供文档 raw.md · <span class="defang">www.crowdstrike.com/en-us/blog/unknown-threat-actor-uses-artex-to-target-south-korean-finance</span>（原文直取被沙箱域名策略拦截）· 源可靠 B。</div>
+          <div><b>S2 · 行业报道(secondary)</b> footnote 1 <span class="defang">www.khan[.]co[.]kr/en/article/202610042320007</span>（韩国媒体）· 未具名转述，承载受害者身份/入口/重叠IP/'ARTEX'字符串· 源可靠 D/E·循环报道风险。</div>
+          <div><b>S3 · 攻击者自述</b> 被采集到的 prompt/简历 PII/Telegram 用户名/HTML 'ARTEX' 字符串· 内容真伪不可信· 源可靠 F。</div>
+          <div><b>OSINT · 独立佐证（本环境被动检索）</b> ARTEX 工具存在(GitHub <span class="defang">Autumn-27/ARTEX</span>·美创/CSDN/Go周榜)· 模型版本(DeepSeek V4.1-Flash 9/10·GLM-5.3·Grok 4.6 8/12)· 二级报道(Japan Times 10-08·微博/腾讯网 10-07·朝鲜日报/腾讯·Genians 10-02)——均 corroborated。<b>not_found</b>：xcai.pro 域名级；<b>cannot_verify</b>：38.244.50.120 与 9 代理 IP 归属/信誉(abuseat/ipinfo/RDAP/whois 被拦)。<b>未访问任何疑似基础设施。</b></div>
+          <div><b>方法</b> threat-intelligence-analysis 技能驱动 · 6 智能体并行(IOC/时间线/行为者/证据/OSINT) + 对抗核验(纠正聚合层 Fact 过度升级 11 项) · 遵循 Fact/Lead/Claim/Assessment 四分与置信校准。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
