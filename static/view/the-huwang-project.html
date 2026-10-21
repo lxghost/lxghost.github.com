@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>护网机制拆解</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#070a0e; --panel:#0d141c; --panel2:#111a24;
+    --line:rgba(120,160,190,.10); --line2:rgba(120,160,190,.20);
+    --txt:#c9d6e0; --mut:#7c8a97; --dim:#54616e;
+    --atk:#ff413b; --atk2:#ff6a5f; --def:#33c8ff; --def2:#6fdcff; --pur:#a982ff;
+    --amber:#ffb648; --grn:#3ee08f;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+    --disp:'Chakra Petch','Noto Sans SC',sans-serif;
+    --body:'Noto Sans SC','Chakra Petch',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--txt); font-family:var(--body); font-weight:300; line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      linear-gradient(var(--line) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line) 1px,transparent 1px),
+      radial-gradient(1100px 680px at 85% -5%,rgba(255,65,59,.10),transparent 60%),
+      radial-gradient(950px 680px at 0% 100%,rgba(51,200,255,.08),transparent 55%);
+    background-size:44px 44px,44px 44px,100% 100%,100% 100%; background-attachment:fixed;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px 90px}
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line2);padding:56px 0 44px}
+  .radar{position:absolute;top:50%;right:-130px;width:440px;height:440px;transform:translateY(-50%);
+    border-radius:50%;border:1px solid var(--line2);opacity:.5;pointer-events:none}
+  .radar::before{content:"";position:absolute;inset:0;border-radius:50%;
+    background:conic-gradient(from 0deg,rgba(255,65,59,.35),rgba(255,65,59,0) 22%);animation:sweep 5s linear infinite}
+  .radar::after{content:"";position:absolute;inset:24%;border-radius:50%;border:1px solid var(--line)}
+  @keyframes sweep{to{transform:rotate(360deg)}}
+  .cross{position:absolute;inset:0;pointer-events:none;opacity:.5}
+  .cross::before,.cross::after{content:"";position:absolute;background:var(--line)}
+  .cross::before{left:50%;top:0;bottom:0;width:1px} .cross::after{top:50%;left:0;right:0;height:1px}
+  .kick{font-family:var(--mono);font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--atk2);
+    display:flex;align-items:center;gap:10px;margin-bottom:20px;position:relative;z-index:2}
+  .kick::before{content:"";width:26px;height:1px;background:var(--atk)}
+  h1{font-family:var(--disp);font-weight:700;line-height:.98;letter-spacing:-.5px;position:relative;z-index:2;
+    font-size:clamp(42px,8vw,82px);color:#eef5fa;text-shadow:0 0 40px rgba(51,200,255,.14)}
+  h1 .cn{display:block;font-weight:900;font-family:var(--body);
+    background:linear-gradient(90deg,#fff,#9fb3c2);-webkit-background-clip:text;background-clip:text;color:transparent;
+    font-size:.5em;letter-spacing:2px;margin-top:8px}
+  .sub{position:relative;z-index:2;max-width:660px;margin-top:20px;font-size:16px;color:var(--mut)}
+  .sub b{color:var(--atk2);font-weight:500}
+  .tags{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
+  .tag{font-family:var(--mono);font-size:11px;letter-spacing:.05em;padding:6px 12px;border:1px solid var(--line2);
+    border-radius:2px;color:var(--mut);background:rgba(255,255,255,.02)}
+  .tag.on{color:var(--def2);border-color:rgba(51,200,255,.4)} .tag.hot{color:var(--atk2);border-color:rgba(255,65,59,.4)}
+
+  /* STATS */
+  .stats{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line2);border:1px solid var(--line2);margin:0 0 60px}
+  .stat{background:var(--panel);padding:20px 12px;text-align:center}
+  .stat .n{font-family:var(--disp);font-weight:700;font-size:29px;color:#eaf2f7;line-height:1}
+  .stat .n small{font-size:13px;color:var(--def)}
+  .stat .l{font-size:11px;color:var(--mut);margin-top:9px;letter-spacing:.03em}
+
+  section{margin:0 0 60px}
+  .sh{display:flex;align-items:baseline;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+  .sh .no{font-family:var(--mono);color:var(--atk);font-size:13px;letter-spacing:.2em}
+  .sh h2{font-family:var(--body);font-weight:900;font-size:clamp(22px,3.4vw,30px);color:#eef5fa;letter-spacing:.5px}
+  .sh .en{font-family:var(--disp);color:var(--dim);font-size:14px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;margin-left:auto}
+  .lead{color:var(--mut);max-width:800px;margin:-6px 0 22px;font-weight:300}
+  .lead b{color:var(--txt);font-weight:500}
+
+  /* TEAMS */
+  .teams{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .team{position:relative;background:var(--panel);border:1px solid var(--line2);border-radius:4px;padding:24px 20px 22px;overflow:hidden}
+  .team::before{content:"";position:absolute;top:0;left:0;right:0;height:3px}
+  .team.atk::before{background:var(--atk)} .team.def::before{background:var(--def)} .team.pur::before{background:var(--pur)}
+  .team .role{font-family:var(--disp);font-weight:700;font-size:13px;letter-spacing:.2em;text-transform:uppercase}
+  .team.atk .role{color:var(--atk2)} .team.def .role{color:var(--def2)} .team.pur .role{color:var(--pur)}
+  .team .who{font-size:30px;font-weight:900;color:#eef5fa;margin:2px 0 3px}
+  .team .en{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.06em;margin-bottom:16px}
+  .team ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .team li{font-size:13px;color:var(--txt);padding-left:18px;position:relative}
+  .team li::before{content:"›";position:absolute;left:0;color:var(--mut)}
+  .team.atk li::before{color:var(--atk)} .team.def li::before{color:var(--def)} .team.pur li::before{color:var(--pur)}
+
+  /* PHASES */
+  .phases{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;position:relative}
+  .phases::before{content:"";position:absolute;top:26px;left:8%;right:8%;height:1px;background:linear-gradient(90deg,var(--def),var(--atk));opacity:.4}
+  .phase{position:relative;background:var(--panel);border:1px solid var(--line2);border-radius:4px;padding:30px 20px 22px}
+  .phase .dot{position:absolute;top:-13px;left:50%;transform:translateX(-50%);width:26px;height:26px;border-radius:50%;
+    background:var(--panel2);border:1px solid var(--line2);display:grid;place-items:center;font-family:var(--mono);font-size:12px}
+  .phase h3{font-weight:900;font-size:19px;color:#eef5fa}
+  .phase .dur{font-family:var(--mono);font-size:11px;color:var(--amber);margin:5px 0 12px}
+  .phase p{font-size:13.5px;color:var(--mut)}
+
+  /* COMPARE */
+  .cmp{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .cmp .col{background:var(--panel);border:1px solid var(--line2);border-radius:4px;padding:22px}
+  .cmp .col.hw{border-top:2px solid var(--atk)} .cmp .col.cs{border-top:2px solid var(--def)}
+  .cmp .col h3{font-family:var(--disp);font-weight:700;font-size:20px}
+  .cmp .hw h3{color:var(--atk2)} .cmp .cs h3{color:var(--def2)}
+  .cmp .col .lead2{font-size:12px;color:var(--dim);font-family:var(--mono);margin:2px 0 14px}
+  .row{padding:12px 0;border-bottom:1px solid var(--line)} .row:last-child{border-bottom:0}
+  .row .k{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+  .row .v{font-size:14px;color:var(--txt)} .row .v b{font-weight:700;color:#eef5fa}
+
+  /* TIMELINE (decade) */
+  .tl{position:relative;padding-left:30px}
+  .tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:1px;background:linear-gradient(180deg,var(--def),var(--atk))}
+  .ti{position:relative;padding:0 0 20px} .ti:last-child{padding-bottom:0}
+  .ti::before{content:"";position:absolute;left:-26px;top:4px;width:11px;height:11px;border-radius:50%;background:var(--panel);border:2px solid var(--def)}
+  .ti.red::before{border-color:var(--atk)}
+  .ti .y{font-family:var(--mono);color:var(--def2);font-size:13px} .ti.red .y{color:var(--atk2)}
+  .ti .c{font-size:14px;color:var(--txt);margin-top:2px} .ti .c b{color:#eef5fa;font-weight:700}
+
+  /* SHIFTS */
+  .shifts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+  .shift{background:var(--panel);border:1px solid var(--line2);border-left:2px solid var(--atk);border-radius:4px;padding:18px}
+  .shift .h{font-family:var(--mono);font-size:11px;color:var(--atk2);letter-spacing:.1em;margin-bottom:8px}
+  .shift p{font-size:13.5px;color:var(--txt)} .shift p b{color:#fff;font-weight:500}
+
+  /* RIPPLE */
+  .ripple{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .rip{background:var(--panel);border:1px solid var(--line2);border-radius:4px;padding:22px}
+  .rip .tag2{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--def2)}
+  .rip h3{font-weight:900;font-size:18px;color:#eef5fa;margin:6px 0 12px}
+  .rip p{font-size:13.5px;color:var(--mut)} .rip p b{color:var(--txt);font-weight:500}
+  .rip .big{font-family:var(--disp);font-weight:700;font-size:30px;color:var(--amber);margin:8px 0}
+  .rip .big small{font-size:14px;color:var(--mut);font-family:var(--mono)}
+
+  /* VENDOR band */
+  .vend{background:var(--panel);border:1px solid var(--line2);border-radius:5px;padding:26px}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 4px}
+  .chip{font-family:var(--body);font-weight:500;font-size:14px;color:var(--def2);border:1px solid rgba(51,200,255,.3);
+    padding:8px 14px;border-radius:3px;background:rgba(51,200,255,.05)}
+  .chip small{font-family:var(--mono);font-size:10px;color:var(--dim);display:block;letter-spacing:.04em}
+  .vendnote{font-size:13px;color:var(--mut);margin-top:16px;border-top:1px dashed var(--line2);padding-top:16px}
+  .vendnote b{color:var(--txt);font-weight:500}
+
+  /* ADDED vendor: chaitin */
+  .addv{margin-top:22px;border:1px solid rgba(255,65,59,.35);border-radius:5px;overflow:hidden;
+    background:linear-gradient(180deg,rgba(255,65,59,.06),transparent 45%),var(--panel)}
+  .addv-top{padding:22px 24px}
+  .badge-atk{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--atk2);border:1px solid rgba(255,65,59,.4);padding:5px 12px;border-radius:2px;margin-bottom:14px}
+  .badge-atk .p{width:7px;height:7px;border-radius:50%;background:var(--atk);animation:blink 1.4s infinite}
+  @keyframes blink{50%{opacity:.25}}
+  .addv-top h3{font-weight:900;font-size:26px;color:#fff}
+  .addv-top h3 span{font-family:var(--disp);font-weight:500;font-size:14px;color:var(--mut);letter-spacing:.08em;margin-left:10px}
+  .addv-top p{font-size:13.5px;color:var(--mut);margin-top:10px} .addv-top p b{color:var(--atk2);font-weight:500}
+
+  /* evidence table */
+  .evwrap{padding:0 24px 6px}
+  .evt-h{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);padding:16px 0 8px}
+  .ev{width:100%;border-collapse:collapse}
+  .ev th{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);
+    text-align:left;padding:12px 12px;border-bottom:1px solid var(--line2);font-weight:500}
+  .ev td{padding:13px 12px;border-bottom:1px solid var(--line);font-size:13px;vertical-align:top;color:var(--txt)}
+  .ev tr:last-child td{border-bottom:0}
+  .ev .yr{font-family:var(--mono);color:var(--amber);white-space:nowrap}
+  .ev .evt{color:#eaf2f7;font-weight:500}
+  .pill{display:inline-block;font-family:var(--mono);font-size:10px;padding:2px 7px;border-radius:2px;white-space:nowrap}
+  .pill.atk{background:rgba(255,65,59,.14);color:var(--atk2)}
+  .pill.win{background:rgba(62,224,143,.14);color:var(--grn)}
+  .ev .src{color:var(--dim);font-size:11.5px;font-family:var(--mono)}
+
+  /* caveat */
+  .caveat{display:grid;grid-template-columns:52px 1fr;border:1px solid rgba(255,182,72,.35);border-radius:4px;
+    background:rgba(255,182,72,.05);overflow:hidden;margin:18px 0 26px}
+  .caveat .ic{background:rgba(255,182,72,.12);display:grid;place-items:center;font-size:24px;color:var(--amber);border-right:1px solid rgba(255,182,72,.3)}
+  .caveat .tx{padding:16px 20px}
+  .caveat .tx h4{font-weight:900;color:var(--amber);font-size:14px;margin-bottom:6px}
+  .caveat .tx p{font-size:12.5px;color:#d8c9ad} .caveat .tx b{color:#fff;font-weight:700}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line2);margin-top:60px;padding-top:28px}
+  .srcgrid{display:grid;grid-template-columns:1fr 1fr;gap:7px 30px;margin-bottom:22px}
+  .src{font-size:12px;color:var(--mut);display:flex;gap:8px} .src .m{font-family:var(--mono);color:var(--def);white-space:nowrap}
+  .disc{font-size:12px;color:var(--dim);border-left:2px solid var(--atk);padding-left:14px;font-family:var(--mono)}
+  .sig{margin-top:20px;font-family:var(--disp);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:820px){
+    .stats{grid-template-columns:repeat(3,1fr)} .teams,.phases,.cmp,.shifts,.ripple,.srcgrid{grid-template-columns:1fr}
+    .phases::before{display:none} .radar{display:none} .sh .en{display:none}
+    .ev th:nth-child(1),.ev td:nth-child(1){display:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="radar"><span class="cross"></span></div>
+  <div class="wrap" style="padding-bottom:0">
+    <div class="kick">SITREP · CHINA's NATIONWIDE LIVE-FIRE CYBER EXERCISE · 10TH ANNIV</div>
+    <h1>护网行动<span class="cn">HuWang Operation · 机制拆解</span></h1>
+    <p class="sub">依据 Natto Thoughts《HuWang—Protect the Network》深度文整理的护网(HW)全貌：由<b>公安部</b>主导的国家级集体白帽攻防演练，及其对人才、产业与APT生态的外溢影响。<span style="color:var(--mut)">厂商生态中补充 <b>长亭科技</b> 的公开信息。</span></p>
+    <div class="tags">
+      <span class="tag hot">红队 / 攻击方</span><span class="tag on">蓝队 / 防守方</span><span class="tag">紫队 / 裁判</span>
+      <span class="tag">护网季 6–9 月</span><span class="tag">2026 十周年</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="stats reveal">
+    <div class="stat"><div class="n">10<small> 年</small></div><div class="l">创办至2026周年</div></div>
+    <div class="stat"><div class="n">MPS</div><div class="l">公安部 · 两级组织</div></div>
+    <div class="stat"><div class="n">5<small> min</small></div><div class="l">非正式响应基准</div></div>
+    <div class="stat"><div class="n">5000</div><div class="l">蓝队起始分·扣分制</div></div>
+    <div class="stat"><div class="n">2–4<small> 周</small></div><div class="l">"战时"实弹阶段</div></div>
+    <div class="stat"><div class="n">200<small> 亿</small></div><div class="l">RMB 备战市场估算</div></div>
+  </div>
+
+  <!-- 01 TEAMS -->
+  <section class="reveal">
+    <div class="sh"><span class="no">01</span><h2>护网是什么</h2><span class="en">Not your average pen test</span></div>
+    <p class="lead">它不是常规渗透测试，更像一场<b>全国规模的实弹攻防 CTF</b>：指定红队对真实系统发动无预告攻击，蓝队以"检测—遏制—修复"速度被实时计分。区别于普通渗透测试的核心是"谁在办"——<b>由公安部自上而下组织</b>（中央单位 + 省级单位两级）。三类队伍：</p>
+    <div class="teams">
+      <div class="team atk"><div class="role">Red Team</div><div class="who">红队</div><div class="en">攻击方</div>
+        <ul><li>公安部组织，源自国家信息安全队伍/军队/科研院所/测评机构</li><li>每队约 3–5 人，无固定路径、无预告</li><li>目标：突破边界、拿下核心资产</li><li>禁破坏生产系统 / 篡改真实数据，禁 DDoS</li><li>常引用工具：Cobalt Strike、Metasploit、Mimikatz、Frp</li></ul>
+      </div>
+      <div class="team def"><div class="role">Blue Team</div><div class="who">蓝队</div><div class="en">防守方·被打分</div>
+        <ul><li>单位自有安全/IT 人员，可请第三方厂商外援</li><li>24/7 值守：研判—阻断—溯源—修复—上报</li><li>行业：电信/银行/电网/航空/互联网/高校/医院</li><li>考核：检测、应急响应、与公安协同</li><li>被攻破可被取消排名资格</li></ul>
+      </div>
+      <div class="team pur"><div class="role">Purple Team</div><div class="who">紫队</div><div class="en">裁判·计分</div>
+        <ul><li>政府与第三方专家，定规则、裁争议</li><li>对红蓝双方同时打分、出具复盘报告</li><li>扣分制：起始约 5000 分</li><li>"五分钟"响应基准</li><li>失手1小时内未检出/未上报即扣分</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 PHASES -->
+  <section class="reveal">
+    <div class="sh"><span class="no">02</span><h2>演练三阶段</h2><span class="en">Prep → Wartime → After-action</span></div>
+    <div class="phases">
+      <div class="phase"><div class="dot">1</div><h3>准备</h3><div class="dur">1–2 个月</div>
+        <p>资产盘点、漏洞扫描与修复、账号权限清理、设备升级、集中日志建设、24/7 排班与桌面推演。目标系统由单位自报或公安部指定，通常提前约 3 周通知起止时间。</p></div>
+      <div class="phase"><div class="dot">2</div><h3>战时响应</h3><div class="dur">2–4 周</div>
+        <p>红队攻击、蓝队循环处置、紫队裁判计分。目标系统被成功攻破，参演单位可被整体取消排名资格。</p></div>
+      <div class="phase"><div class="dot">3</div><h3>复盘</h3><div class="dur">1–2 周</div>
+        <p>事件回溯、补齐残留漏洞、纳入防御与培训。表现差者被公开点名、责令整改；零失守者获省市级"优秀团队奖"乃至官媒表彰。</p></div>
+    </div>
+  </section>
+
+  <!-- 03 COMPARE -->
+  <section class="reveal">
+    <div class="sh"><span class="no">03</span><h2>护网 vs. Cyber Storm</h2><span class="en">China HW · US CISA</span></div>
+    <p class="lead">美国最接近的对应物是 CISA 的 Cyber Storm（第十届 2026-09-14 启动）。同为"国家级、多方参与"，但四点实质差异：</p>
+    <div class="cmp">
+      <div class="col hw"><h3>护网 HW</h3><div class="lead2">Ministry of Public Security</div>
+        <div class="row"><div class="k">归属</div><div class="v"><b>公安部</b>（执法/安全机关）</div></div>
+        <div class="row"><div class="k">频率·时长</div><div class="v">每年 · 实弹 2–4 周 · 号称数万参与者</div></div>
+        <div class="row"><div class="k">性质</div><div class="v"><b>实弹攻击</b>真实/近真实系统</div></div>
+        <div class="row"><div class="k">后果</div><div class="v">并入安全评级/政治挂钩，公开点名，可致高管免职</div></div>
+      </div>
+      <div class="col cs"><h3>Cyber Storm</h3><div class="lead2">US CISA</div>
+        <div class="row"><div class="k">归属</div><div class="v"><b>CISA</b>（信息共享为使命的民事机构）</div></div>
+        <div class="row"><div class="k">频率·时长</div><div class="v">每两年 · 实战约 3 天 · 2024 版约 2200 人</div></div>
+        <div class="row"><div class="k">性质</div><div class="v"><b>桌面+功能推演</b>，响应脚本化 inject，无红队攻生产系统</div></div>
+        <div class="row"><div class="k">后果</div><div class="v">无监管/声誉后果，重在验证信息共享渠道</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 DECADE -->
+  <section class="reveal">
+    <div class="sh"><span class="no">04</span><h2>十年演变与 2026 新变化</h2><span class="en">Tracking China's cyber law</span></div>
+    <p class="lead">护网的重心始终跟随中国网络安全立法与地缘格局变化——每部新法（网络安全法、数据安全法、个人信息保护法）都在当年演练重点中留下痕迹。</p>
+    <div style="display:grid;grid-template-columns:1.05fr 1fr;gap:30px">
+      <div class="tl">
+        <div class="ti"><div class="y">2016</div><div class="c">公安部<b>首次</b>全国实弹演练，联合民航局、国家电网，仅覆盖少数关键行业</div></div>
+        <div class="ti"><div class="y">≤2020</div><div class="c">以"发现即得分"的宽松计分；合规驱动为主</div></div>
+        <div class="ti red"><div class="y">2021</div><div class="c">红队开始引入 <b>AI 与自动化工具</b>；计分收紧——须"响应+还原完整攻击链"，防守方转向威胁情报共享与主动狩猎</div></div>
+        <div class="ti red"><div class="y">2026</div><div class="c">十周年，7–8 月举行；AI 角色显著上升，结果并入评级</div></div>
+      </div>
+      <div class="shifts" style="grid-template-columns:1fr;margin:0">
+        <div class="shift"><div class="h">2026 SHIFT · 01</div><p>攻击手法更贴近<b>真实犯罪/国家级行为体</b>，含 AI 辅助钓鱼</p></div>
+        <div class="shift"><div class="h">2026 SHIFT · 02</div><p>范围扩展至 <b>AI 安全</b>（LLM 提示注入）与<b>云原生安全</b>（K8s 容器逃逸）</p></div>
+        <div class="shift"><div class="h">2026 SHIFT · 03</div><p>结果<b>直接并入安全评级</b>→更正式合规工具；违规可禁赛、行政处罚或人员拉黑</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 RIPPLE -->
+  <section class="reveal">
+    <div class="sh"><span class="no">05</span><h2>护网的溢出效应</h2><span class="en">Talent · Industry · APT</span></div>
+    <div class="ripple">
+      <div class="rip"><div class="tag2">Talent & Standing</div><h3>人才与地位</h3>
+        <p>护网是<b>人才识别机制</b>，被 Sohu 评论称为中国网安业的"<b>高考</b>"与"<b>练兵场</b>"，衔接更广的 CTF 生态。强者获公开认可并占未来政府合同优势；弱者面临点名与声誉损失。NetAskari 分析的疑似泄露显示<b>青海某省级蓝队自身被攻破</b>，暴露政府网络投入不均。</p>
+      </div>
+      <div class="rip"><div class="tag2">Good for Business</div><h3>攻防产业增长</h3>
+        <div class="big">200<small> 亿 RMB</small></div>
+        <p>2019 长江证券报告估算：为护网备战的三阶段（咨询/赛中支持/赛后整改）可及市场超 200 亿元（约当时 28 亿美元）。CNCERT 亦称护网"极大促进关基运营者增加安全投入"，推动从合规驱动转向<b>攻防能力驱动</b>的产品创新与"攻防实验室"兴起。</p>
+      </div>
+      <div class="rip"><div class="tag2">Pipeline to APTs?</div><h3>通往 APT 的管道</h3>
+        <p>公安部作为主办方是关键争议点：其被指对境外目标实施网络行动，并于 2026 年<b>首次牵头"天府杯"漏洞竞赛</b>，十年来一直被质疑"收集/武器化"零日。护网同样会发现漏洞（多为弱口令、未打补丁、配置错误、内部威胁），但作者认为其对中国 APT 生态的真实价值<b>不在零日本身</b>，而在训练、人才与产业升级。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 VENDORS + CHAITIN -->
+  <section class="reveal">
+    <div class="sh"><span class="no">06</span><h2>厂商生态 · 补充长亭科技</h2><span class="en">Vendors · + Chaitin Tech</span></div>
+    <p class="lead">文档在"产业增长"一处点名了<b>常去护网蓝队席位</b>的安全厂商（未列长亭，作者亦声明该名单未经官方一手核实）：</p>
+
+    <div class="vend">
+      <div class="chips">
+        <div class="chip">奇安信<small>Qi An Xin · 蓝队外援</small></div>
+        <div class="chip">深信服<small>Sangfor · 蓝队外援</small></div>
+        <div class="chip">安恒信息<small>DBAPPSecurity · 蓝队外援</small></div>
+        <div class="chip">天融信<small>TopSec · 蓝队外援</small></div>
+        <div class="chip">启明星辰<small>Venustech · 蓝队外援</small></div>
+      </div>
+      <div class="vendnote">文档称这些厂商<b>常把蓝队岗位短期外包给人力中介</b>、赛后才结算日薪。此名单为"防守外援"定位——与下文以攻击队著称的长亭恰好互补。厂商的公开<b>演练战绩</b>文档未提供，下方仅就长亭补充。</div>
+
+      <!-- ADDED VENDOR -->
+      <div class="addv">
+        <div class="addv-top">
+          <div class="badge-atk"><span class="p"></span>补充厂商 · 公开资料多归入「攻击队 / 红方」</div>
+          <h3>长亭科技 <span>CHAITIN SECURITY · 北京 · est. 2014</span></h3>
+          <p>创始团队来自清华<b>"蓝莲花"（Blue-Lotus）CTF 战队</b>。与文档所点名的五家"蓝队外援"不同，长亭对外主打、公开报道常贴的标签是<b>攻击能力</b>——其自述"最懂攻击的防守队""连续多年获评国家攻防实战演习优秀攻击战队"，同时又是雷池 WAF、威胁检测响应 T-ANSWER 等<b>防守产品</b>厂商（"知攻善防"）。下表为公开渠道汇总的相关战绩。</p>
+        </div>
+        <div class="evwrap">
+          <div class="evt-h">汇总 · 公开战绩证据表</div>
+          <table class="ev">
+            <thead><tr><th>年份</th><th>演练 / 赛事</th><th>角色</th><th>公开成绩</th><th>信源性质</th></tr></thead>
+            <tbody>
+              <tr><td class="yr">2016</td><td class="evt">DEFCON CTF 全球总决赛</td><td><span class="pill">竞赛</span></td><td><span class="pill win">全球第二</span></td><td class="src">厂商自述·媒体</td></tr>
+              <tr><td class="yr">2017</td><td class="evt">Pwn2Own 世界黑客大赛</td><td><span class="pill">竞赛</span></td><td><span class="pill win">全球第三</span></td><td class="src">《华尔街日报》等</td></tr>
+              <tr><td class="yr">2019</td><td class="evt">国家级攻防演练（护网语境）</td><td><span class="pill atk">攻击队</span></td><td>自述 <span class="pill win">第二名</span></td><td class="src">厂商自述·未核实</td></tr>
+              <tr><td class="yr">2022</td><td class="evt">国家级攻防演练 · 实网</td><td><span class="pill atk">攻击队</span></td><td>自述 <span class="pill win">第一名</span>（首用自动化平台）</td><td class="src">厂商自述·未核实</td></tr>
+              <tr><td class="yr">2023</td><td class="evt">"磐石行动"上海工信实战攻防</td><td><span class="pill atk">红方 0x300</span></td><td><span class="pill win">冠军</span>·突破边界 20+ 项</td><td class="src">环球网·通稿</td></tr>
+              <tr><td class="yr">2023</td><td class="evt">"粤盾"广东数字政府攻防</td><td><span class="pill atk">红方</span></td><td><span class="pill win">第一名</span></td><td class="src">官网战绩</td></tr>
+              <tr><td class="yr">2024</td><td class="evt">京津冀信息通信领域实战攻防</td><td><span class="pill atk">攻击队</span></td><td><span class="pill win">攻击队第一</span>·拿下 8 入口</td><td class="src">厂商稿·脉脉/媒体</td></tr>
+              <tr><td class="yr">2024</td><td class="evt">"强网杯"线下赛</td><td><span class="pill">竞赛</span></td><td><span class="pill win">冠军</span>（累计 7 次夺冠）</td><td class="src">官网战绩</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="caveat">
+        <div class="ic">⚠</div>
+        <div class="tx"><h4>数据可信度提醒</h4>
+          <p>表中"第一名/优秀攻击战队"多为 <b>厂商自述战绩 + 媒体、自媒体转载的公关通稿</b>（官网、环球网、脉脉、百家号、CSDN 等）。护网(HW)本身 <b>不公开点评或公布参与厂商名单</b>，名次无法从官方独立核实；亦未见权威外媒将长亭与"HW 攻击队"专门挂钩的独立报道。本表仅作公开信息汇编，不构成对任何企业行为的评价。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="sh" style="margin-bottom:14px"><span class="no">//</span><h2 style="font-size:17px">信源</h2><span class="en">Sources</span></div>
+    <div class="srcgrid">
+      <div class="src"><span class="m">主</span> Natto Thoughts《HuWang—Protect the Network》，Eugenio Benincasa，2026-09-23（文档主体）</div>
+      <div class="src"><span class="m">补</span> 长亭科技官网(中/英) · 战绩/产品页</div>
+      <div class="src"><span class="m">补</span> 环球网 · 2023 磐石行动；脉脉/媒体 · 2024 京津冀攻防</div>
+      <div class="src"><span class="m">补</span> 全国科技创新中心平台 · 长亭十年成绩单；CSDN · 2026 护网科普</div>
+    </div>
+    <p class="disc">主体内容取自《huwang.pdf》· 长亭信息为公开渠道补充 · 排名类数据均为自报口径 · 生成于 2026-09-24</p>
+    <div class="sig">HuWang Operation · Mechanism Dossier</div>
+  </footer>
+</div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TJHZH273HM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TJHZH273HM');
+</script>
+<script>
+  (function(){
+    var els=document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.1});
+    els.forEach(function(e){io.observe(e)});
+    document.querySelectorAll('.stat .n').forEach(function(n){
+      var t=n.firstChild,raw=t.textContent,m=raw.match(/^(\d+)/);if(!m)return;
+      var end=+m[1],dur=900,st=null;
+      function step(ts){if(!st)st=ts;var p=Math.min((ts-st)/dur,1);t.textContent=Math.floor(p*end);if(p<1)requestAnimationFrame(step);else t.textContent=end;}
+      requestAnimationFrame(step);
+    });
+  })();
+</script>
+</body>
+</html>
